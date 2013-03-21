@@ -7,15 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F3DF46A16F98CE700C003D3 /* OPPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DF46916F98CE700C003D3 /* OPPhotoManager.m */; };
+		0F3DF46D16F98D0D00C003D3 /* OPPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */; };
 		0F9C80B416F891C700B2B6D8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9C80B316F891C700B2B6D8 /* Cocoa.framework */; };
 		0F9C80BE16F891C700B2B6D8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80BC16F891C700B2B6D8 /* InfoPlist.strings */; };
 		0F9C80C016F891C700B2B6D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C80BF16F891C700B2B6D8 /* main.m */; };
 		0F9C80C416F891C700B2B6D8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80C216F891C700B2B6D8 /* Credits.rtf */; };
 		0F9C80C716F891C700B2B6D8 /* OPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */; };
 		0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80C816F891C700B2B6D8 /* MainMenu.xib */; };
+		76AAAAFD273F4DD99BF0C8E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B69E97783146C19C69AB43 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F3DF46816F98CE700C003D3 /* OPPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoManager.h; sourceTree = "<group>"; };
+		0F3DF46916F98CE700C003D3 /* OPPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoManager.m; sourceTree = "<group>"; };
+		0F3DF46B16F98D0D00C003D3 /* OPPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoAlbum.h; sourceTree = "<group>"; };
+		0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoAlbum.m; sourceTree = "<group>"; };
 		0F9C80B016F891C700B2B6D8 /* Optique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optique.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9C80B316F891C700B2B6D8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0F9C80B616F891C700B2B6D8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -29,6 +36,8 @@
 		0F9C80C516F891C700B2B6D8 /* OPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPAppDelegate.h; sourceTree = "<group>"; };
 		0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPAppDelegate.m; sourceTree = "<group>"; };
 		0F9C80C916F891C700B2B6D8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		1915239F645F4207934EB0EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		E6B69E97783146C19C69AB43 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +46,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F9C80B416F891C700B2B6D8 /* Cocoa.framework in Frameworks */,
+				76AAAAFD273F4DD99BF0C8E7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +59,7 @@
 				0F9C80B916F891C700B2B6D8 /* Optique */,
 				0F9C80B216F891C700B2B6D8 /* Frameworks */,
 				0F9C80B116F891C700B2B6D8 /* Products */,
+				1915239F645F4207934EB0EC /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +76,7 @@
 			children = (
 				0F9C80B316F891C700B2B6D8 /* Cocoa.framework */,
 				0F9C80B516F891C700B2B6D8 /* Other Frameworks */,
+				E6B69E97783146C19C69AB43 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -86,6 +98,10 @@
 				0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */,
 				0F9C80C816F891C700B2B6D8 /* MainMenu.xib */,
 				0F9C80BA16F891C700B2B6D8 /* Supporting Files */,
+				0F3DF46816F98CE700C003D3 /* OPPhotoManager.h */,
+				0F3DF46916F98CE700C003D3 /* OPPhotoManager.m */,
+				0F3DF46B16F98D0D00C003D3 /* OPPhotoAlbum.h */,
+				0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */,
 			);
 			path = Optique;
 			sourceTree = "<group>";
@@ -112,6 +128,7 @@
 				0F9C80AC16F891C700B2B6D8 /* Sources */,
 				0F9C80AD16F891C700B2B6D8 /* Frameworks */,
 				0F9C80AE16F891C700B2B6D8 /* Resources */,
+				764F0ACCDB4C4803BB106785 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -162,6 +179,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		764F0ACCDB4C4803BB106785 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0F9C80AC16F891C700B2B6D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -169,6 +203,8 @@
 			files = (
 				0F9C80C016F891C700B2B6D8 /* main.m in Sources */,
 				0F9C80C716F891C700B2B6D8 /* OPAppDelegate.m in Sources */,
+				0F3DF46A16F98CE700C003D3 /* OPPhotoManager.m in Sources */,
+				0F3DF46D16F98D0D00C003D3 /* OPPhotoAlbum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +299,7 @@
 		};
 		0F9C80CE16F891C700B2B6D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1915239F645F4207934EB0EC /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -275,6 +312,7 @@
 		};
 		0F9C80CF16F891C700B2B6D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1915239F645F4207934EB0EC /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -304,6 +342,7 @@
 				0F9C80CF16F891C700B2B6D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,17 @@
+
+PODS:
+- CNGridView (1.1.3)
+- INAppStoreWindow (1.2)
+- NSView+LinenBackground (1.0)
+
+DEPENDENCIES:
+- CNGridView (~> 1.1.3)
+- INAppStoreWindow (~> 1.2)
+- NSView+LinenBackground (~> 1.0)
+
+SPEC CHECKSUMS:
+  CNGridView: fbb51256485bee7ca342e2a5b3a800d10429cf89
+  INAppStoreWindow: d00327caee47d951043169df9aaab952389defcb
+  NSView+LinenBackground: 8031e63d2c3d683723c6ebe244159148801b61f2
+
+COCOAPODS: 0.16.4

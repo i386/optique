@@ -7,9 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <INAppStoreWindow/INAppStoreWindow.h>
 
-@interface OPAppDelegate : NSObject <NSApplicationDelegate>
+#import "OPPhotoManager.h"
 
-@property (assign) IBOutlet NSWindow *window;
+@interface OPAppDelegate : NSObject <NSApplicationDelegate> {
+    OPPhotoManager *_photoManager;
+}
+
+@property (assign) IBOutlet INAppStoreWindow *window;
+@property (weak) IBOutlet NSView *toolbarView;
 
 @end

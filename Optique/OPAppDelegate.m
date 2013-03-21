@@ -8,11 +8,28 @@
 
 #import "OPAppDelegate.h"
 
+#import "OPPhotoAlbum.h"
+
 @implementation OPAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    _window.titleBarHeight = 36.0;
+    [_window.titleBarView addSubview:_toolbarView];
+    
+    NSRect buttonFrame = NSMakeRect(_toolbarView.frame.size.width, _toolbarView.frame.size.height, _toolbarView.frame.size.width, _toolbarView.frame.size.height);
+    
+    [_toolbarView setFrame:buttonFrame];
+    
+    NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
+    NSURL *picturesURL = [[[NSFileManager defaultManager] URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
+    
+    _photoManager = [[OPPhotoManager alloc] initWithPath:picturesURL];
+    
+    for (OPPhotoAlbum *album in _photoManager.allAlbums)
+    {
+        NSLog(@"Album name: %@", album.name);
+    }
 }
 
 @end
