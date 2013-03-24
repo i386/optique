@@ -10,9 +10,13 @@
 
 @interface OPPhotoAlbum : NSObject
 
-@property (assign, readonly) NSString *name;
-@property (assign, readonly) NSURL *path;
+@property (strong, readonly) NSString *title;
+@property (strong, readonly) NSURL *path;
 
--initWithName:(NSString*)name path:(NSURL*)path;
+-initWithName:(NSString*)title path:(NSURL*)path;
+
+-(NSArray*)allPhotos;
+
+-(NSImage*)coverImage;
 
 @end

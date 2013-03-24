@@ -42,8 +42,15 @@
         }
         else if ([isDirectory boolValue])
         {
-            OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithName:[[url path] lastPathComponent] path:url];
-            [albums addObject:album];
+            NSString *filePath = [url path];
+            CFStringRef fileExtension = (__bridge CFStringRef) [filePath pathExtension];
+            CFStringRef fileUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, NULL);
+            
+            if (!UTTypeConformsTo(fileUTI, kUTTypeDirectory))
+            {
+                OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithName:[filePath lastPathComponent] path:url];
+                [albums addObject:album];
+            }
         }
     }
     

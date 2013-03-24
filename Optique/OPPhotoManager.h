@@ -12,7 +12,7 @@
 
 @interface OPPhotoManager : NSObject
 
-@property (assign, readonly) NSURL *path;
+@property (strong, readonly) NSURL *path;
 
 -initWithPath:(NSURL*)path;
 
