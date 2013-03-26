@@ -10,6 +10,8 @@
 		0F350F5D16FB0E3A00CC18F7 /* OPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F350F5C16FB0E3A00CC18F7 /* OPPhoto.m */; };
 		0F3DF46A16F98CE700C003D3 /* OPPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DF46916F98CE700C003D3 /* OPPhotoManager.m */; };
 		0F3DF46D16F98D0D00C003D3 /* OPPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */; };
+		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
+		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
 		0F9C80B416F891C700B2B6D8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9C80B316F891C700B2B6D8 /* Cocoa.framework */; };
 		0F9C80BE16F891C700B2B6D8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80BC16F891C700B2B6D8 /* InfoPlist.strings */; };
 		0F9C80C016F891C700B2B6D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C80BF16F891C700B2B6D8 /* main.m */; };
@@ -31,6 +33,9 @@
 		0F3DF46916F98CE700C003D3 /* OPPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoManager.m; sourceTree = "<group>"; };
 		0F3DF46B16F98D0D00C003D3 /* OPPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoAlbum.h; sourceTree = "<group>"; };
 		0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoAlbum.m; sourceTree = "<group>"; };
+		0F6AEF821701C02200A797E4 /* OPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMainWindowController.h; sourceTree = "<group>"; };
+		0F6AEF831701C02200A797E4 /* OPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMainWindowController.m; sourceTree = "<group>"; };
+		0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPMainWindowController.xib; sourceTree = "<group>"; };
 		0F9C80B016F891C700B2B6D8 /* Optique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optique.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9C80B316F891C700B2B6D8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0F9C80B616F891C700B2B6D8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -165,6 +170,9 @@
 				0F9C80C516F891C700B2B6D8 /* OPAppDelegate.h */,
 				0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */,
 				0F9C80C816F891C700B2B6D8 /* MainMenu.xib */,
+				0F6AEF821701C02200A797E4 /* OPMainWindowController.h */,
+				0F6AEF831701C02200A797E4 /* OPMainWindowController.m */,
+				0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */,
 			);
 			name = "Main Window";
 			sourceTree = "<group>";
@@ -227,6 +235,7 @@
 				0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */,
 				0FEF33A716FEC8090096D72A /* OPAlbumViewController.xib in Resources */,
 				0FEF33B516FF02CB0096D72A /* OPPhotoAlbumViewController.xib in Resources */,
+				0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +271,7 @@
 				0FEF33A616FEC8090096D72A /* OPAlbumViewController.m in Sources */,
 				0FEF33AA16FECE500096D72A /* OPAlbumCollectionView.m in Sources */,
 				0FEF33B416FF02CB0096D72A /* OPPhotoAlbumViewController.m in Sources */,
+				0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

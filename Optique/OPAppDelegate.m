@@ -15,17 +15,13 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    _window.titleBarHeight = 36.0;
-    [_window.titleBarView addSubview:_toolbarView];
-    
     NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
     NSURL *picturesURL = [[[NSFileManager defaultManager] URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
     
     _photoManager = [[OPPhotoManager alloc] initWithPath:picturesURL];
-    
-    _albumViewController = [[OPAlbumViewController alloc] initWithPhotoManager:_photoManager];
-    
-    [_window.contentView addSubview:_albumViewController.view];
+    _mainWindowController = [[OPMainWindowController alloc] init];
+    _mainWindowController.photoManager = _photoManager;
+    [_mainWindowController.window makeKeyAndOrderFront:self];
 }
 
 @end

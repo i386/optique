@@ -10,14 +10,11 @@
 #import <INAppStoreWindow/INAppStoreWindow.h>
 
 #import "OPPhotoManager.h"
-#import "OPAlbumViewController.h"
+#import "OPMainWindowController.h"
 
-@interface OPAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate> {
+@interface OPAppDelegate : NSObject <NSApplicationDelegate> {
     OPPhotoManager *_photoManager;
-    OPAlbumViewController *_albumViewController;
+    OPMainWindowController *_mainWindowController;
 }
-
-@property (assign) IBOutlet INAppStoreWindow *window;
-@property (weak) IBOutlet NSView *toolbarView;
 
 @end
