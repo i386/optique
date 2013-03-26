@@ -19,6 +19,8 @@
 		0FEF33A616FEC8090096D72A /* OPAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEF33A416FEC8090096D72A /* OPAlbumViewController.m */; };
 		0FEF33A716FEC8090096D72A /* OPAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEF33A516FEC8090096D72A /* OPAlbumViewController.xib */; };
 		0FEF33AA16FECE500096D72A /* OPAlbumCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEF33A916FECE500096D72A /* OPAlbumCollectionView.m */; };
+		0FEF33B416FF02CB0096D72A /* OPPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEF33B216FF02CB0096D72A /* OPPhotoAlbumViewController.m */; };
+		0FEF33B516FF02CB0096D72A /* OPPhotoAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEF33B316FF02CB0096D72A /* OPPhotoAlbumViewController.xib */; };
 		76AAAAFD273F4DD99BF0C8E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B69E97783146C19C69AB43 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,9 @@
 		0FEF33A516FEC8090096D72A /* OPAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPAlbumViewController.xib; path = Optique/OPAlbumViewController.xib; sourceTree = "<group>"; };
 		0FEF33A816FECE500096D72A /* OPAlbumCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPAlbumCollectionView.h; path = Optique/OPAlbumCollectionView.h; sourceTree = "<group>"; };
 		0FEF33A916FECE500096D72A /* OPAlbumCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPAlbumCollectionView.m; path = Optique/OPAlbumCollectionView.m; sourceTree = "<group>"; };
+		0FEF33B116FF02CB0096D72A /* OPPhotoAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoAlbumViewController.h; sourceTree = "<group>"; };
+		0FEF33B216FF02CB0096D72A /* OPPhotoAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoAlbumViewController.m; sourceTree = "<group>"; };
+		0FEF33B316FF02CB0096D72A /* OPPhotoAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPhotoAlbumViewController.xib; sourceTree = "<group>"; };
 		1915239F645F4207934EB0EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		E6B69E97783146C19C69AB43 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -109,6 +114,9 @@
 				0FEF33A116FEC6420096D72A /* Model */,
 				0FEF33A016FEC6350096D72A /* Album View */,
 				0F9C80BA16F891C700B2B6D8 /* Supporting Files */,
+				0FEF33B116FF02CB0096D72A /* OPPhotoAlbumViewController.h */,
+				0FEF33B216FF02CB0096D72A /* OPPhotoAlbumViewController.m */,
+				0FEF33B316FF02CB0096D72A /* OPPhotoAlbumViewController.xib */,
 			);
 			path = Optique;
 			sourceTree = "<group>";
@@ -218,6 +226,7 @@
 				0F9C80C416F891C700B2B6D8 /* Credits.rtf in Resources */,
 				0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */,
 				0FEF33A716FEC8090096D72A /* OPAlbumViewController.xib in Resources */,
+				0FEF33B516FF02CB0096D72A /* OPPhotoAlbumViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +261,7 @@
 				0F350F5D16FB0E3A00CC18F7 /* OPPhoto.m in Sources */,
 				0FEF33A616FEC8090096D72A /* OPAlbumViewController.m in Sources */,
 				0FEF33AA16FECE500096D72A /* OPAlbumCollectionView.m in Sources */,
+				0FEF33B416FF02CB0096D72A /* OPPhotoAlbumViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
