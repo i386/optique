@@ -8,7 +8,7 @@
 
 #import "OPAlbumViewController.h"
 
-#import "OPAlbumCollectionViewController.h"
+#import "OPPhotoCollectionViewController.h"
 
 @interface OPAlbumViewController () {
 }
@@ -42,14 +42,15 @@
         {
             NSInteger index = [indexSet firstIndex];
             OPPhotoAlbum *album = [[_collectionView itemAtIndex:index] representedObject];
-            NSLog(@"%@", album.title);
+//            NSLog(@"%@", album.title);
         }
     }
 }
 
 - (void)doubleClick:(id)sender
 {
-    [self.controller pushViewController:[[OPAlbumCollectionViewController alloc] init]];
+    OPPhotoAlbum *photoAlbum = [sender representedObject];
+    [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:photoAlbum]];
 }
 
 @end
