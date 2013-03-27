@@ -19,4 +19,6 @@
 
 -initWithPhotoManager:(OPPhotoManager*)photoManager;
 
+- (void)doubleClick:(id)sender;
+
 @end

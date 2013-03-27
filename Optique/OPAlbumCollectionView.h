@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface OPAlbumCollectionView : NSCollectionView
+@interface OPAlbumCollectionView : NSCollectionView <NSCollectionViewDelegate>
 
 @end

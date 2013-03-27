@@ -47,7 +47,8 @@
     }
 }
 
-- (IBAction)test:(id)sender {
+- (void)doubleClick:(id)sender
+{
     [self.controller pushViewController:[[OPAlbumCollectionViewController alloc] init]];
 }
 
