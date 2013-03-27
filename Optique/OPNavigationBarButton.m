@@ -25,6 +25,8 @@
 
 - (void)setTextColor:(NSColor *)textColor
 {
+    NSFont *boldFont = [NSFont boldSystemFontOfSize:[NSFont systemFontSize]];
+    
     NSMutableAttributedString *attrTitle = [[NSMutableAttributedString alloc]
                                             initWithAttributedString:[self attributedTitle]];
     NSInteger len = [attrTitle length];
@@ -32,6 +34,8 @@
     [attrTitle addAttribute:NSForegroundColorAttributeName
                       value:textColor
                       range:range];
+    [attrTitle addAttribute:NSFontAttributeName value:boldFont range:range];
+    
     [attrTitle fixAttributesInRange:range];
     [self setAttributedTitle:attrTitle];
 }
