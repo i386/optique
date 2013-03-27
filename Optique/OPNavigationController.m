@@ -107,7 +107,6 @@ enum OPNavigationControllerAnimationType : NSInteger {
 
 -(void)awakeFromNib
 {
-    NSLog(@"awake");
     [self setVisibleViewController:_rootViewController animation:OPNavigationControllerAnimationTypeFirst];
     [self updateNavigationBarState];
     [_displayView addSubview:_rootViewController.view];
