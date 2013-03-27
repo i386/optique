@@ -63,7 +63,7 @@ enum OPNavigationControllerAnimationType : NSInteger {
         [_displayStack removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, _displayStack.count-1)]];
         [self setVisibleViewController:[_displayStack lastObject] animation:OPNavigationControllerAnimationTypePopped];
     }
-    return _displayStack;
+    return [NSArray arrayWithArray:_displayStack];
 }
 
 -(NSArray*)popToPreviousViewController
@@ -73,34 +73,35 @@ enum OPNavigationControllerAnimationType : NSInteger {
         [_displayStack removeLastObject];
         [self setVisibleViewController:[_displayStack lastObject] animation:OPNavigationControllerAnimationTypePopped];
     }
-    return _displayStack;
+    return [NSArray arrayWithArray:_displayStack];
 }
 
 -(void)setVisibleViewController:(OPNavigationViewController *)visibleViewController animation:(OPNavigationControllerAnimationType)animationType
 {
-//    if (animationType != OPNavigationControllerAnimationTypeFirst)
-//    {
-//        CATransition *transition = [CATransition animation];
-//        [transition setType:kCATransitionPush];
-//        
-//        switch (animationType) {
-//            case (OPNavigationControllerAnimationTypePopped):
-//                [transition setSubtype:kCATransitionFromRight];
-//                break;
-//            case (OPNavigationControllerAnimationTypePushed):
-//                [transition setSubtype:kCATransitionFromLeft];
-//                break;
-//            default:
-//                break;
-//        }
-//        
-//        NSDictionary *animations = [NSDictionary dictionaryWithObject:transition forKey:@"subviews"];
-//        _displayView.animations = animations;
-//    }
+    if (animationType != OPNavigationControllerAnimationTypeFirst)
+    {
+        CATransition *transition = [CATransition animation];
+        [transition setType:kCATransitionPush];
+        
+        switch (animationType) {
+            case (OPNavigationControllerAnimationTypePopped):
+                [transition setSubtype:kCATransitionFromLeft];
+                break;
+            case (OPNavigationControllerAnimationTypePushed):
+                [transition setSubtype:kCATransitionFromRight];
+                break;
+            default:
+                break;
+        }
+        
+        [transition setDuration:0.3];
+        
+        [_displayView setAnimations:[NSDictionary dictionaryWithObject:transition forKey:@"subviews"]];
+    }
     
-    [_displayView replaceSubview:_visibleViewController.view with:visibleViewController.view];
-    _visibleViewController = visibleViewController;
     [_visibleViewController.view setFrame:_displayView.frame];
+    [_displayView.animator replaceSubview:_visibleViewController.view with:visibleViewController.view];
+    _visibleViewController = visibleViewController;
     [self updateNavigationBarState];
 }
 
