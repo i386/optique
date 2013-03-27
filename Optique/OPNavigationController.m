@@ -123,6 +123,8 @@ enum OPNavigationControllerAnimationType : NSInteger {
     {
         [_navigationBar hideBackButton:NO];
     }
+    
+    [_navigationBar setTitle:_visibleViewController.viewTitle];
 }
 
 @end

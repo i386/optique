@@ -34,6 +34,11 @@
     [button setTextColor:[NSColor whiteColor]];
 }
 
+-(void)setTitle:(NSString *)title
+{
+    _viewLabel.stringValue = title;
+}
+
 -(void)hideBackButton:(BOOL)hide
 {
     [_backButton setHidden:hide];

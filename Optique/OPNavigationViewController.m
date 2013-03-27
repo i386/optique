@@ -24,4 +24,9 @@
     return self;
 }
 
+-(NSString *)viewTitle
+{
+    return [NSString string];
+}
+
 @end

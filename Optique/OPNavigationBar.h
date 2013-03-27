@@ -16,6 +16,8 @@
     IBOutlet OPNavigationController *_navigationController;
 }
 
+-(void)setTitle:(NSString *)title;
+
 -(void)hideBackButton:(BOOL)hide;
 
 -(IBAction)backClicked:(id)sender;

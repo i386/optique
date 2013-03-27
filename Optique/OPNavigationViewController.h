@@ -13,4 +13,6 @@
 
 @property (strong) OPNavigationController *controller;
 
+-(NSString*)viewTitle;
+
 @end
