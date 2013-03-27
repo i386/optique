@@ -8,8 +8,9 @@
 
 #import "OPAlbumViewController.h"
 
+#import "OPAlbumCollectionViewController.h"
+
 @interface OPAlbumViewController () {
-    OPPhotoAlbumViewController *_photoAlbumViewController;
 }
 @end
 
@@ -43,8 +44,9 @@
             OPPhotoAlbum *album = [[_collectionView itemAtIndex:index] representedObject];
             NSLog(@"%@", album.title);
             
-//            _photoAlbumViewController = [[OPPhotoAlbumViewController alloc] initWithPhotoManager:_photoManager album:album];
-//            [self.view.superview addSubview:_photoAlbumViewController.view];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.controller pushViewController:[[OPAlbumCollectionViewController alloc] init]];
+            });
         }
     }
 }

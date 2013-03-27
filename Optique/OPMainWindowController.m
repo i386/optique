@@ -9,7 +9,11 @@
 #import "OPMainWindowController.h"
 #import <INAppStoreWindow/INAppStoreWindow.h>
 
-@interface OPMainWindowController ()
+#import "OPNavigationController.h"
+
+@interface OPMainWindowController () {
+    OPNavigationController *_navigationController;
+}
 
 @end
 
@@ -27,11 +31,13 @@
     INAppStoreWindow *iWindow = (INAppStoreWindow*)self.window;
     iWindow.titleBarHeight = 36.0;
     
-    NSView *contentView = self.window.contentView;
-    
     _albumViewController = [[OPAlbumViewController alloc] initWithPhotoManager:_photoManager];
-    [self.window.contentView addSubview:_albumViewController.view];
-    [_albumViewController.view setFrame:contentView.frame];
+    
+    _navigationController = [[OPNavigationController alloc] initWithRootViewController:_albumViewController];
+    
+    NSView *contentView = self.window.contentView;
+    [self.window.contentView addSubview:_navigationController.view];
+    [_navigationController.view setFrame:contentView.frame];
 }
 
 @end
