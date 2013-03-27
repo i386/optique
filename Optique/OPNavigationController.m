@@ -60,7 +60,7 @@ enum OPNavigationControllerAnimationType : NSInteger {
 {
     if (_displayStack.count > 1)
     {
-        [_displayStack removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, _displayStack.count)]];
+        [_displayStack removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, _displayStack.count-1)]];
         [self setVisibleViewController:[_displayStack lastObject] animation:OPNavigationControllerAnimationTypePopped];
     }
     return _displayStack;
