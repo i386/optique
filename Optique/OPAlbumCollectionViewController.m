@@ -24,4 +24,9 @@
     return self;
 }
 
+-(NSString *)viewTitle
+{
+    return @"Holiday photos";
+}
+
 @end
