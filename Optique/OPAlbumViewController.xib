@@ -12,6 +12,8 @@
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSArrayController</string>
+			<string>NSButton</string>
+			<string>NSButtonCell</string>
 			<string>NSCollectionView</string>
 			<string>NSCollectionViewItem</string>
 			<string>NSCustomObject</string>
@@ -126,7 +128,7 @@
 														<string key="NSFrame">{{1, 144}, {233, 15}}</string>
 														<reference key="NSSuperview" ref="945574958"/>
 														<reference key="NSWindow"/>
-														<reference key="NSNextKeyView" ref="931161772"/>
+														<reference key="NSNextKeyView" ref="640529192"/>
 														<string key="NSReuseIdentifierKey">_NS:91</string>
 														<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 														<int key="NSsFlags">1</int>
@@ -147,6 +149,35 @@
 												<double key="NSMinMagnification">0.25</double>
 												<double key="NSMaxMagnification">4</double>
 												<double key="NSMagnification">1</double>
+											</object>
+											<object class="NSButton" id="640529192">
+												<reference key="NSNextResponder" ref="654327878"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{222, 195}, {82, 32}}</string>
+												<reference key="NSSuperview" ref="654327878"/>
+												<reference key="NSWindow"/>
+												<reference key="NSNextKeyView" ref="931161772"/>
+												<string key="NSReuseIdentifierKey">_NS:9</string>
+												<bool key="NSEnabled">YES</bool>
+												<object class="NSButtonCell" key="NSCell" id="7008949">
+													<int key="NSCellFlags">67108864</int>
+													<int key="NSCellFlags2">134217728</int>
+													<string key="NSContents">Button</string>
+													<object class="NSFont" key="NSSupport" id="705715359">
+														<string key="NSName">LucidaGrande</string>
+														<double key="NSSize">13</double>
+														<int key="NSfFlags">1044</int>
+													</object>
+													<string key="NSCellIdentifier">_NS:9</string>
+													<reference key="NSControlView" ref="640529192"/>
+													<int key="NSButtonFlags">-2038284288</int>
+													<int key="NSButtonFlags2">129</int>
+													<string key="NSAlternateContents"/>
+													<string key="NSKeyEquivalent"/>
+													<int key="NSPeriodicDelay">200</int>
+													<int key="NSPeriodicInterval">25</int>
+												</object>
+												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 											</object>
 										</array>
 										<string key="NSFrameSize">{526, 322}</string>
@@ -230,7 +261,7 @@
 							<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
 							<string>NeXT TIFF v4.0 pasteboard type</string>
 						</set>
-						<string key="NSFrameSize">{260, 175}</string>
+						<string key="NSFrame">{{11, 9}, {239, 157}}</string>
 						<reference key="NSSuperview" ref="4443101"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="555100272"/>
@@ -251,7 +282,7 @@
 					<object class="NSTextField" id="555100272">
 						<reference key="NSNextResponder" ref="4443101"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrameSize">{260, 27}</string>
+						<string key="NSFrame">{{11, 9}, {239, 27}}</string>
 						<reference key="NSSuperview" ref="4443101"/>
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:1535</string>
@@ -260,11 +291,7 @@
 							<int key="NSCellFlags">68157504</int>
 							<int key="NSCellFlags2">138413056</int>
 							<string key="NSContents">Label</string>
-							<object class="NSFont" key="NSSupport">
-								<string key="NSName">LucidaGrande</string>
-								<double key="NSSize">13</double>
-								<int key="NSfFlags">1044</int>
-							</object>
+							<reference key="NSSupport" ref="705715359"/>
 							<string key="NSCellIdentifier">_NS:1535</string>
 							<reference key="NSControlView" ref="555100272"/>
 							<bool key="NSDrawsBackground">YES</bool>
@@ -317,6 +344,14 @@
 						<reference key="destination" ref="882681155"/>
 					</object>
 					<int key="connectionID">188</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">test:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="640529192"/>
+					</object>
+					<int key="connectionID">191</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -472,6 +507,7 @@
 						<reference key="object" ref="654327878"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="945574958"/>
+							<reference ref="640529192"/>
 						</array>
 						<reference key="parent" ref="364437304"/>
 					</object>
@@ -555,6 +591,19 @@
 						<reference key="object" ref="710725893"/>
 						<reference key="parent" ref="812286676"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">189</int>
+						<reference key="object" ref="640529192"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="7008949"/>
+						</array>
+						<reference key="parent" ref="654327878"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">190</int>
+						<reference key="object" ref="7008949"/>
+						<reference key="parent" ref="640529192"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -569,6 +618,8 @@
 				<string key="117.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="140.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="141.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="189.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="190.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="56.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="58.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="59.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -583,7 +634,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">188</int>
+			<int key="maxID">191</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -597,7 +648,7 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">OPAlbumViewController</string>
-					<string key="superclassName">NSViewController</string>
+					<string key="superclassName">OPNavigationViewController</string>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">collectionView</string>
 						<string key="NS.object.0">OPAlbumCollectionView</string>
@@ -612,6 +663,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/OPAlbumViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">OPNavigationViewController</string>
+					<string key="superclassName">NSViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/OPNavigationViewController.h</string>
 					</object>
 				</object>
 			</array>

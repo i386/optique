@@ -178,9 +178,9 @@
 				0FE3B2471702C69700FC0D6C /* OPNavigationBar.m */,
 				0FE3B24E1702D1FE00FC0D6C /* OPNavigationBarButtonCell.h */,
 				0FE3B24F1702D1FE00FC0D6C /* OPNavigationBarButtonCell.m */,
-				0FE3B24D1702CFB100FC0D6C /* Images */,
 				0FE3B2581702E05100FC0D6C /* OPNavigationViewController.h */,
 				0FE3B2591702E05100FC0D6C /* OPNavigationViewController.m */,
+				0FE3B24D1702CFB100FC0D6C /* Images */,
 			);
 			name = "Navigation Controller";
 			sourceTree = "<group>";

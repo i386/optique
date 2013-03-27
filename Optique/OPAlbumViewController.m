@@ -43,12 +43,12 @@
             NSInteger index = [indexSet firstIndex];
             OPPhotoAlbum *album = [[_collectionView itemAtIndex:index] representedObject];
             NSLog(@"%@", album.title);
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.controller pushViewController:[[OPAlbumCollectionViewController alloc] init]];
-            });
         }
     }
+}
+
+- (IBAction)test:(id)sender {
+    [self.controller pushViewController:[[OPAlbumCollectionViewController alloc] init]];
 }
 
 @end
