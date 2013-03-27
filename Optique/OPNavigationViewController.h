@@ -11,7 +11,7 @@
 
 @interface OPNavigationViewController : NSViewController
 
-@property (strong) OPNavigationController *controller;
+@property (weak) OPNavigationController *controller;
 
 -(NSString*)viewTitle;
 
