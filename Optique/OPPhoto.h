@@ -17,6 +17,8 @@
 
 -(NSImage*)image;
 
+-(NSImage*)previewImage;
+
 -initWithTitle:(NSString*)title path:(NSURL*)path;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OPImageCache.h"
 
 @interface OPPhotoAlbum : NSObject
 

@@ -25,7 +25,7 @@
 -(NSImage *)coverImage
 {
     OPPhoto *photo = [[self allPhotos] objectAtIndex:0];
-    return photo.image;
+    return photo.coverImage;
 }
 
 -(NSArray *)allPhotos
@@ -46,7 +46,7 @@
         NSNumber *isDirectory = nil;
         if (! [url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error])
         {
-            // handle error
+            //TODO handle error
         }
         else if (![isDirectory boolValue])
         {

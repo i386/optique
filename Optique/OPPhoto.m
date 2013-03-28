@@ -7,6 +7,8 @@
 //
 
 #import "OPPhoto.h"
+#import "NSImage+MGCropExtensions.h"
+#import "OPImageCache.h"
 
 @implementation OPPhoto
 
@@ -23,12 +25,17 @@
 
 -(NSImage*)coverImage
 {
-    return self.image;
+    return [[OPImageCache sharedPreviewCache] loadImageForPath:_path];
 }
 
--(NSImage *)image
+-(NSImage*)image
 {
     return [[NSImage alloc] initWithContentsOfURL:_path];
+}
+
+-(NSImage*)previewImage
+{
+    return [self coverImage];
 }
 
 @end

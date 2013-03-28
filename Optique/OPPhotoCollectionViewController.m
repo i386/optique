@@ -18,7 +18,8 @@
 -(id)initWithPhotoAlbum:(OPPhotoAlbum *)photoAlbum
 {
     self = [super initWithNibName:@"OPPhotoCollectionViewController" bundle:nil];
-    if (self) {
+    if (self)
+    {
         _photoAlbum = photoAlbum;
     }
     
