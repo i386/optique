@@ -7,6 +7,7 @@
 //
 
 #import "OPPhotoCollectionViewController.h"
+#import "OPPhotoViewController.h"
 
 @interface OPPhotoCollectionViewController ()
 
@@ -31,7 +32,8 @@
 
 - (void)doubleClick:(id)sender
 {
-    NSLog(@"doubleclicked");
+    OPPhotoViewController *photoViewContoller = [[OPPhotoViewController alloc] initWithPhotoAlbum:_photoAlbum photo:[sender representedObject]];
+    [self.controller pushViewController:photoViewContoller];
 }
 
 @end

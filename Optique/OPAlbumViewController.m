@@ -32,4 +32,9 @@
     [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:photoAlbum]];
 }
 
+-(NSString *)viewTitle
+{
+    return [NSString stringWithFormat:@"%lu albums", (unsigned long)_photoManager.allAlbums.count];
+}
+
 @end

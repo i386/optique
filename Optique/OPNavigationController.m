@@ -52,7 +52,7 @@ enum OPNavigationControllerAnimationType : NSInteger {
 -(void)pushViewController:(OPNavigationViewController *)viewController
 {
     [_displayStack addObject:viewController];
-    _visibleViewController.controller = self;
+    viewController.controller = self;
     [self setVisibleViewController:viewController animation:OPNavigationControllerAnimationTypePushed];
 }
 

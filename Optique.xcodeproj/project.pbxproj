@@ -12,6 +12,8 @@
 		0F3DF46D16F98D0D00C003D3 /* OPPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
+		0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F96270C170418EB007C1A86 /* OPPhotoViewController.m */; };
+		0F96270F170418EB007C1A86 /* OPPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F96270D170418EB007C1A86 /* OPPhotoViewController.xib */; };
 		0F9C80B416F891C700B2B6D8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9C80B316F891C700B2B6D8 /* Cocoa.framework */; };
 		0F9C80BE16F891C700B2B6D8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80BC16F891C700B2B6D8 /* InfoPlist.strings */; };
 		0F9C80C016F891C700B2B6D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C80BF16F891C700B2B6D8 /* main.m */; };
@@ -53,6 +55,9 @@
 		0F6AEF821701C02200A797E4 /* OPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMainWindowController.h; sourceTree = "<group>"; };
 		0F6AEF831701C02200A797E4 /* OPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMainWindowController.m; sourceTree = "<group>"; };
 		0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPMainWindowController.xib; sourceTree = "<group>"; };
+		0F96270B170418EB007C1A86 /* OPPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoViewController.h; sourceTree = "<group>"; };
+		0F96270C170418EB007C1A86 /* OPPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoViewController.m; sourceTree = "<group>"; };
+		0F96270D170418EB007C1A86 /* OPPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPhotoViewController.xib; sourceTree = "<group>"; };
 		0F9C80B016F891C700B2B6D8 /* Optique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optique.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9C80B316F891C700B2B6D8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0F9C80B616F891C700B2B6D8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -118,6 +123,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F962710170418F4007C1A86 /* Photo View */ = {
+			isa = PBXGroup;
+			children = (
+				0F96270B170418EB007C1A86 /* OPPhotoViewController.h */,
+				0F96270C170418EB007C1A86 /* OPPhotoViewController.m */,
+				0F96270D170418EB007C1A86 /* OPPhotoViewController.xib */,
+			);
+			name = "Photo View";
+			sourceTree = "<group>";
+		};
 		0F9C80A716F891C700B2B6D8 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +180,7 @@
 				0FEF33A116FEC6420096D72A /* Model */,
 				0FEF33A016FEC6350096D72A /* Album View */,
 				0FDE075A170317AE00D5B456 /* Photo Collection View */,
+				0F962710170418F4007C1A86 /* Photo View */,
 				0F9C80BA16F891C700B2B6D8 /* Supporting Files */,
 			);
 			path = Optique;
@@ -337,6 +353,7 @@
 				0FE3B26D1703078400FC0D6C /* OPAlbumItemViewPrototype.xib in Resources */,
 				0FDE075917030FCC00D5B456 /* OPPhotoCollectionViewController.xib in Resources */,
 				0FDE075C1703A75100D5B456 /* PhotoCollectionViewItemPrototype.xib in Resources */,
+				0F96270F170418EB007C1A86 /* OPPhotoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +399,7 @@
 				0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */,
 				0FDE075F1703A79B00D5B456 /* OPPhotoCollectionItem.m in Sources */,
 				0FDE07621703D67C00D5B456 /* OPPhotoItemView.m in Sources */,
+				0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
