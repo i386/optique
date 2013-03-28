@@ -98,8 +98,8 @@ enum OPNavigationControllerAnimationType : NSInteger {
         
         [_displayView setAnimations:[NSDictionary dictionaryWithObject:transition forKey:@"subviews"]];
     }
-    
-    [_visibleViewController.view setFrame:_displayView.frame];
+
+    [visibleViewController.view setFrame:_displayView.frame];
     [_displayView.animator replaceSubview:_visibleViewController.view with:visibleViewController.view];
     _visibleViewController = visibleViewController;
     [self updateNavigationBarState];

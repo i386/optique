@@ -29,4 +29,9 @@
     return _photoAlbum.title;
 }
 
+- (void)doubleClick:(id)sender
+{
+    NSLog(@"doubleclicked");
+}
+
 @end

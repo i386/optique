@@ -11,7 +11,7 @@
 
 @implementation OPPhotoAlbum
 
--(id)initWithName:(NSString *)title path:(NSURL *)path
+-(id)initWithTitle:(NSString *)title path:(NSURL *)path
 {
     self = [super init];
     if (self)
@@ -56,7 +56,7 @@
             
             if (UTTypeConformsTo(fileUTI, kUTTypeImage))
             {
-                OPPhoto *photo = [[OPPhoto alloc] initWithName:[filePath lastPathComponent] path:url];
+                OPPhoto *photo = [[OPPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url];
                 [photos addObject:photo];
             }
         }

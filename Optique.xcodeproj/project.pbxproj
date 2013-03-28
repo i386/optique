@@ -20,6 +20,9 @@
 		0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80C816F891C700B2B6D8 /* MainMenu.xib */; };
 		0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE075617030FCC00D5B456 /* OPPhotoCollectionViewController.m */; };
 		0FDE075917030FCC00D5B456 /* OPPhotoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE075717030FCC00D5B456 /* OPPhotoCollectionViewController.xib */; };
+		0FDE075C1703A75100D5B456 /* PhotoCollectionViewItemPrototype.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE075B1703A75100D5B456 /* PhotoCollectionViewItemPrototype.xib */; };
+		0FDE075F1703A79B00D5B456 /* OPPhotoCollectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE075E1703A79B00D5B456 /* OPPhotoCollectionItem.m */; };
+		0FDE07621703D67C00D5B456 /* OPPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE07611703D67C00D5B456 /* OPPhotoItemView.m */; };
 		0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */; };
 		0FE3B2451702C62D00FC0D6C /* OPNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */; };
 		0FE3B2481702C69700FC0D6C /* OPNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2471702C69700FC0D6C /* OPNavigationBar.m */; };
@@ -66,6 +69,11 @@
 		0FDE075517030FCC00D5B456 /* OPPhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoCollectionViewController.h; sourceTree = "<group>"; };
 		0FDE075617030FCC00D5B456 /* OPPhotoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoCollectionViewController.m; sourceTree = "<group>"; };
 		0FDE075717030FCC00D5B456 /* OPPhotoCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPhotoCollectionViewController.xib; sourceTree = "<group>"; };
+		0FDE075B1703A75100D5B456 /* PhotoCollectionViewItemPrototype.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCollectionViewItemPrototype.xib; sourceTree = "<group>"; };
+		0FDE075D1703A79B00D5B456 /* OPPhotoCollectionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoCollectionItem.h; sourceTree = "<group>"; };
+		0FDE075E1703A79B00D5B456 /* OPPhotoCollectionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoCollectionItem.m; sourceTree = "<group>"; };
+		0FDE07601703D67C00D5B456 /* OPPhotoItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoItemView.h; sourceTree = "<group>"; };
+		0FDE07611703D67C00D5B456 /* OPPhotoItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoItemView.m; sourceTree = "<group>"; };
 		0FE3B2411702C62D00FC0D6C /* OPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationController.h; sourceTree = "<group>"; };
 		0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNavigationController.m; sourceTree = "<group>"; };
 		0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNavigationController.xib; sourceTree = "<group>"; };
@@ -180,6 +188,11 @@
 				0FDE075517030FCC00D5B456 /* OPPhotoCollectionViewController.h */,
 				0FDE075617030FCC00D5B456 /* OPPhotoCollectionViewController.m */,
 				0FDE075717030FCC00D5B456 /* OPPhotoCollectionViewController.xib */,
+				0FDE075B1703A75100D5B456 /* PhotoCollectionViewItemPrototype.xib */,
+				0FDE075D1703A79B00D5B456 /* OPPhotoCollectionItem.h */,
+				0FDE075E1703A79B00D5B456 /* OPPhotoCollectionItem.m */,
+				0FDE07601703D67C00D5B456 /* OPPhotoItemView.h */,
+				0FDE07611703D67C00D5B456 /* OPPhotoItemView.m */,
 			);
 			name = "Photo Collection View";
 			sourceTree = "<group>";
@@ -323,6 +336,7 @@
 				0FE3B2541702D32F00FC0D6C /* buttonbg@2x.png in Resources */,
 				0FE3B26D1703078400FC0D6C /* OPAlbumItemViewPrototype.xib in Resources */,
 				0FDE075917030FCC00D5B456 /* OPPhotoCollectionViewController.xib in Resources */,
+				0FDE075C1703A75100D5B456 /* PhotoCollectionViewItemPrototype.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +380,8 @@
 				0FE3B265170301E200FC0D6C /* OPAlbumItemView.m in Sources */,
 				0FE3B268170302C600FC0D6C /* OPAlbumItem.m in Sources */,
 				0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */,
+				0FDE075F1703A79B00D5B456 /* OPPhotoCollectionItem.m in Sources */,
+				0FDE07621703D67C00D5B456 /* OPPhotoItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

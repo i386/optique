@@ -9,10 +9,12 @@
 #import "OPNavigationViewController.h"
 #import "OPPhotoAlbum.h"
 
-@interface OPPhotoCollectionViewController : OPNavigationViewController
+@interface OPPhotoCollectionViewController : OPNavigationViewController <NSCollectionViewDelegate>
 
 @property (strong, readonly) OPPhotoAlbum *photoAlbum;
 
 -initWithPhotoAlbum:(OPPhotoAlbum*)photoAlbum;
+
+- (void)doubleClick:(id)sender;
 
 @end

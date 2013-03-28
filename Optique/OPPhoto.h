@@ -10,11 +10,13 @@
 
 @interface OPPhoto : NSObject
 
-@property (strong, readonly) NSString *name;
+@property (strong, readonly) NSString *title;
 @property (strong, readonly) NSURL *path;
+
+-(NSImage*)coverImage;
 
 -(NSImage*)image;
 
--initWithName:(NSString*)name path:(NSURL*)path;
+-initWithTitle:(NSString*)title path:(NSURL*)path;
 
 @end

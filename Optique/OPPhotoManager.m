@@ -48,7 +48,7 @@
             
             if (!UTTypeConformsTo(fileUTI, kUTTypeDirectory))
             {
-                OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithName:[filePath lastPathComponent] path:url];
+                OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithTitle:[filePath lastPathComponent] path:url];
                 [albums addObject:album];
             }
         }

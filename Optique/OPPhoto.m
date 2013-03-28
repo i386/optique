@@ -10,15 +10,20 @@
 
 @implementation OPPhoto
 
--(id)initWithName:(NSString *)name path:(NSURL *)path
+-(id)initWithTitle:(NSString *)title path:(NSURL *)path
 {
     self = [super init];
     if (self)
     {
-        _name = name;
+        _title = title;
         _path = path;
     }
     return self;
+}
+
+-(NSImage*)coverImage
+{
+    return self.image;
 }
 
 -(NSImage *)image

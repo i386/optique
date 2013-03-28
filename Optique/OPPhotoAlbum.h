@@ -13,7 +13,7 @@
 @property (strong, readonly) NSString *title;
 @property (strong, readonly) NSURL *path;
 
--initWithName:(NSString*)title path:(NSURL*)path;
+-initWithTitle:(NSString*)title path:(NSURL*)path;
 
 -(NSArray*)allPhotos;
 
