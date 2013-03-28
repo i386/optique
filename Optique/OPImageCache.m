@@ -73,7 +73,7 @@ static OPImageCache *_sharedPreviewCache;
     NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, image.size.width, image.size.height)];
     [image unlockFocus];
     
-    [[bitmapRep representationUsingType:NSPNGFileType properties:Nil] writeToURL:url atomically:YES];
+    [[bitmapRep representationUsingType:NSTIFFFileType properties:Nil] writeToURL:url atomically:YES];
 }
 
 @end
