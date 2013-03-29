@@ -31,7 +31,7 @@ NSString *const OPPhotoManagerDidAddAlbum = @"OPPhotoManagerDidAddAlbum";
 {
     NSDictionary *userInfo = event.userInfo;
     OPPhotoAlbum *album = userInfo[@"album"];
-    NSLog(@"Name %@", album.title);
+    
     NSMutableArray *albums = (NSMutableArray*)_allAlbums;
     [albums addObject:album];
     
