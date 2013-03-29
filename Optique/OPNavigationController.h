@@ -18,12 +18,16 @@
 
 -initWithRootViewController:(OPNavigationViewController*)viewController;
 
+/** forward to new view **/
 -(void)pushViewController:(OPNavigationViewController *)viewController;
 
+/** back to previous view **/
 - (NSArray *)popToPreviousViewController;
 
+/** jump back to the root view **/
 - (NSArray *)popToRootViewController;
 
+/** update the state of the navigation bar for the visible view **/
 - (void)updateNavigationBar;
 
 @end
