@@ -10,12 +10,13 @@
 
 #import "OPPhotoAlbum.h"
 
+NSString *const OPPhotoManagerDidAddAlbum;
+
 @interface OPPhotoManager : NSObject
 
 @property (strong, readonly) NSURL *path;
+@property (strong, readonly) NSArray *allAlbums;
 
 -initWithPath:(NSURL*)path;
-
--(NSArray*)allAlbums;
 
 @end

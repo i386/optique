@@ -19,4 +19,6 @@
 
 -(NSImage *)loadImageForPath:(NSURL *)path;
 
+-(void)cacheImageForPath:(NSURL *)path;
+
 @end

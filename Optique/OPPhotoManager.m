@@ -8,6 +8,9 @@
 
 #import "OPPhotoManager.h"
 #import "OPPhotoAlbum.h"
+#import "OPAlbumScanner.h"
+
+NSString *const OPPhotoManagerDidAddAlbum = @"OPPhotoManagerDidAddAlbum";
 
 @implementation OPPhotoManager
 
@@ -17,44 +20,22 @@
     if (self)
     {
         _path = path;
+        _allAlbums = [[NSMutableArray alloc] init];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundAlbum:) name:OPAlbumScannerDidFindAlbumNotification object:nil];
     }
     return self;
 }
 
--(NSArray *)allAlbums
+-(void)foundAlbum:(NSNotification*)event
 {
-    NSMutableArray *albums = [[NSMutableArray alloc] init];
+    NSDictionary *userInfo = event.userInfo;
+    OPPhotoAlbum *album = userInfo[@"album"];
+    NSLog(@"Name %@", album.title);
+    NSMutableArray *albums = (NSMutableArray*)_allAlbums;
+    [albums addObject:album];
     
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    NSDirectoryEnumerator *enumerator = [fileManager
-                                         enumeratorAtURL:_path includingPropertiesForKeys:[NSArray array] options:NSDirectoryEnumerationSkipsSubdirectoryDescendants errorHandler:^BOOL(NSURL *url, NSError *error) {
-                                             return YES;
-                                         }];
-    
-    for (NSURL *url in enumerator)
-    {
-        NSError *error;
-        NSNumber *isDirectory = nil;
-        if (! [url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error])
-        {
-            // handle error
-        }
-        else if ([isDirectory boolValue])
-        {
-            NSString *filePath = [url path];
-            CFStringRef fileExtension = (__bridge CFStringRef) [filePath pathExtension];
-            CFStringRef fileUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, NULL);
-            
-            if (!UTTypeConformsTo(fileUTI, kUTTypeDirectory))
-            {
-                OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithTitle:[filePath lastPathComponent] path:url];
-                [albums addObject:album];
-            }
-        }
-    }
-    
-    return albums;
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPPhotoManagerDidAddAlbum object:nil userInfo:@{@"album": album}];
 }
 
 @end

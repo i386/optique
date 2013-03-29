@@ -15,7 +15,9 @@
 @interface OPAlbumViewController : OPNavigationViewController <NSCollectionViewDelegate>
 
 @property (strong, readonly) OPPhotoManager *photoManager;
+@property (strong, readonly) NSMutableArray *albums;
 @property (strong) IBOutlet OPAlbumCollectionView *collectionView;
+@property (strong) IBOutlet NSArrayController *albumArrayController;
 
 -initWithPhotoManager:(OPPhotoManager*)photoManager;
 

@@ -1,21 +1,18 @@
 
 PODS:
 - CDEvents (1.2.0)
-- FMDB (2.0)
 - INAppStoreWindow (1.2)
 - NSHash (1.0.1)
 - NSView+LinenBackground (1.0)
 
 DEPENDENCIES:
 - CDEvents (~> 1.2.0)
-- FMDB (~> 2.0)
 - INAppStoreWindow (~> 1.2)
 - NSHash (~> 1.0.1)
 - NSView+LinenBackground (~> 1.0)
 
 SPEC CHECKSUMS:
   CDEvents: 079cd7b12501bafe6c7ec204f87cecdadce121cc
-  FMDB: 77fb1c93b51bbf14d84d49d5374344b7f68c54f1
   INAppStoreWindow: d00327caee47d951043169df9aaab952389defcb
   NSHash: 08e81b655e7d2e3d9b872c192e52f77b76694918
   NSView+LinenBackground: 8031e63d2c3d683723c6ebe244159148801b61f2

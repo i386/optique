@@ -25,12 +25,17 @@ static OPImageCache *_sharedPreviewCache;
     return _sharedPreviewCache;
 }
 
++(NSFileManager*)newFileManager
+{
+    return [[NSFileManager alloc] init];
+}
+
 -(id)initWithIdentity:(NSString *)identity size:(NSSize)size
 {
     self = [super init];
     _size = size;
     
-    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    NSFileManager *fileManager = [OPImageCache newFileManager];
     
     NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
     _cacheDirectory = [[[[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject] URLByAppendingPathComponent:@"com.whimsy.optique" isDirectory:YES] URLByAppendingPathComponent:identity isDirectory:YES];
@@ -42,38 +47,50 @@ static OPImageCache *_sharedPreviewCache;
 
 -(NSImage *)loadImageForPath:(NSURL *)path
 {
-    NSString *pathHash = [[path path] SHA256];
-    
-    //Check if the image does not exist check in the file system cache location
-    NSURL *cachedPath = [_cacheDirectory URLByAppendingPathComponent:pathHash];
-    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    NSURL *cachedPath = [self cachedPathForURL:path];
+    NSFileManager *fileManager = [OPImageCache newFileManager];
     
     NSImage *image;
-    if ([fileManager fileExistsAtPath:[cachedPath path]])
+    
+    NSString *stringPath = [cachedPath path];
+    
+    //Check if image is on file system
+    if ([fileManager fileExistsAtPath:stringPath])
     {
         image = [[NSImage alloc] initByReferencingURL:cachedPath];
     }
     
-    //If it isn't on the filesystem cache, load the image
+    //If it isn't on the filesystem cache, generate a new cached image
     if (!image)
     {
-        image = [[NSImage alloc] initWithContentsOfURL:path];
-        image = [image imageToFitSize:_size method:MGImageResizeScale];
-        [self writeToCache:image pathHash:pathHash];
+//        [self resizeImageAndWriteToCache:path cachedPath:cachedPath];
     }
     
     return image;
 }
 
--(void)writeToCache:(NSImage*)image pathHash:(NSString*)pathHash
+-(void)cacheImageForPath:(NSURL *)path
 {
-    NSURL *url = [_cacheDirectory URLByAppendingPathComponent:pathHash];
-    
-    [image lockFocus];
-    NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, image.size.width, image.size.height)];
-    [image unlockFocus];
-    
-    [[bitmapRep representationUsingType:NSTIFFFileType properties:Nil] writeToURL:url atomically:YES];
+    NSURL *cachedPath = [self cachedPathForURL:path];
+    NSFileManager *fileManager = [OPImageCache newFileManager];
+
+    if (![fileManager fileExistsAtPath:[cachedPath path]])
+    {
+        [self resizeImageAndWriteToCache:path cachedPath:cachedPath];
+    }
+}
+
+-(NSURL*)cachedPathForURL:(NSURL*)path
+{
+    NSString *pathHash = [[path path] SHA256];
+    return [[_cacheDirectory URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"tiff"];
+}
+
+-(void)resizeImageAndWriteToCache:(NSURL*)originalPath cachedPath:(NSURL*)cachedPath
+{
+    NSImage *image = [[NSImage alloc] initWithContentsOfURL:originalPath];
+    image = [image imageScaledToFitSize:THUMB_SIZE];
+    [[image TIFFRepresentation] writeToURL:cachedPath atomically:YES];
 }
 
 @end

@@ -7,130 +7,52 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Optique/OPPhotoAlbum.m"
-         timestampString = "385798329.715953"
+         filePath = "Optique/OPImageCache.m"
+         timestampString = "386223527.174888"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "45"
-         endingLineNumber = "45"
-         landmarkName = "-allPhotos"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
+         landmarkName = "-loadImageForPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Optique/OPPhotoAlbum.m"
-         timestampString = "385554551.749493"
+         filePath = "Optique/OPImageCache.m"
+         timestampString = "386223527.174888"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "16"
-         endingLineNumber = "16"
-         landmarkName = "-initWithTitle:path:"
+         startingLineNumber = "69"
+         endingLineNumber = "69"
+         landmarkName = "-loadImageForPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Optique/OPPhotoAlbum.m"
-         timestampString = "385798329.715953"
+         filePath = "Optique/OPImageCache.m"
+         timestampString = "386223527.174888"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "59"
          endingLineNumber = "59"
-         landmarkName = "-allPhotos"
+         landmarkName = "-loadImageForPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Optique/OPPhotoAlbum.m"
-         timestampString = "385798329.715953"
+         filePath = "Optique/OPImageCache.m"
+         timestampString = "386223527.174888"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "33"
-         endingLineNumber = "33"
-         landmarkName = "-allPhotos"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPPhotoAlbum.m"
-         timestampString = "385798329.715953"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "60"
-         endingLineNumber = "60"
-         landmarkName = "-allPhotos"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "OPAlbumViewController.m"
-         timestampString = "385698820.460694"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "39"
-         endingLineNumber = "39"
-         landmarkName = "-gridView:numberOfItemsInSection:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPNavigationController.m"
-         timestampString = "386069746.917895"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "71"
-         endingLineNumber = "71"
-         landmarkName = "-popToPreviousViewController"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPNavigationController.m"
-         timestampString = "386143030.78301"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "103"
-         endingLineNumber = "103"
-         landmarkName = "-setVisibleViewController:animation:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPNavigationController.m"
-         timestampString = "386071249.878456"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "97"
-         endingLineNumber = "97"
-         landmarkName = "-setVisibleViewController:animation:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPNavigationController.m"
-         timestampString = "386071253.939075"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "81"
-         endingLineNumber = "81"
-         landmarkName = "-setVisibleViewController:animation:"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
+         landmarkName = "-loadImageForPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -138,77 +60,64 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPAlbumViewController.m"
-         timestampString = "386144140.154964"
+         timestampString = "386222282.517689"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "32"
-         endingLineNumber = "32"
-         landmarkName = "-doubleClick:"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "-albumAdded:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Optique/OPPhotoManager.m"
-         timestampString = "386131720.357274"
+         filePath = "Optique/OPAlbumScanner.m"
+         timestampString = "386221491.164073"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "26"
-         endingLineNumber = "26"
-         landmarkName = "-allAlbums"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
+         landmarkName = "-thumbAlbum:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Optique/OPPhotoCollectionItem.m"
-         timestampString = "386143531.894001"
+         filePath = "Optique/OPAlbumScanner.m"
+         timestampString = "386221500.413227"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "24"
-         endingLineNumber = "24"
-         landmarkName = "-doubleClick:"
+         startingLineNumber = "84"
+         endingLineNumber = "84"
+         landmarkName = "-thumbAlbum:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Optique/OPPhotoItemView.m"
-         timestampString = "386143551.943746"
+         filePath = "Optique/OPAlbumViewController.m"
+         timestampString = "386222282.517689"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "17"
-         endingLineNumber = "17"
-         landmarkName = "-mouseDown:"
+         startingLineNumber = "54"
+         endingLineNumber = "54"
+         landmarkName = "-updateAlbums:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Optique/OPPhotoAlbum.m"
-         timestampString = "386153519.713412"
+         filePath = "Optique/OPImageCache.m"
+         timestampString = "386223527.174888"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "27"
-         endingLineNumber = "27"
-         landmarkName = "-coverImage"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPPhoto.m"
-         timestampString = "386171913.159712"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
-         landmarkName = "-previewImage"
+         startingLineNumber = "50"
+         endingLineNumber = "50"
+         landmarkName = "-loadImageForPath:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

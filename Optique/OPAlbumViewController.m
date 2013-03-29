@@ -9,6 +9,7 @@
 #import "OPAlbumViewController.h"
 
 #import "OPPhotoCollectionViewController.h"
+#import "OPPhotoManager.h"
 
 @interface OPAlbumViewController () {
 }
@@ -21,7 +22,9 @@
     self = [super initWithNibName:@"OPAlbumViewController" bundle:nil];
     if (self)
     {
+        _albums = [[NSMutableArray alloc] init];
         _photoManager = photoManager;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:OPPhotoManagerDidAddAlbum object:nil];
     }
     return self;
 }
@@ -34,7 +37,30 @@
 
 -(NSString *)viewTitle
 {
-    return [NSString stringWithFormat:@"%lu albums", (unsigned long)_photoManager.allAlbums.count];
+    return [NSString stringWithFormat:@"%lu albums", (unsigned long)_albums.count];
+}
+
+-(void)albumAdded:(NSNotification*)notification
+{
+    OPPhotoAlbum *album = [notification userInfo][@"album"];
+    if (album)
+    {
+        [self performSelectorOnMainThread:@selector(updateAlbums:) withObject:album waitUntilDone:NO];
+    }
+}
+
+-(void)updateAlbums:(OPPhotoAlbum*)album
+{
+    if (album)
+    {
+        [self willChangeValueForKey:@"self.albums"];
+        
+        [_albumArrayController addObject:album];
+        
+        [self didChangeValueForKey:@"self.albums"];
+        
+        [self.controller updateNavigationBar];
+    }
 }
 
 @end

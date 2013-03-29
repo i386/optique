@@ -10,9 +10,11 @@
 #import <INAppStoreWindow/INAppStoreWindow.h>
 
 #import "OPPhotoManager.h"
+#import "OPAlbumScanner.h"
 #import "OPMainWindowController.h"
 
 @interface OPAppDelegate : NSObject <NSApplicationDelegate> {
+    OPAlbumScanner *_albumScaner;
     OPPhotoManager *_photoManager;
     OPMainWindowController *_mainWindowController;
 }
