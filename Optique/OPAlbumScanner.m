@@ -10,9 +10,11 @@
 #import "OPPhotoAlbum.h"
 #import "OPPhoto.h"
 
-NSString *const OPAlbumScannerDidStartScan = @"OPAlbumScannerDidStartScan";
+NSString *const OPAlbumScannerDidStartScanNotification = @"OPAlbumScannerDidStartScanNotification";
 
-NSString *const OPAlbumScannerDidFinishScan = @"OPAlbumScannerDidFinishScan";
+NSString *const OPAlbumScannerDidFinishScanNotification = @"OPAlbumScannerDidFinishScanNotification";
+
+NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFindAlbumsNotification";
 
 NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFindAlbumNotification";
 
@@ -25,7 +27,7 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
     [_scanningQueue setMaxConcurrentOperationCount:1]; //TODO: make this scale based on cores and hdd type?
     
     _thumbQueue = [[NSOperationQueue alloc] init];
-    [_thumbQueue setMaxConcurrentOperationCount:1];
+    [_thumbQueue setMaxConcurrentOperationCount:10];
     
     return self;
 }
@@ -34,7 +36,7 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
 {
     [_scanningQueue addOperationWithBlock:^
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidStartScan object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidStartScanNotification object:nil];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
         
@@ -42,6 +44,8 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
                                              enumeratorAtURL:url includingPropertiesForKeys:[NSArray array] options:NSDirectoryEnumerationSkipsSubdirectoryDescendants errorHandler:^BOOL(NSURL *url, NSError *error) {
                                                  return YES;
                                              }];
+        
+        NSMutableArray *albumsFound = [[NSMutableArray alloc] init];
         
         for (NSURL *url in enumerator)
         {
@@ -60,14 +64,21 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
                 if (!UTTypeConformsTo(fileUTI, kUTTypeDirectory))
                 {
                     OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithTitle:[filePath lastPathComponent] path:url];
-                    [self thumbAlbum:album];
+                    [albumsFound addObject:album];
                 }
             }
         }
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumsNotification object:nil userInfo:@{@"count": [NSNumber numberWithInteger:albumsFound.count]}];
+        
+        for (OPPhotoAlbum *album in albumsFound)
+        {
+            [self thumbAlbum:album];
+        }
+        
         [_scanningQueue addOperationWithBlock:^
         {
-            [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFinishScan object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFinishScanNotification object:nil];
         }];
     }];
 }

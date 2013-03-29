@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 
 /** scan started **/
-NSString *const OPAlbumScannerDidStartScan;
+NSString *const OPAlbumScannerDidStartScanNotification;
 
 /** scan ended **/
-NSString *const OPAlbumScannerDidFinishScan;
+NSString *const OPAlbumScannerDidFinishScanNotification;
+
+NSString *const OPAlbumScannerDidFindAlbumsNotification;
 
 /** scan found a new album **/
 NSString *const OPAlbumScannerDidFindAlbumNotification;
