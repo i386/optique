@@ -76,6 +76,20 @@ enum OPNavigationControllerAnimationType : NSInteger {
     return [NSArray arrayWithArray:_displayStack];
 }
 
+-(void)updateNavigationBar
+{
+    if (_rootViewController == _visibleViewController)
+    {
+        [_navigationBar hideBackButton:YES];
+    }
+    else
+    {
+        [_navigationBar hideBackButton:NO];
+    }
+    
+    [_navigationBar setTitle:_visibleViewController.viewTitle];
+}
+
 -(void)setVisibleViewController:(OPNavigationViewController *)visibleViewController animation:(OPNavigationControllerAnimationType)animationType
 {
     if (animationType != OPNavigationControllerAnimationTypeFirst)
@@ -102,28 +116,14 @@ enum OPNavigationControllerAnimationType : NSInteger {
     [visibleViewController.view setFrame:_displayView.frame];
     [_displayView.animator replaceSubview:_visibleViewController.view with:visibleViewController.view];
     _visibleViewController = visibleViewController;
-    [self updateNavigationBarState];
+    [self updateNavigationBar];
 }
 
 -(void)awakeFromNib
 {
     [self setVisibleViewController:_rootViewController animation:OPNavigationControllerAnimationTypeFirst];
-    [self updateNavigationBarState];
+    [self updateNavigationBar];
     [_displayView addSubview:_rootViewController.view];
-}
-
--(void)updateNavigationBarState
-{
-    if (_rootViewController == _visibleViewController)
-    {
-        [_navigationBar hideBackButton:YES];
-    }
-    else
-    {
-        [_navigationBar hideBackButton:NO];
-    }
-    
-    [_navigationBar setTitle:_visibleViewController.viewTitle];
 }
 
 @end

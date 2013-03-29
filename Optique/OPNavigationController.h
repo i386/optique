@@ -24,4 +24,6 @@
 
 - (NSArray *)popToRootViewController;
 
+- (void)updateNavigationBar;
+
 @end
