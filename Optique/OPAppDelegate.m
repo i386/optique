@@ -19,12 +19,13 @@
     NSURL *picturesURL = [[[NSFileManager defaultManager] URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
     
     _photoManager = [[OPPhotoManager alloc] initWithPath:picturesURL];
-    _albumScaner = [[OPAlbumScanner alloc] init];
-    [_albumScaner scanAtURL:picturesURL];
     
     _mainWindowController = [[OPMainWindowController alloc] init];
     _mainWindowController.photoManager = _photoManager;
     [_mainWindowController.window makeKeyAndOrderFront:self];
+    
+    _albumScaner = [[OPAlbumScanner alloc] init];
+    [_albumScaner scanAtURL:picturesURL];
 }
 
 @end
