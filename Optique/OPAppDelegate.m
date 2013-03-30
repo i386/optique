@@ -24,7 +24,7 @@
     _mainWindowController.photoManager = _photoManager;
     [_mainWindowController.window makeKeyAndOrderFront:self];
     
-    _albumScaner = [[OPAlbumScanner alloc] init];
+    _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager];
     [_albumScaner scanAtURL:picturesURL];
 }
 

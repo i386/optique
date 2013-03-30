@@ -13,4 +13,6 @@
     IBOutlet OPAlbumItem *delegate;
 }
 
+@property (strong) IBOutlet NSImageView *imageView;
+
 @end
