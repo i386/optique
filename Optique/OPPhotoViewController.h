@@ -17,4 +17,8 @@
 
 -initWithPhotoAlbum:(OPPhotoAlbum*)album photo:(OPPhoto*)photo;
 
+-(void)nextPhoto;
+
+-(void)previousPhoto;
+
 @end

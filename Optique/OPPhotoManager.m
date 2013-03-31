@@ -33,9 +33,11 @@ NSString *const OPPhotoManagerDidAddAlbum = @"OPPhotoManagerDidAddAlbum";
     OPPhotoAlbum *album = userInfo[@"album"];
     
     NSMutableArray *albums = (NSMutableArray*)_allAlbums;
-    [albums addObject:album];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPPhotoManagerDidAddAlbum object:nil userInfo:@{@"album": album}];
+    if (![albums containsObject:album])
+    {
+        [albums addObject:album];
+        [[NSNotificationCenter defaultCenter] postNotificationName:OPPhotoManagerDidAddAlbum object:nil userInfo:@{@"album": album}];
+    }
 }
 
 @end

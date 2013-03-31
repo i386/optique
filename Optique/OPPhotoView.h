@@ -8,6 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+
+@class OPPhotoViewController;
+
 @interface OPPhotoView : NSView
+
+@property (strong) IBOutlet OPPhotoViewController *controller;
+@property (strong) IBOutlet NSImageView *imageView;
 
 @end

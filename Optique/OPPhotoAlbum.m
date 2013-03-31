@@ -66,4 +66,15 @@
     return photos;
 }
 
+-(BOOL)isEqual:(id)object
+{
+    if (object == self)
+        return YES;
+    if (!object || ![object isKindOfClass:[self class]])
+        return NO;
+    
+    OPPhotoAlbum *otherAlbum = object;
+    return [self.path isEqual:otherAlbum.path];
+}
+
 @end

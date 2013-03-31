@@ -38,4 +38,15 @@
     return [self coverImage];
 }
 
+-(BOOL)isEqual:(id)object
+{
+    if (object == self)
+        return YES;
+    if (!object || ![object isKindOfClass:[self class]])
+        return NO;
+    
+    OPPhoto *photo = object;
+    return [self.path isEqual:photo.path];
+}
+
 @end
