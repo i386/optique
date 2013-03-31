@@ -7,10 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "OPNavigationControllerDelegate.h"
 #import "OPAlbumViewController.h"
 #import "OPPhotoManager.h"
 
-@interface OPMainWindowController : NSWindowController {
+@interface OPMainWindowController : NSWindowController<OPNavigationControllerDelegate> {
     OPAlbumViewController *_albumViewController;
 }
 

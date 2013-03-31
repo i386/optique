@@ -9,14 +9,14 @@
 #import <Cocoa/Cocoa.h>
 
 #import "OPPhotoManager.h"
-#import "OPAlbumCollectionView.h"
+#import "OPCollectionView.h"
 #import "OPNavigationViewController.h"
 
 @interface OPAlbumViewController : OPNavigationViewController <NSCollectionViewDelegate>
 
 @property (strong, readonly) OPPhotoManager *photoManager;
 @property (strong, readonly) NSMutableArray *albums;
-@property (strong) IBOutlet OPAlbumCollectionView *collectionView;
+@property (strong) IBOutlet OPCollectionView *collectionView;
 @property (strong) IBOutlet NSArrayController *albumArrayController;
 
 -initWithPhotoManager:(OPPhotoManager*)photoManager;

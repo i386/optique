@@ -7,7 +7,7 @@
 //
 
 #import "OPMainWindowController.h"
-#import <INAppStoreWindow/INAppStoreWindow.h>
+#import "OPWindow.h"
 
 #import "OPNavigationController.h"
 
@@ -28,16 +28,23 @@
 {
     [super windowDidLoad];
     
-    INAppStoreWindow *iWindow = (INAppStoreWindow*)self.window;
-    iWindow.titleBarHeight = 36.0;
+    OPWindow *iWindow = (OPWindow*)self.window;
     
     _albumViewController = [[OPAlbumViewController alloc] initWithPhotoManager:_photoManager];
     
     _navigationController = [[OPNavigationController alloc] initWithRootViewController:_albumViewController];
+    _navigationController.delegate = self;
     
     NSView *contentView = self.window.contentView;
     [self.window.contentView addSubview:_navigationController.view];
     [_navigationController.view setFrame:contentView.frame];
+    
+    [iWindow.titleBarView addSubview:_navigationController.navigationBar];
+}
+
+-(void)update:(OPNavigationController*)navigationController title:(NSString*)title
+{
+    self.window.title = [NSString stringWithFormat:@"Optique - %@", title];
 }
 
 @end

@@ -10,11 +10,27 @@
 
 @implementation NSView (OptiqueBackground)
 
--(void)drawGreyGradient
++ (NSColor*)gradientTopColor
 {
-    NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedRed:0.76 green:0.76 blue:0.76 alpha:1.00] endingColor:[NSColor colorWithCalibratedRed:0.94 green:0.94 blue:0.94 alpha:1.00]];
-    
+    return [NSColor colorWithCalibratedRed:0.76 green:0.76 blue:0.76 alpha:1.00];
+}
+
++ (NSColor*)gradientBottomColor
+{
+    return [NSColor colorWithCalibratedRed:0.90 green:0.90 blue:0.90 alpha:1.00];
+}
+
+-(void)drawBackground
+{
+    NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:[NSView gradientBottomColor] endingColor:[NSView gradientTopColor]];
     [gradient drawInRect:self.bounds angle:270];
+}
+
+-(void)drawTransparentBackground
+{
+    [[NSColor clearColor] set];
+    NSRectFill(self.bounds);
+//    NSRectFillUsingOperation(self.bounds, NSCompositeSourceOver);
 }
 
 @end

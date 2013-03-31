@@ -13,7 +13,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    [self drawGreyGradient];
+    [self drawBackground];
 }
 
 @end

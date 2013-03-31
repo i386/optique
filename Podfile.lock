@@ -1,13 +1,13 @@
 
 PODS:
 - CDEvents (1.2.0)
-- INAppStoreWindow (1.2)
+- INAppStoreWindow (HEAD based on 1.2)
 - NSHash (1.0.1)
 - NSView+LinenBackground (1.0)
 
 DEPENDENCIES:
 - CDEvents (~> 1.2.0)
-- INAppStoreWindow (~> 1.2)
+- INAppStoreWindow (HEAD)
 - NSHash (~> 1.0.1)
 - NSView+LinenBackground (~> 1.0)
 

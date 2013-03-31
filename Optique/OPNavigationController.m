@@ -9,8 +9,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "OPNavigationController.h"
-#import "OPNavigationBar.h"
 #import "OPNavigationViewController.h"
+#import "OPNavigationBar.h"
 
 typedef enum OPNavigationControllerAnimationType : NSInteger OPNavigationControllerAnimationType;
 enum OPNavigationControllerAnimationType : NSInteger {
@@ -22,12 +22,10 @@ enum OPNavigationControllerAnimationType : NSInteger {
 @interface OPNavigationController () {
     NSMutableArray *_displayStack;
     NSView *_displayView;
-    OPNavigationBar *_navigationBar;
 }
 
 @property (strong) IBOutlet NSView *displayView;
 
-@property (strong) IBOutlet OPNavigationBar *navigationBar;
 @end
 
 @implementation OPNavigationController
@@ -87,7 +85,7 @@ enum OPNavigationControllerAnimationType : NSInteger {
         [_navigationBar hideBackButton:NO];
     }
     
-    [_navigationBar setTitle:_visibleViewController.viewTitle];
+    [_delegate update:self title:_visibleViewController.viewTitle];
 }
 
 -(void)setVisibleViewController:(OPNavigationViewController *)visibleViewController animation:(OPNavigationControllerAnimationType)animationType

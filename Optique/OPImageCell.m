@@ -27,12 +27,11 @@
     layer.borderColor = color;
     layer.borderWidth = 10;
     layer.backgroundColor = color;
+    layer.shadowOpacity = 0.3;
     layer.shadowColor = [[NSColor blackColor] CGColor];
-    layer.shadowOffset = NSMakeSize(10, 10);
+    layer.shadowOffset = NSMakeSize(3, -3);
     layer.shadowRadius = 2;
-    
-//    NSBezierPath *path = [NSBezierPath bezierPathWithRect:cellFrame];
-//    layer.shadowPath = path.CGPath;
+    layer.shadowPath = CGPathCreateWithRect(cellFrame, NULL);
     
     [super drawWithFrame:cellFrame inView:controlView];
 }
