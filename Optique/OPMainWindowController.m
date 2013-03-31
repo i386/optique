@@ -33,18 +33,24 @@
     _albumViewController = [[OPAlbumViewController alloc] initWithPhotoManager:_photoManager];
     
     _navigationController = [[OPNavigationController alloc] initWithRootViewController:_albumViewController];
-    _navigationController.delegate = self;
     
     NSView *contentView = self.window.contentView;
     [self.window.contentView addSubview:_navigationController.view];
     [_navigationController.view setFrame:contentView.frame];
     
-    [iWindow.titleBarView addSubview:_navigationController.navigationBar];
+    OPNavigationBar *navigationBar = _navigationController.navigationBar;
+    
+    [iWindow.titleBarView addSubview:navigationBar];
 }
 
--(void)update:(OPNavigationController*)navigationController title:(NSString*)title
+-(void)windowDidEnterFullScreen:(NSNotification *)notification
 {
-    self.window.title = [NSString stringWithFormat:@"Optique - %@", title];
+    [_navigationController updateNavigationBar];
+}
+
+-(void)windowDidExitFullScreen:(NSNotification *)notification
+{
+    [_navigationController updateNavigationBar];
 }
 
 @end

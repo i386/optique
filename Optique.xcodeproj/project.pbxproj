@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
 		0F350F5D16FB0E3A00CC18F7 /* OPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F350F5C16FB0E3A00CC18F7 /* OPPhoto.m */; };
 		0F368A6C170531B500411503 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F368A6B170531B500411503 /* Quartz.framework */; };
 		0F368A71170677A700411503 /* OPPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A70170677A700411503 /* OPPhotoView.m */; };
@@ -57,7 +58,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0F243AAC1707D8200012149E /* OPNavigationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationControllerDelegate.h; sourceTree = "<group>"; };
+		0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+FullScreen.h"; sourceTree = "<group>"; };
+		0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+FullScreen.m"; sourceTree = "<group>"; };
 		0F350F5B16FB0E3A00CC18F7 /* OPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhoto.h; sourceTree = "<group>"; };
 		0F350F5C16FB0E3A00CC18F7 /* OPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhoto.m; sourceTree = "<group>"; };
 		0F368A6B170531B500411503 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
@@ -183,6 +185,8 @@
 				0F368A8617068F0500411503 /* OPWindow.m */,
 				0F368A8817068F1A00411503 /* OPWindowContentView.h */,
 				0F368A8917068F1A00411503 /* OPWindowContentView.m */,
+				0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */,
+				0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -318,7 +322,6 @@
 				0FE3B2581702E05100FC0D6C /* OPNavigationViewController.h */,
 				0FE3B2591702E05100FC0D6C /* OPNavigationViewController.m */,
 				0FE3B24D1702CFB100FC0D6C /* Images */,
-				0F243AAC1707D8200012149E /* OPNavigationControllerDelegate.h */,
 			);
 			name = "Navigation Controller";
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				0F368A811706831600411503 /* OPClipView.m in Sources */,
 				0F368A8717068F0500411503 /* OPWindow.m in Sources */,
 				0F368A8A17068F1B00411503 /* OPWindowContentView.m in Sources */,
+				0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

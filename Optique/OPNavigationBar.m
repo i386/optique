@@ -7,8 +7,8 @@
 //
 
 #import "OPNavigationBar.h"
-
 #import "OPNavigationBarButton.h"
+#import "NSWindow+FullScreen.h"
 
 @implementation OPNavigationBar
 
@@ -26,6 +26,18 @@
 -(void)backClicked:(id)sender
 {
     [_navigationController popToPreviousViewController];
+}
+
+-(void)updateTitle:(NSString *)title
+{
+    if ([self.window isFullscreen])
+    {
+        [_viewLabel setStringValue:title];
+    }
+    else
+    {
+        [_viewLabel setStringValue:[NSString stringWithFormat:@"Optique - %@", title]];
+    }
 }
 
 @end

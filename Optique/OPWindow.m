@@ -7,6 +7,7 @@
 //
 
 #import "OPWindow.h"
+#import "NSWindow+FullScreen.h"
 
 @implementation OPWindow
 
@@ -35,7 +36,7 @@
     [self setHideTitleBarInFullScreen:NO];
     [self setTitleTextColor:[NSColor whiteColor]];
     [self setInactiveTitleTextColor:[NSColor controlColor]];
-    [self setShowsTitle:YES];
+    [self setShowsTitle:NO];
     [self setTitleBarHeight:36];
     [self setCenterTrafficLightButtons:YES];
     [self setCenterFullScreenButton:YES];
@@ -51,7 +52,7 @@
         CGImageRef maskRef =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
         
         //Do not clip if full screen
-        if (([self styleMask] & NSFullScreenWindowMask) != NSFullScreenWindowMask)
+        if (!self.isFullscreen)
         {
             CGContextClipToMask(context, CGRectMake(0, 0, drawingRect.size.width, drawingRect.size.height), maskRef);
             CGContextAddPath(context, clippingPath);

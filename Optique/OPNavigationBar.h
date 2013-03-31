@@ -20,4 +20,6 @@
 
 -(IBAction)backClicked:(id)sender;
 
+-(void)updateTitle:(NSString*)label;
+
 @end

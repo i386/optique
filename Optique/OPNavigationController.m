@@ -85,7 +85,7 @@ enum OPNavigationControllerAnimationType : NSInteger {
         [_navigationBar hideBackButton:NO];
     }
     
-    [_delegate update:self title:_visibleViewController.viewTitle];
+    [_navigationBar updateTitle:_visibleViewController.viewTitle];
 }
 
 -(void)setVisibleViewController:(OPNavigationViewController *)visibleViewController animation:(OPNavigationControllerAnimationType)animationType

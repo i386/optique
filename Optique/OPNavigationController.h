@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "OPNavigationControllerDelegate.h"
 
 @class OPNavigationBar;
 
@@ -15,7 +14,6 @@
 
 @interface OPNavigationController : NSViewController
 
-@property (weak) IBOutlet id<OPNavigationControllerDelegate> delegate;
 @property (strong, readonly) OPNavigationViewController *rootViewController;
 @property (strong, nonatomic, readonly) OPNavigationViewController *visibleViewController;
 @property (strong) IBOutlet OPNavigationBar *navigationBar;
