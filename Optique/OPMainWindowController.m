@@ -38,9 +38,13 @@
     [self.window.contentView addSubview:_navigationController.view];
     [_navigationController.view setFrame:contentView.frame];
     
-    OPNavigationBar *navigationBar = _navigationController.navigationBar;
+    NSView *navigationBar = _navigationController.navigationBar;
     
     [iWindow.titleBarView addSubview:navigationBar];
+//    
+//    NSRect navigationBarRect = NSMakeRect(navigationBar.frame.origin.x + 65, navigationBar.frame.origin.y, navigationBar.frame.size.width, navigationBar.frame.size.height);
+//    
+//    [navigationBar setFrame:navigationBarRect];
 }
 
 -(void)windowDidEnterFullScreen:(NSNotification *)notification

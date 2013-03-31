@@ -30,14 +30,7 @@
 
 -(void)updateTitle:(NSString *)title
 {
-    if ([self.window isFullscreen])
-    {
-        [_viewLabel setStringValue:title];
-    }
-    else
-    {
-        [_viewLabel setStringValue:[NSString stringWithFormat:@"Optique - %@", title]];
-    }
+    [_viewLabel setStringValue:title];
 }
 
 @end

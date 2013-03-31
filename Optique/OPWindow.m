@@ -36,10 +36,10 @@
     [self setHideTitleBarInFullScreen:NO];
     [self setTitleTextColor:[NSColor whiteColor]];
     [self setInactiveTitleTextColor:[NSColor controlColor]];
-    [self setShowsTitle:NO];
-    [self setTitleBarHeight:36];
-    [self setCenterTrafficLightButtons:YES];
-    [self setCenterFullScreenButton:YES];
+    [self setShowsTitle:YES];
+    [self setTitleBarHeight:55];
+    [self setCenterTrafficLightButtons:NO];
+    [self setCenterFullScreenButton:NO];
     
     [self setTitleBarDrawingBlock:^(BOOL drawsAsMainWindow, CGRect drawingRect, CGPathRef clippingPath)
     {
