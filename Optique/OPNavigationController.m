@@ -114,6 +114,10 @@ enum OPNavigationControllerAnimationType : NSInteger {
     [visibleViewController.view setFrame:_displayView.frame];
     [_displayView.animator replaceSubview:_visibleViewController.view with:visibleViewController.view];
     _visibleViewController = visibleViewController;
+    
+    //Make visible view first responder
+    [_visibleViewController.view.window makeFirstResponder:_visibleViewController.view];
+    
     [self updateNavigationBar];
 }
 
