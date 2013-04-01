@@ -82,7 +82,7 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
     NSNumber *isDirectory = nil;
     if (! [url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error])
     {
-        // handle error
+        NSLog(@"Error occured checking if URL '%@' album: %@", url, error.userInfo);
     }
     else if ([isDirectory boolValue])
     {
@@ -120,7 +120,9 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSDirectoryEnumerator *enumerator = [fileManager
-                                         enumeratorAtURL:url includingPropertiesForKeys:[NSArray array] options:NSDirectoryEnumerationSkipsSubdirectoryDescendants errorHandler:^BOOL(NSURL *url, NSError *error) {
+                                         enumeratorAtURL:url includingPropertiesForKeys:[NSArray array] options:NSDirectoryEnumerationSkipsSubdirectoryDescendants errorHandler:^BOOL(NSURL *url, NSError *error)
+                                         {
+                                             NSLog(@"Error listing '%@' album: %@", url, error.userInfo);
                                              return YES;
                                          }];
     
