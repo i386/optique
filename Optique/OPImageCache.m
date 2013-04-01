@@ -89,7 +89,7 @@ static OPImageCache *_sharedPreviewCache;
 -(void)resizeImageAndWriteToCache:(NSURL*)originalPath cachedPath:(NSURL*)cachedPath
 {
     NSImage *image = [[NSImage alloc] initWithContentsOfURL:originalPath];
-    image = [image imageScaledToFitSize:THUMB_SIZE];
+    image = [image imageCroppedToFitSize:THUMB_SIZE];
     [[image TIFFRepresentation] writeToURL:cachedPath atomically:YES];
 }
 
