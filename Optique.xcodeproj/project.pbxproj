@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
+		0F243AC417093FCF0012149E /* empty-album.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F243AC217093FCF0012149E /* empty-album.png */; };
+		0F243AC517093FCF0012149E /* empty-album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F243AC317093FCF0012149E /* empty-album@2x.png */; };
 		0F350F5D16FB0E3A00CC18F7 /* OPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F350F5C16FB0E3A00CC18F7 /* OPPhoto.m */; };
 		0F368A6C170531B500411503 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F368A6B170531B500411503 /* Quartz.framework */; };
 		0F368A71170677A700411503 /* OPPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A70170677A700411503 /* OPPhotoView.m */; };
@@ -60,6 +62,8 @@
 /* Begin PBXFileReference section */
 		0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+FullScreen.h"; sourceTree = "<group>"; };
 		0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+FullScreen.m"; sourceTree = "<group>"; };
+		0F243AC217093FCF0012149E /* empty-album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "empty-album.png"; path = "../empty-album.png"; sourceTree = "<group>"; };
+		0F243AC317093FCF0012149E /* empty-album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "empty-album@2x.png"; path = "../empty-album@2x.png"; sourceTree = "<group>"; };
 		0F350F5B16FB0E3A00CC18F7 /* OPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhoto.h; sourceTree = "<group>"; };
 		0F350F5C16FB0E3A00CC18F7 /* OPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhoto.m; sourceTree = "<group>"; };
 		0F368A6B170531B500411503 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
@@ -356,6 +360,8 @@
 		0FEF33A116FEC6420096D72A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0F243AC217093FCF0012149E /* empty-album.png */,
+				0F243AC317093FCF0012149E /* empty-album@2x.png */,
 				0F3DF46816F98CE700C003D3 /* OPPhotoManager.h */,
 				0F3DF46916F98CE700C003D3 /* OPPhotoManager.m */,
 				0F3DF46B16F98D0D00C003D3 /* OPPhotoAlbum.h */,
@@ -446,6 +452,8 @@
 				0FDE075917030FCC00D5B456 /* OPPhotoCollectionViewController.xib in Resources */,
 				0FDE075C1703A75100D5B456 /* PhotoCollectionViewItemPrototype.xib in Resources */,
 				0F96270F170418EB007C1A86 /* OPPhotoViewController.xib in Resources */,
+				0F243AC417093FCF0012149E /* empty-album.png in Resources */,
+				0F243AC517093FCF0012149E /* empty-album@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

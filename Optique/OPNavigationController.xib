@@ -37,7 +37,7 @@
 			</object>
 			<object class="NSCustomView" id="566368403">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">258</int>
+				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSButton" id="783407238">
 						<reference key="NSNextResponder" ref="566368403"/>
@@ -46,6 +46,7 @@
 						<string key="NSFrame">{{9, 7}, {64, 23}}</string>
 						<reference key="NSSuperview" ref="566368403"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="539773603">
@@ -76,10 +77,10 @@
 					<object class="NSTextField" id="557818891">
 						<reference key="NSNextResponder" ref="566368403"/>
 						<int key="NSvFlags">298</int>
-						<string key="NSFrame">{{22, 9}, {471, 17}}</string>
+						<string key="NSFrame">{{22, 9}, {643, 17}}</string>
 						<reference key="NSSuperview" ref="566368403"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="783407238"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:1535</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="514335085">
@@ -115,10 +116,10 @@
 						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 					</object>
 				</array>
-				<string key="NSFrameSize">{490, 36}</string>
+				<string key="NSFrameSize">{662, 36}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="557818891"/>
+				<reference key="NSNextKeyView" ref="783407238"/>
 				<bool key="NSViewIsLayerTreeHost">YES</bool>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="NSClassName">OPNavigationBar</string>
@@ -131,14 +132,15 @@
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">274</int>
 						<array class="NSMutableArray" key="NSSubviews"/>
-						<string key="NSFrameSize">{490, 343}</string>
+						<string key="NSFrameSize">{682, 343}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSClassName">NSView</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{490, 343}</string>
+				<string key="NSFrameSize">{682, 343}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="1064366152"/>

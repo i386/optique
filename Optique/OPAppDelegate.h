@@ -17,6 +17,9 @@
     OPAlbumScanner *_albumScaner;
     OPPhotoManager *_photoManager;
     OPMainWindowController *_mainWindowController;
+    IBOutlet NSUserDefaultsController *_userDefaultsController;
 }
+
+- (IBAction)openDirectory:(id)sender;
 
 @end

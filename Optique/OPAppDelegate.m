@@ -10,22 +10,58 @@
 
 #import "OPPhotoAlbum.h"
 #import "OPPhoto.h"
+#import "OPImageCache.h"
 
 @implementation OPAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
-    NSURL *picturesURL = [[[NSFileManager defaultManager] URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
     
-    _photoManager = [[OPPhotoManager alloc] initWithPath:picturesURL];
+    NSURL *url = [[_userDefaultsController defaults] URLForKey:@"url"];
+    if (!url)
+    {
+        url = [[[NSFileManager defaultManager] URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
+    }
     
-    _mainWindowController = [[OPMainWindowController alloc] init];
-    _mainWindowController.photoManager = _photoManager;
+    [self picturesAtDirectory:url];
+}
+
+- (IBAction)openDirectory:(id)sender
+{
+    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+    [openPanel setCanChooseDirectories:YES];
+    [openPanel setCanChooseFiles:YES];
+    [openPanel setCanCreateDirectories:YES];
+    [openPanel setAllowsMultipleSelection:NO];
+    
+    [openPanel beginSheetModalForWindow:_mainWindowController.window completionHandler:^(NSInteger result)
+    {
+        if (result == NSFileHandlingPanelOKButton)
+        {
+            [_albumScaner setStopScan:YES];
+            [[OPImageCache sharedPreviewCache] clearCache];
+            [self picturesAtDirectory:openPanel.URL];
+        }
+    }];
+}
+
+-(void)picturesAtDirectory:(NSURL*)url
+{
+    [[_userDefaultsController defaults] setURL:url forKey:@"url"];
+    [_userDefaultsController save:self];
+    
+    if (_mainWindowController)
+    {
+        [_mainWindowController close];
+    }
+    
+    _photoManager = [[OPPhotoManager alloc] initWithPath:url];
+    _mainWindowController = [[OPMainWindowController alloc] initWithPhotoManager:_photoManager];
     [_mainWindowController.window makeKeyAndOrderFront:self];
     
     _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager];
-    [_albumScaner scanAtURL:picturesURL];
+    [_albumScaner scanAtURL:url];
 }
 
 @end

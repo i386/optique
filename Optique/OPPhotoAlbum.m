@@ -24,8 +24,15 @@
 
 -(NSImage *)coverImage
 {
-    OPPhoto *photo = [[self allPhotos] objectAtIndex:0];
-    return photo.coverImage;
+    if (self.allPhotos.count > 0)
+    {
+        OPPhoto *photo = [[self allPhotos] objectAtIndex:0];
+        if (photo)
+        {
+            return photo.coverImage;
+        }
+    }
+    return [NSImage imageNamed:@"empty-album"];
 }
 
 -(NSArray *)allPhotos

@@ -7,52 +7,13 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Optique/OPImageCache.m"
-         timestampString = "386225827.314083"
+         filePath = "Optique/OPAlbumScanner.m"
+         timestampString = "386484568.444332"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "66"
-         endingLineNumber = "66"
-         landmarkName = "-loadImageForPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPImageCache.m"
-         timestampString = "386225827.314083"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
-         landmarkName = "-loadImageForPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPImageCache.m"
-         timestampString = "386225827.314083"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
-         landmarkName = "-loadImageForPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPImageCache.m"
-         timestampString = "386225827.314083"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "58"
-         endingLineNumber = "58"
-         landmarkName = "-loadImageForPath:"
+         startingLineNumber = "49"
+         endingLineNumber = "49"
+         landmarkName = "-scanAtURL:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -60,12 +21,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPAlbumScanner.m"
-         timestampString = "386229128.994162"
+         timestampString = "386484568.444332"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "94"
-         endingLineNumber = "94"
-         landmarkName = "-thumbAlbum:"
+         startingLineNumber = "52"
+         endingLineNumber = "52"
+         landmarkName = "-scanAtURL:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -73,90 +34,51 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPAlbumScanner.m"
-         timestampString = "386229128.994162"
+         timestampString = "386484717.253411"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "99"
-         endingLineNumber = "99"
-         landmarkName = "-thumbAlbum:"
+         startingLineNumber = "64"
+         endingLineNumber = "64"
+         landmarkName = "-scanAtURL:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Optique/OPImageCache.m"
-         timestampString = "386225827.314083"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "50"
-         endingLineNumber = "50"
-         landmarkName = "-loadImageForPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPAlbumViewController.m"
-         timestampString = "386226448.933433"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "48"
-         endingLineNumber = "48"
-         landmarkName = "-viewTitle"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPPhotoView.m"
-         timestampString = "386425870.101581"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "35"
-         endingLineNumber = "35"
-         landmarkName = "-acceptsFirstResponder"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPPhotoViewController.m"
-         timestampString = "386426155.368652"
+         filePath = "Optique/OPAlbumScanner.m"
+         timestampString = "386484546.275403"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "41"
          endingLineNumber = "41"
-         landmarkName = "-nextPhoto"
+         landmarkName = "-scanAtURL:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPAlbumScanner.m"
-         timestampString = "386423520.435419"
+         timestampString = "386484574.242565"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "111"
-         endingLineNumber = "111"
-         landmarkName = "-URLWatcher:eventOccurred:"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "-scanAtURL:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPAlbumScanner.m"
-         timestampString = "386423520.435419"
+         timestampString = "386484711.80829"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "109"
-         endingLineNumber = "109"
-         landmarkName = "-URLWatcher:eventOccurred:"
+         startingLineNumber = "47"
+         endingLineNumber = "47"
+         landmarkName = "-scanAtURL:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

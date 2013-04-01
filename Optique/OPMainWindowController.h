@@ -14,6 +14,8 @@
     OPAlbumViewController *_albumViewController;
 }
 
-@property (strong) OPPhotoManager *photoManager;
+@property (strong, readonly) OPPhotoManager *photoManager;
+
+-initWithPhotoManager:(OPPhotoManager*)photoManager;
 
 @end

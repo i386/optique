@@ -19,6 +19,16 @@
 
 @implementation OPMainWindowController
 
+-(id)initWithPhotoManager:(OPPhotoManager *)photoManager
+{
+    self = [super init];
+    if (self)
+    {
+        _photoManager = photoManager;
+    }
+    return self;
+}
+
 -(NSString *)windowNibName
 {
     return @"OPMainWindowController";
@@ -28,23 +38,14 @@
 {
     [super windowDidLoad];
     
-    OPWindow *iWindow = (OPWindow*)self.window;
-    
     _albumViewController = [[OPAlbumViewController alloc] initWithPhotoManager:_photoManager];
-    
     _navigationController = [[OPNavigationController alloc] initWithRootViewController:_albumViewController];
     
-    NSView *contentView = self.window.contentView;
-    [self.window.contentView addSubview:_navigationController.view];
+    OPWindow *window = (OPWindow*)self.window;
+    NSView *contentView = window.contentView;
+    [window.contentView addSubview:_navigationController.view];
     [_navigationController.view setFrame:contentView.frame];
-    
-    NSView *navigationBar = _navigationController.navigationBar;
-    
-    [iWindow.titleBarView addSubview:navigationBar];
-//    
-//    NSRect navigationBarRect = NSMakeRect(navigationBar.frame.origin.x + 65, navigationBar.frame.origin.y, navigationBar.frame.size.width, navigationBar.frame.size.height);
-//    
-//    [navigationBar setFrame:navigationBarRect];
+    [window.titleBarView addSubview:(NSView*)_navigationController.navigationBar];
 }
 
 -(void)windowDidEnterFullScreen:(NSNotification *)notification

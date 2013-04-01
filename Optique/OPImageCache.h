@@ -23,4 +23,6 @@
 
 -(void)invalidateImageForPath:(NSURL *)path;
 
+-(void)clearCache;
+
 @end

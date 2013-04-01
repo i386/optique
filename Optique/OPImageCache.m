@@ -40,8 +40,6 @@ static OPImageCache *_sharedPreviewCache;
     NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
     _cacheDirectory = [[[[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject] URLByAppendingPathComponent:@"com.whimsy.optique" isDirectory:YES] URLByAppendingPathComponent:identity isDirectory:YES];
     
-    [fileManager createDirectoryAtURL:_cacheDirectory withIntermediateDirectories:YES attributes:nil error:nil];
-    
     return self;
 }
 
@@ -91,10 +89,26 @@ static OPImageCache *_sharedPreviewCache;
     }
 }
 
+-(void)clearCache
+{
+    NSFileManager *fileManager = [OPImageCache newFileManager];
+    [fileManager removeItemAtURL:_cacheDirectory error:nil];
+}
+
+-(NSURL*)cachedDirectory
+{
+    NSFileManager *fileManager = [OPImageCache newFileManager];
+    if (![fileManager fileExistsAtPath:[_cacheDirectory path]])
+    {
+        [fileManager createDirectoryAtURL:_cacheDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return _cacheDirectory;
+}
+
 -(NSURL*)cachedPathForURL:(NSURL*)path
 {
     NSString *pathHash = [[path path] SHA256];
-    return [[_cacheDirectory URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"tiff"];
+    return [[[self cachedDirectory] URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"tiff"];
 }
 
 -(void)resizeImageAndWriteToCache:(NSURL*)originalPath cachedPath:(NSURL*)cachedPath

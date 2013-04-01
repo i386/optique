@@ -31,12 +31,19 @@ NSString *const OPPhotoManagerDidAddAlbum = @"OPPhotoManagerDidAddAlbum";
 {
     NSDictionary *userInfo = event.userInfo;
     OPPhotoAlbum *album = userInfo[@"album"];
+    OPPhotoManager *photoManager = userInfo[@"photoManager"];
+    
+    //Return if photo manager does not match
+    if (photoManager != self)
+    {
+        return;
+    }
     
     NSMutableArray *albums = (NSMutableArray*)_allAlbums;
     if (![albums containsObject:album])
     {
         [albums addObject:album];
-        [[NSNotificationCenter defaultCenter] postNotificationName:OPPhotoManagerDidAddAlbum object:nil userInfo:@{@"album": album}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:OPPhotoManagerDidAddAlbum object:nil userInfo:@{@"album": album, @"photoManager": self}];
     }
 }
 

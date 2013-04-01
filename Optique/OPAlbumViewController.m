@@ -58,23 +58,38 @@
 
 -(void)albumAdded:(NSNotification*)notification
 {
-    OPPhotoAlbum *album = [notification userInfo][@"album"];
-    if (album)
+    OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
+    
+    if ([photoManager isEqual:_photoManager])
     {
-        [self performSelectorOnMainThread:@selector(updateAlbums:) withObject:album waitUntilDone:NO];
+        OPPhotoAlbum *album = [notification userInfo][@"album"];
+        if (album)
+        {
+            [self performSelectorOnMainThread:@selector(updateAlbums:) withObject:album waitUntilDone:NO];
+        }
     }
 }
 
 -(void)albumsFound:(NSNotification*)notification
 {
-    NSNumber *count = [notification userInfo][@"count"];
-    _itemsFoundWhenScanning = count.integerValue;
-    [self.controller updateNavigationBar];
+    OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
+    
+    if ([photoManager isEqual:_photoManager])
+    {
+        NSNumber *count = [notification userInfo][@"count"];
+        _itemsFoundWhenScanning = count.integerValue;
+        [self.controller updateNavigationBar];
+    }
 }
 
 -(void)albumsFinishedLoading:(NSNotification*)notification
 {
-    [self.controller updateNavigationBar];
+    OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
+    
+    if ([photoManager isEqual:_photoManager])
+    {
+        [self.controller updateNavigationBar];
+    }
 }
 
 -(void)updateAlbums:(OPPhotoAlbum*)album
