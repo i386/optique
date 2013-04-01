@@ -63,7 +63,7 @@ static OPImageCache *_sharedPreviewCache;
     //If it isn't on the filesystem cache, generate a new cached image
     if (!image)
     {
-//        [self resizeImageAndWriteToCache:path cachedPath:cachedPath];
+        [self resizeImageAndWriteToCache:path cachedPath:cachedPath];
     }
     
     return image;
