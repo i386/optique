@@ -26,7 +26,6 @@ NSString *const OPAlbumScannerDidFindAlbumNotification;
     NSOperationQueue *_thumbQueue;
     CDEvents *_events;
     OPPhotoManager *_photoManager;
-    BOOL _scanStarted;
 }
 
 @property (atomic) BOOL stopScan;

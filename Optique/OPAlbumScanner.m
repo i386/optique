@@ -29,7 +29,6 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
     [_thumbQueue setMaxConcurrentOperationCount:10];
     
     _photoManager = photoManager;
-    _scanStarted = NO;
     
     return self;
 }
@@ -40,8 +39,7 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
     
     [_scanningQueue addOperationWithBlock:^
     {
-        if (_scanStarted || _stopScan) return;
-        _scanStarted = YES;
+        if (_stopScan) return;
         
         [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidStartScanNotification object:nil userInfo:@{@"photoManager" : _photoManager}];
         NSMutableArray *albumsFound = [[NSMutableArray alloc] init];
@@ -59,7 +57,6 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
         
         [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumsNotification object:nil userInfo:@{@"count": [NSNumber numberWithInteger:albumsFound.count], @"photoManager" : _photoManager}];
         
-        NSLog(@"processing");
         
         for (OPPhotoAlbum *album in albumsFound)
         {
