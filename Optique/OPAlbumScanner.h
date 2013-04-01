@@ -16,6 +16,7 @@ NSString *const OPAlbumScannerDidStartScanNotification;
 /** scan ended **/
 NSString *const OPAlbumScannerDidFinishScanNotification;
 
+/** albums were found **/
 NSString *const OPAlbumScannerDidFindAlbumsNotification;
 
 /** scan found a new album **/
