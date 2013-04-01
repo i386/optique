@@ -42,7 +42,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSDirectoryEnumerator *enumerator = [fileManager
-                                         enumeratorAtURL:_path includingPropertiesForKeys:[NSArray array] options:NSDirectoryEnumerationSkipsSubdirectoryDescendants errorHandler:^BOOL(NSURL *url, NSError *error) {
+                                         enumeratorAtURL:_path includingPropertiesForKeys:[NSArray array] options:NSDirectoryEnumerationSkipsHiddenFiles errorHandler:^BOOL(NSURL *url, NSError *error) {
                                              NSLog(@"error: %@", error.userInfo);
                                              return YES;
                                          }];
