@@ -80,6 +80,17 @@ static OPImageCache *_sharedPreviewCache;
     }
 }
 
+-(void)invalidateImageForPath:(NSURL *)path
+{
+    NSURL *cachedPath = [self cachedPathForURL:path];
+    NSFileManager *fileManager = [OPImageCache newFileManager];
+    
+    if (![fileManager fileExistsAtPath:[cachedPath path]])
+    {
+        [fileManager removeItemAtURL:cachedPath error:nil];
+    }
+}
+
 -(NSURL*)cachedPathForURL:(NSURL*)path
 {
     NSString *pathHash = [[path path] SHA256];
