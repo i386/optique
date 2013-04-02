@@ -8,6 +8,9 @@
 
 #import "OPPhotoCollectionViewController.h"
 #import "OPPhotoViewController.h"
+#import "OPPhotoGridItemView.h"
+#import "CNGridViewItemLayout.h"
+#import "OPPhotoGridView.h"
 
 @interface OPPhotoCollectionViewController ()
 
@@ -31,10 +34,38 @@
     return _photoAlbum.title;
 }
 
-- (void)doubleClick:(id)sender
+- (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section
 {
-    OPPhotoViewController *photoViewContoller = [[OPPhotoViewController alloc] initWithPhotoAlbum:_photoAlbum photo:[sender representedObject]];
+    OPPhotoViewController *photoViewContoller = [[OPPhotoViewController alloc] initWithPhotoAlbum:_photoAlbum photo:_photoAlbum.allPhotos[index]];
     [self.controller pushViewController:photoViewContoller];
+}
+
+- (NSUInteger)gridView:(CNGridView *)gridView numberOfItemsInSection:(NSInteger)section
+{
+    return _photoAlbum.allPhotos.count;
+}
+
+- (CNGridViewItem *)gridView:(CNGridView *)gridView itemAtIndex:(NSInteger)index inSection:(NSInteger)section
+{
+    OPPhotoGridItemView *item = [gridView dequeueReusableItemWithIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
+    if (item == nil) {
+        item = [[OPPhotoGridItemView alloc] initWithLayout:nil reuseIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
+    }
+    
+    OPPhotoAlbum *album = _photoAlbum.allPhotos[index];
+    item.itemImage = album.coverImage;
+    item.itemTitle = album.title;
+    
+    self.gridView.itemSize = NSMakeSize(310, 225);
+    
+    return item;
+}
+
+-(void)loadView
+{
+    [super loadView];
+    
+    [_gridView reloadData];
 }
 
 @end

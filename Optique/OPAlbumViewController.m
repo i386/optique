@@ -11,6 +11,7 @@
 #import "OPPhotoCollectionViewController.h"
 #import "OPPhotoManager.h"
 #import "OPAlbumScanner.h"
+#import "OPPhotoGridItemView.h"
 
 @interface OPAlbumViewController () {
     NSInteger _itemsFoundWhenScanning;
@@ -25,7 +26,7 @@
     if (self)
     {
         _itemsFoundWhenScanning = 0;
-        _albums = [[NSMutableArray alloc] init];
+        _albumCountsDuringScan = 0;
         _photoManager = photoManager;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:OPPhotoManagerDidAddAlbum object:nil];
         
@@ -36,22 +37,21 @@
     return self;
 }
 
-- (void)doubleClick:(id)sender
+- (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section
 {
-    OPPhotoAlbum *photoAlbum = [sender representedObject];
+    OPPhotoAlbum *photoAlbum = _photoManager.allAlbums[index];
     [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:photoAlbum]];
 }
 
 -(NSString *)viewTitle
 {
-    NSInteger currentAlbumCount = _albums.count;
-    if (currentAlbumCount > 0 && _itemsFoundWhenScanning >= 1 && currentAlbumCount != _itemsFoundWhenScanning)
+    if (_itemsFoundWhenScanning > 0 && _itemsFoundWhenScanning >= 1 && _itemsFoundWhenScanning != _itemsFoundWhenScanning)
     {
-        return [NSString stringWithFormat:@"Loading %lu of %li albums", (unsigned long)_albums.count, _itemsFoundWhenScanning];
+        return [NSString stringWithFormat:@"Loading %li of %li albums", _itemsFoundWhenScanning, _itemsFoundWhenScanning];
     }
-    else if (currentAlbumCount > 0)
+    else if (_itemsFoundWhenScanning > 0)
     {
-        return [NSString stringWithFormat:@"%lu albums", (unsigned long)_albums.count];
+        return [NSString stringWithFormat:@"%li albums", _itemsFoundWhenScanning];
     }
     return [NSString string];
 }
@@ -96,14 +96,29 @@
 {
     if (album)
     {
-        [self willChangeValueForKey:@"self.albums"];
-        
-        [_albumArrayController addObject:album];
-        
-        [self didChangeValueForKey:@"self.albums"];
-        
-        [self.controller updateNavigationBar];
+        [_gridView reloadData];
     }
+}
+
+- (NSUInteger)gridView:(CNGridView *)gridView numberOfItemsInSection:(NSInteger)section
+{
+    return _photoManager.allAlbums.count;
+}
+
+- (CNGridViewItem *)gridView:(CNGridView *)gridView itemAtIndex:(NSInteger)index inSection:(NSInteger)section
+{
+    OPPhotoGridItemView *item = [gridView dequeueReusableItemWithIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
+    if (item == nil) {
+        item = [[OPPhotoGridItemView alloc] initWithLayout:nil reuseIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
+    }
+    
+    OPPhotoAlbum *album = _photoManager.allAlbums[index];
+    item.itemImage = album.coverImage;
+    item.itemTitle = album.title;
+    
+    self.gridView.itemSize = NSMakeSize(310, 225);
+    
+    return item;
 }
 
 @end

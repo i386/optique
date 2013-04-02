@@ -7,20 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <CNGridView/CNGridView.h>
 
 #import "OPPhotoManager.h"
 #import "OPCollectionView.h"
 #import "OPNavigationViewController.h"
 
-@interface OPAlbumViewController : OPNavigationViewController <NSCollectionViewDelegate>
+@interface OPAlbumViewController : OPNavigationViewController <CNGridViewDataSource, CNGridViewDelegate> {
+    NSUInteger _albumCountsDuringScan;
+}
 
 @property (strong, readonly) OPPhotoManager *photoManager;
-@property (strong, readonly) NSMutableArray *albums;
-@property (strong) IBOutlet OPCollectionView *collectionView;
-@property (strong) IBOutlet NSArrayController *albumArrayController;
+@property (strong) IBOutlet CNGridView *gridView;
 
 -initWithPhotoManager:(OPPhotoManager*)photoManager;
-
-- (void)doubleClick:(id)sender;
 
 @end

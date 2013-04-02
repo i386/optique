@@ -41,6 +41,8 @@
     [self setCenterTrafficLightButtons:NO];
     [self setCenterFullScreenButton:NO];
     
+    OPWindow * __weak weakSelf = self;
+    
     [self setTitleBarDrawingBlock:^(BOOL drawsAsMainWindow, CGRect drawingRect, CGPathRef clippingPath)
     {
         NSImage *bgImage = [NSImage imageNamed:@"toolbarbg"];
@@ -52,7 +54,7 @@
         CGImageRef maskRef =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
         
         //Do not clip if full screen
-        if (!self.isFullscreen)
+        if (!weakSelf.isFullscreen)
         {
             CGContextClipToMask(context, CGRectMake(0, 0, drawingRect.size.width, drawingRect.size.height), maskRef);
             CGContextAddPath(context, clippingPath);

@@ -1,5 +1,5 @@
 //
-//  OPAlbumItem.h
+//  OPAlbumItemView.h
 //  Optique
 //
 //  Created by James Dumay on 27/03/13.
@@ -7,9 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <CNGridView/CNGridView.h>
 
-@interface OPAlbumItem : NSCollectionViewItem
-
-- (void)doubleClick:(id)sender;
+@interface OPPhotoGridItemView : CNGridViewItem
 
 @end

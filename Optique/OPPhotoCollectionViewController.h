@@ -8,13 +8,13 @@
 
 #import "OPNavigationViewController.h"
 #import "OPPhotoAlbum.h"
+#import "OPPhotoGridView.h"
 
-@interface OPPhotoCollectionViewController : OPNavigationViewController <NSCollectionViewDelegate>
+@interface OPPhotoCollectionViewController : OPNavigationViewController <CNGridViewDataSource, CNGridViewDelegate>
 
 @property (strong, readonly) OPPhotoAlbum *photoAlbum;
+@property (strong) IBOutlet CNGridView *gridView;
 
 -initWithPhotoAlbum:(OPPhotoAlbum*)photoAlbum;
-
-- (void)doubleClick:(id)sender;
 
 @end
