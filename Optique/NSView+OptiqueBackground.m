@@ -22,15 +22,16 @@
 
 -(void)drawBackground
 {
-    NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:[NSView gradientBottomColor] endingColor:[NSView gradientTopColor]];
-    [gradient drawInRect:self.bounds angle:270];
+//    NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:[NSView gradientBottomColor] endingColor:[NSView gradientTopColor]];
+//    [gradient drawInRect:self.bounds angle:270];
+    [[NSColor windowBackgroundColor] set];
+    NSRectFill(self.bounds);
 }
 
 -(void)drawTransparentBackground
 {
     [[NSColor clearColor] set];
-    NSRectFill(self.bounds);
-//    NSRectFillUsingOperation(self.bounds, NSCompositeSourceOver);
+    NSRectFillUsingOperation(self.bounds, NSCompositeSourceOver);
 }
 
 @end
