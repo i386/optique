@@ -10,8 +10,10 @@
 
 #import "OPPhotoCollectionViewController.h"
 #import "OPPhotoManager.h"
+#import "OPPhoto.h"
 #import "OPAlbumScanner.h"
 #import "OPPhotoGridItemView.h"
+#import "OPImagePreviewService.h"
 
 @interface OPAlbumViewController () {
     NSInteger _itemsFoundWhenScanning;
@@ -113,12 +115,25 @@
     }
     
     OPPhotoAlbum *album = _photoManager.allAlbums[index];
-    item.itemImage = album.coverImage;
+    if (album.allPhotos.count > 0)
+    {
+        OPPhoto *photo = album.allPhotos[0];
+        item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image) {
+            [self performSelectorOnMainThread:@selector(update) withObject:nil waitUntilDone:NO];
+        }];
+    }
+    else
+    {
+        item.itemImage = [NSImage imageNamed:@"empty-album"];
+    }
     item.itemTitle = album.title;
     
-    self.gridView.itemSize = NSMakeSize(310, 225);
-    
     return item;
+}
+
+-(void)update
+{
+//    [_gridView redrawVisibleItems];
 }
 
 @end

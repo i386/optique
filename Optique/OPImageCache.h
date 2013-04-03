@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface OPImageCache : NSObject <NSCacheDelegate> {
+    NSCache *_cache;
     NSURL *_cacheDirectory;
     NSSize _size;
 }
@@ -20,6 +21,8 @@
 -(NSImage *)loadImageForPath:(NSURL *)path;
 
 -(void)cacheImageForPath:(NSURL *)path;
+
+-(BOOL)isCachedImageAtPath:(NSURL *)path;
 
 -(void)invalidateImageForPath:(NSURL *)path;
 

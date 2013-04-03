@@ -11,6 +11,7 @@
 #import "OPPhotoGridItemView.h"
 #import "CNGridViewItemLayout.h"
 #import "OPPhotoGridView.h"
+#import "OPImagePreviewService.h"
 
 @interface OPPhotoCollectionViewController ()
 
@@ -52,13 +53,19 @@
         item = [[OPPhotoGridItemView alloc] initWithLayout:nil reuseIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
     }
     
-    OPPhotoAlbum *album = _photoAlbum.allPhotos[index];
-    item.itemImage = album.coverImage;
-    item.itemTitle = album.title;
+    OPPhoto *photo = _photoAlbum.allPhotos[index];
+    item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image) {
+        [self performSelectorOnMainThread:@selector(update) withObject:nil waitUntilDone:NO];
+    }];
     
-    self.gridView.itemSize = NSMakeSize(310, 225);
+    item.itemTitle = photo.title;
     
     return item;
+}
+
+-(void)update
+{
+    [_gridView redrawVisibleItems];
 }
 
 -(void)loadView

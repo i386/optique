@@ -18,6 +18,4 @@
 
 -(NSArray*)allPhotos;
 
--(NSImage*)coverImage;
-
 @end

@@ -11,6 +11,8 @@
 #import <NSHash/NSString+NSHash.h>
 
 #define THUMB_SIZE NSMakeSize(260, 175)
+//#define CACHE_SIZE 524288000
+#define CACHE_SIZE 20971520
 
 @implementation OPImageCache
 
@@ -34,6 +36,9 @@ static OPImageCache *_sharedPreviewCache;
 {
     self = [super init];
     _size = size;
+    _cache = [[NSCache alloc] init];
+    _cache.delegate = self;
+//    [_cache setCountLimit:CACHE_SIZE];
     
     NSFileManager *fileManager = [OPImageCache newFileManager];
     
@@ -61,8 +66,10 @@ static OPImageCache *_sharedPreviewCache;
     //If it isn't on the filesystem cache, generate a new cached image
     if (!image)
     {
-        [self cacheImageForPath:cachedPath];
+        [self cacheImageForPath:path];
     }
+    
+    [self addToCache:path cachedPath:cachedPath];
     
     return image;
 }
@@ -76,6 +83,13 @@ static OPImageCache *_sharedPreviewCache;
     {
         [self resizeImageAndWriteToCache:path cachedPath:cachedPath];
     }
+}
+
+-(BOOL)isCachedImageAtPath:(NSURL *)path
+{
+    NSURL *cachedPath = [self cachedPathForURL:path];
+    NSFileManager *fileManager = [OPImageCache newFileManager];
+    return [fileManager fileExistsAtPath:[cachedPath path]];
 }
 
 -(void)invalidateImageForPath:(NSURL *)path
@@ -95,7 +109,7 @@ static OPImageCache *_sharedPreviewCache;
     [fileManager removeItemAtURL:_cacheDirectory error:nil];
 }
 
--(NSURL*)cachedDirectory
+-(NSURL*)cachedImageDirectory
 {
     NSFileManager *fileManager = [OPImageCache newFileManager];
     if (![fileManager fileExistsAtPath:[_cacheDirectory path]])
@@ -108,7 +122,7 @@ static OPImageCache *_sharedPreviewCache;
 -(NSURL*)cachedPathForURL:(NSURL*)path
 {
     NSString *pathHash = [[path path] SHA256];
-    return [[[self cachedDirectory] URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"tiff"];
+    return [[[self cachedImageDirectory] URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"tiff"];
 }
 
 -(void)resizeImageAndWriteToCache:(NSURL*)originalPath cachedPath:(NSURL*)cachedPath
@@ -116,6 +130,22 @@ static OPImageCache *_sharedPreviewCache;
     NSImage *image = [[NSImage alloc] initWithContentsOfURL:originalPath];
     image = [image imageCroppedToFitSize:THUMB_SIZE];
     [[image TIFFRepresentation] writeToURL:cachedPath atomically:YES];
+}
+
+-(void)addToCache:(NSURL*)originalPath cachedPath:(NSURL*)cachedPath
+{
+    NSFileManager *fileManager = [OPImageCache newFileManager];
+    NSDictionary *attrs = [fileManager attributesOfItemAtPath:[cachedPath path] error: NULL];
+    unsigned long long *fileSize = [attrs fileSize];
+    [_cache setObject:cachedPath forKey:originalPath cost:fileSize];
+}
+
+- (void)cache:(NSCache *)cache willEvictObject:(id)obj
+{
+//    NSLog(@"flushing %@ from cache", obj);
+//    NSFileManager *fileManager = [OPImageCache newFileManager];
+//    NSURL *cachedPath = obj;
+//    [fileManager removeItemAtURL:cachedPath error:nil];
 }
 
 @end

@@ -22,6 +22,10 @@
 		0F368A8A17068F1B00411503 /* OPWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A8917068F1A00411503 /* OPWindowContentView.m */; };
 		0F3DF46A16F98CE700C003D3 /* OPPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DF46916F98CE700C003D3 /* OPPhotoManager.m */; };
 		0F3DF46D16F98D0D00C003D3 /* OPPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */; };
+		0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F489933170BFFD60044ED0A /* OPImagePreviewService.m */; };
+		0F489937170C00BA0044ED0A /* loading-preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F489935170C00BA0044ED0A /* loading-preview.png */; };
+		0F489938170C00BA0044ED0A /* loading-preview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F489936170C00BA0044ED0A /* loading-preview@2x.png */; };
+		0F489958170C41060044ED0A /* CHReadWriteLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F489957170C41060044ED0A /* CHReadWriteLock.m */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
 		0F705231170AB695001F8159 /* OPPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F705230170AB695001F8159 /* OPPhotoGridView.m */; };
@@ -84,6 +88,12 @@
 		0F3DF46916F98CE700C003D3 /* OPPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoManager.m; sourceTree = "<group>"; };
 		0F3DF46B16F98D0D00C003D3 /* OPPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoAlbum.h; sourceTree = "<group>"; };
 		0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoAlbum.m; sourceTree = "<group>"; };
+		0F489932170BFFD60044ED0A /* OPImagePreviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImagePreviewService.h; sourceTree = "<group>"; };
+		0F489933170BFFD60044ED0A /* OPImagePreviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImagePreviewService.m; sourceTree = "<group>"; };
+		0F489935170C00BA0044ED0A /* loading-preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading-preview.png"; sourceTree = "<group>"; };
+		0F489936170C00BA0044ED0A /* loading-preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading-preview@2x.png"; sourceTree = "<group>"; };
+		0F489956170C41060044ED0A /* CHReadWriteLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHReadWriteLock.h; sourceTree = "<group>"; };
+		0F489957170C41060044ED0A /* CHReadWriteLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHReadWriteLock.m; sourceTree = "<group>"; };
 		0F6AEF821701C02200A797E4 /* OPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMainWindowController.h; sourceTree = "<group>"; };
 		0F6AEF831701C02200A797E4 /* OPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMainWindowController.m; sourceTree = "<group>"; };
 		0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPMainWindowController.xib; sourceTree = "<group>"; };
@@ -214,13 +224,15 @@
 			name = "Photo View";
 			sourceTree = "<group>";
 		};
-		0F97164917048737001835DC /* Image Cache */ = {
+		0F97164917048737001835DC /* Image Previews */ = {
 			isa = PBXGroup;
 			children = (
+				0F489932170BFFD60044ED0A /* OPImagePreviewService.h */,
+				0F489933170BFFD60044ED0A /* OPImagePreviewService.m */,
 				0FCFCB1017043D180040FF11 /* OPImageCache.h */,
 				0FCFCB1117043D180040FF11 /* OPImageCache.m */,
 			);
-			name = "Image Cache";
+			name = "Image Previews";
 			sourceTree = "<group>";
 		};
 		0F9C80A716F891C700B2B6D8 = {
@@ -274,9 +286,11 @@
 				0FDE075A170317AE00D5B456 /* Photo Collection View */,
 				0F962710170418F4007C1A86 /* Photo View */,
 				0F368A671705128700411503 /* Album Scanner */,
-				0F97164917048737001835DC /* Image Cache */,
+				0F97164917048737001835DC /* Image Previews */,
 				0F9C80BA16F891C700B2B6D8 /* Supporting Files */,
 				0F368A7B170680DF00411503 /* Custom Views */,
+				0F489956170C41060044ED0A /* CHReadWriteLock.h */,
+				0F489957170C41060044ED0A /* CHReadWriteLock.m */,
 			);
 			path = Optique;
 			sourceTree = "<group>";
@@ -284,6 +298,8 @@
 		0F9C80BA16F891C700B2B6D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F489935170C00BA0044ED0A /* loading-preview.png */,
+				0F489936170C00BA0044ED0A /* loading-preview@2x.png */,
 				0F9C80BB16F891C700B2B6D8 /* Optique-Info.plist */,
 				0F9C80BC16F891C700B2B6D8 /* InfoPlist.strings */,
 				0F9C80BF16F891C700B2B6D8 /* main.m */,
@@ -449,6 +465,8 @@
 				0F96270F170418EB007C1A86 /* OPPhotoViewController.xib in Resources */,
 				0F243AC417093FCF0012149E /* empty-album.png in Resources */,
 				0F243AC517093FCF0012149E /* empty-album@2x.png in Resources */,
+				0F489937170C00BA0044ED0A /* loading-preview.png in Resources */,
+				0F489938170C00BA0044ED0A /* loading-preview@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +523,8 @@
 				0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */,
 				0F705231170AB695001F8159 /* OPPhotoGridView.m in Sources */,
 				0F705235170AE5CC001F8159 /* OPTextLayer.m in Sources */,
+				0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */,
+				0F489958170C41060044ED0A /* CHReadWriteLock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

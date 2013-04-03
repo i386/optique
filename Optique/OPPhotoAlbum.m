@@ -8,6 +8,14 @@
 
 #import "OPPhotoAlbum.h"
 #import "OPPhoto.h"
+#import "CHReadWriteLock.h"
+
+@interface OPPhotoAlbum() {
+    CHReadWriteLock *_arrayLock;
+    volatile NSArray *_allPhotos;
+}
+
+@end
 
 @implementation OPPhotoAlbum
 
@@ -18,24 +26,41 @@
     {
         _title = title;
         _path = path;
+        _arrayLock = [[CHReadWriteLock alloc] init];
     }
     return self;
 }
 
--(NSImage *)coverImage
+-(NSArray *)allPhotos
 {
-    if (self.allPhotos.count > 0)
+    if (_allPhotos == nil)
     {
-        OPPhoto *photo = [[self allPhotos] objectAtIndex:0];
-        if (photo)
+        [_arrayLock lockForWriting];
+        @try
         {
-            return photo.coverImage;
+            if (_allPhotos == nil)
+            {
+                _allPhotos = [self findAllPhotos];
+            }
+        }
+        @finally
+        {
+            [_arrayLock unlock];
         }
     }
-    return [NSImage imageNamed:@"empty-album"];
+    
+    [_arrayLock lock];
+    @try
+    {
+        return (NSArray*)_allPhotos;
+    }
+    @finally
+    {
+        [_arrayLock unlock];
+    }
 }
 
--(NSArray *)allPhotos
+-(NSArray*)findAllPhotos
 {
     NSMutableArray *photos = [[NSMutableArray alloc] init];
     
@@ -68,7 +93,7 @@
             }
         }
     }
-
+    
     
     return photos;
 }

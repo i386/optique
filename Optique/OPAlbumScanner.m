@@ -22,20 +22,29 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
 -(id)initWithPhotoManager:(OPPhotoManager *)photoManager
 {
     self = [super init];
-    _scanningQueue = [[NSOperationQueue alloc] init];
-    [_scanningQueue setMaxConcurrentOperationCount:1]; //TODO: make this scale based on cores and hdd type?
-    
-    _thumbQueue = [[NSOperationQueue alloc] init];
-    [_thumbQueue setMaxConcurrentOperationCount:10];
-    
-    _photoManager = photoManager;
-    
+    if (self)
+    {
+        _scanningQueue = [[NSOperationQueue alloc] init];
+        [_scanningQueue setMaxConcurrentOperationCount:1];
+        _photoManager = photoManager;
+    }
     return self;
+}
+
+- (void)URLWatcher:(CDEvents *)URLWatcher eventOccurred:(CDEvent *)event
+{
+    NSLog(@"TODO: album content changes");
 }
 
 -(void)scanAtURL:(NSURL *)url
 {
     _events = [[CDEvents alloc] initWithURLs:@[url] delegate:self];
+    
+    if (_scanningQueue.operationCount >= _scanningQueue.maxConcurrentOperationCount)
+    {
+        NSLog(@"Tried to queue new scan operation when scan already in progress");
+        return;
+    }
     
     [_scanningQueue addOperationWithBlock:^
     {
@@ -55,24 +64,22 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
             }
         }
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumsNotification object:nil userInfo:@{@"count": [NSNumber numberWithInteger:albumsFound.count], @"photoManager" : _photoManager}];
+        if (!_stopScan)
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumsNotification object:nil userInfo:@{@"count": [NSNumber numberWithInteger:albumsFound.count], @"photoManager" : _photoManager}];
+        }
         
         
         for (OPPhotoAlbum *album in albumsFound)
         {
             if (_stopScan) return;
-            [self thumbAlbum:album];
+            [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumNotification object:nil userInfo:@{@"album": album, @"photoManager": _photoManager}];
         }
         
-        if (_stopScan) return;
-        
-        [_scanningQueue addOperationWithBlock:^
+        if (!_stopScan)
         {
-            if (!_stopScan)
-            {
-                [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFinishScanNotification object:nil userInfo:@{@"photoManager" : _photoManager}];
-            }
-        }];
+            [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFinishScanNotification object:nil userInfo:@{@"photoManager" : _photoManager}];
+        }
     }];
 }
 
@@ -96,24 +103,6 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
         }
     }
     return nil;
-}
-
--(void)thumbAlbum:(OPPhotoAlbum *)album
-{
-    [_thumbQueue addOperationWithBlock:^
-    {
-        for (OPPhoto *photo in album.allPhotos)
-        {
-            [[OPImageCache sharedPreviewCache] cacheImageForPath:photo.path];
-        }
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumNotification object:nil userInfo:@{@"album": album, @"photoManager": _photoManager}];
-    }];
-}   
-
-- (void)URLWatcher:(CDEvents *)URLWatcher eventOccurred:(CDEvent *)event
-{
-    NSLog(@"TODO: album content changes");
 }
 
 -(NSEnumerator*)albumURLsForURL:(NSURL*)url
