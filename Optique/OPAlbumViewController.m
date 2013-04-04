@@ -119,7 +119,7 @@
     {
         OPPhoto *photo = album.allPhotos[0];
         item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image) {
-            [self performSelectorOnMainThread:@selector(update) withObject:nil waitUntilDone:NO];
+            [self performSelectorOnMainThread:@selector(update:) withObject:[NSNumber numberWithInteger:index] waitUntilDone:NO];
         }];
     }
     else
@@ -131,9 +131,9 @@
     return item;
 }
 
--(void)update
+-(void)update:(NSNumber*)index
 {
-//    [_gridView redrawVisibleItems];
+    [_gridView redrawItemAtIndex:[index integerValue]];
 }
 
 @end

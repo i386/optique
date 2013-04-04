@@ -55,7 +55,7 @@
     
     OPPhoto *photo = _photoAlbum.allPhotos[index];
     item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image) {
-        [self performSelectorOnMainThread:@selector(update) withObject:nil waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(update:) withObject:[NSNumber numberWithInteger:index] waitUntilDone:NO];
     }];
     
     item.itemTitle = photo.title;
@@ -63,9 +63,9 @@
     return item;
 }
 
--(void)update
+-(void)update:(NSNumber*)index
 {
-    [_gridView redrawVisibleItems];
+    [_gridView redrawItemAtIndex:[index integerValue]];
 }
 
 -(void)loadView

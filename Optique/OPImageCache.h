@@ -20,7 +20,7 @@
 
 -(NSImage *)loadImageForPath:(NSURL *)path;
 
--(void)cacheImageForPath:(NSURL *)path;
+-(NSImage*)cacheImageForPath:(NSURL *)path;
 
 -(BOOL)isCachedImageAtPath:(NSURL *)path;
 

@@ -23,19 +23,9 @@
     return self;
 }
 
--(NSImage*)coverImage
-{
-    return [[OPImageCache sharedPreviewCache] loadImageForPath:_path];
-}
-
 -(NSImage*)image
 {
     return [[NSImage alloc] initWithContentsOfURL:_path];
-}
-
--(NSImage*)previewImage
-{
-    return [self coverImage];
 }
 
 -(BOOL)isEqual:(id)object

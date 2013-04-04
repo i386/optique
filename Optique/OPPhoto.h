@@ -13,11 +13,7 @@
 @property (strong, readonly) NSString *title;
 @property (strong, readonly) NSURL *path;
 
--(NSImage*)coverImage;
-
 -(NSImage*)image;
-
--(NSImage*)previewImage;
 
 -initWithTitle:(NSString*)title path:(NSURL*)path;
 

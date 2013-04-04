@@ -37,11 +37,7 @@ static OPImagePreviewService *_defaultService;
 {
     OPImageCache *cache = [OPImageCache sharedPreviewCache];
     
-    if ([cache isCachedImageAtPath:url])
-    {
-        return [cache loadImageForPath:url];
-    }
-    else
+    if (![cache isCachedImageAtPath:url])
     {
         [_queue addOperationWithBlock:^
         {
@@ -50,6 +46,7 @@ static OPImagePreviewService *_defaultService;
         }];
         return [NSImage imageNamed:@"loading-preview"];
     }
+    return [cache loadImageForPath:url];
 }
 
 @end
