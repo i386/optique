@@ -126,14 +126,21 @@ static OPImageCache *_sharedPreviewCache;
 -(NSURL*)cachedPathForURL:(NSURL*)path
 {
     NSString *pathHash = [[path path] SHA256];
-    return [[[self cachedImageDirectory] URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"tiff"];
+    return [[[self cachedImageDirectory] URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"png"];
 }
 
 -(NSImage*)resizeImageAndWriteToCache:(NSURL*)originalPath cachedPath:(NSURL*)cachedPath
 {
     NSImage *image = [[NSImage alloc] initWithContentsOfURL:originalPath];
     image = [image imageCroppedToFitSize:THUMB_SIZE];
-    [[image TIFFRepresentation] writeToURL:cachedPath atomically:YES];
+    
+    NSData *imageData = [image TIFFRepresentation];
+    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imageData];
+    NSDictionary *imageProps = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:1.0] forKey:NSImageCompressionFactor];
+    imageData = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
+    
+    [imageData writeToURL:cachedPath atomically:YES];
+    
     return image;
 }
 
