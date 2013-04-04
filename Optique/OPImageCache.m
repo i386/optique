@@ -126,7 +126,7 @@ static OPImageCache *_sharedPreviewCache;
 -(NSURL*)cachedPathForURL:(NSURL*)path
 {
     NSString *pathHash = [[path path] SHA256];
-    return [[[self cachedImageDirectory] URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"png"];
+    return [[[self cachedImageDirectory] URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"jpg"];
 }
 
 -(NSImage*)resizeImageAndWriteToCache:(NSURL*)originalPath cachedPath:(NSURL*)cachedPath
