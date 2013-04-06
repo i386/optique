@@ -100,12 +100,19 @@
 {
     if([keyPath isEqualTo:@"selectionIndexes"])
     {
-        OPEffectProcessedImageRef *processedImage = [[_imagesArrayController content] objectAtIndex:[[_collectionView selectionIndexes] lastIndex]];
-        
-        NSDictionary *filters = [self filtersForImage:nil];
-        
-        CIFilter *filter = [filters objectForKey:processedImage.effect];
-        [self performSelectorOnMainThread:@selector(setFilter:) withObject:filter waitUntilDone:NO];
+        if (_collectionView.selectionIndexes.count > 0)
+        {
+            OPEffectProcessedImageRef *processedImage = [[_imagesArrayController content] objectAtIndex:[[_collectionView selectionIndexes] lastIndex]];
+            
+            NSDictionary *filters = [self filtersForImage:nil];
+            
+            CIFilter *filter = [filters objectForKey:processedImage.effect];
+            [self performSelectorOnMainThread:@selector(setFilter:) withObject:filter waitUntilDone:NO];
+        }
+        else
+        {
+            [_collectionView setSelectionIndexes:[NSIndexSet indexSetWithIndex:0]];
+        }
     }
 }
 
