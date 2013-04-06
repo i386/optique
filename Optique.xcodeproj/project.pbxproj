@@ -195,8 +195,6 @@
 			children = (
 				0F705232170AC2AF001F8159 /* Photo Grid */,
 				0F6D0920170EB987006268F1 /* Image Kit */,
-				0F368A72170678AA00411503 /* NSView+OptiqueBackground.h */,
-				0F368A73170678AB00411503 /* NSView+OptiqueBackground.m */,
 				0F368A751706790500411503 /* OPCollectionView.h */,
 				0F368A761706790500411503 /* OPCollectionView.m */,
 				0F368A7817067C7300411503 /* OPImageCell.h */,
@@ -209,8 +207,6 @@
 				0F368A8617068F0500411503 /* OPWindow.m */,
 				0F368A8817068F1A00411503 /* OPWindowContentView.h */,
 				0F368A8917068F1A00411503 /* OPWindowContentView.m */,
-				0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */,
-				0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */,
 				0F705233170AE5CC001F8159 /* OPTextLayer.h */,
 				0F705234170AE5CC001F8159 /* OPTextLayer.m */,
 			);
@@ -278,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				0F9C80B916F891C700B2B6D8 /* Optique */,
-				0FCFCB0B170420EF0040FF11 /* NSImage+MGCropExtensions.h */,
 				0F9C80B216F891C700B2B6D8 /* Frameworks */,
 				0F9C80B116F891C700B2B6D8 /* Products */,
 				1915239F645F4207934EB0EC /* Pods.xcconfig */,
@@ -318,6 +313,9 @@
 		0F9C80B916F891C700B2B6D8 /* Optique */ = {
 			isa = PBXGroup;
 			children = (
+				0F9C80C516F891C700B2B6D8 /* OPAppDelegate.h */,
+				0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */,
+				0F9C80C816F891C700B2B6D8 /* MainMenu.xib */,
 				0FE3B2401702C61000FC0D6C /* Navigation Controller */,
 				0FEF33A216FEC6500096D72A /* Main Window */,
 				0FEF33A116FEC6420096D72A /* Model */,
@@ -328,10 +326,9 @@
 				0F97164917048737001835DC /* Image Previews */,
 				0F9C80BA16F891C700B2B6D8 /* Supporting Files */,
 				0F368A7B170680DF00411503 /* Custom Views */,
-				0F489956170C41060044ED0A /* CHReadWriteLock.h */,
-				0F489957170C41060044ED0A /* CHReadWriteLock.m */,
-				0FC8A7AE170FD9E000650D7C /* NSImage+CGImage.h */,
-				0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */,
+				0FEC6750171035080086B264 /* Utilities */,
+				0FEC674E171034C20086B264 /* Categories */,
+				0FEC674F171034E00086B264 /* Image resources */,
 			);
 			path = Optique;
 			sourceTree = "<group>";
@@ -350,16 +347,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0FCFCB0B170420EF0040FF11 /* NSImage+MGCropExtensions.h */ = {
-			isa = PBXGroup;
-			children = (
-				0FCFCB08170420AA0040FF11 /* NSImage+MGCropExtensions.h */,
-				0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */,
-			);
-			name = "NSImage+MGCropExtensions.h";
-			path = Optique;
-			sourceTree = "<group>";
-		};
 		0FDE075A170317AE00D5B456 /* Photo Collection View */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,31 +360,64 @@
 		0FE3B2401702C61000FC0D6C /* Navigation Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0FE3B2551702D57200FC0D6C /* OPNavigationBarButton.h */,
-				0FE3B2561702D57200FC0D6C /* OPNavigationBarButton.m */,
 				0FE3B2411702C62D00FC0D6C /* OPNavigationController.h */,
 				0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */,
-				0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */,
-				0FE3B2461702C69700FC0D6C /* OPNavigationBar.h */,
-				0FE3B2471702C69700FC0D6C /* OPNavigationBar.m */,
-				0FE3B24E1702D1FE00FC0D6C /* OPNavigationBarButtonCell.h */,
-				0FE3B24F1702D1FE00FC0D6C /* OPNavigationBarButtonCell.m */,
 				0FE3B2581702E05100FC0D6C /* OPNavigationViewController.h */,
 				0FE3B2591702E05100FC0D6C /* OPNavigationViewController.m */,
-				0FE3B24D1702CFB100FC0D6C /* Images */,
+				0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */,
+				0FEC6751171035290086B264 /* Navigation bar */,
 			);
 			name = "Navigation Controller";
 			sourceTree = "<group>";
 		};
-		0FE3B24D1702CFB100FC0D6C /* Images */ = {
+		0FEC674E171034C20086B264 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0FCFCB08170420AA0040FF11 /* NSImage+MGCropExtensions.h */,
+				0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */,
+				0F368A72170678AA00411503 /* NSView+OptiqueBackground.h */,
+				0F368A73170678AB00411503 /* NSView+OptiqueBackground.m */,
+				0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */,
+				0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */,
+				0FC8A7AE170FD9E000650D7C /* NSImage+CGImage.h */,
+				0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		0FEC674F171034E00086B264 /* Image resources */ = {
 			isa = PBXGroup;
 			children = (
 				0FE3B2511702D32F00FC0D6C /* buttonbg.png */,
 				0FE3B2521702D32F00FC0D6C /* buttonbg@2x.png */,
 				0FE3B2491702CFAB00FC0D6C /* toolbarbg.png */,
 				0FE3B24A1702CFAB00FC0D6C /* toolbarbg@2x.png */,
+				0F243AC217093FCF0012149E /* empty-album.png */,
+				0F243AC317093FCF0012149E /* empty-album@2x.png */,
 			);
-			name = Images;
+			name = "Image resources";
+			sourceTree = "<group>";
+		};
+		0FEC6750171035080086B264 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0F489956170C41060044ED0A /* CHReadWriteLock.h */,
+				0F489957170C41060044ED0A /* CHReadWriteLock.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		0FEC6751171035290086B264 /* Navigation bar */ = {
+			isa = PBXGroup;
+			children = (
+				0FE3B2551702D57200FC0D6C /* OPNavigationBarButton.h */,
+				0FE3B2561702D57200FC0D6C /* OPNavigationBarButton.m */,
+				0FE3B2461702C69700FC0D6C /* OPNavigationBar.h */,
+				0FE3B2471702C69700FC0D6C /* OPNavigationBar.m */,
+				0FE3B24E1702D1FE00FC0D6C /* OPNavigationBarButtonCell.h */,
+				0FE3B24F1702D1FE00FC0D6C /* OPNavigationBarButtonCell.m */,
+			);
+			name = "Navigation bar";
 			sourceTree = "<group>";
 		};
 		0FEF33A016FEC6350096D72A /* Album View */ = {
@@ -414,8 +434,6 @@
 		0FEF33A116FEC6420096D72A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0F243AC217093FCF0012149E /* empty-album.png */,
-				0F243AC317093FCF0012149E /* empty-album@2x.png */,
 				0F3DF46816F98CE700C003D3 /* OPPhotoManager.h */,
 				0F3DF46916F98CE700C003D3 /* OPPhotoManager.m */,
 				0F3DF46B16F98D0D00C003D3 /* OPPhotoAlbum.h */,
@@ -429,9 +447,6 @@
 		0FEF33A216FEC6500096D72A /* Main Window */ = {
 			isa = PBXGroup;
 			children = (
-				0F9C80C516F891C700B2B6D8 /* OPAppDelegate.h */,
-				0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */,
-				0F9C80C816F891C700B2B6D8 /* MainMenu.xib */,
 				0F6AEF821701C02200A797E4 /* OPMainWindowController.h */,
 				0F6AEF831701C02200A797E4 /* OPMainWindowController.m */,
 				0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */,
