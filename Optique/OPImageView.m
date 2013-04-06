@@ -10,19 +10,10 @@
 
 @implementation OPImageView
 
-- (id)initWithFrame:(NSRect)frame
+-(void)awakeFromNib
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}
-
-- (void)drawRect:(NSRect)dirtyRect
-{
-    // Drawing code here.
+    [self setAutoresizes:YES];
+    [self setBackgroundColor:[NSColor clearColor]];
 }
 
 @end

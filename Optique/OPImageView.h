@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import <ImageKit/ImageKit.h>
+#import <Quartz/Quartz.h>
 
 @interface OPImageView : IKImageView
 

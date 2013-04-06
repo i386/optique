@@ -38,7 +38,7 @@
 -(void)nextPhoto
 {
     NSUInteger position = [_photoAlbum.allPhotos indexOfObject:_photo];
-    if (position != NSNotFound && position++ < _photoAlbum.allPhotos.count)
+    if (position != NSNotFound && position++ < (_photoAlbum.allPhotos.count-1))
     {
         [self changePhoto:position];
     }
@@ -47,17 +47,22 @@
 -(void)previousPhoto
 {
     NSUInteger position = [_photoAlbum.allPhotos indexOfObject:_photo];
-    if (position != NSNotFound && position-- < _photoAlbum.allPhotos.count)
+    if (position != NSNotFound && position != 0 && position-- < _photoAlbum.allPhotos.count)
     {
         [self changePhoto:position];
     }
 }
 
+- (IBAction)rotateLeft:(id)sender
+{
+    [_imageView rotateImageLeft:self];
+    [_imageView zoomImageToFit:self];
+}
+
 -(void)changePhoto:(NSUInteger)position
 {
     _photo = [[_photoAlbum allPhotos] objectAtIndex:position];
-    OPPhotoView *photoView = (OPPhotoView*)self.view;
-    photoView.imageView.image = _photo.image;
+    [_imageView setImageWithURL:_photo.path];
     [self.controller updateNavigationBar];
 }
 

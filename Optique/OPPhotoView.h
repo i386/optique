@@ -14,6 +14,5 @@
 @interface OPPhotoView : NSView
 
 @property (strong) IBOutlet OPPhotoViewController *controller;
-@property (strong) IBOutlet NSImageView *imageView;
 
 @end

@@ -28,6 +28,7 @@
 		0F489958170C41060044ED0A /* CHReadWriteLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F489957170C41060044ED0A /* CHReadWriteLock.m */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
+		0F6D091F170EA9D0006268F1 /* OPImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D091E170EA9D0006268F1 /* OPImageView.m */; };
 		0F705231170AB695001F8159 /* OPPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F705230170AB695001F8159 /* OPPhotoGridView.m */; };
 		0F705235170AE5CC001F8159 /* OPTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F705234170AE5CC001F8159 /* OPTextLayer.m */; };
 		0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F96270C170418EB007C1A86 /* OPPhotoViewController.m */; };
@@ -97,6 +98,8 @@
 		0F6AEF821701C02200A797E4 /* OPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMainWindowController.h; sourceTree = "<group>"; };
 		0F6AEF831701C02200A797E4 /* OPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMainWindowController.m; sourceTree = "<group>"; };
 		0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPMainWindowController.xib; sourceTree = "<group>"; };
+		0F6D091D170EA9D0006268F1 /* OPImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageView.h; sourceTree = "<group>"; };
+		0F6D091E170EA9D0006268F1 /* OPImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageView.m; sourceTree = "<group>"; };
 		0F70522F170AB695001F8159 /* OPPhotoGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoGridView.h; sourceTree = "<group>"; };
 		0F705230170AB695001F8159 /* OPPhotoGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoGridView.m; sourceTree = "<group>"; };
 		0F705233170AE5CC001F8159 /* OPTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPTextLayer.h; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				0F705232170AC2AF001F8159 /* Photo Grid */,
+				0F6D0920170EB987006268F1 /* Image Kit */,
 				0F368A72170678AA00411503 /* NSView+OptiqueBackground.h */,
 				0F368A73170678AB00411503 /* NSView+OptiqueBackground.m */,
 				0F368A751706790500411503 /* OPCollectionView.h */,
@@ -199,6 +203,15 @@
 				0F705234170AE5CC001F8159 /* OPTextLayer.m */,
 			);
 			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		0F6D0920170EB987006268F1 /* Image Kit */ = {
+			isa = PBXGroup;
+			children = (
+				0F6D091D170EA9D0006268F1 /* OPImageView.h */,
+				0F6D091E170EA9D0006268F1 /* OPImageView.m */,
+			);
+			name = "Image Kit";
 			sourceTree = "<group>";
 		};
 		0F705232170AC2AF001F8159 /* Photo Grid */ = {
@@ -525,6 +538,7 @@
 				0F705235170AE5CC001F8159 /* OPTextLayer.m in Sources */,
 				0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */,
 				0F489958170C41060044ED0A /* CHReadWriteLock.m in Sources */,
+				0F6D091F170EA9D0006268F1 /* OPImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,11 +635,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1915239F645F4207934EB0EC /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Optique/Optique-Prefix.pch";
 				INFOPLIST_FILE = "Optique/Optique-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -634,11 +650,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1915239F645F4207934EB0EC /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Optique/Optique-Prefix.pch";
 				INFOPLIST_FILE = "Optique/Optique-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
