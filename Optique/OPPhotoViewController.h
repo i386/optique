@@ -12,17 +12,21 @@
 #import "OPPhoto.h"
 #import "OPImageView.h"
 
-@interface OPPhotoViewController : OPNavigationViewController
+@interface OPPhotoViewController : OPNavigationViewController<NSCollectionViewDelegate>
 
 @property (strong, readonly) OPPhotoAlbum *photoAlbum;
 @property (strong, readonly) OPPhoto *photo;
 @property (strong) IBOutlet OPImageView *imageView;
+@property (strong) IBOutlet NSCollectionView *collectionView;
+@property (strong) IBOutlet NSArrayController *imagesArrayController;
 
 -initWithPhotoAlbum:(OPPhotoAlbum*)album photo:(OPPhoto*)photo;
 
 -(void)nextPhoto;
 
 -(void)previousPhoto;
+
+-(NSArray *)processedImages;
 
 - (IBAction)rotateLeft:(id)sender;
 

@@ -29,6 +29,7 @@
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
 		0F6D091F170EA9D0006268F1 /* OPImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D091E170EA9D0006268F1 /* OPImageView.m */; };
+		0F6D098A170FC5E3006268F1 /* OPEffectProcessedImageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D0989170FC5E3006268F1 /* OPEffectProcessedImageRef.m */; };
 		0F705231170AB695001F8159 /* OPPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F705230170AB695001F8159 /* OPPhotoGridView.m */; };
 		0F705235170AE5CC001F8159 /* OPTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F705234170AE5CC001F8159 /* OPTextLayer.m */; };
 		0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F96270C170418EB007C1A86 /* OPPhotoViewController.m */; };
@@ -40,6 +41,9 @@
 		0F9C80C716F891C700B2B6D8 /* OPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */; };
 		0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80C816F891C700B2B6D8 /* MainMenu.xib */; };
 		0FB384CB17050B3200DEB770 /* OPAlbumScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */; };
+		0FC8A7A9170FD6E300650D7C /* OPImageEffectItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7A8170FD6E300650D7C /* OPImageEffectItemView.m */; };
+		0FC8A7AC170FD76800650D7C /* OPImageEffectItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7AB170FD76800650D7C /* OPImageEffectItem.m */; };
+		0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */; };
 		0FCFCB0A170420AA0040FF11 /* NSImage+MGCropExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */; };
 		0FCFCB1217043D180040FF11 /* OPImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFCB1117043D180040FF11 /* OPImageCache.m */; };
 		0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE075617030FCC00D5B456 /* OPPhotoCollectionViewController.m */; };
@@ -100,6 +104,8 @@
 		0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPMainWindowController.xib; sourceTree = "<group>"; };
 		0F6D091D170EA9D0006268F1 /* OPImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageView.h; sourceTree = "<group>"; };
 		0F6D091E170EA9D0006268F1 /* OPImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageView.m; sourceTree = "<group>"; };
+		0F6D0988170FC5E3006268F1 /* OPEffectProcessedImageRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPEffectProcessedImageRef.h; sourceTree = "<group>"; };
+		0F6D0989170FC5E3006268F1 /* OPEffectProcessedImageRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPEffectProcessedImageRef.m; sourceTree = "<group>"; };
 		0F70522F170AB695001F8159 /* OPPhotoGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoGridView.h; sourceTree = "<group>"; };
 		0F705230170AB695001F8159 /* OPPhotoGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoGridView.m; sourceTree = "<group>"; };
 		0F705233170AE5CC001F8159 /* OPTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPTextLayer.h; sourceTree = "<group>"; };
@@ -122,6 +128,12 @@
 		0F9C80C916F891C700B2B6D8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		0FB384C917050B3200DEB770 /* OPAlbumScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAlbumScanner.h; sourceTree = "<group>"; };
 		0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAlbumScanner.m; sourceTree = "<group>"; };
+		0FC8A7A7170FD6E300650D7C /* OPImageEffectItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageEffectItemView.h; sourceTree = "<group>"; };
+		0FC8A7A8170FD6E300650D7C /* OPImageEffectItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageEffectItemView.m; sourceTree = "<group>"; };
+		0FC8A7AA170FD76800650D7C /* OPImageEffectItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageEffectItem.h; sourceTree = "<group>"; };
+		0FC8A7AB170FD76800650D7C /* OPImageEffectItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageEffectItem.m; sourceTree = "<group>"; };
+		0FC8A7AE170FD9E000650D7C /* NSImage+CGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+CGImage.h"; sourceTree = "<group>"; };
+		0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+CGImage.m"; sourceTree = "<group>"; };
 		0FCFCB08170420AA0040FF11 /* NSImage+MGCropExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+MGCropExtensions.h"; sourceTree = "<group>"; };
 		0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MGCropExtensions.m"; sourceTree = "<group>"; };
 		0FCFCB1017043D180040FF11 /* OPImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageCache.h; sourceTree = "<group>"; };
@@ -214,6 +226,19 @@
 			name = "Image Kit";
 			sourceTree = "<group>";
 		};
+		0F6D0982170FBEA1006268F1 /* Image effects */ = {
+			isa = PBXGroup;
+			children = (
+				0F6D0988170FC5E3006268F1 /* OPEffectProcessedImageRef.h */,
+				0F6D0989170FC5E3006268F1 /* OPEffectProcessedImageRef.m */,
+				0FC8A7A7170FD6E300650D7C /* OPImageEffectItemView.h */,
+				0FC8A7A8170FD6E300650D7C /* OPImageEffectItemView.m */,
+				0FC8A7AA170FD76800650D7C /* OPImageEffectItem.h */,
+				0FC8A7AB170FD76800650D7C /* OPImageEffectItem.m */,
+			);
+			name = "Image effects";
+			sourceTree = "<group>";
+		};
 		0F705232170AC2AF001F8159 /* Photo Grid */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +253,7 @@
 		0F962710170418F4007C1A86 /* Photo View */ = {
 			isa = PBXGroup;
 			children = (
+				0F6D0982170FBEA1006268F1 /* Image effects */,
 				0F96270B170418EB007C1A86 /* OPPhotoViewController.h */,
 				0F96270C170418EB007C1A86 /* OPPhotoViewController.m */,
 				0F96270D170418EB007C1A86 /* OPPhotoViewController.xib */,
@@ -304,6 +330,8 @@
 				0F368A7B170680DF00411503 /* Custom Views */,
 				0F489956170C41060044ED0A /* CHReadWriteLock.h */,
 				0F489957170C41060044ED0A /* CHReadWriteLock.m */,
+				0FC8A7AE170FD9E000650D7C /* NSImage+CGImage.h */,
+				0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */,
 			);
 			path = Optique;
 			sourceTree = "<group>";
@@ -539,6 +567,10 @@
 				0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */,
 				0F489958170C41060044ED0A /* CHReadWriteLock.m in Sources */,
 				0F6D091F170EA9D0006268F1 /* OPImageView.m in Sources */,
+				0F6D098A170FC5E3006268F1 /* OPEffectProcessedImageRef.m in Sources */,
+				0FC8A7A9170FD6E300650D7C /* OPImageEffectItemView.m in Sources */,
+				0FC8A7AC170FD76800650D7C /* OPImageEffectItem.m in Sources */,
+				0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
