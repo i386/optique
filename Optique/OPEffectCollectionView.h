@@ -1,5 +1,5 @@
 //
-//  OPClipView.h
+//  OPCollectionView.h
 //  Optique
 //
 //  Created by James Dumay on 30/03/13.
@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface OPClipView : NSClipView
+@interface OPEffectCollectionView : NSCollectionView <NSCollectionViewDelegate>
 
 @end

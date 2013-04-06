@@ -20,6 +20,7 @@
     if (self) {
         _photoAlbum = album;
         _photo = photo;
+        _effectsState = NSOffState;
     }
     return self;
 }
@@ -58,6 +59,20 @@
     [_imageView zoomImageToFit:self];
 }
 
+- (IBAction)toggleEffects:(id)sender
+{
+    if ([self swizzleEffectState])
+    {
+        [_effectsPanel.animator setHidden:NO];
+        [_effectsPanel removeFromSuperview];
+        [self.view addSubview:_effectsPanel];
+    }
+    else
+    {
+        [_effectsPanel.animator setHidden:YES];
+    }
+}
+
 -(void)changePhoto:(NSUInteger)position
 {
     _photo = [[_photoAlbum allPhotos] objectAtIndex:position];
@@ -72,11 +87,10 @@
     [super loadView];
     
     [_imageView setDoubleClickOpensImageEditPanel:NO];
-}
-
--(void)awakeFromNib
-{
+    
     [_collectionView addObserver:self forKeyPath:@"selectionIndexes" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:nil];
+    
+    [_collectionView setSelectionIndexes:[NSIndexSet indexSetWithIndex:0]];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath
@@ -142,6 +156,20 @@
 {
     [self willChangeValueForKey:@"processedImages"];
     [self didChangeValueForKey:@"processedImages"];
+    [_collectionView setSelectionIndexes:[NSIndexSet indexSetWithIndex:0]];
+}
+
+-(BOOL)swizzleEffectState
+{
+    if (_effectsState == NSOnState)
+    {
+        _effectsState = NSOffState;
+    }
+    else if (_effectsState == NSOffState)
+    {
+        _effectsState = NSOnState;
+    }
+    return (_effectsState == NSOnState);
 }
 
 @end

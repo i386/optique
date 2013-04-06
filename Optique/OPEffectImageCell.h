@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface OPImageCell : NSImageCell
+@interface OPEffectImageCell : NSImageCell
 
 @end

@@ -10,7 +10,7 @@
 #import <CNGridView/CNGridView.h>
 
 #import "OPPhotoManager.h"
-#import "OPCollectionView.h"
+#import "OPEffectCollectionView.h"
 #import "OPNavigationViewController.h"
 
 @interface OPAlbumViewController : OPNavigationViewController <CNGridViewDataSource, CNGridViewDelegate> {

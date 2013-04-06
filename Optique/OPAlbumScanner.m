@@ -38,7 +38,7 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
 
 -(void)scanAtURL:(NSURL *)url
 {
-    _events = [[CDEvents alloc] initWithURLs:@[url] delegate:self];
+//    _events = [[CDEvents alloc] initWithURLs:@[url] delegate:self];
     
     if (_scanningQueue.operationCount >= _scanningQueue.maxConcurrentOperationCount)
     {

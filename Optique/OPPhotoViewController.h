@@ -19,6 +19,8 @@
 @property (strong) IBOutlet OPImageView *imageView;
 @property (strong) IBOutlet NSCollectionView *collectionView;
 @property (strong) IBOutlet NSArrayController *imagesArrayController;
+@property (assign) NSInteger effectsState;
+@property (strong) IBOutlet NSView *effectsPanel;
 
 -initWithPhotoAlbum:(OPPhotoAlbum*)album photo:(OPPhoto*)photo;
 
@@ -29,5 +31,7 @@
 -(NSArray *)processedImages;
 
 - (IBAction)rotateLeft:(id)sender;
+
+- (IBAction)toggleEffects:(id)sender;
 
 @end

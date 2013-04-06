@@ -18,4 +18,10 @@
 
 -(void)drawTransparentBackground;
 
+-(void)drawWhiteBackground;
+
+-(void)drawEffectsViewBackground;
+
+-(void)drawEffectsViewBackgroundSelected;
+
 @end

@@ -7,25 +7,19 @@
 //
 
 #import "OPImageEffectItemView.h"
+#import "NSView+OptiqueBackground.h"
 
 @implementation OPImageEffectItemView
-
-- (id)initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}
 
 - (void)drawRect:(NSRect)dirtyRect
 {
     if (_selected)
     {
-        [[NSColor whiteColor] set];
-        NSRectFill([self bounds]);
+        [self drawEffectsViewBackgroundSelected];
+    }
+    else
+    {
+        [self drawTransparentBackground];
     }
 }
 
