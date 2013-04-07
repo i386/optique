@@ -79,6 +79,7 @@
     [self reloadEffects];
     [_imageView setCompositingFilter:nil];
     [_imageView setImageWithURL:_photo.path];
+    [_imageView zoomImageToFit:self]; //if this is not called the image will zoom to orig size if the previous photo was rotated.
     [self.controller updateNavigationBar];
 }
 
@@ -155,6 +156,27 @@
     
     [filters setObject:[CIFilter filterWithName:@"CISepiaTone" keysAndValues:kCIInputImageKey,image, @"inputIntensity",[NSNumber numberWithFloat:0.8], nil] forKey:@"Sepia"];
     [filters setObject:[CIFilter filterWithName:@"CIColorMonochrome" keysAndValues:kCIInputImageKey,image,@"inputColor",[CIColor colorWithString:@"Red"], @"inputIntensity",[NSNumber numberWithFloat:0.8], nil] forKey:@"Mono"];
+    
+    CIFilter *curve = [CIFilter filterWithName:@"CIToneCurve"];
+    
+    [curve setDefaults];
+    [curve setValue:image forKey:kCIInputImageKey];
+    [curve setValue:[CIVector vectorWithX:0.0  Y:0.0] forKey:@"inputPoint0"]; // default
+    [curve setValue:[CIVector vectorWithX:0.25 Y:0.15] forKey:@"inputPoint1"];
+    [curve setValue:[CIVector vectorWithX:0.5  Y:0.5] forKey:@"inputPoint2"];
+    [curve setValue:[CIVector vectorWithX:0.75  Y:0.85] forKey:@"inputPoint3"];
+    [curve setValue:[CIVector vectorWithX:1.0  Y:1.0] forKey:@"inputPoint4"]; // default
+    
+    [filters setObject:curve forKey:@"Curve"];
+    
+    CIFilter *saturate= [CIFilter filterWithName:@"CIColorControls"];
+    
+    [saturate setValue:image forKey:@"inputImage"];
+    
+    [saturate setValue:[NSNumber numberWithFloat:3] forKey:@"inputSaturation"];
+    [saturate setValue:[NSNumber numberWithFloat:1] forKey:@"inputContrast"];
+    
+    [filters setObject:saturate forKey:@"Summer"];
     
     return filters;
 }
