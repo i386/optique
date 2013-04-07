@@ -32,6 +32,8 @@
     layer.shadowPath = CGPathCreateWithRect(cellFrame, NULL);
     
     [super drawWithFrame:cellFrame inView:controlView];
+    
+    CGPathRelease(layer.shadowPath);
 }
 
 @end
