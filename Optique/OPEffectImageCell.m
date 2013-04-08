@@ -29,11 +29,19 @@
     
     layer.shadowOffset = NSMakeSize(3, -3);
     layer.shadowRadius = 2;
-    layer.shadowPath = CGPathCreateWithRect(cellFrame, NULL);
+    
+    if (layer.shadowPath)
+    {
+        layer.shadowPath = CGPathCreateWithRect(cellFrame, NULL);
+    }
     
     [super drawWithFrame:cellFrame inView:controlView];
-    
-    CGPathRelease(layer.shadowPath);
+}
+
+-(void)finalize
+{
+    CGPathRelease(self.controlView.layer.shadowPath);
+    CGColorRelease(self.controlView.layer.shadowColor);
 }
 
 @end
