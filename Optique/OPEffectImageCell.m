@@ -40,8 +40,16 @@
 
 -(void)finalize
 {
-    CGPathRelease(self.controlView.layer.shadowPath);
-    CGColorRelease(self.controlView.layer.shadowColor);
+    CALayer *layer = self.controlView.layer;
+    if (layer.shadowPath)
+    {
+        CGPathRelease(self.controlView.layer.shadowPath);
+    }
+    
+    if (layer.shadowColor)
+    {
+        CGColorRelease(self.controlView.layer.shadowColor);
+    }
 }
 
 @end
