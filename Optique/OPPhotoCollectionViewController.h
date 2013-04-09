@@ -12,9 +12,13 @@
 
 @interface OPPhotoCollectionViewController : OPNavigationViewController <CNGridViewDataSource, CNGridViewDelegate>
 
+@property (strong) IBOutlet NSMenu *photoItemContextMenu;
+
 @property (strong, readonly) OPPhotoAlbum *photoAlbum;
 @property (strong) IBOutlet CNGridView *gridView;
 
 -initWithPhotoAlbum:(OPPhotoAlbum*)photoAlbum;
+
+- (IBAction)revealInFinder:(NSMenuItem*)sender;
 
 @end

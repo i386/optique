@@ -39,6 +39,13 @@
     return self;
 }
 
+- (IBAction)revealInFinder:(NSMenuItem*)sender
+{
+    NSNumber *index = (NSNumber*)sender.representedObject;
+    OPPhotoAlbum *album = _photoManager.allAlbums[index.unsignedIntValue];
+    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[album.path]];
+}
+
 - (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section
 {
     OPPhotoAlbum *photoAlbum = _photoManager.allAlbums[index];

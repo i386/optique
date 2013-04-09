@@ -33,6 +33,13 @@
     return self;
 }
 
+- (IBAction)revealInFinder:(NSMenuItem*)sender
+{
+    NSNumber *index = (NSNumber*)sender.representedObject;
+    OPPhoto *photo = _photoAlbum.allPhotos[index.unsignedIntValue];
+    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[photo.path]];
+}
+
 -(NSString *)viewTitle
 {
     return _photoAlbum.title;

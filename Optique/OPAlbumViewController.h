@@ -17,9 +17,12 @@
     NSUInteger _albumCountsDuringScan;
 }
 
+@property (strong) IBOutlet NSMenu *albumItemContextMenu;
 @property (strong, readonly) OPPhotoManager *photoManager;
 @property (strong) IBOutlet CNGridView *gridView;
 
 -initWithPhotoManager:(OPPhotoManager*)photoManager;
+
+- (IBAction)revealInFinder:(NSMenuItem*)sender;
 
 @end
