@@ -67,7 +67,9 @@
         OPPhotoAlbum *album = [notification userInfo][@"album"];
         if (album)
         {
-            [self performSelectorOnMainThread:@selector(updateAlbums:) withObject:album waitUntilDone:NO];
+            [self performOnMainThreadWithBlock:^{
+                [_gridView reloadData];
+            }];
         }
     }
 }
@@ -94,14 +96,6 @@
     }
 }
 
--(void)updateAlbums:(OPPhotoAlbum*)album
-{
-    if (album)
-    {
-        [_gridView reloadData];
-    }
-}
-
 - (NSUInteger)gridView:(CNGridView *)gridView numberOfItemsInSection:(NSInteger)section
 {
     return _photoManager.allAlbums.count;
@@ -115,11 +109,15 @@
     }
     
     OPPhotoAlbum *album = _photoManager.allAlbums[index];
-    if (album.allPhotos.count > 0)
+    NSArray *allPhotos = album.allPhotos;
+    
+    if (allPhotos.count > 0)
     {
-        OPPhoto *photo = album.allPhotos[0];
+        OPPhoto *photo = allPhotos[0];
         item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image) {
-            [self performSelectorOnMainThread:@selector(update:) withObject:[NSNumber numberWithInteger:index] waitUntilDone:NO];
+            [self performOnMainThreadWithBlock:^{
+                [_gridView redrawItemAtIndex:index];
+            }];
         }];
     }
     else
@@ -129,11 +127,6 @@
     item.itemTitle = album.title;
     
     return item;
-}
-
--(void)update:(NSNumber*)index
-{
-    [_gridView redrawItemAtIndex:[index integerValue]];
 }
 
 @end

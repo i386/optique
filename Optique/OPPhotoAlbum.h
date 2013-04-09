@@ -18,4 +18,6 @@
 
 -(NSArray*)allPhotos;
 
+-(void)reloadPhotos;
+
 @end

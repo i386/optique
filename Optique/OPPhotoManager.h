@@ -11,6 +11,7 @@
 #import "OPPhotoAlbum.h"
 
 NSString *const OPPhotoManagerDidAddAlbum;
+NSString *const OPPhotoManagerDidUpdateAlbum;
 
 @interface OPPhotoManager : NSObject
 

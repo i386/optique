@@ -46,6 +46,7 @@
 		0FCAF8C91710461A00E6C903 /* effectsbarbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FCAF8C71710461A00E6C903 /* effectsbarbg.png */; };
 		0FCAF8CA1710461A00E6C903 /* effectsbarbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FCAF8C81710461A00E6C903 /* effectsbarbg@2x.png */; };
 		0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCAF8CD17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m */; };
+		0FCE744F1714136B00A5AE79 /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
 		0FCFCB0A170420AA0040FF11 /* NSImage+MGCropExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */; };
 		0FCFCB1217043D180040FF11 /* OPImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFCB1117043D180040FF11 /* OPImageCache.m */; };
 		0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE075617030FCC00D5B456 /* OPPhotoCollectionViewController.m */; };
@@ -140,6 +141,8 @@
 		0FCAF8C81710461A00E6C903 /* effectsbarbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "effectsbarbg@2x.png"; sourceTree = "<group>"; };
 		0FCAF8CC17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+DrawAtPointWithShadow.h"; sourceTree = "<group>"; };
 		0FCAF8CD17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+DrawAtPointWithShadow.m"; sourceTree = "<group>"; };
+		0FCE744D1714136B00A5AE79 /* NSObject+PerformBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PerformBlock.h"; sourceTree = "<group>"; };
+		0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PerformBlock.m"; sourceTree = "<group>"; };
 		0FCFCB08170420AA0040FF11 /* NSImage+MGCropExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+MGCropExtensions.h"; sourceTree = "<group>"; };
 		0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MGCropExtensions.m"; sourceTree = "<group>"; };
 		0FCFCB1017043D180040FF11 /* OPImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageCache.h; sourceTree = "<group>"; };
@@ -387,6 +390,8 @@
 				0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */,
 				0FC8A7AE170FD9E000650D7C /* NSImage+CGImage.h */,
 				0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */,
+				0FCE744D1714136B00A5AE79 /* NSObject+PerformBlock.h */,
+				0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -602,6 +607,7 @@
 				0FC8A7AC170FD76800650D7C /* OPImageEffectItem.m in Sources */,
 				0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */,
 				0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */,
+				0FCE744F1714136B00A5AE79 /* NSObject+PerformBlock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

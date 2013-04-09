@@ -109,21 +109,19 @@
             NSDictionary *filters = [self filtersForImage:nil];
             
             CIFilter *filter = [filters objectForKey:processedImage.effect];
-            [self performSelectorOnMainThread:@selector(setFilter:) withObject:filter waitUntilDone:NO];
+            
+            [self performOnMainThreadWithBlock:^{
+                [_imageView setCompositingFilter:filter];
+                
+                //Keeps next/previous keyboard navigation working when the collection view is used to set an effect.
+                [self.view.window makeFirstResponder:self.view];
+            }];
         }
         else
         {
             [_collectionView setSelectionIndexes:[NSIndexSet indexSetWithIndex:0]];
         }
     }
-}
-
--(void)setFilter:(CIFilter*)filter
-{
-    [_imageView setCompositingFilter:filter];
-    
-    //Keeps next/previous keyboard navigation working when the collection view is used to set an effect.
-    [self.view.window makeFirstResponder:self.view];
 }
 
 -(NSArray *)processedImages

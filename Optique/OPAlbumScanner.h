@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CDEvents/CDEvents.h>
+#import <CDEvents/CDEventsDelegate.h>
 #import "OPPhotoManager.h"
 
 /** scan started **/
@@ -22,7 +23,7 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification;
 /** scan found a new album **/
 NSString *const OPAlbumScannerDidFindAlbumNotification;
 
-@interface OPAlbumScanner : NSObject {
+@interface OPAlbumScanner : NSObject<CDEventsDelegate> {
     NSOperationQueue *_scanningQueue;
     NSOperationQueue *_thumbQueue;
     CDEvents *_events;

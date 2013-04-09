@@ -11,6 +11,7 @@
 #import "OPAlbumScanner.h"
 
 NSString *const OPPhotoManagerDidAddAlbum = @"OPPhotoManagerDidAddAlbum";
+NSString *const OPPhotoManagerDidUpdateAlbum = @"OPPhotoManagerDidUpdateAlbum";
 
 @implementation OPPhotoManager
 
@@ -34,16 +35,28 @@ NSString *const OPPhotoManagerDidAddAlbum = @"OPPhotoManagerDidAddAlbum";
     OPPhotoManager *photoManager = userInfo[@"photoManager"];
     
     //Return if photo manager does not match
-    if (photoManager != self)
+    if (photoManager == self)
     {
-        return;
-    }
-    
-    NSMutableArray *albums = (NSMutableArray*)_allAlbums;
-    if (![albums containsObject:album])
-    {
-        [albums addObject:album];
-        [[NSNotificationCenter defaultCenter] postNotificationName:OPPhotoManagerDidAddAlbum object:nil userInfo:@{@"album": album, @"photoManager": self}];
+        NSMutableArray *albums = (NSMutableArray*)_allAlbums;
+        if (![albums containsObject:album])
+        {
+            [albums addObject:album];
+            [[NSNotificationCenter defaultCenter] postNotificationName:OPPhotoManagerDidAddAlbum object:nil userInfo:@{@"album": album, @"photoManager": self}];
+        }
+        else
+        {
+            for (OPPhotoAlbum *existingAlbum in _allAlbums)
+            {
+                if ([existingAlbum isEqual:album])
+                {
+                    [existingAlbum reloadPhotos];
+                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:OPPhotoManagerDidUpdateAlbum object:nil userInfo:@{@"album": existingAlbum, @"photoManager": self}];
+                    
+                    break;
+                }
+            }
+        }
     }
 }
 

@@ -12,6 +12,7 @@
 #import "CNGridViewItemLayout.h"
 #import "OPPhotoGridView.h"
 #import "OPImagePreviewService.h"
+#import "OPPhotoManager.h"
 
 @interface OPPhotoCollectionViewController ()
 
@@ -25,6 +26,8 @@
     if (self)
     {
         _photoAlbum = photoAlbum;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateAlbum object:nil];
     }
     
     return self;
@@ -53,19 +56,28 @@
         item = [[OPPhotoGridItemView alloc] initWithLayout:nil reuseIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
     }
     
-    OPPhoto *photo = _photoAlbum.allPhotos[index];
-    item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image) {
-        [self performSelectorOnMainThread:@selector(update:) withObject:[NSNumber numberWithInteger:index] waitUntilDone:NO];
-    }];
+    NSArray *allPhotos = [_photoAlbum.allPhotos copy];
     
-    item.itemTitle = photo.title;
+    if (allPhotos.count > 0)
+    {
+        OPPhoto *photo = allPhotos[index];
+        item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image) {
+            [self performOnMainThreadWithBlock:^{
+                [_gridView redrawItemAtIndex:index];
+            }];
+        }];
+        
+        item.itemTitle = photo.title;
+    }
     
     return item;
 }
 
--(void)update:(NSNumber*)index
+-(void)albumUpdated:(NSNotification*)notification
 {
-    [_gridView redrawItemAtIndex:[index integerValue]];
+    [self performOnMainThreadWithBlock:^{
+        [_gridView reloadDataAnimated:YES];
+    }];
 }
 
 -(void)loadView

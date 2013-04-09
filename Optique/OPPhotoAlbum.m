@@ -35,24 +35,26 @@
 {
     if (_allPhotos == nil)
     {
-        [_arrayLock lockForWriting];
-        @try
-        {
-            if (_allPhotos == nil)
-            {
-                _allPhotos = [self findAllPhotos];
-            }
-        }
-        @finally
-        {
-            [_arrayLock unlock];
-        }
+        [self reloadPhotos];
     }
     
     [_arrayLock lock];
     @try
     {
         return (NSArray*)_allPhotos;
+    }
+    @finally
+    {
+        [_arrayLock unlock];
+    }
+}
+
+-(void)reloadPhotos
+{
+    [_arrayLock lockForWriting];
+    @try
+    {
+        _allPhotos = [self findAllPhotos];
     }
     @finally
     {

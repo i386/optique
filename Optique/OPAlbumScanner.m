@@ -33,54 +33,57 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
 
 - (void)URLWatcher:(CDEvents *)URLWatcher eventOccurred:(CDEvent *)event
 {
-    NSLog(@"TODO: album content changes");
+    if (event.isCreated || event.isRemoved || event.isRenamed)
+    {
+        NSLog(@"DEBUG: Change occured in directory");
+        
+        [self startScanAtURL:[_events.watchedURLs lastObject]];
+    }
 }
 
 -(void)scanAtURL:(NSURL *)url
 {
-//    _events = [[CDEvents alloc] initWithURLs:@[url] delegate:self];
-    
-    if (_scanningQueue.operationCount >= _scanningQueue.maxConcurrentOperationCount)
-    {
-        NSLog(@"Tried to queue new scan operation when scan already in progress");
-        return;
-    }
-    
+    _events = [[CDEvents alloc] initWithURLs:@[url] delegate:self];
+    [self startScanAtURL:url];
+}
+
+-(void)startScanAtURL:(NSURL *)url
+{
     [_scanningQueue addOperationWithBlock:^
-    {
-        if (_stopScan) return;
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidStartScanNotification object:nil userInfo:@{@"photoManager" : _photoManager}];
-        NSMutableArray *albumsFound = [[NSMutableArray alloc] init];
-        
-        for (NSURL *albumURL in [self albumURLsForURL:url])
-        {
-            if (_stopScan) return;
-            OPPhotoAlbum *album = [self findAlbum:albumURL];
-            if (album)
-            {
-                if (_stopScan) return;
-                [albumsFound addObject:album];
-            }
-        }
-        
-        if (!_stopScan)
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumsNotification object:nil userInfo:@{@"count": [NSNumber numberWithInteger:albumsFound.count], @"photoManager" : _photoManager}];
-        }
-        
-        
-        for (OPPhotoAlbum *album in albumsFound)
-        {
-            if (_stopScan) return;
-            [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumNotification object:nil userInfo:@{@"album": album, @"photoManager": _photoManager}];
-        }
-        
-        if (!_stopScan)
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFinishScanNotification object:nil userInfo:@{@"photoManager" : _photoManager}];
-        }
-    }];
+     {
+         if (_stopScan) return;
+         
+         [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidStartScanNotification object:nil userInfo:@{@"photoManager" : _photoManager}];
+         NSMutableArray *albumsFound = [[NSMutableArray alloc] init];
+         
+         for (NSURL *albumURL in [self albumURLsForURL:url])
+         {
+             if (_stopScan) return;
+             OPPhotoAlbum *album = [self findAlbum:albumURL];
+             if (album)
+             {
+                 if (_stopScan) return;
+                 [albumsFound addObject:album];
+             }
+         }
+         
+         if (!_stopScan)
+         {
+             [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumsNotification object:nil userInfo:@{@"count": [NSNumber numberWithInteger:albumsFound.count], @"photoManager" : _photoManager}];
+         }
+         
+         
+         for (OPPhotoAlbum *album in albumsFound)
+         {
+             if (_stopScan) return;
+             [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumNotification object:nil userInfo:@{@"album": album, @"photoManager": _photoManager}];
+         }
+         
+         if (!_stopScan)
+         {
+             [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFinishScanNotification object:nil userInfo:@{@"photoManager" : _photoManager}];
+         }
+     }];
 }
 
 -(OPPhotoAlbum*)findAlbum:(NSURL*)url
