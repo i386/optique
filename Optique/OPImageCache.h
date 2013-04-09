@@ -8,11 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPImageCache : NSObject <NSCacheDelegate> {
-    NSCache *_cache;
-    NSURL *_cacheDirectory;
-    NSSize _size;
-}
+@interface OPImageCache : NSObject <NSCacheDelegate>
 
 +(OPImageCache*)sharedPreviewCache;
 

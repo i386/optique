@@ -13,6 +13,12 @@
 #define THUMB_SIZE NSMakeSize(260, 175)
 #define CACHE_SIZE 524288000
 
+@interface OPImageCache() {
+    NSCache *_cache;
+    NSURL *_cacheDirectory;
+    NSSize _size;
+}
+@end
 
 @implementation OPImageCache
 

@@ -9,6 +9,12 @@
 #import "OPImagePreviewService.h"
 #import "OPImageCache.h"
 
+@interface OPImagePreviewService() {
+    NSMapTable *_locks;
+}
+
+@end
+
 @implementation OPImagePreviewService
 
 static OPImagePreviewService *_defaultService;
@@ -29,6 +35,7 @@ static OPImagePreviewService *_defaultService;
     {
         _queue = [[NSOperationQueue alloc] init];
         [_queue setMaxConcurrentOperationCount:10];
+        _locks = [NSMapTable weakToWeakObjectsMapTable];
     }
     return self;
 }
@@ -39,14 +46,48 @@ static OPImagePreviewService *_defaultService;
     
     if (![cache isCachedImageAtPath:url])
     {
-        [_queue addOperationWithBlock:^
+        //Only synchronizes if the image does not exist
+        volatile NSLock *lock = [self acquireLockForURL:url];
+        
+        @try
         {
-            NSImage *image = [cache loadImageForPath:url];
-            loadBlock(image);
-        }];
+            //If the lock has not been acquired then lock and queue thumb operation
+            if (![lock tryLock])
+            {
+                [_queue addOperationWithBlock:^
+                 {
+                     NSImage *image = [cache loadImageForPath:url];
+                     loadBlock(image);
+                 }];
+                
+                //Remove the lock
+                [_locks removeObjectForKey:url];
+            }
+        }
+        @finally
+        {
+            [lock unlock];
+        }
         return [NSImage imageNamed:@"loading-preview"];
     }
+    
+    NSLog(@"locks: %lu", _locks.count);
+    
     return [cache loadImageForPath:url];
+}
+
+/** calling this method will sync on this instance **/
+-(volatile NSLock*)acquireLockForURL:(NSURL*)url
+{
+    @synchronized(self)
+    {
+        volatile NSLock *lock = [_locks objectForKey:url];
+        if (!lock)
+        {
+            [_locks setObject:[[NSLock alloc] init] forKey:url];
+        }
+        return lock;
+    }
 }
 
 @end
