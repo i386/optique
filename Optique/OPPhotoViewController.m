@@ -88,6 +88,7 @@
     [super loadView];
     
     [_imageView setDoubleClickOpensImageEditPanel:NO];
+    [_imageView setSupportsDragAndDrop:NO];
     
     [_collectionView addObserver:self forKeyPath:@"selectionIndexes" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:nil];
     
