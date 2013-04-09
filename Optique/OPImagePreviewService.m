@@ -71,8 +71,6 @@ static OPImagePreviewService *_defaultService;
         return [NSImage imageNamed:@"loading-preview"];
     }
     
-    NSLog(@"locks: %lu", _locks.count);
-    
     return [cache loadImageForPath:url];
 }
 
