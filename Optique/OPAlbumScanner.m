@@ -35,8 +35,6 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
 {
     if (event.isCreated || event.isRemoved || event.isRenamed)
     {
-        NSLog(@"DEBUG: Change occured in directory");
-        
         [self startScanAtURL:[_events.watchedURLs lastObject]];
     }
 }
