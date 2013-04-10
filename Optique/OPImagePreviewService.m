@@ -11,6 +11,7 @@
 
 @interface OPImagePreviewService() {
     NSMapTable *_locks;
+    NSOperationQueue *_queue;
 }
 
 @end

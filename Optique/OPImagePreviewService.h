@@ -8,9 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPImagePreviewService : NSObject {
-    NSOperationQueue *_queue;
-}
+@interface OPImagePreviewService : NSObject
 
 +(OPImagePreviewService *)defaultService;
 
