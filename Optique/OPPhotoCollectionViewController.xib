@@ -53,12 +53,14 @@
 										<int key="NSvFlags">274</int>
 										<string key="NSFrameSize">{480, 272}</string>
 										<reference key="NSSuperview" ref="98779860"/>
+										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="1058082440"/>
 										<string key="NSReuseIdentifierKey">_NS:13</string>
 									</object>
 								</array>
 								<string key="NSFrameSize">{480, 272}</string>
 								<reference key="NSSuperview" ref="760932705"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="455388511"/>
 								<string key="NSReuseIdentifierKey">_NS:11</string>
 								<reference key="NSDocView" ref="455388511"/>
@@ -78,6 +80,7 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrame">{{464, 0}, {16, 272}}</string>
 								<reference key="NSSuperview" ref="760932705"/>
+								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:15</string>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<reference key="NSTarget" ref="760932705"/>
@@ -90,6 +93,7 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrame">{{0, 256}, {480, 16}}</string>
 								<reference key="NSSuperview" ref="760932705"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="483567784"/>
 								<string key="NSReuseIdentifierKey">_NS:26</string>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -101,6 +105,7 @@
 						</array>
 						<string key="NSFrameSize">{480, 272}</string>
 						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="98779860"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="NSsFlags">133168</int>
@@ -114,6 +119,7 @@
 				</array>
 				<string key="NSFrameSize">{480, 272}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="760932705"/>
 				<string key="NSClassName">OPWindowContentView</string>
 			</object>
@@ -189,11 +195,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">rightClickContextMenu</string>
+						<string key="label">itemContextMenu</string>
 						<reference key="source" ref="455388511"/>
 						<reference key="destination" ref="796788892"/>
 					</object>
-					<int key="connectionID">40</int>
+					<int key="connectionID">41</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -287,9 +293,96 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">40</int>
+			<int key="maxID">41</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">CNGridView</string>
+					<string key="superclassName">NSView</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="dataSource">id</string>
+						<string key="delegate">id</string>
+						<string key="itemContextMenu">NSMenu</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="dataSource">
+							<string key="name">dataSource</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="delegate">
+							<string key="name">delegate</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="itemContextMenu">
+							<string key="name">itemContextMenu</string>
+							<string key="candidateClassName">NSMenu</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/CNGridView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">OPNavigationViewController</string>
+					<string key="superclassName">NSViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/OPNavigationViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">OPPhotoCollectionViewController</string>
+					<string key="superclassName">OPNavigationViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">revealInFinder:</string>
+						<string key="NS.object.0">NSMenuItem</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">revealInFinder:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">revealInFinder:</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+					</object>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="gridView">CNGridView</string>
+						<string key="photoItemContextMenu">NSMenu</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="gridView">
+							<string key="name">gridView</string>
+							<string key="candidateClassName">CNGridView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="photoItemContextMenu">
+							<string key="name">photoItemContextMenu</string>
+							<string key="candidateClassName">NSMenu</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/OPPhotoCollectionViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">OPPhotoGridView</string>
+					<string key="superclassName">CNGridView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/OPPhotoGridView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">OPWindowContentView</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/OPWindowContentView.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
