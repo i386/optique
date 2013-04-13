@@ -12,12 +12,18 @@
 
 NSString *const OPPhotoManagerDidAddAlbum;
 NSString *const OPPhotoManagerDidUpdateAlbum;
+NSString *const OPPhotoManagerDidDeleteAlbum;
 
 @interface OPPhotoManager : NSObject
 
 @property (strong, readonly) NSURL *path;
-@property (strong, readonly) NSArray *allAlbums;
 
 -initWithPath:(NSURL*)path;
+
+-(NSArray*)allAlbums;
+
+-(OPPhotoAlbum*)newAlbumWithName:(NSString*)albumName error:(NSError **)error;
+
+-(void)deleteAlbum:(OPPhotoAlbum*)photoAlbum;
 
 @end

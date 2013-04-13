@@ -10,9 +10,24 @@
 
 @implementation NSObject (PerformBlock)
 
--(void)performOnMainThreadWithBlock:(void (^)(void))block
+-(void)performBlockOnMainThread:(void (^)(void))block
 {
-    [[NSOperationQueue mainQueue] addOperationWithBlock:block];
+    [self performSelectorOnMainThread:@selector(_performBlock:) withObject:block waitUntilDone:NO];
+}
+
+-(void)performBlockOnMainThread:(void (^)(void))block waitUntilDone:(BOOL)wait
+{
+    [self performSelectorOnMainThread:@selector(_performBlock:) withObject:block waitUntilDone:wait];
+}
+
+-(void)performBlockInBackground:(void (^)(void))block
+{
+    [self performSelectorInBackground:@selector(_performBlock:) withObject:block];
+}
+
+-(void)_performBlock:(void (^)(void))block
+{
+    block();
 }
 
 @end

@@ -15,7 +15,6 @@
 NSString *const OPAlbumScannerDidStartScanNotification = @"OPAlbumScannerDidStartScanNotification";
 NSString *const OPAlbumScannerDidFinishScanNotification = @"OPAlbumScannerDidFinishScanNotification";
 NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFindAlbumsNotification";
-NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFindAlbumNotification";
 
 @implementation OPAlbumScanner
 
@@ -65,17 +64,9 @@ NSString *const OPAlbumScannerDidFindAlbumNotification = @"OPAlbumScannerDidFind
              }
          }
          
-         if (!_stopScan)
-         {
-             [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumsNotification object:nil userInfo:@{@"count": [NSNumber numberWithInteger:albumsFound.count], @"photoManager" : _photoManager}];
-         }
+         if (_stopScan) return;
          
-         
-         for (OPPhotoAlbum *album in albumsFound)
-         {
-             if (_stopScan) return;
-             [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumNotification object:nil userInfo:@{@"album": album, @"photoManager": _photoManager}];
-         }
+         [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumsNotification object:nil userInfo:@{@"albums": albumsFound, @"photoManager": _photoManager}];
          
          if (!_stopScan)
          {

@@ -46,6 +46,11 @@
     }];
 }
 
+- (IBAction)newAlbum:(id)sender
+{
+    [_mainWindowController showNewAlbumSheet];
+}
+
 -(void)picturesAtDirectory:(NSURL*)url
 {
     [[_userDefaultsController defaults] setURL:url forKey:@"url"];

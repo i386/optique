@@ -33,11 +33,40 @@
     return self;
 }
 
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidUpdateAlbum object:nil];
+}
+
 - (IBAction)revealInFinder:(NSMenuItem*)sender
 {
     NSNumber *index = (NSNumber*)sender.representedObject;
     OPPhoto *photo = _photoAlbum.allPhotos[index.unsignedIntValue];
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[photo.path]];
+}
+
+- (IBAction)deletePhoto:(id)sender
+{
+    NSMenuItem *item = sender;
+    NSNumber *index = item.representedObject;
+    
+    OPPhoto *photo = _photoAlbum.allPhotos[index.unsignedIntValue];
+    
+    NSBeginAlertSheet([NSString stringWithFormat:@"Do you want to delete '%@'?", photo.title], @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, (__bridge void *)(photo), @"This operation can not be undone.");
+}
+
+- (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet
+                          returnCode: (NSInteger)returnCode
+                         contextInfo: (void *)contextInfo
+{
+    if (returnCode == NSAlertDefaultReturn)
+    {
+        OPPhoto *photo = (__bridge OPPhoto*)contextInfo;
+        
+        [_photoAlbum deletePhoto:photo error:nil];
+        
+        [_gridView reloadData];
+    }
 }
 
 -(NSString *)viewTitle
@@ -59,7 +88,8 @@
 - (CNGridViewItem *)gridView:(CNGridView *)gridView itemAtIndex:(NSInteger)index inSection:(NSInteger)section
 {
     OPPhotoGridItemView *item = [gridView dequeueReusableItemWithIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
-    if (item == nil) {
+    if (item == nil)
+    {
         item = [[OPPhotoGridItemView alloc] initWithLayout:nil reuseIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
     }
     
@@ -69,7 +99,7 @@
     {
         OPPhoto *photo = allPhotos[index];
         item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image) {
-            [self performOnMainThreadWithBlock:^{
+            [self performBlockOnMainThread:^{
                 [_gridView redrawItemAtIndex:index];
             }];
         }];
@@ -82,8 +112,8 @@
 
 -(void)albumUpdated:(NSNotification*)notification
 {
-    [self performOnMainThreadWithBlock:^{
-        [_gridView reloadDataAnimated:YES];
+    [self performBlockOnMainThread:^{
+        [_gridView reloadData];
     }];
 }
 

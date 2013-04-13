@@ -10,12 +10,15 @@
 #import "OPAlbumViewController.h"
 #import "OPPhotoManager.h"
 
-@interface OPMainWindowController : NSWindowController<NSWindowDelegate> {
-    OPAlbumViewController *_albumViewController;
-}
+@interface OPMainWindowController : NSWindowController<NSWindowDelegate>
 
 @property (strong, readonly) OPPhotoManager *photoManager;
 
+@property (strong) IBOutlet NSWindow *createAlbumSheetWindow;
+@property (strong) IBOutlet NSTextField *albumNameTextField;
+
 -initWithPhotoManager:(OPPhotoManager*)photoManager;
+
+-(void)showNewAlbumSheet;
 
 @end

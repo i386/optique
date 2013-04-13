@@ -25,4 +25,6 @@
 
 - (IBAction)revealInFinder:(NSMenuItem*)sender;
 
+- (IBAction)deleteAlbum:(NSMenuItem*)sender;
+
 @end

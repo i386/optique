@@ -39,4 +39,9 @@
     return [self.path isEqual:photo.path];
 }
 
+-(NSUInteger)hash
+{
+    return self.path.hash;
+}
+
 @end

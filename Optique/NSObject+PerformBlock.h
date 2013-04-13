@@ -10,6 +10,10 @@
 
 @interface NSObject (PerformBlock)
 
--(void)performOnMainThreadWithBlock:(void (^)(void))block;
+-(void)performBlockOnMainThread:(void (^)(void))block;
+
+-(void)performBlockOnMainThread:(void (^)(void))block waitUntilDone:(BOOL)wait;
+
+-(void)performBlockInBackground:(void (^)(void))block;
 
 @end

@@ -20,9 +20,6 @@ NSString *const OPAlbumScannerDidFinishScanNotification;
 /** albums were found **/
 NSString *const OPAlbumScannerDidFindAlbumsNotification;
 
-/** scan found a new album **/
-NSString *const OPAlbumScannerDidFindAlbumNotification;
-
 @interface OPAlbumScanner : NSObject<CDEventsDelegate> {
     NSOperationQueue *_scanningQueue;
     NSOperationQueue *_thumbQueue;

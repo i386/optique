@@ -131,14 +131,22 @@
 						<string key="NSTitle">Reveal in Finder</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
-						<object class="NSCustomResource" key="NSOnImage">
+						<object class="NSCustomResource" key="NSOnImage" id="1040381304">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">NSMenuCheckmark</string>
 						</object>
-						<object class="NSCustomResource" key="NSMixedImage">
+						<object class="NSCustomResource" key="NSMixedImage" id="155832899">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">NSMenuMixedState</string>
 						</object>
+					</object>
+					<object class="NSMenuItem" id="481836325">
+						<reference key="NSMenu" ref="796788892"/>
+						<string key="NSTitle">Delete photo</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="1040381304"/>
+						<reference key="NSMixedImage" ref="155832899"/>
 					</object>
 				</array>
 			</object>
@@ -176,6 +184,14 @@
 						<reference key="destination" ref="487760183"/>
 					</object>
 					<int key="connectionID">39</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">deletePhoto:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="481836325"/>
+					</object>
+					<int key="connectionID">43</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -266,12 +282,18 @@
 						<reference key="object" ref="796788892"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="487760183"/>
+							<reference ref="481836325"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">37</int>
 						<reference key="object" ref="487760183"/>
+						<reference key="parent" ref="796788892"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">42</int>
+						<reference key="object" ref="481836325"/>
 						<reference key="parent" ref="796788892"/>
 					</object>
 				</array>
@@ -288,12 +310,13 @@
 				<string key="32.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="36.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="37.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">41</int>
+			<int key="maxID">43</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -335,17 +358,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">OPPhotoCollectionViewController</string>
 					<string key="superclassName">OPNavigationViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">revealInFinder:</string>
-						<string key="NS.object.0">NSMenuItem</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">revealInFinder:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="deletePhoto:">id</string>
+						<string key="revealInFinder:">NSMenuItem</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="deletePhoto:">
+							<string key="name">deletePhoto:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="revealInFinder:">
 							<string key="name">revealInFinder:</string>
 							<string key="candidateClassName">NSMenuItem</string>
 						</object>
-					</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="gridView">CNGridView</string>
 						<string key="photoItemContextMenu">NSMenu</string>

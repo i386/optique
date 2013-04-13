@@ -12,7 +12,7 @@
 
 @interface OPPhotoAlbum() {
     CHReadWriteLock *_arrayLock;
-    volatile NSArray *_allPhotos;
+    volatile NSMutableOrderedSet *_allPhotos;
 }
 
 @end
@@ -54,7 +54,23 @@
     [_arrayLock lockForWriting];
     @try
     {
-        _allPhotos = [self findAllPhotos];
+        _allPhotos = [NSMutableOrderedSet orderedSetWithArray:[self findAllPhotos]];
+    }
+    @finally
+    {
+        [_arrayLock unlock];
+    }
+}
+
+-(void)deletePhoto:(OPPhoto *)photo error:(NSError *__autoreleasing *)error
+{
+    [_arrayLock lockForWriting];
+    @try
+    {
+        //TODO check for errors
+        [[NSFileManager defaultManager] removeItemAtURL:photo.path error:nil];
+        
+        [_allPhotos removeObject:photo];
     }
     @finally
     {
@@ -109,6 +125,11 @@
     
     OPPhotoAlbum *otherAlbum = object;
     return [self.path isEqual:otherAlbum.path];
+}
+
+-(NSUInteger)hash
+{
+    return self.path.hash;
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "OPImageCache.h"
+#import "OPPhoto.h"
 
 @interface OPPhotoAlbum : NSObject
 
@@ -19,5 +20,7 @@
 -(NSArray*)allPhotos;
 
 -(void)reloadPhotos;
+
+-(void)deletePhoto:(OPPhoto*)photo error:(NSError**)error;
 
 @end

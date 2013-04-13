@@ -14,9 +14,11 @@
 #import "OPAlbumScanner.h"
 #import "OPPhotoGridItemView.h"
 #import "OPImagePreviewService.h"
+#import "OPDeleteAlbumSheetController.h"
 
 @interface OPAlbumViewController () {
     NSInteger _itemsFoundWhenScanning;
+    OPDeleteAlbumSheetController *_deleteAlbumSheetController;
 }
 @end
 
@@ -30,13 +32,27 @@
         _itemsFoundWhenScanning = 0;
         _albumCountsDuringScan = 0;
         _photoManager = photoManager;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:OPPhotoManagerDidAddAlbum object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFound:) name:OPAlbumScannerDidFindAlbumsNotification object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFinishedLoading:) name:OPAlbumScannerDidFinishScanNotification object:nil];
     }
     return self;
+}
+
+-(void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:OPPhotoManagerDidAddAlbum object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:OPPhotoManagerDidDeleteAlbum object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFound:) name:OPAlbumScannerDidFindAlbumsNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFinishedLoading:) name:OPAlbumScannerDidFinishScanNotification object:nil];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidAddAlbum object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidDeleteAlbum object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFindAlbumsNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFinishScanNotification object:nil];
 }
 
 - (IBAction)revealInFinder:(NSMenuItem*)sender
@@ -45,6 +61,30 @@
     OPPhotoAlbum *album = _photoManager.allAlbums[index.unsignedIntValue];
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[album.path]];
 }
+
+- (IBAction)deleteAlbum:(NSMenuItem*)sender
+{
+    NSNumber *index = (NSNumber*)sender.representedObject;
+    OPPhotoAlbum *album = _photoManager.allAlbums[index.unsignedIntValue];
+    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithPhotoAlbum:album photoManager:_photoManager];
+    
+    NSBeginAlertSheet([NSString stringWithFormat:@"Do you want to delete '%@'?", album.title], @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, nil, @"This operation can not be undone.", nil);
+}
+
+- (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet
+                    returnCode: (NSInteger)returnCode
+                   contextInfo: (void *)contextInfo
+{
+    if (returnCode == NSAlertDefaultReturn)
+    {
+        [sheet close];
+        
+        [NSApp beginSheet:_deleteAlbumSheetController.window modalForWindow:self.view.window modalDelegate:_deleteAlbumSheetController didEndSelector:nil contextInfo:nil];
+        
+        [_deleteAlbumSheetController startAlbumDeletion];
+    }
+}
+
 
 - (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section
 {
@@ -74,7 +114,7 @@
         OPPhotoAlbum *album = [notification userInfo][@"album"];
         if (album)
         {
-            [self performOnMainThreadWithBlock:^{
+            [self performBlockOnMainThread:^{
                 [_gridView reloadData];
             }];
         }
@@ -83,24 +123,41 @@
 
 -(void)albumsFound:(NSNotification*)notification
 {
-    OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
-    
-    if ([photoManager isEqual:_photoManager])
-    {
-        NSNumber *count = [notification userInfo][@"count"];
-        _itemsFoundWhenScanning = count.integerValue;
-        [self.controller updateNavigationBar];
-    }
+    [self performBlockOnMainThread:^{
+        OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
+        
+        if ([photoManager isEqual:_photoManager])
+        {
+            NSNumber *count = [notification userInfo][@"count"];
+            _itemsFoundWhenScanning = count.integerValue;
+            [self.controller updateNavigationBar];
+        }
+    }];
+}
+
+-(void)albumDeleted:(NSNotification*)notification
+{
+    [self performBlockOnMainThread:^{
+        OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
+        
+        if ([photoManager isEqual:_photoManager])
+        {
+            [_gridView reloadData];
+            [self.controller updateNavigationBar];
+        }
+    }];
 }
 
 -(void)albumsFinishedLoading:(NSNotification*)notification
 {
-    OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
-    
-    if ([photoManager isEqual:_photoManager])
-    {
-        [self.controller updateNavigationBar];
-    }
+    [self performBlockOnMainThread:^{
+        OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
+        
+        if ([photoManager isEqual:_photoManager])
+        {
+            [self.controller updateNavigationBar];
+        }
+    }];
 }
 
 - (NSUInteger)gridView:(CNGridView *)gridView numberOfItemsInSection:(NSInteger)section
@@ -122,7 +179,7 @@
     {
         OPPhoto *photo = allPhotos[0];
         item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image) {
-            [self performOnMainThreadWithBlock:^{
+            [self performBlockOnMainThread:^{
                 [_gridView redrawItemAtIndex:index];
             }];
         }];

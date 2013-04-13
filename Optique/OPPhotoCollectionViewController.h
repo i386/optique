@@ -20,5 +20,6 @@
 -initWithPhotoAlbum:(OPPhotoAlbum*)photoAlbum;
 
 - (IBAction)revealInFinder:(NSMenuItem*)sender;
+- (IBAction)deletePhoto:(id)sender;
 
 @end

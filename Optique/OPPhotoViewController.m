@@ -110,7 +110,7 @@
             
             CIFilter *filter = [filters objectForKey:processedImage.effect];
             
-            [self performOnMainThreadWithBlock:^{
+            [self performBlockOnMainThread:^{
                 [_imageView setCompositingFilter:filter];
                 
                 //Keeps next/previous keyboard navigation working when the collection view is used to set an effect.

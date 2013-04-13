@@ -8,11 +8,14 @@
 
 #import "OPMainWindowController.h"
 #import "OPWindow.h"
-
 #import "OPNavigationController.h"
+#import "OPPhotoCollectionViewController.h"
+#import "OPNewAlbumSheetController.h"
 
 @interface OPMainWindowController () {
     OPNavigationController *_navigationController;
+    OPAlbumViewController *_albumViewController;
+    OPNewAlbumSheetController *_newAlbumSheetController;
 }
 
 @end
@@ -40,6 +43,7 @@
     
     _albumViewController = [[OPAlbumViewController alloc] initWithPhotoManager:_photoManager];
     _navigationController = [[OPNavigationController alloc] initWithRootViewController:_albumViewController];
+    _newAlbumSheetController = [[OPNewAlbumSheetController alloc] initWithPhotoManager:_photoManager navigationController:_navigationController];
     
     OPWindow *window = (OPWindow*)self.window;
     NSView *contentView = window.contentView;
@@ -56,6 +60,11 @@
 -(void)windowDidExitFullScreen:(NSNotification *)notification
 {
     [_navigationController updateNavigationBar];
+}
+
+-(void)showNewAlbumSheet
+{
+    [NSApp beginSheet:_newAlbumSheetController.window modalForWindow:self.window modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
 @end

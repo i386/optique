@@ -22,4 +22,6 @@
 
 - (IBAction)openDirectory:(id)sender;
 
+- (IBAction)newAlbum:(id)sender;
+
 @end

@@ -10,6 +10,6 @@
 
 NSString *const OPPhotoGridViewReuseIdentifier;
 
-@interface OPPhotoGridView : CNGridView
+@interface OPPhotoGridView : CNGridView <NSDraggingDestination>
 
 @end

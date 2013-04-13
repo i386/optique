@@ -13,9 +13,29 @@ NSString *const OPPhotoGridViewReuseIdentifier = @"OPPhotoGridViewReuseIdentifie
 
 @implementation OPPhotoGridView
 
+-(id)initWithFrame:(NSRect)frameRect
+{
+    self = [super initWithFrame:frameRect];
+    if (self)
+    {
+        [self registerForDraggedTypes:@[NSFilenamesPboardType]];
+    }
+    return self;
+}
+
 - (void)drawRect:(NSRect)dirtyRect
 {
     [self drawBackground];
+}
+
+-(NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender
+{
+    NSPasteboard *pboard = [sender draggingPasteboard];
+    if ( [[pboard types] containsObject:NSFilenamesPboardType] )
+    {
+        return NSDragOperationCopy;
+    }
+    return NSDragOperationNone;
 }
 
 @end
