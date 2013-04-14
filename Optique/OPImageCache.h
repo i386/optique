@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPImageCache : NSObject <NSCacheDelegate>
+@interface OPImageCache : NSObject
 
 +(OPImageCache*)sharedPreviewCache;
 

@@ -158,11 +158,4 @@ static OPImageCache *_sharedPreviewCache;
     [_cache setObject:cachedPath forKey:originalPath cost:fileSize];
 }
 
-- (void)cache:(NSCache *)cache willEvictObject:(id)obj
-{
-#if DEBUG
-    NSLog(@"Evicting %@", obj);
-#endif
-}
-
 @end
