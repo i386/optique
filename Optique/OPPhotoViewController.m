@@ -11,6 +11,7 @@
 #import "OPPhotoView.h"
 #import "NSImage+CGImage.h"
 #import "OPEffectProcessedImageRef.h"
+#import "NSImage+Transform.h"
 
 @implementation OPPhotoViewController
 
@@ -21,8 +22,18 @@
         _photoAlbum = album;
         _photo = photo;
         _effectsState = NSOffState;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewSizeChanged:) name:NSWindowDidResizeNotification object:self.view.window];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewSizeChanged:) name:NSViewFrameDidChangeNotification object:self.view];
     }
     return self;
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self.view.window];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSViewFrameDidChangeNotification object:self.view];
 }
 
 -(NSString *)viewTitle
@@ -55,8 +66,7 @@
 
 - (IBAction)rotateLeft:(id)sender
 {
-    [_imageView rotateImageLeft:self];
-    [_imageView zoomImageToFit:self];
+    _imageView.image = [_imageView.image imageRotatedByDegrees:90];
 }
 
 - (IBAction)toggleEffects:(id)sender
@@ -77,9 +87,7 @@
 {
     _photo = [[_photoAlbum allPhotos] objectAtIndex:position];
     [self reloadEffects];
-    [_imageView setCompositingFilter:nil];
-    [_imageView setImageWithURL:_photo.path];
-    [_imageView zoomImageToFit:self]; //if this is not called the image will zoom to orig size if the previous photo was rotated.
+    _imageView.image = [_photo scaleImageToFitSize:_imageView.frame.size];
     [self.controller updateNavigationBar];
 }
 
@@ -87,12 +95,14 @@
 {
     [super loadView];
     
-    [_imageView setDoubleClickOpensImageEditPanel:NO];
-    [_imageView setSupportsDragAndDrop:NO];
-    
     [_collectionView addObserver:self forKeyPath:@"selectionIndexes" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:nil];
     
     [_collectionView setSelectionIndexes:[NSIndexSet indexSetWithIndex:0]];
+}
+
+-(void)viewSizeChanged:(NSNotification*)notification
+{
+     _imageView.image = [_photo scaleImageToFitSize:_imageView.frame.size];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath

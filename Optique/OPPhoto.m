@@ -28,6 +28,41 @@
     return [[NSImage alloc] initWithContentsOfURL:_path];
 }
 
+-(NSImage*)scaleImageToFitSize:(NSSize)size
+{
+    NSImage *image;
+    
+    CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)_path, NULL);
+    
+    CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL);
+    CFNumberRef pixelWidthRef  = CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelWidth);
+    CFNumberRef pixelHeightRef = CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelHeight);
+    CGFloat pixelWidth = [(__bridge NSNumber *)pixelWidthRef floatValue];
+    CGFloat pixelHeight = [(__bridge NSNumber *)pixelHeightRef floatValue];
+    CGFloat maxEdge = MAX(pixelWidth, pixelHeight);
+    
+    float maxEdgeSize = MAX(size.width, size.height);
+    
+    if (maxEdge > maxEdgeSize)
+    {
+        NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
+                                          kCGImageSourceCreateThumbnailWithTransform, kCFBooleanTrue,
+                                          kCGImageSourceCreateThumbnailFromImageAlways, [NSNumber numberWithFloat:maxEdgeSize],
+                                          kCGImageSourceThumbnailMaxPixelSize, nil];
+        CGImageRef thumbnail = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, (__bridge CFDictionaryRef)thumbnailOptions);
+        
+        image = [[NSImage alloc] initWithCGImage:thumbnail size:NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail))];
+    }
+    else
+    {
+        image = [[NSImage alloc] initWithContentsOfURL:_path];
+    }
+    
+    CFRelease(imageProperties);
+    
+    return image;
+}
+
 -(BOOL)isEqual:(id)object
 {
     if (object == self)

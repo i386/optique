@@ -17,4 +17,6 @@
 
 -initWithTitle:(NSString*)title path:(NSURL*)path;
 
+-(NSImage*)scaleImageToFitSize:(NSSize)size;
+
 @end

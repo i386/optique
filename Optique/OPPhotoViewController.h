@@ -16,7 +16,8 @@
 
 @property (strong, readonly) OPPhotoAlbum *photoAlbum;
 @property (strong, readonly) OPPhoto *photo;
-@property (strong) IBOutlet OPImageView *imageView;
+@property (strong) IBOutlet NSImageView *imageView;
+
 @property (strong) IBOutlet NSCollectionView *collectionView;
 @property (strong) IBOutlet NSArrayController *imagesArrayController;
 @property (assign) NSInteger effectsState;
