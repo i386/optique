@@ -43,7 +43,6 @@ static OPImageCache *_sharedPreviewCache;
     self = [super init];
     _size = size;
     _cache = [[NSCache alloc] init];
-    _cache.delegate = self;
     [_cache setCountLimit:CACHE_SIZE];
     
     NSFileManager *fileManager = [OPImageCache newFileManager];
