@@ -43,8 +43,8 @@ static OPImageCache *_sharedPreviewCache;
     self = [super init];
     _size = size;
     _cache = [[NSCache alloc] init];
-//    _cache.delegate = self;
-//    [_cache setCountLimit:CACHE_SIZE];
+    _cache.delegate = self;
+    [_cache setCountLimit:CACHE_SIZE];
     
     NSFileManager *fileManager = [OPImageCache newFileManager];
     
@@ -160,7 +160,9 @@ static OPImageCache *_sharedPreviewCache;
 
 - (void)cache:(NSCache *)cache willEvictObject:(id)obj
 {
+#if DEBUG
     NSLog(@"Evicting %@", obj);
+#endif
 }
 
 @end
