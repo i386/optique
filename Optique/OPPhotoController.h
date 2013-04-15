@@ -11,6 +11,7 @@
 @interface OPPhotoController : NSViewController
 
 @property (strong) IBOutlet NSImageView *imageView;
+@property (strong) IBOutlet NSMenu *contextMenu;
 
 -(void)setFilter:(CIFilter*)filter;
 

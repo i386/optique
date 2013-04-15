@@ -29,8 +29,4 @@
 
 -(NSArray *)processedImages;
 
-- (IBAction)rotateLeft:(id)sender;
-
-- (IBAction)toggleEffects:(id)sender;
-
 @end
