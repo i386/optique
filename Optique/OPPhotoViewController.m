@@ -12,6 +12,13 @@
 #import "NSImage+CGImage.h"
 #import "OPEffectProcessedImageRef.h"
 #import "NSImage+Transform.h"
+#import "OPPhotoController.h"
+
+@interface OPPhotoViewController() {
+    NSInteger _index;
+    OPPhoto *_currentPhoto;
+}
+@end
 
 @implementation OPPhotoViewController
 
@@ -20,12 +27,17 @@
     self = [super initWithNibName:@"OPPhotoViewController" bundle:nil];
     if (self) {
         _photoAlbum = album;
-        _photo = photo;
         _effectsState = NSOffState;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewSizeChanged:) name:NSWindowDidResizeNotification object:self.view.window];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewSizeChanged:) name:NSViewFrameDidChangeNotification object:self.view];
+        
+        //Page Controller
+        [_pageController setArrangedObjects:_photoAlbum.allPhotos];
+        _index = [_photoAlbum.allPhotos indexOfObject:photo];
+        [_pageController setSelectedIndex:_index];
+        [_pageController setTransitionStyle:NSPageControllerTransitionStyleHorizontalStrip];
     }
     return self;
 }
@@ -38,7 +50,7 @@
 
 -(NSString *)viewTitle
 {
-    return [[[self.photo.path path] lastPathComponent] stringByDeletingPathExtension];
+    return _currentPhoto ? [[[_currentPhoto.path path] lastPathComponent] stringByDeletingPathExtension] : [NSString string];
 }
 
 -(BOOL)acceptsFirstResponder
@@ -48,25 +60,17 @@
 
 -(void)nextPhoto
 {
-    NSUInteger position = [_photoAlbum.allPhotos indexOfObject:_photo];
-    if (position != NSNotFound && position++ < (_photoAlbum.allPhotos.count-1))
-    {
-        [self changePhoto:position];
-    }
+    [_pageController navigateForward:self];
 }
 
 -(void)previousPhoto
 {
-    NSUInteger position = [_photoAlbum.allPhotos indexOfObject:_photo];
-    if (position != NSNotFound && position != 0 && position-- < _photoAlbum.allPhotos.count)
-    {
-        [self changePhoto:position];
-    }
+    [_pageController navigateBack:self];
 }
 
 - (IBAction)rotateLeft:(id)sender
 {
-    _imageView.image = [_imageView.image imageRotatedByDegrees:90];
+//    _imageView.image = [_imageView.image imageRotatedByDegrees:90];
 }
 
 - (IBAction)toggleEffects:(id)sender
@@ -83,12 +87,26 @@
     }
 }
 
--(void)changePhoto:(NSUInteger)position
+-(NSString *)pageController:(NSPageController *)pageController identifierForObject:(id)object
 {
-    _photo = [[_photoAlbum allPhotos] objectAtIndex:position];
-    [self reloadEffects];
-    _imageView.image = [_photo scaleImageToFitSize:_imageView.frame.size];
-    [self.controller updateNavigationBar];
+    return @"photo";
+}
+
+-(NSViewController *)pageController:(NSPageController *)pageController viewControllerForIdentifier:(NSString *)identifier
+{
+    return [[OPPhotoController alloc] init];
+}
+
+-(void)pageController:(NSPageController *)pageController prepareViewController:(NSViewController *)viewController withObject:(id)object
+{
+    if (object)
+    {
+        NSSize windowSize = [[NSApplication sharedApplication] mainWindow].frame.size;
+        _currentPhoto = object;
+        viewController.representedObject = [_currentPhoto scaleImageToFitSize:windowSize];
+        [self reloadEffects];
+        [self.controller updateNavigationBar];
+    }
 }
 
 -(void)loadView
@@ -102,7 +120,7 @@
 
 -(void)viewSizeChanged:(NSNotification*)notification
 {
-     _imageView.image = [_photo scaleImageToFitSize:_imageView.frame.size];
+    [_pageController.selectedViewController.view setNeedsDisplay:YES];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath
@@ -114,18 +132,21 @@
     {
         if (_collectionView.selectionIndexes.count > 0)
         {
-            OPEffectProcessedImageRef *processedImage = [[_imagesArrayController content] objectAtIndex:[[_collectionView selectionIndexes] lastIndex]];
-            
-            NSDictionary *filters = [self filtersForImage:nil];
-            
-            CIFilter *filter = [filters objectForKey:processedImage.effect];
-            
-            [self performBlockOnMainThread:^{
-                [_imageView setCompositingFilter:filter];
-                
-                //Keeps next/previous keyboard navigation working when the collection view is used to set an effect.
-                [self.view.window makeFirstResponder:self.view];
-            }];
+//            OPEffectProcessedImageRef *processedImage = [[_imagesArrayController content] objectAtIndex:[[_collectionView selectionIndexes] lastIndex]];
+//            
+//            NSDictionary *filters = [self filtersForImage:nil];
+//            
+//            CIFilter *filter = [filters objectForKey:processedImage.effect];
+//            
+//            [self performBlockOnMainThread:^{
+//                
+//                OPPhotoController *photoController = (OPPhotoController*)_pageController.selectedViewController.view;
+//                
+//                [photoController setFilter:filter];
+//                
+//                //Keeps next/previous keyboard navigation working when the collection view is used to set an effect.
+//                [self.view.window makeFirstResponder:self.view];
+//            }];
         }
         else
         {
@@ -137,23 +158,27 @@
 -(NSArray *)processedImages
 {
     NSMutableArray *images = [NSMutableArray array];
+    OPPhoto *photo = [_pageController representedObject];
     
-    CIContext *context = [[NSGraphicsContext currentContext] CIContext];
-    
-    NSImage *image = [[OPImageCache sharedPreviewCache] loadImageForPath:_photo.path];
-    [images addObject:[OPEffectProcessedImageRef newWithImage:image effect:@"Original"]];
-    
-    CGImageRef imageRef = image.CGImageRef;
-    CIImage *ciImage = [[CIImage alloc] initWithCGImage:imageRef];
-    
-    NSDictionary *filters = [self filtersForImage:ciImage];
-    for (NSString *filterName in filters.allKeys)
+    if (photo)
     {
-        CIFilter *filter = [filters objectForKey:filterName];
-        CIImage *result = [filter valueForKey:kCIOutputImageKey];
-        CGImageRef cgImage = [context createCGImage:result fromRect:[result extent]];
-        NSImage *filteredImage = [[NSImage alloc] initWithCGImage:cgImage size:image.size];
-        [images addObject:[OPEffectProcessedImageRef newWithImage:filteredImage effect:filterName]];
+        CIContext *context = [[NSGraphicsContext currentContext] CIContext];
+        
+        NSImage *image = [[OPImageCache sharedPreviewCache] loadImageForPath:photo.path];
+        [images addObject:[OPEffectProcessedImageRef newWithImage:image effect:@"Original"]];
+        
+        CGImageRef imageRef = image.CGImageRef;
+        CIImage *ciImage = [[CIImage alloc] initWithCGImage:imageRef];
+        
+        NSDictionary *filters = [self filtersForImage:ciImage];
+        for (NSString *filterName in filters.allKeys)
+        {
+            CIFilter *filter = [filters objectForKey:filterName];
+            CIImage *result = [filter valueForKey:kCIOutputImageKey];
+            CGImageRef cgImage = [context createCGImage:result fromRect:[result extent]];
+            NSImage *filteredImage = [[NSImage alloc] initWithCGImage:cgImage size:image.size];
+            [images addObject:[OPEffectProcessedImageRef newWithImage:filteredImage effect:filterName]];
+        }
     }
     
     return [NSArray arrayWithArray:images];
