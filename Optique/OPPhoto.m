@@ -48,7 +48,7 @@
         NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
                                           kCGImageSourceCreateThumbnailWithTransform, kCFBooleanTrue,
                                           kCGImageSourceCreateThumbnailFromImageAlways, [NSNumber numberWithFloat:maxEdgeSize],
-                                          kCGImageSourceThumbnailMaxPixelSize, nil];
+                                          kCGImageSourceThumbnailMaxPixelSize, kCFBooleanTrue, kCGImageSourceShouldCache, nil];
         CGImageRef thumbnail = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, (__bridge CFDictionaryRef)thumbnailOptions);
         
         image = [[NSImage alloc] initWithCGImage:thumbnail size:NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail))];
