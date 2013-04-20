@@ -27,7 +27,6 @@
 		0F489958170C41060044ED0A /* CHReadWriteLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F489957170C41060044ED0A /* CHReadWriteLock.m */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
-		0F6D091F170EA9D0006268F1 /* OPImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D091E170EA9D0006268F1 /* OPImageView.m */; };
 		0F6D098A170FC5E3006268F1 /* OPEffectProcessedImageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D0989170FC5E3006268F1 /* OPEffectProcessedImageRef.m */; };
 		0F705231170AB695001F8159 /* OPPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F705230170AB695001F8159 /* OPPhotoGridView.m */; };
 		0F705235170AE5CC001F8159 /* OPTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F705234170AE5CC001F8159 /* OPTextLayer.m */; };
@@ -116,8 +115,6 @@
 		0F6AEF821701C02200A797E4 /* OPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMainWindowController.h; sourceTree = "<group>"; };
 		0F6AEF831701C02200A797E4 /* OPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMainWindowController.m; sourceTree = "<group>"; };
 		0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPMainWindowController.xib; sourceTree = "<group>"; };
-		0F6D091D170EA9D0006268F1 /* OPImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageView.h; sourceTree = "<group>"; };
-		0F6D091E170EA9D0006268F1 /* OPImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageView.m; sourceTree = "<group>"; };
 		0F6D0988170FC5E3006268F1 /* OPEffectProcessedImageRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPEffectProcessedImageRef.h; sourceTree = "<group>"; };
 		0F6D0989170FC5E3006268F1 /* OPEffectProcessedImageRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPEffectProcessedImageRef.m; sourceTree = "<group>"; };
 		0F70522F170AB695001F8159 /* OPPhotoGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoGridView.h; sourceTree = "<group>"; };
@@ -229,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				0F705232170AC2AF001F8159 /* Photo Grid */,
-				0F6D0920170EB987006268F1 /* Image Kit */,
 				0F368A7C170681F100411503 /* OPScrollView.h */,
 				0F368A7D170681F100411503 /* OPScrollView.m */,
 				0F368A8517068F0400411503 /* OPWindow.h */,
@@ -240,15 +236,6 @@
 				0F705234170AE5CC001F8159 /* OPTextLayer.m */,
 			);
 			name = "Custom Views";
-			sourceTree = "<group>";
-		};
-		0F6D0920170EB987006268F1 /* Image Kit */ = {
-			isa = PBXGroup;
-			children = (
-				0F6D091D170EA9D0006268F1 /* OPImageView.h */,
-				0F6D091E170EA9D0006268F1 /* OPImageView.m */,
-			);
-			name = "Image Kit";
 			sourceTree = "<group>";
 		};
 		0F6D0982170FBEA1006268F1 /* Image effects */ = {
@@ -658,7 +645,6 @@
 				0F705235170AE5CC001F8159 /* OPTextLayer.m in Sources */,
 				0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */,
 				0F489958170C41060044ED0A /* CHReadWriteLock.m in Sources */,
-				0F6D091F170EA9D0006268F1 /* OPImageView.m in Sources */,
 				0F6D098A170FC5E3006268F1 /* OPEffectProcessedImageRef.m in Sources */,
 				0FC8A7A9170FD6E300650D7C /* OPImageEffectItemView.m in Sources */,
 				0FC8A7AC170FD76800650D7C /* OPImageEffectItem.m in Sources */,

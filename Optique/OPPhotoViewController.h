@@ -10,7 +10,6 @@
 #import "OPNavigationViewController.h"
 #import "OPPhotoAlbum.h"
 #import "OPPhoto.h"
-#import "OPImageView.h"
 
 @interface OPPhotoViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate>
 

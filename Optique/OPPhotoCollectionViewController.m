@@ -68,7 +68,7 @@
         message = [NSString stringWithFormat:@"Do you want to delete '%@'?", photo.title];
     }
     
-    NSBeginAlertSheet(message, @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, CFBridgingRetain(photos), @"This operation can not be undone.");
+    NSBeginAlertSheet(message, @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, (void*)CFBridgingRetain(photos), @"This operation can not be undone.");
 }
 
 - (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet

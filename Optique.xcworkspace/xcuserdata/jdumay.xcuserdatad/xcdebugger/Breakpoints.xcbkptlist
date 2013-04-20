@@ -316,7 +316,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPDeleteAlbumSheetController.m"
@@ -326,19 +326,6 @@
          startingLineNumber = "33"
          endingLineNumber = "33"
          landmarkName = "-windowDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPDeleteAlbumSheetController.m"
-         timestampString = "388124167.315252"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "19"
-         endingLineNumber = "19"
-         landmarkName = "-initWithPhotoAlbums:photoManager:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
