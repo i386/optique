@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F01F46F171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m */; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
 		0F350F5D16FB0E3A00CC18F7 /* OPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F350F5C16FB0E3A00CC18F7 /* OPPhoto.m */; };
 		0F368A6C170531B500411503 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F368A6B170531B500411503 /* Quartz.framework */; };
@@ -78,6 +79,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F01F46E171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSGraphicsContext+GraphicsContext.h"; sourceTree = "<group>"; };
+		0F01F46F171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSGraphicsContext+GraphicsContext.m"; sourceTree = "<group>"; };
 		0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+FullScreen.h"; sourceTree = "<group>"; };
 		0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+FullScreen.m"; sourceTree = "<group>"; };
 		0F350F5B16FB0E3A00CC18F7 /* OPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhoto.h; sourceTree = "<group>"; };
@@ -435,6 +438,8 @@
 				0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */,
 				0FCE744D1714136B00A5AE79 /* NSObject+PerformBlock.h */,
 				0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */,
+				0F01F46E171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.h */,
+				0F01F46F171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -660,6 +665,7 @@
 				0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */,
 				0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */,
 				0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */,
+				0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

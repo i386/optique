@@ -22,6 +22,8 @@ NSString *const OPPhotoManagerDidDeleteAlbum;
 
 -(NSArray*)allAlbums;
 
+-(NSArray*)albumsForIndexSet:(NSIndexSet*)indexSet;
+
 -(OPPhotoAlbum*)newAlbumWithName:(NSString*)albumName error:(NSError **)error;
 
 -(void)deleteAlbum:(OPPhotoAlbum*)photoAlbum;

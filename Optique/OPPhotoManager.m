@@ -54,6 +54,17 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
     }
 }
 
+-(NSArray *)albumsForIndexSet:(NSIndexSet *)indexSet
+{
+    NSMutableArray *albums = [NSMutableArray array];
+    
+    [[self allAlbums] enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [albums addObject:obj];
+    }];
+    
+    return albums;
+}
+
 -(OPPhotoAlbum *)newAlbumWithName:(NSString *)albumName error:(NSError **)error
 {
     NSURL *albumPath = [self.path URLByAppendingPathComponent:albumName isDirectory:YES];

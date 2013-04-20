@@ -40,19 +40,35 @@
 
 - (IBAction)revealInFinder:(NSMenuItem*)sender
 {
-    NSNumber *index = (NSNumber*)sender.representedObject;
-    OPPhoto *photo = _photoAlbum.allPhotos[index.unsignedIntValue];
-    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[photo.path]];
+    NSIndexSet *indexes = (NSIndexSet*)sender.representedObject;
+    NSMutableArray *urls = [NSMutableArray array];
+    
+    [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
+        OPPhoto *photo = _photoAlbum.allPhotos[index];
+        [urls addObject:photo.path];
+    }];
+    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
 }
 
 - (IBAction)deletePhoto:(id)sender
 {
     NSMenuItem *item = sender;
-    NSNumber *index = item.representedObject;
+    NSIndexSet *indexes = item.representedObject;
     
-    OPPhoto *photo = _photoAlbum.allPhotos[index.unsignedIntValue];
+    NSArray *photos = [_photoAlbum photosForIndexSet:indexes];
     
-    NSBeginAlertSheet([NSString stringWithFormat:@"Do you want to delete '%@'?", photo.title], @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, (__bridge void *)(photo), @"This operation can not be undone.");
+    NSString *message;
+    if (photos.count > 1)
+    {
+        message = [NSString stringWithFormat:@"Do you want to delete the %lu selected photos?", photos.count];
+    }
+    else
+    {
+        OPPhoto *photo = [photos lastObject];
+        message = [NSString stringWithFormat:@"Do you want to delete '%@'?", photo.title];
+    }
+    
+    NSBeginAlertSheet(message, @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, CFBridgingRetain(photos), @"This operation can not be undone.");
 }
 
 - (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet
@@ -61,9 +77,12 @@
 {
     if (returnCode == NSAlertDefaultReturn)
     {
-        OPPhoto *photo = (__bridge OPPhoto*)contextInfo;
+        NSArray *photos = CFBridgingRelease(contextInfo);
         
-        [_photoAlbum deletePhoto:photo error:nil];
+        for (OPPhoto *photo in photos)
+        {
+            [_photoAlbum deletePhoto:photo error:nil];
+        }
         
         [_gridView reloadData];
     }
@@ -120,7 +139,7 @@
 -(void)loadView
 {
     [super loadView];
-    
+    [_gridView setAllowsMultipleSelection:YES];
     [_gridView reloadData];
 }
 

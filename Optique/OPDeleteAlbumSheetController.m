@@ -14,11 +14,11 @@
 
 @implementation OPDeleteAlbumSheetController
 
--(id)initWithPhotoAlbum:(OPPhotoAlbum *)photoAlbum photoManager:(OPPhotoManager *)photoManager
+-(id)initWithPhotoAlbums:(NSArray *)albums photoManager:(OPPhotoManager *)photoManager
 {
     self = [super initWithWindowNibName:@"OPDeleteAlbumSheetController"];
     if (self) {
-        _photoAlbum = photoAlbum;
+        _albums = albums;
         _photoManager = photoManager;
     }
     
@@ -29,16 +29,32 @@
 {
     [super windowDidLoad];
     [_progressIndicator startAnimation:self];
-    [_labelTextField setStringValue:[NSString stringWithFormat:@"Deleting album '%@'...", _photoAlbum.title]];
+    
+    NSString *message;
+    if (_albums.count > 1)
+    {
+        message = [NSString stringWithFormat:@"Deleting %lu albums...", _albums.count];
+    }
+    else
+    {
+        OPPhotoAlbum *album = [_albums lastObject];
+        message = [NSString stringWithFormat:@"Deleting album '%@'...", album.title];
+    }
+    
+    [_labelTextField setStringValue:message];
 }
 
 -(void)startAlbumDeletion
 {
     [self performBlockInBackground:^{
-        [_photoManager deleteAlbum:_photoAlbum];
+        [_albums each:^(id sender) {
+            [_photoManager deleteAlbum:sender];
+        }];
+        
         [self performBlockOnMainThread:^{
             [NSApp endSheet:self.window];
             [self.window close];
+            _albums = nil; //Avoid leak
         }];
     }];
 }

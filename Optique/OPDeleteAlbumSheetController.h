@@ -12,12 +12,12 @@
 
 @interface OPDeleteAlbumSheetController : NSWindowController <NSFileManagerDelegate>
 
-@property (readonly, weak) OPPhotoAlbum *photoAlbum;
+@property (readonly, strong) NSArray *albums;
 @property (readonly, weak) OPPhotoManager *photoManager;
 @property (strong) IBOutlet NSTextField *labelTextField;
 @property (strong) IBOutlet NSProgressIndicator *progressIndicator;
 
--initWithPhotoAlbum:(OPPhotoAlbum*)photoAlbum photoManager:(OPPhotoManager*)photoManager;
+-initWithPhotoAlbums:(NSArray*)albums photoManager:(OPPhotoManager*)photoManager;
 
 -(void)startAlbumDeletion;
 

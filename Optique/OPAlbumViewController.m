@@ -55,20 +55,42 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFinishScanNotification object:nil];
 }
 
+-(void)loadView
+{
+    [super loadView];
+    
+    [_gridView setAllowsMultipleSelection:YES];
+}
+
 - (IBAction)revealInFinder:(NSMenuItem*)sender
 {
-    NSNumber *index = (NSNumber*)sender.representedObject;
-    OPPhotoAlbum *album = _photoManager.allAlbums[index.unsignedIntValue];
-    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[album.path]];
+    NSIndexSet *indexes = (NSIndexSet*)sender.representedObject;
+    NSMutableArray *urls = [NSMutableArray array];
+    [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
+        OPPhotoAlbum *album = _photoManager.allAlbums[index];
+        [urls addObject:album.path];
+    }];
+    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
 }
 
 - (IBAction)deleteAlbum:(NSMenuItem*)sender
 {
-    NSNumber *index = (NSNumber*)sender.representedObject;
-    OPPhotoAlbum *album = _photoManager.allAlbums[index.unsignedIntValue];
-    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithPhotoAlbum:album photoManager:_photoManager];
+    NSIndexSet *index = (NSIndexSet*)sender.representedObject;
     
-    NSBeginAlertSheet([NSString stringWithFormat:@"Do you want to delete '%@'?", album.title], @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, nil, @"This operation can not be undone.", nil);
+    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithPhotoAlbums:[_photoManager albumsForIndexSet:index] photoManager:_photoManager];
+    
+    NSString *alertMessage;
+    if (index.count > 1)
+    {
+        alertMessage = [NSString stringWithFormat:@"Do you want to delete the %lu selected albums?", index.count];
+    }
+    else
+    {
+        OPPhotoAlbum *album = [_deleteAlbumSheetController.albums lastObject];
+        alertMessage = [NSString stringWithFormat:@"Do you want to delete '%@'?", album.title];
+    }
+    
+    NSBeginAlertSheet(alertMessage, @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, nil, @"This operation can not be undone.", nil);
 }
 
 - (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet

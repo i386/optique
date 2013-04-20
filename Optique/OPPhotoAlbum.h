@@ -19,6 +19,8 @@
 
 -(NSArray*)allPhotos;
 
+-(NSArray*)photosForIndexSet:(NSIndexSet*)indexSet;
+
 -(void)reloadPhotos;
 
 -(void)deletePhoto:(OPPhoto*)photo error:(NSError**)error;

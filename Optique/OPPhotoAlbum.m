@@ -49,6 +49,17 @@
     }
 }
 
+-(NSArray *)photosForIndexSet:(NSIndexSet *)indexSet
+{
+    NSMutableArray *albums = [NSMutableArray array];
+    
+    [[self allPhotos] enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [albums addObject:obj];
+    }];
+    
+    return albums;
+}
+
 -(void)reloadPhotos
 {
     [_arrayLock lockForWriting];
