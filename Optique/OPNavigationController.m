@@ -119,6 +119,7 @@ enum OPNavigationControllerAnimationType : NSInteger {
     [_visibleViewController.view.window makeFirstResponder:_visibleViewController.view];
     
     [self updateNavigationBar];
+    [_visibleViewController showView];
 }
 
 -(void)awakeFromNib

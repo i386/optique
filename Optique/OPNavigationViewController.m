@@ -29,4 +29,9 @@
     return [NSString string];
 }
 
+-(void)showView
+{
+    //noop
+}
+
 @end

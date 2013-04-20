@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F01F46F171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m */; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
+		0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3001E1172250E800ACAF9E /* OPPhotoImageView.m */; };
 		0F350F5D16FB0E3A00CC18F7 /* OPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F350F5C16FB0E3A00CC18F7 /* OPPhoto.m */; };
 		0F368A6C170531B500411503 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F368A6B170531B500411503 /* Quartz.framework */; };
 		0F368A71170677A700411503 /* OPPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A70170677A700411503 /* OPPhotoView.m */; };
@@ -83,6 +84,8 @@
 		0F01F46F171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSGraphicsContext+GraphicsContext.m"; sourceTree = "<group>"; };
 		0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+FullScreen.h"; sourceTree = "<group>"; };
 		0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+FullScreen.m"; sourceTree = "<group>"; };
+		0F3001E0172250E800ACAF9E /* OPPhotoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoImageView.h; sourceTree = "<group>"; };
+		0F3001E1172250E800ACAF9E /* OPPhotoImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoImageView.m; sourceTree = "<group>"; };
 		0F350F5B16FB0E3A00CC18F7 /* OPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhoto.h; sourceTree = "<group>"; };
 		0F350F5C16FB0E3A00CC18F7 /* OPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhoto.m; sourceTree = "<group>"; };
 		0F368A6B170531B500411503 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
@@ -288,6 +291,8 @@
 				0F8B71D5171BA077004D8082 /* OPPhotoController.h */,
 				0F8B71D6171BA077004D8082 /* OPPhotoController.m */,
 				0F8B71D7171BA077004D8082 /* OPPhotoController.xib */,
+				0F3001E0172250E800ACAF9E /* OPPhotoImageView.h */,
+				0F3001E1172250E800ACAF9E /* OPPhotoImageView.m */,
 			);
 			name = "Photo View";
 			sourceTree = "<group>";
@@ -666,6 +671,7 @@
 				0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */,
 				0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */,
 				0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */,
+				0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

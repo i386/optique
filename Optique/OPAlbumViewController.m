@@ -58,7 +58,6 @@
 -(void)loadView
 {
     [super loadView];
-    
     [_gridView setAllowsMultipleSelection:YES];
 }
 

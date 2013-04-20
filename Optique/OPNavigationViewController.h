@@ -13,6 +13,14 @@
 
 @property (weak) OPNavigationController *controller;
 
+/**
+ The calculated title for the view to show in the `OPNavigationBar`.
+ */
 -(NSString*)viewTitle;
+
+/**
+ Called with the `OPNavigationController` displays the view when the controller is made visible initially or is popped.
+ */
+-(void)showView;
 
 @end

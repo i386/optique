@@ -60,20 +60,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPAlbumViewController.m"
-         timestampString = "388122019.617087"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "100"
-         endingLineNumber = "100"
-         landmarkName = "-deleteSheetDidEndShouldClose:returnCode:contextInfo:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Optique/OPAlbumViewController.m"
-         timestampString = "388122019.617087"
+         timestampString = "388127069.893314"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "99"
@@ -86,11 +73,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPAlbumViewController.m"
-         timestampString = "388122019.617087"
+         timestampString = "388127069.893314"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "81"
-         endingLineNumber = "81"
+         startingLineNumber = "98"
+         endingLineNumber = "98"
+         landmarkName = "-deleteSheetDidEndShouldClose:returnCode:contextInfo:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Optique/OPAlbumViewController.m"
+         timestampString = "388127069.893314"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
          landmarkName = "-deleteAlbum:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -164,11 +164,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPPhotoViewController.m"
-         timestampString = "387709742.835932"
+         timestampString = "388126610.875925"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "102"
-         endingLineNumber = "102"
+         startingLineNumber = "128"
+         endingLineNumber = "128"
          landmarkName = "-pageController:prepareViewController:withObject:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -203,11 +203,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPPhotoViewController.m"
-         timestampString = "387710197.721552"
+         timestampString = "388126610.875925"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "108"
-         endingLineNumber = "108"
+         startingLineNumber = "134"
+         endingLineNumber = "134"
          landmarkName = "-pageController:prepareViewController:withObject:"
          landmarkType = "5">
       </FileBreakpoint>

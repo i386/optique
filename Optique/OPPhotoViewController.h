@@ -24,8 +24,10 @@
 -initWithPhotoAlbum:(OPPhotoAlbum*)album photo:(OPPhoto*)photo;
 
 -(void)nextPhoto;
-
 -(void)previousPhoto;
+
+-(void)deletePhoto;
+-(void)revealInFinder;
 
 -(NSArray *)processedImages;
 

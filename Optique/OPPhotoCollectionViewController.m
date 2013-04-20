@@ -140,6 +140,10 @@
 {
     [super loadView];
     [_gridView setAllowsMultipleSelection:YES];
+}
+
+-(void)showView
+{
     [_gridView reloadData];
 }
 

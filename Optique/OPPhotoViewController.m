@@ -68,6 +68,32 @@
     [_pageController navigateBack:self];
 }
 
+-(void)deletePhoto
+{
+    NSString *message = [NSString stringWithFormat:@"Do you want to delete '%@'?", _currentPhoto.title];
+    
+    NSBeginAlertSheet(message, @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, CFBridgingRetain(_currentPhoto), @"This operation can not be undone.");
+}
+
+- (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet
+                          returnCode: (NSInteger)returnCode
+                         contextInfo: (void *)contextInfo
+{
+    if (returnCode == NSAlertDefaultReturn)
+    {
+        OPPhoto *photo = CFBridgingRelease(contextInfo);
+        
+        [_photoAlbum deletePhoto:photo error:nil];
+        
+        [self.controller popToPreviousViewController];
+    }
+}
+
+-(void)revealInFinder
+{
+    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[_currentPhoto.path]];
+}
+
 - (IBAction)rotateLeft:(id)sender
 {
 //    _imageView.image = [_imageView.image imageRotatedByDegrees:90];
@@ -94,7 +120,7 @@
 
 -(NSViewController *)pageController:(NSPageController *)pageController viewControllerForIdentifier:(NSString *)identifier
 {
-    return [[OPPhotoController alloc] init];
+    return [[OPPhotoController alloc] initWithPhotoViewController:self];
 }
 
 -(void)pageController:(NSPageController *)pageController prepareViewController:(NSViewController *)viewController withObject:(id)object
