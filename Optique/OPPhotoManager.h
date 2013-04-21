@@ -28,4 +28,6 @@ NSString *const OPPhotoManagerDidDeleteAlbum;
 
 -(void)deleteAlbum:(OPPhotoAlbum*)photoAlbum;
 
+-(void)albumUpdated:(OPPhotoAlbum*)album;
+
 @end

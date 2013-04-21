@@ -77,7 +77,7 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
         
         if (!error)
         {
-            OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithTitle:albumName path:albumPath];
+            OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithTitle:albumName path:albumPath photoManager:self];
             [self addAlbum:album];
             [self sendNotificationWithName:OPPhotoManagerDidAddAlbum forAlbum:album];
             return album;
@@ -101,6 +101,12 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
     [[NSFileManager defaultManager] removeItemAtURL:photoAlbum.path error:nil];
     
     [self removeAlbum:photoAlbum];
+}
+
+-(void)albumUpdated:(OPPhotoAlbum *)album
+{
+    [album reloadPhotos];
+    [self sendNotificationWithName:OPPhotoManagerDidUpdateAlbum forAlbum:album];
 }
 
 -(void)foundAlbums:(NSNotification*)event

@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
+#import "OPPhotoManager.h"
 #import "OPPhotoAlbum.h"
 #import "OPPhoto.h"
 #import "CHReadWriteLock.h"
@@ -19,13 +20,14 @@
 
 @implementation OPPhotoAlbum
 
--(id)initWithTitle:(NSString *)title path:(NSURL *)path
+-(id)initWithTitle:(NSString *)title path:(NSURL *)path photoManager:(OPPhotoManager*)photoManager
 {
     self = [super init];
     if (self)
     {
         _title = title;
         _path = path;
+        _photoManager = photoManager;
         _arrayLock = [[CHReadWriteLock alloc] init];
     }
     return self;
@@ -53,7 +55,8 @@
 {
     NSMutableArray *albums = [NSMutableArray array];
     
-    [[self allPhotos] enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    [[self allPhotos] enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+    {
         [albums addObject:obj];
     }];
     
@@ -89,6 +92,15 @@
     }
 }
 
+-(void)movePhoto:(OPPhoto *)photo toAlbum:(OPPhotoAlbum *)album
+{
+    NSURL *url = [[album path] URLByAppendingPathComponent:[photo.path lastPathComponent]];
+    [[NSFileManager defaultManager] moveItemAtURL:photo.path toURL:url error:nil];
+    
+    [_photoManager albumUpdated:self];
+    [_photoManager albumUpdated:album];
+}
+
 -(NSArray*)findAllPhotos
 {
     NSMutableArray *photos = [[NSMutableArray alloc] init];
@@ -117,7 +129,7 @@
             
             if (UTTypeConformsTo(fileUTI, kUTTypeImage))
             {
-                OPPhoto *photo = [[OPPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url];
+                OPPhoto *photo = [[OPPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
                 [photos addObject:photo];
             }
         }

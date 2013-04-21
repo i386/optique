@@ -53,14 +53,12 @@
 										<int key="NSvFlags">274</int>
 										<string key="NSFrameSize">{480, 272}</string>
 										<reference key="NSSuperview" ref="98779860"/>
-										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="1058082440"/>
 										<string key="NSReuseIdentifierKey">_NS:13</string>
 									</object>
 								</array>
 								<string key="NSFrameSize">{480, 272}</string>
 								<reference key="NSSuperview" ref="760932705"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="455388511"/>
 								<string key="NSReuseIdentifierKey">_NS:11</string>
 								<reference key="NSDocView" ref="455388511"/>
@@ -80,7 +78,6 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrame">{{464, 0}, {16, 272}}</string>
 								<reference key="NSSuperview" ref="760932705"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:15</string>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<reference key="NSTarget" ref="760932705"/>
@@ -93,7 +90,6 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrame">{{0, 256}, {480, 16}}</string>
 								<reference key="NSSuperview" ref="760932705"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="483567784"/>
 								<string key="NSReuseIdentifierKey">_NS:26</string>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -105,7 +101,6 @@
 						</array>
 						<string key="NSFrameSize">{480, 272}</string>
 						<reference key="NSSuperview" ref="1005"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="98779860"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="NSsFlags">133168</int>
@@ -119,34 +114,65 @@
 				</array>
 				<string key="NSFrameSize">{480, 272}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="760932705"/>
 				<string key="NSClassName">OPWindowContentView</string>
 			</object>
 			<object class="NSMenu" id="796788892">
 				<string key="NSTitle"/>
 				<array class="NSMutableArray" key="NSMenuItems">
+					<object class="NSMenuItem" id="975182597">
+						<reference key="NSMenu" ref="796788892"/>
+						<string key="NSTitle">Move to album...</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<object class="NSCustomResource" key="NSOnImage" id="291360659">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuCheckmark</string>
+						</object>
+						<object class="NSCustomResource" key="NSMixedImage" id="149046678">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuMixedState</string>
+						</object>
+						<string key="NSAction">submenuAction:</string>
+						<object class="NSMenu" key="NSSubmenu" id="884315118">
+							<string key="NSTitle">Move to album...</string>
+							<array class="NSMutableArray" key="NSMenuItems">
+								<object class="NSMenuItem" id="918779179">
+									<reference key="NSMenu" ref="884315118"/>
+									<string key="NSTitle">Item</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="291360659"/>
+									<reference key="NSMixedImage" ref="149046678"/>
+								</object>
+							</array>
+						</object>
+					</object>
+					<object class="NSMenuItem" id="912888047">
+						<reference key="NSMenu" ref="796788892"/>
+						<bool key="NSIsDisabled">YES</bool>
+						<bool key="NSIsSeparator">YES</bool>
+						<string key="NSTitle"/>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="291360659"/>
+						<reference key="NSMixedImage" ref="149046678"/>
+					</object>
 					<object class="NSMenuItem" id="487760183">
 						<reference key="NSMenu" ref="796788892"/>
 						<string key="NSTitle">Reveal in Finder</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
-						<object class="NSCustomResource" key="NSOnImage" id="1040381304">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NSMenuCheckmark</string>
-						</object>
-						<object class="NSCustomResource" key="NSMixedImage" id="155832899">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NSMenuMixedState</string>
-						</object>
+						<reference key="NSOnImage" ref="291360659"/>
+						<reference key="NSMixedImage" ref="149046678"/>
 					</object>
 					<object class="NSMenuItem" id="481836325">
 						<reference key="NSMenu" ref="796788892"/>
 						<string key="NSTitle">Delete photo</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="1040381304"/>
-						<reference key="NSMixedImage" ref="155832899"/>
+						<reference key="NSOnImage" ref="291360659"/>
+						<reference key="NSMixedImage" ref="149046678"/>
 					</object>
 				</array>
 			</object>
@@ -192,6 +218,22 @@
 						<reference key="destination" ref="481836325"/>
 					</object>
 					<int key="connectionID">43</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">moveToAlbumItem</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="975182597"/>
+					</object>
+					<int key="connectionID">48</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">contextMenu</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="796788892"/>
+					</object>
+					<int key="connectionID">49</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -283,6 +325,8 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="487760183"/>
 							<reference ref="481836325"/>
+							<reference ref="912888047"/>
+							<reference ref="975182597"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -295,6 +339,32 @@
 						<int key="objectID">42</int>
 						<reference key="object" ref="481836325"/>
 						<reference key="parent" ref="796788892"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">44</int>
+						<reference key="object" ref="912888047"/>
+						<reference key="parent" ref="796788892"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">45</int>
+						<reference key="object" ref="975182597"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="884315118"/>
+						</array>
+						<reference key="parent" ref="796788892"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">46</int>
+						<reference key="object" ref="884315118"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="918779179"/>
+						</array>
+						<reference key="parent" ref="975182597"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">47</int>
+						<reference key="object" ref="918779179"/>
+						<reference key="parent" ref="884315118"/>
 					</object>
 				</array>
 			</object>
@@ -311,104 +381,18 @@
 				<string key="36.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="37.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="44.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="45.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="46.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="47.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">43</int>
+			<int key="maxID">49</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">CNGridView</string>
-					<string key="superclassName">NSView</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="dataSource">id</string>
-						<string key="delegate">id</string>
-						<string key="itemContextMenu">NSMenu</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="dataSource">
-							<string key="name">dataSource</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="delegate">
-							<string key="name">delegate</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="itemContextMenu">
-							<string key="name">itemContextMenu</string>
-							<string key="candidateClassName">NSMenu</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/CNGridView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">OPNavigationViewController</string>
-					<string key="superclassName">NSViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/OPNavigationViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">OPPhotoCollectionViewController</string>
-					<string key="superclassName">OPNavigationViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="deletePhoto:">id</string>
-						<string key="revealInFinder:">NSMenuItem</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="deletePhoto:">
-							<string key="name">deletePhoto:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="revealInFinder:">
-							<string key="name">revealInFinder:</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="gridView">CNGridView</string>
-						<string key="photoItemContextMenu">NSMenu</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="gridView">
-							<string key="name">gridView</string>
-							<string key="candidateClassName">CNGridView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="photoItemContextMenu">
-							<string key="name">photoItemContextMenu</string>
-							<string key="candidateClassName">NSMenu</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/OPPhotoCollectionViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">OPPhotoGridView</string>
-					<string key="superclassName">CNGridView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/OPPhotoGridView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">OPWindowContentView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/OPWindowContentView.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">

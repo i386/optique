@@ -12,7 +12,6 @@
 #import "CNGridViewItemLayout.h"
 #import "OPPhotoGridView.h"
 #import "OPImagePreviewService.h"
-#import "OPPhotoManager.h"
 
 @interface OPPhotoCollectionViewController ()
 
@@ -20,12 +19,13 @@
 
 @implementation OPPhotoCollectionViewController
 
--(id)initWithPhotoAlbum:(OPPhotoAlbum *)photoAlbum
+-(id)initWithPhotoAlbum:(OPPhotoAlbum *)photoAlbum photoManager:(OPPhotoManager*)photoManager
 {
     self = [super initWithNibName:@"OPPhotoCollectionViewController" bundle:nil];
     if (self)
     {
         _photoAlbum = photoAlbum;
+        _photoManager = photoManager;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateAlbum object:nil];
     }
@@ -79,10 +79,10 @@
     {
         NSArray *photos = CFBridgingRelease(contextInfo);
         
-        for (OPPhoto *photo in photos)
+        [photos each:^(id sender)
         {
-            [_photoAlbum deletePhoto:photo error:nil];
-        }
+            [_photoAlbum deletePhoto:sender error:nil];
+        }];
         
         [_gridView reloadData];
     }
@@ -131,7 +131,8 @@
 
 -(void)albumUpdated:(NSNotification*)notification
 {
-    [self performBlockOnMainThread:^{
+    [self performBlockOnMainThread:^
+    {
         [_gridView reloadData];
     }];
 }
@@ -140,11 +141,40 @@
 {
     [super loadView];
     [_gridView setAllowsMultipleSelection:YES];
+    _contextMenu.delegate = self;
 }
 
 -(void)showView
 {
     [_gridView reloadData];
+}
+
+-(void)menuNeedsUpdate:(NSMenu *)menu
+{
+    _moveToAlbumItem.submenu = [[NSMenu alloc] init];
+    
+    NSMutableSet *albums = [NSMutableSet setWithArray:_photoManager.allAlbums];
+    [albums removeObject:_photoAlbum];
+    
+    [albums each:^(OPPhotoAlbum *album)
+    {
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:album.title action:@selector(moveToAlbum:) keyEquivalent:[NSString string]];
+        item.target = self;
+        [item setRepresentedObject:album];
+        [_moveToAlbumItem.submenu addItem:item];
+    }];
+}
+
+-(void)moveToAlbum:(NSMenuItem*)item
+{
+    OPPhotoAlbum *album = item.representedObject;
+    NSIndexSet *indexes = [_gridView selectedIndexes];
+    NSArray *photos = [_photoAlbum photosForIndexSet:indexes];
+    
+    [photos each:^(OPPhoto *photo)
+    {
+        [photo.album movePhoto:photo toAlbum:album];
+    }];
 }
 
 @end

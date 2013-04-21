@@ -8,14 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class OPPhotoAlbum;
+
 @interface OPPhoto : NSObject
 
 @property (strong, readonly) NSString *title;
 @property (strong, readonly) NSURL *path;
+@property (strong, readonly) OPPhotoAlbum *album;
+
+-(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(OPPhotoAlbum*)album;
 
 -(NSImage*)image;
-
--initWithTitle:(NSString*)title path:(NSURL*)path;
 
 -(NSImage*)scaleImageToFitSize:(NSSize)size;
 

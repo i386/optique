@@ -91,7 +91,7 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
         
         if (!UTTypeConformsTo(fileUTI, kUTTypeDirectory))
         {
-            return [[OPPhotoAlbum alloc] initWithTitle:[filePath lastPathComponent] path:url];
+            return [[OPPhotoAlbum alloc] initWithTitle:[filePath lastPathComponent] path:url photoManager:_photoManager];
         }
     }
     return nil;

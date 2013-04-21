@@ -42,6 +42,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:OPPhotoManagerDidDeleteAlbum object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateAlbum object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFound:) name:OPAlbumScannerDidFindAlbumsNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFinishedLoading:) name:OPAlbumScannerDidFinishScanNotification object:nil];
@@ -51,6 +53,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidAddAlbum object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidDeleteAlbum object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidUpdateAlbum object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFindAlbumsNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFinishScanNotification object:nil];
 }
@@ -61,11 +64,17 @@
     [_gridView setAllowsMultipleSelection:YES];
 }
 
+-(void)showView
+{
+    [_gridView reloadData];
+}
+
 - (IBAction)revealInFinder:(NSMenuItem*)sender
 {
     NSIndexSet *indexes = (NSIndexSet*)sender.representedObject;
     NSMutableArray *urls = [NSMutableArray array];
-    [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
+    [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
+    {
         OPPhotoAlbum *album = _photoManager.allAlbums[index];
         [urls addObject:album.path];
     }];
@@ -110,7 +119,7 @@
 - (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section
 {
     OPPhotoAlbum *photoAlbum = _photoManager.allAlbums[index];
-    [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:photoAlbum]];
+    [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:photoAlbum photoManager:_photoManager]];
 }
 
 -(NSString *)viewTitle
@@ -142,6 +151,21 @@
     }
 }
 
+-(void)albumUpdated:(NSNotification*)notification
+{
+    [self performBlockOnMainThread:^{
+        OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
+        
+        if ([photoManager isEqual:_photoManager])
+        {
+            OPPhotoAlbum *album = [notification userInfo][@"album"];
+            NSUInteger index = [_photoManager.allAlbums indexOfObject:album];
+            [_gridView redrawItemAtIndex:index];
+            [_gridView reloadData];
+        }
+    }];
+}
+
 -(void)albumsFound:(NSNotification*)notification
 {
     [self performBlockOnMainThread:^{
@@ -171,7 +195,8 @@
 
 -(void)albumsFinishedLoading:(NSNotification*)notification
 {
-    [self performBlockOnMainThread:^{
+    [self performBlockOnMainThread:^
+    {
         OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
         
         if ([photoManager isEqual:_photoManager])
@@ -199,7 +224,8 @@
     if (allPhotos.count > 0)
     {
         OPPhoto *photo = allPhotos[0];
-        item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image) {
+        item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image)
+        {
             [self performBlockOnMainThread:^{
                 [_gridView redrawItemAtIndex:index];
             }];

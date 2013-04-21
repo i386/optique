@@ -35,7 +35,9 @@
 {
     NSRect backgroundFrameRect = NSMakeRect(25, 25, 260, 175);
     
-    [NSGraphicsContext withinGraphicsContext:^{
+    //Draw shadow
+    [NSGraphicsContext withinGraphicsContext:^
+    {
         NSShadow *shadow = [[NSShadow alloc] init];
         shadow.shadowBlurRadius = 3;
         shadow.shadowColor = [NSColor colorWithCalibratedRed:0.00 green:0.00 blue:0.00 alpha:0.1];
@@ -65,14 +67,17 @@
     }];
     
     
-    [NSGraphicsContext withinGraphicsContext:^{
+    //Draw image
+    [NSGraphicsContext withinGraphicsContext:^
+    {
         NSRect imageRect = NSMakeRect(35, 35, 239, 155);
         [self.itemImage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
     }];
     
     
     //Draw label
-    [NSGraphicsContext withinGraphicsContext:^{
+    [NSGraphicsContext withinGraphicsContext:^
+    {
         NSRect textRect = NSMakeRect(backgroundFrameRect.origin.x + 3,
                                      NSHeight(backgroundFrameRect) + 30,
                                      NSWidth(backgroundFrameRect) - 6,

@@ -7,18 +7,20 @@
 //
 
 #import "OPPhoto.h"
-#import "NSImage+MGCropExtensions.h"
 #import "OPImageCache.h"
+#import "OPPhotoAlbum.h"
+#import "NSImage+MGCropExtensions.h"
 
 @implementation OPPhoto
 
--(id)initWithTitle:(NSString *)title path:(NSURL *)path
+-(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(OPPhotoAlbum*)album
 {
     self = [super init];
     if (self)
     {
         _title = title;
         _path = path;
+        _album = album;
     }
     return self;
 }
