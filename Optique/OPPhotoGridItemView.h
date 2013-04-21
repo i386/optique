@@ -9,9 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 #import <CNGridView/CNGridView.h>
+#import "OPPhotoGridView.h"
 
-@interface OPPhotoGridItemView : CNGridViewItem {
+@interface OPPhotoGridItemView : CNGridViewItem<NSDraggingSource> {
     NSDictionary *_attrsDictionary;
 }
+
+@property (weak) OPPhotoGridView *gridView;
 
 @end

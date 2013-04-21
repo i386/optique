@@ -219,6 +219,8 @@
     }
     
     OPPhotoAlbum *album = _photoManager.allAlbums[index];
+    item.representedObject = album;
+    
     NSArray *allPhotos = album.allPhotos;
     
     if (allPhotos.count > 0)
@@ -236,6 +238,7 @@
         item.itemImage = [NSImage imageNamed:@"empty-album"];
     }
     item.itemTitle = album.title;
+    item.gridView = (OPPhotoGridView*)gridView;
     
     return item;
 }

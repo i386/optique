@@ -106,4 +106,50 @@
     self.layer.contentsScale = [[self window] backingScaleFactor];
 }
 
+-(void)mouseDragged:(NSEvent *)theEvent
+{
+    NSArray *urls = [self selectedItemURLs];
+    if (urls.count > 0)
+    {
+        NSLog(@"urls %@", urls);
+        
+        NSPoint downWinLocation = [theEvent locationInWindow];
+        NSPoint point = [self convertPoint:downWinLocation fromView:nil];
+        
+        NSPasteboard *pb = [NSPasteboard pasteboardWithName:NSDragPboard];
+        [pb declareTypes:[NSArray arrayWithObject:NSFilenamesPboardType] owner:nil];
+        [pb setPropertyList:urls forType:NSFilenamesPboardType];
+        
+        [self dragImage:self.itemImage at:point offset:NSZeroSize event:theEvent pasteboard:pb source:self slideBack:YES];
+    }
+}
+
+-(NSArray*)selectedItemURLs
+{
+    NSMutableArray *urls = [[NSMutableArray alloc] init];
+    for (OPPhotoGridItemView *item in [self.gridView selectedItems])
+    {
+        if ([item.representedObject respondsToSelector:@selector(path)])
+        {
+            NSURL *url = (NSURL*)[item.representedObject path];
+            [urls addObject:[url path]];
+        }
+    }
+    return urls;
+}
+
+-(NSDragOperation)draggingSession:(NSDraggingSession *)session sourceOperationMaskForDraggingContext:(NSDraggingContext)context
+{
+    switch (context)
+    {
+        case NSDraggingContextOutsideApplication:
+            return NSDragOperationCopy;
+            break;
+            
+        default:
+            return NSDragOperationNone;
+            break;
+    }
+}
+
 @end

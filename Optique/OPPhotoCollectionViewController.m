@@ -112,11 +112,13 @@
         item = [[OPPhotoGridItemView alloc] initWithLayout:nil reuseIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
     }
     
-    NSArray *allPhotos = [_photoAlbum.allPhotos copy];
+    NSArray *allPhotos = _photoAlbum.allPhotos;
     
     if (allPhotos.count > 0)
     {
         OPPhoto *photo = allPhotos[index];
+        item.representedObject = photo;
+        
         item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image) {
             [self performBlockOnMainThread:^{
                 [_gridView redrawItemAtIndex:index];
@@ -125,6 +127,8 @@
         
         item.itemTitle = photo.title;
     }
+    
+    item.gridView = (OPPhotoGridView*)gridView;
     
     return item;
 }
