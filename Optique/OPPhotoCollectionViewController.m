@@ -119,9 +119,18 @@
         OPPhoto *photo = allPhotos[index];
         item.representedObject = photo;
         
-        item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image) {
-            [self performBlockOnMainThread:^{
-                [_gridView redrawItemAtIndex:index];
+        CNGridViewItem * __weak weakItem = item;
+        OPPhoto * __weak weakPhoto = photo;
+        
+        item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image)
+        {
+            [self performBlockOnMainThreadAndWaitUntilDone:^
+            {
+                if (weakPhoto == weakItem.representedObject)
+                {
+                    weakItem.itemImage = image;
+                    [weakItem setNeedsDisplay:YES];
+                }
             }];
         }];
         

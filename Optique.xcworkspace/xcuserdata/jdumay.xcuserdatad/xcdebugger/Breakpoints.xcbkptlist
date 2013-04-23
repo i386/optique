@@ -333,12 +333,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPPhotoCollectionViewController.m"
-         timestampString = "388205366.589856"
+         timestampString = "388396569.020967"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "160"
-         endingLineNumber = "160"
-         landmarkName = "-menuNeedsUpdate:"
+         startingLineNumber = "163"
+         endingLineNumber = "163"
+         landmarkName = "-showView"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -346,11 +346,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPPhotoCollectionViewController.m"
-         timestampString = "388205366.589856"
+         timestampString = "388396569.020967"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "165"
-         endingLineNumber = "165"
+         startingLineNumber = "168"
+         endingLineNumber = "168"
          landmarkName = "-menuNeedsUpdate:"
          landmarkType = "5">
       </FileBreakpoint>

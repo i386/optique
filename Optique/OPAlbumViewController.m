@@ -160,7 +160,7 @@
         {
             OPPhotoAlbum *album = [notification userInfo][@"album"];
             NSUInteger index = [_photoManager.allAlbums indexOfObject:album];
-            [_gridView redrawItemAtIndex:index];
+//            [_gridView redrawItemAtIndex:index];
             [_gridView reloadData];
         }
     }];
@@ -226,10 +226,19 @@
     if (allPhotos.count > 0)
     {
         OPPhoto *photo = allPhotos[0];
+        
+        CNGridViewItem * __weak weakItem = item;
+        OPPhotoAlbum * __weak weakAlbum = album;
+        
         item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image)
         {
-            [self performBlockOnMainThread:^{
-                [_gridView redrawItemAtIndex:index];
+            [self performBlockOnMainThreadAndWaitUntilDone:^
+            {
+                if (weakItem.representedObject == weakAlbum)
+                {
+                    weakItem.itemImage = image;
+                    [weakItem setNeedsDisplay:YES];
+                }
             }];
         }];
     }
