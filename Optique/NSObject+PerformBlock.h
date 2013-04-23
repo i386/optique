@@ -12,7 +12,7 @@
 
 -(void)performBlockOnMainThread:(void (^)(void))block;
 
--(void)performBlockOnMainThread:(void (^)(void))block waitUntilDone:(BOOL)wait;
+-(void)performBlockOnMainThreadAndWaitUntilDone:(void (^)(void))block;
 
 -(void)performBlockInBackground:(void (^)(void))block;
 

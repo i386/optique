@@ -15,9 +15,9 @@
     [self performSelectorOnMainThread:@selector(_performBlock:) withObject:block waitUntilDone:NO];
 }
 
--(void)performBlockOnMainThread:(void (^)(void))block waitUntilDone:(BOOL)wait
+-(void)performBlockOnMainThreadAndWaitUntilDone:(void (^)(void))block
 {
-    [self performSelectorOnMainThread:@selector(_performBlock:) withObject:block waitUntilDone:wait];
+    [self performSelectorOnMainThread:@selector(_performBlock:) withObject:block waitUntilDone:YES];
 }
 
 -(void)performBlockInBackground:(void (^)(void))block
