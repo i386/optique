@@ -44,13 +44,13 @@
         [subviews removeObject:_navigationButton];
         [subviews addObject:_navigationButton];
         [self setSubviews:subviews];
-        [_navigationButton setHidden:NO];
+        [_navigationButton.animator setHidden:NO];
     }
 }
 
 - (void)mouseExited:(NSEvent *)theEvent
 {
-    [_navigationButton setHidden:YES];
+    [_navigationButton.animator setHidden:YES];
 }
 
 
