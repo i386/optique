@@ -35,7 +35,7 @@ static OPImagePreviewService *_defaultService;
     if (self)
     {
         _queue = [[NSOperationQueue alloc] init];
-        [_queue setMaxConcurrentOperationCount:10];
+        [_queue setMaxConcurrentOperationCount:20];
         _locks = [NSMapTable weakToWeakObjectsMapTable];
     }
     return self;
