@@ -28,6 +28,10 @@
     } else if (character == NSLeftArrowFunctionKey) {
         [_controller previousPhoto];
     }
+    else if (event.keyCode == 53)
+    {
+        [_controller backToPhotoCollection];
+    }
 }
 
 -(BOOL)acceptsFirstResponder

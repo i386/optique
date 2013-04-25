@@ -68,6 +68,11 @@
     [_pageController navigateBack:self];
 }
 
+-(void)backToPhotoCollection
+{
+    [self.controller popToPreviousViewController];
+}
+
 -(void)deletePhoto
 {
     NSString *message = [NSString stringWithFormat:@"Do you want to delete '%@'?", _currentPhoto.title];

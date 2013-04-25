@@ -25,6 +25,8 @@
 -(void)nextPhoto;
 -(void)previousPhoto;
 
+-(void)backToPhotoCollection;
+
 -(void)deletePhoto;
 -(void)revealInFinder;
 
