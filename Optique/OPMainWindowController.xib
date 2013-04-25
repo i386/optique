@@ -290,7 +290,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="back">{48, 48}</string>
-			<string key="back-alt">{48, 48}</string>
+			<string key="back-alt">{128, 128}</string>
 		</dictionary>
 	</data>
 </archive>

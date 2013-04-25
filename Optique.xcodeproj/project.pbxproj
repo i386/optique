@@ -75,7 +75,7 @@
 		0FEF33A616FEC8090096D72A /* OPAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEF33A416FEC8090096D72A /* OPAlbumViewController.m */; };
 		0FEF33A716FEC8090096D72A /* OPAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEF33A516FEC8090096D72A /* OPAlbumViewController.xib */; };
 		0FFE24B2172907AA00513AD2 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B0172907AA00513AD2 /* back.png */; };
-		0FFE24B41729094A00513AD2 /* back-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B31729094A00513AD2 /* back-alt.png */; };
+		0FFE24B61729206B00513AD2 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B51729206B00513AD2 /* back@2x.png */; };
 		76AAAAFD273F4DD99BF0C8E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B69E97783146C19C69AB43 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -195,7 +195,7 @@
 		0FEF33A416FEC8090096D72A /* OPAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPAlbumViewController.m; path = Optique/OPAlbumViewController.m; sourceTree = "<group>"; };
 		0FEF33A516FEC8090096D72A /* OPAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPAlbumViewController.xib; path = Optique/OPAlbumViewController.xib; sourceTree = "<group>"; };
 		0FFE24B0172907AA00513AD2 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
-		0FFE24B31729094A00513AD2 /* back-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-alt.png"; sourceTree = "<group>"; };
+		0FFE24B51729206B00513AD2 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		1915239F645F4207934EB0EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		E6B69E97783146C19C69AB43 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -442,7 +442,7 @@
 		0FEC674F171034E00086B264 /* Image resources */ = {
 			isa = PBXGroup;
 			children = (
-				0FFE24B31729094A00513AD2 /* back-alt.png */,
+				0FFE24B51729206B00513AD2 /* back@2x.png */,
 				0FFE24B0172907AA00513AD2 /* back.png */,
 				0F66FD161728A9EB00747AC7 /* window-top.png */,
 				0F66FD171728A9EB00747AC7 /* window-top@2x.png */,
@@ -593,7 +593,7 @@
 				0F66FD181728A9EB00747AC7 /* window-top.png in Resources */,
 				0F66FD191728A9EB00747AC7 /* window-top@2x.png in Resources */,
 				0FFE24B2172907AA00513AD2 /* back.png in Resources */,
-				0FFE24B41729094A00513AD2 /* back-alt.png in Resources */,
+				0FFE24B61729206B00513AD2 /* back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
