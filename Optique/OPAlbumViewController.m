@@ -62,6 +62,7 @@
 {
     [super loadView];
     [_gridView setAllowsMultipleSelection:YES];
+    [[_gridView enclosingScrollView] setDrawsBackground:NO];
 }
 
 -(void)showView

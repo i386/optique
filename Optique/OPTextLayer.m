@@ -13,7 +13,7 @@
 
 -(void)drawInContext:(CGContextRef)ctx
 {
-    NSColor *color = [NSView gradientBottomColor];
+    NSColor *color = [NSColor controlHighlightColor];
     CGContextSetFillColorWithColor(ctx, color.CGColor);
     CGContextFillRect (ctx, [self bounds]);
     CGContextSetShouldSmoothFonts (ctx, true);

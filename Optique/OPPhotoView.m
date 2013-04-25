@@ -14,7 +14,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    [self drawBackground];
+    [self drawDarkBackground];
 }
 
 - (void)keyDown:(NSEvent *)event

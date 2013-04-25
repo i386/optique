@@ -10,15 +10,11 @@
 
 @interface NSView (OptiqueBackground)
 
-+(NSColor*)gradientTopColor;
-
-+(NSColor*)gradientBottomColor;
-
 -(void)drawBackground;
 
 -(void)drawTransparentBackground;
 
--(void)drawWhiteBackground;
+-(void)drawDarkBackground;
 
 -(void)drawEffectsViewBackground;
 

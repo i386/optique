@@ -30,7 +30,16 @@
 
 -(void)updateTitle:(NSString *)title
 {
-    [_viewLabel setStringValue:title];
+    if (self.window.isFullscreen)
+    {
+        [self.window setTitle:title];
+        [_viewLabel setHidden:NO];
+    }
+    else
+    {
+        [_viewLabel setHidden:YES];
+        [_viewLabel setStringValue:title];
+    }
 }
 
 @end

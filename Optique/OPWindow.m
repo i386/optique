@@ -37,7 +37,7 @@
     [self setTitleTextColor:[NSColor whiteColor]];
     [self setInactiveTitleTextColor:[NSColor controlColor]];
     [self setShowsTitle:YES];
-    [self setTitleBarHeight:55];
+    [self setTitleBarHeight:25];
     [self setCenterTrafficLightButtons:NO];
     [self setCenterFullScreenButton:NO];
     
@@ -45,7 +45,7 @@
     
     [self setTitleBarDrawingBlock:^(BOOL drawsAsMainWindow, CGRect drawingRect, CGPathRef clippingPath)
     {
-        NSImage *bgImage = [NSImage imageNamed:@"toolbarbg"];
+        NSImage *bgImage = [NSImage imageNamed:@"window-top"];
         
         CGContextRef context = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
         CGContextSaveGState(context);

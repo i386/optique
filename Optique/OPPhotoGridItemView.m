@@ -33,46 +33,49 @@
 
 -(void)drawRect:(NSRect)dirtyRect
 {
-    NSRect backgroundFrameRect = NSMakeRect(25, 25, 260, 175);
+    NSRect backgroundFrameRect = NSMakeRect(25, 25, 260, 175);    
+    NSRect imageRect = NSMakeRect(35, 35, 239, 155);
     
-    //Draw shadow
+    NSColor *shadowColor = self.selected ? [NSColor alternateSelectedControlColor] : [NSColor controlShadowColor];
+    
     [NSGraphicsContext withinGraphicsContext:^
     {
+        NSBezierPath *path = [NSBezierPath bezierPathWithRect:imageRect];
+        
         NSShadow *shadow = [[NSShadow alloc] init];
-        shadow.shadowBlurRadius = 3;
-        shadow.shadowColor = [NSColor colorWithCalibratedRed:0.00 green:0.00 blue:0.00 alpha:0.1];
-        shadow.shadowOffset = NSMakeSize(4, -4);
+        shadow.shadowColor = shadowColor;
+        shadow.shadowBlurRadius = 2;
+        
+        shadow.shadowOffset = NSMakeSize(-1, 1);
         [shadow set];
+        [path fill];
         
-        [[NSColor whiteColor] set];
-        NSRectFill(backgroundFrameRect);
+        shadow.shadowOffset = NSMakeSize(1, -1);
+        [shadow set];
+        [path fill];
         
-        if (self.selected)
+        shadow.shadowOffset = NSMakeSize(1, 1);
+        [shadow set];
+        [path fill];
+        
+        shadow.shadowOffset = NSMakeSize(-1, -1);
+        [shadow set];
+        [path fill];
+        
+        if (!self.selected)
         {
-            NSBezierPath *path = [NSBezierPath bezierPathWithRect:backgroundFrameRect];
-            
-            NSColor *focusRingColor = [NSColor colorWithCalibratedRed:0.22 green:0.46 blue:0.96 alpha:1.00];
-            
-            NSShadow *shadow = [[NSShadow alloc] init];
-            shadow.shadowColor = focusRingColor;
-            shadow.shadowOffset = NSMakeSize(-1, 1);
-            shadow.shadowBlurRadius = 5;
-            [shadow set];
-            [path fill];
-            
-            shadow.shadowOffset = NSMakeSize(1, -1);
-            [shadow set];
-            [path fill];
+            //Draw border around image so it doesn't blend with the background
+            path.lineWidth = 0.3;
+            [[NSColor blackColor] set];
+            [path stroke];
         }
     }];
     
-    
     //Draw image
     [NSGraphicsContext withinGraphicsContext:^
-    {
-        NSRect imageRect = NSMakeRect(35, 35, 239, 155);
-        [self.itemImage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-    }];
+     {
+         [self.itemImage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+     }];
     
     
     //Draw label
@@ -90,7 +93,7 @@
         [label setString:self.itemTitle];
         [label setAlignmentMode:kCAAlignmentCenter];
         [label setForegroundColor:[[NSColor blackColor] CGColor]];
-        [label setBackgroundColor:[[NSView gradientBottomColor] CGColor]];
+        [label setBackgroundColor:[[NSColor controlHighlightColor] CGColor]];
         
         for (CALayer *layer in self.layer.sublayers)
         {
@@ -98,7 +101,7 @@
         }
         
         [self.layer addSublayer:label];
-    }];
+    }]; 
 }
 
 - (void)viewDidChangeBackingProperties

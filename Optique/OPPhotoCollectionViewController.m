@@ -155,6 +155,7 @@
     [super loadView];
     [_gridView setAllowsMultipleSelection:YES];
     _contextMenu.delegate = self;
+    [[_gridView enclosingScrollView] setDrawsBackground:NO];
 }
 
 -(void)showView

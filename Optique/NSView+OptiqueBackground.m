@@ -10,19 +10,9 @@
 
 @implementation NSView (OptiqueBackground)
 
-+ (NSColor*)gradientTopColor
-{
-    return [NSColor colorWithCalibratedRed:0.76 green:0.76 blue:0.76 alpha:1.00];
-}
-
-+ (NSColor*)gradientBottomColor
-{
-    return [NSColor colorWithCalibratedRed:0.90 green:0.90 blue:0.90 alpha:1.00];
-}
-
 -(void)drawBackground
 {
-    [[NSColor windowBackgroundColor] set];
+    [[NSColor controlHighlightColor] set];
     NSRectFill(self.bounds);
 }
 
@@ -32,9 +22,9 @@
     NSRectFill(self.bounds);
 }
 
--(void)drawWhiteBackground
+-(void)drawDarkBackground
 {
-    [[NSColor whiteColor] set];
+    [[NSColor colorWithCalibratedRed:0.17 green:0.17 blue:0.17 alpha:1.00] set];
     NSRectFill(self.bounds);
 }
 
