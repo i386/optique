@@ -17,7 +17,6 @@
 #import "OPDeleteAlbumSheetController.h"
 
 @interface OPAlbumViewController () {
-    NSInteger _itemsFoundWhenScanning;
     OPDeleteAlbumSheetController *_deleteAlbumSheetController;
 }
 @end
@@ -29,8 +28,6 @@
     self = [super initWithNibName:@"OPAlbumViewController" bundle:nil];
     if (self)
     {
-        _itemsFoundWhenScanning = 0;
-        _albumCountsDuringScan = 0;
         _photoManager = photoManager;
     }
     return self;
@@ -43,8 +40,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:OPPhotoManagerDidDeleteAlbum object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateAlbum object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFound:) name:OPAlbumScannerDidFindAlbumsNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFinishedLoading:) name:OPAlbumScannerDidFinishScanNotification object:nil];
 }
@@ -125,15 +120,7 @@
 
 -(NSString *)viewTitle
 {
-    if (_itemsFoundWhenScanning > 0 && _itemsFoundWhenScanning >= 1 && _itemsFoundWhenScanning != _itemsFoundWhenScanning)
-    {
-        return [NSString stringWithFormat:@"Loading %li of %li albums", _itemsFoundWhenScanning, _itemsFoundWhenScanning];
-    }
-    else if (_itemsFoundWhenScanning > 0)
-    {
-        return [NSString stringWithFormat:@"%li albums", _itemsFoundWhenScanning];
-    }
-    return [NSString string];
+    return @"Optique";
 }
 
 -(void)albumAdded:(NSNotification*)notification
@@ -163,20 +150,6 @@
             NSUInteger index = [_photoManager.allAlbums indexOfObject:album];
 //            [_gridView redrawItemAtIndex:index];
             [_gridView reloadData];
-        }
-    }];
-}
-
--(void)albumsFound:(NSNotification*)notification
-{
-    [self performBlockOnMainThread:^{
-        OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
-        
-        if ([photoManager isEqual:_photoManager])
-        {
-            NSNumber *count = [notification userInfo][@"count"];
-            _itemsFoundWhenScanning = count.integerValue;
-            [self.controller updateNavigation];
         }
     }];
 }

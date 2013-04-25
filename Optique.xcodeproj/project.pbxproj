@@ -442,8 +442,8 @@
 		0FEC674F171034E00086B264 /* Image resources */ = {
 			isa = PBXGroup;
 			children = (
-				0FFE24B51729206B00513AD2 /* back@2x.png */,
 				0FFE24B0172907AA00513AD2 /* back.png */,
+				0FFE24B51729206B00513AD2 /* back@2x.png */,
 				0F66FD161728A9EB00747AC7 /* window-top.png */,
 				0F66FD171728A9EB00747AC7 /* window-top@2x.png */,
 				0FA706C9171911F400864CED /* empty-album.png */,

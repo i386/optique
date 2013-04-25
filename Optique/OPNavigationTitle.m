@@ -11,6 +11,34 @@
 
 @implementation OPNavigationTitle
 
+-(id)initWithFrame:(NSRect)frameRect
+{
+    self = [super initWithFrame:frameRect];
+    if (self)
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willExitFullScreen:) name:NSWindowWillExitFullScreenNotification object:self.window];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterFullScreen:) name:NSWindowDidEnterFullScreenNotification object:self.window];
+    }
+    return self;
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowWillExitFullScreenNotification object:self.window];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidEnterFullScreenNotification object:self.window];
+}
+
+-(void)willExitFullScreen:(NSNotification*)notification
+{
+    [_viewLabel.animator setHidden:YES];
+}
+
+-(void)didEnterFullScreen:(NSNotification*)notification
+{
+    [_viewLabel.animator setHidden:NO];
+}
+
 -(void)updateTitle:(NSString *)title
 {
     [self.window setTitle:title];

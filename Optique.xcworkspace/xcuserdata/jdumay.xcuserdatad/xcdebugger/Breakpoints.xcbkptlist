@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPAlbumViewController.m"
-         timestampString = "388540430.321105"
+         timestampString = "388571330.313859"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "112"
-         endingLineNumber = "112"
+         startingLineNumber = "107"
+         endingLineNumber = "107"
          landmarkName = "-deleteSheetDidEndShouldClose:returnCode:contextInfo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPAlbumViewController.m"
-         timestampString = "388540430.321105"
+         timestampString = "388571330.313859"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "111"
-         endingLineNumber = "111"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
          landmarkName = "-deleteSheetDidEndShouldClose:returnCode:contextInfo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPAlbumViewController.m"
-         timestampString = "388540430.321105"
+         timestampString = "388571330.313859"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "93"
-         endingLineNumber = "93"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
          landmarkName = "-deleteAlbum:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -372,11 +372,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPNavigationTitle.m"
-         timestampString = "388570989.18251"
+         timestampString = "388571763.817863"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "16"
-         endingLineNumber = "16"
+         startingLineNumber = "44"
+         endingLineNumber = "44"
          landmarkName = "-updateTitle:"
          landmarkType = "5">
       </FileBreakpoint>

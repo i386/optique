@@ -62,16 +62,6 @@
     [contentView addSubview:_navigationController.view positioned:NSWindowBelow relativeTo:nil];
 }
 
--(void)windowDidEnterFullScreen:(NSNotification *)notification
-{
-    [_navigationController updateNavigation];
-}
-
--(void)windowDidExitFullScreen:(NSNotification *)notification
-{
-    [_navigationController updateNavigation];
-}
-
 -(void)showBackButton:(BOOL)visible
 {
     OPMainWindowContentView *contentView = (OPMainWindowContentView*)self.window.contentView;
