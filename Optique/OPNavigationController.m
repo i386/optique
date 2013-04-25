@@ -10,7 +10,7 @@
 
 #import "OPNavigationController.h"
 #import "OPNavigationViewController.h"
-#import "OPNavigationBar.h"
+#import "OPNavigationTitle.h"
 
 typedef enum OPNavigationControllerAnimationType : NSInteger OPNavigationControllerAnimationType;
 enum OPNavigationControllerAnimationType : NSInteger {
@@ -33,7 +33,8 @@ enum OPNavigationControllerAnimationType : NSInteger {
 -(id)initWithRootViewController:(OPNavigationViewController *)viewController
 {
     self = [super initWithNibName:@"OPNavigationController" bundle:nil];
-    if (self) {
+    if (self)
+    {
         _rootViewController = viewController;
         _visibleViewController = viewController;
         _displayStack = [[NSMutableArray alloc] init];
@@ -74,18 +75,10 @@ enum OPNavigationControllerAnimationType : NSInteger {
     return [NSArray arrayWithArray:_displayStack];
 }
 
--(void)updateNavigationBar
+-(void)updateNavigation
 {
-    if (_rootViewController == _visibleViewController)
-    {
-        [_navigationBar hideBackButton:YES];
-    }
-    else
-    {
-        [_navigationBar hideBackButton:NO];
-    }
-    
-    [_navigationBar updateTitle:_visibleViewController.viewTitle];
+    [_delegate showBackButton:(_rootViewController != _visibleViewController)];
+    [_navigationTitle updateTitle:_visibleViewController.viewTitle];
 }
 
 -(void)setVisibleViewController:(OPNavigationViewController *)visibleViewController animation:(OPNavigationControllerAnimationType)animationType
@@ -118,14 +111,14 @@ enum OPNavigationControllerAnimationType : NSInteger {
     //Make visible view first responder
     [_visibleViewController.view.window makeFirstResponder:_visibleViewController.view];
     
-    [self updateNavigationBar];
+    [self updateNavigation];
     [_visibleViewController showView];
 }
 
 -(void)awakeFromNib
 {
     [self setVisibleViewController:_rootViewController animation:OPNavigationControllerAnimationTypeFirst];
-    [self updateNavigationBar];
+    [self updateNavigation];
     [_displayView addSubview:_rootViewController.view];
 }
 

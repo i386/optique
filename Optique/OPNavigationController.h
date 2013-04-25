@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "OPNavigationControllerDelegate.h"
 
-@class OPNavigationBar;
+@class OPNavigationTitle;
 
 @class OPNavigationViewController;
 
@@ -16,7 +17,8 @@
 
 @property (strong, readonly) OPNavigationViewController *rootViewController;
 @property (strong, nonatomic, readonly) OPNavigationViewController *visibleViewController;
-@property (strong) IBOutlet OPNavigationBar *navigationBar;
+@property (strong) IBOutlet OPNavigationTitle *navigationTitle;
+@property (strong) IBOutlet id<OPNavigationControllerDelegate> delegate;
 
 -initWithRootViewController:(OPNavigationViewController*)viewController;
 
@@ -29,7 +31,7 @@
 /** jump back to the root view **/
 - (NSArray *)popToRootViewController;
 
-/** update the state of the navigation bar for the visible view **/
-- (void)updateNavigationBar;
+/** update the state of the navigation for the visible view controller **/
+- (void)updateNavigation;
 
 @end

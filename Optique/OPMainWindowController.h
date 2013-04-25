@@ -9,15 +9,19 @@
 #import <Cocoa/Cocoa.h>
 #import "OPAlbumViewController.h"
 #import "OPPhotoManager.h"
+#import "OPNavigationControllerDelegate.h"
 
-@interface OPMainWindowController : NSWindowController<NSWindowDelegate>
+@interface OPMainWindowController : NSWindowController<NSWindowDelegate, OPNavigationControllerDelegate>
 
 @property (strong, readonly) OPPhotoManager *photoManager;
+@property (strong) IBOutlet NSButton *navBackButton;
 
 @property (strong) IBOutlet NSWindow *createAlbumSheetWindow;
 @property (strong) IBOutlet NSTextField *albumNameTextField;
 
 -initWithPhotoManager:(OPPhotoManager*)photoManager;
+
+- (IBAction)navigateBack:(id)sender;
 
 -(void)showNewAlbumSheet;
 

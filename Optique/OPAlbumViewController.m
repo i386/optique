@@ -176,7 +176,7 @@
         {
             NSNumber *count = [notification userInfo][@"count"];
             _itemsFoundWhenScanning = count.integerValue;
-            [self.controller updateNavigationBar];
+            [self.controller updateNavigation];
         }
     }];
 }
@@ -189,7 +189,7 @@
         if ([photoManager isEqual:_photoManager])
         {
             [_gridView reloadData];
-            [self.controller updateNavigationBar];
+            [self.controller updateNavigation];
         }
     }];
 }
@@ -202,7 +202,7 @@
         
         if ([photoManager isEqual:_photoManager])
         {
-            [self.controller updateNavigationBar];
+            [self.controller updateNavigation];
         }
     }];
 }

@@ -28,6 +28,7 @@
 		0F66FD151728A49B00747AC7 /* OPTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F66FD141728A49B00747AC7 /* OPTextLayer.m */; };
 		0F66FD181728A9EB00747AC7 /* window-top.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F66FD161728A9EB00747AC7 /* window-top.png */; };
 		0F66FD191728A9EB00747AC7 /* window-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F66FD171728A9EB00747AC7 /* window-top@2x.png */; };
+		0F66FD211728FE3300747AC7 /* OPMainWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F66FD201728FE3300747AC7 /* OPMainWindowContentView.m */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
 		0F6D098A170FC5E3006268F1 /* OPEffectProcessedImageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D0989170FC5E3006268F1 /* OPEffectProcessedImageRef.m */; };
@@ -64,19 +65,17 @@
 		0FDE075917030FCC00D5B456 /* OPPhotoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE075717030FCC00D5B456 /* OPPhotoCollectionViewController.xib */; };
 		0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */; };
 		0FE3B2451702C62D00FC0D6C /* OPNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */; };
-		0FE3B2481702C69700FC0D6C /* OPNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2471702C69700FC0D6C /* OPNavigationBar.m */; };
-		0FE3B24B1702CFAB00FC0D6C /* toolbarbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FE3B2491702CFAB00FC0D6C /* toolbarbg.png */; };
-		0FE3B24C1702CFAB00FC0D6C /* toolbarbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FE3B24A1702CFAB00FC0D6C /* toolbarbg@2x.png */; };
-		0FE3B2501702D1FE00FC0D6C /* OPNavigationBarButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B24F1702D1FE00FC0D6C /* OPNavigationBarButtonCell.m */; };
+		0FE3B2481702C69700FC0D6C /* OPNavigationTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2471702C69700FC0D6C /* OPNavigationTitle.m */; };
 		0FE3B2531702D32F00FC0D6C /* buttonbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FE3B2511702D32F00FC0D6C /* buttonbg.png */; };
 		0FE3B2541702D32F00FC0D6C /* buttonbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FE3B2521702D32F00FC0D6C /* buttonbg@2x.png */; };
-		0FE3B2571702D57200FC0D6C /* OPNavigationBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2561702D57200FC0D6C /* OPNavigationBarButton.m */; };
 		0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2591702E05100FC0D6C /* OPNavigationViewController.m */; };
 		0FE3B2621702F25500FC0D6C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE3B2611702F25500FC0D6C /* QuartzCore.framework */; };
 		0FEC675717103B5E0086B264 /* effectsbarselectedbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FEC675517103B5E0086B264 /* effectsbarselectedbg.png */; };
 		0FEC675817103B5E0086B264 /* effectsbarselectedbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FEC675617103B5E0086B264 /* effectsbarselectedbg@2x.png */; };
 		0FEF33A616FEC8090096D72A /* OPAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEF33A416FEC8090096D72A /* OPAlbumViewController.m */; };
 		0FEF33A716FEC8090096D72A /* OPAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEF33A516FEC8090096D72A /* OPAlbumViewController.xib */; };
+		0FFE24B2172907AA00513AD2 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B0172907AA00513AD2 /* back.png */; };
+		0FFE24B41729094A00513AD2 /* back-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B31729094A00513AD2 /* back-alt.png */; };
 		76AAAAFD273F4DD99BF0C8E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B69E97783146C19C69AB43 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +117,9 @@
 		0F66FD141728A49B00747AC7 /* OPTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPTextLayer.m; sourceTree = "<group>"; };
 		0F66FD161728A9EB00747AC7 /* window-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "window-top.png"; sourceTree = "<group>"; };
 		0F66FD171728A9EB00747AC7 /* window-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "window-top@2x.png"; sourceTree = "<group>"; };
+		0F66FD1E1728FB0600747AC7 /* OPNavigationControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPNavigationControllerDelegate.h; sourceTree = "<group>"; };
+		0F66FD1F1728FE3300747AC7 /* OPMainWindowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMainWindowContentView.h; sourceTree = "<group>"; };
+		0F66FD201728FE3300747AC7 /* OPMainWindowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMainWindowContentView.m; sourceTree = "<group>"; };
 		0F6AEF821701C02200A797E4 /* OPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMainWindowController.h; sourceTree = "<group>"; };
 		0F6AEF831701C02200A797E4 /* OPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMainWindowController.m; sourceTree = "<group>"; };
 		0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPMainWindowController.xib; sourceTree = "<group>"; };
@@ -180,16 +182,10 @@
 		0FE3B2411702C62D00FC0D6C /* OPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationController.h; sourceTree = "<group>"; };
 		0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNavigationController.m; sourceTree = "<group>"; };
 		0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNavigationController.xib; sourceTree = "<group>"; };
-		0FE3B2461702C69700FC0D6C /* OPNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationBar.h; sourceTree = "<group>"; };
-		0FE3B2471702C69700FC0D6C /* OPNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNavigationBar.m; sourceTree = "<group>"; };
-		0FE3B2491702CFAB00FC0D6C /* toolbarbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbarbg.png; sourceTree = "<group>"; };
-		0FE3B24A1702CFAB00FC0D6C /* toolbarbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarbg@2x.png"; sourceTree = "<group>"; };
-		0FE3B24E1702D1FE00FC0D6C /* OPNavigationBarButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationBarButtonCell.h; sourceTree = "<group>"; };
-		0FE3B24F1702D1FE00FC0D6C /* OPNavigationBarButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNavigationBarButtonCell.m; sourceTree = "<group>"; };
+		0FE3B2461702C69700FC0D6C /* OPNavigationTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationTitle.h; sourceTree = "<group>"; };
+		0FE3B2471702C69700FC0D6C /* OPNavigationTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNavigationTitle.m; sourceTree = "<group>"; };
 		0FE3B2511702D32F00FC0D6C /* buttonbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonbg.png; sourceTree = "<group>"; };
 		0FE3B2521702D32F00FC0D6C /* buttonbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonbg@2x.png"; sourceTree = "<group>"; };
-		0FE3B2551702D57200FC0D6C /* OPNavigationBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationBarButton.h; sourceTree = "<group>"; };
-		0FE3B2561702D57200FC0D6C /* OPNavigationBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNavigationBarButton.m; sourceTree = "<group>"; };
 		0FE3B2581702E05100FC0D6C /* OPNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationViewController.h; sourceTree = "<group>"; };
 		0FE3B2591702E05100FC0D6C /* OPNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNavigationViewController.m; sourceTree = "<group>"; };
 		0FE3B2611702F25500FC0D6C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -198,6 +194,8 @@
 		0FEF33A316FEC8090096D72A /* OPAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPAlbumViewController.h; path = Optique/OPAlbumViewController.h; sourceTree = "<group>"; };
 		0FEF33A416FEC8090096D72A /* OPAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPAlbumViewController.m; path = Optique/OPAlbumViewController.m; sourceTree = "<group>"; };
 		0FEF33A516FEC8090096D72A /* OPAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPAlbumViewController.xib; path = Optique/OPAlbumViewController.xib; sourceTree = "<group>"; };
+		0FFE24B0172907AA00513AD2 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		0FFE24B31729094A00513AD2 /* back-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-alt.png"; sourceTree = "<group>"; };
 		1915239F645F4207934EB0EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		E6B69E97783146C19C69AB43 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -409,6 +407,7 @@
 			children = (
 				0FE3B2411702C62D00FC0D6C /* OPNavigationController.h */,
 				0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */,
+				0F66FD1E1728FB0600747AC7 /* OPNavigationControllerDelegate.h */,
 				0FE3B2581702E05100FC0D6C /* OPNavigationViewController.h */,
 				0FE3B2591702E05100FC0D6C /* OPNavigationViewController.m */,
 				0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */,
@@ -443,6 +442,8 @@
 		0FEC674F171034E00086B264 /* Image resources */ = {
 			isa = PBXGroup;
 			children = (
+				0FFE24B31729094A00513AD2 /* back-alt.png */,
+				0FFE24B0172907AA00513AD2 /* back.png */,
 				0F66FD161728A9EB00747AC7 /* window-top.png */,
 				0F66FD171728A9EB00747AC7 /* window-top@2x.png */,
 				0FA706C9171911F400864CED /* empty-album.png */,
@@ -455,8 +456,6 @@
 				0F489936170C00BA0044ED0A /* loading-preview@2x.png */,
 				0FE3B2511702D32F00FC0D6C /* buttonbg.png */,
 				0FE3B2521702D32F00FC0D6C /* buttonbg@2x.png */,
-				0FE3B2491702CFAB00FC0D6C /* toolbarbg.png */,
-				0FE3B24A1702CFAB00FC0D6C /* toolbarbg@2x.png */,
 			);
 			name = "Image resources";
 			sourceTree = "<group>";
@@ -473,12 +472,8 @@
 		0FEC6751171035290086B264 /* Navigation bar */ = {
 			isa = PBXGroup;
 			children = (
-				0FE3B2551702D57200FC0D6C /* OPNavigationBarButton.h */,
-				0FE3B2561702D57200FC0D6C /* OPNavigationBarButton.m */,
-				0FE3B2461702C69700FC0D6C /* OPNavigationBar.h */,
-				0FE3B2471702C69700FC0D6C /* OPNavigationBar.m */,
-				0FE3B24E1702D1FE00FC0D6C /* OPNavigationBarButtonCell.h */,
-				0FE3B24F1702D1FE00FC0D6C /* OPNavigationBarButtonCell.m */,
+				0FE3B2461702C69700FC0D6C /* OPNavigationTitle.h */,
+				0FE3B2471702C69700FC0D6C /* OPNavigationTitle.m */,
 			);
 			name = "Navigation bar";
 			sourceTree = "<group>";
@@ -515,6 +510,8 @@
 				0F6AEF821701C02200A797E4 /* OPMainWindowController.h */,
 				0F6AEF831701C02200A797E4 /* OPMainWindowController.m */,
 				0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */,
+				0F66FD1F1728FE3300747AC7 /* OPMainWindowContentView.h */,
+				0F66FD201728FE3300747AC7 /* OPMainWindowContentView.m */,
 			);
 			name = "Main Window";
 			sourceTree = "<group>";
@@ -578,8 +575,6 @@
 				0FEF33A716FEC8090096D72A /* OPAlbumViewController.xib in Resources */,
 				0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */,
 				0FE3B2451702C62D00FC0D6C /* OPNavigationController.xib in Resources */,
-				0FE3B24B1702CFAB00FC0D6C /* toolbarbg.png in Resources */,
-				0FE3B24C1702CFAB00FC0D6C /* toolbarbg@2x.png in Resources */,
 				0FE3B2531702D32F00FC0D6C /* buttonbg.png in Resources */,
 				0FE3B2541702D32F00FC0D6C /* buttonbg@2x.png in Resources */,
 				0FDE075917030FCC00D5B456 /* OPPhotoCollectionViewController.xib in Resources */,
@@ -597,6 +592,8 @@
 				0F8B71D9171BA077004D8082 /* OPPhotoController.xib in Resources */,
 				0F66FD181728A9EB00747AC7 /* window-top.png in Resources */,
 				0F66FD191728A9EB00747AC7 /* window-top@2x.png in Resources */,
+				0FFE24B2172907AA00513AD2 /* back.png in Resources */,
+				0FFE24B41729094A00513AD2 /* back-alt.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,9 +629,7 @@
 				0FEF33A616FEC8090096D72A /* OPAlbumViewController.m in Sources */,
 				0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */,
 				0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */,
-				0FE3B2481702C69700FC0D6C /* OPNavigationBar.m in Sources */,
-				0FE3B2501702D1FE00FC0D6C /* OPNavigationBarButtonCell.m in Sources */,
-				0FE3B2571702D57200FC0D6C /* OPNavigationBarButton.m in Sources */,
+				0FE3B2481702C69700FC0D6C /* OPNavigationTitle.m in Sources */,
 				0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */,
 				0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */,
 				0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */,
@@ -666,6 +661,7 @@
 				0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */,
 				0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */,
 				0F66FD151728A49B00747AC7 /* OPTextLayer.m in Sources */,
+				0F66FD211728FE3300747AC7 /* OPMainWindowContentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

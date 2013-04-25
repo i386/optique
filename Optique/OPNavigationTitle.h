@@ -10,15 +10,10 @@
 
 #import "OPNavigationController.h"
 
-@interface OPNavigationBar : NSView {
-    IBOutlet NSButton *_backButton;
+@interface OPNavigationTitle : NSView {
     IBOutlet NSTextField *_viewLabel;
     IBOutlet OPNavigationController *_navigationController;
 }
-
--(void)hideBackButton:(BOOL)hide;
-
--(IBAction)backClicked:(id)sender;
 
 -(void)updateTitle:(NSString*)label;
 

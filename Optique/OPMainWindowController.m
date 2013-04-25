@@ -11,6 +11,7 @@
 #import "OPNavigationController.h"
 #import "OPPhotoCollectionViewController.h"
 #import "OPNewAlbumSheetController.h"
+#import "OPMainWindowContentView.h"
 
 @interface OPMainWindowController () {
     OPNavigationController *_navigationController;
@@ -32,6 +33,11 @@
     return self;
 }
 
+- (IBAction)navigateBack:(id)sender
+{
+    [_navigationController popToPreviousViewController];
+}
+
 -(NSString *)windowNibName
 {
     return @"OPMainWindowController";
@@ -44,22 +50,36 @@
     _albumViewController = [[OPAlbumViewController alloc] initWithPhotoManager:_photoManager];
     _navigationController = [[OPNavigationController alloc] initWithRootViewController:_albumViewController];
     _newAlbumSheetController = [[OPNewAlbumSheetController alloc] initWithPhotoManager:_photoManager navigationController:_navigationController];
+    _navigationController.delegate = self;
     
     OPWindow *window = (OPWindow*)self.window;
-    NSView *contentView = window.contentView;
-    [window.contentView addSubview:_navigationController.view];
+    OPMainWindowContentView *contentView = (OPMainWindowContentView*)window.contentView;
     [_navigationController.view setFrame:contentView.frame];
-    [window.titleBarView addSubview:(NSView*)_navigationController.navigationBar];
+    [window.titleBarView addSubview:(NSView*)_navigationController.navigationTitle];
+    
+    contentView.navigationButton = _navBackButton;
+    
+    [contentView addSubview:_navigationController.view positioned:NSWindowBelow relativeTo:nil];
 }
 
 -(void)windowDidEnterFullScreen:(NSNotification *)notification
 {
-    [_navigationController updateNavigationBar];
+    [_navigationController updateNavigation];
 }
 
 -(void)windowDidExitFullScreen:(NSNotification *)notification
 {
-    [_navigationController updateNavigationBar];
+    [_navigationController updateNavigation];
+}
+
+-(void)showBackButton:(BOOL)visible
+{
+    OPMainWindowContentView *contentView = (OPMainWindowContentView*)self.window.contentView;
+    contentView.allowedToShowNavButton = visible;
+    if (!visible)
+    {
+        [_navBackButton setHidden:!visible];
+    }
 }
 
 -(void)showNewAlbumSheet

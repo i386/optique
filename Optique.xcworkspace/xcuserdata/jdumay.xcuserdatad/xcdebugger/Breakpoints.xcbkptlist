@@ -164,11 +164,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPPhotoViewController.m"
-         timestampString = "388126610.875925"
+         timestampString = "388564991.588773"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "128"
-         endingLineNumber = "128"
+         startingLineNumber = "123"
+         endingLineNumber = "123"
          landmarkName = "-pageController:prepareViewController:withObject:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -203,11 +203,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Optique/OPPhotoViewController.m"
-         timestampString = "388126610.875925"
+         timestampString = "388564991.588773"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "134"
-         endingLineNumber = "134"
+         startingLineNumber = "129"
+         endingLineNumber = "129"
          landmarkName = "-pageController:prepareViewController:withObject:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -365,6 +365,32 @@
          startingLineNumber = "26"
          endingLineNumber = "26"
          landmarkName = "-drawRect:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Optique/OPNavigationTitle.m"
+         timestampString = "388570989.18251"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "16"
+         endingLineNumber = "16"
+         landmarkName = "-updateTitle:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Optique/OPNavigationController.m"
+         timestampString = "388571007.69295"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
+         landmarkName = "-updateNavigation"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

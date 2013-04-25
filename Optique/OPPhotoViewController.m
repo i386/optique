@@ -94,11 +94,6 @@
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[_currentPhoto.path]];
 }
 
-- (IBAction)rotateLeft:(id)sender
-{
-//    _imageView.image = [_imageView.image imageRotatedByDegrees:90];
-}
-
 - (IBAction)toggleEffects:(id)sender
 {
     if ([self swizzleEffectState])
@@ -131,7 +126,7 @@
         _currentPhoto = object;
         viewController.representedObject = [_currentPhoto scaleImageToFitSize:windowSize];
         [self reloadEffects];
-        [self.controller updateNavigationBar];
+        [self.controller updateNavigation];
     }
 }
 
