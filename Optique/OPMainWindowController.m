@@ -35,6 +35,11 @@
 
 - (IBAction)navigateBack:(id)sender
 {
+    [self navigateBackward];
+}
+
+-(void)navigateBackward
+{
     [_navigationController popToPreviousViewController];
 }
 

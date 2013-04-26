@@ -23,6 +23,8 @@
 
 - (IBAction)navigateBack:(id)sender;
 
+-(void)navigateBackward;
+
 -(void)showNewAlbumSheet;
 
 @end
