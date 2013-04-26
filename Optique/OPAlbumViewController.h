@@ -13,9 +13,7 @@
 #import "OPEffectCollectionView.h"
 #import "OPNavigationViewController.h"
 
-@interface OPAlbumViewController : OPNavigationViewController <CNGridViewDataSource, CNGridViewDelegate> {
-    NSUInteger _albumCountsDuringScan;
-}
+@interface OPAlbumViewController : OPNavigationViewController <CNGridViewDataSource, CNGridViewDelegate>
 
 @property (strong) IBOutlet NSMenu *albumItemContextMenu;
 @property (strong, readonly) OPPhotoManager *photoManager;
