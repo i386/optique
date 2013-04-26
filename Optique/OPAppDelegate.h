@@ -11,12 +11,14 @@
 
 #import "OPPhotoManager.h"
 #import "OPAlbumScanner.h"
+#import "OPImageCaptureService.h"
 #import "OPMainWindowController.h"
 
 @interface OPAppDelegate : NSObject <NSApplicationDelegate> {
     OPAlbumScanner *_albumScaner;
     OPPhotoManager *_photoManager;
     OPMainWindowController *_mainWindowController;
+    OPImageCaptureService *_imageCaptureService;
     IBOutlet NSUserDefaultsController *_userDefaultsController;
 }
 

@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#import "OPImageCollection.h"
 #import "OPImageCache.h"
 #import "OPPhoto.h"
 
 @class OPPhotoManager;
 
-@interface OPPhotoAlbum : NSObject
+@interface OPPhotoAlbum : NSObject <OPImageCollection>
 
 @property (strong, readonly) NSString *title;
 @property (strong, readonly) NSURL *path;
@@ -20,14 +22,8 @@
 
 -(id)initWithTitle:(NSString *)title path:(NSURL *)path photoManager:(OPPhotoManager*)photoManager;
 
--(NSArray*)allPhotos;
-
--(NSArray*)photosForIndexSet:(NSIndexSet*)indexSet;
-
--(void)reloadPhotos;
+-(void)movePhoto:(OPPhoto *)photo toAlbum:(OPPhotoAlbum *)album;
 
 -(void)deletePhoto:(OPPhoto*)photo error:(NSError**)error;
-
--(void)movePhoto:(OPPhoto*)photo toAlbum:(OPPhotoAlbum*)album;
 
 @end

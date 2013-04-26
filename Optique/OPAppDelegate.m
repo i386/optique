@@ -16,7 +16,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
+    _imageCaptureService = [[OPImageCaptureService alloc] init];
     
     NSURL *url = [[_userDefaultsController defaults] URLForKey:@"url"];
     if (!url)
@@ -67,6 +67,8 @@
     
     _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager];
     [_albumScaner scanAtURL:url];
+    
+    [_imageCaptureService restart];
 }
 
 @end
