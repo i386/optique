@@ -35,20 +35,20 @@
 
 -(void)awakeFromNib
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:OPPhotoManagerDidAddAlbum object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:OPPhotoManagerDidAddCollection object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:OPPhotoManagerDidDeleteAlbum object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:OPPhotoManagerDidDeleteCollection object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateAlbum object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateCollection object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFinishedLoading:) name:OPAlbumScannerDidFinishScanNotification object:nil];
 }
 
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidAddAlbum object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidDeleteAlbum object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidUpdateAlbum object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidAddCollection object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidDeleteCollection object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidUpdateCollection object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFindAlbumsNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFinishScanNotification object:nil];
 }
@@ -129,8 +129,8 @@
     
     if ([photoManager isEqual:_photoManager])
     {
-        OPPhotoAlbum *album = [notification userInfo][@"album"];
-        if (album)
+        id<OPPhotoCollection> collection = [notification userInfo][@"collection"];
+        if (collection)
         {
             [self performBlockOnMainThread:^{
                 [_gridView reloadData];
@@ -146,8 +146,9 @@
         
         if ([photoManager isEqual:_photoManager])
         {
-            OPPhotoAlbum *album = [notification userInfo][@"album"];
-            NSUInteger index = [_photoManager.allCollections indexOfObject:album];
+            id<OPPhotoCollection> collection = [notification userInfo][@"collection"];
+            NSUInteger index = [_photoManager.allCollections indexOfObject:collection];
+            //TODO: add a way to redraw the single item in the grid so that preview image is updated when collection content is changed
 //            [_gridView redrawItemAtIndex:index];
             [_gridView reloadData];
         }

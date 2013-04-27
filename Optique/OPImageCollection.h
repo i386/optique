@@ -11,6 +11,8 @@
 
 @protocol OPPhotoCollection <NSObject>
 
+-(NSString*)title;
+
 -(NSArray*)allPhotos;
 
 -(NSArray*)photosForIndexSet:(NSIndexSet*)indexSet;

@@ -7,18 +7,20 @@
 //
 
 #import "OPPhotoManager.h"
+#import "OPCameraService.h"
 #import "OPPhotoAlbum.h"
+#import "OPCamera.h"
 #import "OPAlbumScanner.h"
 #import "CHReadWriteLock.h"
 #import <BlocksKit/NSMutableOrderedSet+BlocksKit.h>
 #import <BlocksKit/NSArray+BlocksKit.h>
 
-NSString *const OPPhotoManagerDidAddAlbum = @"OPPhotoManagerDidAddAlbum";
-NSString *const OPPhotoManagerDidUpdateAlbum = @"OPPhotoManagerDidUpdateAlbum";
-NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
+NSString *const OPPhotoManagerDidAddCollection = @"OPPhotoManagerDidAddAlbum";
+NSString *const OPPhotoManagerDidUpdateCollection = @"OPPhotoManagerDidUpdateAlbum";
+NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlbum";
 
 @implementation OPPhotoManager {
-    NSMutableOrderedSet *_albumSet;
+    NSMutableOrderedSet *_collectionSet;
     CHReadWriteLock *_lock;
 }
 
@@ -28,10 +30,12 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
     if (self)
     {
         _path = path;
-        _albumSet = [[NSMutableOrderedSet alloc] init];
+        _collectionSet = [[NSMutableOrderedSet alloc] init];
         _lock = [[CHReadWriteLock alloc] init];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundAlbums:) name:OPAlbumScannerDidFindAlbumsNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundCamera:) name:OPCameraServiceDidAddCamera object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removedCamera:) name:OPCameraServiceDidRemoveCamera object:nil];
     }
     return self;
 }
@@ -39,6 +43,8 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFindAlbumsNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPCameraServiceDidAddCamera object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPCameraServiceDidRemoveCamera object:nil];
 }
 
 -(NSArray *)allCollections
@@ -46,7 +52,7 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
     [_lock lock];
     @try
     {
-        return [[_albumSet array] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
+        return [[_collectionSet array] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
     }
     @finally
     {
@@ -79,7 +85,7 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
         {
             OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithTitle:albumName path:albumPath photoManager:self];
             [self addAlbum:album];
-            [self sendNotificationWithName:OPPhotoManagerDidAddAlbum forAlbum:album];
+            [self sendNotificationWithName:OPPhotoManagerDidAddCollection forPhotoCollection:album];
             return album;
         }
         else
@@ -103,10 +109,10 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
     [self removeAlbum:photoAlbum];
 }
 
--(void)collectionUpdated:(OPPhotoAlbum *)album
+-(void)collectionUpdated:(id<OPPhotoCollection>)collection
 {
-    [album reloadPhotos];
-    [self sendNotificationWithName:OPPhotoManagerDidUpdateAlbum forAlbum:album];
+    [collection reloadPhotos];
+    [self sendNotificationWithName:OPPhotoManagerDidUpdateCollection forPhotoCollection:collection];
 }
 
 -(void)foundAlbums:(NSNotification*)event
@@ -120,24 +126,22 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
         return;
     }
     
-    [_lock lockForWriting];
-    @try
-    {
-        NSMutableOrderedSet *oldAlbums = [NSMutableOrderedSet orderedSetWithOrderedSet:_albumSet];
-        _albumSet = [NSMutableOrderedSet orderedSetWithArray:albums];
+    [self withWriteLock:^id{
+        NSMutableOrderedSet *oldAlbums = [NSMutableOrderedSet orderedSetWithOrderedSet:_collectionSet];
+        _collectionSet = [NSMutableOrderedSet orderedSetWithArray:albums];
         
         [albums each:^(id sender)
-        {
-            if ([oldAlbums containsObject:sender])
-            {
-                [self sendNotificationWithName:OPPhotoManagerDidUpdateAlbum forAlbum:sender];
-            }
-        }];
+         {
+             if ([oldAlbums containsObject:sender])
+             {
+                 [self sendNotificationWithName:OPPhotoManagerDidUpdateCollection forPhotoCollection:sender];
+             }
+         }];
         
         NSMutableOrderedSet *newItems = [NSMutableOrderedSet orderedSetWithArray:albums];
         [newItems minusOrderedSet:oldAlbums];
         [[newItems array] each:^(id sender) {
-            [self sendNotificationWithName:OPPhotoManagerDidAddAlbum forAlbum:sender];
+            [self sendNotificationWithName:OPPhotoManagerDidAddCollection forPhotoCollection:sender];
         }];
         
         NSMutableOrderedSet *removedItems = [NSMutableOrderedSet orderedSetWithOrderedSet:oldAlbums];
@@ -146,37 +150,62 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
         [[removedItems array] each:^(id sender) {
             [self sendAlbumDeletedNotification:sender];
         }];
-    }
-    @finally
-    {
-        [_lock unlock];
-    }
+        return nil;
+    }];
 }
 
 -(OPPhotoAlbum*)addAlbum:(OPPhotoAlbum*)album
 {
-    [_lock lockForWriting];
-    @try
-    {
-        if (![_albumSet containsObject:album])
+    return [self withWriteLock:^id{
+        if (![_collectionSet containsObject:album])
         {
-            [_albumSet addObject:album];
+            [_collectionSet addObject:album];
             return album;
         }
         return nil;
-    }
-    @finally
-    {
-        [_lock unlock];
-    }
+    }];
 }
 
 -(void)removeAlbum:(OPPhotoAlbum*)album
 {
+    [self withWriteLock:^id{
+        [_collectionSet removeObject:album];
+        return nil;
+    }];
+}
+
+-(void)foundCamera:(NSNotification*)notification
+{
+    OPCamera *camera = notification.userInfo[@"camera"];
+    if (camera)
+    {
+        [self withWriteLock:^id{
+            [_collectionSet addObject:camera];
+            [self sendNotificationWithName:OPPhotoManagerDidUpdateCollection forPhotoCollection:camera];
+            return nil;
+        }];
+    }
+}
+
+-(void)removedCamera:(NSNotification*)notification
+{
+    OPCamera *camera = notification.userInfo[@"camera"];
+    if (camera)
+    {
+        [self withWriteLock:^id{
+            [_collectionSet removeObject:camera];
+            [self sendNotificationWithName:OPPhotoManagerDidUpdateCollection forPhotoCollection:camera];
+            return nil;
+        }];
+    }
+}
+
+-(id)withWriteLock:(id (^)(void))block
+{
     [_lock lockForWriting];
     @try
     {
-        [_albumSet removeObject:album];
+        return block();
     }
     @finally
     {
@@ -184,14 +213,14 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
     }
 }
 
--(void)sendNotificationWithName:(NSString*)notificationName forAlbum:(OPPhotoAlbum*)album
+-(void)sendNotificationWithName:(NSString*)notificationName forPhotoCollection:(id<OPPhotoCollection>)photoCollection
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:@{@"album": album, @"photoManager": self}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:@{@"collection": photoCollection, @"photoManager": self}];
 }
 
 -(void)sendAlbumDeletedNotification:(OPPhotoAlbum*)photoAlbum
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPPhotoManagerDidDeleteAlbum object:nil userInfo:@{@"title": photoAlbum.title, @"photoManager": self}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPPhotoManagerDidDeleteCollection object:nil userInfo:@{@"title": photoAlbum.title, @"photoManager": self}];
 }
 
 @end

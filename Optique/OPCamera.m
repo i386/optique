@@ -28,6 +28,11 @@
     return self;
 }
 
+-(NSString *)title
+{
+    return _device.name;
+}
+
 -(NSArray *)allPhotos
 {    
     if (_allPhotos == nil)
@@ -48,14 +53,14 @@
 
 -(NSArray *)photosForIndexSet:(NSIndexSet *)indexSet
 {
-    NSMutableArray *albums = [NSMutableArray array];
+    NSMutableArray *photos = [NSMutableArray array];
     
     [[self allPhotos] enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop)
      {
-         [albums addObject:obj];
+         [photos addObject:obj];
      }];
     
-    return albums;
+    return photos;
 }
 
 -(void)reloadPhotos

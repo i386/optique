@@ -27,7 +27,7 @@
         _photoAlbum = photoAlbum;
         _photoManager = photoManager;
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateAlbum object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateCollection object:nil];
     }
     
     return self;
@@ -35,7 +35,7 @@
 
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidUpdateAlbum object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidUpdateCollection object:nil];
 }
 
 - (IBAction)revealInFinder:(NSMenuItem*)sender

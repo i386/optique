@@ -53,7 +53,7 @@ NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamer
 {
     [self sendNotification:OPCameraServiceDidRemoveCamera camera:[_devices objectForKey:device.name]];
     [_devices removeObjectForKey:device.name];
-    [device requestCloseSession];
+//    [device requestCloseSession];
 }
 
 -(void)sendNotification:(NSString*)notificationName camera:(OPCamera*)camera
