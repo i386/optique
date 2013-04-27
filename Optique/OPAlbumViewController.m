@@ -71,7 +71,7 @@
     NSMutableArray *urls = [NSMutableArray array];
     [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
     {
-        OPPhotoAlbum *album = _photoManager.allAlbums[index];
+        OPPhotoAlbum *album = (OPPhotoAlbum*)_photoManager.allCollections[index];
         [urls addObject:album.path];
     }];
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
@@ -81,7 +81,7 @@
 {
     NSIndexSet *index = (NSIndexSet*)sender.representedObject;
     
-    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithPhotoAlbums:[_photoManager albumsForIndexSet:index] photoManager:_photoManager];
+    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithPhotoAlbums:[_photoManager allCollectionsForIndexSet:index] photoManager:_photoManager];
     
     NSString *alertMessage;
     if (index.count > 1)
@@ -114,7 +114,7 @@
 
 - (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section
 {
-    OPPhotoAlbum *photoAlbum = _photoManager.allAlbums[index];
+    OPPhotoAlbum *photoAlbum = (OPPhotoAlbum*)_photoManager.allCollections[index];
     [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:photoAlbum photoManager:_photoManager]];
 }
 
@@ -147,7 +147,7 @@
         if ([photoManager isEqual:_photoManager])
         {
             OPPhotoAlbum *album = [notification userInfo][@"album"];
-            NSUInteger index = [_photoManager.allAlbums indexOfObject:album];
+            NSUInteger index = [_photoManager.allCollections indexOfObject:album];
 //            [_gridView redrawItemAtIndex:index];
             [_gridView reloadData];
         }
@@ -182,7 +182,7 @@
 
 - (NSUInteger)gridView:(CNGridView *)gridView numberOfItemsInSection:(NSInteger)section
 {
-    return _photoManager.allAlbums.count;
+    return _photoManager.allCollections.count;
 }
 
 - (CNGridViewItem *)gridView:(CNGridView *)gridView itemAtIndex:(NSInteger)index inSection:(NSInteger)section
@@ -192,7 +192,7 @@
         item = [[OPPhotoGridItemView alloc] initWithLayout:nil reuseIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
     }
     
-    OPPhotoAlbum *album = _photoManager.allAlbums[index];
+    OPPhotoAlbum *album = _photoManager.allCollections[index];
     item.representedObject = album;
     
     NSArray *allPhotos = album.allPhotos;

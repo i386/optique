@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <ImageCaptureCore/ImageCaptureCore.h>
 
-@interface OPImageCaptureService : NSObject <ICDeviceBrowserDelegate, ICCameraDeviceDelegate>
+NSString *const OPCameraServiceDidAddCamera;
+NSString *const OPCameraServiceDidRemoveCamera;
+
+@interface OPCameraService : NSObject <ICDeviceBrowserDelegate>
 
 @property (readonly, strong) ICDeviceBrowser *deviceBrowser;
 

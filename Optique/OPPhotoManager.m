@@ -41,7 +41,7 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFindAlbumsNotification object:nil];
 }
 
--(NSArray *)allAlbums
+-(NSArray *)allCollections
 {
     [_lock lock];
     @try
@@ -54,11 +54,11 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
     }
 }
 
--(NSArray *)albumsForIndexSet:(NSIndexSet *)indexSet
+-(NSArray *)allCollectionsForIndexSet:(NSIndexSet *)indexSet
 {
     NSMutableArray *albums = [NSMutableArray array];
     
-    [[self allAlbums] enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    [[self allCollections] enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [albums addObject:obj];
     }];
     
@@ -103,7 +103,7 @@ NSString *const OPPhotoManagerDidDeleteAlbum = @"OPPhotoManagerDidDeleteAlbum";
     [self removeAlbum:photoAlbum];
 }
 
--(void)albumUpdated:(OPPhotoAlbum *)album
+-(void)collectionUpdated:(OPPhotoAlbum *)album
 {
     [album reloadPhotos];
     [self sendNotificationWithName:OPPhotoManagerDidUpdateAlbum forAlbum:album];

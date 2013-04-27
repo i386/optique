@@ -167,7 +167,7 @@
 {
     _moveToAlbumItem.submenu = [[NSMenu alloc] init];
     
-    NSMutableSet *albums = [NSMutableSet setWithArray:_photoManager.allAlbums];
+    NSMutableSet *albums = [NSMutableSet setWithArray:_photoManager.allCollections];
     [albums removeObject:_photoAlbum];
     
     [albums each:^(OPPhotoAlbum *album)

@@ -97,8 +97,8 @@
     NSURL *url = [[album path] URLByAppendingPathComponent:[photo.path lastPathComponent]];
     [[NSFileManager defaultManager] moveItemAtURL:photo.path toURL:url error:nil];
     
-    [_photoManager albumUpdated:self];
-    [_photoManager albumUpdated:album];
+    [_photoManager collectionUpdated:self];
+    [_photoManager collectionUpdated:album];
 }
 
 -(NSArray*)findAllPhotos

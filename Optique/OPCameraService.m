@@ -6,16 +6,19 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OPImageCaptureService.h"
-#import "OPImageCaptureDevice.h"
+#import "OPCameraService.h"
+#import "OPCamera.h"
 
-@interface OPImageCaptureService() {
+NSString *const OPCameraServiceDidAddCamera = @"OPCameraServiceDidAddCamera";
+NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamera";
+
+@interface OPCameraService() {
     NSMutableDictionary *_devices;
 }
 
 @end
 
-@implementation OPImageCaptureService
+@implementation OPCameraService
 
 -(id)init
 {
@@ -38,13 +41,24 @@
 
 -(void)deviceBrowser:(ICDeviceBrowser *)browser didAddDevice:(ICDevice *)device moreComing:(BOOL)moreComing
 {
-    OPImageCaptureDevice *imageCaptureDevice = [[OPImageCaptureDevice alloc] initWithDevice:device];
-    [_devices setObject:imageCaptureDevice forKey:device.name];
+    OPCamera *camera = [[OPCamera alloc] initWithDevice:(ICCameraDevice*)device];
+    [_devices setObject:camera forKey:device.name];
+    
+    [camera.device requestOpenSession];
+    
+    [self sendNotification:OPCameraServiceDidAddCamera camera:camera];
 }
 
 -(void)deviceBrowser:(ICDeviceBrowser *)browser didRemoveDevice:(ICDevice *)device moreGoing:(BOOL)moreGoing
 {
+    [self sendNotification:OPCameraServiceDidRemoveCamera camera:[_devices objectForKey:device.name]];
     [_devices removeObjectForKey:device.name];
+    [device requestCloseSession];
+}
+
+-(void)sendNotification:(NSString*)notificationName camera:(OPCamera*)camera
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:@{@"camera": camera}];
 }
 
 @end

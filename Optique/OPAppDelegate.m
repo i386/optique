@@ -16,7 +16,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    _imageCaptureService = [[OPImageCaptureService alloc] init];
+    _cameraService = [[OPCameraService alloc] init];
     
     NSURL *url = [[_userDefaultsController defaults] URLForKey:@"url"];
     if (!url)
@@ -68,7 +68,7 @@
     _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager];
     [_albumScaner scanAtURL:url];
     
-    [_imageCaptureService restart];
+    [_cameraService restart];
 }
 
 @end

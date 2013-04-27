@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OPPhoto.h"
 
-@protocol OPImageCollection <NSObject>
+@protocol OPPhotoCollection <NSObject>
 
 -(NSArray*)allPhotos;
 

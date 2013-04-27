@@ -31,9 +31,9 @@
 		0F66FD211728FE3300747AC7 /* OPMainWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F66FD201728FE3300747AC7 /* OPMainWindowContentView.m */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
-		0F6AF878172A3B0B0029724A /* OPImageCaptureService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF877172A3B0A0029724A /* OPImageCaptureService.m */; };
+		0F6AF878172A3B0B0029724A /* OPCameraService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF877172A3B0A0029724A /* OPCameraService.m */; };
 		0F6AF87B172A3B220029724A /* ImageCaptureCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */; };
-		0F6AF87F172A42750029724A /* OPImageCaptureDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF87E172A42750029724A /* OPImageCaptureDevice.m */; };
+		0F6AF87F172A42750029724A /* OPCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF87E172A42750029724A /* OPCamera.m */; };
 		0F6D098A170FC5E3006268F1 /* OPEffectProcessedImageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D0989170FC5E3006268F1 /* OPEffectProcessedImageRef.m */; };
 		0F705231170AB695001F8159 /* OPPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F705230170AB695001F8159 /* OPPhotoGridView.m */; };
 		0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */; };
@@ -126,12 +126,12 @@
 		0F6AEF821701C02200A797E4 /* OPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMainWindowController.h; sourceTree = "<group>"; };
 		0F6AEF831701C02200A797E4 /* OPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMainWindowController.m; sourceTree = "<group>"; };
 		0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPMainWindowController.xib; sourceTree = "<group>"; };
-		0F6AF876172A3B0A0029724A /* OPImageCaptureService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageCaptureService.h; sourceTree = "<group>"; };
-		0F6AF877172A3B0A0029724A /* OPImageCaptureService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageCaptureService.m; sourceTree = "<group>"; };
+		0F6AF876172A3B0A0029724A /* OPCameraService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCameraService.h; sourceTree = "<group>"; };
+		0F6AF877172A3B0A0029724A /* OPCameraService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCameraService.m; sourceTree = "<group>"; };
 		0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageCaptureCore.framework; path = System/Library/Frameworks/ImageCaptureCore.framework; sourceTree = SDKROOT; };
 		0F6AF87C172A3EE70029724A /* OPImageCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageCollection.h; sourceTree = "<group>"; };
-		0F6AF87D172A42750029724A /* OPImageCaptureDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageCaptureDevice.h; sourceTree = "<group>"; };
-		0F6AF87E172A42750029724A /* OPImageCaptureDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageCaptureDevice.m; sourceTree = "<group>"; };
+		0F6AF87D172A42750029724A /* OPCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCamera.h; sourceTree = "<group>"; };
+		0F6AF87E172A42750029724A /* OPCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCamera.m; sourceTree = "<group>"; };
 		0F6D0988170FC5E3006268F1 /* OPEffectProcessedImageRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPEffectProcessedImageRef.h; sourceTree = "<group>"; };
 		0F6D0989170FC5E3006268F1 /* OPEffectProcessedImageRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPEffectProcessedImageRef.m; sourceTree = "<group>"; };
 		0F70522F170AB695001F8159 /* OPPhotoGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoGridView.h; sourceTree = "<group>"; };
@@ -251,10 +251,10 @@
 		0F6AF879172A3B130029724A /* Image capture */ = {
 			isa = PBXGroup;
 			children = (
-				0F6AF876172A3B0A0029724A /* OPImageCaptureService.h */,
-				0F6AF877172A3B0A0029724A /* OPImageCaptureService.m */,
-				0F6AF87D172A42750029724A /* OPImageCaptureDevice.h */,
-				0F6AF87E172A42750029724A /* OPImageCaptureDevice.m */,
+				0F6AF876172A3B0A0029724A /* OPCameraService.h */,
+				0F6AF877172A3B0A0029724A /* OPCameraService.m */,
+				0F6AF87D172A42750029724A /* OPCamera.h */,
+				0F6AF87E172A42750029724A /* OPCamera.m */,
 			);
 			name = "Image capture";
 			sourceTree = "<group>";
@@ -517,9 +517,9 @@
 		0FEF33A116FEC6420096D72A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0F6AF87C172A3EE70029724A /* OPImageCollection.h */,
 				0F3DF46816F98CE700C003D3 /* OPPhotoManager.h */,
 				0F3DF46916F98CE700C003D3 /* OPPhotoManager.m */,
-				0F6AF87C172A3EE70029724A /* OPImageCollection.h */,
 				0F3DF46B16F98D0D00C003D3 /* OPPhotoAlbum.h */,
 				0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */,
 				0F350F5B16FB0E3A00CC18F7 /* OPPhoto.h */,
@@ -686,8 +686,8 @@
 				0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */,
 				0F66FD151728A49B00747AC7 /* OPTextLayer.m in Sources */,
 				0F66FD211728FE3300747AC7 /* OPMainWindowContentView.m in Sources */,
-				0F6AF878172A3B0B0029724A /* OPImageCaptureService.m in Sources */,
-				0F6AF87F172A42750029724A /* OPImageCaptureDevice.m in Sources */,
+				0F6AF878172A3B0B0029724A /* OPCameraService.m in Sources */,
+				0F6AF87F172A42750029724A /* OPCamera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

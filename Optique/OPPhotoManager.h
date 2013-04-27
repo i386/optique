@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "OPImageCollection.h"
 #import "OPPhotoAlbum.h"
 
 NSString *const OPPhotoManagerDidAddAlbum;
@@ -20,14 +21,14 @@ NSString *const OPPhotoManagerDidDeleteAlbum;
 
 -initWithPath:(NSURL*)path;
 
--(NSArray*)allAlbums;
+-(NSArray*)allCollections;
 
--(NSArray*)albumsForIndexSet:(NSIndexSet*)indexSet;
+-(NSArray*)allCollectionsForIndexSet:(NSIndexSet*)indexSet;
 
 -(OPPhotoAlbum*)newAlbumWithName:(NSString*)albumName error:(NSError **)error;
 
 -(void)deleteAlbum:(OPPhotoAlbum*)photoAlbum;
 
--(void)albumUpdated:(OPPhotoAlbum*)album;
+-(void)collectionUpdated:(id<OPPhotoCollection>)album;
 
 @end

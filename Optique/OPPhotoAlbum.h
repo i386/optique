@@ -14,7 +14,7 @@
 
 @class OPPhotoManager;
 
-@interface OPPhotoAlbum : NSObject <OPImageCollection>
+@interface OPPhotoAlbum : NSObject <OPPhotoCollection>
 
 @property (strong, readonly) NSString *title;
 @property (strong, readonly) NSURL *path;

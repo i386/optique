@@ -10,10 +10,10 @@
 #import <ImageCaptureCore/ImageCaptureCore.h>
 #import "OPImageCollection.h"
 
-@interface OPImageCaptureDevice : NSObject <OPImageCollection>
+@interface OPCamera : NSObject <OPPhotoCollection, ICDeviceDelegate>
 
-@property (readonly, strong) ICDevice *device;
+@property (readonly, strong) ICCameraDevice *device;
 
--initWithDevice:(ICDevice*)device;
+-initWithDevice:(ICCameraDevice*)device;
 
 @end
