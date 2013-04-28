@@ -20,7 +20,7 @@
 @property (strong) IBOutlet NSPageController *pageController;
 @property (strong) IBOutlet NSView *effectsPanel;
 
--initWithPhotoAlbum:(OPPhotoAlbum*)album photo:(OPPhoto*)photo;
+-initWithPhotoAlbum:(OPPhotoAlbum*)album photo:(id<OPPhoto>)photo;
 
 -(void)nextPhoto;
 -(void)previousPhoto;
@@ -30,6 +30,6 @@
 -(void)deletePhoto;
 -(void)revealInFinder;
 
--(NSArray *)processedImages;
+//-(NSArray *)processedImages;
 
 @end

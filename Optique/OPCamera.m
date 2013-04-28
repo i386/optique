@@ -7,6 +7,7 @@
 //
 
 #import "OPCamera.h"
+#import "OPCameraPhoto.h"
 #import "CHReadWriteLock.h"
 
 @interface OPCamera() {
@@ -35,10 +36,7 @@
 
 -(NSArray *)allPhotos
 {    
-    if (_allPhotos == nil)
-    {
-        [self reloadPhotos];
-    }
+    [self reloadPhotos];
     
     [_arrayLock lock];
     @try
@@ -75,9 +73,10 @@
             [_device requestOpenSession];
         }
         
-        [_device.mediaFiles each:^(id sender)
+        [_device.mediaFiles each:^(ICCameraFile *file)
         {
-            NSLog(@"media file %@", sender);
+            OPCameraPhoto *photo = [[OPCameraPhoto alloc] initWithCameraFile:file collection:self];
+            [_allPhotos addObject:photo];
         }];
         
         [_device requestCloseSession];
@@ -104,26 +103,30 @@
     {
         NSLog(@"session opened with error %@", error);
     }
-    else
-    {
-//        [_device requestEnableTethering];
-        
-        [_device.mediaFiles each:^(id sender)
-         {
-             NSLog(@"sender: '%@'", sender);
-         }];
-    }
-}
-
--(void)device:(ICDevice *)device didCloseSessionWithError:(NSError *)error
-{
-    NSLog(@"session closed with error %@", error);
 }
 
 -(void)device:(ICDevice *)device didReceiveButtonPress:(NSString *)buttonType
 {
     NSLog(@"recieved button press: %@", buttonType);
 }
+
+- (void)cameraDevice:(ICCameraDevice*)device didReceiveThumbnailForItem:(ICCameraItem*)item
+{
+    [item thumbnailIfAvailable];
+    
+//    NSLog( @"cameraDevice:didReceiveThumbnailForItem:\n" );
+//    NSLog( @"  device: %@\n", device );
+//    NSLog( @"  item:   %@\n", item );
+}
+
+//- (void)cameraDevice:(ICCameraDevice*)device didReceiveMetadataForItem:(ICCameraItem*)item
+//{
+//    NSLog( @"cameraDevice:didReceiveMetadataForItem:\n" );
+//    NSLog( @"  device: %@\n", device );
+//    NSLog( @"  item:   %@\n", item );
+//}
+
+//cameraDevice:didReceiveThumbnailForItem:
 
 -(void)didRemoveDevice:(ICDevice *)device
 {

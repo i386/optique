@@ -8,6 +8,8 @@
 
 #import "OPImagePreviewService.h"
 #import "OPImageCache.h"
+#import "OPCameraPhoto.h"
+#import "OPLocalPhoto.h"
 
 @interface OPImagePreviewService() {
     NSMapTable *_locks;
@@ -41,6 +43,23 @@ static OPImagePreviewService *_defaultService;
     return self;
 }
 
+-(NSImage *)previewImageWithPhoto:(id<OPPhoto>)photo loaded:(void (^)(NSImage *))loadBlock
+{
+    NSImage *image;
+    NSObject *photoObj = (NSObject*)photo;
+    if ([photoObj isKindOfClass:[OPCameraPhoto class]])
+    {
+        OPCameraPhoto *cameraPhoto = (OPCameraPhoto*)photo;
+        image = cameraPhoto.thumbnail;
+    }
+    else
+    {
+        OPLocalPhoto *localPhoto = (OPLocalPhoto*)photo;
+        image = [self previewImageAtURL:localPhoto.path loaded:loadBlock];
+    }
+    return image == nil ? [NSImage imageNamed:@"loading-preview"] : image;
+}
+
 -(NSImage *)previewImageAtURL:(NSURL *)url loaded:(void (^)(NSImage *))loadBlock
 {
     OPImageCache *cache = [OPImageCache sharedPreviewCache];
@@ -69,7 +88,7 @@ static OPImagePreviewService *_defaultService;
         {
             [lock unlock];
         }
-        return [NSImage imageNamed:@"loading-preview"];
+        return nil;
     }
     
     return [cache loadImageForPath:url];

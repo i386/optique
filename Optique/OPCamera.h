@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ImageCaptureCore/ImageCaptureCore.h>
-#import "OPImageCollection.h"
+#import "OPPhotoCollection.h"
 
 @interface OPCamera : NSObject <OPPhotoCollection, ICDeviceDelegate>
 

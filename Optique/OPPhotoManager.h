@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "OPImageCollection.h"
+#import "OPPhotoCollection.h"
 #import "OPPhotoAlbum.h"
 
 NSString *const OPPhotoManagerDidAddCollection;

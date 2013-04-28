@@ -8,7 +8,7 @@
 
 #import "OPPhotoManager.h"
 #import "OPPhotoAlbum.h"
-#import "OPPhoto.h"
+#import "OPLocalPhoto.h"
 #import "CHReadWriteLock.h"
 
 @interface OPPhotoAlbum() {
@@ -76,29 +76,29 @@
     }
 }
 
--(void)deletePhoto:(OPPhoto *)photo error:(NSError *__autoreleasing *)error
+-(void)deletePhoto:(id<OPPhoto>)photo error:(NSError *__autoreleasing *)error
 {
-    [_arrayLock lockForWriting];
-    @try
-    {
-        //TODO check for errors
-        [[NSFileManager defaultManager] removeItemAtURL:photo.path error:nil];
-        
-        [_allPhotos removeObject:photo];
-    }
-    @finally
-    {
-        [_arrayLock unlock];
-    }
+//    [_arrayLock lockForWriting];
+//    @try
+//    {
+//        //TODO check for errors
+//        [[NSFileManager defaultManager] removeItemAtURL:photo.path error:nil];
+//        
+//        [_allPhotos removeObject:photo];
+//    }
+//    @finally
+//    {
+//        [_arrayLock unlock];
+//    }
 }
 
--(void)movePhoto:(OPPhoto *)photo toAlbum:(OPPhotoAlbum *)album
+-(void)movePhoto:(id<OPPhoto>)photo toAlbum:(OPPhotoAlbum *)album
 {
-    NSURL *url = [[album path] URLByAppendingPathComponent:[photo.path lastPathComponent]];
-    [[NSFileManager defaultManager] moveItemAtURL:photo.path toURL:url error:nil];
-    
-    [_photoManager collectionUpdated:self];
-    [_photoManager collectionUpdated:album];
+//    NSURL *url = [[album path] URLByAppendingPathComponent:[photo.path lastPathComponent]];
+//    [[NSFileManager defaultManager] moveItemAtURL:photo.path toURL:url error:nil];
+//    
+//    [_photoManager collectionUpdated:self];
+//    [_photoManager collectionUpdated:album];
 }
 
 -(NSArray*)findAllPhotos
@@ -129,7 +129,7 @@
             
             if (UTTypeConformsTo(fileUTI, kUTTypeImage))
             {
-                OPPhoto *photo = [[OPPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
+                OPLocalPhoto *photo = [[OPLocalPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
                 [photos addObject:photo];
             }
         }

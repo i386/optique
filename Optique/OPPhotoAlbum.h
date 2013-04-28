@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "OPImageCollection.h"
+#import "OPPhotoCollection.h"
 #import "OPImageCache.h"
 #import "OPPhoto.h"
 
@@ -22,8 +22,8 @@
 
 -(id)initWithTitle:(NSString *)title path:(NSURL *)path photoManager:(OPPhotoManager*)photoManager;
 
--(void)movePhoto:(OPPhoto *)photo toAlbum:(OPPhotoAlbum *)album;
+-(void)movePhoto:(id<OPPhoto>)photo toAlbum:(OPPhotoAlbum *)album;
 
--(void)deletePhoto:(OPPhoto*)photo error:(NSError**)error;
+-(void)deletePhoto:(id<OPPhoto>)photo error:(NSError**)error;
 
 @end

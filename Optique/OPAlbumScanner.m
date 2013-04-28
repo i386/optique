@@ -9,7 +9,6 @@
 #import "OPAlbumScanner.h"
 #import "OPPhotoManager.h"
 #import "OPPhotoAlbum.h"
-#import "OPPhoto.h"
 
 /** Events **/
 NSString *const OPAlbumScannerDidStartScanNotification = @"OPAlbumScannerDidStartScanNotification";

@@ -28,7 +28,7 @@ NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamer
         _devices = [NSMutableDictionary dictionary];
         _deviceBrowser = [[ICDeviceBrowser alloc] init];
         _deviceBrowser.delegate = self;
-        _deviceBrowser.browsedDeviceTypeMask = _deviceBrowser.browsedDeviceTypeMask | ICDeviceTypeMaskCamera | ICDeviceLocationTypeMaskLocal | ICDeviceLocationTypeMaskShared | ICDeviceLocationTypeMaskBonjour | ICDeviceLocationTypeMaskBluetooth | ICDeviceLocationTypeMaskRemote;
+        _deviceBrowser.browsedDeviceTypeMask = _deviceBrowser.browsedDeviceTypeMask | ICDeviceLocationTypeMaskLocal |ICDeviceLocationTypeMaskRemote|ICDeviceTypeMaskCamera;
     }
     return self;
 }
@@ -45,6 +45,11 @@ NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamer
     [_devices setObject:camera forKey:device.name];
     
     [camera.device requestOpenSession];
+    
+    for (ICCameraFile *file in camera.device.mediaFiles)
+    {
+        [file largeThumbnailIfAvailable];
+    }
     
     [self sendNotification:OPCameraServiceDidAddCamera camera:camera];
 }

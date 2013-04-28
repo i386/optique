@@ -44,8 +44,8 @@
     NSMutableArray *urls = [NSMutableArray array];
     
     [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
-        OPPhoto *photo = _photoAlbum.allPhotos[index];
-        [urls addObject:photo.path];
+//        id<OPPhoto> photo = _photoAlbum.allPhotos[index];
+//        [urls addObject:photo.path];
     }];
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
 }
@@ -64,7 +64,7 @@
     }
     else
     {
-        OPPhoto *photo = [photos lastObject];
+        id<OPPhoto> photo = [photos lastObject];
         message = [NSString stringWithFormat:@"Do you want to delete '%@'?", photo.title];
     }
     
@@ -116,13 +116,13 @@
     
     if (allPhotos.count > 0)
     {
-        OPPhoto *photo = allPhotos[index];
+        id<OPPhoto> photo = allPhotos[index];
         item.representedObject = photo;
         
         CNGridViewItem * __weak weakItem = item;
-        OPPhoto * __weak weakPhoto = photo;
+        id<OPPhoto> __weak weakPhoto = photo;
         
-        item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image)
+        item.itemImage = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
         {
             [self performBlockOnMainThreadAndWaitUntilDone:^
             {
@@ -133,6 +133,8 @@
                 }
             }];
         }];
+        
+        item.itemImage = photo.image;
         
         item.itemTitle = photo.title;
     }
@@ -185,9 +187,10 @@
     NSIndexSet *indexes = [_gridView selectedIndexes];
     NSArray *photos = [_photoAlbum photosForIndexSet:indexes];
     
-    [photos each:^(OPPhoto *photo)
+    [photos each:^(id<OPPhoto> photo)
     {
-        [photo.album movePhoto:photo toAlbum:album];
+        //TODO: reimplement moving
+//        [photo.collection movePhoto:photo toAlbum:album];
     }];
 }
 

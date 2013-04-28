@@ -200,12 +200,12 @@
     
     if (allPhotos.count > 0)
     {
-        OPPhoto *photo = allPhotos[0];
+        id<OPPhoto> photo = allPhotos[0];
         
         CNGridViewItem * __weak weakItem = item;
         OPPhotoAlbum * __weak weakAlbum = album;
         
-        item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image)
+        item.itemImage = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
         {
             [self performBlockOnMainThreadAndWaitUntilDone:^
             {

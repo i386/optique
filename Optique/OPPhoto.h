@@ -7,16 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ImageCaptureCore/ImageCaptureCore.h>
 
-@class OPPhotoAlbum;
+@protocol OPPhotoCollection;
 
-@interface OPPhoto : NSObject
+@protocol OPPhoto
 
-@property (strong, readonly) NSString *title;
-@property (strong, readonly) NSURL *path;
-@property (strong, readonly) OPPhotoAlbum *album;
+-(NSString*)title;
 
--(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(OPPhotoAlbum*)album;
+-(id<OPPhotoCollection>) collection;
 
 -(NSImage*)image;
 
