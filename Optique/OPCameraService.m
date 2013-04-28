@@ -13,6 +13,7 @@ NSString *const OPCameraServiceDidAddCamera = @"OPCameraServiceDidAddCamera";
 NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamera";
 
 @interface OPCameraService() {
+    OPPhotoManager *_photoManager;
     NSMutableDictionary *_devices;
 }
 
@@ -20,11 +21,12 @@ NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamer
 
 @implementation OPCameraService
 
--(id)init
+-(id)initWithPhotoManager:(OPPhotoManager *)photoManager
 {
     self = [super init];
     if (self)
     {
+        _photoManager = photoManager;
         _devices = [NSMutableDictionary dictionary];
         _deviceBrowser = [[ICDeviceBrowser alloc] init];
         _deviceBrowser.delegate = self;
@@ -33,32 +35,46 @@ NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamer
     return self;
 }
 
--(void)restart
+-(void)start
+{
+    [_deviceBrowser start];
+}
+
+-(void)stop
 {
     [_deviceBrowser stop];
-    [_deviceBrowser start];
 }
 
 -(void)deviceBrowser:(ICDeviceBrowser *)browser didAddDevice:(ICDevice *)device moreComing:(BOOL)moreComing
 {
-    OPCamera *camera = [[OPCamera alloc] initWithDevice:(ICCameraDevice*)device];
+    ICCameraDevice *cameraDevice = (ICCameraDevice*)device;
+    
+#if DEBUG
+    NSLog(@"Found camera '%@'", cameraDevice.name);
+    if (cameraDevice.isAccessRestrictedAppleDevice)
+    {
+        NSLog(@"The camera '%@' is locked", cameraDevice.name);
+    }
+#endif
+    
+    OPCamera *camera = [[OPCamera alloc] initWithDevice:cameraDevice photoManager:_photoManager];
     [_devices setObject:camera forKey:device.name];
     
     [camera.device requestOpenSession];
-    
-    for (ICCameraFile *file in camera.device.mediaFiles)
-    {
-        [file largeThumbnailIfAvailable];
-    }
     
     [self sendNotification:OPCameraServiceDidAddCamera camera:camera];
 }
 
 -(void)deviceBrowser:(ICDeviceBrowser *)browser didRemoveDevice:(ICDevice *)device moreGoing:(BOOL)moreGoing
 {
-    [self sendNotification:OPCameraServiceDidRemoveCamera camera:[_devices objectForKey:device.name]];
+#if DEBUG
+    NSLog(@"Remove camera camera '%@'", device.name);
+#endif
+    
+    OPCamera *camera = [_devices objectForKey:device.name];
+    [self sendNotification:OPCameraServiceDidRemoveCamera camera:camera];
     [_devices removeObjectForKey:device.name];
-//    [device requestCloseSession];
+    [camera removeCacheDirectory];
 }
 
 -(void)sendNotification:(NSString*)notificationName camera:(OPCamera*)camera

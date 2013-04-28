@@ -14,11 +14,8 @@
 @interface OPPhotoViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate>
 
 @property (strong, readonly) OPPhotoAlbum *photoAlbum;
-@property (strong) IBOutlet NSCollectionView *collectionView;
-@property (strong) IBOutlet NSArrayController *imagesArrayController;
 @property (assign) NSInteger effectsState;
 @property (strong) IBOutlet NSPageController *pageController;
-@property (strong) IBOutlet NSView *effectsPanel;
 
 -initWithPhotoAlbum:(OPPhotoAlbum*)album photo:(id<OPPhoto>)photo;
 

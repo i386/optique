@@ -16,8 +16,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    _cameraService = [[OPCameraService alloc] init];
-    
     NSURL *url = [[_userDefaultsController defaults] URLForKey:@"url"];
     if (!url)
     {
@@ -61,6 +59,11 @@
         [_mainWindowController close];
     }
     
+    if (_cameraService)
+    {
+        [_cameraService stop];
+    }
+    
     _photoManager = [[OPPhotoManager alloc] initWithPath:url];
     _mainWindowController = [[OPMainWindowController alloc] initWithPhotoManager:_photoManager];
     [_mainWindowController.window makeKeyAndOrderFront:self];
@@ -68,7 +71,8 @@
     _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager];
     [_albumScaner scanAtURL:url];
     
-    [_cameraService restart];
+    _cameraService = [[OPCameraService alloc] initWithPhotoManager:_photoManager];
+    [_cameraService start];
 }
 
 @end

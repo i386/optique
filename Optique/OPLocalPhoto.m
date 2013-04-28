@@ -67,6 +67,11 @@
     return image;
 }
 
+-(id<OPPhotoCollection>)collection
+{
+    return _collection;
+}
+
 -(BOOL)isEqual:(id)object
 {
     if (object == self)

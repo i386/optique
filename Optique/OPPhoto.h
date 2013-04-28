@@ -19,6 +19,10 @@
 
 -(NSImage*)image;
 
+/**
+ Scale the image to fit the speicifed size.
+ May return the full size image if scaling is not available.
+ **/
 -(NSImage*)scaleImageToFitSize:(NSSize)size;
 
 @end

@@ -11,9 +11,9 @@
 #import "OPPhotoCollection.h"
 #import "OPPhotoAlbum.h"
 
-NSString *const OPPhotoManagerDidAddCollection;
-NSString *const OPPhotoManagerDidUpdateCollection;
-NSString *const OPPhotoManagerDidDeleteCollection;
+extern NSString *const OPPhotoManagerDidAddCollection;
+extern NSString *const OPPhotoManagerDidUpdateCollection;
+extern NSString *const OPPhotoManagerDidDeleteCollection;
 
 @interface OPPhotoManager : NSObject
 

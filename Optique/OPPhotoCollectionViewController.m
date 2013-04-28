@@ -134,8 +134,6 @@
             }];
         }];
         
-        item.itemImage = photo.image;
-        
         item.itemTitle = photo.title;
     }
     

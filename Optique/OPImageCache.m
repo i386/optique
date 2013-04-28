@@ -10,7 +10,6 @@
 #import "NSImage+MGCropExtensions.h"
 #import <NSHash/NSString+NSHash.h>
 
-#define THUMB_SIZE NSMakeSize(260, 175)
 #define CACHE_SIZE 524288000
 
 @interface OPImageCache() {
@@ -28,7 +27,7 @@ static OPImageCache *_sharedPreviewCache;
 {
     if (!_sharedPreviewCache)
     {
-        _sharedPreviewCache = [[OPImageCache alloc] initWithIdentity:@"previews" size:THUMB_SIZE];
+        _sharedPreviewCache = [[OPImageCache alloc] initWithIdentity:@"previews" size:IMAGE_CACHE_THUMB_SIZE];
     }
     return _sharedPreviewCache;
 }
@@ -137,7 +136,7 @@ static OPImageCache *_sharedPreviewCache;
 -(NSImage*)resizeImageAndWriteToCache:(NSURL*)originalPath cachedPath:(NSURL*)cachedPath
 {
     NSImage *image = [[NSImage alloc] initWithContentsOfURL:originalPath];
-    image = [image imageCroppedToFitSize:THUMB_SIZE];
+    image = [image imageCroppedToFitSize:_size];
     
     NSData *imageData = [image TIFFRepresentation];
     NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imageData];

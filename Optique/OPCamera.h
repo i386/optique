@@ -9,11 +9,24 @@
 #import <Foundation/Foundation.h>
 #import <ImageCaptureCore/ImageCaptureCore.h>
 #import "OPPhotoCollection.h"
+#import "OPPhotoManager.h"
 
 @interface OPCamera : NSObject <OPPhotoCollection, ICDeviceDelegate>
 
 @property (readonly, strong) ICCameraDevice *device;
 
--initWithDevice:(ICCameraDevice*)device;
+-(id)initWithDevice:(ICCameraDevice*)device photoManager:(OPPhotoManager*)photoManager;
+
+-(NSImage*)thumbnailForName:(NSString*)name;
+
+/** 
+ Camera cache directory where files downloaded from the camera are stored.
+ **/
+-(NSURL*)cacheDirectory;
+
+/**
+ Remove the cache directory
+ **/
+-(void)removeCacheDirectory;
 
 @end

@@ -194,7 +194,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
     {
         [self withWriteLock:^id{
             [_collectionSet removeObject:camera];
-            [self sendNotificationWithName:OPPhotoManagerDidUpdateCollection forPhotoCollection:camera];
+            [self sendNotificationWithName:OPPhotoManagerDidDeleteCollection forPhotoCollection:camera];
             return nil;
         }];
     }

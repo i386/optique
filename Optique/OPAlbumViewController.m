@@ -36,11 +36,8 @@
 -(void)awakeFromNib
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:OPPhotoManagerDidAddCollection object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:OPPhotoManagerDidDeleteCollection object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateCollection object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFinishedLoading:) name:OPAlbumScannerDidFinishScanNotification object:nil];
 }
 
@@ -146,10 +143,6 @@
         
         if ([photoManager isEqual:_photoManager])
         {
-            id<OPPhotoCollection> collection = [notification userInfo][@"collection"];
-            NSUInteger index = [_photoManager.allCollections indexOfObject:collection];
-            //TODO: add a way to redraw the single item in the grid so that preview image is updated when collection content is changed
-//            [_gridView redrawItemAtIndex:index];
             [_gridView reloadData];
         }
     }];
@@ -163,7 +156,9 @@
         if ([photoManager isEqual:_photoManager])
         {
             [_gridView reloadData];
-            [self.controller updateNavigation];
+            
+            //If the album is deleted pop back to the root controller
+            [self.controller popToRootViewController];
         }
     }];
 }

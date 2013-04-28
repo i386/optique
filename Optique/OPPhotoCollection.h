@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "OPPhoto.h"
 
+@class OPPhotoManager;
+
 @protocol OPPhotoCollection <NSObject>
+
+-(OPPhotoManager*)photoManager;
 
 -(NSString*)title;
 

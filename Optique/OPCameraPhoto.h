@@ -12,6 +12,8 @@
 
 @interface OPCameraPhoto : NSObject <OPPhoto>
 
+@property (strong) ICCameraFile *cameraFile;
+
 -(id)initWithCameraFile:(ICCameraFile*)cameraFile collection:(id<OPPhotoCollection>)collection;
 
 -(NSImage*)thumbnail;

@@ -8,15 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import <ImageCaptureCore/ImageCaptureCore.h>
+#import "OPPhotoManager.h"
+#import "OPCamera.h"
 
-NSString *const OPCameraServiceDidAddCamera;
-NSString *const OPCameraServiceDidRemoveCamera;
+extern NSString *const OPCameraServiceDidAddCamera;
+extern NSString *const OPCameraServiceDidRemoveCamera;
 
 @interface OPCameraService : NSObject <ICDeviceBrowserDelegate>
 
 @property (readonly, strong) ICDeviceBrowser *deviceBrowser;
 
-/** restart the image capture service **/
--(void)restart;
+-(id)initWithPhotoManager:(OPPhotoManager*)photoManager;
+
+/** start listening for devices **/
+-(void)start;
+
+/** stop listening for devices **/
+-(void)stop;
 
 @end
