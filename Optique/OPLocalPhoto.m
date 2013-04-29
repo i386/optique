@@ -27,12 +27,12 @@
     return self;
 }
 
--(void)imageWithCompletionBlock:(void (^)(NSImage *))completionBlock
+-(void)imageWithCompletionBlock:(OPImageCompletionBlock)completionBlock
 {
     completionBlock([[NSImage alloc] initWithContentsOfURL:_path]);
 }
 
--(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(void (^)(NSImage *))completionBlock
+-(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(OPImageCompletionBlock)completionBlock
 {
     NSImage *image;
     

@@ -50,7 +50,7 @@
     return thumbnail;
 }
 
--(void)imageWithCompletionBlock:(void (^)(NSImage *))completionBlock
+-(void)imageWithCompletionBlock:(OPImageCompletionBlock)completionBlock
 {
     if (!_fileDownloaded)
     {
@@ -68,7 +68,13 @@
     }
 }
 
-- (void)didReadData:(NSData*)data fromFile:(ICCameraFile*)file error:(NSError*)error contextInfo:(void (^)(NSImage*))loadBlock
+
+-(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(OPImageCompletionBlock)completionBlock
+{
+    [self imageWithCompletionBlock:completionBlock];
+}
+
+- (void)didReadData:(NSData*)data fromFile:(ICCameraFile*)file error:(NSError*)error contextInfo:(void*)context
 {
 #if DEBUG
     NSLog(@"Downloading image '%@' from camera '%@'", file.name, file.device.name);
@@ -83,12 +89,9 @@
     [[self.collection photoManager] collectionUpdated:self.collection];
     
     NSImage *image = [[NSImage alloc] initByReferencingURL:fileURL];
-    loadBlock(image);
-}
-
--(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(void (^)(NSImage *))completionBlock
-{
-    [self imageWithCompletionBlock:completionBlock];
+    
+    OPImageCompletionBlock completionBlock = CFBridgingRelease(context);
+    completionBlock(image);
 }
 
 @end

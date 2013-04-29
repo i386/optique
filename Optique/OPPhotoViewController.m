@@ -129,9 +129,10 @@
     }
     
     NSSize windowSize = [[NSApplication sharedApplication] mainWindow].frame.size;
-    [_currentPhoto scaleImageToFitSize:windowSize withCompletionBlock:^(NSImage *image) {
+    [_currentPhoto scaleImageToFitSize:windowSize withCompletionBlock:^void(NSImage *image) {
         viewController.representedObject = image;
     }];
+    
     [self.controller updateNavigation];
 }
 

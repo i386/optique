@@ -44,7 +44,7 @@ static OPImagePreviewService *_defaultService;
     return self;
 }
 
--(NSImage *)previewImageWithPhoto:(id<OPPhoto>)photo loaded:(void (^)(NSImage *))loadBlock
+-(NSImage *)previewImageWithPhoto:(id<OPPhoto>)photo loaded:(OPImageCompletionBlock)completionBlock
 {
     NSImage *image;
     NSObject *photoObj = (NSObject*)photo;
@@ -60,12 +60,12 @@ static OPImagePreviewService *_defaultService;
     else
     {
         OPLocalPhoto *localPhoto = (OPLocalPhoto*)photo;
-        image = [self previewImageAtURL:localPhoto.path loaded:loadBlock];
+        image = [self previewImageAtURL:localPhoto.path loaded:completionBlock];
     }
     return image == nil ? [NSImage imageNamed:@"loading-preview"] : image;
 }
 
--(NSImage *)previewImageAtURL:(NSURL *)url loaded:(void (^)(NSImage *))loadBlock
+-(NSImage *)previewImageAtURL:(NSURL *)url loaded:(OPImageCompletionBlock)completionBlock
 {
     OPImageCache *cache = [OPImageCache sharedPreviewCache];
     
@@ -82,7 +82,7 @@ static OPImagePreviewService *_defaultService;
                 [_queue addOperationWithBlock:^
                  {
                      NSImage *image = [cache loadImageForPath:url];
-                     loadBlock(image);
+                     completionBlock(image);
                  }];
                 
                 //Remove the lock

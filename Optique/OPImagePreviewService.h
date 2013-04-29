@@ -13,6 +13,6 @@
 
 +(OPImagePreviewService *)defaultService;
 
--(NSImage*)previewImageWithPhoto:(id<OPPhoto>)photo loaded:(void (^)(NSImage *image))loadBlock;
+-(NSImage*)previewImageWithPhoto:(id<OPPhoto>)photo loaded:(OPImageCompletionBlock)completionBlock;
 
 @end

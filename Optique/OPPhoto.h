@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <ImageCaptureCore/ImageCaptureCore.h>
 
+typedef void (^OPImageCompletionBlock)(NSImage *image);
+
 @protocol OPPhotoCollection;
 
 @protocol OPPhoto
@@ -23,12 +25,12 @@
 /**
  Loads the image and returns it via the completion block
  **/
--(void)imageWithCompletionBlock:(void (^)(NSImage *image))completionBlock;
+-(void)imageWithCompletionBlock:(OPImageCompletionBlock)completionBlock;
 
 /**
  Loads and scales the image and returns it via the completion block
  May return the full size image if scaling is not available.
  **/
--(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(void (^)(NSImage *image))completionBlock;
+-(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(OPImageCompletionBlock)completionBlock;
 
 @end
