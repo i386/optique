@@ -64,7 +64,7 @@
         [_cameraService stop];
     }
     
-    _photoManager = [[OPPhotoManager alloc] initWithPath:url];
+    _photoManager = [[OPPhotoManager alloc] init];
     _mainWindowController = [[OPMainWindowController alloc] initWithPhotoManager:_photoManager];
     [_mainWindowController.window makeKeyAndOrderFront:self];
     

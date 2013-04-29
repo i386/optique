@@ -19,16 +19,21 @@ extern NSString *const OPPhotoManagerDidDeleteCollection;
 
 @property (strong, readonly) NSURL *path;
 
--initWithPath:(NSURL*)path;
+-init;
 
+/** all collections (albums, cameras, etc) that are available **/
 -(NSArray*)allCollections;
 
+/** filter collections by index set **/
 -(NSArray*)allCollectionsForIndexSet:(NSIndexSet*)indexSet;
 
+/** create a new album **/
 -(OPPhotoAlbum*)newAlbumWithName:(NSString*)albumName error:(NSError **)error;
 
+/** delete the specified album **/
 -(void)deleteAlbum:(OPPhotoAlbum*)photoAlbum;
 
+/** forces the collection to reload and sends a OPPhotoManagerDidUpdateCollection **/
 -(void)collectionUpdated:(id<OPPhotoCollection>)album;
 
 @end

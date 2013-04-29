@@ -24,12 +24,11 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
     CHReadWriteLock *_lock;
 }
 
--(id)initWithPath:(NSURL *)path
+-(id)init
 {
     self = [super init];
     if (self)
     {
-        _path = path;
         _collectionSet = [[NSMutableOrderedSet alloc] init];
         _lock = [[CHReadWriteLock alloc] init];
         
