@@ -74,10 +74,6 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">back</string>
 								</object>
-								<object class="NSCustomResource" key="NSAlternateImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">back-alt</string>
-								</object>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">400</int>
@@ -288,9 +284,9 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="back">{48, 48}</string>
-			<string key="back-alt">{128, 128}</string>
-		</dictionary>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">back</string>
+			<string key="NS.object.0">{48, 48}</string>
+		</object>
 	</data>
 </archive>
