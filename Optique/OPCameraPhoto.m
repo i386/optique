@@ -50,7 +50,7 @@
     return thumbnail;
 }
 
--(void)ImageWithCompletionBlock:(void (^)(NSImage *))completionBlock
+-(void)imageWithCompletionBlock:(void (^)(NSImage *))completionBlock
 {
     if (!_fileDownloaded)
     {
@@ -88,7 +88,7 @@
 
 -(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(void (^)(NSImage *))completionBlock
 {
-    [self ImageWithCompletionBlock:completionBlock];
+    [self imageWithCompletionBlock:completionBlock];
 }
 
 @end

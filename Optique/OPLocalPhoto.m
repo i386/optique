@@ -27,7 +27,7 @@
     return self;
 }
 
--(void)ImageWithCompletionBlock:(void (^)(NSImage *))completionBlock
+-(void)imageWithCompletionBlock:(void (^)(NSImage *))completionBlock
 {
     completionBlock([[NSImage alloc] initWithContentsOfURL:_path]);
 }

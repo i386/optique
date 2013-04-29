@@ -17,7 +17,7 @@
 
 -(id<OPPhotoCollection>) collection;
 
--(void)ImageWithCompletionBlock:(void (^)(NSImage *image))completionBlock;
+-(void)imageWithCompletionBlock:(void (^)(NSImage *image))completionBlock;
 
 /**
  Scale the image to fit the speicifed size.
