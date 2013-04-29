@@ -64,7 +64,7 @@
     return _allPhotos;
 }
 
--(void)reloadPhotos
+-(void)reload
 {
     //TODO: implement reloading for changes on camera. Unlikely we will need this yet...
 }

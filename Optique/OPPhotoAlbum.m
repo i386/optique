@@ -37,7 +37,7 @@
 {
     if (_allPhotos == nil)
     {
-        [self reloadPhotos];
+        [self reload];
     }
     
     [_arrayLock lock];
@@ -63,7 +63,7 @@
     return albums;
 }
 
--(void)reloadPhotos
+-(void)reload
 {
     [_arrayLock lockForWriting];
     @try

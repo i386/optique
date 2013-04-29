@@ -110,7 +110,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
 
 -(void)collectionUpdated:(id<OPPhotoCollection>)collection
 {
-    [collection reloadPhotos];
+    [collection reload];
     [self sendNotificationWithName:OPPhotoManagerDidUpdateCollection forPhotoCollection:collection];
 }
 
