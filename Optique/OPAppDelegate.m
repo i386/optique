@@ -75,4 +75,13 @@
     [_cameraService start];
 }
 
+-(void)applicationWillTerminate:(NSNotification *)notification
+{
+    //Remove all the caches if any exist
+    if (_cameraService)
+    {
+        [_cameraService removeCaches];
+    }
+}
+
 @end

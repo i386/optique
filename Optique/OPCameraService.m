@@ -45,6 +45,15 @@ NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamer
     [_deviceBrowser stop];
 }
 
+-(void)removeCaches
+{
+    [_devices.allValues each:^(OPCamera *camera) {
+       [self performBlockInBackground:^{
+           [camera removeCacheDirectory];
+       }];
+    }];
+}
+
 -(void)deviceBrowser:(ICDeviceBrowser *)browser didAddDevice:(ICDevice *)device moreComing:(BOOL)moreComing
 {
     ICCameraDevice *cameraDevice = (ICCameraDevice*)device;
@@ -58,6 +67,8 @@ NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamer
 #endif
     
     OPCamera *camera = [[OPCamera alloc] initWithDevice:cameraDevice photoManager:_photoManager];
+    [camera removeCacheDirectory];
+    
     [_devices setObject:camera forKey:device.name];
     
     [camera.device requestOpenSession];

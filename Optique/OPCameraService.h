@@ -26,4 +26,7 @@ extern NSString *const OPCameraServiceDidRemoveCamera;
 /** stop listening for devices **/
 -(void)stop;
 
+/** remove all the caches **/
+-(void)removeCaches;
+
 @end
