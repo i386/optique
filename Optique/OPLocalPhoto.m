@@ -27,12 +27,12 @@
     return self;
 }
 
--(NSImage*)image
+-(void)ImageWithCompletionBlock:(void (^)(NSImage *))completionBlock
 {
-    return [[NSImage alloc] initWithContentsOfURL:_path];
+    completionBlock([[NSImage alloc] initWithContentsOfURL:_path]);
 }
 
--(NSImage*)scaleImageToFitSize:(NSSize)size
+-(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(void (^)(NSImage *))completionBlock
 {
     NSImage *image;
     
@@ -64,7 +64,7 @@
     
     CFRelease(imageProperties);
     
-    return image;
+    completionBlock(image);
 }
 
 -(id<OPPhotoCollection>)collection

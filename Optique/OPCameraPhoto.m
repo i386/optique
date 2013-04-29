@@ -50,7 +50,7 @@
     return thumbnail;
 }
 
--(NSImage *)image
+-(void)ImageWithCompletionBlock:(void (^)(NSImage *))completionBlock
 {
     if (!_fileDownloaded)
     {
@@ -59,15 +59,16 @@
             [_cameraFile.device requestOpenSession];
         }
         
-        [_cameraFile.device requestReadDataFromFile:_cameraFile atOffset:0 length:_cameraFile.fileSize readDelegate:self didReadDataSelector:@selector(didReadData:fromFile:error:contextInfo:) contextInfo:NULL];
-        
-        return nil;
+        [_cameraFile.device requestReadDataFromFile:_cameraFile atOffset:0 length:_cameraFile.fileSize readDelegate:self didReadDataSelector:@selector(didReadData:fromFile:error:contextInfo:) contextInfo:(void*)CFBridgingRetain(completionBlock)];
     }
-
-    return [[NSImage alloc] initByReferencingURL:[self.camera.cacheDirectory URLByAppendingPathComponent:self.title]];;
+    else
+    {
+        NSImage  *image = [[NSImage alloc] initByReferencingURL:[self.camera.cacheDirectory URLByAppendingPathComponent:self.title]];
+        completionBlock(image);
+    }
 }
 
-- (void)didReadData:(NSData*)data fromFile:(ICCameraFile*)file error:(NSError*)error contextInfo:(void*)contextInfo
+- (void)didReadData:(NSData*)data fromFile:(ICCameraFile*)file error:(NSError*)error contextInfo:(void (^)(NSImage*))loadBlock
 {
 #if DEBUG
     NSLog(@"Downloading image '%@' from camera '%@'", file.name, file.device.name);
@@ -80,11 +81,14 @@
     _fileDownloaded = YES;
     
     [[self.collection photoManager] collectionUpdated:self.collection];
+    
+    NSImage *image = [[NSImage alloc] initByReferencingURL:fileURL];
+    loadBlock(image);
 }
 
--(NSImage *)scaleImageToFitSize:(NSSize)size
+-(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(void (^)(NSImage *))completionBlock
 {
-    return self.image;
+    [self ImageWithCompletionBlock:completionBlock];
 }
 
 @end
