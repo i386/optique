@@ -29,25 +29,34 @@
     if (self) {
         _photoAlbum = album;
         _effectsState = NSOffState;
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewSizeChanged:) name:NSViewFrameDidChangeNotification object:self.view];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionUpdated:) name:OPPhotoManagerDidUpdateCollection object:nil];
-        
-        //Page Controller
-        [_pageController setArrangedObjects:_photoAlbum.allPhotos];
+        _currentPhoto = photo;
         _index = [_photoAlbum.allPhotos indexOfObject:photo];
-        [_pageController setSelectedIndex:_index];
-        [_pageController setTransitionStyle:NSPageControllerTransitionStyleHorizontalStrip];
     }
     return self;
+}
+
+-(void)loadView
+{
+    [super loadView];
+    
+    //Setup page controller
+    [_pageController setArrangedObjects:_photoAlbum.allPhotos];
+    [_pageController setTransitionStyle:NSPageControllerTransitionStyleHorizontalStrip];
+    [_pageController setSelectedIndex:_index];
+    
+    //Subscribe to window & view events
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowFullscreenStateChanged:) name:NSWindowDidEnterFullScreenNotification object:self.view.window];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowFullscreenStateChanged:) name:NSWindowDidExitFullScreenNotification object:self.view.window];
+    
+    //Update the views if the underlying collection has changed (for example, when the image is downloaded from the camera successfully
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionUpdated:) name:OPPhotoManagerDidUpdateCollection object:nil];
 }
 
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidEnterFullScreenNotification object:self.view.window];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidExitFullScreenNotification object:self.view.window];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSViewFrameDidChangeNotification object:self.view];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidUpdateCollection object:nil];
 }
 
@@ -116,42 +125,29 @@
 {
     if (object)
     {
-        NSSize windowSize = [[NSApplication sharedApplication] mainWindow].frame.size;
         _currentPhoto = object;
-        viewController.representedObject = [_currentPhoto scaleImageToFitSize:windowSize];
-        [self.controller updateNavigation];
     }
+    
+    NSSize windowSize = [[NSApplication sharedApplication] mainWindow].frame.size;
+    viewController.representedObject = [_currentPhoto scaleImageToFitSize:windowSize];
+    [self.controller updateNavigation];
 }
 
--(void)loadView
-{
-    [super loadView];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewSizeChanged:) name:NSWindowDidEnterFullScreenNotification object:self.view.window];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewSizeChanged:) name:NSWindowDidExitFullScreenNotification object:self.view.window];
-}
-
--(void)viewSizeChanged:(NSNotification*)notification
+-(void)windowFullscreenStateChanged:(NSNotification*)notification
 {
     [self performBlockOnMainThread:^{
         OPPhotoController *photoController = (OPPhotoController*)_pageController.selectedViewController;
-//        [photoController.imageView setNeedsDisplay:YES];
         [photoController.view setNeedsDisplay:YES];
+        [photoController.imageView setNeedsDisplay:YES];
     }];
 }
 
 -(void)collectionUpdated:(NSNotification*)notification
 {
     [self performBlockOnMainThreadAndWaitUntilDone:^{
-        NSSize windowSize = [[NSApplication sharedApplication] mainWindow].frame.size;
-        _pageController.selectedViewController.representedObject = [_currentPhoto scaleImageToFitSize:windowSize];
-        
-//        OPPhotoController *photoController = (OPPhotoController*)_pageController.selectedViewController;
-//        [photoController.imageView setNeedsDisplay:YES];
-//        [photoController.view setNeedsDisplay:YES];
-        
-        [_pageController.selectedViewController.view setNeedsDisplay:YES];
+        OPPhotoController *photoController = (OPPhotoController*)_pageController.selectedViewController;
+        [photoController.view setNeedsDisplay:YES];
+        [photoController.imageView setNeedsDisplay:YES];
     }];
 }
 
