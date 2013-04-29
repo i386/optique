@@ -17,10 +17,13 @@
 
 -(id<OPPhotoCollection>) collection;
 
+/**
+ Loads the image and returns it via the completion block
+ **/
 -(void)imageWithCompletionBlock:(void (^)(NSImage *image))completionBlock;
 
 /**
- Scale the image to fit the speicifed size.
+ Loads and scales the image and returns it via the completion block
  May return the full size image if scaling is not available.
  **/
 -(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(void (^)(NSImage *image))completionBlock;
