@@ -68,11 +68,11 @@
     _mainWindowController = [[OPMainWindowController alloc] initWithPhotoManager:_photoManager];
     [_mainWindowController.window makeKeyAndOrderFront:self];
     
-    _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager];
-    [_albumScaner scanAtURL:url];
-    
     _cameraService = [[OPCameraService alloc] initWithPhotoManager:_photoManager];
     [_cameraService start];
+    
+    _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager cameraService:_cameraService];
+    [_albumScaner scanAtURL:url];
 }
 
 -(void)applicationWillTerminate:(NSNotification *)notification

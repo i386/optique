@@ -11,7 +11,7 @@
 #import "OPPhotoCollection.h"
 #import "OPPhotoManager.h"
 
-@interface OPCamera : NSObject <OPPhotoCollection, ICDeviceDelegate>
+@interface OPCamera : NSObject <OPPhotoCollection, ICCameraDeviceDelegate>
 
 @property (readonly, strong) ICCameraDevice *device;
 

@@ -180,16 +180,19 @@
     
     [collections each:^(id<OPPhotoCollection> collection)
     {
-        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:collection.title action:@selector(moveToCollection:) keyEquivalent:[NSString string]];
-        item.target = self;
-        [item setRepresentedObject:collection];
-        [_moveToAlbumItem.submenu addItem:item];
+        if (collection.isStoredOnFileSystem)
+        {
+            NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:collection.title action:@selector(moveToCollection:) keyEquivalent:[NSString string]];
+            item.target = self;
+            [item setRepresentedObject:collection];
+            [_moveToAlbumItem.submenu addItem:item];
+        }
     }];
     
     id<OPPhoto> firstPhoto = [[_collection photosForIndexSet:_gridView.selectedIndexes] lastObject];
     [_revealInFinderItem setHidden:!firstPhoto.collection.isStoredOnFileSystem];
 }
-
+    
 -(void)moveToCollection:(NSMenuItem*)item
 {
     id<OPPhotoCollection> collection = item.representedObject;

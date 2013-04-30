@@ -35,6 +35,11 @@ NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamer
     return self;
 }
 
+-(NSArray *)allCameras
+{
+    return _devices.allValues;
+}
+
 -(void)start
 {
     [_deviceBrowser start];

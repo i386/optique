@@ -66,7 +66,13 @@
 
 -(void)reload
 {
-    //Does not support reloading yet
+    NSMutableArray *newPhotos = [NSMutableArray array];
+    for (ICCameraFile *cameraFile in self.device.mediaFiles)
+    {
+        OPCameraPhoto *photo = [[OPCameraPhoto alloc] initWithCameraFile:cameraFile collection:self];
+        [newPhotos addObject:photo];
+    }
+    _allPhotos = newPhotos;
 }
 
 -(BOOL)isStoredOnFileSystem
@@ -76,14 +82,29 @@
 
 -(void)deletePhoto:(id<OPPhoto>)photo withCompletion:(OPCompletionBlock)completionBlock
 {
-//    OPCameraPhoto *cameraPhoto = (OPCameraPhoto*)photo;
-//    [cameraPhoto.cameraFile.device requestDeleteFiles:@[cameraPhoto.cameraFile]];
-//    completionBlock(nil);
+    OPCameraPhoto *cameraPhoto = (OPCameraPhoto*)photo;
+    [cameraPhoto.cameraFile.device requestDeleteFiles:@[cameraPhoto.cameraFile]];
+    completionBlock(nil);
 }
 
 -(NSImage *)thumbnailForName:(NSString *)name
 {
     return [_thumbnails objectForKey:name];
+}
+
+-(void)cameraDevice:(ICCameraDevice *)camera didRemoveItems:(NSArray *)items
+{
+#if DEBUG
+    NSLog(@"%lu items were removed from camera '%@'", items.count, camera.name);
+#endif
+    
+    //Remove the thumbnails from memory
+    for (ICCameraFile *cameraFile in items)
+    {
+        [_thumbnails removeObjectForKey:cameraFile.name];
+    }
+    
+    [self.photoManager collectionUpdated:self];
 }
 
 - (void)deviceDidBecomeReadyWithCompleteContentCatalog:(ICDevice*)device

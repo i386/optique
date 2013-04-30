@@ -20,6 +20,9 @@ extern NSString *const OPCameraServiceDidRemoveCamera;
 
 -(id)initWithPhotoManager:(OPPhotoManager*)photoManager;
 
+/** all of the available cameras **/
+-(NSArray*)allCameras;
+
 /** start listening for devices **/
 -(void)start;
 

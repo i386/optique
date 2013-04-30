@@ -67,9 +67,22 @@
     completionBlock(image);
 }
 
--(void)resolveURL:(OPURLSupplier)block
+-(NSCondition*)resolveURL:(OPURLSupplier)block
 {
-    block(_path);
+    NSCondition *condition = [[NSCondition alloc] init];
+    
+    @try
+    {
+        [condition lock];
+        block(_path);
+    }
+    @finally
+    {
+        [condition signal];
+        [condition unlock];
+    }
+    
+    return condition;
 }
 
 -(void)loadData:(OPDataCompletionBlock)completionBlock

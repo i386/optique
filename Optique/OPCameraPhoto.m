@@ -9,6 +9,26 @@
 #import "OPCameraPhoto.h"
 #import "OPCamera.h"
 
+@interface OPCameraPhotoCondition : NSCondition
+
+@property (readonly, strong) OPURLSupplier supplier;
+
+@end
+
+@implementation OPCameraPhotoCondition
+
+-initWithURLSupplier:(OPURLSupplier)supplier
+{
+    self = [super init];
+    if (self)
+    {
+        _supplier = supplier;
+    }
+    return self;
+}
+
+@end
+
 @interface OPCameraPhoto() {
     id<OPPhotoCollection> _collection;
     volatile BOOL _fileDownloaded;
@@ -69,17 +89,27 @@
     [self imageWithCompletionBlock:completionBlock];
 }
 
--(void)resolveURL:(OPURLSupplier)block
+-(NSCondition *)resolveURL:(OPURLSupplier)block
 {
+    OPCameraPhotoCondition *condition = [[OPCameraPhotoCondition alloc] initWithURLSupplier:block];
+    [condition lock];
+    
     if (!_fileDownloaded)
     {
-        [_cameraFile.device requestReadDataFromFile:_cameraFile atOffset:0 length:_cameraFile.fileSize readDelegate:self didReadDataSelector:@selector(didLoadData:fromFile:error:contextInfo:) contextInfo:(void*)CFBridgingRetain(block)];
+        [_cameraFile.device requestReadDataFromFile:_cameraFile atOffset:0 length:_cameraFile.fileSize readDelegate:self didReadDataSelector:@selector(didLoadData:fromFile:error:contextInfo:) contextInfo:(void*)CFBridgingRetain(condition)];
     }
     else
     {
         NSURL *fileURL = [self.camera.cacheDirectory URLByAppendingPathComponent:self.title];
-        block(fileURL);
+        @try {
+            condition.supplier(fileURL);
+        }
+        @finally {
+            [condition signal];
+            [condition unlock];
+        }
     }
+    return nil;
 }
 
 - (void)didLoadData:(NSData*)data fromFile:(ICCameraFile*)file error:(NSError*)error contextInfo:(void*)context
@@ -94,8 +124,14 @@
     [data writeToURL:fileURL atomically:YES];
     _fileDownloaded = YES;
     
-    OPURLSupplier block = CFBridgingRelease(context);
-    block(fileURL);
+    OPCameraPhotoCondition *condition = CFBridgingRelease(context);
+    @try {
+        condition.supplier(fileURL);
+    }
+    @finally {
+        [condition signal];
+        [condition unlock];
+    }
 }
 
 - (void)didReadData:(NSData*)data fromFile:(ICCameraFile*)file error:(NSError*)error contextInfo:(void*)context
