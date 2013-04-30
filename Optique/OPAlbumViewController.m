@@ -68,8 +68,11 @@
     NSMutableArray *urls = [NSMutableArray array];
     [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
     {
-        OPPhotoAlbum *album = (OPPhotoAlbum*)_photoManager.allCollections[index];
-        [urls addObject:album.path];
+        id collection = _photoManager.allCollections[index];
+        if ([collection respondsToSelector:@selector(path)])
+        {
+            [urls addObject:[collection path]];
+        }
     }];
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
 }

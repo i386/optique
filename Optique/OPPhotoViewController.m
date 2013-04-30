@@ -108,7 +108,9 @@
 
 -(void)revealInFinder
 {
-//    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[_currentPhoto.path]];
+    [_currentPhoto resolveURL:^(NSURL *suppliedUrl) {
+        [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[suppliedUrl]];
+    }];
 }
 
 -(NSString *)pageController:(NSPageController *)pageController identifierForObject:(id)object
