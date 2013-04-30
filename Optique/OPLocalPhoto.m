@@ -67,6 +67,17 @@
     completionBlock(image);
 }
 
+-(void)resolveURL:(OPURLSupplier)block
+{
+    block(_path);
+}
+
+-(void)loadData:(OPDataCompletionBlock)completionBlock
+{
+    NSData *data = [[NSData alloc] initWithContentsOfURL:_path];
+    completionBlock(data);
+}
+
 -(id<OPPhotoCollection>)collection
 {
     return _collection;

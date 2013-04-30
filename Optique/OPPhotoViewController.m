@@ -23,14 +23,14 @@
 
 @implementation OPPhotoViewController
 
--(id)initWithPhotoAlbum:(OPPhotoAlbum *)album photo:(id<OPPhoto>)photo
+-(id)initWithPhotoCollection:(id<OPPhotoCollection>)collection photo:(id<OPPhoto>)photo
 {
     self = [super initWithNibName:@"OPPhotoViewController" bundle:nil];
     if (self) {
-        _photoAlbum = album;
+        _collection = collection;
         _effectsState = NSOffState;
         _currentPhoto = photo;
-        _index = [_photoAlbum.allPhotos indexOfObject:photo];
+        _index = [_collection.allPhotos indexOfObject:photo];
     }
     return self;
 }
@@ -40,7 +40,7 @@
     [super loadView];
     
     //Setup page controller
-    [_pageController setArrangedObjects:_photoAlbum.allPhotos];
+    [_pageController setArrangedObjects:_collection.allPhotos];
     [_pageController setTransitionStyle:NSPageControllerTransitionStyleHorizontalStrip];
     [_pageController setSelectedIndex:_index];
     
@@ -100,7 +100,7 @@
     {
         id<OPPhoto> photo = CFBridgingRelease(contextInfo);
         
-        [_photoAlbum deletePhoto:photo error:nil];
+        [_collection deletePhoto:photo withCompletion:nil];
         
         [self.controller popToPreviousViewController];
     }

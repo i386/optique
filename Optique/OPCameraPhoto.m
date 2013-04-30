@@ -54,11 +54,6 @@
 {
     if (!_fileDownloaded)
     {
-        if (!_cameraFile.device.hasOpenSession)
-        {
-            [_cameraFile.device requestOpenSession];
-        }
-        
         [_cameraFile.device requestReadDataFromFile:_cameraFile atOffset:0 length:_cameraFile.fileSize readDelegate:self didReadDataSelector:@selector(didReadData:fromFile:error:contextInfo:) contextInfo:(void*)CFBridgingRetain(completionBlock)];
     }
     else
@@ -72,6 +67,35 @@
 -(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(OPImageCompletionBlock)completionBlock
 {
     [self imageWithCompletionBlock:completionBlock];
+}
+
+-(void)resolveURL:(OPURLSupplier)block
+{
+    if (!_fileDownloaded)
+    {
+        [_cameraFile.device requestReadDataFromFile:_cameraFile atOffset:0 length:_cameraFile.fileSize readDelegate:self didReadDataSelector:@selector(didLoadData:fromFile:error:contextInfo:) contextInfo:(void*)CFBridgingRetain(block)];
+    }
+    else
+    {
+        NSURL *fileURL = [self.camera.cacheDirectory URLByAppendingPathComponent:self.title];
+        block(fileURL);
+    }
+}
+
+- (void)didLoadData:(NSData*)data fromFile:(ICCameraFile*)file error:(NSError*)error contextInfo:(void*)context
+{
+#if DEBUG
+    NSLog(@"Downloading image '%@' from camera '%@'", file.name, file.device.name);
+#endif
+    
+    NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
+    
+    NSURL *fileURL = [self.camera.cacheDirectory URLByAppendingPathComponent:file.name];
+    [data writeToURL:fileURL atomically:YES];
+    _fileDownloaded = YES;
+    
+    OPURLSupplier block = CFBridgingRelease(context);
+    block(fileURL);
 }
 
 - (void)didReadData:(NSData*)data fromFile:(ICCameraFile*)file error:(NSError*)error contextInfo:(void*)context

@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <ImageCaptureCore/ImageCaptureCore.h>
 
-typedef void (^OPImageCompletionBlock)(NSImage *image);
-
 @protocol OPPhotoCollection;
 
 @protocol OPPhoto
 
+/**
+ The photo title
+ **/
 -(NSString*)title;
 
 /**
@@ -32,5 +33,10 @@ typedef void (^OPImageCompletionBlock)(NSImage *image);
  May return the full size image if scaling is not available.
  **/
 -(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(OPImageCompletionBlock)completionBlock;
+
+/** 
+ Loads the data representing this photo and returns it via the completion block 
+ **/
+-(void)resolveURL:(OPURLSupplier)block;
 
 @end

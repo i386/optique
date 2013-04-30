@@ -22,8 +22,4 @@
 
 -(id)initWithTitle:(NSString *)title path:(NSURL *)path photoManager:(OPPhotoManager*)photoManager;
 
--(void)movePhoto:(id<OPPhoto>)photo toAlbum:(OPPhotoAlbum *)album;
-
--(void)deletePhoto:(id<OPPhoto>)photo error:(NSError**)error;
-
 @end

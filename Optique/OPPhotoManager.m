@@ -24,11 +24,12 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
     CHReadWriteLock *_lock;
 }
 
--(id)init
+-(id)initWithPath:(NSURL *)path
 {
     self = [super init];
     if (self)
     {
+        _path = path;
         _collectionSet = [[NSMutableOrderedSet alloc] init];
         _lock = [[CHReadWriteLock alloc] init];
         
@@ -146,9 +147,12 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
         NSMutableOrderedSet *removedItems = [NSMutableOrderedSet orderedSetWithOrderedSet:oldAlbums];
         [removedItems minusOrderedSet:[NSMutableOrderedSet orderedSetWithArray:albums]];
         
+        
+        
         [[removedItems array] each:^(id sender) {
             [self sendAlbumDeletedNotification:sender];
         }];
+        
         return nil;
     }];
 }

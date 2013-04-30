@@ -66,7 +66,19 @@
 
 -(void)reload
 {
-    //TODO: implement reloading for changes on camera. Unlikely we will need this yet...
+    //Does not support reloading yet
+}
+
+-(BOOL)isStoredOnFileSystem
+{
+    return NO;
+}
+
+-(void)deletePhoto:(id<OPPhoto>)photo withCompletion:(OPCompletionBlock)completionBlock
+{
+//    OPCameraPhoto *cameraPhoto = (OPCameraPhoto*)photo;
+//    [cameraPhoto.cameraFile.device requestDeleteFiles:@[cameraPhoto.cameraFile]];
+//    completionBlock(nil);
 }
 
 -(NSImage *)thumbnailForName:(NSString *)name

@@ -13,11 +13,11 @@
 
 @interface OPPhotoViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate>
 
-@property (strong, readonly) OPPhotoAlbum *photoAlbum;
+@property (strong, readonly) id<OPPhotoCollection> collection;
 @property (assign) NSInteger effectsState;
 @property (strong) IBOutlet NSPageController *pageController;
 
--initWithPhotoAlbum:(OPPhotoAlbum*)album photo:(id<OPPhoto>)photo;
+-initWithPhotoCollection:(id<OPPhotoCollection>)collection photo:(id<OPPhoto>)photo;
 
 -(void)nextPhoto;
 -(void)previousPhoto;

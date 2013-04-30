@@ -19,7 +19,7 @@ extern NSString *const OPPhotoManagerDidDeleteCollection;
 
 @property (strong, readonly) NSURL *path;
 
--init;
+-initWithPath:(NSURL*)path;
 
 /** all collections (albums, cameras, etc) that are available **/
 -(NSArray*)allCollections;

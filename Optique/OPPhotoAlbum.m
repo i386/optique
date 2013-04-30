@@ -76,29 +76,41 @@
     }
 }
 
--(void)deletePhoto:(id<OPPhoto>)photo error:(NSError *__autoreleasing *)error
+-(BOOL)isStoredOnFileSystem
 {
-//    [_arrayLock lockForWriting];
-//    @try
-//    {
-//        //TODO check for errors
-//        [[NSFileManager defaultManager] removeItemAtURL:photo.path error:nil];
-//        
-//        [_allPhotos removeObject:photo];
-//    }
-//    @finally
-//    {
-//        [_arrayLock unlock];
-//    }
+    return YES;
 }
 
--(void)movePhoto:(id<OPPhoto>)photo toAlbum:(OPPhotoAlbum *)album
+-(void)addPhoto:(id<OPPhoto>)photo withCompletion:(OPCompletionBlock)completionBlock
 {
-//    NSURL *url = [[album path] URLByAppendingPathComponent:[photo.path lastPathComponent]];
-//    [[NSFileManager defaultManager] moveItemAtURL:photo.path toURL:url error:nil];
-//    
-//    [_photoManager collectionUpdated:self];
-//    [_photoManager collectionUpdated:album];
+    [photo resolveURL:^(NSURL *suppliedUrl) {
+        NSError *error;
+        [[NSFileManager defaultManager] moveItemAtURL:suppliedUrl toURL:[self.path URLByAppendingPathComponent:photo.title] error:&error];
+        
+        if (completionBlock)
+        {
+            completionBlock(error);
+        }
+        
+        [self.photoManager collectionUpdated:self];
+        [photo.collection.photoManager collectionUpdated:photo.collection];
+    }];
+}
+
+
+-(void)deletePhoto:(id<OPPhoto>)photo withCompletion:(OPCompletionBlock)completionBlock
+{
+    NSError *error;
+    NSURL *url = [self.path URLByAppendingPathComponent:photo.title];
+    [[NSFileManager defaultManager] removeItemAtURL:url error:&error];
+    
+    if (completionBlock)
+    {
+        completionBlock(error);
+    }
+    
+    [self.photoManager collectionUpdated:self];
+    [photo.collection.photoManager collectionUpdated:photo.collection];
 }
 
 -(NSArray*)findAllPhotos

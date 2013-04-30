@@ -73,7 +73,7 @@ NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamer
     
     [camera.device requestOpenSession];
     
-    [self sendNotification:OPCameraServiceDidAddCamera camera:camera];
+    [self sendNotification:OPCameraServiceDidAddCamera camera:camera userInfo:@{@"locked": [NSNumber numberWithBool:cameraDevice.isAccessRestrictedAppleDevice]}];
 }
 
 -(void)deviceBrowser:(ICDeviceBrowser *)browser didRemoveDevice:(ICDevice *)device moreGoing:(BOOL)moreGoing
@@ -83,14 +83,16 @@ NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamer
 #endif
     
     OPCamera *camera = [_devices objectForKey:device.name];
-    [self sendNotification:OPCameraServiceDidRemoveCamera camera:camera];
+    [self sendNotification:OPCameraServiceDidRemoveCamera camera:camera userInfo:nil];
     [_devices removeObjectForKey:device.name];
     [camera removeCacheDirectory];
 }
 
--(void)sendNotification:(NSString*)notificationName camera:(OPCamera*)camera
+-(void)sendNotification:(NSString*)notificationName camera:(OPCamera*)camera userInfo:(NSDictionary*)userInfo
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:@{@"camera": camera}];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:userInfo];
+    [dict setObject:camera forKey:@"camera"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:dict];
 }
 
 @end
