@@ -61,7 +61,7 @@
          [photos addObject:obj];
      }];
     
-    return _allPhotos;
+    return photos;
 }
 
 -(void)reload
