@@ -39,4 +39,9 @@
     [_photoViewController deletePhoto];
 }
 
+-(void)menuNeedsUpdate:(NSMenu *)menu
+{
+    [_revealInFinderMenuItem setHidden:!_photoViewController.collection.isStoredOnFileSystem];
+}
+
 @end

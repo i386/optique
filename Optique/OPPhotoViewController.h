@@ -15,6 +15,7 @@
 
 @property (strong, readonly) id<OPPhotoCollection> collection;
 @property (assign) NSInteger effectsState;
+@property (strong) id<OPPhoto> currentPhoto;
 @property (strong) IBOutlet NSPageController *pageController;
 
 -initWithPhotoCollection:(id<OPPhotoCollection>)collection photo:(id<OPPhoto>)photo;

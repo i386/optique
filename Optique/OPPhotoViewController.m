@@ -17,7 +17,6 @@
 
 @interface OPPhotoViewController() {
     NSInteger _index;
-    id<OPPhoto> _currentPhoto;
 }
 @end
 
