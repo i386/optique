@@ -74,7 +74,7 @@
     return [_thumbnails objectForKey:name];
 }
 
--(void)deviceDidBecomeReady:(ICDevice *)device
+- (void)deviceDidBecomeReadyWithCompleteContentCatalog:(ICDevice*)device
 {
 #if DEBUG
     NSLog(@"Camera '%@' is now ready to accept commands", device.name);
