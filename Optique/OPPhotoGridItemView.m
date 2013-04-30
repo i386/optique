@@ -44,21 +44,28 @@
         
         NSShadow *shadow = [[NSShadow alloc] init];
         shadow.shadowColor = shadowColor;
-        shadow.shadowBlurRadius = 2;
         
-        shadow.shadowOffset = NSMakeSize(-1, 1);
+        int positiveShadowOffset = 1;
+        int negativeShadowOffset = -1;
+        if (self.selected)
+        {
+            positiveShadowOffset = 3;
+            negativeShadowOffset = -3;
+        }
+        
+        shadow.shadowOffset = NSMakeSize(negativeShadowOffset, positiveShadowOffset);
         [shadow set];
         [path fill];
         
-        shadow.shadowOffset = NSMakeSize(1, -1);
+        shadow.shadowOffset = NSMakeSize(positiveShadowOffset, negativeShadowOffset);
         [shadow set];
         [path fill];
         
-        shadow.shadowOffset = NSMakeSize(1, 1);
+        shadow.shadowOffset = NSMakeSize(positiveShadowOffset, positiveShadowOffset);
         [shadow set];
         [path fill];
         
-        shadow.shadowOffset = NSMakeSize(-1, -1);
+        shadow.shadowOffset = NSMakeSize(negativeShadowOffset, negativeShadowOffset);
         [shadow set];
         [path fill];
         
