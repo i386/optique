@@ -81,7 +81,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
         
         [[NSFileManager defaultManager] createDirectoryAtURL:albumPath withIntermediateDirectories:YES attributes:nil error:&directoryCreationError];
         
-        if (!error)
+        if (!directoryCreationError)
         {
             OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithTitle:albumName path:albumPath photoManager:self];
             [self addAlbum:album];
