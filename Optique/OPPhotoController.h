@@ -18,8 +18,6 @@
 
 -initWithPhotoViewController:(OPPhotoViewController*)photoViewController;
 
--(void)setFilter:(CIFilter*)filter;
-
 - (IBAction)revealInFinder:(id)sender;
 
 - (IBAction)deletePhoto:(id)sender;

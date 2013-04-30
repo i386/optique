@@ -24,11 +24,6 @@
     return self;
 }
 
--(void)setFilter:(CIFilter *)filter
-{
-    NSLog(@"TODO: reimplement filtering. Filter: %@", filter);
-}
-
 - (IBAction)revealInFinder:(id)sender
 {
     [_photoViewController revealInFinder];
