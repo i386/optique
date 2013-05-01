@@ -8,6 +8,8 @@
 
 #import "OPAppDelegate.h"
 
+#import <HockeySDK/BITHockeyManager.h>
+
 #import "OPPhotoAlbum.h"
 #import "OPPhoto.h"
 #import "OPImageCache.h"
@@ -15,6 +17,13 @@
 @implementation OPAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"52814104cfd270328887432ee78c4dd1" companyName:@"Whimsy" crashReportManagerDelegate:self];
+    [[BITHockeyManager sharedHockeyManager] setExceptionInterceptionEnabled:YES];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+}
+
+-(void)showMainApplicationWindow
 {
     NSURL *url = [[_userDefaultsController defaults] URLForKey:@"url"];
     if (!url)
