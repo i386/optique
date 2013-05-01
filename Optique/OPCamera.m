@@ -8,11 +8,9 @@
 
 #import "OPCamera.h"
 #import "OPCameraPhoto.h"
-#import "CHReadWriteLock.h"
 
 @interface OPCamera() {
     OPPhotoManager *_photoManager;
-    CHReadWriteLock *_arrayLock;
     NSMutableArray *_allPhotos;
     NSMutableDictionary *_thumbnails;
     NSTimer *_batchTimer;

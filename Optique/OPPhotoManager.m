@@ -11,7 +11,6 @@
 #import "OPPhotoAlbum.h"
 #import "OPCamera.h"
 #import "OPAlbumScanner.h"
-#import "CHReadWriteLock.h"
 #import <BlocksKit/NSMutableOrderedSet+BlocksKit.h>
 #import <BlocksKit/NSArray+BlocksKit.h>
 
@@ -57,7 +56,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
 -(NSArray *)allCollectionsForIndexSet:(NSIndexSet *)indexSet
 {
     NSMutableArray *albums = [NSMutableArray array];
-    NSArray collections = [self allCollections];
+    NSArray *collections = [self allCollections];
     [indexSet each:^(NSUInteger index) {
         id collection = collections[index];
         [albums addObject:collection];
