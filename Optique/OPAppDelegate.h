@@ -8,13 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 #import <INAppStoreWindow/INAppStoreWindow.h>
+#import <HockeySDK/HockeySDK.h>
 
 #import "OPPhotoManager.h"
 #import "OPAlbumScanner.h"
 #import "OPCameraService.h"
 #import "OPMainWindowController.h"
 
-@interface OPAppDelegate : NSObject <NSApplicationDelegate> {
+@interface OPAppDelegate : NSObject <NSApplicationDelegate, BITCrashReportManagerDelegate> {
     OPAlbumScanner *_albumScaner;
     OPPhotoManager *_photoManager;
     OPMainWindowController *_mainWindowController;
