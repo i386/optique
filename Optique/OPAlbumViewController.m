@@ -15,6 +15,7 @@
 #import "OPPhotoGridItemView.h"
 #import "OPImagePreviewService.h"
 #import "OPDeleteAlbumSheetController.h"
+#import "OPCamera.h"
 
 @interface OPAlbumViewController () {
     OPDeleteAlbumSheetController *_deleteAlbumSheetController;
@@ -62,6 +63,47 @@
     [_gridView reloadData];
 }
 
+-(void)menuNeedsUpdate:(NSMenu *)menu
+{
+    NSIndexSet *indexes = _gridView.selectedIndexes;
+    NSArray *collections = [_photoManager allCollectionsForIndexSet:indexes];
+    
+    __block BOOL allSelectedAreLocal = YES;
+    [collections each:^(id<OPPhotoCollection> sender) {
+        if (allSelectedAreLocal && !sender.isStoredOnFileSystem)
+        {
+            allSelectedAreLocal = NO;
+        }
+    }];
+    
+    __block BOOL allSelectedAreNotLocal = YES;
+    [collections each:^(id<OPPhotoCollection> sender) {
+        if (allSelectedAreNotLocal && sender.isStoredOnFileSystem)
+        {
+            allSelectedAreNotLocal = NO;
+        }   
+    }];
+    
+    if (allSelectedAreLocal)
+    {
+        [_revealInFinderMenuItem setHidden:NO];
+        [_deleteAlbumMenuItem setHidden:NO];
+        [_ejectMenuItem setHidden:YES];
+    }
+    else if (allSelectedAreNotLocal)
+    {
+        [_revealInFinderMenuItem setHidden:YES];
+        [_deleteAlbumMenuItem setHidden:YES];
+        [_ejectMenuItem setHidden:NO];
+    }
+    else
+    {
+        [_revealInFinderMenuItem setHidden:YES];
+        [_deleteAlbumMenuItem setHidden:YES];
+        [_ejectMenuItem setHidden:YES];
+    }
+}
+
 - (IBAction)revealInFinder:(NSMenuItem*)sender
 {
     NSIndexSet *indexes = (NSIndexSet*)sender.representedObject;
@@ -95,6 +137,16 @@
     }
     
     NSBeginAlertSheet(alertMessage, @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, nil, @"This operation can not be undone.", nil);
+}
+
+- (IBAction)ejectCamera:(id)sender
+{
+    NSIndexSet *indexes = _ejectMenuItem.representedObject;
+    NSArray *cameras = [_photoManager allCollectionsForIndexSet:indexes];
+    
+    [cameras each:^(OPCamera *camera) {
+        [camera requestEject];
+    }];
 }
 
 - (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet

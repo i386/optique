@@ -192,7 +192,6 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
 
 -(void)removedCamera:(NSNotification*)notification
 {
-    NSLog(@"removedCamera event: %@", notification.userInfo);
     OPCamera *camera = notification.userInfo[@"camera"];
     if (camera)
     {

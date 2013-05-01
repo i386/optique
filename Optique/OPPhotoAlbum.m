@@ -83,7 +83,7 @@
 
 -(void)addPhoto:(id<OPPhoto>)photo withCompletion:(OPCompletionBlock)completionBlock
 {
-    NSCondition *condition = [photo resolveURL:^(NSURL *suppliedUrl) {
+    NSConditionLock *condition = [photo resolveURL:^(NSURL *suppliedUrl) {
         NSError *error;
         [[NSFileManager defaultManager] moveItemAtURL:suppliedUrl toURL:[self.path URLByAppendingPathComponent:photo.title] error:&error];
         
@@ -95,7 +95,8 @@
         [self.photoManager collectionUpdated:self];
         [photo.collection.photoManager collectionUpdated:photo.collection];
     }];
-    [condition wait];
+    [condition lock];
+    [condition unlockWithCondition:1];
 }
 
 

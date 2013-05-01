@@ -9,7 +9,7 @@
 #import "OPCameraPhoto.h"
 #import "OPCamera.h"
 
-@interface OPCameraPhotoCondition : NSCondition
+@interface OPCameraPhotoCondition : NSConditionLock
 
 @property (readonly, strong) OPURLSupplier supplier;
 
@@ -19,7 +19,7 @@
 
 -initWithURLSupplier:(OPURLSupplier)supplier
 {
-    self = [super init];
+    self = [super initWithCondition:0];
     if (self)
     {
         _supplier = supplier;
@@ -89,7 +89,7 @@
     [self imageWithCompletionBlock:completionBlock];
 }
 
--(NSCondition *)resolveURL:(OPURLSupplier)block
+-(NSConditionLock *)resolveURL:(OPURLSupplier)block
 {
     OPCameraPhotoCondition *condition = [[OPCameraPhotoCondition alloc] initWithURLSupplier:block];
     [condition lock];
@@ -105,8 +105,7 @@
             condition.supplier(fileURL);
         }
         @finally {
-            [condition signal];
-            [condition unlock];
+            [condition unlockWithCondition:1];
         }
     }
     return nil;
@@ -129,8 +128,7 @@
         condition.supplier(fileURL);
     }
     @finally {
-        [condition signal];
-        [condition unlock];
+        [condition unlockWithCondition:1];
     }
 }
 

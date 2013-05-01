@@ -67,28 +67,23 @@
     completionBlock(image);
 }
 
--(NSCondition*)resolveURL:(OPURLSupplier)block
+-(NSConditionLock*)resolveURL:(OPURLSupplier)block
 {
-    NSCondition *condition = [[NSCondition alloc] init];
-    
-    @try
-    {
-        [condition lock];
-        block(_path);
-    }
-    @finally
-    {
-        [condition signal];
-        [condition unlock];
-    }
+    NSConditionLock *condition = [[NSConditionLock alloc] initWithCondition:0];
+
+    [self performBlockInBackground:^{
+        @try
+        {
+            [condition lock];
+            block(_path);
+        }
+        @finally
+        {
+            [condition unlockWithCondition:1];
+        }
+    }];
     
     return condition;
-}
-
--(void)loadData:(OPDataCompletionBlock)completionBlock
-{
-    NSData *data = [[NSData alloc] initWithContentsOfURL:_path];
-    completionBlock(data);
 }
 
 -(id<OPPhotoCollection>)collection

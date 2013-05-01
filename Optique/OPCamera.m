@@ -64,6 +64,11 @@
     return photos;
 }
 
+-(void)requestEject
+{
+    [_device requestEjectOrDisconnect];
+}
+
 -(void)reload
 {
     NSMutableArray *newPhotos = [NSMutableArray array];
@@ -84,7 +89,10 @@
 {
     OPCameraPhoto *cameraPhoto = (OPCameraPhoto*)photo;
     [cameraPhoto.cameraFile.device requestDeleteFiles:@[cameraPhoto.cameraFile]];
-    completionBlock(nil);
+    if (completionBlock)
+    {
+        completionBlock(nil);
+    }
 }
 
 -(NSImage *)thumbnailForName:(NSString *)name

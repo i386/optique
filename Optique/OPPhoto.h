@@ -37,6 +37,6 @@
 /** 
  Loads the data representing this photo and returns it via the completion block 
  **/
--(NSCondition*)resolveURL:(OPURLSupplier)block;
+-(NSConditionLock*)resolveURL:(OPURLSupplier)block;
 
 @end

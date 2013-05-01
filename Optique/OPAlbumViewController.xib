@@ -53,12 +53,14 @@
 										<int key="NSvFlags">274</int>
 										<string key="NSFrameSize">{526, 322}</string>
 										<reference key="NSSuperview" ref="970183863"/>
+										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="856705885"/>
 										<string key="NSReuseIdentifierKey">_NS:13</string>
 									</object>
 								</array>
 								<string key="NSFrameSize">{526, 322}</string>
 								<reference key="NSSuperview" ref="698703869"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="374570578"/>
 								<string key="NSReuseIdentifierKey">_NS:11</string>
 								<reference key="NSDocView" ref="374570578"/>
@@ -78,6 +80,7 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrame">{{510, 0}, {16, 322}}</string>
 								<reference key="NSSuperview" ref="698703869"/>
+								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:15</string>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<reference key="NSTarget" ref="698703869"/>
@@ -90,6 +93,7 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrame">{{0, 306}, {526, 16}}</string>
 								<reference key="NSSuperview" ref="698703869"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="883847361"/>
 								<string key="NSReuseIdentifierKey">_NS:26</string>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -101,6 +105,7 @@
 						</array>
 						<string key="NSFrameSize">{526, 322}</string>
 						<reference key="NSSuperview" ref="281527471"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="970183863"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="NSsFlags">133168</int>
@@ -114,6 +119,7 @@
 				</array>
 				<string key="NSFrameSize">{526, 322}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="698703869"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="NSClassName">OPWindowContentView</string>
@@ -138,6 +144,14 @@
 					<object class="NSMenuItem" id="754937246">
 						<reference key="NSMenu" ref="679439228"/>
 						<string key="NSTitle">Delete album</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="699078683"/>
+						<reference key="NSMixedImage" ref="167907003"/>
+					</object>
+					<object class="NSMenuItem" id="1024098007">
+						<reference key="NSMenu" ref="679439228"/>
+						<string key="NSTitle">Eject</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="699078683"/>
@@ -190,6 +204,38 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">revealInFinderMenuItem</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="561336688"/>
+					</object>
+					<int key="connectionID">224</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">deleteAlbumMenuItem</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="754937246"/>
+					</object>
+					<int key="connectionID">225</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">ejectMenuItem</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="1024098007"/>
+					</object>
+					<int key="connectionID">227</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">ejectCamera:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="1024098007"/>
+					</object>
+					<int key="connectionID">228</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">dataSource</string>
 						<reference key="source" ref="374570578"/>
 						<reference key="destination" ref="1001"/>
@@ -211,6 +257,14 @@
 						<reference key="destination" ref="679439228"/>
 					</object>
 					<int key="connectionID">222</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="679439228"/>
+						<reference key="destination" ref="1001"/>
+					</object>
+					<int key="connectionID">223</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -278,6 +332,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="561336688"/>
 							<reference ref="754937246"/>
+							<reference ref="1024098007"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -289,6 +344,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">220</int>
 						<reference key="object" ref="754937246"/>
+						<reference key="parent" ref="679439228"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">226</int>
+						<reference key="object" ref="1024098007"/>
 						<reference key="parent" ref="679439228"/>
 					</object>
 				</array>
@@ -305,15 +365,126 @@
 				<string key="210.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="211.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="220.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="226.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="56.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">222</int>
+			<int key="maxID">228</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">CNGridView</string>
+					<string key="superclassName">NSView</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="dataSource">id</string>
+						<string key="delegate">id</string>
+						<string key="itemContextMenu">NSMenu</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="dataSource">
+							<string key="name">dataSource</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="delegate">
+							<string key="name">delegate</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="itemContextMenu">
+							<string key="name">itemContextMenu</string>
+							<string key="candidateClassName">NSMenu</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/CNGridView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">OPAlbumViewController</string>
+					<string key="superclassName">OPNavigationViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="deleteAlbum:">NSMenuItem</string>
+						<string key="ejectCamera:">id</string>
+						<string key="revealInFinder:">NSMenuItem</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="deleteAlbum:">
+							<string key="name">deleteAlbum:</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBActionInfo" key="ejectCamera:">
+							<string key="name">ejectCamera:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="revealInFinder:">
+							<string key="name">revealInFinder:</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="albumItemContextMenu">NSMenu</string>
+						<string key="deleteAlbumMenuItem">NSMenuItem</string>
+						<string key="ejectMenuItem">NSMenuItem</string>
+						<string key="gridView">CNGridView</string>
+						<string key="revealInFinderMenuItem">NSMenuItem</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="albumItemContextMenu">
+							<string key="name">albumItemContextMenu</string>
+							<string key="candidateClassName">NSMenu</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="deleteAlbumMenuItem">
+							<string key="name">deleteAlbumMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="ejectMenuItem">
+							<string key="name">ejectMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="gridView">
+							<string key="name">gridView</string>
+							<string key="candidateClassName">CNGridView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="revealInFinderMenuItem">
+							<string key="name">revealInFinderMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/OPAlbumViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">OPNavigationViewController</string>
+					<string key="superclassName">NSViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/OPNavigationViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">OPPhotoGridView</string>
+					<string key="superclassName">CNGridView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/OPPhotoGridView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">OPWindowContentView</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/OPWindowContentView.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">

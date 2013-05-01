@@ -29,4 +29,6 @@
  **/
 -(void)removeCacheDirectory;
 
+-(void)requestEject;
+
 @end
