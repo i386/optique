@@ -57,11 +57,11 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
 -(NSArray *)allCollectionsForIndexSet:(NSIndexSet *)indexSet
 {
     NSMutableArray *albums = [NSMutableArray array];
-    
-    [[self allCollections] enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [albums addObject:obj];
+    NSArray collections = [self allCollections];
+    [indexSet each:^(NSUInteger index) {
+        id collection = collections[index];
+        [albums addObject:collection];
     }];
-    
     return albums;
 }
 
