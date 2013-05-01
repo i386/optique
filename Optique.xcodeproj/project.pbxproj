@@ -23,7 +23,6 @@
 		0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F489933170BFFD60044ED0A /* OPImagePreviewService.m */; };
 		0F489937170C00BA0044ED0A /* loading-preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F489935170C00BA0044ED0A /* loading-preview.png */; };
 		0F489938170C00BA0044ED0A /* loading-preview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F489936170C00BA0044ED0A /* loading-preview@2x.png */; };
-		0F489958170C41060044ED0A /* CHReadWriteLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F489957170C41060044ED0A /* CHReadWriteLock.m */; };
 		0F66FD151728A49B00747AC7 /* OPTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F66FD141728A49B00747AC7 /* OPTextLayer.m */; };
 		0F66FD181728A9EB00747AC7 /* window-top.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F66FD161728A9EB00747AC7 /* window-top.png */; };
 		0F66FD191728A9EB00747AC7 /* window-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F66FD171728A9EB00747AC7 /* window-top@2x.png */; };
@@ -115,8 +114,6 @@
 		0F489933170BFFD60044ED0A /* OPImagePreviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImagePreviewService.m; sourceTree = "<group>"; };
 		0F489935170C00BA0044ED0A /* loading-preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading-preview.png"; sourceTree = "<group>"; };
 		0F489936170C00BA0044ED0A /* loading-preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading-preview@2x.png"; sourceTree = "<group>"; };
-		0F489956170C41060044ED0A /* CHReadWriteLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHReadWriteLock.h; sourceTree = "<group>"; };
-		0F489957170C41060044ED0A /* CHReadWriteLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHReadWriteLock.m; sourceTree = "<group>"; };
 		0F66FD131728A49B00747AC7 /* OPTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPTextLayer.h; sourceTree = "<group>"; };
 		0F66FD141728A49B00747AC7 /* OPTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPTextLayer.m; sourceTree = "<group>"; };
 		0F66FD161728A9EB00747AC7 /* window-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "window-top.png"; sourceTree = "<group>"; };
@@ -394,7 +391,6 @@
 				0F368A671705128700411503 /* Album Scanner */,
 				0F97164917048737001835DC /* Image Previews */,
 				0F368A7B170680DF00411503 /* Custom Views */,
-				0FEC6750171035080086B264 /* Utilities */,
 				0FEC674E171034C20086B264 /* Categories */,
 				0F9C80BA16F891C700B2B6D8 /* Supporting Files */,
 			);
@@ -501,15 +497,6 @@
 				0FE3B2521702D32F00FC0D6C /* buttonbg@2x.png */,
 			);
 			name = "Image resources";
-			sourceTree = "<group>";
-		};
-		0FEC6750171035080086B264 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				0F489956170C41060044ED0A /* CHReadWriteLock.h */,
-				0F489957170C41060044ED0A /* CHReadWriteLock.m */,
-			);
-			name = Utilities;
 			sourceTree = "<group>";
 		};
 		0FEC6751171035290086B264 /* Navigation bar */ = {
@@ -688,7 +675,6 @@
 				0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */,
 				0F705231170AB695001F8159 /* OPPhotoGridView.m in Sources */,
 				0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */,
-				0F489958170C41060044ED0A /* CHReadWriteLock.m in Sources */,
 				0F6D098A170FC5E3006268F1 /* OPEffectProcessedImageRef.m in Sources */,
 				0FC8A7A9170FD6E300650D7C /* OPImageEffectItemView.m in Sources */,
 				0FC8A7AC170FD76800650D7C /* OPImageEffectItem.m in Sources */,

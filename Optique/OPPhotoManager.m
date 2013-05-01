@@ -21,7 +21,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
 
 @implementation OPPhotoManager {
     NSMutableOrderedSet *_collectionSet;
-    CHReadWriteLock *_lock;
+    NSLock *_lock;
 }
 
 -(id)initWithPath:(NSURL *)path
@@ -31,7 +31,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
     {
         _path = path;
         _collectionSet = [[NSMutableOrderedSet alloc] init];
-        _lock = [[CHReadWriteLock alloc] init];
+        _lock = [[NSLock alloc] init];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundAlbums:) name:OPAlbumScannerDidFindAlbumsNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundCamera:) name:OPCameraServiceDidAddCamera object:nil];
@@ -49,15 +49,9 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
 
 -(NSArray *)allCollections
 {
-    [_lock lock];
-    @try
-    {
+    return [self withLock:^id{
         return [[_collectionSet array] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
-    }
-    @finally
-    {
-        [_lock unlock];
-    }
+    }];
 }
 
 -(NSArray *)allCollectionsForIndexSet:(NSIndexSet *)indexSet
@@ -102,11 +96,15 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
 
 -(void)deleteAlbum:(OPPhotoAlbum *)photoAlbum
 {    
-    [self sendAlbumDeletedNotification:photoAlbum];
-    
-    [[NSFileManager defaultManager] removeItemAtURL:photoAlbum.path error:nil];
-    
-    [self removeAlbum:photoAlbum];
+    [self withLock:^id{
+        [self sendAlbumDeletedNotification:photoAlbum];
+        
+        [[NSFileManager defaultManager] removeItemAtURL:photoAlbum.path error:nil];
+        
+        [self removeAlbum:photoAlbum];
+        
+        return nil;
+    }];
 }
 
 -(void)collectionUpdated:(id<OPPhotoCollection>)collection
@@ -126,7 +124,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
         return;
     }
     
-    [self withWriteLock:^id{
+    [self withLock:^id{
         NSMutableOrderedSet *oldAlbums = [NSMutableOrderedSet orderedSetWithOrderedSet:_collectionSet];
         _collectionSet = [NSMutableOrderedSet orderedSetWithArray:albums];
         
@@ -159,7 +157,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
 
 -(OPPhotoAlbum*)addAlbum:(OPPhotoAlbum*)album
 {
-    return [self withWriteLock:^id{
+    return [self withLock:^id{
         if (![_collectionSet containsObject:album])
         {
             [_collectionSet addObject:album];
@@ -171,7 +169,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
 
 -(void)removeAlbum:(OPPhotoAlbum*)album
 {
-    [self withWriteLock:^id{
+    [self withLock:^id{
         [_collectionSet removeObject:album];
         return nil;
     }];
@@ -182,7 +180,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
     OPCamera *camera = notification.userInfo[@"camera"];
     if (camera)
     {
-        [self withWriteLock:^id{
+        [self withLock:^id{
             [_collectionSet addObject:camera];
             [self sendNotificationWithName:OPPhotoManagerDidUpdateCollection forPhotoCollection:camera];
             return nil;
@@ -195,7 +193,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
     OPCamera *camera = notification.userInfo[@"camera"];
     if (camera)
     {
-        [self withWriteLock:^id{
+        [self withLock:^id{
             [_collectionSet removeObject:camera];
             [self sendNotificationWithName:OPPhotoManagerDidDeleteCollection forPhotoCollection:camera];
             return nil;
@@ -203,9 +201,9 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
     }
 }
 
--(id)withWriteLock:(id (^)(void))block
+-(id)withLock:(id (^)(void))block
 {
-    [_lock lockForWriting];
+    [_lock lock];
     @try
     {
         return block();
