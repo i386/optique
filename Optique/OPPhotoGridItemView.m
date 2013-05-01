@@ -121,8 +121,6 @@
     NSArray *urls = [self selectedItemURLs];
     if (urls.count > 0)
     {
-        NSLog(@"urls %@", urls);
-        
         NSPoint downWinLocation = [theEvent locationInWindow];
         NSPoint point = [self convertPoint:downWinLocation fromView:nil];
         
