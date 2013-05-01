@@ -8,6 +8,9 @@
 
 #import "OPImagePreviewService.h"
 #import "OPImageCache.h"
+#import "OPCameraPhoto.h"
+#import "OPLocalPhoto.h"
+#import "NSImage+MGCropExtensions.h"
 
 @interface OPImagePreviewService() {
     NSMapTable *_locks;
@@ -41,7 +44,28 @@ static OPImagePreviewService *_defaultService;
     return self;
 }
 
--(NSImage *)previewImageAtURL:(NSURL *)url loaded:(void (^)(NSImage *))loadBlock
+-(NSImage *)previewImageWithPhoto:(id<OPPhoto>)photo loaded:(OPImageCompletionBlock)completionBlock
+{
+    NSImage *image;
+    NSObject *photoObj = (NSObject*)photo;
+    if ([photoObj isKindOfClass:[OPCameraPhoto class]])
+    {
+        OPCameraPhoto *cameraPhoto = (OPCameraPhoto*)photo;
+        image = cameraPhoto.thumbnail;
+        if (image)
+        {
+            image = [image imageCroppedToFitSize:IMAGE_CACHE_THUMB_SIZE];
+        }
+    }
+    else
+    {
+        OPLocalPhoto *localPhoto = (OPLocalPhoto*)photo;
+        image = [self previewImageAtURL:localPhoto.path loaded:completionBlock];
+    }
+    return image == nil ? [NSImage imageNamed:@"loading-preview"] : image;
+}
+
+-(NSImage *)previewImageAtURL:(NSURL *)url loaded:(OPImageCompletionBlock)completionBlock
 {
     OPImageCache *cache = [OPImageCache sharedPreviewCache];
     
@@ -58,7 +82,7 @@ static OPImagePreviewService *_defaultService;
                 [_queue addOperationWithBlock:^
                  {
                      NSImage *image = [cache loadImageForPath:url];
-                     loadBlock(image);
+                     completionBlock(image);
                  }];
                 
                 //Remove the lock
@@ -69,7 +93,7 @@ static OPImagePreviewService *_defaultService;
         {
             [lock unlock];
         }
-        return [NSImage imageNamed:@"loading-preview"];
+        return nil;
     }
     
     return [cache loadImageForPath:url];

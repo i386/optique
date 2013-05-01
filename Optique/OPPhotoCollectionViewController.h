@@ -16,12 +16,13 @@
 @property (strong) IBOutlet NSMenu *photoItemContextMenu;
 @property (strong) IBOutlet NSMenu *contextMenu;
 
-@property (strong, readonly) OPPhotoAlbum *photoAlbum;
+@property (strong, readonly) id<OPPhotoCollection> collection;
 @property (strong, readonly) OPPhotoManager *photoManager;
 @property (strong) IBOutlet CNGridView *gridView;
 @property (strong) IBOutlet NSMenuItem *moveToAlbumItem;
+@property (strong) IBOutlet NSMenuItem *revealInFinderItem;
 
--initWithPhotoAlbum:(OPPhotoAlbum*)photoAlbum photoManager:(OPPhotoManager*)photoManager;
+-initWithPhotoAlbum:(id<OPPhotoCollection>)collection photoManager:(OPPhotoManager*)photoManager;
 
 - (IBAction)revealInFinder:(NSMenuItem*)sender;
 - (IBAction)deletePhoto:(id)sender;

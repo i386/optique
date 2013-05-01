@@ -24,11 +24,6 @@
     return self;
 }
 
--(void)setFilter:(CIFilter *)filter
-{
-    NSLog(@"TODO: reimplement filtering. Filter: %@", filter);
-}
-
 - (IBAction)revealInFinder:(id)sender
 {
     [_photoViewController revealInFinder];
@@ -37,6 +32,11 @@
 - (IBAction)deletePhoto:(id)sender
 {
     [_photoViewController deletePhoto];
+}
+
+-(void)menuNeedsUpdate:(NSMenu *)menu
+{
+    [_revealInFinderMenuItem setHidden:!_photoViewController.collection.isStoredOnFileSystem];
 }
 
 @end

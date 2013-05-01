@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
+#define IMAGE_CACHE_THUMB_SIZE NSMakeSize(260, 175)
+
 #import <Foundation/Foundation.h>
 
 @interface OPImageCache : NSObject

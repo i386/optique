@@ -8,3 +8,8 @@
 
 #import "NSObject+PerformBlock.h"
 #import <BlocksKit/BlocksKit.h>
+
+typedef void (^OPImageCompletionBlock)(NSImage *image);
+typedef void (^OPDataCompletionBlock)(NSData* data);
+typedef void (^OPURLSupplier)(NSURL *suppliedUrl);
+typedef void (^OPCompletionBlock)(NSError *error);

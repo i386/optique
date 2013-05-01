@@ -1,36 +1,38 @@
 //
-//  OPPhoto.m
+//  OPLocalPhoto.m
 //  Optique
 //
-//  Created by James Dumay on 21/03/13.
+//  Created by James Dumay on 28/04/13.
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OPPhoto.h"
-#import "OPImageCache.h"
-#import "OPPhotoAlbum.h"
-#import "NSImage+MGCropExtensions.h"
+#import "OPLocalPhoto.h"
 
-@implementation OPPhoto
+@interface OPLocalPhoto() {
+    id<OPPhotoCollection> _collection;
+}
+@end
 
--(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(OPPhotoAlbum*)album
+@implementation OPLocalPhoto
+
+-(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(id<OPPhotoCollection>)collection
 {
     self = [super init];
     if (self)
     {
         _title = title;
         _path = path;
-        _album = album;
+        _collection = collection;
     }
     return self;
 }
 
--(NSImage*)image
+-(void)imageWithCompletionBlock:(OPImageCompletionBlock)completionBlock
 {
-    return [[NSImage alloc] initWithContentsOfURL:_path];
+    completionBlock([[NSImage alloc] initWithContentsOfURL:_path]);
 }
 
--(NSImage*)scaleImageToFitSize:(NSSize)size
+-(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(OPImageCompletionBlock)completionBlock
 {
     NSImage *image;
     
@@ -62,7 +64,31 @@
     
     CFRelease(imageProperties);
     
-    return image;
+    completionBlock(image);
+}
+
+-(NSConditionLock*)resolveURL:(OPURLSupplier)block
+{
+    NSConditionLock *condition = [[NSConditionLock alloc] initWithCondition:0];
+
+    [self performBlockInBackground:^{
+        @try
+        {
+            [condition lock];
+            block(_path);
+        }
+        @finally
+        {
+            [condition unlockWithCondition:1];
+        }
+    }];
+    
+    return condition;
+}
+
+-(id<OPPhotoCollection>)collection
+{
+    return _collection;
 }
 
 -(BOOL)isEqual:(id)object
@@ -72,7 +98,7 @@
     if (!object || ![object isKindOfClass:[self class]])
         return NO;
     
-    OPPhoto *photo = object;
+    OPLocalPhoto *photo = object;
     return [self.path isEqual:photo.path];
 }
 

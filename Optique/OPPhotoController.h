@@ -10,14 +10,13 @@
 
 @class OPPhotoViewController;
 
-@interface OPPhotoController : NSViewController
+@interface OPPhotoController : NSViewController <NSMenuDelegate>
 
 @property (strong) IBOutlet NSImageView *imageView;
 @property (strong) IBOutlet NSMenu *contextMenu;
+@property (strong) IBOutlet NSMenuItem *revealInFinderMenuItem;
 
 -initWithPhotoViewController:(OPPhotoViewController*)photoViewController;
-
--(void)setFilter:(CIFilter*)filter;
 
 - (IBAction)revealInFinder:(id)sender;
 

@@ -19,15 +19,15 @@
 
 @implementation OPPhotoCollectionViewController
 
--(id)initWithPhotoAlbum:(OPPhotoAlbum *)photoAlbum photoManager:(OPPhotoManager*)photoManager
+-(id)initWithPhotoAlbum:(id<OPPhotoCollection>)collection photoManager:(OPPhotoManager*)photoManager
 {
     self = [super initWithNibName:@"OPPhotoCollectionViewController" bundle:nil];
     if (self)
     {
-        _photoAlbum = photoAlbum;
+        _collection = collection;
         _photoManager = photoManager;
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateAlbum object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateCollection object:nil];
     }
     
     return self;
@@ -35,7 +35,7 @@
 
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidUpdateAlbum object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidUpdateCollection object:nil];
 }
 
 - (IBAction)revealInFinder:(NSMenuItem*)sender
@@ -44,8 +44,12 @@
     NSMutableArray *urls = [NSMutableArray array];
     
     [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
-        OPPhoto *photo = _photoAlbum.allPhotos[index];
-        [urls addObject:photo.path];
+        id photo = _collection.allPhotos[index];
+        if ([photo respondsToSelector:@selector(path)])
+        {
+            [urls addObject:[photo path]];
+        }
+        
     }];
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
 }
@@ -55,7 +59,7 @@
     NSMenuItem *item = sender;
     NSIndexSet *indexes = item.representedObject;
     
-    NSArray *photos = [_photoAlbum photosForIndexSet:indexes];
+    NSArray *photos = [_collection photosForIndexSet:indexes];
     
     NSString *message;
     if (photos.count > 1)
@@ -64,7 +68,7 @@
     }
     else
     {
-        OPPhoto *photo = [photos lastObject];
+        id<OPPhoto> photo = [photos lastObject];
         message = [NSString stringWithFormat:@"Do you want to delete '%@'?", photo.title];
     }
     
@@ -79,10 +83,18 @@
     {
         NSArray *photos = CFBridgingRelease(contextInfo);
         
+        volatile int __block photosAdded = 0;
         [photos each:^(id sender)
         {
-            [_photoAlbum deletePhoto:sender error:nil];
+            [_collection deletePhoto:sender withCompletion:^(NSError *error) {
+                photosAdded++;
+            }];
         }];
+        
+        while (photosAdded != photos.count)
+        {
+            [NSThread sleepForTimeInterval:1];
+        }
         
         [_gridView reloadData];
     }
@@ -90,18 +102,18 @@
 
 -(NSString *)viewTitle
 {
-    return _photoAlbum.title;
+    return _collection.title;
 }
 
 - (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section
 {
-    OPPhotoViewController *photoViewContoller = [[OPPhotoViewController alloc] initWithPhotoAlbum:_photoAlbum photo:_photoAlbum.allPhotos[index]];
+    OPPhotoViewController *photoViewContoller = [[OPPhotoViewController alloc] initWithPhotoCollection:_collection photo:_collection.allPhotos[index]];
     [self.controller pushViewController:photoViewContoller];
 }
 
 - (NSUInteger)gridView:(CNGridView *)gridView numberOfItemsInSection:(NSInteger)section
 {
-    return _photoAlbum.allPhotos.count;
+    return _collection.allPhotos.count;
 }
 
 - (CNGridViewItem *)gridView:(CNGridView *)gridView itemAtIndex:(NSInteger)index inSection:(NSInteger)section
@@ -112,17 +124,17 @@
         item = [[OPPhotoGridItemView alloc] initWithLayout:nil reuseIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
     }
     
-    NSArray *allPhotos = _photoAlbum.allPhotos;
+    NSArray *allPhotos = _collection.allPhotos;
     
     if (allPhotos.count > 0)
     {
-        OPPhoto *photo = allPhotos[index];
+        id<OPPhoto> photo = allPhotos[index];
         item.representedObject = photo;
         
         CNGridViewItem * __weak weakItem = item;
-        OPPhoto * __weak weakPhoto = photo;
+        id<OPPhoto> __weak weakPhoto = photo;
         
-        item.itemImage = [[OPImagePreviewService defaultService] previewImageAtURL:photo.path loaded:^(NSImage *image)
+        item.itemImage = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
         {
             [self performBlockOnMainThreadAndWaitUntilDone:^
             {
@@ -167,27 +179,33 @@
 {
     _moveToAlbumItem.submenu = [[NSMenu alloc] init];
     
-    NSMutableSet *albums = [NSMutableSet setWithArray:_photoManager.allAlbums];
-    [albums removeObject:_photoAlbum];
+    NSMutableSet *collections = [NSMutableSet setWithArray:_photoManager.allCollections];
+    [collections removeObject:_collection];
     
-    [albums each:^(OPPhotoAlbum *album)
+    [collections each:^(id<OPPhotoCollection> collection)
     {
-        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:album.title action:@selector(moveToAlbum:) keyEquivalent:[NSString string]];
-        item.target = self;
-        [item setRepresentedObject:album];
-        [_moveToAlbumItem.submenu addItem:item];
+        if (collection.isStoredOnFileSystem)
+        {
+            NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:collection.title action:@selector(moveToCollection:) keyEquivalent:[NSString string]];
+            item.target = self;
+            [item setRepresentedObject:collection];
+            [_moveToAlbumItem.submenu addItem:item];
+        }
     }];
-}
-
--(void)moveToAlbum:(NSMenuItem*)item
-{
-    OPPhotoAlbum *album = item.representedObject;
-    NSIndexSet *indexes = [_gridView selectedIndexes];
-    NSArray *photos = [_photoAlbum photosForIndexSet:indexes];
     
-    [photos each:^(OPPhoto *photo)
+    id<OPPhoto> firstPhoto = [[_collection photosForIndexSet:_gridView.selectedIndexes] lastObject];
+    [_revealInFinderItem setHidden:!firstPhoto.collection.isStoredOnFileSystem];
+}
+    
+-(void)moveToCollection:(NSMenuItem*)item
+{
+    id<OPPhotoCollection> collection = item.representedObject;
+    NSIndexSet *indexes = [_gridView selectedIndexes];
+    NSArray *photos = [_collection photosForIndexSet:indexes];
+    
+    [photos each:^(id<OPPhoto> photo)
     {
-        [photo.album movePhoto:photo toAlbum:album];
+        [collection addPhoto:photo withCompletion:nil];
     }];
 }
 

@@ -16,8 +16,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
-    
     NSURL *url = [[_userDefaultsController defaults] URLForKey:@"url"];
     if (!url)
     {
@@ -61,12 +59,29 @@
         [_mainWindowController close];
     }
     
+    if (_cameraService)
+    {
+        [_cameraService stop];
+    }
+    
     _photoManager = [[OPPhotoManager alloc] initWithPath:url];
     _mainWindowController = [[OPMainWindowController alloc] initWithPhotoManager:_photoManager];
     [_mainWindowController.window makeKeyAndOrderFront:self];
     
-    _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager];
+    _cameraService = [[OPCameraService alloc] initWithPhotoManager:_photoManager];
+    [_cameraService start];
+    
+    _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager cameraService:_cameraService];
     [_albumScaner scanAtURL:url];
+}
+
+-(void)applicationWillTerminate:(NSNotification *)notification
+{
+    //Remove all the caches if any exist
+    if (_cameraService)
+    {
+        [_cameraService removeCaches];
+    }
 }
 
 @end

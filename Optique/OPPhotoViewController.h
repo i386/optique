@@ -13,14 +13,12 @@
 
 @interface OPPhotoViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate>
 
-@property (strong, readonly) OPPhotoAlbum *photoAlbum;
-@property (strong) IBOutlet NSCollectionView *collectionView;
-@property (strong) IBOutlet NSArrayController *imagesArrayController;
+@property (strong, readonly) id<OPPhotoCollection> collection;
 @property (assign) NSInteger effectsState;
+@property (strong) id<OPPhoto> currentPhoto;
 @property (strong) IBOutlet NSPageController *pageController;
-@property (strong) IBOutlet NSView *effectsPanel;
 
--initWithPhotoAlbum:(OPPhotoAlbum*)album photo:(OPPhoto*)photo;
+-initWithPhotoCollection:(id<OPPhotoCollection>)collection photo:(id<OPPhoto>)photo;
 
 -(void)nextPhoto;
 -(void)previousPhoto;
@@ -30,6 +28,6 @@
 -(void)deletePhoto;
 -(void)revealInFinder;
 
--(NSArray *)processedImages;
+//-(NSArray *)processedImages;
 
 @end

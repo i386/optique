@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#import "OPPhotoCollection.h"
 #import "OPPhotoAlbum.h"
 
-NSString *const OPPhotoManagerDidAddAlbum;
-NSString *const OPPhotoManagerDidUpdateAlbum;
-NSString *const OPPhotoManagerDidDeleteAlbum;
+extern NSString *const OPPhotoManagerDidAddCollection;
+extern NSString *const OPPhotoManagerDidUpdateCollection;
+extern NSString *const OPPhotoManagerDidDeleteCollection;
 
 @interface OPPhotoManager : NSObject
 
@@ -20,14 +21,19 @@ NSString *const OPPhotoManagerDidDeleteAlbum;
 
 -initWithPath:(NSURL*)path;
 
--(NSArray*)allAlbums;
+/** all collections (albums, cameras, etc) that are available **/
+-(NSArray*)allCollections;
 
--(NSArray*)albumsForIndexSet:(NSIndexSet*)indexSet;
+/** filter collections by index set **/
+-(NSArray*)allCollectionsForIndexSet:(NSIndexSet*)indexSet;
 
+/** create a new album **/
 -(OPPhotoAlbum*)newAlbumWithName:(NSString*)albumName error:(NSError **)error;
 
+/** delete the specified album **/
 -(void)deleteAlbum:(OPPhotoAlbum*)photoAlbum;
 
--(void)albumUpdated:(OPPhotoAlbum*)album;
+/** forces the collection to reload and sends a OPPhotoManagerDidUpdateCollection **/
+-(void)collectionUpdated:(id<OPPhotoCollection>)album;
 
 @end

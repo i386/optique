@@ -7,19 +7,36 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ImageCaptureCore/ImageCaptureCore.h>
 
-@class OPPhotoAlbum;
+@protocol OPPhotoCollection;
 
-@interface OPPhoto : NSObject
+@protocol OPPhoto
 
-@property (strong, readonly) NSString *title;
-@property (strong, readonly) NSURL *path;
-@property (strong, readonly) OPPhotoAlbum *album;
+/**
+ The photo title
+ **/
+-(NSString*)title;
 
--(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(OPPhotoAlbum*)album;
+/**
+ The collection (such as the album or camera) that the photo belongs to
+ **/
+-(id<OPPhotoCollection>) collection;
 
--(NSImage*)image;
+/**
+ Loads the image and returns it via the completion block
+ **/
+-(void)imageWithCompletionBlock:(OPImageCompletionBlock)completionBlock;
 
--(NSImage*)scaleImageToFitSize:(NSSize)size;
+/**
+ Loads and scales the image and returns it via the completion block
+ May return the full size image if scaling is not available.
+ **/
+-(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(OPImageCompletionBlock)completionBlock;
+
+/** 
+ Loads the data representing this photo and returns it via the completion block 
+ **/
+-(NSConditionLock*)resolveURL:(OPURLSupplier)block;
 
 @end

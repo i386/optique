@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OPPhoto.h"
 
 @interface OPImagePreviewService : NSObject
 
 +(OPImagePreviewService *)defaultService;
 
--(NSImage*)previewImageAtURL:(NSURL*)url loaded:(void (^)(NSImage *image))loadBlock;
+-(NSImage*)previewImageWithPhoto:(id<OPPhoto>)photo loaded:(OPImageCompletionBlock)completionBlock;
 
 @end

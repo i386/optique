@@ -8,7 +8,7 @@
 
 #import "OPPhotoManager.h"
 #import "OPPhotoAlbum.h"
-#import "OPPhoto.h"
+#import "OPLocalPhoto.h"
 #import "CHReadWriteLock.h"
 
 @interface OPPhotoAlbum() {
@@ -37,7 +37,7 @@
 {
     if (_allPhotos == nil)
     {
-        [self reloadPhotos];
+        [self reload];
     }
     
     [_arrayLock lock];
@@ -63,7 +63,7 @@
     return albums;
 }
 
--(void)reloadPhotos
+-(void)reload
 {
     [_arrayLock lockForWriting];
     @try
@@ -76,29 +76,43 @@
     }
 }
 
--(void)deletePhoto:(OPPhoto *)photo error:(NSError *__autoreleasing *)error
+-(BOOL)isStoredOnFileSystem
 {
-    [_arrayLock lockForWriting];
-    @try
-    {
-        //TODO check for errors
-        [[NSFileManager defaultManager] removeItemAtURL:photo.path error:nil];
-        
-        [_allPhotos removeObject:photo];
-    }
-    @finally
-    {
-        [_arrayLock unlock];
-    }
+    return YES;
 }
 
--(void)movePhoto:(OPPhoto *)photo toAlbum:(OPPhotoAlbum *)album
+-(void)addPhoto:(id<OPPhoto>)photo withCompletion:(OPCompletionBlock)completionBlock
 {
-    NSURL *url = [[album path] URLByAppendingPathComponent:[photo.path lastPathComponent]];
-    [[NSFileManager defaultManager] moveItemAtURL:photo.path toURL:url error:nil];
+    NSConditionLock *condition = [photo resolveURL:^(NSURL *suppliedUrl) {
+        NSError *error;
+        [[NSFileManager defaultManager] moveItemAtURL:suppliedUrl toURL:[self.path URLByAppendingPathComponent:photo.title] error:&error];
+        
+        if (completionBlock)
+        {
+            completionBlock(error);
+        }
+        
+        [self.photoManager collectionUpdated:self];
+        [photo.collection.photoManager collectionUpdated:photo.collection];
+    }];
+    [condition lock];
+    [condition unlockWithCondition:1];
+}
+
+
+-(void)deletePhoto:(id<OPPhoto>)photo withCompletion:(OPCompletionBlock)completionBlock
+{
+    NSError *error;
+    NSURL *url = [self.path URLByAppendingPathComponent:photo.title];
+    [[NSFileManager defaultManager] removeItemAtURL:url error:&error];
     
-    [_photoManager albumUpdated:self];
-    [_photoManager albumUpdated:album];
+    if (completionBlock)
+    {
+        completionBlock(error);
+    }
+    
+    [self.photoManager collectionUpdated:self];
+    [photo.collection.photoManager collectionUpdated:photo.collection];
 }
 
 -(NSArray*)findAllPhotos
@@ -129,7 +143,7 @@
             
             if (UTTypeConformsTo(fileUTI, kUTTypeImage))
             {
-                OPPhoto *photo = [[OPPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
+                OPLocalPhoto *photo = [[OPLocalPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
                 [photos addObject:photo];
             }
         }
