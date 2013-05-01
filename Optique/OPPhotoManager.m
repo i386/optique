@@ -21,7 +21,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
 
 @implementation OPPhotoManager {
     NSMutableOrderedSet *_collectionSet;
-    CHReadWriteLock *_lock;
+    NSLock *_lock;
 }
 
 -(id)initWithPath:(NSURL *)path
@@ -31,7 +31,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
     {
         _path = path;
         _collectionSet = [[NSMutableOrderedSet alloc] init];
-        _lock = [[CHReadWriteLock alloc] init];
+        _lock = [[NSLock alloc] init];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundAlbums:) name:OPAlbumScannerDidFindAlbumsNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundCamera:) name:OPCameraServiceDidAddCamera object:nil];
@@ -205,7 +205,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
 
 -(id)withWriteLock:(id (^)(void))block
 {
-    [_lock lockForWriting];
+    [_lock lock];
     @try
     {
         return block();

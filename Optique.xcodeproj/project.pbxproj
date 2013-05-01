@@ -153,7 +153,6 @@
 		0F9C80B016F891C700B2B6D8 /* Optique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optique.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9C80B316F891C700B2B6D8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0F9C80B616F891C700B2B6D8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		0F9C80B716F891C700B2B6D8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0F9C80B816F891C700B2B6D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0F9C80BB16F891C700B2B6D8 /* Optique-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Optique-Info.plist"; sourceTree = "<group>"; };
 		0F9C80BD16F891C700B2B6D8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -340,7 +339,6 @@
 		0F9C80A716F891C700B2B6D8 = {
 			isa = PBXGroup;
 			children = (
-				0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */,
 				0F9C80B916F891C700B2B6D8 /* Optique */,
 				0F9C80B216F891C700B2B6D8 /* Frameworks */,
 				0F9C80B116F891C700B2B6D8 /* Products */,
@@ -359,23 +357,15 @@
 		0F9C80B216F891C700B2B6D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F9C80B616F891C700B2B6D8 /* AppKit.framework */,
+				0F9C80B816F891C700B2B6D8 /* Foundation.framework */,
+				0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */,
 				0F9C80B316F891C700B2B6D8 /* Cocoa.framework */,
 				0F368A6B170531B500411503 /* Quartz.framework */,
 				0FE3B2611702F25500FC0D6C /* QuartzCore.framework */,
-				0F9C80B516F891C700B2B6D8 /* Other Frameworks */,
 				E6B69E97783146C19C69AB43 /* libPods.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		0F9C80B516F891C700B2B6D8 /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0F9C80B616F891C700B2B6D8 /* AppKit.framework */,
-				0F9C80B716F891C700B2B6D8 /* CoreData.framework */,
-				0F9C80B816F891C700B2B6D8 /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 		0F9C80B916F891C700B2B6D8 /* Optique */ = {

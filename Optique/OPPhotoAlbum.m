@@ -9,10 +9,9 @@
 #import "OPPhotoManager.h"
 #import "OPPhotoAlbum.h"
 #import "OPLocalPhoto.h"
-#import "CHReadWriteLock.h"
 
 @interface OPPhotoAlbum() {
-    CHReadWriteLock *_arrayLock;
+    NSLock *_arrayLock;
     volatile NSMutableOrderedSet *_allPhotos;
 }
 
@@ -28,7 +27,7 @@
         _title = title;
         _path = path;
         _photoManager = photoManager;
-        _arrayLock = [[CHReadWriteLock alloc] init];
+        _arrayLock = [[NSLock alloc] init];
     }
     return self;
 }
@@ -65,7 +64,7 @@
 
 -(void)reload
 {
-    [_arrayLock lockForWriting];
+    [_arrayLock lock];
     @try
     {
         _allPhotos = [NSMutableOrderedSet orderedSetWithArray:[self findAllPhotos]];
