@@ -1,24 +1,21 @@
 //
-//  OPPhotoManager.m
+//  XPPhotoManager.m
 //  Optique
 //
 //  Created by James Dumay on 20/03/13.
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OPPhotoManager.h"
-#import "OPCameraService.h"
 #import "OPPhotoAlbum.h"
-#import "OPCamera.h"
 #import "OPAlbumScanner.h"
 #import <BlocksKit/NSMutableOrderedSet+BlocksKit.h>
 #import <BlocksKit/NSArray+BlocksKit.h>
 
-NSString *const OPPhotoManagerDidAddCollection = @"OPPhotoManagerDidAddAlbum";
-NSString *const OPPhotoManagerDidUpdateCollection = @"OPPhotoManagerDidUpdateAlbum";
-NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlbum";
+NSString *const XPPhotoManagerDidAddCollection = @"XPPhotoManagerDidAddAlbum";
+NSString *const XPPhotoManagerDidUpdateCollection = @"XPPhotoManagerDidUpdateAlbum";
+NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlbum";
 
-@implementation OPPhotoManager {
+@implementation XPPhotoManager {
     NSMutableOrderedSet *_collectionSet;
     NSLock *_lock;
 }
@@ -64,7 +61,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
     return albums;
 }
 
--(OPPhotoAlbum *)newAlbumWithName:(NSString *)albumName error:(NSError **)error
+-(id<XPPhotoCollection>)newAlbumWithName:(NSString*)albumName error:(NSError **)error
 {
     NSURL *albumPath = [self.path URLByAppendingPathComponent:albumName isDirectory:YES];
     
@@ -78,45 +75,47 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
         {
             OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithTitle:albumName path:albumPath photoManager:self];
             [self addAlbum:album];
-            [self sendNotificationWithName:OPPhotoManagerDidAddCollection forPhotoCollection:album];
+            [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:album];
             return album;
         }
         else
         {
-            *error = [[NSError alloc] initWithDomain:@"OPPhotoManager" code:2 userInfo:@{@"message": [NSString stringWithFormat:@"Could not create album %@.", albumName], @"longmessage": @"There was a problem creating the album."}];
+            *error = [[NSError alloc] initWithDomain:@"XPPhotoManager" code:2 userInfo:@{@"message": [NSString stringWithFormat:@"Could not create album %@.", albumName], @"longmessage": @"There was a problem creating the album."}];
         }
     }
     else
     {
-        *error = [[NSError alloc] initWithDomain:@"OPPhotoManager" code:1 userInfo:@{@"message": [NSString stringWithFormat:@"Album with the name %@ already exists.", albumName], @"longmessage": @"Try choosing a different name that isn't the name of an existing album."}];
+        *error = [[NSError alloc] initWithDomain:@"XPPhotoManager" code:1 userInfo:@{@"message": [NSString stringWithFormat:@"Album with the name %@ already exists.", albumName], @"longmessage": @"Try choosing a different name that isn't the name of an existing album."}];
     }
     return nil;
 }
 
--(void)deleteAlbum:(OPPhotoAlbum *)photoAlbum
-{    
+-(void)deleteAlbum:(id<XPPhotoCollection>)collection
+{
+    OPPhotoAlbum *album = collection;
+    
     [self withLock:^id{
-        [self sendAlbumDeletedNotification:photoAlbum];
+        [self sendAlbumDeletedNotification:album];
         
-        [[NSFileManager defaultManager] removeItemAtURL:photoAlbum.path error:nil];
+        [[NSFileManager defaultManager] removeItemAtURL:album.path error:nil];
         
-        [self removeAlbum:photoAlbum];
+        [self removeAlbum:collection];
         
         return nil;
     }];
 }
 
--(void)collectionUpdated:(id<OPPhotoCollection>)collection
+-(void)collectionUpdated:(id<XPPhotoCollection>)collection
 {
     [collection reload];
-    [self sendNotificationWithName:OPPhotoManagerDidUpdateCollection forPhotoCollection:collection];
+    [self sendNotificationWithName:XPPhotoManagerDidUpdateCollection forPhotoCollection:collection];
 }
 
 -(void)foundAlbums:(NSNotification*)event
 {
     NSDictionary *userInfo = event.userInfo;
     NSArray *albums = userInfo[@"albums"];
-    OPPhotoManager *photoManager = userInfo[@"photoManager"];
+    XPPhotoManager *photoManager = userInfo[@"photoManager"];
     
     if ([photoManager isNotEqualTo:self])
     {
@@ -131,7 +130,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
          {
              if ([oldAlbums containsObject:sender])
              {
-                 [self sendNotificationWithName:OPPhotoManagerDidUpdateCollection forPhotoCollection:sender];
+                 [self sendNotificationWithName:XPPhotoManagerDidUpdateCollection forPhotoCollection:sender];
              }
          }];
         
@@ -139,7 +138,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
         [newItems minusOrderedSet:oldAlbums];
         [[newItems array] each:^(id sender) {
             [self performBlockInBackground:^{
-                [self sendNotificationWithName:OPPhotoManagerDidAddCollection forPhotoCollection:sender];
+                [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:sender];
             }];
         }];
         
@@ -183,7 +182,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
     {
         [self withLock:^id{
             [_collectionSet addObject:camera];
-            [self sendNotificationWithName:OPPhotoManagerDidUpdateCollection forPhotoCollection:camera];
+            [self sendNotificationWithName:XPPhotoManagerDidUpdateCollection forPhotoCollection:camera];
             return nil;
         }];
     }
@@ -196,7 +195,7 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
     {
         [self withLock:^id{
             [_collectionSet removeObject:camera];
-            [self sendNotificationWithName:OPPhotoManagerDidDeleteCollection forPhotoCollection:camera];
+            [self sendNotificationWithName:XPPhotoManagerDidDeleteCollection forPhotoCollection:camera];
             return nil;
         }];
     }
@@ -215,14 +214,14 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
     }
 }
 
--(void)sendNotificationWithName:(NSString*)notificationName forPhotoCollection:(id<OPPhotoCollection>)photoCollection
+-(void)sendNotificationWithName:(NSString*)notificationName forPhotoCollection:(id<XPPhotoCollection>)photoCollection
 {
     [[NSNotificationCenter defaultCenter] postAsyncNotificationName:notificationName object:nil userInfo:@{@"collection": photoCollection, @"photoManager": self}];
 }
 
 -(void)sendAlbumDeletedNotification:(OPPhotoAlbum*)photoAlbum
 {
-    [[NSNotificationCenter defaultCenter] postAsyncNotificationName:OPPhotoManagerDidDeleteCollection object:nil userInfo:@{@"title": photoAlbum.title, @"photoManager": self}];
+    [[NSNotificationCenter defaultCenter] postAsyncNotificationName:XPPhotoManagerDidDeleteCollection object:nil userInfo:@{@"title": photoAlbum.title, @"photoManager": self}];
 }
 
 @end

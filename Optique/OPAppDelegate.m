@@ -10,8 +10,6 @@
 
 #import <HockeySDK/BITHockeyManager.h>
 
-#import "OPPhotoAlbum.h"
-#import "OPPhoto.h"
 #import "OPImageCache.h"
 
 @implementation OPAppDelegate
@@ -70,7 +68,7 @@
         [_mainWindowController close];
     }
     
-    _photoManager = [[OPPhotoManager alloc] initWithPath:url];
+    _photoManager = [[XPPhotoManager alloc] initWithPath:url];
     
     [_cameraService setPhotoManager:_photoManager];
     if (!_cameraService.deviceBrowser.isBrowsing)

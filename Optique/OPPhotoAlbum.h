@@ -8,18 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-#import "OPPhotoCollection.h"
 #import "OPImageCache.h"
-#import "OPPhoto.h"
 
-@class OPPhotoManager;
+@class XPPhotoManager;
 
-@interface OPPhotoAlbum : NSObject <OPPhotoCollection>
+@interface OPPhotoAlbum : NSObject <XPPhotoCollection>
 
 @property (strong, readonly) NSString *title;
 @property (strong, readonly) NSURL *path;
-@property (strong, readonly) OPPhotoManager *photoManager;
+@property (strong, readonly) XPPhotoManager *photoManager;
 
--(id)initWithTitle:(NSString *)title path:(NSURL *)path photoManager:(OPPhotoManager*)photoManager;
+-(id)initWithTitle:(NSString *)title path:(NSURL *)path photoManager:(XPPhotoManager*)photoManager;
 
 @end

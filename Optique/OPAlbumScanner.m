@@ -7,7 +7,6 @@
 //
 
 #import "OPAlbumScanner.h"
-#import "OPPhotoManager.h"
 #import "OPPhotoAlbum.h"
 
 /** Events **/
@@ -17,7 +16,7 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
 
 @implementation OPAlbumScanner
 
--(id)initWithPhotoManager:(OPPhotoManager *)photoManager cameraService:(OPCameraService *)cameraService
+-(id)initWithPhotoManager:(XPPhotoManager *)photoManager cameraService:(OPCameraService *)cameraService
 {
     self = [super init];
     if (self)
@@ -66,7 +65,7 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
          
          if (_stopScan) return;
          
-         //TODO: this really shouldn't be here because technically its not a 'album'. What we *should* be doing is filtering it before we remove it in OPPhotoManager when OPAlbumScannerDidFindAlbumsNotification is responded to. No one is perfect.
+         //TODO: this really shouldn't be here because technically its not a 'album'. What we *should* be doing is filtering it before we remove it in XPPhotoManager when OPAlbumScannerDidFindAlbumsNotification is responded to. No one is perfect.
          [albumsFound addObjectsFromArray:_cameraService.allCameras];
          
          [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumsNotification object:nil userInfo:@{@"albums": albumsFound, @"photoManager": _photoManager}];

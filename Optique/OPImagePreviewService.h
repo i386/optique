@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OPPhoto.h"
 
 @interface OPImagePreviewService : NSObject
 
 +(OPImagePreviewService *)defaultService;
 
--(NSImage*)previewImageWithPhoto:(id<OPPhoto>)photo loaded:(OPImageCompletionBlock)completionBlock;
+-(NSImage*)previewImageWithPhoto:(id<XPPhoto>)photo loaded:(XPImageCompletionBlock)completionBlock;
 
 @end

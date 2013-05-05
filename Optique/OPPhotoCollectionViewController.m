@@ -19,7 +19,7 @@
 
 @implementation OPPhotoCollectionViewController
 
--(id)initWithPhotoAlbum:(id<OPPhotoCollection>)collection photoManager:(OPPhotoManager*)photoManager
+-(id)initWithPhotoAlbum:(id<XPPhotoCollection>)collection photoManager:(XPPhotoManager*)photoManager
 {
     self = [super initWithNibName:@"OPPhotoCollectionViewController" bundle:nil];
     if (self)
@@ -27,7 +27,7 @@
         _collection = collection;
         _photoManager = photoManager;
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateCollection object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
     }
     
     return self;
@@ -35,7 +35,7 @@
 
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidUpdateCollection object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidUpdateCollection object:nil];
 }
 
 - (IBAction)revealInFinder:(NSMenuItem*)sender
@@ -68,7 +68,7 @@
     }
     else
     {
-        id<OPPhoto> photo = [photos lastObject];
+        id<XPPhoto> photo = [photos lastObject];
         message = [NSString stringWithFormat:@"Do you want to delete '%@'?", photo.title];
     }
     
@@ -128,11 +128,11 @@
     
     if (allPhotos.count > 0)
     {
-        id<OPPhoto> photo = allPhotos[index];
+        id<XPPhoto> photo = allPhotos[index];
         item.representedObject = photo;
         
         CNGridViewItem * __weak weakItem = item;
-        id<OPPhoto> __weak weakPhoto = photo;
+        id<XPPhoto> __weak weakPhoto = photo;
         
         item.itemImage = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
         {
@@ -182,7 +182,7 @@
     NSMutableSet *collections = [NSMutableSet setWithArray:_photoManager.allCollections];
     [collections removeObject:_collection];
     
-    [collections each:^(id<OPPhotoCollection> collection)
+    [collections each:^(id<XPPhotoCollection> collection)
     {
         if (collection.isStoredOnFileSystem)
         {
@@ -193,17 +193,17 @@
         }
     }];
     
-    id<OPPhoto> firstPhoto = [[_collection photosForIndexSet:_gridView.selectedIndexes] lastObject];
+    id<XPPhoto> firstPhoto = [[_collection photosForIndexSet:_gridView.selectedIndexes] lastObject];
     [_revealInFinderItem setHidden:!firstPhoto.collection.isStoredOnFileSystem];
 }
     
 -(void)moveToCollection:(NSMenuItem*)item
 {
-    id<OPPhotoCollection> collection = item.representedObject;
+    id<XPPhotoCollection> collection = item.representedObject;
     NSIndexSet *indexes = [_gridView selectedIndexes];
     NSArray *photos = [_collection photosForIndexSet:indexes];
     
-    [photos each:^(id<OPPhoto> photo)
+    [photos each:^(id<XPPhoto> photo)
     {
         [collection addPhoto:photo withCompletion:nil];
     }];

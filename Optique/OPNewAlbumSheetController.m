@@ -15,7 +15,7 @@
 
 @implementation OPNewAlbumSheetController
 
--(id)initWithPhotoManager:(OPPhotoManager *)photoManager navigationController:(OPNavigationController *)navigationController
+-(id)initWithPhotoManager:(XPPhotoManager *)photoManager navigationController:(OPNavigationController *)navigationController
 {
     self = [super initWithWindowNibName:@"OPNewAlbumSheetController"];
     if (self)

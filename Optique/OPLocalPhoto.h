@@ -8,15 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-#import "OPPhoto.h"
-#import "OPPhotoCollection.h"
-
-@interface OPLocalPhoto : NSObject <OPPhoto>
+@interface OPLocalPhoto : NSObject <XPPhoto>
 
 @property (strong, readonly) NSString *title;
 @property (strong, readonly) NSURL *path;
-@property (weak, readonly) id<OPPhotoCollection> collection;
+@property (weak, readonly) id<XPPhotoCollection> collection;
 
--(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(id<OPPhotoCollection>)collection;
+-(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(id<XPPhotoCollection>)collection;
 
 @end

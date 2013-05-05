@@ -6,12 +6,9 @@
     #import <Cocoa/Cocoa.h>
 #endif
 
+#import <Exposure/Exposure.h>
+
 #import <BlocksKit/BlocksKit.h>
 
 #import "NSObject+PerformBlock.h"
 #import "NSNotificationCenter+Async.h"
-
-typedef void (^OPImageCompletionBlock)(NSImage *image);
-typedef void (^OPDataCompletionBlock)(NSData* data);
-typedef void (^OPURLSupplier)(NSURL *suppliedUrl);
-typedef void (^OPCompletionBlock)(NSError *error);

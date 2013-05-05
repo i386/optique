@@ -14,7 +14,7 @@
 
 @implementation OPDeleteAlbumSheetController
 
--(id)initWithPhotoAlbums:(NSArray *)albums photoManager:(OPPhotoManager *)photoManager
+-(id)initWithPhotoAlbums:(NSArray *)albums photoManager:(XPPhotoManager *)photoManager
 {
     self = [super initWithWindowNibName:@"OPDeleteAlbumSheetController"];
     if (self) {

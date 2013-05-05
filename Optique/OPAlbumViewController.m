@@ -9,8 +9,6 @@
 #import "OPAlbumViewController.h"
 
 #import "OPPhotoCollectionViewController.h"
-#import "OPPhotoManager.h"
-#import "OPPhoto.h"
 #import "OPAlbumScanner.h"
 #import "OPPhotoGridItemView.h"
 #import "OPImagePreviewService.h"
@@ -24,7 +22,7 @@
 
 @implementation OPAlbumViewController
 
--(id)initWithPhotoManager:(OPPhotoManager *)photoManager
+-(id)initWithPhotoManager:(XPPhotoManager *)photoManager
 {
     self = [super initWithNibName:@"OPAlbumViewController" bundle:nil];
     if (self)
@@ -36,17 +34,17 @@
 
 -(void)awakeFromNib
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:OPPhotoManagerDidAddCollection object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:OPPhotoManagerDidDeleteCollection object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:OPPhotoManagerDidUpdateCollection object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:XPPhotoManagerDidAddCollection object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:XPPhotoManagerDidDeleteCollection object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFinishedLoading:) name:OPAlbumScannerDidFinishScanNotification object:nil];
 }
 
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidAddCollection object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidDeleteCollection object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidUpdateCollection object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidAddCollection object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidDeleteCollection object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidUpdateCollection object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFindAlbumsNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFinishScanNotification object:nil];
 }
@@ -69,7 +67,7 @@
     NSArray *collections = [_photoManager allCollectionsForIndexSet:indexes];
     
     __block BOOL allSelectedAreLocal = YES;
-    [collections each:^(id<OPPhotoCollection> sender) {
+    [collections each:^(id<XPPhotoCollection> sender) {
         if (allSelectedAreLocal && !sender.isStoredOnFileSystem)
         {
             allSelectedAreLocal = NO;
@@ -77,7 +75,7 @@
     }];
     
     __block BOOL allSelectedAreNotLocal = YES;
-    [collections each:^(id<OPPhotoCollection> sender) {
+    [collections each:^(id<XPPhotoCollection> sender) {
         if (allSelectedAreNotLocal && sender.isStoredOnFileSystem)
         {
             allSelectedAreNotLocal = NO;
@@ -177,11 +175,11 @@
 
 -(void)albumAdded:(NSNotification*)notification
 {
-    OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
+    XPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
     
     if ([photoManager isEqual:_photoManager])
     {
-        id<OPPhotoCollection> collection = [notification userInfo][@"collection"];
+        id<XPPhotoCollection> collection = [notification userInfo][@"collection"];
         if (collection)
         {
             [self performBlockOnMainThread:^{
@@ -194,7 +192,7 @@
 -(void)albumUpdated:(NSNotification*)notification
 {
     [self performBlockOnMainThread:^{
-        OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
+        XPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
         
         if ([photoManager isEqual:_photoManager])
         {
@@ -206,7 +204,7 @@
 -(void)albumDeleted:(NSNotification*)notification
 {
     [self performBlockOnMainThread:^{
-        OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
+        XPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
         
         if ([photoManager isEqual:_photoManager])
         {
@@ -222,7 +220,7 @@
 {
     [self performBlockOnMainThread:^
     {
-        OPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
+        XPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
         
         if ([photoManager isEqual:_photoManager])
         {
@@ -250,7 +248,7 @@
     
     if (allPhotos.count > 0)
     {
-        id<OPPhoto> photo = allPhotos[0];
+        id<XPPhoto> photo = allPhotos[0];
         
         CNGridViewItem * __weak weakItem = item;
         OPPhotoAlbum * __weak weakAlbum = album;

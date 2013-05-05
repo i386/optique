@@ -13,7 +13,6 @@
 #import "OPEffectProcessedImageRef.h"
 #import "NSImage+Transform.h"
 #import "OPPhotoController.h"
-#import "OPPhotoManager.h"
 
 @interface OPPhotoViewController() {
     NSInteger _index;
@@ -22,7 +21,7 @@
 
 @implementation OPPhotoViewController
 
--(id)initWithPhotoCollection:(id<OPPhotoCollection>)collection photo:(id<OPPhoto>)photo
+-(id)initWithPhotoCollection:(id<XPPhotoCollection>)collection photo:(id<XPPhoto>)photo
 {
     self = [super initWithNibName:@"OPPhotoViewController" bundle:nil];
     if (self) {
@@ -49,14 +48,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowFullscreenStateChanged:) name:NSWindowDidExitFullScreenNotification object:self.view.window];
     
     //Update the views if the underlying collection has changed (for example, when the image is downloaded from the camera successfully
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionUpdated:) name:OPPhotoManagerDidUpdateCollection object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
 }
 
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidEnterFullScreenNotification object:self.view.window];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidExitFullScreenNotification object:self.view.window];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPPhotoManagerDidUpdateCollection object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidUpdateCollection object:nil];
 }
 
 -(NSString *)viewTitle
@@ -97,7 +96,7 @@
 {
     if (returnCode == NSAlertDefaultReturn)
     {
-        id<OPPhoto> photo = CFBridgingRelease(contextInfo);
+        id<XPPhoto> photo = CFBridgingRelease(contextInfo);
         
         [_collection deletePhoto:photo withCompletion:nil];
         

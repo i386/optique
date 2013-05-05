@@ -10,7 +10,7 @@
 
 @implementation OPLocalPhoto
 
--(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(id<OPPhotoCollection>)collection
+-(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(id<XPPhotoCollection>)collection
 {
     self = [super init];
     if (self)
@@ -22,12 +22,12 @@
     return self;
 }
 
--(void)imageWithCompletionBlock:(OPImageCompletionBlock)completionBlock
+-(void)imageWithCompletionBlock:(XPImageCompletionBlock)completionBlock
 {
     completionBlock([[NSImage alloc] initWithContentsOfURL:_path]);
 }
 
--(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(OPImageCompletionBlock)completionBlock
+-(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(XPImageCompletionBlock)completionBlock
 {
     NSImage *image;
     
@@ -62,7 +62,7 @@
     completionBlock(image);
 }
 
--(NSConditionLock*)resolveURL:(OPURLSupplier)block
+-(NSConditionLock*)resolveURL:(XPURLSupplier)block
 {
     NSConditionLock *condition = [[NSConditionLock alloc] initWithCondition:0];
 

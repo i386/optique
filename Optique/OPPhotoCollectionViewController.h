@@ -7,7 +7,6 @@
 //
 
 #import "OPNavigationViewController.h"
-#import "OPPhotoManager.h"
 #import "OPPhotoAlbum.h"
 #import "OPPhotoGridView.h"
 
@@ -16,13 +15,13 @@
 @property (strong) IBOutlet NSMenu *photoItemContextMenu;
 @property (strong) IBOutlet NSMenu *contextMenu;
 
-@property (strong, readonly) id<OPPhotoCollection> collection;
-@property (strong, readonly) OPPhotoManager *photoManager;
+@property (strong, readonly) id<XPPhotoCollection> collection;
+@property (strong, readonly) XPPhotoManager *photoManager;
 @property (strong) IBOutlet CNGridView *gridView;
 @property (strong) IBOutlet NSMenuItem *moveToAlbumItem;
 @property (strong) IBOutlet NSMenuItem *revealInFinderItem;
 
--initWithPhotoAlbum:(id<OPPhotoCollection>)collection photoManager:(OPPhotoManager*)photoManager;
+-initWithPhotoAlbum:(id<XPPhotoCollection>)collection photoManager:(XPPhotoManager*)photoManager;
 
 - (IBAction)revealInFinder:(NSMenuItem*)sender;
 - (IBAction)deletePhoto:(id)sender;

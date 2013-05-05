@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ImageCaptureCore/ImageCaptureCore.h>
 
-@protocol OPPhotoCollection;
+@protocol XPPhotoCollection;
 
-@protocol OPPhoto
+@protocol XPPhoto
 
 /**
  The photo title
@@ -21,22 +20,22 @@
 /**
  The collection (such as the album or camera) that the photo belongs to
  **/
--(id<OPPhotoCollection>) collection;
+-(id<XPPhotoCollection>) collection;
 
 /**
  Loads the image and returns it via the completion block
  **/
--(void)imageWithCompletionBlock:(OPImageCompletionBlock)completionBlock;
+-(void)imageWithCompletionBlock:(XPImageCompletionBlock)completionBlock;
 
 /**
  Loads and scales the image and returns it via the completion block
  May return the full size image if scaling is not available.
  **/
--(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(OPImageCompletionBlock)completionBlock;
+-(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(XPImageCompletionBlock)completionBlock;
 
 /** 
  Loads the data representing this photo and returns it via the completion block 
  **/
--(NSConditionLock*)resolveURL:(OPURLSupplier)block;
+-(NSConditionLock*)resolveURL:(XPURLSupplier)block;
 
 @end

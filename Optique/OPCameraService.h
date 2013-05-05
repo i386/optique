@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <ImageCaptureCore/ImageCaptureCore.h>
-#import "OPPhotoManager.h"
 #import "OPCamera.h"
 
 extern NSString *const OPCameraServiceDidAddCamera;
@@ -18,7 +17,7 @@ extern NSString *const OPCameraServiceDidRemoveCamera;
 
 @property (readonly, strong) ICDeviceBrowser *deviceBrowser;
 
-@property (strong) OPPhotoManager *photoManager;
+@property (strong) XPPhotoManager *photoManager;
 
 /** all of the available cameras **/
 -(NSArray*)allCameras;

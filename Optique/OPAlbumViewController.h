@@ -9,20 +9,19 @@
 #import <Cocoa/Cocoa.h>
 #import <CNGridView/CNGridView.h>
 
-#import "OPPhotoManager.h"
 #import "OPEffectCollectionView.h"
 #import "OPNavigationViewController.h"
 
 @interface OPAlbumViewController : OPNavigationViewController <CNGridViewDataSource, CNGridViewDelegate, NSMenuDelegate>
 
 @property (strong) IBOutlet NSMenu *albumItemContextMenu;
-@property (strong, readonly) OPPhotoManager *photoManager;
+@property (strong, readonly) XPPhotoManager *photoManager;
 @property (strong) IBOutlet CNGridView *gridView;
 @property (strong) IBOutlet NSMenuItem *revealInFinderMenuItem;
 @property (strong) IBOutlet NSMenuItem *deleteAlbumMenuItem;
 @property (strong) IBOutlet NSMenuItem *ejectMenuItem;
 
--initWithPhotoManager:(OPPhotoManager*)photoManager;
+-initWithPhotoManager:(XPPhotoManager*)photoManager;
 
 - (IBAction)revealInFinder:(NSMenuItem*)sender;
 

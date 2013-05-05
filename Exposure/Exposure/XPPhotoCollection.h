@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OPPhoto.h"
+#import "XPPhoto.h"
 
-@class OPPhotoManager;
+@class XPPhotoManager;
 
-@protocol OPPhotoCollection <NSObject>
+@protocol XPPhotoCollection <NSObject>
 
 /** the photo manager that the collection belongs to **/
--(OPPhotoManager*)photoManager;
+-(XPPhotoManager*)photoManager;
 
 /** title of the collection **/
 -(NSString*)title;
@@ -41,12 +41,12 @@
 /** 
  add the provided photo to this collection and call the completion block when done;
  **/
--(void)addPhoto:(id<OPPhoto>)photo withCompletion:(OPCompletionBlock)completionBlock;
+-(void)addPhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock;
 
 /**
  delete the photo from this collection and call the completion block when done;
  **/
--(void)deletePhoto:(id<OPPhoto>)photo withCompletion:(OPCompletionBlock)completionBlock;
+-(void)deletePhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock;
 
 @end
     

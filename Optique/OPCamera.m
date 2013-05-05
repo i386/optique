@@ -19,7 +19,7 @@
 
 @implementation OPCamera
 
--(id)initWithDevice:(ICCameraDevice *)device photoManager:(OPPhotoManager *)photoManager
+-(id)initWithDevice:(ICCameraDevice *)device photoManager:(XPPhotoManager *)photoManager
 {
     self = [super init];
     if (self)
@@ -77,7 +77,7 @@
     return NO;
 }
 
--(void)deletePhoto:(id<OPPhoto>)photo withCompletion:(OPCompletionBlock)completionBlock
+-(void)deletePhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock
 {
     OPCameraPhoto *cameraPhoto = (OPCameraPhoto*)photo;
     [cameraPhoto.cameraFile.device requestDeleteFiles:@[cameraPhoto.cameraFile]];
@@ -152,8 +152,8 @@
     
     if (!_batchTimer)
     {
-        OPPhotoManager __weak *photoManager = _photoManager;
-        id<OPPhotoCollection> __weak weakCollection = self;
+        XPPhotoManager __weak *photoManager = _photoManager;
+        id<XPPhotoCollection> __weak weakCollection = self;
         
         _batchTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 block:^(NSTimeInterval time) {
             [photoManager collectionUpdated:weakCollection];

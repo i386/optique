@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OPPhotoManager.h"
 #import "OPPhotoAlbum.h"
 #import "OPLocalPhoto.h"
 
@@ -19,7 +18,7 @@
 
 @implementation OPPhotoAlbum
 
--(id)initWithTitle:(NSString *)title path:(NSURL *)path photoManager:(OPPhotoManager*)photoManager
+-(id)initWithTitle:(NSString *)title path:(NSURL *)path photoManager:(XPPhotoManager*)photoManager
 {
     self = [super init];
     if (self)
@@ -80,7 +79,7 @@
     return YES;
 }
 
--(void)addPhoto:(id<OPPhoto>)photo withCompletion:(OPCompletionBlock)completionBlock
+-(void)addPhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock
 {
     NSConditionLock *condition = [photo resolveURL:^(NSURL *suppliedUrl) {
         NSError *error;
@@ -99,7 +98,7 @@
 }
 
 
--(void)deletePhoto:(id<OPPhoto>)photo withCompletion:(OPCompletionBlock)completionBlock
+-(void)deletePhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock
 {
     NSError *error;
     NSURL *url = [self.path URLByAppendingPathComponent:photo.title];

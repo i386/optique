@@ -8,14 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <ImageCaptureCore/ImageCaptureCore.h>
-#import "OPPhoto.h"
 
-@interface OPCameraPhoto : NSObject <OPPhoto>
+@interface OPCameraPhoto : NSObject <XPPhoto>
 
 @property (strong) ICCameraFile *cameraFile;
-@property (weak) id<OPPhotoCollection> collection;
+@property (weak) id<XPPhotoCollection> collection;
 
--(id)initWithCameraFile:(ICCameraFile*)cameraFile collection:(id<OPPhotoCollection>)collection;
+-(id)initWithCameraFile:(ICCameraFile*)cameraFile collection:(id<XPPhotoCollection>)collection;
 
 -(NSImage*)thumbnail;
 

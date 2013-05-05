@@ -8,16 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 #import "OPNavigationController.h"
-#import "OPPhotoManager.h"
 
 @interface OPNewAlbumSheetController : NSWindowController
 
-@property (readonly, strong) OPPhotoManager *photoManager;
+@property (readonly, strong) XPPhotoManager *photoManager;
 @property (readonly, weak) OPNavigationController *navigationController;
 @property (strong) IBOutlet NSTextField *albumNameTextField;
 @property (strong) IBOutlet NSTextField *errorLabel;
 
--initWithPhotoManager:(OPPhotoManager*)photoManager navigationController:(OPNavigationController*)navigationController;
+-initWithPhotoManager:(XPPhotoManager*)photoManager navigationController:(OPNavigationController*)navigationController;
 
 - (IBAction)createAlbum:(id)sender;
 - (IBAction)cancel:(id)sender;

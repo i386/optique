@@ -8,15 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <ImageCaptureCore/ImageCaptureCore.h>
-#import "OPPhotoCollection.h"
-#import "OPPhotoManager.h"
 
-@interface OPCamera : NSObject <OPPhotoCollection, ICCameraDeviceDelegate>
+@interface OPCamera : NSObject <XPPhotoCollection, ICCameraDeviceDelegate>
 
 @property (readonly, weak) ICCameraDevice *device;
-@property (readonly, weak) OPPhotoManager *photoManager;
+@property (readonly, weak) XPPhotoManager *photoManager;
 
--(id)initWithDevice:(ICCameraDevice*)device photoManager:(OPPhotoManager*)photoManager;
+-(id)initWithDevice:(ICCameraDevice*)device photoManager:(XPPhotoManager*)photoManager;
 
 -(NSImage*)thumbnailForName:(NSString*)name;
 

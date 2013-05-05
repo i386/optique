@@ -44,7 +44,7 @@ static OPImagePreviewService *_defaultService;
     return self;
 }
 
--(NSImage *)previewImageWithPhoto:(id<OPPhoto>)photo loaded:(OPImageCompletionBlock)completionBlock
+-(NSImage *)previewImageWithPhoto:(id<XPPhoto>)photo loaded:(XPImageCompletionBlock)completionBlock
 {
     NSImage *image;
     NSObject *photoObj = (NSObject*)photo;
@@ -65,7 +65,7 @@ static OPImagePreviewService *_defaultService;
     return image == nil ? [NSImage imageNamed:@"loading-preview"] : image;
 }
 
--(NSImage *)previewImageAtURL:(NSURL *)url loaded:(OPImageCompletionBlock)completionBlock
+-(NSImage *)previewImageAtURL:(NSURL *)url loaded:(XPImageCompletionBlock)completionBlock
 {
     OPImageCache *cache = [OPImageCache sharedPreviewCache];
     

@@ -10,14 +10,13 @@
 #import <INAppStoreWindow/INAppStoreWindow.h>
 #import <HockeySDK/HockeySDK.h>
 
-#import "OPPhotoManager.h"
 #import "OPAlbumScanner.h"
 #import "OPCameraService.h"
 #import "OPMainWindowController.h"
 
 @interface OPAppDelegate : NSObject <NSApplicationDelegate, BITCrashReportManagerDelegate> {
     OPAlbumScanner *_albumScaner;
-    OPPhotoManager *_photoManager;
+    XPPhotoManager *_photoManager;
     OPMainWindowController *_mainWindowController;
     OPCameraService *_cameraService;
     IBOutlet NSUserDefaultsController *_userDefaultsController;

@@ -11,13 +11,13 @@
 
 @interface OPCameraPhotoCondition : NSConditionLock
 
-@property (readonly, strong) OPURLSupplier supplier;
+@property (readonly, strong) XPURLSupplier supplier;
 
 @end
 
 @implementation OPCameraPhotoCondition
 
--initWithURLSupplier:(OPURLSupplier)supplier
+-initWithURLSupplier:(XPURLSupplier)supplier
 {
     self = [super initWithCondition:0];
     if (self)
@@ -36,7 +36,7 @@
 
 @implementation OPCameraPhoto
 
--(id)initWithCameraFile:(ICCameraFile *)cameraFile collection:(id<OPPhotoCollection>)collection
+-(id)initWithCameraFile:(ICCameraFile *)cameraFile collection:(id<XPPhotoCollection>)collection
 {
     self = [super init];
     if (self)
@@ -64,7 +64,7 @@
     return thumbnail;
 }
 
--(void)imageWithCompletionBlock:(OPImageCompletionBlock)completionBlock
+-(void)imageWithCompletionBlock:(XPImageCompletionBlock)completionBlock
 {
     if (!_fileDownloaded)
     {
@@ -78,12 +78,12 @@
 }
 
 
--(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(OPImageCompletionBlock)completionBlock
+-(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(XPImageCompletionBlock)completionBlock
 {
     [self imageWithCompletionBlock:completionBlock];
 }
 
--(NSConditionLock *)resolveURL:(OPURLSupplier)block
+-(NSConditionLock *)resolveURL:(XPURLSupplier)block
 {
     OPCameraPhotoCondition *condition = [[OPCameraPhotoCondition alloc] initWithURLSupplier:block];
     [condition lock];
@@ -142,7 +142,7 @@
     
     NSImage *image = [[NSImage alloc] initByReferencingURL:fileURL];
     
-    OPImageCompletionBlock completionBlock = CFBridgingRelease(context);
+    XPImageCompletionBlock completionBlock = CFBridgingRelease(context);
     completionBlock(image);
 }
 

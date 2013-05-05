@@ -23,7 +23,7 @@
 
 @implementation OPMainWindowController
 
--(id)initWithPhotoManager:(OPPhotoManager *)photoManager
+-(id)initWithPhotoManager:(XPPhotoManager *)photoManager
 {
     self = [super init];
     if (self)
