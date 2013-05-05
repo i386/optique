@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		0F79815E173679D200FBC7DC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F79815D173679D200FBC7DC /* Cocoa.framework */; };
 		0F798168173679D200FBC7DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F798166173679D200FBC7DC /* InfoPlist.strings */; };
-		0F79817717367A0500FBC7DC /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817217367A0500FBC7DC /* Common.h */; };
-		0F79817817367A0500FBC7DC /* Exposure.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817317367A0500FBC7DC /* Exposure.h */; };
-		0F79817917367A0500FBC7DC /* XPPhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817417367A0500FBC7DC /* XPPhoto.h */; };
-		0F79817A17367A0500FBC7DC /* XPPhotoCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817517367A0500FBC7DC /* XPPhotoCollection.h */; };
-		0F79817B17367A0500FBC7DC /* XPPhotoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817617367A0500FBC7DC /* XPPhotoManager.h */; };
+		0F79817717367A0500FBC7DC /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817217367A0500FBC7DC /* Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F79817817367A0500FBC7DC /* Exposure.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817317367A0500FBC7DC /* Exposure.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F79817917367A0500FBC7DC /* XPPhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817417367A0500FBC7DC /* XPPhoto.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F79817A17367A0500FBC7DC /* XPPhotoCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817517367A0500FBC7DC /* XPPhotoCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F79817B17367A0500FBC7DC /* XPPhotoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817617367A0500FBC7DC /* XPPhotoManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -306,6 +306,7 @@
 				0F798171173679D200FBC7DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
