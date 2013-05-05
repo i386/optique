@@ -31,6 +31,8 @@
         url = [[[NSFileManager defaultManager] URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
     }
     
+    _cameraService = [[OPCameraService alloc] init];
+    
     [self picturesAtDirectory:url];
 }
 
@@ -68,17 +70,21 @@
         [_mainWindowController close];
     }
     
-    if (_cameraService)
+    _photoManager = [[OPPhotoManager alloc] initWithPath:url];
+    
+    [_cameraService setPhotoManager:_photoManager];
+    if (!_cameraService.deviceBrowser.isBrowsing)
+    {
+        [_cameraService start];
+    }
+    else
     {
         [_cameraService stop];
+        [_cameraService start];
     }
     
-    _photoManager = [[OPPhotoManager alloc] initWithPath:url];
     _mainWindowController = [[OPMainWindowController alloc] initWithPhotoManager:_photoManager];
     [_mainWindowController.window makeKeyAndOrderFront:self];
-    
-    _cameraService = [[OPCameraService alloc] initWithPhotoManager:_photoManager];
-    [_cameraService start];
     
     _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager cameraService:_cameraService];
     [_albumScaner scanAtURL:url];

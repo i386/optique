@@ -13,7 +13,6 @@ NSString *const OPCameraServiceDidAddCamera = @"OPCameraServiceDidAddCamera";
 NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamera";
 
 @interface OPCameraService() {
-    OPPhotoManager *_photoManager;
     NSMutableDictionary *_devices;
 }
 
@@ -21,12 +20,11 @@ NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamer
 
 @implementation OPCameraService
 
--(id)initWithPhotoManager:(OPPhotoManager *)photoManager
+-(id)init
 {
     self = [super init];
     if (self)
     {
-        _photoManager = photoManager;
         _devices = [NSMutableDictionary dictionary];
         _deviceBrowser = [[ICDeviceBrowser alloc] init];
         _deviceBrowser.delegate = self;
@@ -48,6 +46,7 @@ NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamer
 -(void)stop
 {
     [_deviceBrowser stop];
+    [_devices removeAllObjects];
 }
 
 -(void)removeCaches

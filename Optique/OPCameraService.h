@@ -18,7 +18,7 @@ extern NSString *const OPCameraServiceDidRemoveCamera;
 
 @property (readonly, strong) ICDeviceBrowser *deviceBrowser;
 
--(id)initWithPhotoManager:(OPPhotoManager*)photoManager;
+@property (strong) OPPhotoManager *photoManager;
 
 /** all of the available cameras **/
 -(NSArray*)allCameras;
