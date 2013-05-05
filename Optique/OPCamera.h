@@ -13,7 +13,8 @@
 
 @interface OPCamera : NSObject <OPPhotoCollection, ICCameraDeviceDelegate>
 
-@property (readonly, strong) ICCameraDevice *device;
+@property (readonly, weak) ICCameraDevice *device;
+@property (readonly, weak) OPPhotoManager *photoManager;
 
 -(id)initWithDevice:(ICCameraDevice*)device photoManager:(OPPhotoManager*)photoManager;
 

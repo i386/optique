@@ -13,6 +13,7 @@
 @interface OPCameraPhoto : NSObject <OPPhoto>
 
 @property (strong) ICCameraFile *cameraFile;
+@property (weak) id<OPPhotoCollection> collection;
 
 -(id)initWithCameraFile:(ICCameraFile*)cameraFile collection:(id<OPPhotoCollection>)collection;
 

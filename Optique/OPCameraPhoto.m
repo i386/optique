@@ -30,7 +30,6 @@
 @end
 
 @interface OPCameraPhoto() {
-    id<OPPhotoCollection> _collection;
     volatile BOOL _fileDownloaded;
 }
 @end
@@ -52,11 +51,6 @@
 -(NSString *)title
 {
     return _cameraFile.name;
-}
-
--(id<OPPhotoCollection>)collection
-{
-    return _collection;
 }
 
 -(OPCamera*)camera

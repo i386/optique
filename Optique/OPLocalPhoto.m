@@ -8,11 +8,6 @@
 
 #import "OPLocalPhoto.h"
 
-@interface OPLocalPhoto() {
-    id<OPPhotoCollection> _collection;
-}
-@end
-
 @implementation OPLocalPhoto
 
 -(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(id<OPPhotoCollection>)collection
@@ -84,11 +79,6 @@
     }];
     
     return condition;
-}
-
--(id<OPPhotoCollection>)collection
-{
-    return _collection;
 }
 
 -(BOOL)isEqual:(id)object

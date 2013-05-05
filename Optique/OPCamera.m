@@ -10,7 +10,6 @@
 #import "OPCameraPhoto.h"
 
 @interface OPCamera() {
-    OPPhotoManager *_photoManager;
     NSMutableArray *_allPhotos;
     NSMutableDictionary *_thumbnails;
     NSTimer *_batchTimer;
@@ -33,11 +32,6 @@
         _thumbnailsRecieved = 0;
     }
     return self;
-}
-
--(OPPhotoManager *)photoManager
-{
-    return _photoManager;
 }
 
 -(NSString *)title

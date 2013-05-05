@@ -15,6 +15,7 @@
 
 @property (strong, readonly) NSString *title;
 @property (strong, readonly) NSURL *path;
+@property (weak, readonly) id<OPPhotoCollection> collection;
 
 -(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(id<OPPhotoCollection>)collection;
 
