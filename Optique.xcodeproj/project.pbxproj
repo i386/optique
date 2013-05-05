@@ -35,6 +35,8 @@
 		0F6AF87F172A42750029724A /* OPCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF87E172A42750029724A /* OPCamera.m */; };
 		0F6D098A170FC5E3006268F1 /* OPEffectProcessedImageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D0989170FC5E3006268F1 /* OPEffectProcessedImageRef.m */; };
 		0F705231170AB695001F8159 /* OPPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F705230170AB695001F8159 /* OPPhotoGridView.m */; };
+		0F79818B17367EAA00FBC7DC /* Exposure.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F79818117367A4300FBC7DC /* Exposure.framework */; };
+		0F79818C17367EF000FBC7DC /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F976DFD17362F4F002C4C30 /* Sparkle.framework */; };
 		0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */; };
 		0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D6171BA077004D8082 /* OPPhotoController.m */; };
 		0F8B71D9171BA077004D8082 /* OPPhotoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8B71D7171BA077004D8082 /* OPPhotoController.xib */; };
@@ -93,6 +95,13 @@
 			remoteGlobalIDString = 0F79815A173679D200FBC7DC;
 			remoteInfo = Exposure;
 		};
+		0F79818617367BAB00FBC7DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F79817C17367A4300FBC7DC /* Exposure.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F798159173679D200FBC7DC;
+			remoteInfo = Exposure;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -102,6 +111,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0F79818B17367EAA00FBC7DC /* Exposure.framework in CopyFiles */,
+				0F79818C17367EF000FBC7DC /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +597,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0F79818717367BAB00FBC7DC /* PBXTargetDependency */,
 			);
 			name = Optique;
 			productName = Optique;
@@ -741,6 +753,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0F79818717367BAB00FBC7DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Exposure;
+			targetProxy = 0F79818617367BAB00FBC7DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0F9C80BC16F891C700B2B6D8 /* InfoPlist.strings */ = {
