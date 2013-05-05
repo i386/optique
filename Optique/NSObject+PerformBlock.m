@@ -12,12 +12,31 @@
 
 -(void)performBlockOnMainThread:(void (^)(void))block
 {
-    [self performSelectorOnMainThread:@selector(_performBlock:) withObject:block waitUntilDone:NO];
+    [self performBlockOnMainThread:block waitUntilDone:NO];
 }
 
 -(void)performBlockOnMainThreadAndWaitUntilDone:(void (^)(void))block
 {
-    [self performSelectorOnMainThread:@selector(_performBlock:) withObject:block waitUntilDone:YES];
+    [self performBlockOnMainThread:block waitUntilDone:YES];
+}
+
+-(void)performBlockOnMainThread:(void (^)(void))block waitUntilDone:(BOOL)wait
+{
+    if ([NSThread isMainThread])
+    {
+        block();
+    }
+    else
+    {
+        if (wait)
+        {
+            dispatch_sync(dispatch_get_main_queue(), block);
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), block);
+        }
+    }
 }
 
 -(void)performBlockInBackground:(void (^)(void))block

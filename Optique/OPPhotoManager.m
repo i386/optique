@@ -138,7 +138,9 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
         NSMutableOrderedSet *newItems = [NSMutableOrderedSet orderedSetWithArray:albums];
         [newItems minusOrderedSet:oldAlbums];
         [[newItems array] each:^(id sender) {
-            [self sendNotificationWithName:OPPhotoManagerDidAddCollection forPhotoCollection:sender];
+            [self performBlockInBackground:^{
+                [self sendNotificationWithName:OPPhotoManagerDidAddCollection forPhotoCollection:sender];
+            }];
         }];
         
         NSMutableOrderedSet *removedItems = [NSMutableOrderedSet orderedSetWithOrderedSet:oldAlbums];
@@ -215,12 +217,12 @@ NSString *const OPPhotoManagerDidDeleteCollection = @"OPPhotoManagerDidDeleteAlb
 
 -(void)sendNotificationWithName:(NSString*)notificationName forPhotoCollection:(id<OPPhotoCollection>)photoCollection
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:@{@"collection": photoCollection, @"photoManager": self}];
+    [[NSNotificationCenter defaultCenter] postAsyncNotificationName:notificationName object:nil userInfo:@{@"collection": photoCollection, @"photoManager": self}];
 }
 
 -(void)sendAlbumDeletedNotification:(OPPhotoAlbum*)photoAlbum
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPPhotoManagerDidDeleteCollection object:nil userInfo:@{@"title": photoAlbum.title, @"photoManager": self}];
+    [[NSNotificationCenter defaultCenter] postAsyncNotificationName:OPPhotoManagerDidDeleteCollection object:nil userInfo:@{@"title": photoAlbum.title, @"photoManager": self}];
 }
 
 @end

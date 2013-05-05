@@ -6,8 +6,10 @@
     #import <Cocoa/Cocoa.h>
 #endif
 
-#import "NSObject+PerformBlock.h"
 #import <BlocksKit/BlocksKit.h>
+
+#import "NSObject+PerformBlock.h"
+#import "NSNotificationCenter+Async.h"
 
 typedef void (^OPImageCompletionBlock)(NSImage *image);
 typedef void (^OPDataCompletionBlock)(NSData* data);
