@@ -7,15 +7,17 @@
 //
 
 #import "OPAppDelegate.h"
-
 #import <HockeySDK/BITHockeyManager.h>
-
 #import "OPImageCache.h"
+#import "OPExposureLoader.h"
 
 @implementation OPAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    //Load the plugin framework!
+    [[OPExposureLoader defaultLoader] loadExposures];
+    
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"52814104cfd270328887432ee78c4dd1" companyName:@"Whimsy" crashReportManagerDelegate:self];
     [[BITHockeyManager sharedHockeyManager] setExceptionInterceptionEnabled:YES];
     [[BITHockeyManager sharedHockeyManager] startManager];

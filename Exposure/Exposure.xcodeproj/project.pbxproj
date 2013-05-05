@@ -14,6 +14,7 @@
 		0F79817917367A0500FBC7DC /* XPPhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817417367A0500FBC7DC /* XPPhoto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F79817A17367A0500FBC7DC /* XPPhotoCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817517367A0500FBC7DC /* XPPhotoCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F79817B17367A0500FBC7DC /* XPPhotoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817617367A0500FBC7DC /* XPPhotoManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F7981911736894B00FBC7DC /* XPPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7981901736893800FBC7DC /* XPPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0F79817417367A0500FBC7DC /* XPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPPhoto.h; sourceTree = "<group>"; };
 		0F79817517367A0500FBC7DC /* XPPhotoCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPPhotoCollection.h; sourceTree = "<group>"; };
 		0F79817617367A0500FBC7DC /* XPPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPPhotoManager.h; sourceTree = "<group>"; };
+		0F7981901736893800FBC7DC /* XPPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPPlugin.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				0F79817417367A0500FBC7DC /* XPPhoto.h */,
 				0F79817517367A0500FBC7DC /* XPPhotoCollection.h */,
 				0F79817617367A0500FBC7DC /* XPPhotoManager.h */,
+				0F7981901736893800FBC7DC /* XPPlugin.h */,
 				0F798164173679D200FBC7DC /* Supporting Files */,
 			);
 			path = Exposure;
@@ -115,6 +118,7 @@
 				0F79817917367A0500FBC7DC /* XPPhoto.h in Headers */,
 				0F79817A17367A0500FBC7DC /* XPPhotoCollection.h in Headers */,
 				0F79817B17367A0500FBC7DC /* XPPhotoManager.h in Headers */,
+				0F7981911736894B00FBC7DC /* XPPlugin.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
