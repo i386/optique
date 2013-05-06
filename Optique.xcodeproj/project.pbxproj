@@ -81,6 +81,11 @@
 		0FCA4D2E1737D7F0007DC9EF /* XPMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCA4D2C1737D7F0007DC9EF /* XPMenuItem.h */; };
 		0FCA4D2F1737D7F0007DC9EF /* XPMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D2D1737D7F0007DC9EF /* XPMenuItem.m */; };
 		0FCA4D301737D84F007DC9EF /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
+		0FCA4D3D17385AEE007DC9EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
+		0FCA4D4317385AEE007DC9EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FCA4D4117385AEE007DC9EF /* InfoPlist.strings */; };
+		0FCA4D4817385B1D007DC9EF /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
+		0FCA4D4B17385B2E007DC9EF /* Social.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FCA4D3C17385AEE007DC9EF /* Social.bundle */; };
+		0FCA4D4E17385B48007DC9EF /* OPSocialPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D4D17385B48007DC9EF /* OPSocialPlugin.m */; };
 		0FCAF8C91710461A00E6C903 /* effectsbarbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FCAF8C71710461A00E6C903 /* effectsbarbg.png */; };
 		0FCAF8CA1710461A00E6C903 /* effectsbarbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FCAF8C81710461A00E6C903 /* effectsbarbg@2x.png */; };
 		0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCAF8CD17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m */; };
@@ -127,6 +132,13 @@
 			remoteGlobalIDString = 0F04A6561737C7C300E53ED1;
 			remoteInfo = Finder;
 		};
+		0FCA4D4917385B20007DC9EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F04A62B1737C70F00E53ED1;
+			remoteInfo = Exposure;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -136,6 +148,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				0FCA4D4B17385B2E007DC9EF /* Social.bundle in CopyFiles */,
 				0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +285,12 @@
 		0FCA4D281737D351007DC9EF /* OPExposureService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPExposureService.h; sourceTree = "<group>"; };
 		0FCA4D2C1737D7F0007DC9EF /* XPMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPMenuItem.h; sourceTree = "<group>"; };
 		0FCA4D2D1737D7F0007DC9EF /* XPMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPMenuItem.m; sourceTree = "<group>"; };
+		0FCA4D3C17385AEE007DC9EF /* Social.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Social.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FCA4D4017385AEE007DC9EF /* Social-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Social-Info.plist"; sourceTree = "<group>"; };
+		0FCA4D4217385AEE007DC9EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0FCA4D4417385AEE007DC9EF /* Social-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Social-Prefix.pch"; sourceTree = "<group>"; };
+		0FCA4D4C17385B48007DC9EF /* OPSocialPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPSocialPlugin.h; sourceTree = "<group>"; };
+		0FCA4D4D17385B48007DC9EF /* OPSocialPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPSocialPlugin.m; sourceTree = "<group>"; };
 		0FCAF8C71710461A00E6C903 /* effectsbarbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = effectsbarbg.png; sourceTree = "<group>"; };
 		0FCAF8C81710461A00E6C903 /* effectsbarbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "effectsbarbg@2x.png"; sourceTree = "<group>"; };
 		0FCAF8CC17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+DrawAtPointWithShadow.h"; sourceTree = "<group>"; };
@@ -334,6 +353,15 @@
 				0FE3B2621702F25500FC0D6C /* QuartzCore.framework in Frameworks */,
 				76AAAAFD273F4DD99BF0C8E7 /* libPods.a in Frameworks */,
 				0F976DFE17362F4F002C4C30 /* Sparkle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FCA4D3917385AEE007DC9EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FCA4D4817385B1D007DC9EF /* Exposure.framework in Frameworks */,
+				0FCA4D3D17385AEE007DC9EF /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +542,7 @@
 				0F9C80B016F891C700B2B6D8 /* Optique.app */,
 				0F04A62C1737C70F00E53ED1 /* Exposure.framework */,
 				0F04A6571737C7C300E53ED1 /* Finder.bundle */,
+				0FCA4D3C17385AEE007DC9EF /* Social.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -573,6 +602,7 @@
 		0FCA4D1D1737CE8C007DC9EF /* Exposures */ = {
 			isa = PBXGroup;
 			children = (
+				0FCA4D3E17385AEE007DC9EF /* Social */,
 				0F04A6591737C7C300E53ED1 /* Finder */,
 			);
 			name = Exposures;
@@ -626,6 +656,26 @@
 				0FCA4D2D1737D7F0007DC9EF /* XPMenuItem.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		0FCA4D3E17385AEE007DC9EF /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				0FCA4D3F17385AEE007DC9EF /* Supporting Files */,
+				0FCA4D4C17385B48007DC9EF /* OPSocialPlugin.h */,
+				0FCA4D4D17385B48007DC9EF /* OPSocialPlugin.m */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		0FCA4D3F17385AEE007DC9EF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0FCA4D4017385AEE007DC9EF /* Social-Info.plist */,
+				0FCA4D4117385AEE007DC9EF /* InfoPlist.strings */,
+				0FCA4D4417385AEE007DC9EF /* Social-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		0FCB492C17161E0800FB4229 /* New Album sheet */ = {
@@ -842,6 +892,24 @@
 			productReference = 0F9C80B016F891C700B2B6D8 /* Optique.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0FCA4D3B17385AEE007DC9EF /* Social */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FCA4D4717385AEE007DC9EF /* Build configuration list for PBXNativeTarget "Social" */;
+			buildPhases = (
+				0FCA4D3817385AEE007DC9EF /* Sources */,
+				0FCA4D3917385AEE007DC9EF /* Frameworks */,
+				0FCA4D3A17385AEE007DC9EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0FCA4D4A17385B20007DC9EF /* PBXTargetDependency */,
+			);
+			name = Social;
+			productName = Social;
+			productReference = 0FCA4D3C17385AEE007DC9EF /* Social.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -867,6 +935,7 @@
 				0F9C80AF16F891C700B2B6D8 /* Optique */,
 				0F04A62B1737C70F00E53ED1 /* Exposure */,
 				0F04A6561737C7C300E53ED1 /* Finder */,
+				0FCA4D3B17385AEE007DC9EF /* Social */,
 			);
 		};
 /* End PBXProject section */
@@ -917,6 +986,14 @@
 				0F66FD191728A9EB00747AC7 /* window-top@2x.png in Resources */,
 				0FFE24B2172907AA00513AD2 /* back.png in Resources */,
 				0FFE24B61729206B00513AD2 /* back@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FCA4D3A17385AEE007DC9EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FCA4D4317385AEE007DC9EF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,6 +1085,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0FCA4D3817385AEE007DC9EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FCA4D4E17385B48007DC9EF /* OPSocialPlugin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1025,6 +1110,11 @@
 			isa = PBXTargetDependency;
 			target = 0F04A6561737C7C300E53ED1 /* Finder */;
 			targetProxy = 0FCA4D171737CC38007DC9EF /* PBXContainerItemProxy */;
+		};
+		0FCA4D4A17385B20007DC9EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F04A62B1737C70F00E53ED1 /* Exposure */;
+			targetProxy = 0FCA4D4917385B20007DC9EF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1067,6 +1157,14 @@
 				0F9C80C916F891C700B2B6D8 /* en */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		0FCA4D4117385AEE007DC9EF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0FCA4D4217385AEE007DC9EF /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1229,6 +1327,32 @@
 			};
 			name = Release;
 		};
+		0FCA4D4517385AEE007DC9EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Social/Social-Prefix.pch";
+				INFOPLIST_FILE = "Social/Social-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		0FCA4D4617385AEE007DC9EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Social/Social-Prefix.pch";
+				INFOPLIST_FILE = "Social/Social-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1267,6 +1391,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		0FCA4D4717385AEE007DC9EF /* Build configuration list for PBXNativeTarget "Social" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FCA4D4517385AEE007DC9EF /* Debug */,
+				0FCA4D4617385AEE007DC9EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
