@@ -60,11 +60,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidUpdateCollection object:nil];
 }
 
--(NSMenu *)contextMenu
-{
-    return nil;
-}
-
 -(NSString *)viewTitle
 {
     return _currentPhoto.title;

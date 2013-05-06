@@ -46,27 +46,27 @@
 
 +(NSSet *)respondsToCollectionViewController
 {
-    NSSet *exposures = [NSMutableSet setWithObject:[[OPExposureService defaultLoader] exposures]];
+    NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
     
-    return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+    return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject respondsToSelector:@selector(collectionViewController:)];
     }]];
 }
 
 +(NSSet *)respondsToPhotoCollectionViewController
 {
-    NSSet *exposures = [NSMutableSet setWithObject:[[OPExposureService defaultLoader] exposures]];
+    NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
     
-    return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+    return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject respondsToSelector:@selector(photoCollectionViewController:)];
     }]];
 }
 
 +(NSSet *)respondsToPhotoViewController
 {
-    NSSet *exposures = [NSMutableSet setWithObject:[[OPExposureService defaultLoader] exposures]];
+    NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
     
-    return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+    return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject respondsToSelector:@selector(photoViewController:)];
     }]];
 }
@@ -92,7 +92,9 @@
     Class pluginClass;
     id pluginInstance;
     NSBundle *bundleToLoad = [NSBundle bundleWithPath:path];
-    if ((pluginClass = [bundleToLoad principalClass])) {
+    
+    //Should have a principalClass and confirm to XPPlugin
+    if ((pluginClass = [bundleToLoad principalClass]) && [pluginClass conformsToProtocol:@protocol(XPPlugin)]) {
         pluginInstance = [[pluginClass alloc] init];
         [exposures setObject:pluginInstance forKey:bundleToLoad.bundleIdentifier];
     }

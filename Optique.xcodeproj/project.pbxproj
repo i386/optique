@@ -21,8 +21,6 @@
 		0F04A64F1737C77800E53ED1 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F04A64E1737C77800E53ED1 /* Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F04A6581737C7C300E53ED1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0F04A65E1737C7C300E53ED1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F04A65C1737C7C300E53ED1 /* InfoPlist.strings */; };
-		0F04A6661737C8AA00E53ED1 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
-		0F21E9D41737C97A0013B601 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A6571737C7C300E53ED1 /* Finder.bundle */; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
 		0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3001E1172250E800ACAF9E /* OPPhotoImageView.m */; };
@@ -79,6 +77,7 @@
 		0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */; };
 		0FCA4D191737CC4A007DC9EF /* Exposure.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0FCA4D1C1737CE2C007DC9EF /* OPFinderPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D1B1737CE2C007DC9EF /* OPFinderPlugin.m */; };
+		0FCA4D291737D351007DC9EF /* OPExposureService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D271737D351007DC9EF /* OPExposureService.m */; };
 		0FCAF8C91710461A00E6C903 /* effectsbarbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FCAF8C71710461A00E6C903 /* effectsbarbg.png */; };
 		0FCAF8CA1710461A00E6C903 /* effectsbarbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FCAF8C81710461A00E6C903 /* effectsbarbg@2x.png */; };
 		0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCAF8CD17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m */; };
@@ -266,6 +265,8 @@
 		0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+CGImage.m"; sourceTree = "<group>"; };
 		0FCA4D1A1737CE2C007DC9EF /* OPFinderPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFinderPlugin.h; sourceTree = "<group>"; };
 		0FCA4D1B1737CE2C007DC9EF /* OPFinderPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFinderPlugin.m; sourceTree = "<group>"; };
+		0FCA4D271737D351007DC9EF /* OPExposureService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPExposureService.m; sourceTree = "<group>"; };
+		0FCA4D281737D351007DC9EF /* OPExposureService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPExposureService.h; sourceTree = "<group>"; };
 		0FCAF8C71710461A00E6C903 /* effectsbarbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = effectsbarbg.png; sourceTree = "<group>"; };
 		0FCAF8C81710461A00E6C903 /* effectsbarbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "effectsbarbg@2x.png"; sourceTree = "<group>"; };
 		0FCAF8CC17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+DrawAtPointWithShadow.h"; sourceTree = "<group>"; };
@@ -313,7 +314,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F04A6661737C8AA00E53ED1 /* Exposure.framework in Frameworks */,
 				0F04A6581737C7C300E53ED1 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,7 +322,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F21E9D41737C97A0013B601 /* Exposure.framework in Frameworks */,
 				0F62BA66173673B200E661DD /* Cocoa.framework in Frameworks */,
 				0F6AF87B172A3B220029724A /* ImageCaptureCore.framework in Frameworks */,
 				0F368A6C170531B500411503 /* Quartz.framework in Frameworks */,
@@ -552,6 +551,7 @@
 				0F368A671705128700411503 /* Album Scanner */,
 				0F97164917048737001835DC /* Image Previews */,
 				0F368A7B170680DF00411503 /* Custom Views */,
+				0FCA4D2A1737D355007DC9EF /* Exposure service */,
 				0FEC674E171034C20086B264 /* Categories */,
 				0F9C80BA16F891C700B2B6D8 /* Supporting Files */,
 			);
@@ -577,6 +577,15 @@
 				0F04A6591737C7C300E53ED1 /* Finder */,
 			);
 			name = Exposures;
+			sourceTree = "<group>";
+		};
+		0FCA4D2A1737D355007DC9EF /* Exposure service */ = {
+			isa = PBXGroup;
+			children = (
+				0FCA4D281737D351007DC9EF /* OPExposureService.h */,
+				0FCA4D271737D351007DC9EF /* OPExposureService.m */,
+			);
+			name = "Exposure service";
 			sourceTree = "<group>";
 		};
 		0FCB492C17161E0800FB4229 /* New Album sheet */ = {
@@ -953,6 +962,7 @@
 				0F8C561D172CC0D300CB7B1E /* OPLocalPhoto.m in Sources */,
 				0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */,
 				0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */,
+				0FCA4D291737D351007DC9EF /* OPExposureService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

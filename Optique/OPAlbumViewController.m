@@ -58,11 +58,6 @@
     [OPExposureService collectionViewController:self];
 }
 
--(NSMenu *)contextMenu
-{
-    return _albumItemContextMenu;
-}
-
 -(void)showView
 {
     [_gridView reloadData];

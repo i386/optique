@@ -10,6 +10,4 @@
 
 @protocol XPPhotoViewController <NSObject>
 
--(NSMenu*)contextMenu;
-
 @end
