@@ -169,7 +169,7 @@
     _contextMenu.delegate = self;
     [[_gridView enclosingScrollView] setDrawsBackground:NO];
     
-    [OPExposureService photoCollectionViewController:self];
+    [OPExposureService photoManager:_photoManager photoCollectionViewController:self];
 }
 
 -(void)showView

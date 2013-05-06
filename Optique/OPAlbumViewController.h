@@ -17,7 +17,6 @@
 @property (strong) IBOutlet NSMenu *albumItemContextMenu;
 @property (strong, readonly) XPPhotoManager *photoManager;
 @property (strong) IBOutlet CNGridView *gridView;
-@property (strong) IBOutlet NSMenuItem *revealInFinderMenuItem;
 @property (strong) IBOutlet NSMenuItem *deleteAlbumMenuItem;
 @property (strong) IBOutlet NSMenuItem *ejectMenuItem;
 

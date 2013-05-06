@@ -55,7 +55,12 @@
     [_gridView setAllowsMultipleSelection:YES];
     [[_gridView enclosingScrollView] setDrawsBackground:NO];
     
-    [OPExposureService collectionViewController:self];
+    [OPExposureService photoManager:_photoManager collectionViewController:self];
+}
+
+-(NSMenu *)contextMenu
+{
+    return _albumItemContextMenu;
 }
 
 -(void)showView
@@ -67,6 +72,8 @@
 {
     NSIndexSet *indexes = _gridView.selectedIndexes;
     NSArray *collections = [_photoManager allCollectionsForIndexSet:indexes];
+    
+    //TODO: check menu for XPMenuItems and run predicate to hide
     
     __block BOOL allSelectedAreLocal = YES;
     [collections each:^(id<XPPhotoCollection> sender) {
@@ -81,24 +88,21 @@
         if (allSelectedAreNotLocal && sender.isStoredOnFileSystem)
         {
             allSelectedAreNotLocal = NO;
-        }   
+        }
     }];
     
     if (allSelectedAreLocal)
     {
-        [_revealInFinderMenuItem setHidden:NO];
         [_deleteAlbumMenuItem setHidden:NO];
         [_ejectMenuItem setHidden:YES];
     }
     else if (allSelectedAreNotLocal)
     {
-        [_revealInFinderMenuItem setHidden:YES];
         [_deleteAlbumMenuItem setHidden:YES];
         [_ejectMenuItem setHidden:NO];
     }
     else
     {
-        [_revealInFinderMenuItem setHidden:YES];
         [_deleteAlbumMenuItem setHidden:YES];
         [_ejectMenuItem setHidden:YES];
     }

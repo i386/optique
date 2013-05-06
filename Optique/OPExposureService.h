@@ -12,10 +12,10 @@
 
 @property (readonly, strong) NSDictionary *exposures;
 
-+(void)collectionViewController:(id<XPCollectionViewController>)controller;
++(void)photoManager:(XPPhotoManager*)photoManager collectionViewController:(id<XPCollectionViewController>)controller;
 
-+(void)photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller;
++(void)photoManager:(XPPhotoManager*)photoManager photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller;
 
-+(void)photoViewController:(id<XPPhotoViewController>)controller;
++(void)photoManager:(XPPhotoManager*)photoManager photoViewController:(id<XPPhotoViewController>)controller;
 
 @end

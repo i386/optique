@@ -50,7 +50,7 @@
     //Update the views if the underlying collection has changed (for example, when the image is downloaded from the camera successfully
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
     
-    [OPExposureService photoViewController:self];
+    [OPExposureService photoManager:_collection.photoManager photoViewController:self];
 }
 
 -(void)dealloc

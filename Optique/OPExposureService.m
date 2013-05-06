@@ -23,24 +23,24 @@
     return shared;
 }
 
-+(void)collectionViewController:(id<XPCollectionViewController>)controller
++(void)photoManager:(XPPhotoManager*)photoManager collectionViewController:(id<XPCollectionViewController>)controller
 {
     [[OPExposureService respondsToCollectionViewController] each:^(id<XPPlugin> sender) {
-        [sender collectionViewController:controller];
+        [sender photoManager:photoManager collectionViewController:controller];
     }];
 }
 
-+(void)photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller
++(void)photoManager:(XPPhotoManager*)photoManager photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller
 {
     [[OPExposureService respondsToPhotoCollectionViewController] each:^(id<XPPlugin> sender) {
-        [sender photoCollectionViewController:controller];
+        [sender photoManager:photoManager photoCollectionViewController:controller];
     }];
 }
 
-+(void)photoViewController:(id<XPPhotoViewController>)controller
++(void)photoManager:(XPPhotoManager*)photoManager photoViewController:(id<XPPhotoViewController>)controller
 {
     [[OPExposureService respondsToPhotoViewController] each:^(id<XPPlugin> sender) {
-        [sender photoViewController:controller];
+        [sender photoManager:photoManager photoViewController:controller];
     }];
 }
 
@@ -49,7 +49,7 @@
     NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject respondsToSelector:@selector(collectionViewController:)];
+        return [evaluatedObject respondsToSelector:@selector(photoManager:collectionViewController:)];
     }]];
 }
 
@@ -58,7 +58,7 @@
     NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject respondsToSelector:@selector(photoCollectionViewController:)];
+        return [evaluatedObject respondsToSelector:@selector(photoManager:photoCollectionViewController:)];
     }]];
 }
 
@@ -67,7 +67,7 @@
     NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject respondsToSelector:@selector(photoViewController:)];
+        return [evaluatedObject respondsToSelector:@selector(photoManager:photoViewController:)];
     }]];
 }
 

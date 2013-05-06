@@ -16,3 +16,5 @@
 #import "XPPhotoCollectionViewController.h"
 #import "XPPhotoViewController.h"
 #import "XPPlugin.h"
+
+#import "XPMenuItem.h"
