@@ -49,6 +49,8 @@
     
     //Update the views if the underlying collection has changed (for example, when the image is downloaded from the camera successfully
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
+    
+    [OPExposureService photoViewController:self];
 }
 
 -(void)dealloc
@@ -56,6 +58,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidEnterFullScreenNotification object:self.view.window];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidExitFullScreenNotification object:self.view.window];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidUpdateCollection object:nil];
+}
+
+-(NSMenu *)contextMenu
+{
+    return nil;
 }
 
 -(NSString *)viewTitle

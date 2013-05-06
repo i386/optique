@@ -15,9 +15,15 @@
 		0F79817A17367A0500FBC7DC /* XPPhotoCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817517367A0500FBC7DC /* XPPhotoCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F79817B17367A0500FBC7DC /* XPPhotoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F79817617367A0500FBC7DC /* XPPhotoManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F7981911736894B00FBC7DC /* XPPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7981901736893800FBC7DC /* XPPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FF748271737A9DF00FD0825 /* XPCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FF748261737A9DF00FD0825 /* XPCollectionViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FF748291737AA2600FD0825 /* XPPhotoCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FF748281737AA2600FD0825 /* XPPhotoCollectionViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FF7482B1737AA4E00FD0825 /* XPPhotoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FF7482A1737AA4E00FD0825 /* XPPhotoViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F04A5E21737C46000E53ED1 /* Finder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Finder-Info.plist"; sourceTree = "<group>"; };
+		0F04A5E41737C46000E53ED1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0F04A5E61737C46000E53ED1 /* Finder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Finder-Prefix.pch"; sourceTree = "<group>"; };
 		0F79815A173679D200FBC7DC /* Exposure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Exposure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F79815D173679D200FBC7DC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0F798160173679D200FBC7DC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -32,6 +38,9 @@
 		0F79817517367A0500FBC7DC /* XPPhotoCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPPhotoCollection.h; sourceTree = "<group>"; };
 		0F79817617367A0500FBC7DC /* XPPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPPhotoManager.h; sourceTree = "<group>"; };
 		0F7981901736893800FBC7DC /* XPPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPPlugin.h; sourceTree = "<group>"; };
+		0FF748261737A9DF00FD0825 /* XPCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCollectionViewController.h; sourceTree = "<group>"; };
+		0FF748281737AA2600FD0825 /* XPPhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPPhotoCollectionViewController.h; sourceTree = "<group>"; };
+		0FF7482A1737AA4E00FD0825 /* XPPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPPhotoViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +55,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F04A5E01737C45F00E53ED1 /* Finder */ = {
+			isa = PBXGroup;
+			children = (
+				0F04A5E11737C46000E53ED1 /* Supporting Files */,
+			);
+			path = Finder;
+			sourceTree = "<group>";
+		};
+		0F04A5E11737C46000E53ED1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0F04A5E21737C46000E53ED1 /* Finder-Info.plist */,
+				0F04A5E31737C46000E53ED1 /* InfoPlist.strings */,
+				0F04A5E61737C46000E53ED1 /* Finder-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		0F798150173679D200FBC7DC = {
 			isa = PBXGroup;
 			children = (
 				0F798163173679D200FBC7DC /* Exposure */,
+				0F04A5E01737C45F00E53ED1 /* Finder */,
 				0F79815C173679D200FBC7DC /* Frameworks */,
 				0F79815B173679D200FBC7DC /* Products */,
 			);
@@ -85,12 +113,9 @@
 		0F798163173679D200FBC7DC /* Exposure */ = {
 			isa = PBXGroup;
 			children = (
-				0F79817217367A0500FBC7DC /* Common.h */,
-				0F79817317367A0500FBC7DC /* Exposure.h */,
-				0F79817417367A0500FBC7DC /* XPPhoto.h */,
-				0F79817517367A0500FBC7DC /* XPPhotoCollection.h */,
-				0F79817617367A0500FBC7DC /* XPPhotoManager.h */,
 				0F7981901736893800FBC7DC /* XPPlugin.h */,
+				0FF7482C1737AB1400FD0825 /* Model */,
+				0FF7482D1737AB1B00FD0825 /* Controllers */,
 				0F798164173679D200FBC7DC /* Supporting Files */,
 			);
 			path = Exposure;
@@ -99,11 +124,33 @@
 		0F798164173679D200FBC7DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F79817317367A0500FBC7DC /* Exposure.h */,
+				0F79817217367A0500FBC7DC /* Common.h */,
 				0F798165173679D200FBC7DC /* Exposure-Info.plist */,
 				0F798166173679D200FBC7DC /* InfoPlist.strings */,
 				0F798169173679D200FBC7DC /* Exposure-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0FF7482C1737AB1400FD0825 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F79817417367A0500FBC7DC /* XPPhoto.h */,
+				0F79817517367A0500FBC7DC /* XPPhotoCollection.h */,
+				0F79817617367A0500FBC7DC /* XPPhotoManager.h */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0FF7482D1737AB1B00FD0825 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0FF748261737A9DF00FD0825 /* XPCollectionViewController.h */,
+				0FF748281737AA2600FD0825 /* XPPhotoCollectionViewController.h */,
+				0FF7482A1737AA4E00FD0825 /* XPPhotoViewController.h */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +165,9 @@
 				0F79817917367A0500FBC7DC /* XPPhoto.h in Headers */,
 				0F79817A17367A0500FBC7DC /* XPPhotoCollection.h in Headers */,
 				0F79817B17367A0500FBC7DC /* XPPhotoManager.h in Headers */,
+				0FF748271737A9DF00FD0825 /* XPCollectionViewController.h in Headers */,
+				0FF748291737AA2600FD0825 /* XPPhotoCollectionViewController.h in Headers */,
+				0FF7482B1737AA4E00FD0825 /* XPPhotoViewController.h in Headers */,
 				0F7981911736894B00FBC7DC /* XPPlugin.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +241,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		0F04A5E31737C46000E53ED1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F04A5E41737C46000E53ED1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		0F798166173679D200FBC7DC /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -271,6 +329,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Exposure/Exposure-Prefix.pch";
 				INFOPLIST_FILE = "Exposure/Exposure-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -286,6 +345,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Exposure/Exposure-Prefix.pch";
 				INFOPLIST_FILE = "Exposure/Exposure-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};

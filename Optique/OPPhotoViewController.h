@@ -9,7 +9,7 @@
 #import <Quartz/Quartz.h>
 #import "OPNavigationViewController.h"
 
-@interface OPPhotoViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate>
+@interface OPPhotoViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate, XPPhotoViewController>
 
 @property (strong, readonly) id<XPPhotoCollection> collection;
 @property (assign) NSInteger effectsState;

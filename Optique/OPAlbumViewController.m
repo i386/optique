@@ -54,6 +54,13 @@
     [super loadView];
     [_gridView setAllowsMultipleSelection:YES];
     [[_gridView enclosingScrollView] setDrawsBackground:NO];
+    
+    [OPExposureService collectionViewController:self];
+}
+
+-(NSMenu *)contextMenu
+{
+    return _albumItemContextMenu;
 }
 
 -(void)showView

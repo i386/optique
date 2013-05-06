@@ -7,8 +7,28 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XPPluginContext.h"
+
+#import "XPCollectionViewController.h"
+#import "XPPhotoCollectionViewController.h"
+#import "XPPhotoViewController.h"
 
 @protocol XPPlugin <NSObject>
+
+@optional
+
+/**
+ Called whenever the collection view is loaded
+ **/
+-(void)collectionViewController:(id<XPCollectionViewController>)controller;
+
+/**
+ Called whenever the photo collection view is called
+ **/
+-(void)photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller;
+
+/**
+ Called whenever the photo view is loaded
+ **/
+-(void)photoViewController:(id<XPPhotoViewController>)controller;
 
 @end

@@ -168,6 +168,8 @@
     [_gridView setAllowsMultipleSelection:YES];
     _contextMenu.delegate = self;
     [[_gridView enclosingScrollView] setDrawsBackground:NO];
+    
+    [OPExposureService photoCollectionViewController:self];
 }
 
 -(void)showView

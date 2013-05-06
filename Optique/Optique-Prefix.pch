@@ -7,6 +7,7 @@
 #endif
 
 #import <Exposure/Exposure.h>
+#import "OPExposureService.h"
 
 #import <BlocksKit/BlocksKit.h>
 

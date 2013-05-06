@@ -12,7 +12,7 @@
 #import "OPEffectCollectionView.h"
 #import "OPNavigationViewController.h"
 
-@interface OPAlbumViewController : OPNavigationViewController <CNGridViewDataSource, CNGridViewDelegate, NSMenuDelegate>
+@interface OPAlbumViewController : OPNavigationViewController <CNGridViewDataSource, CNGridViewDelegate, NSMenuDelegate, XPCollectionViewController>
 
 @property (strong) IBOutlet NSMenu *albumItemContextMenu;
 @property (strong, readonly) XPPhotoManager *photoManager;
