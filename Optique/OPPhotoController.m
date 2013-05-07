@@ -29,6 +29,11 @@
     return _photoViewController.visiblePhoto;
 }
 
+-(NSWindow *)window
+{
+    return self.view.window;
+}
+
 - (IBAction)deletePhoto:(id)sender
 {
     [_photoViewController deletePhoto];

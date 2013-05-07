@@ -12,6 +12,7 @@
 #import "XPPhoto.h"
 #import "XPPhotoCollection.h"
 #import "XPPhotoManager.h"
+#import "XPController.h"
 #import "XPCollectionViewController.h"
 #import "XPPhotoCollectionViewController.h"
 #import "XPPhotoController.h"

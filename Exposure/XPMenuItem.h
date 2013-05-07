@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+#define XPMENU_ITEM_SHARING @""
+
 typedef void (^XPMenuItemActionBlock)(NSMenuItem *sender);
 
 @interface XPMenuItem : NSMenuItem
