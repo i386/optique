@@ -10,7 +10,7 @@
 
 #import "XPCollectionViewController.h"
 #import "XPPhotoCollectionViewController.h"
-#import "XPPhotoViewController.h"
+#import "XPPhotoController.h"
 
 @protocol XPPlugin <NSObject>
 
@@ -29,6 +29,6 @@
 /**
  Called whenever the photo view is loaded
  **/
--(void)photoManager:(XPPhotoManager*)photoManager photoViewController:(id<XPPhotoViewController>)controller;
+-(void)photoManager:(XPPhotoManager*)photoManager photoController:(id<XPPhotoController>)controller;
 
 @end

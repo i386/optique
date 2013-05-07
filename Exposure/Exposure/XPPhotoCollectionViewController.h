@@ -10,4 +10,8 @@
 
 @protocol XPPhotoCollectionViewController <NSObject>
 
+-(NSMenu*)contextMenu;
+
+-(id<XPPhotoCollection>)visibleCollection;
+
 @end

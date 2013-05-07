@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol XPPhotoViewController <NSObject>
+@protocol XPPhotoController <NSObject>
+
+-(NSMenu*)contextMenu;
+
+-(id<XPPhoto>)visiblePhoto;
 
 @end

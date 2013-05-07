@@ -9,12 +9,13 @@
 #import <Quartz/Quartz.h>
 #import "OPNavigationViewController.h"
 
-@interface OPPhotoViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate, XPPhotoViewController>
+@interface OPPhotoViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate>
 
 @property (strong, readonly) id<XPPhotoCollection> collection;
 @property (assign) NSInteger effectsState;
-@property (strong) id<XPPhoto> currentPhoto;
+@property (strong) id<XPPhoto> visiblePhoto;
 @property (strong) IBOutlet NSPageController *pageController;
+@property (strong) IBOutlet NSMenu *contextMenu;
 
 -initWithPhotoCollection:(id<XPPhotoCollection>)collection photo:(id<XPPhoto>)photo;
 

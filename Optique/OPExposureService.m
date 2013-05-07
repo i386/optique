@@ -37,10 +37,10 @@
     }];
 }
 
-+(void)photoManager:(XPPhotoManager*)photoManager photoViewController:(id<XPPhotoViewController>)controller
++(void)photoManager:(XPPhotoManager*)photoManager photoController:(id<XPPhotoController>)controller
 {
     [[OPExposureService respondsToPhotoViewController] each:^(id<XPPlugin> sender) {
-        [sender photoManager:photoManager photoViewController:controller];
+        [sender photoManager:photoManager photoController:controller];
     }];
 }
 
@@ -67,7 +67,7 @@
     NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject respondsToSelector:@selector(photoManager:photoViewController:)];
+        return [evaluatedObject respondsToSelector:@selector(photoManager:photoController:)];
     }]];
 }
 

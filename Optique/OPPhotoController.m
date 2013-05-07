@@ -24,9 +24,9 @@
     return self;
 }
 
-- (IBAction)revealInFinder:(id)sender
+-(id<XPPhoto>)visiblePhoto
 {
-    [_photoViewController revealInFinder];
+    return _photoViewController.visiblePhoto;
 }
 
 - (IBAction)deletePhoto:(id)sender
@@ -34,9 +34,10 @@
     [_photoViewController deletePhoto];
 }
 
--(void)menuNeedsUpdate:(NSMenu *)menu
+-(void)loadView
 {
-    [_revealInFinderMenuItem setHidden:!_photoViewController.collection.isStoredOnFileSystem];
+    [super loadView];
+    [OPExposureService photoManager:_photoViewController.collection.photoManager photoController:self];
 }
 
 @end

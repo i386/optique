@@ -27,7 +27,7 @@
     if (self) {
         _collection = collection;
         _effectsState = NSOffState;
-        _currentPhoto = photo;
+        _visiblePhoto = photo;
         _index = [_collection.allPhotos indexOfObject:photo];
     }
     return self;
@@ -49,8 +49,6 @@
     
     //Update the views if the underlying collection has changed (for example, when the image is downloaded from the camera successfully
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
-    
-    [OPExposureService photoManager:_collection.photoManager photoViewController:self];
 }
 
 -(void)dealloc
@@ -62,7 +60,7 @@
 
 -(NSString *)viewTitle
 {
-    return _currentPhoto.title;
+    return _visiblePhoto.title;
 }
 
 -(BOOL)acceptsFirstResponder
@@ -87,9 +85,9 @@
 
 -(void)deletePhoto
 {
-    NSString *message = [NSString stringWithFormat:@"Do you want to delete '%@'?", _currentPhoto.title];
+    NSString *message = [NSString stringWithFormat:@"Do you want to delete '%@'?", _visiblePhoto.title];
     
-    NSBeginAlertSheet(message, @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, (void*)CFBridgingRetain(_currentPhoto), @"This operation can not be undone.");
+    NSBeginAlertSheet(message, @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, (void*)CFBridgingRetain(_visiblePhoto), @"This operation can not be undone.");
 }
 
 - (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet
@@ -108,7 +106,7 @@
 
 -(void)revealInFinder
 {
-    [_currentPhoto resolveURL:^(NSURL *suppliedUrl) {
+    [_visiblePhoto resolveURL:^(NSURL *suppliedUrl) {
         [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[suppliedUrl]];
     }];
 }
@@ -127,11 +125,11 @@
 {
     if (object)
     {
-        _currentPhoto = object;
+        _visiblePhoto = object;
     }
     
     NSSize windowSize = [[NSApplication sharedApplication] mainWindow].frame.size;
-    [_currentPhoto scaleImageToFitSize:windowSize withCompletionBlock:^void(NSImage *image) {
+    [_visiblePhoto scaleImageToFitSize:windowSize withCompletionBlock:^void(NSImage *image) {
         viewController.representedObject = image;
     }];
     

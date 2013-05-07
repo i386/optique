@@ -1,0 +1,9 @@
+//
+// Prefix header for all source files of the 'Facebook' target in the 'Facebook' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
+
+#import <Exposure/Exposure.h>

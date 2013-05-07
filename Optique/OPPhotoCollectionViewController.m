@@ -38,20 +38,9 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidUpdateCollection object:nil];
 }
 
-- (IBAction)revealInFinder:(NSMenuItem*)sender
+-(id<XPPhotoCollection>)visibleCollection
 {
-    NSIndexSet *indexes = (NSIndexSet*)sender.representedObject;
-    NSMutableArray *urls = [NSMutableArray array];
-    
-    [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
-        id photo = _collection.allPhotos[index];
-        if ([photo respondsToSelector:@selector(path)])
-        {
-            [urls addObject:[photo path]];
-        }
-        
-    }];
-    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
+    return _collection;
 }
 
 - (IBAction)deletePhoto:(id)sender
@@ -194,9 +183,6 @@
             [_moveToAlbumItem.submenu addItem:item];
         }
     }];
-    
-    id<XPPhoto> firstPhoto = [[_collection photosForIndexSet:_gridView.selectedIndexes] lastObject];
-    [_revealInFinderItem setHidden:!firstPhoto.collection.isStoredOnFileSystem];
 }
     
 -(void)moveToCollection:(NSMenuItem*)item

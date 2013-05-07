@@ -16,6 +16,6 @@
 
 +(void)photoManager:(XPPhotoManager*)photoManager photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller;
 
-+(void)photoManager:(XPPhotoManager*)photoManager photoViewController:(id<XPPhotoViewController>)controller;
++(void)photoManager:(XPPhotoManager*)photoManager photoController:(id<XPPhotoController>)controller;
 
 @end

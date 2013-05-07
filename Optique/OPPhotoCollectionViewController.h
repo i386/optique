@@ -18,11 +18,9 @@
 @property (strong, readonly) XPPhotoManager *photoManager;
 @property (strong) IBOutlet CNGridView *gridView;
 @property (strong) IBOutlet NSMenuItem *moveToAlbumItem;
-@property (strong) IBOutlet NSMenuItem *revealInFinderItem;
 
 -initWithPhotoAlbum:(id<XPPhotoCollection>)collection photoManager:(XPPhotoManager*)photoManager;
 
-- (IBAction)revealInFinder:(NSMenuItem*)sender;
 - (IBAction)deletePhoto:(id)sender;
 
 @end

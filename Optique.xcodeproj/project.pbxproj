@@ -16,7 +16,7 @@
 		0F04A6461737C74800E53ED1 /* XPPhotoCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F04A63E1737C74800E53ED1 /* XPPhotoCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F04A6471737C74800E53ED1 /* XPPhotoCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F04A63F1737C74800E53ED1 /* XPPhotoCollectionViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F04A6481737C74800E53ED1 /* XPPhotoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F04A6401737C74800E53ED1 /* XPPhotoManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F04A6491737C74800E53ED1 /* XPPhotoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F04A6411737C74800E53ED1 /* XPPhotoViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F04A6491737C74800E53ED1 /* XPPhotoController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F04A6411737C74800E53ED1 /* XPPhotoController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F04A64A1737C74800E53ED1 /* XPPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F04A6421737C74800E53ED1 /* XPPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F04A64F1737C77800E53ED1 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F04A64E1737C77800E53ED1 /* Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F04A6581737C7C300E53ED1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
@@ -81,11 +81,13 @@
 		0FCA4D2E1737D7F0007DC9EF /* XPMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCA4D2C1737D7F0007DC9EF /* XPMenuItem.h */; };
 		0FCA4D2F1737D7F0007DC9EF /* XPMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D2D1737D7F0007DC9EF /* XPMenuItem.m */; };
 		0FCA4D301737D84F007DC9EF /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
-		0FCA4D3D17385AEE007DC9EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
-		0FCA4D4317385AEE007DC9EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FCA4D4117385AEE007DC9EF /* InfoPlist.strings */; };
-		0FCA4D4817385B1D007DC9EF /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
-		0FCA4D4B17385B2E007DC9EF /* Social.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FCA4D3C17385AEE007DC9EF /* Social.bundle */; };
-		0FCA4D4E17385B48007DC9EF /* OPSocialPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D4D17385B48007DC9EF /* OPSocialPlugin.m */; };
+		0FCA4D561738A272007DC9EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
+		0FCA4D5C1738A273007DC9EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FCA4D5A1738A272007DC9EF /* InfoPlist.strings */; };
+		0FCA4D631738A27B007DC9EF /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
+		0FCA4D641738A282007DC9EF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCA4D4F173874C6007DC9EF /* Social.framework */; };
+		0FCA4D651738A28F007DC9EF /* Facebook.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FCA4D551738A272007DC9EF /* Facebook.bundle */; };
+		0FCA4D681738A2CE007DC9EF /* OPFacebookPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D671738A2CE007DC9EF /* OPFacebookPlugin.m */; };
+		0FCA4D6A1738DD87007DC9EF /* Optique.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0FCA4D691738DD86007DC9EF /* Optique.icns */; };
 		0FCAF8C91710461A00E6C903 /* effectsbarbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FCAF8C71710461A00E6C903 /* effectsbarbg.png */; };
 		0FCAF8CA1710461A00E6C903 /* effectsbarbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FCAF8C81710461A00E6C903 /* effectsbarbg@2x.png */; };
 		0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCAF8CD17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m */; };
@@ -132,7 +134,7 @@
 			remoteGlobalIDString = 0F04A6561737C7C300E53ED1;
 			remoteInfo = Finder;
 		};
-		0FCA4D4917385B20007DC9EF /* PBXContainerItemProxy */ = {
+		0FCA4D611738A278007DC9EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
 			proxyType = 1;
@@ -148,7 +150,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				0FCA4D4B17385B2E007DC9EF /* Social.bundle in CopyFiles */,
+				0FCA4D651738A28F007DC9EF /* Facebook.bundle in CopyFiles */,
 				0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,7 +184,7 @@
 		0F04A63E1737C74800E53ED1 /* XPPhotoCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPPhotoCollection.h; path = Exposure/XPPhotoCollection.h; sourceTree = "<group>"; };
 		0F04A63F1737C74800E53ED1 /* XPPhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPPhotoCollectionViewController.h; path = Exposure/XPPhotoCollectionViewController.h; sourceTree = "<group>"; };
 		0F04A6401737C74800E53ED1 /* XPPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPPhotoManager.h; path = Exposure/XPPhotoManager.h; sourceTree = "<group>"; };
-		0F04A6411737C74800E53ED1 /* XPPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPPhotoViewController.h; path = Exposure/XPPhotoViewController.h; sourceTree = "<group>"; };
+		0F04A6411737C74800E53ED1 /* XPPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPPhotoController.h; path = Exposure/XPPhotoController.h; sourceTree = "<group>"; };
 		0F04A6421737C74800E53ED1 /* XPPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPPlugin.h; path = Exposure/XPPlugin.h; sourceTree = "<group>"; };
 		0F04A64E1737C77800E53ED1 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = Exposure/Common.h; sourceTree = "<group>"; };
 		0F04A6571737C7C300E53ED1 /* Finder.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Finder.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,12 +287,14 @@
 		0FCA4D281737D351007DC9EF /* OPExposureService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPExposureService.h; sourceTree = "<group>"; };
 		0FCA4D2C1737D7F0007DC9EF /* XPMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPMenuItem.h; sourceTree = "<group>"; };
 		0FCA4D2D1737D7F0007DC9EF /* XPMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPMenuItem.m; sourceTree = "<group>"; };
-		0FCA4D3C17385AEE007DC9EF /* Social.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Social.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FCA4D4017385AEE007DC9EF /* Social-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Social-Info.plist"; sourceTree = "<group>"; };
-		0FCA4D4217385AEE007DC9EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0FCA4D4417385AEE007DC9EF /* Social-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Social-Prefix.pch"; sourceTree = "<group>"; };
-		0FCA4D4C17385B48007DC9EF /* OPSocialPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPSocialPlugin.h; sourceTree = "<group>"; };
-		0FCA4D4D17385B48007DC9EF /* OPSocialPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPSocialPlugin.m; sourceTree = "<group>"; };
+		0FCA4D4F173874C6007DC9EF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		0FCA4D551738A272007DC9EF /* Facebook.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Facebook.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FCA4D591738A272007DC9EF /* Facebook-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Facebook-Info.plist"; sourceTree = "<group>"; };
+		0FCA4D5B1738A272007DC9EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0FCA4D5D1738A273007DC9EF /* Facebook-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Facebook-Prefix.pch"; sourceTree = "<group>"; };
+		0FCA4D661738A2CE007DC9EF /* OPFacebookPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFacebookPlugin.h; sourceTree = "<group>"; };
+		0FCA4D671738A2CE007DC9EF /* OPFacebookPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFacebookPlugin.m; sourceTree = "<group>"; };
+		0FCA4D691738DD86007DC9EF /* Optique.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Optique.icns; sourceTree = "<group>"; };
 		0FCAF8C71710461A00E6C903 /* effectsbarbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = effectsbarbg.png; sourceTree = "<group>"; };
 		0FCAF8C81710461A00E6C903 /* effectsbarbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "effectsbarbg@2x.png"; sourceTree = "<group>"; };
 		0FCAF8CC17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+DrawAtPointWithShadow.h"; sourceTree = "<group>"; };
@@ -356,12 +360,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FCA4D3917385AEE007DC9EF /* Frameworks */ = {
+		0FCA4D521738A272007DC9EF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FCA4D4817385B1D007DC9EF /* Exposure.framework in Frameworks */,
-				0FCA4D3D17385AEE007DC9EF /* Cocoa.framework in Frameworks */,
+				0FCA4D641738A282007DC9EF /* Social.framework in Frameworks */,
+				0FCA4D631738A27B007DC9EF /* Exposure.framework in Frameworks */,
+				0FCA4D561738A272007DC9EF /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +532,7 @@
 		0F9C80A716F891C700B2B6D8 = {
 			isa = PBXGroup;
 			children = (
+				0FCA4D691738DD86007DC9EF /* Optique.icns */,
 				0F9C80B916F891C700B2B6D8 /* Optique */,
 				0F04A62E1737C71000E53ED1 /* Exposure */,
 				0FCA4D1D1737CE8C007DC9EF /* Exposures */,
@@ -542,7 +548,7 @@
 				0F9C80B016F891C700B2B6D8 /* Optique.app */,
 				0F04A62C1737C70F00E53ED1 /* Exposure.framework */,
 				0F04A6571737C7C300E53ED1 /* Finder.bundle */,
-				0FCA4D3C17385AEE007DC9EF /* Social.bundle */,
+				0FCA4D551738A272007DC9EF /* Facebook.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -550,6 +556,7 @@
 		0F9C80B216F891C700B2B6D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FCA4D4F173874C6007DC9EF /* Social.framework */,
 				0F62BA65173673B200E661DD /* Cocoa.framework */,
 				0F976DFD17362F4F002C4C30 /* Sparkle.framework */,
 				0F9C80B616F891C700B2B6D8 /* AppKit.framework */,
@@ -602,7 +609,7 @@
 		0FCA4D1D1737CE8C007DC9EF /* Exposures */ = {
 			isa = PBXGroup;
 			children = (
-				0FCA4D3E17385AEE007DC9EF /* Social */,
+				0FCA4D571738A272007DC9EF /* Facebook */,
 				0F04A6591737C7C300E53ED1 /* Finder */,
 			);
 			name = Exposures;
@@ -634,7 +641,7 @@
 			children = (
 				0F04A63C1737C74800E53ED1 /* XPCollectionViewController.h */,
 				0F04A63F1737C74800E53ED1 /* XPPhotoCollectionViewController.h */,
-				0F04A6411737C74800E53ED1 /* XPPhotoViewController.h */,
+				0F04A6411737C74800E53ED1 /* XPPhotoController.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -658,22 +665,22 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		0FCA4D3E17385AEE007DC9EF /* Social */ = {
+		0FCA4D571738A272007DC9EF /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
-				0FCA4D3F17385AEE007DC9EF /* Supporting Files */,
-				0FCA4D4C17385B48007DC9EF /* OPSocialPlugin.h */,
-				0FCA4D4D17385B48007DC9EF /* OPSocialPlugin.m */,
+				0FCA4D581738A272007DC9EF /* Supporting Files */,
+				0FCA4D661738A2CE007DC9EF /* OPFacebookPlugin.h */,
+				0FCA4D671738A2CE007DC9EF /* OPFacebookPlugin.m */,
 			);
-			path = Social;
+			path = Facebook;
 			sourceTree = "<group>";
 		};
-		0FCA4D3F17385AEE007DC9EF /* Supporting Files */ = {
+		0FCA4D581738A272007DC9EF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0FCA4D4017385AEE007DC9EF /* Social-Info.plist */,
-				0FCA4D4117385AEE007DC9EF /* InfoPlist.strings */,
-				0FCA4D4417385AEE007DC9EF /* Social-Prefix.pch */,
+				0FCA4D591738A272007DC9EF /* Facebook-Info.plist */,
+				0FCA4D5A1738A272007DC9EF /* InfoPlist.strings */,
+				0FCA4D5D1738A273007DC9EF /* Facebook-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -824,7 +831,7 @@
 				0F04A6461737C74800E53ED1 /* XPPhotoCollection.h in Headers */,
 				0F04A6471737C74800E53ED1 /* XPPhotoCollectionViewController.h in Headers */,
 				0F04A6481737C74800E53ED1 /* XPPhotoManager.h in Headers */,
-				0F04A6491737C74800E53ED1 /* XPPhotoViewController.h in Headers */,
+				0F04A6491737C74800E53ED1 /* XPPhotoController.h in Headers */,
 				0F04A64A1737C74800E53ED1 /* XPPlugin.h in Headers */,
 				0F04A64F1737C77800E53ED1 /* Common.h in Headers */,
 				0FCA4D2E1737D7F0007DC9EF /* XPMenuItem.h in Headers */,
@@ -892,22 +899,22 @@
 			productReference = 0F9C80B016F891C700B2B6D8 /* Optique.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0FCA4D3B17385AEE007DC9EF /* Social */ = {
+		0FCA4D541738A272007DC9EF /* Facebook */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0FCA4D4717385AEE007DC9EF /* Build configuration list for PBXNativeTarget "Social" */;
+			buildConfigurationList = 0FCA4D5E1738A273007DC9EF /* Build configuration list for PBXNativeTarget "Facebook" */;
 			buildPhases = (
-				0FCA4D3817385AEE007DC9EF /* Sources */,
-				0FCA4D3917385AEE007DC9EF /* Frameworks */,
-				0FCA4D3A17385AEE007DC9EF /* Resources */,
+				0FCA4D511738A272007DC9EF /* Sources */,
+				0FCA4D521738A272007DC9EF /* Frameworks */,
+				0FCA4D531738A272007DC9EF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0FCA4D4A17385B20007DC9EF /* PBXTargetDependency */,
+				0FCA4D621738A278007DC9EF /* PBXTargetDependency */,
 			);
-			name = Social;
-			productName = Social;
-			productReference = 0FCA4D3C17385AEE007DC9EF /* Social.bundle */;
+			name = Facebook;
+			productName = Facebook;
+			productReference = 0FCA4D551738A272007DC9EF /* Facebook.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -935,7 +942,7 @@
 				0F9C80AF16F891C700B2B6D8 /* Optique */,
 				0F04A62B1737C70F00E53ED1 /* Exposure */,
 				0F04A6561737C7C300E53ED1 /* Finder */,
-				0FCA4D3B17385AEE007DC9EF /* Social */,
+				0FCA4D541738A272007DC9EF /* Facebook */,
 			);
 		};
 /* End PBXProject section */
@@ -986,14 +993,15 @@
 				0F66FD191728A9EB00747AC7 /* window-top@2x.png in Resources */,
 				0FFE24B2172907AA00513AD2 /* back.png in Resources */,
 				0FFE24B61729206B00513AD2 /* back@2x.png in Resources */,
+				0FCA4D6A1738DD87007DC9EF /* Optique.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FCA4D3A17385AEE007DC9EF /* Resources */ = {
+		0FCA4D531738A272007DC9EF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FCA4D4317385AEE007DC9EF /* InfoPlist.strings in Resources */,
+				0FCA4D5C1738A273007DC9EF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1085,11 +1093,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FCA4D3817385AEE007DC9EF /* Sources */ = {
+		0FCA4D511738A272007DC9EF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FCA4D4E17385B48007DC9EF /* OPSocialPlugin.m in Sources */,
+				0FCA4D681738A2CE007DC9EF /* OPFacebookPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1111,10 +1119,10 @@
 			target = 0F04A6561737C7C300E53ED1 /* Finder */;
 			targetProxy = 0FCA4D171737CC38007DC9EF /* PBXContainerItemProxy */;
 		};
-		0FCA4D4A17385B20007DC9EF /* PBXTargetDependency */ = {
+		0FCA4D621738A278007DC9EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0F04A62B1737C70F00E53ED1 /* Exposure */;
-			targetProxy = 0FCA4D4917385B20007DC9EF /* PBXContainerItemProxy */;
+			targetProxy = 0FCA4D611738A278007DC9EF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1159,10 +1167,10 @@
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		0FCA4D4117385AEE007DC9EF /* InfoPlist.strings */ = {
+		0FCA4D5A1738A272007DC9EF /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0FCA4D4217385AEE007DC9EF /* en */,
+				0FCA4D5B1738A272007DC9EF /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1327,26 +1335,26 @@
 			};
 			name = Release;
 		};
-		0FCA4D4517385AEE007DC9EF /* Debug */ = {
+		0FCA4D5F1738A273007DC9EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Social/Social-Prefix.pch";
-				INFOPLIST_FILE = "Social/Social-Info.plist";
+				GCC_PREFIX_HEADER = "Facebook/Facebook-Prefix.pch";
+				INFOPLIST_FILE = "Facebook/Facebook-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
-		0FCA4D4617385AEE007DC9EF /* Release */ = {
+		0FCA4D601738A273007DC9EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Social/Social-Prefix.pch";
-				INFOPLIST_FILE = "Social/Social-Info.plist";
+				GCC_PREFIX_HEADER = "Facebook/Facebook-Prefix.pch";
+				INFOPLIST_FILE = "Facebook/Facebook-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = bundle;
@@ -1392,11 +1400,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0FCA4D4717385AEE007DC9EF /* Build configuration list for PBXNativeTarget "Social" */ = {
+		0FCA4D5E1738A273007DC9EF /* Build configuration list for PBXNativeTarget "Facebook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0FCA4D4517385AEE007DC9EF /* Debug */,
-				0FCA4D4617385AEE007DC9EF /* Release */,
+				0FCA4D5F1738A273007DC9EF /* Debug */,
+				0FCA4D601738A273007DC9EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

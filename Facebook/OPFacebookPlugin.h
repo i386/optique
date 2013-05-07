@@ -1,5 +1,5 @@
 //
-//  OPSocialPlugin.h
+//  OPFacebookPlugin.h
 //  Optique
 //
 //  Created by James Dumay on 7/05/13.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPSocialPlugin : NSObject<XPPlugin>
+@interface OPFacebookPlugin : NSObject<XPPlugin>
 
 @end
