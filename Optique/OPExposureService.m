@@ -106,7 +106,7 @@
     {
         
 #if DEBUG
-        NSLog(@"Loaded plugin from path '%@' with class '%@", path, pluginClass);
+        NSLog(@"Loaded Exposure plugin '%@'", pluginClass);
 #endif
         
         pluginInstance = [[pluginClass alloc] init];
