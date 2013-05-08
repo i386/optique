@@ -102,7 +102,8 @@
     NSBundle *bundleToLoad = [NSBundle bundleWithPath:path];
     
     //Should have a principalClass and confirm to XPPlugin
-    if ((pluginClass = [bundleToLoad principalClass]) && [pluginClass conformsToProtocol:@protocol(XPPlugin)]) {
+    if ((pluginClass = [bundleToLoad principalClass]) && [pluginClass conformsToProtocol:@protocol(XPPlugin)])
+    {
         
 #if DEBUG
         NSLog(@"Loaded plugin from path '%@' with class '%@", path, pluginClass);
