@@ -75,13 +75,21 @@
 {
     NSMutableDictionary *exposures = [[NSMutableDictionary alloc] init];
     
-    NSString *exposurePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Contents/PlugIns/"];
+    NSString *pluginPath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Contents/PlugIns/"];
+
+#if DEBUG
+    NSLog(@"Exposure plugin path '%@'", pluginPath);
+#endif
     
-    NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtPath:exposurePath];
+    NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtPath:pluginPath];
     
     for (NSString *path in enumerator)
     {
-        [self loadBundle:path exposures:exposures];
+        if ([[path pathExtension] isEqualToString:@"bundle"])
+        {
+            NSString *pathToExposure = [pluginPath stringByAppendingPathComponent:path];
+            [self loadBundle:pathToExposure exposures:exposures];
+        }
     }
     
     _exposures = exposures;
@@ -95,8 +103,19 @@
     
     //Should have a principalClass and confirm to XPPlugin
     if ((pluginClass = [bundleToLoad principalClass]) && [pluginClass conformsToProtocol:@protocol(XPPlugin)]) {
+        
+#if DEBUG
+        NSLog(@"Loaded plugin from path '%@' with class '%@", path, pluginClass);
+#endif
+        
         pluginInstance = [[pluginClass alloc] init];
         [exposures setObject:pluginInstance forKey:bundleToLoad.bundleIdentifier];
+    }
+    else
+    {
+//#if DEBUG
+        NSLog(@"Could not load plugin class '%@' from bundle '%@'", bundleToLoad.principalClass, bundleToLoad.bundleIdentifier);
+//#endif
     }
 }
 
