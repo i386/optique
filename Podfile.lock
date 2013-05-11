@@ -1,18 +1,20 @@
 PODS:
-  - BlocksKit (1.8.1):
+  - BlocksKit (1.8.2):
     - libffi
   - CDEvents (1.2.0)
   - CNGridView (1.1.4)
   - HockeySDK (1.0.3)
   - INAppStoreWindow (HEAD based on 1.2)
+  - ISO8601DateFormatter (0.6)
   - NSHash (1.0.1)
 
 DEPENDENCIES:
-  - BlocksKit (~> 1.8.1)
+  - BlocksKit (~> 1.8.2)
   - CDEvents (~> 1.2.0)
   - CNGridView (from `http://github.com/i386/CNGridView.git`)
   - HockeySDK (from `https://raw.github.com/bitstadium/HockeySDK-Mac/develop/HockeySDK.podspec`)
   - INAppStoreWindow (HEAD)
+  - ISO8601DateFormatter (~> 0.6)
   - NSHash (~> 1.0.1)
 
 EXTERNAL SOURCES:
@@ -22,11 +24,12 @@ EXTERNAL SOURCES:
     :podspec: https://raw.github.com/bitstadium/HockeySDK-Mac/develop/HockeySDK.podspec
 
 SPEC CHECKSUMS:
-  BlocksKit: 18102744fd7c44b54f1e54ce6ffe9258bcb5df81
+  BlocksKit: 7396526b0816734103f6133fbb1a520c8b04e80c
   CDEvents: 079cd7b12501bafe6c7ec204f87cecdadce121cc
   CNGridView: aa412e7862c5cdd33e30fed9ecb4ebd36f8887fb
   HockeySDK: 3bf5d65b05a3b3590bff8f9ee1ac2e12b1565edf
   INAppStoreWindow: d00327caee47d951043169df9aaab952389defcb
+  ISO8601DateFormatter: dc05a2481edf49668d85d3ff8c466c32eb544780
   NSHash: 08e81b655e7d2e3d9b872c192e52f77b76694918
 
 COCOAPODS: 0.19.1

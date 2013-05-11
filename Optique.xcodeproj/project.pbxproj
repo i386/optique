@@ -33,6 +33,10 @@
 		0F368A8717068F0500411503 /* OPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A8617068F0500411503 /* OPWindow.m */; };
 		0F368A8A17068F1B00411503 /* OPWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A8917068F1A00411503 /* OPWindowContentView.m */; };
 		0F3DF46D16F98D0D00C003D3 /* OPPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */; };
+		0F44BAB6173DC56C0039B00E /* OPFacebookPhotoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BAB5173DC56C0039B00E /* OPFacebookPhotoService.m */; };
+		0F44BAD9173DCA6D0039B00E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F44BAD7173DCA620039B00E /* Accounts.framework */; };
+		0F44BADD173DD1EA0039B00E /* OPFacebookAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BADC173DD1EA0039B00E /* OPFacebookAlbum.m */; };
+		0F44BB46173DE17B0039B00E /* OPFacebookPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BB45173DE17B0039B00E /* OPFacebookPhoto.m */; };
 		0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F489933170BFFD60044ED0A /* OPImagePreviewService.m */; };
 		0F489937170C00BA0044ED0A /* loading-preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F489935170C00BA0044ED0A /* loading-preview.png */; };
 		0F489938170C00BA0044ED0A /* loading-preview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F489936170C00BA0044ED0A /* loading-preview@2x.png */; };
@@ -226,6 +230,15 @@
 		0F368A8917068F1A00411503 /* OPWindowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPWindowContentView.m; sourceTree = "<group>"; };
 		0F3DF46B16F98D0D00C003D3 /* OPPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoAlbum.h; sourceTree = "<group>"; };
 		0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoAlbum.m; sourceTree = "<group>"; };
+		0F44BAB4173DC56C0039B00E /* OPFacebookPhotoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFacebookPhotoService.h; sourceTree = "<group>"; };
+		0F44BAB5173DC56C0039B00E /* OPFacebookPhotoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFacebookPhotoService.m; sourceTree = "<group>"; };
+		0F44BAD7173DCA620039B00E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		0F44BADA173DCF3E0039B00E /* OPFacebookPhotosDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFacebookPhotosDelegate.h; sourceTree = "<group>"; };
+		0F44BADB173DD1EA0039B00E /* OPFacebookAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFacebookAlbum.h; sourceTree = "<group>"; };
+		0F44BADC173DD1EA0039B00E /* OPFacebookAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFacebookAlbum.m; sourceTree = "<group>"; };
+		0F44BAF1173DD3420039B00E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		0F44BB44173DE17B0039B00E /* OPFacebookPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFacebookPhoto.h; sourceTree = "<group>"; };
+		0F44BB45173DE17B0039B00E /* OPFacebookPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFacebookPhoto.m; sourceTree = "<group>"; };
 		0F489932170BFFD60044ED0A /* OPImagePreviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImagePreviewService.h; sourceTree = "<group>"; };
 		0F489933170BFFD60044ED0A /* OPImagePreviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImagePreviewService.m; sourceTree = "<group>"; };
 		0F489935170C00BA0044ED0A /* loading-preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading-preview.png"; sourceTree = "<group>"; };
@@ -385,6 +398,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F44BAD9173DCA6D0039B00E /* Accounts.framework in Frameworks */,
 				0FCA4D641738A282007DC9EF /* Social.framework in Frameworks */,
 				0FCA4D631738A27B007DC9EF /* Exposure.framework in Frameworks */,
 				0FCA4D561738A272007DC9EF /* Cocoa.framework in Frameworks */,
@@ -474,6 +488,20 @@
 				0F368A8917068F1A00411503 /* OPWindowContentView.m */,
 			);
 			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		0F44BB47173DE1800039B00E /* Photo API */ = {
+			isa = PBXGroup;
+			children = (
+				0F44BAB4173DC56C0039B00E /* OPFacebookPhotoService.h */,
+				0F44BAB5173DC56C0039B00E /* OPFacebookPhotoService.m */,
+				0F44BADA173DCF3E0039B00E /* OPFacebookPhotosDelegate.h */,
+				0F44BADB173DD1EA0039B00E /* OPFacebookAlbum.h */,
+				0F44BADC173DD1EA0039B00E /* OPFacebookAlbum.m */,
+				0F44BB44173DE17B0039B00E /* OPFacebookPhoto.h */,
+				0F44BB45173DE17B0039B00E /* OPFacebookPhoto.m */,
+			);
+			name = "Photo API";
 			sourceTree = "<group>";
 		};
 		0F6AF879172A3B130029724A /* Camera capture */ = {
@@ -587,6 +615,8 @@
 		0F9C80B216F891C700B2B6D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F44BAF1173DD3420039B00E /* SenTestingKit.framework */,
+				0F44BAD7173DCA620039B00E /* Accounts.framework */,
 				0FCA4D4F173874C6007DC9EF /* Social.framework */,
 				0F62BA65173673B200E661DD /* Cocoa.framework */,
 				0F976DFD17362F4F002C4C30 /* Sparkle.framework */,
@@ -704,6 +734,7 @@
 				0FCA4D581738A272007DC9EF /* Supporting Files */,
 				0FCA4D661738A2CE007DC9EF /* OPFacebookPlugin.h */,
 				0FCA4D671738A2CE007DC9EF /* OPFacebookPlugin.m */,
+				0F44BB47173DE1800039B00E /* Photo API */,
 			);
 			path = Facebook;
 			sourceTree = "<group>";
@@ -1179,6 +1210,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FCA4D681738A2CE007DC9EF /* OPFacebookPlugin.m in Sources */,
+				0F44BAB6173DC56C0039B00E /* OPFacebookPhotoService.m in Sources */,
+				0F44BADD173DD1EA0039B00E /* OPFacebookAlbum.m in Sources */,
+				0F44BB46173DE17B0039B00E /* OPFacebookPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1535,6 +1569,7 @@
 				0FCA4D601738A273007DC9EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0FCA4D7D17391EA8007DC9EF /* Build configuration list for PBXNativeTarget "Twitter" */ = {
 			isa = XCConfigurationList;
@@ -1543,6 +1578,7 @@
 				0FCA4D7F17391EA8007DC9EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
