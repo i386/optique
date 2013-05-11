@@ -8,6 +8,7 @@
 
 #import "OPFacebookPhotoService.h"
 #import "OPFacebookAlbum.h"
+#import "OPFacebookPhoto.h"
 
 @implementation OPFacebookPhotoService
 
@@ -36,7 +37,7 @@
     }];
 }
 
--(void)uploadPhotosToAlbum:(OPFacebookAlbum *)album photos:(NSArray *)photos account:(ACAccount *)account
+-(void)uploadPhotos:(NSArray *)photos albums:(OPFacebookAlbum *)album account:(ACAccount *)account
 {
     for (id<XPPhoto> photo in photos)
     {
@@ -58,7 +59,21 @@
         [request addMultipartData:data withName:photo.title type:@"multipart/form-data" filename:photo.title];
         
         [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-            
+            if ([_delegate respondsToSelector:@selector(photoService:photoUploaded:album:error:)])
+            {
+                NSError* error;
+                NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+                NSString *photoId = [json objectForKey:@"id"];
+                if (photoId)
+                {
+                    OPFacebookPhoto *facebookPhoto = [[OPFacebookPhoto alloc] initWithPhotoId:[photoId intValue] name:photo.title album:album];
+                    [_delegate photoService:self photoUploaded:facebookPhoto album:album error:error];
+                }
+                else
+                {
+                    [_delegate photoService:self photoUploaded:nil album:album error:error];
+                }
+            }
         }];
     }
 }

@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OPFacebookAlbum.h"
 
 @interface OPFacebookPhoto : NSObject
+
+@property (readonly) NSUInteger photoId;
+@property (readonly, assign) NSString *name;
+@property (readonly, strong) OPFacebookAlbum *album;
+
+-initWithPhotoId:(NSUInteger)photoId name:(NSString*)photoName album:(OPFacebookAlbum*)album;
 
 @end

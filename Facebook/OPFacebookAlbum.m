@@ -15,7 +15,7 @@
     self = [super init];
     if (self)
     {
-        _album_id = albumId;
+        _albumId = albumId;
         _name = name;
     }
     return self;
@@ -26,7 +26,7 @@
     self = [super init];
     if (self)
     {
-        _album_id = [[dictionary objectForKey:@"id"] unsignedIntValue];
+        _albumId = [[dictionary objectForKey:@"id"] unsignedIntValue];
         _name = [dictionary objectForKey:@"name"];
         _description = [dictionary objectForKey:@"description"];
         _link = [NSURL URLWithString:[dictionary objectForKey:@"link"]];

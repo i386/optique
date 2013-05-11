@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <Social/Social.h>
-#import "OPFacebookPhotosDelegate.h"
+#import "OPFacebookPhotoServiceDelegate.h"
 
 @interface OPFacebookPhotoService : NSObject
 
-@property (weak) id<OPFacebookPhotoService> delegate;
+@property (weak) id<OPFacebookPhotoServiceDelegate> delegate;
 
 -(void)createAlbumNamed:(NSString*)name message:(NSString*)message account:(ACAccount*)account;
 
--(void)uploadPhotosToAlbumNamed:(NSString*)name photos:(NSArray*)photos account:(ACAccount*)account;
+-(void)uploadPhotos:(NSArray *)photos albums:(OPFacebookAlbum *)album account:(ACAccount *)account;
 
 -(void)allAlbums:(ACAccount*)account;
 

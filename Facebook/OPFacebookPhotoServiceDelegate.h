@@ -10,14 +10,15 @@
 
 @class OPFacebookPhotoService;
 @class OPFacebookAlbum;
+@class OPFacebookPhoto;
 
-@protocol OPFacebookPhotoService <NSObject>
+@protocol OPFacebookPhotoServiceDelegate <NSObject>
 
 @optional
 
 -(void)photoService:(OPFacebookPhotoService*)photos album:(OPFacebookAlbum*)album error:(NSError*)error;
 
--(void)photoService:(OPFacebookPhotoService *)photos album:(OPFacebookAlbum *)album error:(NSError *)error
+-(void)photoService:(OPFacebookPhotoService *)photos photoUploaded:(OPFacebookPhoto *)photo album:(OPFacebookAlbum*)album error:(NSError *)error;
 
 -(void)photoService:(OPFacebookPhotoService *)photos albums:(NSArray*)albums error:(NSError*)error;
 

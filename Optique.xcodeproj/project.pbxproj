@@ -233,7 +233,7 @@
 		0F44BAB4173DC56C0039B00E /* OPFacebookPhotoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFacebookPhotoService.h; sourceTree = "<group>"; };
 		0F44BAB5173DC56C0039B00E /* OPFacebookPhotoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFacebookPhotoService.m; sourceTree = "<group>"; };
 		0F44BAD7173DCA620039B00E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		0F44BADA173DCF3E0039B00E /* OPFacebookPhotosDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFacebookPhotosDelegate.h; sourceTree = "<group>"; };
+		0F44BADA173DCF3E0039B00E /* OPFacebookPhotoServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFacebookPhotoServiceDelegate.h; sourceTree = "<group>"; };
 		0F44BADB173DD1EA0039B00E /* OPFacebookAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFacebookAlbum.h; sourceTree = "<group>"; };
 		0F44BADC173DD1EA0039B00E /* OPFacebookAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFacebookAlbum.m; sourceTree = "<group>"; };
 		0F44BAF1173DD3420039B00E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -495,7 +495,7 @@
 			children = (
 				0F44BAB4173DC56C0039B00E /* OPFacebookPhotoService.h */,
 				0F44BAB5173DC56C0039B00E /* OPFacebookPhotoService.m */,
-				0F44BADA173DCF3E0039B00E /* OPFacebookPhotosDelegate.h */,
+				0F44BADA173DCF3E0039B00E /* OPFacebookPhotoServiceDelegate.h */,
 				0F44BADB173DD1EA0039B00E /* OPFacebookAlbum.h */,
 				0F44BADC173DD1EA0039B00E /* OPFacebookAlbum.m */,
 				0F44BB44173DE17B0039B00E /* OPFacebookPhoto.h */,

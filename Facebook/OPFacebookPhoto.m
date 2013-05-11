@@ -10,4 +10,16 @@
 
 @implementation OPFacebookPhoto
 
+-(id)initWithPhotoId:(NSUInteger)photoId name:(NSString *)photoName album:(OPFacebookAlbum *)album
+{
+    self = [super init];
+    if (self)
+    {
+        _photoId = photoId;
+        _name = photoName;
+        _album = album;
+    }
+    return self;
+}
+
 @end
