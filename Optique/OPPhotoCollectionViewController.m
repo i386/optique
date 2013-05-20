@@ -43,6 +43,11 @@
     return _collection;
 }
 
+-(NSWindow *)window
+{
+    return self.view.window;
+}
+
 - (IBAction)deletePhoto:(id)sender
 {
     NSMenuItem *item = sender;
