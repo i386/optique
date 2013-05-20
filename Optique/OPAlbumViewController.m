@@ -63,6 +63,11 @@
     return _albumItemContextMenu;
 }
 
+-(NSWindow *)window
+{
+    return self.view.window;
+}
+
 -(void)showView
 {
     [_gridView reloadData];

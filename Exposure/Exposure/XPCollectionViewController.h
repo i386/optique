@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XPController.h"
 
-@protocol XPCollectionViewController <NSObject>
+@protocol XPCollectionViewController <NSObject, XPController>
 
 -(NSMenu*)contextMenu;
 
