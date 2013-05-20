@@ -37,8 +37,6 @@
 		0F44BAD9173DCA6D0039B00E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F44BAD7173DCA620039B00E /* Accounts.framework */; };
 		0F44BADD173DD1EA0039B00E /* OPFacebookAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BADC173DD1EA0039B00E /* OPFacebookAlbum.m */; };
 		0F44BB46173DE17B0039B00E /* OPFacebookPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BB45173DE17B0039B00E /* OPFacebookPhoto.m */; };
-		0F44BB4B173DE5BD0039B00E /* OPFacebookAlbumUploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BB49173DE5BD0039B00E /* OPFacebookAlbumUploadController.m */; };
-		0F44BB4C173DE5BD0039B00E /* OPFacebookAlbumUploadController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F44BB4A173DE5BD0039B00E /* OPFacebookAlbumUploadController.xib */; };
 		0F44BB4E173E011E0039B00E /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
 		0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F489933170BFFD60044ED0A /* OPImagePreviewService.m */; };
 		0F489937170C00BA0044ED0A /* loading-preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F489935170C00BA0044ED0A /* loading-preview.png */; };
@@ -79,7 +77,6 @@
 		0FA706CC171911F400864CED /* empty-album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706CA171911F400864CED /* empty-album@2x.png */; };
 		0FB384CB17050B3200DEB770 /* OPAlbumScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */; };
 		0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */; };
-		0FC678D2173E39E60088DA9D /* OPAccountNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC678D1173E39E60088DA9D /* OPAccountNameTransformer.m */; };
 		0FC8A7A9170FD6E300650D7C /* OPImageEffectItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7A8170FD6E300650D7C /* OPImageEffectItemView.m */; };
 		0FC8A7AC170FD76800650D7C /* OPImageEffectItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7AB170FD76800650D7C /* OPImageEffectItem.m */; };
 		0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */; };
@@ -243,9 +240,6 @@
 		0F44BAF1173DD3420039B00E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0F44BB44173DE17B0039B00E /* OPFacebookPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFacebookPhoto.h; sourceTree = "<group>"; };
 		0F44BB45173DE17B0039B00E /* OPFacebookPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFacebookPhoto.m; sourceTree = "<group>"; };
-		0F44BB48173DE5BD0039B00E /* OPFacebookAlbumUploadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFacebookAlbumUploadController.h; sourceTree = "<group>"; };
-		0F44BB49173DE5BD0039B00E /* OPFacebookAlbumUploadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFacebookAlbumUploadController.m; sourceTree = "<group>"; };
-		0F44BB4A173DE5BD0039B00E /* OPFacebookAlbumUploadController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPFacebookAlbumUploadController.xib; sourceTree = "<group>"; };
 		0F489932170BFFD60044ED0A /* OPImagePreviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImagePreviewService.h; sourceTree = "<group>"; };
 		0F489933170BFFD60044ED0A /* OPImagePreviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImagePreviewService.m; sourceTree = "<group>"; };
 		0F489935170C00BA0044ED0A /* loading-preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading-preview.png"; sourceTree = "<group>"; };
@@ -309,8 +303,6 @@
 		0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAlbumScanner.m; sourceTree = "<group>"; };
 		0FB94DD01735E31400065536 /* NSNotificationCenter+Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Async.h"; sourceTree = "<group>"; };
 		0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Async.m"; sourceTree = "<group>"; };
-		0FC678D0173E39E60088DA9D /* OPAccountNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAccountNameTransformer.h; sourceTree = "<group>"; };
-		0FC678D1173E39E60088DA9D /* OPAccountNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAccountNameTransformer.m; sourceTree = "<group>"; };
 		0FC8A7A7170FD6E300650D7C /* OPImageEffectItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageEffectItemView.h; sourceTree = "<group>"; };
 		0FC8A7A8170FD6E300650D7C /* OPImageEffectItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageEffectItemView.m; sourceTree = "<group>"; };
 		0FC8A7AA170FD76800650D7C /* OPImageEffectItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageEffectItem.h; sourceTree = "<group>"; };
@@ -511,18 +503,6 @@
 				0F44BB45173DE17B0039B00E /* OPFacebookPhoto.m */,
 			);
 			name = "Photo API";
-			sourceTree = "<group>";
-		};
-		0F44BB4D173DE5C20039B00E /* Album uploader */ = {
-			isa = PBXGroup;
-			children = (
-				0F44BB48173DE5BD0039B00E /* OPFacebookAlbumUploadController.h */,
-				0F44BB49173DE5BD0039B00E /* OPFacebookAlbumUploadController.m */,
-				0F44BB4A173DE5BD0039B00E /* OPFacebookAlbumUploadController.xib */,
-				0FC678D0173E39E60088DA9D /* OPAccountNameTransformer.h */,
-				0FC678D1173E39E60088DA9D /* OPAccountNameTransformer.m */,
-			);
-			name = "Album uploader";
 			sourceTree = "<group>";
 		};
 		0F6AF879172A3B130029724A /* Camera capture */ = {
@@ -756,7 +736,6 @@
 				0FCA4D661738A2CE007DC9EF /* OPFacebookPlugin.h */,
 				0FCA4D671738A2CE007DC9EF /* OPFacebookPlugin.m */,
 				0F44BB47173DE1800039B00E /* Photo API */,
-				0F44BB4D173DE5C20039B00E /* Album uploader */,
 			);
 			path = Facebook;
 			sourceTree = "<group>";
@@ -1128,7 +1107,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FCA4D5C1738A273007DC9EF /* InfoPlist.strings in Resources */,
-				0F44BB4C173DE5BD0039B00E /* OPFacebookAlbumUploadController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1237,8 +1215,6 @@
 				0F44BAB6173DC56C0039B00E /* OPFacebookPhotoService.m in Sources */,
 				0F44BADD173DD1EA0039B00E /* OPFacebookAlbum.m in Sources */,
 				0F44BB46173DE17B0039B00E /* OPFacebookPhoto.m in Sources */,
-				0F44BB4B173DE5BD0039B00E /* OPFacebookAlbumUploadController.m in Sources */,
-				0FC678D2173E39E60088DA9D /* OPAccountNameTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
