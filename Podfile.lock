@@ -5,7 +5,7 @@ PODS:
   - CNGridView (1.1.4)
   - HockeySDK (1.0.3)
   - INAppStoreWindow (HEAD based on 1.2)
-  - ISO8601DateFormatter (0.6)
+  - KBButton (0.0.1)
   - NSHash (1.0.1)
 
 DEPENDENCIES:
@@ -14,7 +14,7 @@ DEPENDENCIES:
   - CNGridView (from `http://github.com/i386/CNGridView.git`)
   - HockeySDK (from `https://raw.github.com/bitstadium/HockeySDK-Mac/develop/HockeySDK.podspec`)
   - INAppStoreWindow (HEAD)
-  - ISO8601DateFormatter (~> 0.6)
+  - KBButton (from `https://github.com/i386/KBButton.git`)
   - NSHash (~> 1.0.1)
 
 EXTERNAL SOURCES:
@@ -22,6 +22,8 @@ EXTERNAL SOURCES:
     :git: http://github.com/i386/CNGridView.git
   HockeySDK:
     :podspec: https://raw.github.com/bitstadium/HockeySDK-Mac/develop/HockeySDK.podspec
+  KBButton:
+    :git: https://github.com/i386/KBButton.git
 
 SPEC CHECKSUMS:
   BlocksKit: 7396526b0816734103f6133fbb1a520c8b04e80c
@@ -29,7 +31,7 @@ SPEC CHECKSUMS:
   CNGridView: aa412e7862c5cdd33e30fed9ecb4ebd36f8887fb
   HockeySDK: 3bf5d65b05a3b3590bff8f9ee1ac2e12b1565edf
   INAppStoreWindow: d00327caee47d951043169df9aaab952389defcb
-  ISO8601DateFormatter: dc05a2481edf49668d85d3ff8c466c32eb544780
+  KBButton: 627facd1b7e7f484755107e62d2d85b20f429e6e
   NSHash: 08e81b655e7d2e3d9b872c192e52f77b76694918
 
 COCOAPODS: 0.19.1

@@ -43,15 +43,9 @@
 {
     [self.window setTitle:title];
     [_viewLabel setStringValue:title];
-    
-    if (self.window.isFullscreen)
-    {
-        [_viewLabel.animator setHidden:NO];
-    }
-    else
-    {
-        [_viewLabel.animator setHidden:YES];
-    }
+}
+
+- (IBAction)filterSegmentChanged:(id)sender {
 }
 
 @end

@@ -34,35 +34,10 @@
 -(void)setup
 {
     [self setHideTitleBarInFullScreen:NO];
-    [self setTitleTextColor:[NSColor whiteColor]];
-    [self setInactiveTitleTextColor:[NSColor controlColor]];
-    [self setShowsTitle:YES];
-    [self setTitleBarHeight:25];
-    [self setCenterTrafficLightButtons:NO];
-    [self setCenterFullScreenButton:NO];
-    
-    OPWindow * __weak weakSelf = self;
-    
-    [self setTitleBarDrawingBlock:^(BOOL drawsAsMainWindow, CGRect drawingRect, CGPathRef clippingPath)
-    {
-        NSImage *bgImage = [NSImage imageNamed:@"window-top"];
-        
-        CGContextRef context = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
-        CGContextSaveGState(context);
-        
-        CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)[bgImage TIFFRepresentation], NULL);
-        CGImageRef maskRef =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
-        
-        //Do not clip if full screen
-        if (!weakSelf.isFullscreen)
-        {
-            CGContextClipToMask(context, CGRectMake(0, 0, drawingRect.size.width, drawingRect.size.height), maskRef);
-            CGContextAddPath(context, clippingPath);
-            CGContextClip(context);
-        }
-        CGContextDrawTiledImage(context, NSMakeRect(0.0f, 0.0f, bgImage.size.width, bgImage.size.height), maskRef);
-        CGContextRestoreGState(context);
-    }];
+    [self setShowsTitle:NO];
+    [self setTitleBarHeight:36];
+    [self setCenterTrafficLightButtons:YES];
+    [self setCenterFullScreenButton:YES];
 }
 
 @end

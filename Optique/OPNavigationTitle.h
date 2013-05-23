@@ -12,9 +12,13 @@
 
 @interface OPNavigationTitle : NSView {
     IBOutlet NSTextField *_viewLabel;
+    IBOutlet NSButton *shareButton;
+    IBOutlet NSSegmentedControl *filterSegmentedControl;
     IBOutlet OPNavigationController *_navigationController;
 }
 
 -(void)updateTitle:(NSString*)label;
+
+- (IBAction)filterSegmentChanged:(id)sender;
 
 @end
