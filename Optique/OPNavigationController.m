@@ -12,9 +12,11 @@
 #import "OPNavigationViewController.h"
 #import "OPNavigationTitle.h"
 
+NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerViewDidChange";
+
 typedef enum OPNavigationControllerAnimationType : NSInteger OPNavigationControllerAnimationType;
 enum OPNavigationControllerAnimationType : NSInteger {
-    OPNavigationControllerAnimationTypeFirst = 0,
+    OPNavigationControllerAnimationTypeNone = 0,
     OPNavigationControllerAnimationTypePopped = 1,
     OPNavigationControllerAnimationTypePushed = 2
 };
@@ -57,12 +59,12 @@ enum OPNavigationControllerAnimationType : NSInteger {
 
 -(NSArray *)popToRootViewController
 {
-    if (_displayStack.count > 1)
-    {
-        [_displayStack removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, _displayStack.count-1)]];
-        [self setVisibleViewController:[_displayStack lastObject] animation:OPNavigationControllerAnimationTypePopped];
-    }
-    return [NSArray arrayWithArray:_displayStack];
+    return [self popToRootViewControllerWithAnimation:OPNavigationControllerAnimationTypePopped];
+}
+
+-(NSArray *)popToRootViewControllerWithNoAnimation
+{
+    return [self popToRootViewControllerWithAnimation:OPNavigationControllerAnimationTypeNone];
 }
 
 -(NSArray*)popToPreviousViewController
@@ -81,9 +83,19 @@ enum OPNavigationControllerAnimationType : NSInteger {
     [_navigationTitle updateTitle:_visibleViewController.viewTitle];
 }
 
+-(NSArray *)popToRootViewControllerWithAnimation:(OPNavigationControllerAnimationType)animationType
+{
+    if (_displayStack.count > 1)
+    {
+        [_displayStack removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, _displayStack.count-1)]];
+        [self setVisibleViewController:[_displayStack lastObject] animation:animationType];
+    }
+    return [NSArray arrayWithArray:_displayStack];
+}
+
 -(void)setVisibleViewController:(OPNavigationViewController *)visibleViewController animation:(OPNavigationControllerAnimationType)animationType
 {
-    if (animationType != OPNavigationControllerAnimationTypeFirst)
+    if (animationType != OPNavigationControllerAnimationTypeNone)
     {
         CATransition *transition = [CATransition animation];
         [transition setType:kCATransitionPush];
@@ -100,8 +112,11 @@ enum OPNavigationControllerAnimationType : NSInteger {
         }
         
         [transition setDuration:0.3];
-        
-        [_displayView setAnimations:[NSDictionary dictionaryWithObject:transition forKey:@"subviews"]];
+        [_displayView setAnimations:@{@"subviews": transition}];
+    }
+    else
+    {
+        [_displayView setAnimations:nil];
     }
 
     [visibleViewController.view setFrame:_displayView.frame];
@@ -113,11 +128,13 @@ enum OPNavigationControllerAnimationType : NSInteger {
     
     [self updateNavigation];
     [_visibleViewController showView];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationControllerViewDidChange object:self userInfo:@{@"controller": visibleViewController}];
 }
 
 -(void)awakeFromNib
 {
-    [self setVisibleViewController:_rootViewController animation:OPNavigationControllerAnimationTypeFirst];
+    [self setVisibleViewController:_rootViewController animation:OPNavigationControllerAnimationTypeNone];
     [self updateNavigation];
     [_displayView addSubview:_rootViewController.view];
 }

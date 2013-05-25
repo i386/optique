@@ -13,4 +13,6 @@
 
 -(NSMenu*)contextMenu;
 
+-(NSIndexSet*)selectedItems;
+
 @end

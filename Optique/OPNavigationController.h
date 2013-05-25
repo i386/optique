@@ -10,8 +10,9 @@
 #import "OPNavigationControllerDelegate.h"
 
 @class OPNavigationTitle;
-
 @class OPNavigationViewController;
+
+extern NSString *const OPNavigationControllerViewDidChange;
 
 @interface OPNavigationController : NSViewController
 
@@ -30,6 +31,9 @@
 
 /** jump back to the root view **/
 - (NSArray *)popToRootViewController;
+
+/** jump back to the root view with no animation **/
+- (NSArray *)popToRootViewControllerWithNoAnimation;
 
 /** update the state of the navigation for the visible view controller **/
 - (void)updateNavigation;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol XPPhotoController <NSObject, XPController>
+@protocol XPPhotoController <NSObject, XPController, XPSharingService>
 
 -(NSMenu*)contextMenu;
 

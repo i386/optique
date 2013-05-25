@@ -13,8 +13,9 @@
 #import "OPPhotoGridView.h"
 #import "OPImagePreviewService.h"
 
-@interface OPPhotoCollectionViewController ()
-
+@interface OPPhotoCollectionViewController () {
+    NSMutableArray *_sharingMenuItems;
+}
 @end
 
 @implementation OPPhotoCollectionViewController
@@ -26,6 +27,7 @@
     {
         _collection = collection;
         _photoManager = photoManager;
+        _sharingMenuItems = [NSMutableArray array];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
     }
@@ -46,6 +48,16 @@
 -(NSWindow *)window
 {
     return self.view.window;
+}
+
+-(NSIndexSet *)selectedItems
+{
+    return _gridView.selectedIndexes;
+}
+
+-(NSMutableArray *)sharingMenuItems
+{
+    return _sharingMenuItems;
 }
 
 - (IBAction)deletePhoto:(id)sender

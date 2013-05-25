@@ -11,6 +11,7 @@
 
 @interface OPPhotoController ()
 @property (weak) OPPhotoViewController *photoViewController;
+@property (strong) NSMutableArray *sharingMenuItems;
 @end
 
 @implementation OPPhotoController

@@ -10,7 +10,14 @@
 
 #import "OPNavigationController.h"
 
-@interface OPNavigationTitle : NSView {
+extern NSString *const OPNavigationTitleFilterDidChange;
+
+typedef enum {
+    OPNavigationTitleFilterAlbums = 0,
+    OPNavigationTitleFilterDevices = 1,
+} OPNavigationTitleFilter;
+
+@interface OPNavigationTitle : NSView<NSMenuDelegate> {
     IBOutlet NSTextField *_viewLabel;
     IBOutlet NSButton *shareButton;
     IBOutlet NSSegmentedControl *filterSegmentedControl;
@@ -19,6 +26,6 @@
 
 -(void)updateTitle:(NSString*)label;
 
-- (IBAction)filterSegmentChanged:(id)sender;
+-(IBAction)filterSegmentChanged:(id)sender;
 
 @end

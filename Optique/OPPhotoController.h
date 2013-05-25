@@ -10,7 +10,7 @@
 
 @class OPPhotoViewController;
 
-@interface OPPhotoController : NSViewController <NSMenuDelegate, XPPhotoController>
+@interface OPPhotoController : NSViewController <NSMenuDelegate, XPPhotoController, XPSharingService>
 
 @property (strong) IBOutlet NSImageView *imageView;
 @property (strong) IBOutlet NSMenu *contextMenu;

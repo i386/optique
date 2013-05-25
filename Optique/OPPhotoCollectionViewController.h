@@ -13,6 +13,7 @@
 @interface OPPhotoCollectionViewController : OPNavigationViewController <CNGridViewDataSource, CNGridViewDelegate, NSMenuDelegate, XPPhotoCollectionViewController>
 
 @property (strong) IBOutlet NSMenu *contextMenu;
+@property (strong) IBOutlet NSMenu *sharingMenu;
 
 @property (strong, readonly) id<XPPhotoCollection> collection;
 @property (strong, readonly) XPPhotoManager *photoManager;

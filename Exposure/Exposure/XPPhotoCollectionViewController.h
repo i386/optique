@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "XPController.h"
+#import "XPSharingService.h"
 
-@protocol XPPhotoCollectionViewController <NSObject, XPController>
+@protocol XPPhotoCollectionViewController <NSObject, XPController, XPSharingService>
 
 -(NSMenu*)contextMenu;
 
 -(id<XPPhotoCollection>)visibleCollection;
+
+-(NSIndexSet*)selectedItems;
 
 @end

@@ -15,13 +15,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"52814104cfd270328887432ee78c4dd1" companyName:@"Whimsy" crashReportManagerDelegate:self];
-    [[BITHockeyManager sharedHockeyManager] setExceptionInterceptionEnabled:YES];
-    [[BITHockeyManager sharedHockeyManager] startManager];
-}
-
--(void)showMainApplicationWindow
-{
+//    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"52814104cfd270328887432ee78c4dd1" companyName:@"Whimsy" crashReportManagerDelegate:self];
+//    [[BITHockeyManager sharedHockeyManager] setExceptionInterceptionEnabled:YES];
+//    [[BITHockeyManager sharedHockeyManager] startManager];
+    
     NSURL *url = [[_userDefaultsController defaults] URLForKey:@"url"];
     if (!url)
     {
@@ -32,6 +29,19 @@
     
     [self picturesAtDirectory:url];
 }
+
+//-(void)showMainApplicationWindow
+//{
+//    NSURL *url = [[_userDefaultsController defaults] URLForKey:@"url"];
+//    if (!url)
+//    {
+//        url = [[[NSFileManager defaultManager] URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
+//    }
+//    
+//    _cameraService = [[OPCameraService alloc] init];
+//    
+//    [self picturesAtDirectory:url];
+//}
 
 - (IBAction)openDirectory:(id)sender
 {
