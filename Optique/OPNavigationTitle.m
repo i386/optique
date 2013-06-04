@@ -21,11 +21,7 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 {
     self = [super initWithFrame:frameRect];
     if (self)
-    {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willExitFullScreen:) name:NSWindowWillExitFullScreenNotification object:self.window];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterFullScreen:) name:NSWindowDidEnterFullScreenNotification object:self.window];
-        
+    {        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:OPCameraServiceDidAddCamera object:nil];
     }
     return self;
@@ -47,16 +43,6 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
     shareButton.action = @selector(showSharingMenu:);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigationControllerChanged:) name:OPNavigationControllerViewDidChange object:_navigationController];
-}
-
--(void)willExitFullScreen:(NSNotification*)notification
-{
-    [_viewLabel.animator setHidden:YES];
-}
-
--(void)didEnterFullScreen:(NSNotification*)notification
-{
-    [_viewLabel.animator setHidden:NO];
 }
 
 -(void)cameraAdded:(NSNotification*)notification
