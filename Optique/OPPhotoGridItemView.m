@@ -11,7 +11,7 @@
 #import "OPPhotoGridItemView.h"
 #import "NSView+OptiqueBackground.h"
 #import "NSGraphicsContext+GraphicsContext.h"
-#import "OPTextLayer.h"
+#import "NSColor+Optique.h"
 
 @implementation OPPhotoGridItemView
 
@@ -93,14 +93,14 @@
                                      NSWidth(backgroundFrameRect) - 6,
                                      14);
         
-        OPTextLayer *label = [[OPTextLayer alloc] init];
+        CATextLayer *label = [[CATextLayer alloc] init];
         [label setFont:@"Helvetica Neue Regular"];
         [label setFontSize:12];
         [label setFrame:textRect];
         [label setString:self.itemTitle];
         [label setAlignmentMode:kCAAlignmentCenter];
         [label setForegroundColor:[[NSColor blackColor] CGColor]];
-        [label setBackgroundColor:[[NSColor controlHighlightColor] CGColor]];
+        [label setBackgroundColor:[[NSColor optiqueBackgroundColor] CGColor]];
         
         for (CALayer *layer in self.layer.sublayers)
         {

@@ -7,12 +7,13 @@
 //
 
 #import "NSView+OptiqueBackground.h"
+#import "NSColor+Optique.h"
 
 @implementation NSView (OptiqueBackground)
 
 -(void)drawBackground
 {
-    [[NSColor controlHighlightColor] set];
+    [[NSColor optiqueBackgroundColor] set];
     NSRectFill(self.bounds);
 }
 
@@ -24,7 +25,7 @@
 
 -(void)drawDarkBackground
 {
-    [[NSColor colorWithCalibratedRed:0.17 green:0.17 blue:0.17 alpha:1.00] set];
+    [[NSColor optiqueDarkBackgroundColor] set];
     NSRectFill(self.bounds);
 }
 
