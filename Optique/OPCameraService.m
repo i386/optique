@@ -12,9 +12,9 @@
 NSString *const OPCameraServiceDidAddCamera = @"OPCameraServiceDidAddCamera";
 NSString *const OPCameraServiceDidRemoveCamera = @"OPCameraServiceDidRemoveCamera";
 
-@interface OPCameraService() {
-    NSMutableDictionary *_devices;
-}
+@interface OPCameraService()
+
+@property (strong) NSMutableDictionary *devices;
 
 @end
 
