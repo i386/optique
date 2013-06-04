@@ -36,7 +36,7 @@
     
     item.image = service.image;
     
-    [[controller contextMenu] addItem:item];
+    [[controller sharingMenuItems] addObject:item];
 }
 
 -(void)photoManager:(XPPhotoManager *)photoManager photoController:(id<XPPhotoController>)controller
@@ -54,7 +54,7 @@
     
     item.image = service.image;
     
-    [[controller contextMenu] addItem:item];
+    [[controller sharingMenuItems] addObject:item];
 }
 
 @end
