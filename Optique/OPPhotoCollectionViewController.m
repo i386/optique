@@ -168,14 +168,17 @@
     }];
 }
 
+-(void)awakeFromNib
+{
+    [OPExposureService photoManager:_photoManager photoCollectionViewController:self];
+}
+
 -(void)loadView
 {
     [super loadView];
     [_gridView setAllowsMultipleSelection:YES];
     _contextMenu.delegate = self;
     [[_gridView enclosingScrollView] setDrawsBackground:NO];
-    
-    [OPExposureService photoManager:_photoManager photoCollectionViewController:self];
 }
 
 -(void)showView

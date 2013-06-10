@@ -52,6 +52,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFinishedLoading:) name:OPAlbumScannerDidFinishScanNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterChanged:) name:OPNavigationTitleFilterDidChange object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:OPCameraServiceDidAddCamera object:nil];
+    
+    [OPExposureService photoManager:_photoManager collectionViewController:self];
 }
 
 -(void)dealloc
@@ -70,8 +72,6 @@
     [super loadView];
     [_gridView setAllowsMultipleSelection:YES];
     [_gridView.enclosingScrollView setDrawsBackground:NO];
-    
-    [OPExposureService photoManager:_photoManager collectionViewController:self];
 }
 
 -(NSMenu *)contextMenu

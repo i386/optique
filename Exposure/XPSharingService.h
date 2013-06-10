@@ -10,6 +10,9 @@
 
 @protocol XPSharingService <NSObject>
 
+/**
+ NSMenuItems that link to the sharing action
+ */
 -(NSMutableArray*)sharingMenuItems;
 
 @end

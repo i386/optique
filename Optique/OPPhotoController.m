@@ -40,9 +40,8 @@
     [_photoViewController deletePhoto];
 }
 
--(void)loadView
+-(void)awakeFromNib
 {
-    [super loadView];
     [OPExposureService photoManager:_photoViewController.collection.photoManager photoController:self];
 }
 

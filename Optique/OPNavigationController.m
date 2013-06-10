@@ -129,7 +129,7 @@ enum OPNavigationControllerAnimationType : NSInteger {
     [self updateNavigation];
     [_visibleViewController showView];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationControllerViewDidChange object:self userInfo:@{@"controller": visibleViewController}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationControllerViewDidChange object:self userInfo:@{@"controller": _visibleViewController}];
 }
 
 -(void)awakeFromNib

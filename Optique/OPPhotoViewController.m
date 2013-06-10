@@ -14,9 +14,11 @@
 #import "NSImage+Transform.h"
 #import "OPPhotoController.h"
 
-@interface OPPhotoViewController() {
-    NSInteger _index;
-}
+@interface OPPhotoViewController()
+
+@property (assign) NSInteger index;
+@property (strong) NSMutableArray *sharingMenuItems;
+
 @end
 
 @implementation OPPhotoViewController
