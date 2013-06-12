@@ -335,6 +335,7 @@
         item.itemImage = [NSImage imageNamed:@"empty-album"];
     }
     item.itemTitle = album.title;
+    item.toolTip = album.title;
     item.gridView = (OPPhotoGridView*)gridView;
     
     return item;

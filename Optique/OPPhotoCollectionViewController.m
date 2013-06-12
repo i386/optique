@@ -153,6 +153,7 @@
         }];
         
         item.itemTitle = photo.title;
+        item.toolTip = photo.title;
     }
     
     item.gridView = (OPPhotoGridView*)gridView;
