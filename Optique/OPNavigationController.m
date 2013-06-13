@@ -92,7 +92,7 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
     {
         CATransition *transition = [CATransition animation];
         [transition setType:kCATransitionFade];
-        [transition setDuration:0.3];
+        [transition setDuration:0.4];
         [_displayView setAnimations:@{@"subviews": transition}];
     }
     else
