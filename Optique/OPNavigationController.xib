@@ -28,33 +28,50 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="85">
-                    <rect key="frame" x="867" y="7" width="36" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSImageNameShareTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="86">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <outlet property="menu" destination="88" id="92"/>
-                    </connections>
-                </button>
                 <button wantsLayer="YES" appearanceType="lightContent" id="NJN-0o-wj1">
-                    <rect key="frame" x="405" y="7" width="26" height="20"/>
+                    <rect key="frame" x="70" y="7" width="26" height="20"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="back" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="Mb0-It-snY">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
+                <button appearanceType="lightContent" id="Skm-t1-Hjr">
+                    <rect key="frame" x="884" y="6" width="30" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="218-trash2" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="VfS-fS-F0q">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button appearanceType="lightContent" id="yN0-ot-I3A">
+                    <rect key="frame" x="813" y="6" width="30" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="86-camera" imagePosition="only" alignment="center" alternateImage="86-camera-alt" state="on" imageScaling="proportionallyDown" inset="2" id="XGy-bm-9la">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button appearanceType="lightContent" id="AO8-35-Bks">
+                    <rect key="frame" x="851" y="6" width="30" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="212-action2" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="5Qi-Ct-LwC">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
             </subviews>
             <connections>
+                <action selector="cameraButtonPressed:" destination="yN0-ot-I3A" id="KdE-F0-zve"/>
+                <action selector="cameraButtonPressed:" destination="AO8-35-Bks" id="xeJ-nT-jxa"/>
+                <action selector="deleteButtonPressed:" destination="Skm-t1-Hjr" id="cGF-pg-zsY"/>
                 <action selector="goBack:" destination="NJN-0o-wj1" id="Wd5-xs-tlL"/>
                 <action selector="goBack:" destination="40" id="opY-Zs-Eu7"/>
                 <outlet property="_navigationController" destination="-2" id="32"/>
                 <outlet property="_viewLabel" destination="40" id="42"/>
                 <outlet property="backButton" destination="NJN-0o-wj1" id="NjQ-33-FVW"/>
-                <outlet property="shareButton" destination="85" id="87"/>
+                <outlet property="cameraButton" destination="yN0-ot-I3A" id="zcb-Yx-tPy"/>
+                <outlet property="shareButton" destination="AO8-35-Bks" id="1wu-M6-UjP"/>
             </connections>
         </customView>
         <customView wantsLayer="YES" id="1">
@@ -70,29 +87,10 @@
         <menu id="88"/>
     </objects>
     <resources>
-        <image name="NSImageNameShareTemplate" width="128" height="128"/>
-        <image name="back" width="553" height="550"/>
+        <image name="212-action2" width="23" height="18"/>
+        <image name="218-trash2" width="16" height="21"/>
+        <image name="86-camera" width="24" height="18"/>
+        <image name="86-camera-alt" width="24" height="18"/>
+        <image name="back" width="327" height="323"/>
     </resources>
-    <classes>
-        <class className="OPNavigationController" superclassName="NSViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPNavigationController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-                <relationship kind="outlet" name="displayView" candidateClass="NSView"/>
-                <relationship kind="outlet" name="navigationTitle" candidateClass="OPNavigationTitle"/>
-            </relationships>
-        </class>
-        <class className="OPNavigationTitle" superclassName="NSView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPNavigationTitle.h"/>
-            <relationships>
-                <relationship kind="action" name="filterSegmentChanged:"/>
-                <relationship kind="action" name="goBack:"/>
-                <relationship kind="outlet" name="_navigationController" candidateClass="OPNavigationController"/>
-                <relationship kind="outlet" name="_viewLabel" candidateClass="NSTextField"/>
-                <relationship kind="outlet" name="backButton" candidateClass="NSButton"/>
-                <relationship kind="outlet" name="filterSegmentedControl" candidateClass="NSSegmentedControl"/>
-                <relationship kind="outlet" name="shareButton" candidateClass="NSButton"/>
-            </relationships>
-        </class>
-    </classes>
 </document>

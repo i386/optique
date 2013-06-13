@@ -41,7 +41,6 @@
     
     //Setup page controller
     [_pageController setArrangedObjects:_collection.allPhotos];
-    [_pageController setTransitionStyle:NSPageControllerTransitionStyleHorizontalStrip];
     [_pageController setSelectedIndex:_index];
     
     //Subscribe to window & view events

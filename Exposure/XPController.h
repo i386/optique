@@ -12,4 +12,6 @@
 
 -(NSWindow*)window;
 
+-(void)deleteSelected;
+
 @end

@@ -149,16 +149,26 @@
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
 }
 
+-(void)deleteSelected
+{
+    NSIndexSet *indexes = [_gridView selectedIndexes];
+    [self deleteAlbumsAtIndexes:indexes];
+}
+
 - (IBAction)deleteAlbum:(NSMenuItem*)sender
 {
-    NSIndexSet *index = (NSIndexSet*)sender.representedObject;
-    
-    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithPhotoAlbums:[_photoManager allCollectionsForIndexSet:index] photoManager:_photoManager];
+    NSIndexSet *indexes = (NSIndexSet*)sender.representedObject;
+    [self deleteAlbumsAtIndexes:indexes];
+}
+
+-(void)deleteAlbumsAtIndexes:(NSIndexSet*)indexes
+{
+    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithPhotoAlbums:[_photoManager allCollectionsForIndexSet:indexes] photoManager:_photoManager];
     
     NSString *alertMessage;
-    if (index.count > 1)
+    if (indexes.count > 1)
     {
-        alertMessage = [NSString stringWithFormat:@"Do you want to delete the %lu selected albums?", index.count];
+        alertMessage = [NSString stringWithFormat:@"Do you want to delete the %lu selected albums?", indexes.count];
     }
     else
     {

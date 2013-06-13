@@ -17,16 +17,6 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 
 @implementation OPNavigationTitle
 
--(id)initWithFrame:(NSRect)frameRect
-{
-    self = [super initWithFrame:frameRect];
-    if (self)
-    {        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:OPCameraServiceDidAddCamera object:nil];
-    }
-    return self;
-}
-
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowWillExitFullScreenNotification object:self.window];
@@ -44,20 +34,28 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
     
     [self setPostsBoundsChangedNotifications:YES];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:OPCameraServiceDidAddCamera object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigationControllerChanged:) name:OPNavigationControllerViewDidChange object:_navigationController];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(frameChanged:) name:NSViewFrameDidChangeNotification object:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidEnterFullScreen:) name:NSWindowDidEnterFullScreenNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillExitFullScreen:) name:NSWindowWillExitFullScreenNotification object:nil];
+}
+
+-(void)windowDidEnterFullScreen:(NSNotification*)notification
+{
+    _backButton.animator.frame = NSMakeRect(5, _backButton.frame.origin.y, _backButton.frame.size.width, _backButton.frame.size.height);
+}
+
+-(void)windowWillExitFullScreen:(NSNotification*)notification
+{
+    _backButton.animator.frame = NSMakeRect(70, _backButton.frame.origin.y, _backButton.frame.size.width, _backButton.frame.size.height);
 }
 
 -(void)cameraAdded:(NSNotification*)notification
 {
-    [filterSegmentedControl setSelectedSegment:OPNavigationTitleFilterDevices];
-}
-
--(void)frameChanged:(NSNotification*)notification
-{
-    NSLog(@"Bounds changed");
-    
+    [_cameraButton setState:NSOnState];
 }
 
 -(void)navigationControllerChanged:(NSNotification*)notification
@@ -85,14 +83,6 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 {
     [self.window setTitle:title];
     [_viewLabel.animator setStringValue:title];
-    
-    
-    //Refloat the back button when the title updates
-    NSRect boundsOfText = [_viewLabel.attributedStringValue boundingRectWithSize:_viewLabel.frame.size options:NSStringDrawingUsesDeviceMetrics];
-    
-    float xPositionOfButton = ((_viewLabel.frame.size.width - boundsOfText.size.width) / 2) - _backButton.frame.size.width;
-    
-    _backButton.animator.frame = NSMakeRect(xPositionOfButton, _backButton.frame.origin.y, _backButton.frame.size.width, _backButton.frame.size.height);
 }
 
 - (IBAction)goBack:(id)sender
@@ -100,9 +90,20 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
     [_navigationController popToPreviousViewController];
 }
 
-- (IBAction)filterSegmentChanged:(NSSegmentedControl*)sender
+- (IBAction)cameraButtonPressed:(NSButton*)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationTitleFilterDidChange object:nil userInfo:@{@"segment": [NSNumber numberWithInteger:sender.selectedSegment]}];
+    int selected = sender.state ? NSOffState : NSOnState;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationTitleFilterDidChange object:nil userInfo:@{@"segment": [NSNumber numberWithInteger:selected]}];
+}
+
+- (IBAction)deleteButtonPressed:(id)sender
+{
+    if ([_navigationController.visibleViewController conformsToProtocol:@protocol(XPController)])
+    {
+        id<XPController> controller = (id<XPController>)_navigationController.visibleViewController;
+        [controller deleteSelected];
+    }
 }
 
 -(void)showSharingMenu:(NSButton*)sender

@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
 #import "OPNavigationController.h"
 
 extern NSString *const OPNavigationTitleFilterDidChange;
@@ -20,15 +19,16 @@ typedef enum {
 @interface OPNavigationTitle : NSView<NSMenuDelegate> {
     IBOutlet NSTextField *_viewLabel;
     IBOutlet NSButton *shareButton;
-    IBOutlet NSSegmentedControl *filterSegmentedControl;
     IBOutlet OPNavigationController *_navigationController;
 }
 
 @property (strong) IBOutlet NSButton *backButton;
+@property (strong) IBOutlet NSButton *cameraButton;
 
--(void)updateTitle:(NSString*)label;
--(IBAction)goBack:(id)sender;
+- (void)updateTitle:(NSString*)label;
 
--(IBAction)filterSegmentChanged:(id)sender;
+- (IBAction)goBack:(id)sender;
+- (IBAction)cameraButtonPressed:(id)sender;
+- (IBAction)deleteButtonPressed:(id)sender;
 
 @end

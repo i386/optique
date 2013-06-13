@@ -60,11 +60,14 @@
     return _sharingMenuItems;
 }
 
-- (IBAction)deletePhoto:(id)sender
+-(void)deleteSelected
 {
-    NSMenuItem *item = sender;
-    NSIndexSet *indexes = item.representedObject;
-    
+    NSIndexSet *indexes = _gridView.selectedIndexes;
+    [self deleteSelectedPhotosAtIndexes:indexes];
+}
+
+-(void)deleteSelectedPhotosAtIndexes:(NSIndexSet*)indexes
+{
     NSArray *photos = [_collection photosForIndexSet:indexes];
     
     NSString *message;
@@ -79,6 +82,12 @@
     }
     
     NSBeginAlertSheet(message, @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, (void*)CFBridgingRetain(photos), @"This operation can not be undone.");
+}
+
+- (IBAction)deletePhoto:(NSMenuItem*)sender
+{
+    NSIndexSet *indexes = sender.representedObject;
+    [self deleteSelectedPhotosAtIndexes:indexes];
 }
 
 - (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet

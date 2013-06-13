@@ -35,6 +35,11 @@
     return self.view.window;
 }
 
+-(void)deleteSelected
+{
+    [_photoViewController deletePhoto];
+}
+
 - (IBAction)deletePhoto:(id)sender
 {
     [_photoViewController deletePhoto];

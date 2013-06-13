@@ -14,7 +14,7 @@
 #import "OPCameraService.h"
 #import "OPMainWindowController.h"
 
-@interface OPAppDelegate : NSObject <NSApplicationDelegate, BITCrashReportManagerDelegate> {
+@interface OPAppDelegate : NSObject <NSApplicationDelegate> {
     OPAlbumScanner *_albumScaner;
     XPPhotoManager *_photoManager;
     OPMainWindowController *_mainWindowController;
