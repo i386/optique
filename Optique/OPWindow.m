@@ -45,7 +45,6 @@
          CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
          
          //Fill title
-         CGContextAddPath(context, clippingPath);
          [[NSColor optiqueTitlebarColor] setFill];
          CGContextAddPath(context, clippingPath);
          CGContextDrawPath(context, kCGPathFill);

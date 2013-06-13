@@ -50,6 +50,7 @@
             </subviews>
             <connections>
                 <action selector="goBack:" destination="NJN-0o-wj1" id="Wd5-xs-tlL"/>
+                <action selector="goBack:" destination="40" id="opY-Zs-Eu7"/>
                 <outlet property="_navigationController" destination="-2" id="32"/>
                 <outlet property="_viewLabel" destination="40" id="42"/>
                 <outlet property="backButton" destination="NJN-0o-wj1" id="NjQ-33-FVW"/>
@@ -72,4 +73,26 @@
         <image name="NSImageNameShareTemplate" width="128" height="128"/>
         <image name="back" width="553" height="550"/>
     </resources>
+    <classes>
+        <class className="OPNavigationController" superclassName="NSViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPNavigationController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+                <relationship kind="outlet" name="displayView" candidateClass="NSView"/>
+                <relationship kind="outlet" name="navigationTitle" candidateClass="OPNavigationTitle"/>
+            </relationships>
+        </class>
+        <class className="OPNavigationTitle" superclassName="NSView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPNavigationTitle.h"/>
+            <relationships>
+                <relationship kind="action" name="filterSegmentChanged:"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="outlet" name="_navigationController" candidateClass="OPNavigationController"/>
+                <relationship kind="outlet" name="_viewLabel" candidateClass="NSTextField"/>
+                <relationship kind="outlet" name="backButton" candidateClass="NSButton"/>
+                <relationship kind="outlet" name="filterSegmentedControl" candidateClass="NSSegmentedControl"/>
+                <relationship kind="outlet" name="shareButton" candidateClass="NSButton"/>
+            </relationships>
+        </class>
+    </classes>
 </document>
