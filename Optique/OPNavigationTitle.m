@@ -84,7 +84,7 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 -(void)updateTitle:(NSString *)title
 {
     [self.window setTitle:title];
-    [_viewLabel setStringValue:title];
+    [_viewLabel.animator setStringValue:title];
     
     
     //Refloat the back button when the title updates
@@ -92,7 +92,7 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
     
     float xPositionOfButton = ((_viewLabel.frame.size.width - boundsOfText.size.width) / 2) - _backButton.frame.size.width;
     
-    _backButton.frame = NSMakeRect(xPositionOfButton, _backButton.frame.origin.y, _backButton.frame.size.width, _backButton.frame.size.height);
+    _backButton.animator.frame = NSMakeRect(xPositionOfButton, _backButton.frame.origin.y, _backButton.frame.size.width, _backButton.frame.size.height);
 }
 
 - (IBAction)goBack:(id)sender
