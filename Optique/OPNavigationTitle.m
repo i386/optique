@@ -42,12 +42,22 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
     shareButton.target = self;
     shareButton.action = @selector(showSharingMenu:);
     
+    [self setPostsBoundsChangedNotifications:YES];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigationControllerChanged:) name:OPNavigationControllerViewDidChange object:_navigationController];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(frameChanged:) name:NSViewFrameDidChangeNotification object:self];
 }
 
 -(void)cameraAdded:(NSNotification*)notification
 {
     [filterSegmentedControl setSelectedSegment:OPNavigationTitleFilterDevices];
+}
+
+-(void)frameChanged:(NSNotification*)notification
+{
+    NSLog(@"Bounds changed");
+    
 }
 
 -(void)navigationControllerChanged:(NSNotification*)notification
@@ -75,6 +85,14 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 {
     [self.window setTitle:title];
     [_viewLabel setStringValue:title];
+    
+    
+    //Refloat the back button when the title updates
+    NSRect boundsOfText = [_viewLabel.attributedStringValue boundingRectWithSize:_viewLabel.frame.size options:NSStringDrawingUsesDeviceMetrics];
+    
+    float xPositionOfButton = ((_viewLabel.frame.size.width - boundsOfText.size.width) / 2) - _backButton.frame.size.width;
+    
+    _backButton.frame = NSMakeRect(xPositionOfButton, _backButton.frame.origin.y, _backButton.frame.size.width, _backButton.frame.size.height);
 }
 
 - (IBAction)goBack:(id)sender

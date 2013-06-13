@@ -70,28 +70,6 @@
     </objects>
     <resources>
         <image name="NSImageNameShareTemplate" width="128" height="128"/>
-        <image name="back" width="542" height="542"/>
+        <image name="back" width="553" height="550"/>
     </resources>
-    <classes>
-        <class className="OPNavigationController" superclassName="NSViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPNavigationController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-                <relationship kind="outlet" name="displayView" candidateClass="NSView"/>
-                <relationship kind="outlet" name="navigationTitle" candidateClass="OPNavigationTitle"/>
-            </relationships>
-        </class>
-        <class className="OPNavigationTitle" superclassName="NSView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPNavigationTitle.h"/>
-            <relationships>
-                <relationship kind="action" name="filterSegmentChanged:"/>
-                <relationship kind="action" name="goBack:"/>
-                <relationship kind="outlet" name="_navigationController" candidateClass="OPNavigationController"/>
-                <relationship kind="outlet" name="_viewLabel" candidateClass="NSTextField"/>
-                <relationship kind="outlet" name="backButton" candidateClass="NSButton"/>
-                <relationship kind="outlet" name="filterSegmentedControl" candidateClass="NSSegmentedControl"/>
-                <relationship kind="outlet" name="shareButton" candidateClass="NSButton"/>
-            </relationships>
-        </class>
-    </classes>
 </document>
