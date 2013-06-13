@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#define IMAGE_CACHE_THUMB_SIZE NSMakeSize(260, 175)
+#define IMAGE_CACHE_THUMB_SIZE NSMakeSize(310, 225)
 
 #import <Foundation/Foundation.h>
 

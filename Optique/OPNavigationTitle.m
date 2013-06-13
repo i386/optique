@@ -77,6 +77,11 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
     [_viewLabel setStringValue:title];
 }
 
+- (IBAction)goBack:(id)sender
+{
+    [_navigationController popToPreviousViewController];
+}
+
 - (IBAction)filterSegmentChanged:(NSSegmentedControl*)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationTitleFilterDidChange object:nil userInfo:@{@"segment": [NSNumber numberWithInteger:sender.selectedSegment]}];

@@ -43,7 +43,6 @@
 		0F489938170C00BA0044ED0A /* loading-preview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F489936170C00BA0044ED0A /* loading-preview@2x.png */; };
 		0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE86217366CF900DF2356 /* XPPhotoManager.m */; };
 		0F62BA66173673B200E661DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
-		0F66FD211728FE3300747AC7 /* OPMainWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F66FD201728FE3300747AC7 /* OPMainWindowContentView.m */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
 		0F6AF878172A3B0B0029724A /* OPCameraService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF877172A3B0A0029724A /* OPCameraService.m */; };
@@ -73,6 +72,8 @@
 		0FA706C8171911CC00864CED /* OPDeleteAlbumSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C6171911CC00864CED /* OPDeleteAlbumSheetController.xib */; };
 		0FA706CB171911F400864CED /* empty-album.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C9171911F400864CED /* empty-album.png */; };
 		0FA706CC171911F400864CED /* empty-album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706CA171911F400864CED /* empty-album@2x.png */; };
+		0FAEFFF3176736F700D60171 /* Optique.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEFFF2176736F700D60171 /* Optique.icns */; };
+		0FAEFFF617673F7A00D60171 /* OPShadowClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAEFFF517673F7A00D60171 /* OPShadowClipView.m */; };
 		0FB384CB17050B3200DEB770 /* OPAlbumScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */; };
 		0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */; };
 		0FC8A7A9170FD6E300650D7C /* OPImageEffectItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7A8170FD6E300650D7C /* OPImageEffectItemView.m */; };
@@ -90,7 +91,6 @@
 		0FCA4D641738A282007DC9EF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCA4D4F173874C6007DC9EF /* Social.framework */; };
 		0FCA4D651738A28F007DC9EF /* Facebook.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FCA4D551738A272007DC9EF /* Facebook.bundle */; };
 		0FCA4D681738A2CE007DC9EF /* OPFacebookPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D671738A2CE007DC9EF /* OPFacebookPlugin.m */; };
-		0FCA4D6A1738DD87007DC9EF /* Optique.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0FCA4D691738DD86007DC9EF /* Optique.icns */; };
 		0FCA4D6C17391D66007DC9EF /* XPController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCA4D6B17391D65007DC9EF /* XPController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FCA4D7517391EA7007DC9EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0FCA4D7B17391EA8007DC9EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FCA4D7917391EA8007DC9EF /* InfoPlist.strings */; };
@@ -246,8 +246,6 @@
 		0F5FE86217366CF900DF2356 /* XPPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPPhotoManager.m; sourceTree = "<group>"; };
 		0F62BA65173673B200E661DD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0F66FD1E1728FB0600747AC7 /* OPNavigationControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPNavigationControllerDelegate.h; sourceTree = "<group>"; };
-		0F66FD1F1728FE3300747AC7 /* OPMainWindowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMainWindowContentView.h; sourceTree = "<group>"; };
-		0F66FD201728FE3300747AC7 /* OPMainWindowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMainWindowContentView.m; sourceTree = "<group>"; };
 		0F6AEF821701C02200A797E4 /* OPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMainWindowController.h; sourceTree = "<group>"; };
 		0F6AEF831701C02200A797E4 /* OPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMainWindowController.m; sourceTree = "<group>"; };
 		0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPMainWindowController.xib; sourceTree = "<group>"; };
@@ -296,6 +294,9 @@
 		0FA706C6171911CC00864CED /* OPDeleteAlbumSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPDeleteAlbumSheetController.xib; path = Optique/OPDeleteAlbumSheetController.xib; sourceTree = "<group>"; };
 		0FA706C9171911F400864CED /* empty-album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album.png"; sourceTree = "<group>"; };
 		0FA706CA171911F400864CED /* empty-album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album@2x.png"; sourceTree = "<group>"; };
+		0FAEFFF2176736F700D60171 /* Optique.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Optique.icns; sourceTree = "<group>"; };
+		0FAEFFF417673F7A00D60171 /* OPShadowClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPShadowClipView.h; sourceTree = "<group>"; };
+		0FAEFFF517673F7A00D60171 /* OPShadowClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPShadowClipView.m; sourceTree = "<group>"; };
 		0FB384C917050B3200DEB770 /* OPAlbumScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAlbumScanner.h; sourceTree = "<group>"; };
 		0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAlbumScanner.m; sourceTree = "<group>"; };
 		0FB94DD01735E31400065536 /* NSNotificationCenter+Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Async.h"; sourceTree = "<group>"; };
@@ -319,7 +320,6 @@
 		0FCA4D5D1738A273007DC9EF /* Facebook-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Facebook-Prefix.pch"; sourceTree = "<group>"; };
 		0FCA4D661738A2CE007DC9EF /* OPFacebookPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFacebookPlugin.h; sourceTree = "<group>"; };
 		0FCA4D671738A2CE007DC9EF /* OPFacebookPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFacebookPlugin.m; sourceTree = "<group>"; };
-		0FCA4D691738DD86007DC9EF /* Optique.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Optique.icns; sourceTree = "<group>"; };
 		0FCA4D6B17391D65007DC9EF /* XPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPController.h; sourceTree = "<group>"; };
 		0FCA4D7417391EA7007DC9EF /* Twitter.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Twitter.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FCA4D7817391EA8007DC9EF /* Twitter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Twitter-Info.plist"; sourceTree = "<group>"; };
@@ -485,6 +485,8 @@
 				0F368A8617068F0500411503 /* OPWindow.m */,
 				0F368A8817068F1A00411503 /* OPWindowContentView.h */,
 				0F368A8917068F1A00411503 /* OPWindowContentView.m */,
+				0FAEFFF417673F7A00D60171 /* OPShadowClipView.h */,
+				0FAEFFF517673F7A00D60171 /* OPShadowClipView.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -587,7 +589,7 @@
 		0F9C80A716F891C700B2B6D8 = {
 			isa = PBXGroup;
 			children = (
-				0FCA4D691738DD86007DC9EF /* Optique.icns */,
+				0FAEFFF2176736F700D60171 /* Optique.icns */,
 				0F9C80B916F891C700B2B6D8 /* Optique */,
 				0F04A62E1737C71000E53ED1 /* Exposure */,
 				0FCA4D1D1737CE8C007DC9EF /* Exposures */,
@@ -894,8 +896,6 @@
 				0F6AEF821701C02200A797E4 /* OPMainWindowController.h */,
 				0F6AEF831701C02200A797E4 /* OPMainWindowController.m */,
 				0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */,
-				0F66FD1F1728FE3300747AC7 /* OPMainWindowContentView.h */,
-				0F66FD201728FE3300747AC7 /* OPMainWindowContentView.m */,
 			);
 			name = "Main Window";
 			sourceTree = "<group>";
@@ -1093,8 +1093,8 @@
 				0FA706CC171911F400864CED /* empty-album@2x.png in Resources */,
 				0F8B71D9171BA077004D8082 /* OPPhotoController.xib in Resources */,
 				0FFE24B2172907AA00513AD2 /* back.png in Resources */,
+				0FAEFFF3176736F700D60171 /* Optique.icns in Resources */,
 				0FFE24B61729206B00513AD2 /* back@2x.png in Resources */,
-				0FCA4D6A1738DD87007DC9EF /* Optique.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1163,6 +1163,7 @@
 				0FE3B2481702C69700FC0D6C /* OPNavigationTitle.m in Sources */,
 				0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */,
 				0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */,
+				0FAEFFF617673F7A00D60171 /* OPShadowClipView.m in Sources */,
 				0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */,
 				0FCFCB0A170420AA0040FF11 /* NSImage+MGCropExtensions.m in Sources */,
 				0FCFCB1217043D180040FF11 /* OPImageCache.m in Sources */,
@@ -1190,7 +1191,6 @@
 				0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */,
 				0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */,
 				0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */,
-				0F66FD211728FE3300747AC7 /* OPMainWindowContentView.m in Sources */,
 				0F6AF878172A3B0B0029724A /* OPCameraService.m in Sources */,
 				0F6AF87F172A42750029724A /* OPCamera.m in Sources */,
 				0F8C561A172CBB4B00CB7B1E /* OPCameraPhoto.m in Sources */,

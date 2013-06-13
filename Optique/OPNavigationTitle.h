@@ -24,7 +24,11 @@ typedef enum {
     IBOutlet OPNavigationController *_navigationController;
 }
 
+@property (strong) IBOutlet NSButton *backButton;
+
 -(void)updateTitle:(NSString*)label;
+
+-(IBAction)goBack:(id)sender;
 
 -(IBAction)filterSegmentChanged:(id)sender;
 

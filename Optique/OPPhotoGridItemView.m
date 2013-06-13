@@ -20,12 +20,6 @@
     self = [super initWithFrame:frameRect];
     if (self)
     {
-        NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-        [style setAlignment:NSCenterTextAlignment];
-        
-        NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:12.0];
-        _attrsDictionary = @{NSFontAttributeName: font, NSParagraphStyleAttributeName: style};
-        
         [self setWantsLayer:YES];
     }
     return self;
@@ -33,74 +27,51 @@
 
 -(void)drawRect:(NSRect)dirtyRect
 {
-    NSRect backgroundFrameRect = NSMakeRect(25, 25, 260, 175);    
-    NSRect imageRect = NSMakeRect(35, 35, 239, 155);
+    NSRect backgroundFrameRect = NSMakeRect(dirtyRect.origin.x + 25, dirtyRect.origin.y + 25, dirtyRect.size.width - 50, dirtyRect.size.height - 50);
     
-    NSColor *shadowColor = self.selected ? [NSColor alternateSelectedControlColor] : [NSColor controlShadowColor];
+    NSColor *backgroundColor = self.selected ? [NSColor optiqueSelectedBackgroundColor] : [NSColor optiqueBackgroundColor];
     
     [NSGraphicsContext withinGraphicsContext:^
     {
-        NSBezierPath *path = [NSBezierPath bezierPathWithRect:imageRect];
-        
-        NSShadow *shadow = [[NSShadow alloc] init];
-        shadow.shadowColor = shadowColor;
-        
-        int positiveShadowOffset = 1;
-        int negativeShadowOffset = -1;
-        if (self.selected)
-        {
-            positiveShadowOffset = 3;
-            negativeShadowOffset = -3;
-        }
-        
-        shadow.shadowOffset = NSMakeSize(negativeShadowOffset, positiveShadowOffset);
-        [shadow set];
-        [path fill];
-        
-        shadow.shadowOffset = NSMakeSize(positiveShadowOffset, negativeShadowOffset);
-        [shadow set];
-        [path fill];
-        
-        shadow.shadowOffset = NSMakeSize(positiveShadowOffset, positiveShadowOffset);
-        [shadow set];
-        [path fill];
-        
-        shadow.shadowOffset = NSMakeSize(negativeShadowOffset, negativeShadowOffset);
-        [shadow set];
-        [path fill];
-        
-        if (!self.selected)
-        {
-            //Draw border around image so it doesn't blend with the background
-            path.lineWidth = 0.3;
-            [[NSColor blackColor] set];
-            [path stroke];
-        }
+       if (self.selected)
+       {
+           [backgroundColor set];
+           NSRectFill(dirtyRect);
+       }
+    }];
+    
+    [NSGraphicsContext withinGraphicsContext:^
+    {
+        NSBezierPath *path = [NSBezierPath bezierPathWithRect:backgroundFrameRect];
+        path.lineWidth = 0.7;
+        [[NSColor blackColor] set];
+        [path stroke];
     }];
     
     //Draw image
     [NSGraphicsContext withinGraphicsContext:^
      {
-         [self.itemImage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+         [self.itemImage drawInRect:backgroundFrameRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
      }];
     
     
     //Draw label
     [NSGraphicsContext withinGraphicsContext:^
     {
-        NSRect textRect = NSMakeRect(backgroundFrameRect.origin.x + 3,
+        NSRect textRect = NSMakeRect(backgroundFrameRect.origin.x,
                                      NSHeight(backgroundFrameRect) + 30,
-                                     NSWidth(backgroundFrameRect) - 6,
-                                     14);
+                                     NSWidth(backgroundFrameRect),
+                                     30);
         
         CATextLayer *label = [[CATextLayer alloc] init];
-        [label setFont:@"Helvetica Neue Regular"];
-        [label setFontSize:12];
+        [label setFont:@"HelveticaNeue-Light"];
+        [label setFontSize:14];
         [label setFrame:textRect];
         [label setString:self.itemTitle];
         [label setAlignmentMode:kCAAlignmentCenter];
-        [label setForegroundColor:[[NSColor blackColor] CGColor]];
-        [label setBackgroundColor:[[NSColor optiqueBackgroundColor] CGColor]];
+        [label setForegroundColor:[[NSColor optiqueTextColor] CGColor]];
+        [label setBackgroundColor:[backgroundColor CGColor]];
+        [label setTruncationMode:kCATruncationMiddle];
         
         for (CALayer *layer in self.layer.sublayers)
         {

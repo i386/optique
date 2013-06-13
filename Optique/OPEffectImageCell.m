@@ -7,6 +7,7 @@
 //
 
 #import "OPEffectImageCell.h"
+#import "NSColor+Optique.h"
 
 @implementation OPEffectImageCell
 
@@ -23,17 +24,8 @@
 -(void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
     CALayer *layer = controlView.layer;
-    layer.shadowOpacity = 0.3;
-    
-    layer.shadowColor = [[NSColor blackColor] CGColor];
-    
-    layer.shadowOffset = NSMakeSize(3, -3);
-    layer.shadowRadius = 2;
-    
-    if (layer.shadowPath)
-    {
-        layer.shadowPath = CGPathCreateWithRect(cellFrame, NULL);
-    }
+    layer.borderWidth = 1;
+    layer.borderColor = [NSColor optiqueTitlebarBorderColor].CGColor;
     
     [super drawWithFrame:cellFrame inView:controlView];
 }

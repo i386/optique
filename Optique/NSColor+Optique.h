@@ -10,8 +10,16 @@
 
 @interface NSColor (Optique)
 
++(NSColor*)optiqueTitlebarColor;
+
++(NSColor*)optiqueTitlebarBorderColor;
+
 +(NSColor*)optiqueBackgroundColor;
 
++(NSColor*)optiqueSelectedBackgroundColor;
+
 +(NSColor*)optiqueDarkBackgroundColor;
+
++(NSColor*)optiqueTextColor;
 
 @end

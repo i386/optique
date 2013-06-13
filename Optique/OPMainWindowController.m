@@ -11,7 +11,8 @@
 #import "OPNavigationController.h"
 #import "OPPhotoCollectionViewController.h"
 #import "OPNewAlbumSheetController.h"
-#import "OPMainWindowContentView.h"
+#import "OPNavigationViewController.h"
+#import "OPNavigationTitle.h"
 
 @interface OPMainWindowController () {
     OPNavigationController *_navigationController;
@@ -58,23 +59,16 @@
     _navigationController.delegate = self;
     
     OPWindow *window = (OPWindow*)self.window;
-    OPMainWindowContentView *contentView = (OPMainWindowContentView*)window.contentView;
+    NSView *contentView = (NSView*)window.contentView;
     [_navigationController.view setFrame:contentView.frame];
     [window.titleBarView addSubview:(NSView*)_navigationController.navigationTitle];
-    
-    contentView.navigationButton = _navBackButton;
     
     [contentView addSubview:_navigationController.view positioned:NSWindowBelow relativeTo:nil];
 }
 
 -(void)showBackButton:(BOOL)visible
 {
-    OPMainWindowContentView *contentView = (OPMainWindowContentView*)self.window.contentView;
-    contentView.allowedToShowNavButton = visible;
-    if (!visible)
-    {
-        [_navBackButton setHidden:!visible];
-    }
+    [_navigationController.navigationTitle.backButton setHidden:!visible];
 }
 
 -(void)showNewAlbumSheet
