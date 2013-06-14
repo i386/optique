@@ -40,15 +40,25 @@
     [self setCenterTrafficLightButtons:YES];
     [self setCenterFullScreenButton:YES];
     
+    OPWindow * __weak weakSelf = self;
     [self setTitleBarDrawingBlock:^(BOOL drawsAsMainWindow, CGRect drawingRect, CGPathRef clippingPath)
      {
          CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
          
          //Fill title
          [[NSColor optiqueTitlebarColor] setFill];
-         CGContextAddPath(context, clippingPath);
-         CGContextDrawPath(context, kCGPathFill);
          
+         //Do not clip if full screen
+         if (weakSelf.isFullscreen)
+         {
+             CGContextAddRect(context, drawingRect);
+         }
+         else
+         {
+             CGContextAddPath(context, clippingPath);
+         }
+         
+         CGContextDrawPath(context, kCGPathFill);
          
          //Draw line at bottom
          CGPoint startPoint = CGPointMake(drawingRect.origin.x, drawingRect.origin.y);
