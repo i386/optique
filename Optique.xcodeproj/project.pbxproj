@@ -59,7 +59,6 @@
 		0F6AF87B172A3B220029724A /* ImageCaptureCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */; };
 		0F6AF87F172A42750029724A /* OPCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF87E172A42750029724A /* OPCamera.m */; };
 		0F6D098A170FC5E3006268F1 /* OPEffectProcessedImageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D0989170FC5E3006268F1 /* OPEffectProcessedImageRef.m */; };
-		0F705231170AB695001F8159 /* OPPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F705230170AB695001F8159 /* OPPhotoGridView.m */; };
 		0F79818C17367EF000FBC7DC /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F976DFD17362F4F002C4C30 /* Sparkle.framework */; };
 		0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */; };
 		0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */; };
@@ -77,7 +76,6 @@
 		0F9C80C416F891C700B2B6D8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80C216F891C700B2B6D8 /* Credits.rtf */; };
 		0F9C80C716F891C700B2B6D8 /* OPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */; };
 		0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80C816F891C700B2B6D8 /* MainMenu.xib */; };
-		0FA706BE171911A200864CED /* OPPhotoGridItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA706BD171911A200864CED /* OPPhotoGridItemView.m */; };
 		0FA706C2171911B900864CED /* OPNewAlbumSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA706C0171911B900864CED /* OPNewAlbumSheetController.m */; };
 		0FA706C3171911B900864CED /* OPNewAlbumSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C1171911B900864CED /* OPNewAlbumSheetController.xib */; };
 		0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA706C5171911CC00864CED /* OPDeleteAlbumSheetController.m */; };
@@ -115,6 +113,8 @@
 		0FCE744F1714136B00A5AE79 /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
 		0FCFCB0A170420AA0040FF11 /* NSImage+MGCropExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */; };
 		0FCFCB1217043D180040FF11 /* OPImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFCB1117043D180040FF11 /* OPImageCache.m */; };
+		0FD51720176B08BD006E8F4D /* OPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD5171F176B08BD006E8F4D /* OPGridView.m */; };
+		0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD51722176B431F006E8F4D /* OPGridViewCell.m */; };
 		0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE075617030FCC00D5B456 /* OPPhotoCollectionViewController.m */; };
 		0FDE075917030FCC00D5B456 /* OPPhotoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE075717030FCC00D5B456 /* OPPhotoCollectionViewController.xib */; };
 		0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */; };
@@ -278,8 +278,6 @@
 		0F6AF87E172A42750029724A /* OPCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCamera.m; sourceTree = "<group>"; };
 		0F6D0988170FC5E3006268F1 /* OPEffectProcessedImageRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPEffectProcessedImageRef.h; sourceTree = "<group>"; };
 		0F6D0989170FC5E3006268F1 /* OPEffectProcessedImageRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPEffectProcessedImageRef.m; sourceTree = "<group>"; };
-		0F70522F170AB695001F8159 /* OPPhotoGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoGridView.h; sourceTree = "<group>"; };
-		0F705230170AB695001F8159 /* OPPhotoGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoGridView.m; sourceTree = "<group>"; };
 		0F79A5E3175DE2DC00BB3973 /* NSColor+Optique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+Optique.h"; sourceTree = "<group>"; };
 		0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Optique.m"; sourceTree = "<group>"; };
 		0F8B71D2171AB9D8004D8082 /* NSImage+Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Transform.h"; sourceTree = "<group>"; };
@@ -308,8 +306,6 @@
 		0F9C80C516F891C700B2B6D8 /* OPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPAppDelegate.h; sourceTree = "<group>"; };
 		0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPAppDelegate.m; sourceTree = "<group>"; };
 		0F9C80C916F891C700B2B6D8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		0FA706BC171911A200864CED /* OPPhotoGridItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoGridItemView.h; sourceTree = "<group>"; };
-		0FA706BD171911A200864CED /* OPPhotoGridItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoGridItemView.m; sourceTree = "<group>"; };
 		0FA706BF171911B900864CED /* OPNewAlbumSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPNewAlbumSheetController.h; path = Optique/OPNewAlbumSheetController.h; sourceTree = "<group>"; };
 		0FA706C0171911B900864CED /* OPNewAlbumSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPNewAlbumSheetController.m; path = Optique/OPNewAlbumSheetController.m; sourceTree = "<group>"; };
 		0FA706C1171911B900864CED /* OPNewAlbumSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPNewAlbumSheetController.xib; path = Optique/OPNewAlbumSheetController.xib; sourceTree = "<group>"; };
@@ -361,6 +357,10 @@
 		0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MGCropExtensions.m"; sourceTree = "<group>"; };
 		0FCFCB1017043D180040FF11 /* OPImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageCache.h; sourceTree = "<group>"; };
 		0FCFCB1117043D180040FF11 /* OPImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageCache.m; sourceTree = "<group>"; };
+		0FD5171E176B08BD006E8F4D /* OPGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPGridView.h; path = Optique/OPGridView.h; sourceTree = "<group>"; };
+		0FD5171F176B08BD006E8F4D /* OPGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPGridView.m; path = Optique/OPGridView.m; sourceTree = "<group>"; };
+		0FD51721176B431F006E8F4D /* OPGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPGridViewCell.h; path = Optique/OPGridViewCell.h; sourceTree = "<group>"; };
+		0FD51722176B431F006E8F4D /* OPGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPGridViewCell.m; path = Optique/OPGridViewCell.m; sourceTree = "<group>"; };
 		0FDE075517030FCC00D5B456 /* OPPhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoCollectionViewController.h; sourceTree = "<group>"; };
 		0FDE075617030FCC00D5B456 /* OPPhotoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoCollectionViewController.m; sourceTree = "<group>"; };
 		0FDE075717030FCC00D5B456 /* OPPhotoCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPhotoCollectionViewController.xib; sourceTree = "<group>"; };
@@ -502,7 +502,6 @@
 		0F368A7B170680DF00411503 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				0F705232170AC2AF001F8159 /* Photo Grid */,
 				0F368A7C170681F100411503 /* OPScrollView.h */,
 				0F368A7D170681F100411503 /* OPScrollView.m */,
 				0F368A8517068F0400411503 /* OPWindow.h */,
@@ -559,17 +558,6 @@
 			name = "Image effects";
 			sourceTree = "<group>";
 		};
-		0F705232170AC2AF001F8159 /* Photo Grid */ = {
-			isa = PBXGroup;
-			children = (
-				0FA706BC171911A200864CED /* OPPhotoGridItemView.h */,
-				0FA706BD171911A200864CED /* OPPhotoGridItemView.m */,
-				0F70522F170AB695001F8159 /* OPPhotoGridView.h */,
-				0F705230170AB695001F8159 /* OPPhotoGridView.m */,
-			);
-			name = "Photo Grid";
-			sourceTree = "<group>";
-		};
 		0F8C561E172CC46D00CB7B1E /* Local photos */ = {
 			isa = PBXGroup;
 			children = (
@@ -613,6 +601,7 @@
 		0F9C80A716F891C700B2B6D8 = {
 			isa = PBXGroup;
 			children = (
+				0FD5171D176B089F006E8F4D /* New Grid */,
 				0FAEFFF2176736F700D60171 /* Optique.icns */,
 				0F9C80B916F891C700B2B6D8 /* Optique */,
 				0F04A62E1737C71000E53ED1 /* Exposure */,
@@ -812,6 +801,17 @@
 				0FA706C6171911CC00864CED /* OPDeleteAlbumSheetController.xib */,
 			);
 			name = "Delete Album sheet";
+			sourceTree = "<group>";
+		};
+		0FD5171D176B089F006E8F4D /* New Grid */ = {
+			isa = PBXGroup;
+			children = (
+				0FD5171E176B08BD006E8F4D /* OPGridView.h */,
+				0FD5171F176B08BD006E8F4D /* OPGridView.m */,
+				0FD51721176B431F006E8F4D /* OPGridViewCell.h */,
+				0FD51722176B431F006E8F4D /* OPGridViewCell.m */,
+			);
+			name = "New Grid";
 			sourceTree = "<group>";
 		};
 		0FDE075A170317AE00D5B456 /* Photo Collection View */ = {
@@ -1204,6 +1204,7 @@
 			files = (
 				0F9C80C016F891C700B2B6D8 /* main.m in Sources */,
 				0F9C80C716F891C700B2B6D8 /* OPAppDelegate.m in Sources */,
+				0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */,
 				0F3DF46D16F98D0D00C003D3 /* OPPhotoAlbum.m in Sources */,
 				0FEF33A616FEC8090096D72A /* OPAlbumViewController.m in Sources */,
 				0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */,
@@ -1224,7 +1225,6 @@
 				0F368A8717068F0500411503 /* OPWindow.m in Sources */,
 				0F368A8A17068F1B00411503 /* OPWindowContentView.m in Sources */,
 				0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */,
-				0F705231170AB695001F8159 /* OPPhotoGridView.m in Sources */,
 				0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */,
 				0F6D098A170FC5E3006268F1 /* OPEffectProcessedImageRef.m in Sources */,
 				0FC8A7A9170FD6E300650D7C /* OPImageEffectItemView.m in Sources */,
@@ -1232,7 +1232,6 @@
 				0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */,
 				0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */,
 				0FCE744F1714136B00A5AE79 /* NSObject+PerformBlock.m in Sources */,
-				0FA706BE171911A200864CED /* OPPhotoGridItemView.m in Sources */,
 				0FA706C2171911B900864CED /* OPNewAlbumSheetController.m in Sources */,
 				0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */,
 				0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */,
@@ -1247,6 +1246,7 @@
 				0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */,
 				0FCA4D291737D351007DC9EF /* OPExposureService.m in Sources */,
 				0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */,
+				0FD51720176B08BD006E8F4D /* OPGridView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

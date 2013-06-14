@@ -29,13 +29,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view id="30" customClass="OPPhotoGridView">
+                            <view id="30" customClass="OPGridView">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="-2" id="35"/>
-                                    <outlet property="delegate" destination="-2" id="34"/>
-                                    <outlet property="itemContextMenu" destination="36" id="51"/>
+                                    <outlet property="dataSource" destination="-2" id="Hwl-Gc-JW5"/>
+                                    <outlet property="delegate" destination="-2" id="KDl-h6-Y8z"/>
                                 </connections>
                             </view>
                         </subviews>

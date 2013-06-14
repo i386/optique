@@ -12,7 +12,7 @@
                 <outlet property="albumItemContextMenu" destination="210" id="216"/>
                 <outlet property="deleteAlbumMenuItem" destination="220" id="225"/>
                 <outlet property="ejectMenuItem" destination="226" id="227"/>
-                <outlet property="gridView" destination="201" id="207"/>
+                <outlet property="gridView" destination="201" id="Qgj-AH-orG"/>
                 <outlet property="view" destination="56" id="57"/>
             </connections>
         </customObject>
@@ -29,13 +29,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="526" height="322"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view id="201" customClass="OPPhotoGridView">
+                            <view id="201" customClass="OPGridView">
                                 <rect key="frame" x="0.0" y="0.0" width="526" height="322"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="-2" id="208"/>
-                                    <outlet property="delegate" destination="-2" id="209"/>
-                                    <outlet property="itemContextMenu" destination="210" id="222"/>
+                                    <outlet property="dataSource" destination="-2" id="15Q-AE-687"/>
+                                    <outlet property="delegate" destination="-2" id="i9E-TI-AuJ"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -45,7 +44,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" id="203">
-                        <rect key="frame" x="510" y="0.0" width="16" height="322"/>
+                        <rect key="frame" x="511" y="0.0" width="15" height="322"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>

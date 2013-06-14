@@ -8,16 +8,16 @@
 
 #import "OPNavigationViewController.h"
 #import "OPPhotoAlbum.h"
-#import "OPPhotoGridView.h"
+#import "OPGridView.h"
 
-@interface OPPhotoCollectionViewController : OPNavigationViewController <CNGridViewDataSource, CNGridViewDelegate, NSMenuDelegate, XPPhotoCollectionViewController>
+@interface OPPhotoCollectionViewController : OPNavigationViewController <OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPPhotoCollectionViewController>
 
 @property (strong) IBOutlet NSMenu *contextMenu;
 @property (strong) IBOutlet NSMenu *sharingMenu;
 
 @property (strong, readonly) id<XPPhotoCollection> collection;
 @property (strong, readonly) XPPhotoManager *photoManager;
-@property (strong) IBOutlet CNGridView *gridView;
+@property (strong) IBOutlet OPGridView *gridView;
 @property (strong) IBOutlet NSMenuItem *moveToAlbumItem;
 
 -initWithPhotoAlbum:(id<XPPhotoCollection>)collection photoManager:(XPPhotoManager*)photoManager;

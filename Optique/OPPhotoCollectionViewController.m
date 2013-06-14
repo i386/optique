@@ -8,9 +8,7 @@
 
 #import "OPPhotoCollectionViewController.h"
 #import "OPPhotoViewController.h"
-#import "OPPhotoGridItemView.h"
-#import "CNGridViewItemLayout.h"
-#import "OPPhotoGridView.h"
+#import "OPGridViewCell.h"
 #import "OPImagePreviewService.h"
 
 @interface OPPhotoCollectionViewController () {
@@ -52,7 +50,7 @@
 
 -(NSIndexSet *)selectedItems
 {
-    return _gridView.selectedIndexes;
+    return _gridView.indexesForSelectedCells;
 }
 
 -(NSMutableArray *)sharingMenuItems
@@ -62,7 +60,7 @@
 
 -(void)deleteSelected
 {
-    NSIndexSet *indexes = _gridView.selectedIndexes;
+    NSIndexSet *indexes = _gridView.indexesForSelectedCells;
     [self deleteSelectedPhotosAtIndexes:indexes];
 }
 
@@ -120,23 +118,25 @@
     return _collection.title;
 }
 
-- (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section
+-(void)gridView:(OEGridView *)gridView doubleClickedCellForItemAtIndex:(NSUInteger)index
 {
     OPPhotoViewController *photoViewContoller = [[OPPhotoViewController alloc] initWithPhotoCollection:_collection photo:_collection.allPhotos[index]];
     [self.controller pushViewController:photoViewContoller];
 }
 
-- (NSUInteger)gridView:(CNGridView *)gridView numberOfItemsInSection:(NSInteger)section
+-(NSUInteger)numberOfItemsInGridView:(OEGridView *)gridView
 {
     return _collection.allPhotos.count;
 }
 
-- (CNGridViewItem *)gridView:(CNGridView *)gridView itemAtIndex:(NSInteger)index inSection:(NSInteger)section
+-(OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    OPPhotoGridItemView *item = [gridView dequeueReusableItemWithIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
-    if (item == nil)
-    {
-        item = [[OPPhotoGridItemView alloc] initWithLayout:nil reuseIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
+    OPGridViewCell *item = (OPGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
+    if (!item) {
+        item = (OPGridViewCell *)[gridView dequeueReusableCell];
+    }
+    if (!item) {
+        item = [[OPGridViewCell alloc] init];
     }
     
     NSArray *allPhotos = _collection.allPhotos;
@@ -146,26 +146,24 @@
         id<XPPhoto> photo = allPhotos[index];
         item.representedObject = photo;
         
-        CNGridViewItem * __weak weakItem = item;
+        OPGridViewCell * __weak weakItem = item;
         id<XPPhoto> __weak weakPhoto = photo;
         
-        item.itemImage = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
+        item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
         {
             [self performBlockOnMainThreadAndWaitUntilDone:^
             {
                 if (weakPhoto == weakItem.representedObject)
                 {
-                    weakItem.itemImage = image;
-                    [weakItem setNeedsDisplay:YES];
+                    weakItem.image = image;
+                    [weakItem.view setNeedsDisplay:YES];
                 }
             }];
         }];
         
-        item.itemTitle = photo.title;
-        item.toolTip = photo.title;
+        item.title = photo.title;
+        item.view.toolTip = photo.title;
     }
-    
-    item.gridView = (OPPhotoGridView*)gridView;
     
     return item;
 }
@@ -186,7 +184,6 @@
 -(void)loadView
 {
     [super loadView];
-    [_gridView setAllowsMultipleSelection:YES];
     _contextMenu.delegate = self;
     [[_gridView enclosingScrollView] setDrawsBackground:NO];
 }
@@ -218,7 +215,7 @@
 -(void)moveToCollection:(NSMenuItem*)item
 {
     id<XPPhotoCollection> collection = item.representedObject;
-    NSIndexSet *indexes = [_gridView selectedIndexes];
+    NSIndexSet *indexes = [_gridView indexesForSelectedCells];
     NSArray *photos = [_collection photosForIndexSet:indexes];
     
     [photos each:^(id<XPPhoto> photo)

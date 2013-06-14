@@ -10,12 +10,12 @@
 
 #import "OPPhotoCollectionViewController.h"
 #import "OPAlbumScanner.h"
-#import "OPPhotoGridItemView.h"
 #import "OPImagePreviewService.h"
 #import "OPDeleteAlbumSheetController.h"
 #import "OPCamera.h"
 #import "OPNavigationTitle.h"
 #import "OPPhotoAlbum.h"
+#import "OPGridViewCell.h"
 
 @interface OPAlbumViewController ()
 
@@ -70,8 +70,6 @@
 -(void)loadView
 {
     [super loadView];
-    [_gridView setAllowsMultipleSelection:YES];
-    [_gridView.enclosingScrollView setDrawsBackground:NO];
 }
 
 -(NSMenu *)contextMenu
@@ -86,17 +84,18 @@
 
 -(NSIndexSet *)selectedItems
 {
-    return _gridView.selectedIndexes;
+    return nil;
 }
 
 -(void)showView
 {
     [_gridView reloadData];
+    [[_gridView enclosingScrollView] setDrawsBackground:NO];
 }
 
 -(void)menuNeedsUpdate:(NSMenu *)menu
 {
-    NSIndexSet *indexes = _gridView.selectedIndexes;
+    NSIndexSet *indexes = _gridView.indexesForSelectedCells;
     NSArray *collections = [_photoManager allCollectionsForIndexSet:indexes];
     
     //TODO: check menu for XPMenuItems and run predicate to hide
@@ -151,7 +150,7 @@
 
 -(void)deleteSelected
 {
-    NSIndexSet *indexes = [_gridView selectedIndexes];
+    NSIndexSet *indexes = [_gridView indexesForSelectedCells];
     [self deleteAlbumsAtIndexes:indexes];
 }
 
@@ -201,13 +200,6 @@
         
         [_deleteAlbumSheetController startAlbumDeletion];
     }
-}
-
-- (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section
-{
-    NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_currentPredicate];
-    OPPhotoAlbum *photoAlbum = filteredCollections[index];
-    [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:photoAlbum photoManager:_photoManager]];
 }
 
 -(NSString *)viewTitle
@@ -302,51 +294,58 @@
     }];
 }
 
-- (NSUInteger)gridView:(CNGridView *)gridView numberOfItemsInSection:(NSInteger)section
+-(void)gridView:(OEGridView *)gridView doubleClickedCellForItemAtIndex:(NSUInteger)index
+{
+    NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_currentPredicate];
+    OPPhotoAlbum *photoAlbum = filteredCollections[index];
+    [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:photoAlbum photoManager:_photoManager]];
+}
+
+-(NSUInteger)numberOfItemsInGridView:(OEGridView *)gridView
 {
     NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_currentPredicate];
     return filteredCollections.count;
 }
 
-- (CNGridViewItem *)gridView:(CNGridView *)gridView itemAtIndex:(NSInteger)index inSection:(NSInteger)section
+- (OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    OPPhotoGridItemView *item = [gridView dequeueReusableItemWithIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
-    if (item == nil) {
-        item = [[OPPhotoGridItemView alloc] initWithLayout:nil reuseIdentifier:(NSString*)OPPhotoGridViewReuseIdentifier];
+    OPGridViewCell *item = (OPGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
+    if (!item) {
+        item = (OPGridViewCell *)[gridView dequeueReusableCell];
+    }
+    if (!item) {
+        item = [[OPGridViewCell alloc] init];
     }
     
     NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_currentPredicate];
     OPPhotoAlbum *album = filteredCollections[index];
     item.representedObject = album;
+    item.title = album.title;
+    item.view.toolTip = album.title;
     
     NSArray *allPhotos = album.allPhotos;
-    
     if (allPhotos.count > 0)
     {
         id<XPPhoto> photo = allPhotos[0];
         
-        CNGridViewItem * __weak weakItem = item;
+        OPGridViewCell * __weak weakItem = item;
         OPPhotoAlbum * __weak weakAlbum = album;
         
-        item.itemImage = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
-        {
-            [self performBlockOnMainThreadAndWaitUntilDone:^
-            {
-                if (weakItem.representedObject == weakAlbum)
-                {
-                    weakItem.itemImage = image;
-                    [weakItem setNeedsDisplay:YES];
-                }
-            }];
-        }];
+        item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image) {
+              [self performBlockOnMainThreadAndWaitUntilDone:^
+               {
+                   if (weakItem.representedObject == weakAlbum)
+                   {
+                       weakItem.image = image;
+                       [weakItem.view setNeedsDisplay:YES];
+                   }
+               }];
+          }];
     }
     else
     {
-        item.itemImage = [NSImage imageNamed:@"empty-album"];
+        item.image = [NSImage imageNamed:@"empty-album"];
     }
-    item.itemTitle = album.title;
-    item.toolTip = album.title;
-    item.gridView = (OPPhotoGridView*)gridView;
     
     return item;
 }
