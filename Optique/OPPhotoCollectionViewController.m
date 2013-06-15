@@ -118,6 +118,11 @@
     return _collection.title;
 }
 
+-(NSMenu *)gridView:(OEGridView *)gridView menuForItemsAtIndexes:(NSIndexSet *)indexes
+{
+    return _contextMenu;
+}
+
 -(void)gridView:(OEGridView *)gridView doubleClickedCellForItemAtIndex:(NSUInteger)index
 {
     OPPhotoViewController *photoViewContoller = [[OPPhotoViewController alloc] initWithPhotoCollection:_collection photo:_collection.allPhotos[index]];
@@ -131,13 +136,15 @@
 
 -(OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    OPGridViewCell *item = (OPGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
-    if (!item) {
-        item = (OPGridViewCell *)[gridView dequeueReusableCell];
-    }
-    if (!item) {
-        item = [[OPGridViewCell alloc] init];
-    }
+//    OPGridViewCell *item = (OPGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
+//    if (!item) {
+//        item = (OPGridViewCell *)[gridView dequeueReusableCell];
+//    }
+//    if (!item) {
+//        item = [[OPGridViewCell alloc] init];
+//    }
+    
+    OPGridViewCell *item = [[OPGridViewCell alloc] init];
     
     NSArray *allPhotos = _collection.allPhotos;
     

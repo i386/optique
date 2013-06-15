@@ -307,15 +307,22 @@
     return filteredCollections.count;
 }
 
+-(NSMenu *)gridView:(OEGridView *)gridView menuForItemsAtIndexes:(NSIndexSet *)indexes
+{
+    return _albumItemContextMenu;
+}
+
 - (OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    OPGridViewCell *item = (OPGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
-    if (!item) {
-        item = (OPGridViewCell *)[gridView dequeueReusableCell];
-    }
-    if (!item) {
-        item = [[OPGridViewCell alloc] init];
-    }
+//    OPGridViewCell *item = (OPGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
+//    if (!item) {
+//        item = (OPGridViewCell *)[gridView dequeueReusableCell];
+//    }
+//    if (!item) {
+//        item = [[OPGridViewCell alloc] init];
+//    }
+    
+    OPGridViewCell *item = [[OPGridViewCell alloc] init];
     
     NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_currentPredicate];
     OPPhotoAlbum *album = filteredCollections[index];

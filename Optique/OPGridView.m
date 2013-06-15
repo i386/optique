@@ -10,15 +10,12 @@
 
 @implementation OPGridView
 
-#define kGridViewRowSpacing 30.f
-#define kGridViewColumnSpacing 10.f
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if ((self = [super initWithCoder:aDecoder])) {
         self.minimumColumnSpacing = kGridViewColumnSpacing;
         self.rowSpacing = kGridViewRowSpacing;
-        self.itemSize = CGSizeMake(260.0, 175.0);
+        self.itemSize = CGSizeMake(280.0, 175.0);
     }
     return self;
 }

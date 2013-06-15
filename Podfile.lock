@@ -13,15 +13,14 @@ DEPENDENCIES:
   - HockeySDK (from `https://raw.github.com/bitstadium/HockeySDK-Mac/develop/HockeySDK.podspec`)
   - INAppStoreWindow (HEAD)
   - NSHash (~> 1.0.1)
-  - OEGridView (from `https://raw.github.com/i386/OEGridView/e799a5946aabcdf83808592e526f0b1da2a947b2/OEGridView.podspec`)
+  - OEGridView (from `~/code/OEGridView`)
 
 EXTERNAL SOURCES:
   HockeySDK:
     :commit: c2ebc0f081fda626d99c049e3a3d4e2a9c646d35
     :podspec: https://raw.github.com/bitstadium/HockeySDK-Mac/develop/HockeySDK.podspec
   OEGridView:
-    :commit: e799a5946aabcdf83808592e526f0b1da2a947b2
-    :podspec: https://raw.github.com/i386/OEGridView/e799a5946aabcdf83808592e526f0b1da2a947b2/OEGridView.podspec
+    :local: ~/code/OEGridView
 
 SPEC CHECKSUMS:
   BlocksKit: 7396526b0816734103f6133fbb1a520c8b04e80c

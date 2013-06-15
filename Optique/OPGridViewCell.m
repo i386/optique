@@ -8,6 +8,7 @@
 
 #import "OPGridViewCell.h"
 #import "NSColor+Optique.h"
+#import "OPGridView.h"
 
 @implementation OPGridViewCell
 
@@ -16,15 +17,9 @@
     self = [super init];
     if (self)
     {
-//        _selectionLayer = [CALayer layer];
-//        _selectionLayer.backgroundColor = [[NSColor optiqueSelectedBackgroundColor] CGColor];
-//        [self addSublayer:_selectionLayer];
-        
-        _imageLayer = [OEGridLayer layer];
-        _imageLayer.contentsGravity = kCAGravityResize;
-        _imageLayer.borderWidth = 0.3;
-        _imageLayer.borderColor = [[NSColor blackColor] CGColor];
-        [self addSublayer:_imageLayer];
+        _selectionLayer = [OEGridLayer layer];
+        _selectionLayer.backgroundColor = [[NSColor optiqueSelectedBackgroundColor] CGColor];
+        [self addSublayer:_selectionLayer];
         
         _titleLayer = [CATextLayer layer];
         [_titleLayer setFont:@"HelveticaNeue-Light"];
@@ -34,26 +29,38 @@
         [_titleLayer setBackgroundColor:[[NSColor optiqueBackgroundColor] CGColor]];
         [_titleLayer setTruncationMode:kCATruncationMiddle];
         [self addSublayer:_titleLayer];
+        
+        _imageLayer = [OEGridLayer layer];
+        _imageLayer.contentsGravity = kCAGravityResize;
+        _imageLayer.borderWidth = 0.3;
+        _imageLayer.borderColor = [[NSColor blackColor] CGColor];
+        [self addSublayer:_imageLayer];
     }
     return self;
 }
 
 -(void)layoutSublayers
 {
-//    [_selectionLayer setFrame:self.bounds];
+    NSRect selectionFrame = NSMakeRect(kGridViewColumnSpacing * -1, //x
+                                       -10, //y
+                                       self.bounds.size.width + (kGridViewRowSpacing - 3), //width
+                                       self.bounds.size.height + kGridViewColumnSpacing + 20); //height
     
-    CGFloat inset = [[self class] selectionInset];
-    CGRect imageRect = CGRectInset(self.bounds, inset, inset);
-    [_imageLayer setFrame:imageRect];
+    [_selectionLayer setFrame:selectionFrame];
+    
+    [_imageLayer setFrame:self.bounds];
     CGPathRef shadowPath = CGPathCreateWithRect([_imageLayer bounds], NULL);
-    if (_imageLayer.shadowOpacity) {
+    if (_imageLayer.shadowOpacity)
+    {
         [_imageLayer setShadowPath:shadowPath];
     }
  
     NSRect textRect = NSMakeRect(self.bounds.origin.x,
-                                 NSHeight(self.bounds),
+                                 NSHeight(self.bounds) + 5,
                                  NSWidth(self.bounds),
                                  20);
+    
+    NSLog(@"r %@", NSStringFromRect(textRect));
     
     [_titleLayer setFrame:textRect];
 }
@@ -63,22 +70,21 @@
     [super prepareForReuse];
     _selectionLayer.hidden = YES;
 }
-//
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-//{
-//	_selectionLayer.hidden = !selected;
-//	[super setSelected:selected animated:animated];
-//}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+	_selectionLayer.hidden = !selected;
+	[super setSelected:selected animated:animated];
+    
+    CGColorRef titleBackgroundColor = selected ? [[NSColor optiqueSelectedBackgroundColor] CGColor] : [[NSColor optiqueBackgroundColor] CGColor];
+    [_titleLayer setBackgroundColor:titleBackgroundColor];
+}
 
 - (void)setImage:(NSImage *)image
 {
-    if (image) {
+    if (image)
+    {
         [_imageLayer setContents:image];
-//        _imageLayer.shadowColor = kImageLayerShadowColor;
-//        _imageLayer.shadowOpacity = kImageLayerShadowOpacity;
-//        _imageLayer.shadowRadius = kImageLayerShadowBlurRadius;
-//        _imageLayer.shadowOffset = kImageLayerShadowOffset;
-//        _imageLayer.opaque = YES;
     }
 }
 
@@ -98,11 +104,6 @@
 -(NSString *)title
 {
     return _titleLayer.string;
-}
-
-+ (CGFloat)selectionInset
-{
-    return 6.f;
 }
 
 @end
