@@ -60,8 +60,6 @@
                                  NSWidth(self.bounds),
                                  20);
     
-    NSLog(@"r %@", NSStringFromRect(textRect));
-    
     [_titleLayer setFrame:textRect];
 }
 
