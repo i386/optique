@@ -133,7 +133,10 @@
     [_visiblePhoto scaleImageToFitSize:windowSize withCompletionBlock:^void(NSImage *image) {
         viewController.representedObject = image;
     }];
-    
+}
+
+- (void)pageController:(NSPageController *)pageController didTransitionToObject:(id)object
+{ 
     [self.controller updateNavigation];
 }
 
