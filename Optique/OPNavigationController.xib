@@ -31,7 +31,7 @@
                 <button wantsLayer="YES" appearanceType="lightContent" id="NJN-0o-wj1">
                     <rect key="frame" x="97" y="7" width="122" height="20"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" title="Back" bezelStyle="rounded" image="back" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="Mb0-It-snY" customClass="OPBackButtonCell">
+                    <buttonCell key="cell" type="bevel" title="Back" bezelStyle="rounded" image="back" imagePosition="left" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" id="Mb0-It-snY" customClass="OPBackButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="14" name="HelveticaNeue-Medium"/>
                     </buttonCell>
@@ -93,4 +93,30 @@
         <image name="86-camera-alt" width="21" height="16"/>
         <image name="back" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="OPBackButtonCell" superclassName="NSButtonCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPBackButtonCell.h"/>
+        </class>
+        <class className="OPNavigationController" superclassName="NSViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPNavigationController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+                <relationship kind="outlet" name="displayView" candidateClass="NSView"/>
+                <relationship kind="outlet" name="navigationTitle" candidateClass="OPNavigationTitle"/>
+            </relationships>
+        </class>
+        <class className="OPNavigationTitle" superclassName="NSView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPNavigationTitle.h"/>
+            <relationships>
+                <relationship kind="action" name="cameraButtonPressed:"/>
+                <relationship kind="action" name="deleteButtonPressed:"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="outlet" name="_navigationController" candidateClass="OPNavigationController"/>
+                <relationship kind="outlet" name="_viewLabel" candidateClass="NSTextField"/>
+                <relationship kind="outlet" name="backButton" candidateClass="NSButton"/>
+                <relationship kind="outlet" name="cameraButton" candidateClass="NSButton"/>
+                <relationship kind="outlet" name="shareButton" candidateClass="NSButton"/>
+            </relationships>
+        </class>
+    </classes>
 </document>
