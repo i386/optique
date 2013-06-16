@@ -158,12 +158,11 @@
         
         item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
         {
-            [self performBlockOnMainThreadAndWaitUntilDone:^
+            [self performBlockOnMainThread:^
             {
                 if (weakPhoto == weakItem.representedObject)
                 {
                     weakItem.image = image;
-                    [weakItem.view setNeedsDisplay:YES];
                 }
             }];
         }];

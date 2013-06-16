@@ -336,16 +336,10 @@
         id<XPPhoto> photo = allPhotos[0];
         
         OPGridViewCell * __weak weakItem = item;
-        OPPhotoAlbum * __weak weakAlbum = album;
         
         item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image) {
-              [self performBlockOnMainThreadAndWaitUntilDone:^
-               {
-                   if (weakItem.representedObject == weakAlbum)
-                   {
-                       weakItem.image = image;
-                       [weakItem.view setNeedsDisplay:YES];
-                   }
+              [self performBlockOnMainThread:^{
+                   weakItem.image = image;
                }];
           }];
     }
