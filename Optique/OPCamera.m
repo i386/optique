@@ -181,6 +181,8 @@
     NSSize size = NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail));
     NSImage *image = [[NSImage alloc] initWithCGImage:thumbnail size:size];
     
+    CGImageRelease(thumbnail);
+    
     [_thumbnails setObject:image forKey:item.name];
     
     //If all the thumbnails have been recieved, stop the timer.
