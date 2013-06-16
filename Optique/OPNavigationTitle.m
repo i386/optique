@@ -93,7 +93,9 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
     
     if (previousViewController)
     {
-        [_backButton setTitle:previousViewController.viewTitle];
+        NSString *title = previousViewController == _navigationController.rootViewController ? @"Albums" : previousViewController.viewTitle;
+        
+        [_backButton setTitle:title];
     }
     
     [self.window setTitle:title];
