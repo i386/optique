@@ -49,11 +49,6 @@
     [_selectionLayer setFrame:selectionFrame];
     
     [_imageLayer setFrame:self.bounds];
-    CGPathRef shadowPath = CGPathCreateWithRect([_imageLayer bounds], NULL);
-    if (_imageLayer.shadowOpacity)
-    {
-        [_imageLayer setShadowPath:shadowPath];
-    }
  
     NSRect textRect = NSMakeRect(self.bounds.origin.x,
                                  NSHeight(self.bounds) + 5,
@@ -106,6 +101,11 @@
 -(NSString *)title
 {
     return _titleLayer.string;
+}
+
+-(void)dealloc
+{
+    CGPathRelease(_imageLayer.shadowPath);
 }
 
 @end
