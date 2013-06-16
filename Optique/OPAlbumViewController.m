@@ -325,19 +325,17 @@
     OPGridViewCell *item = [[OPGridViewCell alloc] init];
     
     NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_currentPredicate];
-    OPPhotoAlbum *album = filteredCollections[index];
-    item.representedObject = album;
-    item.title = album.title;
-    item.view.toolTip = album.title;
+    id<XPPhotoCollection> collection = filteredCollections[index];
+    item.representedObject = collection;
+    item.title = collection.title;
+    item.view.toolTip = collection.title;
     
-    NSArray *allPhotos = album.allPhotos;
-    if (allPhotos.count > 0)
+    id<XPPhoto> coverPhoto = [collection coverPhoto];
+    if (coverPhoto)
     {
-        id<XPPhoto> photo = allPhotos[0];
-        
         OPGridViewCell * __weak weakItem = item;
         
-        item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image) {
+        item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:coverPhoto loaded:^(NSImage *image) {
               [self performBlockOnMainThread:^{
                    weakItem.image = image;
                }];

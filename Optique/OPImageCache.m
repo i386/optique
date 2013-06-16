@@ -27,7 +27,7 @@ static OPImageCache *_sharedPreviewCache;
 {
     if (!_sharedPreviewCache)
     {
-        _sharedPreviewCache = [[OPImageCache alloc] initWithIdentity:@"previews" size:IMAGE_CACHE_THUMB_SIZE];
+        _sharedPreviewCache = [[OPImageCache alloc] initWithIdentity:@"previews" size:kOPImageCacheThumbSize];
     }
     return _sharedPreviewCache;
 }
@@ -63,6 +63,7 @@ static OPImageCache *_sharedPreviewCache;
     if ([fileManager fileExistsAtPath:stringPath])
     {
         image = [[NSImage alloc] initByReferencingURL:cachedPath];
+        [image setCacheMode:NSImageCacheNever];
         if (image)
         {
             [self addToCache:path cachedPath:cachedPath];
@@ -136,6 +137,7 @@ static OPImageCache *_sharedPreviewCache;
 -(NSImage*)resizeImageAndWriteToCache:(NSURL*)originalPath cachedPath:(NSURL*)cachedPath
 {
     NSImage *image = [[NSImage alloc] initWithContentsOfURL:originalPath];
+    [image setCacheMode:NSImageCacheNever];
     image = [image imageCroppedToFitSize:_size];
     
     NSData *imageData = [image TIFFRepresentation];

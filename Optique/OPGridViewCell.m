@@ -71,11 +71,15 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-	_selectionLayer.hidden = !selected;
+    [CATransaction begin];
+    
+	CGColorRef titleBackgroundColor = selected ? [[NSColor optiqueSelectedBackgroundColor] CGColor] : [[NSColor optiqueBackgroundColor] CGColor];
+    [_titleLayer setBackgroundColor:titleBackgroundColor];
+    
+    _selectionLayer.hidden = !selected;
 	[super setSelected:selected animated:animated];
     
-    CGColorRef titleBackgroundColor = selected ? [[NSColor optiqueSelectedBackgroundColor] CGColor] : [[NSColor optiqueBackgroundColor] CGColor];
-    [_titleLayer setBackgroundColor:titleBackgroundColor];
+    [CATransaction commit];
 }
 
 - (void)setImage:(NSImage *)image

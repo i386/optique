@@ -26,4 +26,9 @@
     return [super drawTitle:attrTitle withFrame:newFrame inView:controlView];
 }
 
+-(void)highlight:(BOOL)flag withFrame:(NSRect)cellFrame inView:(NSView *)controlView
+{
+    
+}
+
 @end

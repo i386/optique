@@ -56,6 +56,15 @@
     return photos;
 }
 
+-(id<XPPhoto>)coverPhoto
+{
+    if (_allPhotos.count > 0)
+    {
+        return _allPhotos[0];
+    }
+    return nil;
+}
+
 -(void)requestEject
 {
     [_device requestEjectOrDisconnect];

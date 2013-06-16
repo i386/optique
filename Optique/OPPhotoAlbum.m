@@ -61,12 +61,24 @@
     return albums;
 }
 
+-(id<XPPhoto>)coverPhoto
+{
+    id<XPPhoto> __block photo;
+    [self findAllPhotosWithBlock:^BOOL(id<XPPhoto> foundPhoto) {
+        photo = foundPhoto;
+        return FALSE;
+    }];
+    return photo;
+}
+
 -(void)reload
 {
     [_arrayLock lock];
     @try
     {
-        _allPhotos = [NSMutableOrderedSet orderedSetWithArray:[self findAllPhotos]];
+        _allPhotos = [NSMutableOrderedSet orderedSetWithArray:[self findAllPhotosWithBlock:^BOOL(id<XPPhoto> photo) {
+            return TRUE;
+        }]];
     }
     @finally
     {
@@ -113,7 +125,7 @@
     [photo.collection.photoManager collectionUpdated:photo.collection];
 }
 
--(NSArray*)findAllPhotos
+-(NSArray*)findAllPhotosWithBlock:(BOOL (^)(id<XPPhoto>))block;
 {
     NSMutableArray *photos = [[NSMutableArray alloc] init];
     
@@ -142,7 +154,14 @@
             if (UTTypeConformsTo(fileUTI, kUTTypeImage))
             {
                 OPLocalPhoto *photo = [[OPLocalPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
-                [photos addObject:photo];
+                if (block(photo))
+                {
+                    [photos addObject:photo];
+                }
+                else
+                {
+                    break;
+                }
             }
         }
     }

@@ -38,7 +38,7 @@ static OPImagePreviewService *_defaultService;
     if (self)
     {
         _queue = [[NSOperationQueue alloc] init];
-        [_queue setMaxConcurrentOperationCount:20];
+        [_queue setMaxConcurrentOperationCount:5];
         _locks = [NSMapTable weakToWeakObjectsMapTable];
     }
     return self;
@@ -54,7 +54,7 @@ static OPImagePreviewService *_defaultService;
         image = cameraPhoto.thumbnail;
         if (image)
         {
-            image = [image imageCroppedToFitSize:IMAGE_CACHE_THUMB_SIZE];
+            image = [image imageCroppedToFitSize:kOPImageCacheThumbSize];
         }
     }
     else

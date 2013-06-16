@@ -592,6 +592,8 @@
 				0F489933170BFFD60044ED0A /* OPImagePreviewService.m */,
 				0FCFCB1017043D180040FF11 /* OPImageCache.h */,
 				0FCFCB1117043D180040FF11 /* OPImageCache.m */,
+				0FCFCB08170420AA0040FF11 /* NSImage+MGCropExtensions.h */,
+				0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */,
 			);
 			name = "Image Previews";
 			sourceTree = "<group>";
@@ -851,8 +853,6 @@
 				0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */,
 				0FCAF8CC17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.h */,
 				0FCAF8CD17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m */,
-				0FCFCB08170420AA0040FF11 /* NSImage+MGCropExtensions.h */,
-				0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */,
 				0F368A72170678AA00411503 /* NSView+OptiqueBackground.h */,
 				0F368A73170678AB00411503 /* NSView+OptiqueBackground.m */,
 				0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */,

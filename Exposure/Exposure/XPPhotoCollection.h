@@ -25,6 +25,8 @@
 /** all objects filtered by the provided index set conforming to OPPhoto that belong to this collection **/
 -(NSArray*)photosForIndexSet:(NSIndexSet*)indexSet;
 
+-(id<XPPhoto>)coverPhoto;
+
 /**
  If the collection is stored on the file system.
  Should not include collection implementors who's photos exist on a Camera but are locally cached, etc.
