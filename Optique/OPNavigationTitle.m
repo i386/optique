@@ -19,7 +19,7 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowWillExitFullScreenNotification object:self.window];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidExitFullScreenNotification object:self.window];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidEnterFullScreenNotification object:self.window];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPCameraServiceDidAddCamera object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationControllerViewDidChange object:nil];
@@ -40,17 +40,25 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidEnterFullScreen:) name:NSWindowDidEnterFullScreenNotification object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidExitFullScreen:) name:NSWindowDidExitFullScreenNotification object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillExitFullScreen:) name:NSWindowWillExitFullScreenNotification object:nil];
 }
 
 -(void)windowDidEnterFullScreen:(NSNotification*)notification
 {
-    _backButton.animator.frame = NSMakeRect(5, _backButton.frame.origin.y, _backButton.frame.size.width, _backButton.frame.size.height);
+    _backButton.animator.frame = NSMakeRect(20, _backButton.frame.origin.y, _backButton.frame.size.width, _backButton.frame.size.height);
 }
 
 -(void)windowWillExitFullScreen:(NSNotification*)notification
 {
-    _backButton.animator.frame = NSMakeRect(70, _backButton.frame.origin.y, _backButton.frame.size.width, _backButton.frame.size.height);
+    [_backButton setHidden:YES];
+}
+
+-(void)windowDidExitFullScreen:(NSNotification*)notification
+{
+    _backButton.frame = NSMakeRect(97, _backButton.frame.origin.y, _backButton.frame.size.width, _backButton.frame.size.height);
+    [_backButton setHidden:NO];
 }
 
 -(void)cameraAdded:(NSNotification*)notification
@@ -81,6 +89,7 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 
 -(void)updateTitle:(NSString *)title
 {
+    [_backButton.animator setTitle:self.window.title];
     [self.window setTitle:title];
     [_viewLabel.animator setStringValue:title];
 }

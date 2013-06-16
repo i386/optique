@@ -29,11 +29,11 @@
                     </textFieldCell>
                 </textField>
                 <button wantsLayer="YES" appearanceType="lightContent" id="NJN-0o-wj1">
-                    <rect key="frame" x="70" y="7" width="26" height="20"/>
+                    <rect key="frame" x="97" y="7" width="122" height="20"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="back" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="Mb0-It-snY">
+                    <buttonCell key="cell" type="bevel" title="Back" bezelStyle="rounded" image="back" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="Mb0-It-snY" customClass="OPBackButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="14" name="HelveticaNeue-Medium"/>
                     </buttonCell>
                 </button>
                 <button appearanceType="lightContent" id="Skm-t1-Hjr">
@@ -87,10 +87,10 @@
         <menu id="88"/>
     </objects>
     <resources>
-        <image name="212-action2" width="23" height="18"/>
-        <image name="218-trash2" width="16" height="21"/>
-        <image name="86-camera" width="24" height="18"/>
-        <image name="86-camera-alt" width="24" height="18"/>
-        <image name="back" width="327" height="323"/>
+        <image name="212-action2" width="20" height="16"/>
+        <image name="218-trash2" width="12" height="16"/>
+        <image name="86-camera" width="21" height="16"/>
+        <image name="86-camera-alt" width="21" height="16"/>
+        <image name="back" width="16" height="16"/>
     </resources>
 </document>
