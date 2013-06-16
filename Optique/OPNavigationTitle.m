@@ -89,7 +89,13 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 
 -(void)updateTitle:(NSString *)title
 {
-    [_backButton.animator setTitle:self.window.title];
+    OPNavigationViewController *previousViewController = [_navigationController peekAtPreviousViewController];
+    
+    if (previousViewController)
+    {
+        [_backButton setTitle:previousViewController.viewTitle];
+    }
+    
     [self.window setTitle:title];
     [_viewLabel.animator setStringValue:title];
 }

@@ -35,6 +35,8 @@ extern NSString *const OPNavigationControllerViewDidChange;
 /** jump back to the root view with no animation **/
 - (NSArray *)popToRootViewControllerWithNoAnimation;
 
+- (OPNavigationViewController *)peekAtPreviousViewController;
+
 /** update the state of the navigation for the visible view controller **/
 - (void)updateNavigation;
 

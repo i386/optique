@@ -70,6 +70,15 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
     return [NSArray arrayWithArray:_displayStack];
 }
 
+-(OPNavigationViewController *)peekAtPreviousViewController
+{
+    if (_displayStack.count > 1)
+    {
+        return _displayStack[_displayStack.count-2];
+    }
+    return nil;
+}
+
 -(void)updateNavigation
 {
     [_delegate showBackButton:(_rootViewController != _visibleViewController)];
