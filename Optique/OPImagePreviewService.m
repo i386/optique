@@ -12,9 +12,12 @@
 #import "OPLocalPhoto.h"
 #import "NSImage+MGCropExtensions.h"
 
+#define fOPImagePreviewServiceLargeSize 25165824
+
 @interface OPImagePreviewService() {
     NSMapTable *_locks;
-    NSOperationQueue *_queue;
+    NSOperationQueue *_smallImageQueue;
+    NSOperationQueue *_largeImageQueue;
 }
 
 @end
@@ -37,8 +40,12 @@ static OPImagePreviewService *_defaultService;
     self = [super init];
     if (self)
     {
-        _queue = [[NSOperationQueue alloc] init];
-        [_queue setMaxConcurrentOperationCount:5];
+        _smallImageQueue = [[NSOperationQueue alloc] init];
+        [_smallImageQueue setMaxConcurrentOperationCount:10];
+        
+        _largeImageQueue = [[NSOperationQueue alloc] init];
+        [_largeImageQueue setMaxConcurrentOperationCount:1];
+        
         _locks = [NSMapTable weakToWeakObjectsMapTable];
     }
     return self;
@@ -79,11 +86,25 @@ static OPImagePreviewService *_defaultService;
             //If the lock has not been acquired then lock and queue thumb operation
             if (![lock tryLock])
             {
-                [_queue addOperationWithBlock:^
-                 {
-                     NSImage *image = [cache loadImageForPath:url];
-                     completionBlock(image);
-                 }];
+                unsigned long long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:[url path] error:nil] fileSize];
+                
+                if (fileSize >= fOPImagePreviewServiceLargeSize)
+                {
+                    [_largeImageQueue addOperationWithBlock:^
+                     {
+                         NSImage *image = [cache loadImageForPath:url];
+                         completionBlock(image);
+                     }];
+                }
+                else
+                {
+                    [_smallImageQueue addOperationWithBlock:^
+                     {
+                         NSImage *image = [cache loadImageForPath:url];
+                         completionBlock(image);
+                     }];
+                }
+                
                 
                 //Remove the lock
                 [_locks removeObjectForKey:url];
