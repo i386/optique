@@ -134,10 +134,7 @@ void drawRect(CGRect rect, CGContextRef context, CGColorRef backgroundColor, CGC
     [NSGraphicsContext withinGraphicsContext:^{
         [[NSColor optiqueTitlebarColor] set];
         NSRect newFrame = NSMakeRect(cellFrame.origin.x - 2, cellFrame.origin.y - 2, cellFrame.size.width + 4, cellFrame.size.height + 5);
-        NSLog(@"cellframe %@", NSStringFromRect(newFrame));
         NSRectFill(newFrame);
-        
-        
     }];
     [super drawInteriorWithFrame:cellFrame inView:controlView];
 }
