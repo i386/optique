@@ -18,7 +18,8 @@
     if (self)
     {
         _selectionLayer = [OEGridLayer layer];
-        _selectionLayer.backgroundColor = [[NSColor optiqueSelectedBackgroundColor] CGColor];
+        _selectionLayer.borderColor = [[NSColor optiqueSelectedBackgroundColor] CGColor];
+        _selectionLayer.borderWidth = 5.0f;
         [self addSublayer:_selectionLayer];
         
         _titleLayer = [CATextLayer layer];
@@ -41,10 +42,10 @@
 
 -(void)layoutSublayers
 {
-    NSRect selectionFrame = NSMakeRect(kGridViewColumnSpacing * -1, //x
-                                       -10, //y
-                                       self.bounds.size.width + (kGridViewRowSpacing - 3), //width
-                                       self.bounds.size.height + kGridViewColumnSpacing + 20); //height
+    NSRect selectionFrame = NSMakeRect(self.bounds.origin.x - 5, //x
+                                       self.bounds.origin.y - 5, //y
+                                       self.bounds.size.width + 10, //width
+                                       self.bounds.size.height + 10); //height
     
     [_selectionLayer setFrame:selectionFrame];
     
@@ -66,15 +67,8 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    [CATransaction begin];
-    
-	CGColorRef titleBackgroundColor = selected ? [[NSColor optiqueSelectedBackgroundColor] CGColor] : [[NSColor optiqueBackgroundColor] CGColor];
-    [_titleLayer setBackgroundColor:titleBackgroundColor];
-    
     _selectionLayer.hidden = !selected;
 	[super setSelected:selected animated:animated];
-    
-    [CATransaction commit];
 }
 
 - (void)setImage:(NSImage *)image
