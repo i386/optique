@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField wantsLayer="YES" verticalHuggingPriority="750" id="40">
-                    <rect key="frame" x="3" y="6" width="924" height="24"/>
+                    <rect key="frame" x="213" y="6" width="509" height="24"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="41">
                         <font key="font" size="14" name="HelveticaNeue"/>
@@ -33,36 +33,43 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" title="Back" bezelStyle="rounded" image="back" imagePosition="left" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" id="Mb0-It-snY" customClass="OPBackButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="14" name="HelveticaNeue-Medium"/>
+                        <font key="font" size="14" name="HelveticaNeue"/>
                     </buttonCell>
                 </button>
                 <button appearanceType="lightContent" id="Skm-t1-Hjr">
-                    <rect key="frame" x="884" y="6" width="30" height="22"/>
+                    <rect key="frame" x="804" y="6" width="30" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="218-trash2" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="VfS-fS-F0q">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
-                <button appearanceType="lightContent" id="yN0-ot-I3A">
-                    <rect key="frame" x="813" y="6" width="30" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="86-camera" imagePosition="only" alignment="center" alternateImage="86-camera-alt" state="on" imageScaling="proportionallyDown" inset="2" id="XGy-bm-9la">
-                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <button appearanceType="lightContent" id="AO8-35-Bks">
-                    <rect key="frame" x="851" y="6" width="30" height="22"/>
+                    <rect key="frame" x="771" y="6" width="30" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="212-action2" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="5Qi-Ct-LwC">
                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
+                <segmentedControl appearanceType="lightContent" verticalHuggingPriority="750" id="OQs-Nf-0P1" customClass="OPSegmentedControl">
+                    <rect key="frame" x="840" y="4" width="71" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" alignment="left" style="automatic" trackingMode="selectOne" id="PJn-kv-l8J" customClass="OPSegmentedCell">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment image="329-layers1" width="32" selected="YES">
+                                <nil key="label"/>
+                            </segment>
+                            <segment image="86-camera" width="32" tag="1">
+                                <nil key="label"/>
+                            </segment>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
             </subviews>
             <connections>
-                <action selector="cameraButtonPressed:" destination="yN0-ot-I3A" id="KdE-F0-zve"/>
+                <action selector="cameraButtonPressed:" destination="OQs-Nf-0P1" id="xZA-yt-P1w"/>
                 <action selector="cameraButtonPressed:" destination="AO8-35-Bks" id="xeJ-nT-jxa"/>
                 <action selector="deleteButtonPressed:" destination="Skm-t1-Hjr" id="cGF-pg-zsY"/>
                 <action selector="goBack:" destination="NJN-0o-wj1" id="Wd5-xs-tlL"/>
@@ -70,7 +77,7 @@
                 <outlet property="_navigationController" destination="-2" id="32"/>
                 <outlet property="_viewLabel" destination="40" id="42"/>
                 <outlet property="backButton" destination="NJN-0o-wj1" id="NjQ-33-FVW"/>
-                <outlet property="cameraButton" destination="yN0-ot-I3A" id="zcb-Yx-tPy"/>
+                <outlet property="cameraButton" destination="OQs-Nf-0P1" id="TQz-4v-LxD"/>
                 <outlet property="shareButton" destination="AO8-35-Bks" id="1wu-M6-UjP"/>
             </connections>
         </customView>
@@ -89,34 +96,8 @@
     <resources>
         <image name="212-action2" width="20" height="16"/>
         <image name="218-trash2" width="12" height="16"/>
+        <image name="329-layers1" width="19" height="16"/>
         <image name="86-camera" width="21" height="16"/>
-        <image name="86-camera-alt" width="21" height="16"/>
         <image name="back" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="OPBackButtonCell" superclassName="NSButtonCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPBackButtonCell.h"/>
-        </class>
-        <class className="OPNavigationController" superclassName="NSViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPNavigationController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-                <relationship kind="outlet" name="displayView" candidateClass="NSView"/>
-                <relationship kind="outlet" name="navigationTitle" candidateClass="OPNavigationTitle"/>
-            </relationships>
-        </class>
-        <class className="OPNavigationTitle" superclassName="NSView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPNavigationTitle.h"/>
-            <relationships>
-                <relationship kind="action" name="cameraButtonPressed:"/>
-                <relationship kind="action" name="deleteButtonPressed:"/>
-                <relationship kind="action" name="goBack:"/>
-                <relationship kind="outlet" name="_navigationController" candidateClass="OPNavigationController"/>
-                <relationship kind="outlet" name="_viewLabel" candidateClass="NSTextField"/>
-                <relationship kind="outlet" name="backButton" candidateClass="NSButton"/>
-                <relationship kind="outlet" name="cameraButton" candidateClass="NSButton"/>
-                <relationship kind="outlet" name="shareButton" candidateClass="NSButton"/>
-            </relationships>
-        </class>
-    </classes>
 </document>

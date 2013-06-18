@@ -63,7 +63,7 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 
 -(void)cameraAdded:(NSNotification*)notification
 {
-    [_cameraButton setState:NSOnState];
+    [_cameraButton setSelectedSegment:1];
 }
 
 -(void)navigationControllerChanged:(NSNotification*)notification
@@ -107,11 +107,9 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
     [_navigationController popToPreviousViewController];
 }
 
-- (IBAction)cameraButtonPressed:(NSButton*)sender
+- (IBAction)cameraButtonPressed:(NSSegmentedControl*)sender
 {
-    int selected = sender.state ? NSOffState : NSOnState;
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationTitleFilterDidChange object:nil userInfo:@{@"segment": [NSNumber numberWithInteger:selected]}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationTitleFilterDidChange object:nil userInfo:@{@"segment": [NSNumber numberWithInteger:sender.selectedSegment]}];
 }
 
 - (IBAction)deleteButtonPressed:(id)sender

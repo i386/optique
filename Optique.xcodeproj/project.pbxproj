@@ -21,6 +21,10 @@
 		0F04A64F1737C77800E53ED1 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F04A64E1737C77800E53ED1 /* Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F04A6581737C7C300E53ED1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0F04A65E1737C7C300E53ED1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F04A65C1737C7C300E53ED1 /* InfoPlist.strings */; };
+		0F08A8D71770443C00DFEA02 /* 329-layers1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D51770443C00DFEA02 /* 329-layers1.png */; };
+		0F08A8D81770443C00DFEA02 /* 329-layers1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */; };
+		0F08A8DE177044FE00DFEA02 /* OPSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F08A8DD177044FD00DFEA02 /* OPSegmentedControl.m */; };
+		0F08A8E117704B6500DFEA02 /* OPSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F08A8E017704B6500DFEA02 /* OPSegmentedCell.m */; };
 		0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A6571737C7C300E53ED1 /* Finder.bundle */; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
 		0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3001E1172250E800ACAF9E /* OPPhotoImageView.m */; };
@@ -218,6 +222,12 @@
 		0F04A65B1737C7C300E53ED1 /* Finder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Finder-Info.plist"; sourceTree = "<group>"; };
 		0F04A65D1737C7C300E53ED1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0F04A65F1737C7C300E53ED1 /* Finder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Finder-Prefix.pch"; sourceTree = "<group>"; };
+		0F08A8D51770443C00DFEA02 /* 329-layers1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "329-layers1.png"; sourceTree = "<group>"; };
+		0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "329-layers1@2x.png"; sourceTree = "<group>"; };
+		0F08A8DC177044FD00DFEA02 /* OPSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPSegmentedControl.h; sourceTree = "<group>"; };
+		0F08A8DD177044FD00DFEA02 /* OPSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPSegmentedControl.m; sourceTree = "<group>"; };
+		0F08A8DF17704B6500DFEA02 /* OPSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPSegmentedCell.h; sourceTree = "<group>"; };
+		0F08A8E017704B6500DFEA02 /* OPSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPSegmentedCell.m; sourceTree = "<group>"; };
 		0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+FullScreen.h"; sourceTree = "<group>"; };
 		0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+FullScreen.m"; sourceTree = "<group>"; };
 		0F3001E0172250E800ACAF9E /* OPPhotoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoImageView.h; sourceTree = "<group>"; };
@@ -507,6 +517,10 @@
 				0FAEFFF517673F7A00D60171 /* OPShadowClipView.m */,
 				0F348145176D5A8800439AEA /* OPBackButtonCell.h */,
 				0F348146176D5A8800439AEA /* OPBackButtonCell.m */,
+				0F08A8DC177044FD00DFEA02 /* OPSegmentedControl.h */,
+				0F08A8DD177044FD00DFEA02 /* OPSegmentedControl.m */,
+				0F08A8DF17704B6500DFEA02 /* OPSegmentedCell.h */,
+				0F08A8E017704B6500DFEA02 /* OPSegmentedCell.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -874,6 +888,8 @@
 		0FEC674F171034E00086B264 /* Image resources */ = {
 			isa = PBXGroup;
 			children = (
+				0F08A8D51770443C00DFEA02 /* 329-layers1.png */,
+				0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */,
 				0F348148176D669F00439AEA /* loading-preview.pdf */,
 				0F348149176D669F00439AEA /* loading-preview@2x.pdf */,
 				0F33D0EE1769E93D0032CCA0 /* 86-camera-alt.png */,
@@ -1118,6 +1134,7 @@
 				0FE3B2451702C62D00FC0D6C /* OPNavigationController.xib in Resources */,
 				0F34814A176D669F00439AEA /* loading-preview.pdf in Resources */,
 				0FDE075917030FCC00D5B456 /* OPPhotoCollectionViewController.xib in Resources */,
+				0F08A8D81770443C00DFEA02 /* 329-layers1@2x.png in Resources */,
 				0F96270F170418EB007C1A86 /* OPPhotoViewController.xib in Resources */,
 				0FEC675717103B5E0086B264 /* effectsbarselectedbg.png in Resources */,
 				0FEC675817103B5E0086B264 /* effectsbarselectedbg@2x.png in Resources */,
@@ -1129,6 +1146,7 @@
 				0FCAF8CA1710461A00E6C903 /* effectsbarbg@2x.png in Resources */,
 				0FA706C3171911B900864CED /* OPNewAlbumSheetController.xib in Resources */,
 				0F8FEBBB1769E283004BB523 /* 212-action2@2x.png in Resources */,
+				0F08A8D71770443C00DFEA02 /* 329-layers1.png in Resources */,
 				0F33D0E01769E4D40032CCA0 /* 86-camera.png in Resources */,
 				0F34814B176D669F00439AEA /* loading-preview@2x.pdf in Resources */,
 				0FA706C8171911CC00864CED /* OPDeleteAlbumSheetController.xib in Resources */,
@@ -1239,11 +1257,13 @@
 				0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */,
 				0F6AF878172A3B0B0029724A /* OPCameraService.m in Sources */,
 				0F6AF87F172A42750029724A /* OPCamera.m in Sources */,
+				0F08A8E117704B6500DFEA02 /* OPSegmentedCell.m in Sources */,
 				0F8C561A172CBB4B00CB7B1E /* OPCameraPhoto.m in Sources */,
 				0F8C561D172CC0D300CB7B1E /* OPLocalPhoto.m in Sources */,
 				0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */,
 				0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */,
 				0FCA4D291737D351007DC9EF /* OPExposureService.m in Sources */,
+				0F08A8DE177044FE00DFEA02 /* OPSegmentedControl.m in Sources */,
 				0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */,
 				0FD51720176B08BD006E8F4D /* OPGridView.m in Sources */,
 			);

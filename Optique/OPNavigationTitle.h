@@ -23,7 +23,7 @@ typedef enum {
 }
 
 @property (strong) IBOutlet NSButton *backButton;
-@property (strong) IBOutlet NSButton *cameraButton;
+@property (strong) IBOutlet NSSegmentedControl *cameraButton;
 
 - (void)updateTitle:(NSString*)label;
 
