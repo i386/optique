@@ -27,10 +27,9 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 
 -(void)awakeFromNib
 {
-    [shareButton setImage:[NSImage imageNamed:NSImageNameShareTemplate]];
-    shareButton.menu.delegate = self;
-    shareButton.target = self;
-    shareButton.action = @selector(showSharingMenu:);
+    _shareWithButton.menu.delegate = self;
+    _shareWithButton.target = self;
+    _shareWithButton.action = @selector(showSharingMenu:);
     
     [self setPostsBoundsChangedNotifications:YES];
     
@@ -74,16 +73,16 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
         
         if ([sharingService sharingMenuItems].count > 0)
         {
-            [shareButton setEnabled:YES];
+            [_shareWithButton setEnabled:YES];
         }
         else
         {
-            [shareButton setEnabled:NO];
+            [_shareWithButton setEnabled:NO];
         }
     }
     else
     {
-        [shareButton setEnabled:NO];
+        [_shareWithButton setEnabled:NO];
     }
 }
 

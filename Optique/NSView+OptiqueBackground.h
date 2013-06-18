@@ -16,8 +16,4 @@
 
 -(void)drawDarkBackground;
 
--(void)drawEffectsViewBackground;
-
--(void)drawEffectsViewBackgroundSelected;
-
 @end

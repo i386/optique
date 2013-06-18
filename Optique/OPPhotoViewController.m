@@ -10,7 +10,6 @@
 #import "OPPhotoViewController.h"
 #import "OPPhotoView.h"
 #import "NSImage+CGImage.h"
-#import "OPEffectProcessedImageRef.h"
 #import "NSImage+Transform.h"
 #import "OPPhotoController.h"
 

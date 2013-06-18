@@ -18,12 +18,12 @@ typedef enum {
 
 @interface OPNavigationTitle : NSView<NSMenuDelegate> {
     IBOutlet NSTextField *_viewLabel;
-    IBOutlet NSButton *shareButton;
     IBOutlet OPNavigationController *_navigationController;
 }
 
 @property (strong) IBOutlet NSButton *backButton;
 @property (strong) IBOutlet NSSegmentedControl *cameraButton;
+@property (strong) IBOutlet NSButton *shareWithButton;
 
 - (void)updateTitle:(NSString*)label;
 
