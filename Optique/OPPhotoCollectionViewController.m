@@ -84,7 +84,7 @@
 
 - (IBAction)deletePhoto:(NSMenuItem*)sender
 {
-    NSIndexSet *indexes = sender.representedObject;
+    NSIndexSet *indexes = [_gridView selectionIndexes];
     [self deleteSelectedPhotosAtIndexes:indexes];
 }
 

@@ -17,7 +17,7 @@
     XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:service.title keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
         id<XPPhotoCollection> collection = controller.visibleCollection;
         
-        NSIndexSet *indexes = sender.representedObject;
+        NSIndexSet *indexes = [controller selectedItems];
         
         NSMutableArray *photos = [NSMutableArray array];
         for (id<XPPhoto> photo in [collection photosForIndexSet:indexes])

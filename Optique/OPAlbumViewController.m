@@ -135,7 +135,7 @@
 
 - (IBAction)revealInFinder:(NSMenuItem*)sender
 {
-    NSIndexSet *indexes = (NSIndexSet*)sender.representedObject;
+    NSIndexSet *indexes = [_gridView selectionIndexes];
     NSMutableArray *urls = [NSMutableArray array];
     [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
     {
@@ -156,7 +156,7 @@
 
 - (IBAction)deleteAlbum:(NSMenuItem*)sender
 {
-    NSIndexSet *indexes = (NSIndexSet*)sender.representedObject;
+    NSIndexSet *indexes = [_gridView selectionIndexes];
     [self deleteAlbumsAtIndexes:indexes];
 }
 

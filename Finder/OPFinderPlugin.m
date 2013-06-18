@@ -15,7 +15,7 @@
     XPPhotoManager * __weak weakPhotoManager = photoManager;
     
     XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:@"Show in Finder" keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
-        NSIndexSet *indexes = (NSIndexSet*)sender.representedObject;
+        NSIndexSet *indexes = [controller selectedItems];
         NSMutableArray *urls = [NSMutableArray array];
         [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
          {
@@ -50,7 +50,7 @@
 -(void)photoManager:(XPPhotoManager *)photoManager photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller
 {
     XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:@"Show in Finder" keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
-        NSIndexSet *indexes = (NSIndexSet*)sender.representedObject;
+        NSIndexSet *indexes = [controller selectedItems];
         NSMutableArray *urls = [NSMutableArray array];
         [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
          {
