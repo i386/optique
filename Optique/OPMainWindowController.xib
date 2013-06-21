@@ -17,6 +17,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <rect key="contentRect" x="196" y="240" width="950" height="700"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <value key="minSize" type="size" width="400" height="400"/>
             <view key="contentView" wantsLayer="YES" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="950" height="700"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -26,4 +27,21 @@
             </connections>
         </window>
     </objects>
+    <classes>
+        <class className="INAppStoreWindow" superclassName="NSWindow">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/INAppStoreWindow.h"/>
+        </class>
+        <class className="OPMainWindowController" superclassName="NSWindowController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPMainWindowController.h"/>
+            <relationships>
+                <relationship kind="action" name="navigateBack:"/>
+                <relationship kind="outlet" name="albumNameTextField" candidateClass="NSTextField"/>
+                <relationship kind="outlet" name="createAlbumSheetWindow" candidateClass="NSWindow"/>
+                <relationship kind="outlet" name="navBackButton" candidateClass="NSButton"/>
+            </relationships>
+        </class>
+        <class className="OPWindow" superclassName="INAppStoreWindow">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPWindow.h"/>
+        </class>
+    </classes>
 </document>
