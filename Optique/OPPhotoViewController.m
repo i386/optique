@@ -30,6 +30,7 @@
         _effectsState = NSOffState;
         _visiblePhoto = photo;
         _index = [_collection.allPhotos indexOfObject:photo];
+        _sharingMenuItems = [NSMutableArray array];
     }
     return self;
 }
