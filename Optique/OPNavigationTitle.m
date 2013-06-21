@@ -27,6 +27,10 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 
 -(void)awakeFromNib
 {
+    [super awakeFromNib];
+    
+    _shareWithButton.menu = [[NSMenu alloc] init];
+    _shareWithButton.menu.showsStateColumn = NO;
     _shareWithButton.menu.delegate = self;
     _shareWithButton.target = self;
     _shareWithButton.action = @selector(showSharingMenu:);
@@ -122,12 +126,26 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 
 -(void)showSharingMenu:(NSButton*)sender
 {
-    [NSMenu popUpContextMenu:[sender menu] withEvent:[NSApplication sharedApplication].currentEvent forView:sender];
+    NSPoint point = _shareWithButton.frame.origin;
+    point = NSMakePoint(point.x + 4, point.y + self.window.frame.size.height - 40);
+    
+    NSEvent *fakeMouseEvent = [NSEvent mouseEventWithType:NSLeftMouseDown
+                                                 location:point
+                                            modifierFlags:0
+                                                timestamp:0
+                                             windowNumber:[self.window windowNumber]
+                                                  context:nil
+                                              eventNumber:0
+                                               clickCount:0
+                                                 pressure:0];
+    
+    
+    [NSMenu popUpContextMenu:[sender menu] withEvent:fakeMouseEvent forView:sender];
 }
 
 -(void)menuNeedsUpdate:(NSMenu *)menu
 {
-    if ([_navigationController.visibleViewController conformsToProtocol:@protocol(XPSharingService)])
+    if (menu.itemArray.count < 1 && [_navigationController.visibleViewController conformsToProtocol:@protocol(XPSharingService)])
     {
         id<XPSharingService> sharingService = (id<XPSharingService>)_navigationController.visibleViewController;
         
@@ -135,6 +153,11 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
             [menu addItem:sender];
         }];
     }
+}
+
+-(void)doNothing:(id)obj
+{
+    //Fuck appkit sucks
 }
 
 @end

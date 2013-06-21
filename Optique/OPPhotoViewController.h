@@ -9,7 +9,7 @@
 #import <Quartz/Quartz.h>
 #import "OPNavigationViewController.h"
 
-@interface OPPhotoViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate, XPSharingService>
+@interface OPPhotoViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate, XPSharingService, XPPhotoController>
 
 @property (strong, readonly) id<XPPhotoCollection> collection;
 @property (assign) NSInteger effectsState;
@@ -26,7 +26,5 @@
 
 -(void)deletePhoto;
 -(void)revealInFinder;
-
-//-(NSArray *)processedImages;
 
 @end

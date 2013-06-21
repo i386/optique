@@ -53,7 +53,7 @@
                 </segmentedControl>
                 <button appearanceType="lightContent" id="3my-a0-Ltp">
                     <rect key="frame" x="797" y="7" width="30" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="212-action2" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="vOK-p0-LL8">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -81,7 +81,6 @@
                 </customView>
             </subviews>
         </customView>
-        <menu id="88"/>
     </objects>
     <resources>
         <image name="212-action2" width="20" height="16"/>
@@ -104,14 +103,13 @@
         <class className="OPNavigationTitle" superclassName="NSView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OPNavigationTitle.h"/>
             <relationships>
-                <relationship kind="action" name="cameraButtonPressed:"/>
+                <relationship kind="action" name="cameraButtonPressed:" candidateClass="NSSegmentedControl"/>
                 <relationship kind="action" name="deleteButtonPressed:"/>
                 <relationship kind="action" name="goBack:"/>
                 <relationship kind="outlet" name="_navigationController" candidateClass="OPNavigationController"/>
                 <relationship kind="outlet" name="_viewLabel" candidateClass="NSTextField"/>
                 <relationship kind="outlet" name="backButton" candidateClass="NSButton"/>
                 <relationship kind="outlet" name="cameraButton" candidateClass="NSSegmentedControl"/>
-                <relationship kind="outlet" name="shareButton" candidateClass="NSButton"/>
                 <relationship kind="outlet" name="shareWithButton" candidateClass="NSButton"/>
             </relationships>
         </class>

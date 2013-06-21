@@ -10,10 +10,12 @@
 
 @implementation OPBackButtonCell
 
--(NSRect)drawTitle:(NSAttributedString *)title withFrame:(NSRect)frame inView:(NSView *)controlView
+-(void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
+    NSButton *button = (NSButton*)controlView;
+    
     NSMutableAttributedString *attrTitle = [[NSMutableAttributedString alloc]
-                                            initWithAttributedString:title];
+                                            initWithAttributedString:button.attributedTitle];
     NSUInteger len = [attrTitle length];
     NSRange range = NSMakeRange(0, len);
     [attrTitle addAttribute:NSForegroundColorAttributeName
@@ -22,13 +24,22 @@
     [attrTitle fixAttributesInRange:range];
     [self setAttributedTitle:attrTitle];
     
-    NSRect newFrame = NSMakeRect(frame.origin.x, frame.origin.y - 2, frame.size.width, frame.size.height);
-    return [super drawTitle:attrTitle withFrame:newFrame inView:controlView];
-}
-
--(void)highlight:(BOOL)flag withFrame:(NSRect)cellFrame inView:(NSView *)controlView
-{
+    NSRect imageRect = [self imageRectForBounds:cellFrame];
     
+    NSRect textRect = [self titleRectForBounds:cellFrame];
+    NSRect newTextRect = NSMakeRect(textRect.origin.x, textRect.origin.y - 2, textRect.size.width, textRect.size.height);
+    
+    if (self.isHighlighted)
+    {
+        NSRect srcRect = NSMakeRect(0, 0, button.image.size.width, button.image.size.height);
+        [button.image drawInRect:imageRect fromRect:srcRect operation:NSCompositeDestinationOver fraction:0.8f];
+    }
+    else
+    {
+        [[button image] drawInRect:imageRect];
+    }
+    
+    [[button attributedTitle] drawInRect:newTextRect];
 }
 
 @end

@@ -34,6 +34,11 @@
     return self;
 }
 
+-(void)awakeFromNib
+{
+    [OPExposureService photoManager:[_collection photoManager] photoController:self];
+}
+
 -(void)loadView
 {
     [super loadView];
@@ -90,6 +95,11 @@
     NSBeginAlertSheet(message, @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, (void*)CFBridgingRetain(_visiblePhoto), @"This operation can not be undone.");
 }
 
+-(void)deleteSelected
+{
+    [self deletePhoto];
+}
+
 - (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet
                           returnCode: (NSInteger)returnCode
                          contextInfo: (void *)contextInfo
@@ -104,11 +114,9 @@
     }
 }
 
--(void)revealInFinder
+-(NSWindow *)window
 {
-    [_visiblePhoto resolveURL:^(NSURL *suppliedUrl) {
-        [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[suppliedUrl]];
-    }];
+    return self.window;
 }
 
 -(NSString *)pageController:(NSPageController *)pageController identifierForObject:(id)object
