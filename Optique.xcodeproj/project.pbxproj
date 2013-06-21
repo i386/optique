@@ -551,7 +551,6 @@
 		0F962710170418F4007C1A86 /* Photo View */ = {
 			isa = PBXGroup;
 			children = (
-				0FB87B6A176B56DF00433C6C /* New Group */,
 				0F96270B170418EB007C1A86 /* OPPhotoViewController.h */,
 				0F96270C170418EB007C1A86 /* OPPhotoViewController.m */,
 				0F96270D170418EB007C1A86 /* OPPhotoViewController.xib */,
@@ -659,13 +658,6 @@
 				0F9C80C216F891C700B2B6D8 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		0FB87B6A176B56DF00433C6C /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		0FCA4D1D1737CE8C007DC9EF /* Exposures */ = {

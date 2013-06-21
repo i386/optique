@@ -21,10 +21,7 @@
 
 -initWithPhotoManager:(XPPhotoManager*)photoManager;
 
-- (IBAction)revealInFinder:(NSMenuItem*)sender;
-
 - (IBAction)deleteAlbum:(NSMenuItem*)sender;
-
 - (IBAction)ejectCamera:(id)sender;
 
 @end

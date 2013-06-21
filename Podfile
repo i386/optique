@@ -5,8 +5,7 @@ pod 'CDEvents', '~> 1.2.0'
 pod 'NSHash', '~> 1.0.1'
 pod 'BlocksKit', '~> 1.8.2'
 
-#pod 'CNGridView', :git => 'http://github.com/i386/CNGridView.git'
-#pod 'OEGridView', :podspec => 'https://raw.github.com/i386/OEGridView/e799a5946aabcdf83808592e526f0b1da2a947b2/OEGridView.podspec', :commit => 'e799a5946aabcdf83808592e526f0b1da2a947b2'
+#pod 'OEGridView', :podspec => 'https://raw.github.com/i386/OEGridView/a78c9885a5d04df54814ab3cc1f7100ccb0be14d/OEGridView.podspec', :commit => 'a78c9885a5d04df54814ab3cc1f7100ccb0be14d'
 
 pod 'OEGridView', :path => '~/code/OEGridView'
 

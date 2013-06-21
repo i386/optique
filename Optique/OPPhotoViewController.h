@@ -25,6 +25,5 @@
 -(void)backToPhotoCollection;
 
 -(void)deletePhoto;
--(void)revealInFinder;
 
 @end

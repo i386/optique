@@ -133,21 +133,6 @@
     }
 }
 
-- (IBAction)revealInFinder:(NSMenuItem*)sender
-{
-    NSIndexSet *indexes = [_gridView selectionIndexes];
-    NSMutableArray *urls = [NSMutableArray array];
-    [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
-    {
-        id collection = _photoManager.allCollections[index];
-        if ([collection respondsToSelector:@selector(path)])
-        {
-            [urls addObject:[collection path]];
-        }
-    }];
-    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
-}
-
 -(void)deleteSelected
 {
     NSIndexSet *indexes = [_gridView indexesForSelectedCells];
