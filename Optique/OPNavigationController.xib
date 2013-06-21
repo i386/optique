@@ -30,7 +30,7 @@
                 </textField>
                 <button wantsLayer="YES" appearanceType="lightContent" id="NJN-0o-wj1">
                     <rect key="frame" x="97" y="7" width="122" height="20"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" title="Back" bezelStyle="rounded" image="back" imagePosition="left" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" id="Mb0-It-snY" customClass="OPBackButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="14" name="HelveticaNeue"/>
