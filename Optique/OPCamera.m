@@ -30,6 +30,7 @@
         _device = device;
         _device.delegate = self;
         _thumbnailsRecieved = 0;
+        _created = [NSDate date];
     }
     return self;
 }
@@ -41,14 +42,14 @@
 
 -(NSArray *)allPhotos
 {
-    return _allPhotos;
+    return [_allPhotos sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO]]];
 }
 
 -(NSArray *)photosForIndexSet:(NSIndexSet *)indexSet
 {
     NSMutableArray *photos = [NSMutableArray array];
     
-    [_allPhotos enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+    [self.allPhotos enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop)
      {
          [photos addObject:obj];
      }];

@@ -58,6 +58,11 @@
     return (OPCamera*)_collection;
 }
 
+-(NSDate *)created
+{
+    return _cameraFile.creationDate;
+}
+
 -(NSImage *)thumbnail
 {
     NSImage *thumbnail = [((OPCamera*)_collection) thumbnailForName:self.title];

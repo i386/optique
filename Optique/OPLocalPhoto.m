@@ -18,6 +18,9 @@
         _title = title;
         _path = path;
         _collection = collection;
+        
+        NSDictionary* attributesDictionary = [[NSFileManager defaultManager] attributesOfItemAtPath:[_path path] error: NULL];
+        _created = attributesDictionary[NSFileCreationDate];
     }
     return self;
 }

@@ -15,6 +15,7 @@
 @interface OPPhotoAlbum : NSObject <XPPhotoCollection>
 
 @property (strong, readonly) NSString *title;
+@property (strong, readonly) NSDate *created;
 @property (strong, readonly) NSURL *path;
 @property (strong, readonly) XPPhotoManager *photoManager;
 

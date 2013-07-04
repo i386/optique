@@ -27,6 +27,9 @@
         _path = path;
         _photoManager = photoManager;
         _arrayLock = [[NSLock alloc] init];
+        
+        NSDictionary* attributesDictionary = [[NSFileManager defaultManager] attributesOfItemAtPath:[_path path] error: NULL];
+        _created = attributesDictionary[NSFileCreationDate];
     }
     return self;
 }
@@ -41,7 +44,7 @@
     [_arrayLock lock];
     @try
     {
-        return (NSArray*)_allPhotos;
+        return [(NSArray*)_allPhotos sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO]]];
     }
     @finally
     {
@@ -53,7 +56,7 @@
 {
     NSMutableArray *albums = [NSMutableArray array];
     
-    [[self allPhotos] enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+    [self.allPhotos enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop)
     {
         [albums addObject:obj];
     }];

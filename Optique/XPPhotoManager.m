@@ -46,7 +46,7 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
 -(NSArray *)allCollections
 {
     return [self withLock:^id{
-        return [[_collectionSet array] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
+        return [[_collectionSet array] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO]]];
     }];
 }
 

@@ -13,6 +13,7 @@
 
 @property (readonly, weak) ICCameraDevice *device;
 @property (readonly, weak) XPPhotoManager *photoManager;
+@property (readonly, strong) NSDate *created;
 
 -(id)initWithDevice:(ICCameraDevice*)device photoManager:(XPPhotoManager*)photoManager;
 
