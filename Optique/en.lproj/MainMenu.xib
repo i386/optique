@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A476u" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4457.9" systemVersion="13A497d" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4457.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4457.9"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -248,10 +248,22 @@
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
         <userDefaultsController id="564"/>
-        <customObject id="567" customClass="SUUpdater">
-            <connections>
-                <action selector="checkForUpdates:" destination="568" id="569"/>
-            </connections>
-        </customObject>
     </objects>
+    <classes>
+        <class className="NSTextView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSTextView.h"/>
+            <relationships>
+                <relationship kind="action" name="orderFrontSharingServicePicker:"/>
+                <relationship kind="action" name="toggleQuickLookPreviewPanel:"/>
+            </relationships>
+        </class>
+        <class className="OPAppDelegate" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPAppDelegate.h"/>
+            <relationships>
+                <relationship kind="action" name="newAlbum:"/>
+                <relationship kind="action" name="openDirectory:"/>
+                <relationship kind="outlet" name="_userDefaultsController" candidateClass="NSUserDefaultsController"/>
+            </relationships>
+        </class>
+    </classes>
 </document>

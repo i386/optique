@@ -17,6 +17,8 @@
  **/
 -(NSString*)title;
 
+-(NSDate*)created;
+
 /**
  The collection (such as the album or camera) that the photo belongs to
  **/

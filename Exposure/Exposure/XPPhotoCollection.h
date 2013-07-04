@@ -19,6 +19,8 @@
 /** title of the collection **/
 -(NSString*)title;
 
+-(NSDate*)created;
+
 /** all objects conforming to OPPhoto that belong to this collection **/
 -(NSArray*)allPhotos;
 

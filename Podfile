@@ -9,4 +9,4 @@ pod 'BlocksKit', '~> 1.8.2'
 
 pod 'OEGridView', :path => '~/code/OEGridView'
 
-pod 'HockeySDK', :podspec => 'https://raw.github.com/bitstadium/HockeySDK-Mac/develop/HockeySDK.podspec', :commit => 'c2ebc0f081fda626d99c049e3a3d4e2a9c646d35'
+#pod 'HockeySDK', :podspec => 'https://raw.github.com/bitstadium/HockeySDK-Mac/develop/HockeySDK.podspec', :commit => 'c2ebc0f081fda626d99c049e3a3d4e2a9c646d35'

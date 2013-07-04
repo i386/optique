@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import <INAppStoreWindow/INAppStoreWindow.h>
-#import <HockeySDK/HockeySDK.h>
 
 #import "OPAlbumScanner.h"
 #import "OPCameraService.h"

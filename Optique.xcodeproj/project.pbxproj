@@ -52,6 +52,7 @@
 		0F44BB46173DE17B0039B00E /* OPFacebookPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BB45173DE17B0039B00E /* OPFacebookPhoto.m */; };
 		0F44BB4E173E011E0039B00E /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
 		0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F489933170BFFD60044ED0A /* OPImagePreviewService.m */; };
+		0F50C399178452580017DF73 /* CATextLayer+EmptyCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F50C398178452580017DF73 /* CATextLayer+EmptyCollection.m */; };
 		0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE86217366CF900DF2356 /* XPPhotoManager.m */; };
 		0F62BA66173673B200E661DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
@@ -59,7 +60,6 @@
 		0F6AF878172A3B0B0029724A /* OPCameraService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF877172A3B0A0029724A /* OPCameraService.m */; };
 		0F6AF87B172A3B220029724A /* ImageCaptureCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */; };
 		0F6AF87F172A42750029724A /* OPCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF87E172A42750029724A /* OPCamera.m */; };
-		0F79818C17367EF000FBC7DC /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F976DFD17362F4F002C4C30 /* Sparkle.framework */; };
 		0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */; };
 		0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */; };
 		0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D6171BA077004D8082 /* OPPhotoController.m */; };
@@ -70,7 +70,6 @@
 		0F8FEBBB1769E283004BB523 /* 212-action2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8FEBB91769E283004BB523 /* 212-action2@2x.png */; };
 		0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F96270C170418EB007C1A86 /* OPPhotoViewController.m */; };
 		0F96270F170418EB007C1A86 /* OPPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F96270D170418EB007C1A86 /* OPPhotoViewController.xib */; };
-		0F976DFE17362F4F002C4C30 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F976DFD17362F4F002C4C30 /* Sparkle.framework */; };
 		0F9C80BE16F891C700B2B6D8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80BC16F891C700B2B6D8 /* InfoPlist.strings */; };
 		0F9C80C016F891C700B2B6D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C80BF16F891C700B2B6D8 /* main.m */; };
 		0F9C80C416F891C700B2B6D8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80C216F891C700B2B6D8 /* Credits.rtf */; };
@@ -188,7 +187,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0FCA4D191737CC4A007DC9EF /* Exposure.framework in CopyFiles */,
-				0F79818C17367EF000FBC7DC /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +261,9 @@
 		0F44BB45173DE17B0039B00E /* OPFacebookPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFacebookPhoto.m; sourceTree = "<group>"; };
 		0F489932170BFFD60044ED0A /* OPImagePreviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImagePreviewService.h; sourceTree = "<group>"; };
 		0F489933170BFFD60044ED0A /* OPImagePreviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImagePreviewService.m; sourceTree = "<group>"; };
+		0F50C397178452580017DF73 /* CATextLayer+EmptyCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CATextLayer+EmptyCollection.h"; path = "Optique/CATextLayer+EmptyCollection.h"; sourceTree = "<group>"; };
+		0F50C398178452580017DF73 /* CATextLayer+EmptyCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CATextLayer+EmptyCollection.m"; path = "Optique/CATextLayer+EmptyCollection.m"; sourceTree = "<group>"; };
+		0F50C39A178560A90017DF73 /* Optique.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Optique.entitlements; sourceTree = "<group>"; };
 		0F5FE86217366CF900DF2356 /* XPPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPPhotoManager.m; sourceTree = "<group>"; };
 		0F62BA65173673B200E661DD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0F66FD1E1728FB0600747AC7 /* OPNavigationControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPNavigationControllerDelegate.h; sourceTree = "<group>"; };
@@ -290,7 +291,6 @@
 		0F96270B170418EB007C1A86 /* OPPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoViewController.h; sourceTree = "<group>"; };
 		0F96270C170418EB007C1A86 /* OPPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoViewController.m; sourceTree = "<group>"; };
 		0F96270D170418EB007C1A86 /* OPPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPhotoViewController.xib; sourceTree = "<group>"; };
-		0F976DFD17362F4F002C4C30 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		0F9C80B016F891C700B2B6D8 /* Optique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optique.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9C80B616F891C700B2B6D8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		0F9C80B816F891C700B2B6D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -403,7 +403,6 @@
 				0F368A6C170531B500411503 /* Quartz.framework in Frameworks */,
 				0FE3B2621702F25500FC0D6C /* QuartzCore.framework in Frameworks */,
 				76AAAAFD273F4DD99BF0C8E7 /* libPods.a in Frameworks */,
-				0F976DFE17362F4F002C4C30 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,7 +609,6 @@
 				0F44BAD7173DCA620039B00E /* Accounts.framework */,
 				0FCA4D4F173874C6007DC9EF /* Social.framework */,
 				0F62BA65173673B200E661DD /* Cocoa.framework */,
-				0F976DFD17362F4F002C4C30 /* Sparkle.framework */,
 				0F9C80B616F891C700B2B6D8 /* AppKit.framework */,
 				0F9C80B816F891C700B2B6D8 /* Foundation.framework */,
 				0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */,
@@ -625,6 +623,7 @@
 		0F9C80B916F891C700B2B6D8 /* Optique */ = {
 			isa = PBXGroup;
 			children = (
+				0F50C39A178560A90017DF73 /* Optique.entitlements */,
 				0F9C80C516F891C700B2B6D8 /* OPAppDelegate.h */,
 				0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */,
 				0F9C80C816F891C700B2B6D8 /* MainMenu.xib */,
@@ -790,6 +789,8 @@
 				0FD5171F176B08BD006E8F4D /* OPGridView.m */,
 				0FD51721176B431F006E8F4D /* OPGridViewCell.h */,
 				0FD51722176B431F006E8F4D /* OPGridViewCell.m */,
+				0F50C397178452580017DF73 /* CATextLayer+EmptyCollection.h */,
+				0F50C398178452580017DF73 /* CATextLayer+EmptyCollection.m */,
 			);
 			name = "Grid View";
 			path = ..;
@@ -1041,6 +1042,16 @@
 				CLASSPREFIX = OP;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "James Dumay";
+				TargetAttributes = {
+					0F9C80AF16F891C700B2B6D8 = {
+						DevelopmentTeam = QZEN9DJMR2;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 0F9C80AB16F891C700B2B6D8 /* Build configuration list for PBXProject "Optique" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1209,6 +1220,7 @@
 				0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */,
 				0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */,
 				0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */,
+				0F50C399178452580017DF73 /* CATextLayer+EmptyCollection.m in Sources */,
 				0F6AF878172A3B0B0029724A /* OPCameraService.m in Sources */,
 				0F6AF87F172A42750029724A /* OPCamera.m in Sources */,
 				0F08A8E117704B6500DFEA02 /* OPSegmentedCell.m in Sources */,
@@ -1336,6 +1348,8 @@
 		0F04A6391737C71000E53ED1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1343,6 +1357,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Exposure/Exposure-Prefix.pch";
 				INFOPLIST_FILE = "Exposure/Exposure-Info.plist";
+				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1351,6 +1366,8 @@
 		0F04A63A1737C71000E53ED1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1358,6 +1375,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Exposure/Exposure-Prefix.pch";
 				INFOPLIST_FILE = "Exposure/Exposure-Info.plist";
+				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1366,6 +1384,8 @@
 		0F04A6611737C7C300E53ED1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Finder/Finder-Prefix.pch";
@@ -1379,6 +1399,8 @@
 		0F04A6621737C7C300E53ED1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Finder/Finder-Prefix.pch";
@@ -1450,7 +1472,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1915239F645F4207934EB0EC /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_ENTITLEMENTS = Optique/Optique.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1461,6 +1484,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Optique/Optique-Prefix.pch";
 				INFOPLIST_FILE = "Optique/Optique-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1471,7 +1495,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1915239F645F4207934EB0EC /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_ENTITLEMENTS = Optique/Optique.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1482,6 +1507,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Optique/Optique-Prefix.pch";
 				INFOPLIST_FILE = "Optique/Optique-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1491,6 +1517,8 @@
 		0FCA4D5F1738A273007DC9EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Facebook/Facebook-Prefix.pch";
@@ -1504,6 +1532,8 @@
 		0FCA4D601738A273007DC9EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Facebook/Facebook-Prefix.pch";
@@ -1517,6 +1547,8 @@
 		0FCA4D7E17391EA8007DC9EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Twitter/Twitter-Prefix.pch";
@@ -1530,6 +1562,8 @@
 		0FCA4D7F17391EA8007DC9EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Twitter/Twitter-Prefix.pch";

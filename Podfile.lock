@@ -2,7 +2,6 @@ PODS:
   - BlocksKit (1.8.2):
     - libffi
   - CDEvents (1.2.0)
-  - HockeySDK (1.0.3)
   - INAppStoreWindow (HEAD based on 1.2)
   - NSHash (1.0.1)
   - OEGridView (0.0.1):
@@ -14,24 +13,19 @@ PODS:
 DEPENDENCIES:
   - BlocksKit (~> 1.8.2)
   - CDEvents (~> 1.2.0)
-  - HockeySDK (from `https://raw.github.com/bitstadium/HockeySDK-Mac/develop/HockeySDK.podspec`)
   - INAppStoreWindow (HEAD)
   - NSHash (~> 1.0.1)
   - OEGridView (from `~/code/OEGridView`)
 
 EXTERNAL SOURCES:
-  HockeySDK:
-    :commit: c2ebc0f081fda626d99c049e3a3d4e2a9c646d35
-    :podspec: https://raw.github.com/bitstadium/HockeySDK-Mac/develop/HockeySDK.podspec
   OEGridView:
     :path: ~/code/OEGridView
 
 SPEC CHECKSUMS:
   BlocksKit: 7396526b0816734103f6133fbb1a520c8b04e80c
   CDEvents: 079cd7b12501bafe6c7ec204f87cecdadce121cc
-  HockeySDK: 3bf5d65b05a3b3590bff8f9ee1ac2e12b1565edf
   INAppStoreWindow: d00327caee47d951043169df9aaab952389defcb
   NSHash: 08e81b655e7d2e3d9b872c192e52f77b76694918
-  OEGridView: 0b1a51efdf1c3f33098d7960b671b48b3e09fadd
+  OEGridView: 5a30c3caa4ca9d4ddff2a36de5010fce324bfd56
 
 COCOAPODS: 0.20.2

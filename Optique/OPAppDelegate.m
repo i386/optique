@@ -7,7 +7,6 @@
 //
 
 #import "OPAppDelegate.h"
-#import <HockeySDK/BITHockeyManager.h>
 #import "OPImageCache.h"
 #import "OPExposureService.h"
 
@@ -15,33 +14,33 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-//    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"52814104cfd270328887432ee78c4dd1" companyName:@"Whimsy" crashReportManagerDelegate:self];
-//    [[BITHockeyManager sharedHockeyManager] setExceptionInterceptionEnabled:YES];
-//    [[BITHockeyManager sharedHockeyManager] startManager];
+    NSData *bookmarkData = [[_userDefaultsController defaults] objectForKey:@"url"];
     
-    NSURL *url = [[_userDefaultsController defaults] URLForKey:@"url"];
-    if (!url)
+    NSURL *url;
+    if (bookmarkData)
     {
-        url = [[[NSFileManager defaultManager] URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
+        BOOL isStale;
+        NSError *error;
+        url = [NSURL URLByResolvingBookmarkData:bookmarkData options:NSURLBookmarkResolutionWithSecurityScope relativeToURL:nil bookmarkDataIsStale:&isStale error:nil];
+        
+        if (error || isStale)
+        {
+            url = [self resolvePicturesDirectoryURL];
+        }
+        else
+        {
+            [url startAccessingSecurityScopedResource];
+        }
     }
-    
+    else
+    {
+        url = [self resolvePicturesDirectoryURL];
+    }
+
     _cameraService = [[OPCameraService alloc] init];
     
     [self picturesAtDirectory:url];
 }
-
-//-(void)showMainApplicationWindow
-//{
-//    NSURL *url = [[_userDefaultsController defaults] URLForKey:@"url"];
-//    if (!url)
-//    {
-//        url = [[[NSFileManager defaultManager] URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
-//    }
-//    
-//    _cameraService = [[OPCameraService alloc] init];
-//    
-//    [self picturesAtDirectory:url];
-//}
 
 - (IBAction)openDirectory:(id)sender
 {
@@ -57,6 +56,19 @@
         {
             [_albumScaner setStopScan:YES];
             [[OPImageCache sharedPreviewCache] clearCache];
+            
+            NSError *error;
+            NSData *data = [openPanel.URL bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope includingResourceValuesForKeys:nil relativeToURL:nil error:&error];
+            
+            if (error)
+            {
+                NSLog(@"Error setting bookmark %@", error.userInfo);
+            }
+            else
+            {
+                [[_userDefaultsController defaults] setObject:data forKey:@"url"];
+            }
+            
             [self picturesAtDirectory:openPanel.URL];
         }
     }];
@@ -69,7 +81,6 @@
 
 -(void)picturesAtDirectory:(NSURL*)url
 {
-    [[_userDefaultsController defaults] setURL:url forKey:@"url"];
     [_userDefaultsController save:self];
     
     if (_mainWindowController)
@@ -104,6 +115,11 @@
     {
         [_cameraService removeCaches];
     }
+}
+
+-(NSURL*)resolvePicturesDirectoryURL
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 @end
