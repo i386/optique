@@ -25,8 +25,6 @@
 @property (strong) NSPredicate *currentPredicate;
 @property (strong) NSPredicate *albumPredicate;
 @property (strong) NSMutableArray *sharingMenuItems;
-@property (strong) CATextLayer *emptyCollectionLayer;
-@property (setter = setAlbumView:) BOOL isAlbumView;
 
 @end
 
@@ -44,9 +42,6 @@
         }];
         
         _currentPredicate = _albumPredicate;
-        
-        _emptyCollectionLayer = [CATextLayer layer];
-        [_emptyCollectionLayer setupEmptyCollectionMessage];
     }
     return self;
 }
@@ -59,7 +54,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFinishedLoading:) name:OPAlbumScannerDidFinishScanNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterChanged:) name:OPNavigationTitleFilterDidChange object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:OPCameraServiceDidAddCamera object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewFrameChanged:) name:NSViewFrameDidChangeNotification object:self.view];
     
     [OPExposureService photoManager:_photoManager collectionViewController:self];
 }
@@ -73,17 +67,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFinishScanNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationTitleFilterDidChange object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPCameraServiceDidAddCamera object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSViewFrameDidChangeNotification object:self.view];
 }
 
 -(void)loadView
 {
     [super loadView];
-}
-
--(void)viewFrameChanged:(NSNotification*)notification
-{
-    [_emptyCollectionLayer viewFrameChanged:self.view];
 }
 
 -(NSMenu *)contextMenu
@@ -302,20 +290,7 @@
 
 -(NSUInteger)numberOfItemsInGridView:(OEGridView *)gridView
 {
-    NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_currentPredicate];
-    
-    if (filteredCollections.count == 0)
-    {
-        [_emptyCollectionLayer viewFrameChanged:self.view];
-        _emptyCollectionLayer.string = @"Connect an iPhone, camera or SD card to import photos";
-        [self.view.layer addSublayer:_emptyCollectionLayer];
-    }
-    else
-    {
-        [_emptyCollectionLayer removeFromSuperlayer];
-    }
-    
-    return filteredCollections.count;
+    return [_photoManager.allCollections filteredArrayUsingPredicate:_currentPredicate].count;
 }
 
 -(NSMenu *)gridView:(OEGridView *)gridView menuForItemsAtIndexes:(NSIndexSet *)indexes
