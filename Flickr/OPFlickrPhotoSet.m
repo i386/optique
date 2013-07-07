@@ -44,9 +44,9 @@
     return nil;
 }
 
--(BOOL)isStoredOnFileSystem
+-(XPPhotoCollectionType)collectionType
 {
-    return NO;
+    return kPhotoCollectionOther;
 }
 
 -(void)reload

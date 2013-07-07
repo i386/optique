@@ -208,7 +208,7 @@
     
     [collections each:^(id<XPPhotoCollection> collection)
     {
-        if (collection.isStoredOnFileSystem)
+        if ([collection collectionType] == kPhotoCollectionLocal)
         {
             NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:collection.title action:@selector(moveToCollection:) keyEquivalent:[NSString string]];
             item.target = self;

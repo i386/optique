@@ -40,4 +40,11 @@
  **/
 -(NSConditionLock*)resolveURL:(XPURLSupplier)block;
 
+@optional
+
+/**
+ Thumbnail provided by implementor
+ */
+-(NSImage*)thumbnail;
+
 @end

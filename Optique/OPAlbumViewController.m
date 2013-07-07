@@ -12,12 +12,12 @@
 #import "OPAlbumScanner.h"
 #import "OPImagePreviewService.h"
 #import "OPDeleteAlbumSheetController.h"
-#import "OPCamera.h"
 #import "OPNavigationTitle.h"
 #import "OPPhotoAlbum.h"
 #import "OPGridViewCell.h"
 #import "NSColor+Optique.h"
 #import "CATextLayer+EmptyCollection.h"
+#import "OPLocalPhoto.h"
 
 @interface OPAlbumViewController ()
 
@@ -37,8 +37,8 @@
     {
         _photoManager = photoManager;
         
-        _albumPredicate =[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-            return ![evaluatedObject isKindOfClass:[OPCamera class]];
+        _albumPredicate =[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject collectionType] == kPhotoCollectionLocal || [evaluatedObject collectionType] == kPhotoCollectionOther;
         }];
         
         _currentPredicate = _albumPredicate;
@@ -53,7 +53,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFinishedLoading:) name:OPAlbumScannerDidFinishScanNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterChanged:) name:OPNavigationTitleFilterDidChange object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:OPCameraServiceDidAddCamera object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:@"OPCameraServiceDidAddCamera" object:nil];
     
     [OPExposureService photoManager:_photoManager collectionViewController:self];
 }
@@ -66,7 +66,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFindAlbumsNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFinishScanNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationTitleFilterDidChange object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPCameraServiceDidAddCamera object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"OPCameraServiceDidAddCamera" object:nil];
 }
 
 -(void)loadView
@@ -104,7 +104,7 @@
     
     __block BOOL allSelectedAreLocal = YES;
     [collections each:^(id<XPPhotoCollection> sender) {
-        if (allSelectedAreLocal && !sender.isStoredOnFileSystem)
+        if (allSelectedAreLocal && [sender collectionType] != kPhotoCollectionLocal)
         {
             allSelectedAreLocal = NO;
         }
@@ -112,7 +112,7 @@
     
     __block BOOL allSelectedAreNotLocal = YES;
     [collections each:^(id<XPPhotoCollection> sender) {
-        if (allSelectedAreNotLocal && sender.isStoredOnFileSystem)
+        if (allSelectedAreNotLocal && [sender collectionType] != kPhotoCollectionLocal)
         {
             allSelectedAreNotLocal = NO;
         }
@@ -163,16 +163,6 @@
     }
     
     NSBeginAlertSheet(alertMessage, @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, nil, @"This operation can not be undone.", nil);
-}
-
-- (IBAction)ejectCamera:(id)sender
-{
-    NSIndexSet *indexes = _ejectMenuItem.representedObject;
-    NSArray *cameras = [_photoManager allCollectionsForIndexSet:indexes];
-    
-    [cameras each:^(OPCamera *camera) {
-        [camera requestEject];
-    }];
 }
 
 - (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet
@@ -302,6 +292,16 @@
     else
     {
         item.image = [NSImage imageNamed:@"empty-album"];
+    }
+    
+    //Get badge layer from exposure
+    for (id<XPPhotoCollectionProvider> provider in [OPExposureService photoCollectionProviders])
+    {
+        item.badgeLayer = [provider layerForCollection:collection];
+        if (item.badgeLayer)
+        {
+            break;
+        }
     }
     
     return item;

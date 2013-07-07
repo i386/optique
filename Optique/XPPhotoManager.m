@@ -32,8 +32,6 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
         _lock = [[NSLock alloc] init];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundAlbums:) name:OPAlbumScannerDidFindAlbumsNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundCamera:) name:OPCameraServiceDidAddCamera object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removedCamera:) name:OPCameraServiceDidRemoveCamera object:nil];
         
         //Register all photocollection providers
         [[OPExposureService photoCollectionProviders] each:^(id<XPPhotoCollectionProvider> sender) {
@@ -46,8 +44,6 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFindAlbumsNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPCameraServiceDidAddCamera object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPCameraServiceDidRemoveCamera object:nil];
 }
 
 -(NSArray *)allCollections
@@ -182,40 +178,13 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
     }];
 }
 
--(void)foundCamera:(NSNotification*)notification
-{
-    OPCamera *camera = notification.userInfo[@"camera"];
-    if (camera)
-    {
-        [self withLock:^id{
-            [_collectionSet addObject:camera];
-            [self sendNotificationWithName:XPPhotoManagerDidUpdateCollection forPhotoCollection:camera];
-            return nil;
-        }];
-    }
-}
-
--(void)removedCamera:(NSNotification*)notification
-{
-    OPCamera *camera = notification.userInfo[@"camera"];
-    if (camera)
-    {
-        [self withLock:^id{
-            [_collectionSet removeObject:camera];
-            [self sendNotificationWithName:XPPhotoManagerDidDeleteCollection forPhotoCollection:camera];
-            return nil;
-        }];
-    }
-}
-
 -(void)didAddPhotoCollection:(id<XPPhotoCollection>)photoCollection
 {
     [self withLock:^id{
         
         if ([photoCollection respondsToSelector:@selector(setPhotoManager:)])
         {
-            id _photoCollection = photoCollection;
-            [_photoCollection setPhotoManager:self];
+            [photoCollection setPhotoManager:self];
         }
         
         [_collectionSet addObject:photoCollection];

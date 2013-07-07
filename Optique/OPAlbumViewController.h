@@ -22,6 +22,5 @@
 -initWithPhotoManager:(XPPhotoManager*)photoManager;
 
 - (IBAction)deleteAlbum:(NSMenuItem*)sender;
-- (IBAction)ejectCamera:(id)sender;
 
 @end

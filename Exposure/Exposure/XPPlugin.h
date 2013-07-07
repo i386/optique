@@ -17,9 +17,21 @@
 @optional
 
 /**
- Called exactly once when the plugin is loaded
+ Called exactly once when the plugin is successfully loaded
  */
 -(void)pluginDidLoad:(NSDictionary*)userInfo;
+
+/**
+ Called when the plugin unloads.
+ Plugins in this API are not dynamic and will unload when the application terminates
+ */
+-(void)pluginWillUnload:(NSDictionary*)userInfo;
+
+/**
+ Called when a photo manager is created. 
+ Any references to the old photo manager *must* be immediately dereferenced.
+ */
+-(void)photoManagerWasCreated:(XPPhotoManager*)photoManager;
 
 /**
  Called whenever the collection view is loaded

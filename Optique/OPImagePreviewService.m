@@ -8,7 +8,6 @@
 
 #import "OPImagePreviewService.h"
 #import "OPImageCache.h"
-#import "OPCameraPhoto.h"
 #import "OPLocalPhoto.h"
 #import "NSImage+MGCropExtensions.h"
 
@@ -54,11 +53,9 @@ static OPImagePreviewService *_defaultService;
 -(NSImage *)previewImageWithPhoto:(id<XPPhoto>)photo loaded:(XPImageCompletionBlock)completionBlock
 {
     NSImage *image;
-    NSObject *photoObj = (NSObject*)photo;
-    if ([photoObj isKindOfClass:[OPCameraPhoto class]])
+    if ([((id)photo) respondsToSelector:@selector(thumbnail)])
     {
-        OPCameraPhoto *cameraPhoto = (OPCameraPhoto*)photo;
-        image = cameraPhoto.thumbnail;
+        image = photo.thumbnail;
         if (image)
         {
             image = [image imageCroppedToFitSize:kOPImageCacheThumbSize];

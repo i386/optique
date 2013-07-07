@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CDEvents/CDEvents.h>
 #import <CDEvents/CDEventsDelegate.h>
-#import "OPCameraService.h"
 
 /** scan started **/
 extern NSString *const OPAlbumScannerDidStartScanNotification;
@@ -25,12 +24,11 @@ extern NSString *const OPAlbumScannerDidFindAlbumsNotification;
     NSOperationQueue *_thumbQueue;
     CDEvents *_events;
     XPPhotoManager *_photoManager;
-    OPCameraService *_cameraService;
 }
 
 @property (atomic) BOOL stopScan;
 
--initWithPhotoManager:(XPPhotoManager*)photoManager cameraService:(OPCameraService*)cameraService;
+-initWithPhotoManager:(XPPhotoManager*)photoManager;
 
 -(void)scanAtURL:(NSURL*)url;
 

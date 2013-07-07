@@ -20,7 +20,7 @@
         [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
          {
              id collection = weakPhotoManager.allCollections[index];
-             if ([collection isStoredOnFileSystem] && [collection respondsToSelector:@selector(path)])
+             if ([collection collectionType] == kPhotoCollectionLocal && [collection respondsToSelector:@selector(path)])
              {
                  [urls addObject:[collection path]];
              }
@@ -34,7 +34,7 @@
         
         for (id<XPPhotoCollection> collection in selectedItems)
         {
-            if (![collection isStoredOnFileSystem])
+            if ([collection collectionType] != kPhotoCollectionLocal)
             {
                 visible = NO;
                 break;
@@ -69,7 +69,7 @@
         
         for (id<XPPhotoCollection> collection in selectedItems)
         {
-            if (![collection isStoredOnFileSystem])
+            if ([collection collectionType] != kPhotoCollectionLocal)
             {
                 visible = NO;
                 break;
@@ -93,7 +93,7 @@
     }];
     
     item.visibilityPredicate = [NSPredicate predicateWithBlock:^BOOL(id<XPPhoto> photo, NSDictionary *bindings) {
-        return [[photo collection] isStoredOnFileSystem];
+        return [[photo collection] collectionType] != kPhotoCollectionLocal;
     }];
     
     [[controller contextMenu] addItem:item];

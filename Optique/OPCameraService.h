@@ -10,12 +10,12 @@
 #import <ImageCaptureCore/ImageCaptureCore.h>
 #import "OPCamera.h"
 
-extern NSString *const OPCameraServiceDidAddCamera;
-extern NSString *const OPCameraServiceDidRemoveCamera;
+@class OPCameraPlugin;
 
 @interface OPCameraService : NSObject <ICDeviceBrowserDelegate>
 
 @property (readonly, strong) ICDeviceBrowser *deviceBrowser;
+@property (weak) OPCameraPlugin *cameraPlugin;
 
 @property (strong) XPPhotoManager *photoManager;
 

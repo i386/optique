@@ -21,6 +21,17 @@
     return self;
 }
 
+-(CALayer *)layerForCollection:(id<XPPhotoCollection>)collection
+{
+    if ([collection isKindOfClass:[OPFlickrPhotoSet class]])
+    {
+        CATextLayer *layer = [CATextLayer layer];
+        layer.string = @"Flickr";
+        return layer;
+    }
+    return nil;
+}
+
 -(NSArray *)debugMenuItems
 {
     XPMenuItem *signin = [[XPMenuItem alloc] initWithTitle:@"Signin" keyEquivalent:@"" block:^(NSMenuItem *sender) {

@@ -57,6 +57,11 @@
                                  20);
     
     [_titleLayer setFrame:textRect];
+    
+    if (_badgeLayer)
+    {
+        _badgeLayer.frame = self.bounds;
+    }
 }
 
 - (void)prepareForReuse
@@ -89,6 +94,16 @@
     if (title)
     {
         [_titleLayer setString:title];
+    }
+}
+
+-(void)setBadgeLayer:(CALayer *)badgeLayer
+{
+    if (badgeLayer != nil && _badgeLayer == nil)
+    {
+        _badgeLayer = badgeLayer;
+        _badgeLayer.frame = self.bounds;
+        [self addSublayer:_badgeLayer];
     }
 }
 

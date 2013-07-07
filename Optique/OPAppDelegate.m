@@ -37,12 +37,10 @@
         url = [self resolvePicturesDirectoryURL];
     }
 
-    _cameraService = [[OPCameraService alloc] init];
-    
-    [self picturesAtDirectory:url];
-    
     //Application is now ready to accept plugin loading
     [OPExposureService loadPlugins:@{}];
+    
+    [self picturesAtDirectory:url];
     
 #if DEBUG
     [_debugMenu setHidden:NO];
@@ -97,32 +95,18 @@
     }
     
     _photoManager = [[XPPhotoManager alloc] initWithPath:url];
-    
-    [_cameraService setPhotoManager:_photoManager];
-    if (!_cameraService.deviceBrowser.isBrowsing)
-    {
-        [_cameraService start];
-    }
-    else
-    {
-        [_cameraService stop];
-        [_cameraService start];
-    }
+    [OPExposureService photoManagerWasCreated:_photoManager];
     
     _mainWindowController = [[OPMainWindowController alloc] initWithPhotoManager:_photoManager];
     [_mainWindowController.window makeKeyAndOrderFront:self];
     
-    _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager cameraService:_cameraService];
+    _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager];
     [_albumScaner scanAtURL:url];
 }
 
 -(void)applicationWillTerminate:(NSNotification *)notification
 {
-    //Remove all the caches if any exist
-    if (_cameraService)
-    {
-        [_cameraService removeCaches];
-    }
+    [OPExposureService unloadPlugins:notification.userInfo];
 }
 
 -(NSURL*)resolvePicturesDirectoryURL
@@ -146,7 +130,6 @@
 
 - (IBAction)debugClearCache:(id)sender
 {
-    [_cameraService removeCaches];
     [[OPImageCache sharedPreviewCache] clearCache];
     [self picturesAtDirectory:_photoManager.path];
 }

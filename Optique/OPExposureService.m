@@ -40,6 +40,30 @@
     }];
 }
 
++(void)unloadPlugins:(NSDictionary*)userInfo
+{
+    [[[OPExposureService defaultLoader] exposures] each:^(NSString *pluginKey, id pluginInstance) {
+        if ([pluginInstance respondsToSelector:@selector(pluginWillUnload:)])
+        {
+            @try
+            {
+                [pluginInstance pluginWillUnload:userInfo];
+            }
+            @catch (NSException *exception)
+            {
+                NSLog(@"Could not unload plugin '%@' cleanly\nReason:\n%@", pluginKey, exception);
+            }
+        }
+    }];
+}
+
++(void)photoManagerWasCreated:(XPPhotoManager *)photoManager
+{
+    [[OPExposureService respondsToPhotoManagerWasCreated] each:^(id sender) {
+        [sender photoManagerWasCreated:photoManager];
+    }];
+}
+
 +(void)photoManager:(XPPhotoManager*)photoManager collectionViewController:(id<XPCollectionViewController>)controller
 {
     [[OPExposureService respondsToCollectionViewController] each:^(id<XPPlugin> sender) {
@@ -73,7 +97,8 @@
     [[[OPExposureService defaultLoader] exposures] each:^(NSString *name, id<XPPlugin> plugin) {
         if ([plugin respondsToSelector:@selector(debugMenuItems)])
         {
-            [debugMenuItems addObject:[[NSMenuItem alloc] initWithTitle:name action:nil keyEquivalent:@""]];
+            NSMenuItem *subMenuItem = [[NSMenuItem alloc] initWithTitle:name action:nil keyEquivalent:@""];
+            [debugMenuItems addObject:subMenuItem];
             [debugMenuItems addObjectsFromArray:[plugin debugMenuItems]];
             [debugMenuItems addObject:[NSMenuItem separatorItem]];
         }
@@ -88,6 +113,15 @@
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject conformsToProtocol:@protocol(XPPhotoCollectionProvider)];
+    }]];
+}
+
++(NSSet *)respondsToPhotoManagerWasCreated
+{
+    NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
+    
+    return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject respondsToSelector:@selector(photoManagerWasCreated:)];
     }]];
 }
 

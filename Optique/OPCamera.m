@@ -82,9 +82,9 @@
     _allPhotos = newPhotos;
 }
 
--(BOOL)isStoredOnFileSystem
+-(XPPhotoCollectionType)collectionType
 {
-    return NO;
+    return kPhotoCollectionCamera;
 }
 
 -(void)deletePhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock
@@ -152,6 +152,11 @@
     }
 }
 
+- (void)collectionUpdated:(NSDictionary*)userInfo
+{
+    [_photoManager collectionUpdated:self];
+}
+
 - (void)cameraDevice:(ICCameraDevice*)device didReceiveThumbnailForItem:(ICCameraItem*)item
 {
 #if DEBUG
@@ -161,13 +166,8 @@
     _thumbnailsRecieved++;
     
     if (!_batchTimer)
-    {
-        XPPhotoManager __weak *photoManager = _photoManager;
-        id<XPPhotoCollection> __weak weakCollection = self;
-        
-        _batchTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 block:^(NSTimeInterval time) {
-            [photoManager collectionUpdated:weakCollection];
-        } repeats:YES];
+    {   
+        _batchTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(collectionUpdated:) userInfo:nil repeats:YES];
     }
     
     OPCameraPhoto *photo = [[OPCameraPhoto alloc] initWithCameraFile:(ICCameraFile*)item collection:self];

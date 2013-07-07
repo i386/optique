@@ -89,9 +89,9 @@
     }
 }
 
--(BOOL)isStoredOnFileSystem
+-(XPPhotoCollectionType)collectionType
 {
-    return YES;
+    return kPhotoCollectionLocal;
 }
 
 -(void)addPhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock

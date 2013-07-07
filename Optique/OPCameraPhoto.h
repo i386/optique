@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ImageCaptureCore/ImageCaptureCore.h>
+#import <Exposure/Exposure.h>
 
 @interface OPCameraPhoto : NSObject <XPPhoto>
 

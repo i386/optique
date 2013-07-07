@@ -14,6 +14,10 @@
 
 +(void)loadPlugins:(NSDictionary*)userInfo;
 
++(void)unloadPlugins:(NSDictionary*)userInfo;
+
++(void)photoManagerWasCreated:(XPPhotoManager*)photoManager;
+
 +(void)photoManager:(XPPhotoManager*)photoManager collectionViewController:(id<XPCollectionViewController>)controller;
 
 +(void)photoManager:(XPPhotoManager*)photoManager photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller;

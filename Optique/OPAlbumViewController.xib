@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A476u" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4457.9" systemVersion="13A497d" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1070" defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4457.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4457.9"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OPAlbumViewController">
             <connections>
                 <action selector="deleteAlbum:" destination="220" id="221"/>
-                <action selector="ejectCamera:" destination="226" id="228"/>
                 <outlet property="albumItemContextMenu" destination="210" id="216"/>
                 <outlet property="deleteAlbumMenuItem" destination="220" id="225"/>
-                <outlet property="ejectMenuItem" destination="226" id="227"/>
                 <outlet property="gridView" destination="201" id="Qgj-AH-orG"/>
                 <outlet property="view" destination="56" id="57"/>
             </connections>
@@ -44,7 +42,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" id="203">
-                        <rect key="frame" x="511" y="0.0" width="15" height="322"/>
+                        <rect key="frame" x="510" y="0.0" width="16" height="322"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -53,9 +51,6 @@
         <menu id="210">
             <items>
                 <menuItem title="Delete album" id="220">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Eject" id="226">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>

@@ -17,5 +17,6 @@
 @property (nonatomic, retain) OEGridLayer *imageLayer;
 @property (nonatomic, retain) CATextLayer *titleLayer;
 @property (nonatomic, retain) CALayer *selectionLayer;
+@property (nonatomic, retain) CALayer *badgeLayer;
 
 @end

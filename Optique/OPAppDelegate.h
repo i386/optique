@@ -17,7 +17,6 @@
     OPAlbumScanner *_albumScaner;
     XPPhotoManager *_photoManager;
     OPMainWindowController *_mainWindowController;
-    OPCameraService *_cameraService;
     IBOutlet NSUserDefaultsController *_userDefaultsController;
 }
 
