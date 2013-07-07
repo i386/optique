@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <OPNavigationController.h>
+#import "OPNavigationController.h"
 
 @interface OPNavigationViewController : NSViewController
 
@@ -15,7 +15,7 @@
 
 /**
  The calculated title for the view to show in the `OPNavigationBar`.
- */
+ */ 
 -(NSString*)viewTitle;
 
 /**

@@ -21,6 +21,8 @@
     IBOutlet NSUserDefaultsController *_userDefaultsController;
 }
 
+@property (weak) IBOutlet NSMenuItem *debugMenu;
+
 - (IBAction)openDirectory:(id)sender;
 
 - (IBAction)newAlbum:(id)sender;

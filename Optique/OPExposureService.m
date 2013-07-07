@@ -44,6 +44,36 @@
     }];
 }
 
++(NSSet *)photoCollectionProviders
+{
+    return [OPExposureService conformsToPhotoCollectionProvider];
+}
+
++(NSArray *)debugMenuItems
+{
+    NSMutableArray *debugMenuItems = [NSMutableArray array];
+    
+    [[[OPExposureService defaultLoader] exposures] each:^(NSString *name, id<XPPlugin> plugin) {
+        if ([plugin respondsToSelector:@selector(debugMenuItems)])
+        {
+            [debugMenuItems addObject:[[NSMenuItem alloc] initWithTitle:name action:nil keyEquivalent:@""]];
+            [debugMenuItems addObjectsFromArray:[plugin debugMenuItems]];
+            [debugMenuItems addObject:[NSMenuItem separatorItem]];
+        }
+    }];
+    return debugMenuItems;
+}
+
+
++(NSSet *)conformsToPhotoCollectionProvider
+{
+    NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
+    
+    return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject conformsToProtocol:@protocol(XPPhotoCollectionProvider)];
+    }]];
+}
+
 +(NSSet *)respondsToCollectionViewController
 {
     NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];

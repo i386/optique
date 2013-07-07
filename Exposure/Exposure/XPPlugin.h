@@ -31,4 +31,6 @@
  **/
 -(void)photoManager:(XPPhotoManager*)photoManager photoController:(id<XPPhotoController>)controller;
 
+-(NSArray*)debugMenuItems;
+
 @end

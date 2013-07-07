@@ -14,6 +14,11 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+#if DEBUG
+    [_debugMenu setHidden:NO];
+    [self setupDebugMenu];
+#endif
+    
     NSData *bookmarkData = [[_userDefaultsController defaults] objectForKey:@"url"];
     
     NSURL *url;
@@ -120,6 +125,27 @@
 -(NSURL*)resolvePicturesDirectoryURL
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+- (void)setupDebugMenu
+{
+    NSArray *defaultItems = [[[_debugMenu submenu] itemArray] copy];
+    [_debugMenu.submenu removeAllItems];
+    
+    [[OPExposureService debugMenuItems] each:^(id sender) {
+        [_debugMenu.submenu addItem:sender];
+    }];
+    
+    [defaultItems each:^(id sender) {
+        [_debugMenu.submenu addItem:sender];
+    }];
+}
+
+- (IBAction)debugClearCache:(id)sender
+{
+    [_cameraService removeCaches];
+    [[OPImageCache sharedPreviewCache] clearCache];
+    [self picturesAtDirectory:_photoManager.path];
 }
 
 @end

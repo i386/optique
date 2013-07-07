@@ -10,6 +10,8 @@
 #import "OPAlbumScanner.h"
 #import <BlocksKit/NSMutableOrderedSet+BlocksKit.h>
 #import <BlocksKit/NSArray+BlocksKit.h>
+#import <Exposure/Exposure.h>
+#import "OPExposureService.h"
 
 NSString *const XPPhotoManagerDidAddCollection = @"XPPhotoManagerDidAddAlbum";
 NSString *const XPPhotoManagerDidUpdateCollection = @"XPPhotoManagerDidUpdateAlbum";
@@ -32,6 +34,11 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundAlbums:) name:OPAlbumScannerDidFindAlbumsNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundCamera:) name:OPCameraServiceDidAddCamera object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removedCamera:) name:OPCameraServiceDidRemoveCamera object:nil];
+        
+        //Register all photocollection providers
+        [[OPExposureService photoCollectionProviders] each:^(id<XPPhotoCollectionProvider> sender) {
+            sender.delegate = self;
+        }];
     }
     return self;
 }
@@ -199,6 +206,31 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
             return nil;
         }];
     }
+}
+
+-(void)didAddPhotoCollection:(id<XPPhotoCollection>)photoCollection
+{
+    [self withLock:^id{
+        
+        if ([photoCollection respondsToSelector:@selector(setPhotoManager:)])
+        {
+            id _photoCollection = photoCollection;
+            [_photoCollection setPhotoManager:self];
+        }
+        
+        [_collectionSet addObject:photoCollection];
+        [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:photoCollection];
+        return nil;
+    }];
+}
+
+-(void)didRemovePhotoCollection:(id<XPPhotoCollection>)photoCollection
+{
+    [self withLock:^id{
+        [_collectionSet removeObject:photoCollection];
+        [self sendNotificationWithName:XPPhotoManagerDidDeleteCollection forPhotoCollection:photoCollection];
+        return nil;
+    }];
 }
 
 -(id)withLock:(id (^)(void))block

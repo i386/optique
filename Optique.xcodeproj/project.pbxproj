@@ -27,6 +27,7 @@
 		0F08A8E117704B6500DFEA02 /* OPSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F08A8E017704B6500DFEA02 /* OPSegmentedCell.m */; };
 		0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A6571737C7C300E53ED1 /* Finder.bundle */; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
+		0F262A381787CFAD001A8178 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3001E1172250E800ACAF9E /* OPPhotoImageView.m */; };
 		0F33D0E01769E4D40032CCA0 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0DE1769E4D40032CCA0 /* 86-camera.png */; };
 		0F33D0E11769E4D40032CCA0 /* 86-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0DF1769E4D40032CCA0 /* 86-camera@2x.png */; };
@@ -68,6 +69,12 @@
 		0F8C561D172CC0D300CB7B1E /* OPLocalPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C561C172CC0D300CB7B1E /* OPLocalPhoto.m */; };
 		0F8FEBBA1769E283004BB523 /* 212-action2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8FEBB81769E283004BB523 /* 212-action2.png */; };
 		0F8FEBBB1769E283004BB523 /* 212-action2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8FEBB91769E283004BB523 /* 212-action2@2x.png */; };
+		0F946AA9178700A8004F6B57 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
+		0F946AAF178700A8004F6B57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F946AAD178700A8004F6B57 /* InfoPlist.strings */; };
+		0F946AB8178701CD004F6B57 /* XPPhotoCollectionProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F946AB7178701CD004F6B57 /* XPPhotoCollectionProvider.h */; };
+		0F946ABA178702ED004F6B57 /* XPPhotoCollectionProviderDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F946AB9178702ED004F6B57 /* XPPhotoCollectionProviderDelegate.h */; };
+		0F946ABB178707F5004F6B57 /* Flickr.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F946AA8178700A8004F6B57 /* Flickr.bundle */; };
+		0F946ABD178797F3004F6B57 /* OPFlickrPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F946AB5178700CF004F6B57 /* OPFlickrPlugin.m */; };
 		0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F96270C170418EB007C1A86 /* OPPhotoViewController.m */; };
 		0F96270F170418EB007C1A86 /* OPPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F96270D170418EB007C1A86 /* OPPhotoViewController.xib */; };
 		0F9C80BE16F891C700B2B6D8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80BC16F891C700B2B6D8 /* InfoPlist.strings */; };
@@ -85,6 +92,7 @@
 		0FAEFFF617673F7A00D60171 /* OPShadowClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAEFFF517673F7A00D60171 /* OPShadowClipView.m */; };
 		0FB384CB17050B3200DEB770 /* OPAlbumScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */; };
 		0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */; };
+		0FC55DC91787CB5A0095CCF0 /* OPFlickrService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC55DC61787BE4A0095CCF0 /* OPFlickrService.m */; };
 		0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */; };
 		0FCA4D191737CC4A007DC9EF /* Exposure.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0FCA4D1C1737CE2C007DC9EF /* OPFinderPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D1B1737CE2C007DC9EF /* OPFinderPlugin.m */; };
@@ -114,6 +122,9 @@
 		0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD51722176B431F006E8F4D /* OPGridViewCell.m */; };
 		0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE075617030FCC00D5B456 /* OPPhotoCollectionViewController.m */; };
 		0FDE075917030FCC00D5B456 /* OPPhotoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE075717030FCC00D5B456 /* OPPhotoCollectionViewController.xib */; };
+		0FDE0ECB1787ED6100B81ADC /* GTMOAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE0ECA1787ED6100B81ADC /* GTMOAuthWindow.xib */; };
+		0FDE0ECD1787F0F400B81ADC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDE0ECC1787F0F400B81ADC /* WebKit.framework */; };
+		0FDE0ED11788259C00B81ADC /* OPFlickrPhotoSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE0ED01788254800B81ADC /* OPFlickrPhotoSet.m */; };
 		0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */; };
 		0FE3B2451702C62D00FC0D6C /* OPNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */; };
 		0FE3B2481702C69700FC0D6C /* OPNavigationTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2471702C69700FC0D6C /* OPNavigationTitle.m */; };
@@ -122,11 +133,13 @@
 		0FE719B1174E176B0092F801 /* XPSharingService.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE719B0174E176B0092F801 /* XPSharingService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FEC675717103B5E0086B264 /* effectsbarselectedbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FEC675517103B5E0086B264 /* effectsbarselectedbg.png */; };
 		0FEC675817103B5E0086B264 /* effectsbarselectedbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FEC675617103B5E0086B264 /* effectsbarselectedbg@2x.png */; };
+		0FEDFF8E17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDFF8D17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.m */; };
 		0FEF33A616FEC8090096D72A /* OPAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEF33A416FEC8090096D72A /* OPAlbumViewController.m */; };
 		0FEF33A716FEC8090096D72A /* OPAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEF33A516FEC8090096D72A /* OPAlbumViewController.xib */; };
 		0FFE24B2172907AA00513AD2 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B0172907AA00513AD2 /* back.png */; };
 		0FFE24B61729206B00513AD2 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B51729206B00513AD2 /* back@2x.png */; };
 		76AAAAFD273F4DD99BF0C8E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B69E97783146C19C69AB43 /* libPods.a */; };
+		D7C07EED260B44D1800F67CE /* libPods-Flickr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFC7861178F4C1091191A68 /* libPods-Flickr.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +151,13 @@
 			remoteInfo = Exposure;
 		};
 		0F21E9D21737C9780013B601 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F04A62B1737C70F00E53ED1;
+			remoteInfo = Exposure;
+		};
+		0F262A361787CFA4001A8178 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
 			proxyType = 1;
@@ -174,6 +194,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				0F946ABB178707F5004F6B57 /* Flickr.bundle in CopyFiles */,
 				0FCA4D8317391EC3007DC9EF /* Twitter.bundle in CopyFiles */,
 				0FCA4D651738A28F007DC9EF /* Facebook.bundle in CopyFiles */,
 				0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */,
@@ -288,6 +309,14 @@
 		0F8C561C172CC0D300CB7B1E /* OPLocalPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPLocalPhoto.m; sourceTree = "<group>"; };
 		0F8FEBB81769E283004BB523 /* 212-action2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "212-action2.png"; sourceTree = "<group>"; };
 		0F8FEBB91769E283004BB523 /* 212-action2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "212-action2@2x.png"; sourceTree = "<group>"; };
+		0F946AA8178700A8004F6B57 /* Flickr.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Flickr.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F946AAC178700A8004F6B57 /* Flickr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Flickr-Info.plist"; sourceTree = "<group>"; };
+		0F946AAE178700A8004F6B57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0F946AB0178700A8004F6B57 /* Flickr-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Flickr-Prefix.pch"; sourceTree = "<group>"; };
+		0F946AB4178700CF004F6B57 /* OPFlickrPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFlickrPlugin.h; sourceTree = "<group>"; };
+		0F946AB5178700CF004F6B57 /* OPFlickrPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFlickrPlugin.m; sourceTree = "<group>"; };
+		0F946AB7178701CD004F6B57 /* XPPhotoCollectionProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPPhotoCollectionProvider.h; sourceTree = "<group>"; };
+		0F946AB9178702ED004F6B57 /* XPPhotoCollectionProviderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPPhotoCollectionProviderDelegate.h; sourceTree = "<group>"; };
 		0F96270B170418EB007C1A86 /* OPPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoViewController.h; sourceTree = "<group>"; };
 		0F96270C170418EB007C1A86 /* OPPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoViewController.m; sourceTree = "<group>"; };
 		0F96270D170418EB007C1A86 /* OPPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPhotoViewController.xib; sourceTree = "<group>"; };
@@ -317,6 +346,9 @@
 		0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAlbumScanner.m; sourceTree = "<group>"; };
 		0FB94DD01735E31400065536 /* NSNotificationCenter+Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Async.h"; sourceTree = "<group>"; };
 		0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Async.m"; sourceTree = "<group>"; };
+		0FC55DC31787BB760095CCF0 /* libPods-objectiveflickr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-objectiveflickr.a"; path = "DerivedData/Optique/Build/Products/Debug/libPods-objectiveflickr.a"; sourceTree = "<group>"; };
+		0FC55DC51787BE4A0095CCF0 /* OPFlickrService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPFlickrService.h; path = ../Optique/OPFlickrService.h; sourceTree = "<group>"; };
+		0FC55DC61787BE4A0095CCF0 /* OPFlickrService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPFlickrService.m; path = ../Optique/OPFlickrService.m; sourceTree = "<group>"; };
 		0FC8A7AE170FD9E000650D7C /* NSImage+CGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+CGImage.h"; sourceTree = "<group>"; };
 		0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+CGImage.m"; sourceTree = "<group>"; };
 		0FCA4D1A1737CE2C007DC9EF /* OPFinderPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFinderPlugin.h; sourceTree = "<group>"; };
@@ -356,6 +388,11 @@
 		0FDE075517030FCC00D5B456 /* OPPhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoCollectionViewController.h; sourceTree = "<group>"; };
 		0FDE075617030FCC00D5B456 /* OPPhotoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoCollectionViewController.m; sourceTree = "<group>"; };
 		0FDE075717030FCC00D5B456 /* OPPhotoCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPhotoCollectionViewController.xib; sourceTree = "<group>"; };
+		0FDE0ECA1787ED6100B81ADC /* GTMOAuthWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuthWindow.xib; path = "Pods/gtm-oauth/Source/Mac/GTMOAuthWindow.xib"; sourceTree = SOURCE_ROOT; };
+		0FDE0ECC1787F0F400B81ADC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		0FDE0ECE178822C700B81ADC /* OPFlickrServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFlickrServiceDelegate.h; sourceTree = "<group>"; };
+		0FDE0ECF1788254800B81ADC /* OPFlickrPhotoSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPFlickrPhotoSet.h; sourceTree = "<group>"; };
+		0FDE0ED01788254800B81ADC /* OPFlickrPhotoSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPFlickrPhotoSet.m; sourceTree = "<group>"; };
 		0FE3B2411702C62D00FC0D6C /* OPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationController.h; sourceTree = "<group>"; };
 		0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNavigationController.m; sourceTree = "<group>"; };
 		0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNavigationController.xib; sourceTree = "<group>"; };
@@ -367,12 +404,18 @@
 		0FE719B0174E176B0092F801 /* XPSharingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPSharingService.h; sourceTree = "<group>"; };
 		0FEC675517103B5E0086B264 /* effectsbarselectedbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = effectsbarselectedbg.png; sourceTree = "<group>"; };
 		0FEC675617103B5E0086B264 /* effectsbarselectedbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "effectsbarselectedbg@2x.png"; sourceTree = "<group>"; };
+		0FEDFF8C17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMOAuthAuthentication+UserPreferences.h"; sourceTree = "<group>"; };
+		0FEDFF8D17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMOAuthAuthentication+UserPreferences.m"; sourceTree = "<group>"; };
 		0FEF33A316FEC8090096D72A /* OPAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPAlbumViewController.h; path = Optique/OPAlbumViewController.h; sourceTree = "<group>"; };
 		0FEF33A416FEC8090096D72A /* OPAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPAlbumViewController.m; path = Optique/OPAlbumViewController.m; sourceTree = "<group>"; };
 		0FEF33A516FEC8090096D72A /* OPAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPAlbumViewController.xib; path = Optique/OPAlbumViewController.xib; sourceTree = "<group>"; };
 		0FFE24B0172907AA00513AD2 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		0FFE24B51729206B00513AD2 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		1915239F645F4207934EB0EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		7AFC7861178F4C1091191A68 /* libPods-Flickr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Flickr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		938A6A86581545989549982D /* libPods-Optique.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Optique.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5D812EA894147FA88274B61 /* Pods/Pods-Optique.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods/Pods-Optique.xcconfig"; sourceTree = SOURCE_ROOT; };
+		A6E6E22FF9514D63A56161ED /* Pods/Pods-Flickr.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods/Pods-Flickr.xcconfig"; sourceTree = SOURCE_ROOT; };
 		E6B69E97783146C19C69AB43 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -382,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F04A62D1737C71000E53ED1 /* Cocoa.framework in Frameworks */,
+				D7C07EED260B44D1800F67CE /* libPods-Flickr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +435,16 @@
 			files = (
 				0FCA4D301737D84F007DC9EF /* Exposure.framework in Frameworks */,
 				0F04A6581737C7C300E53ED1 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F946AA5178700A8004F6B57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FDE0ECD1787F0F400B81ADC /* WebKit.framework in Frameworks */,
+				0F262A381787CFAD001A8178 /* Exposure.framework in Frameworks */,
+				0F946AA9178700A8004F6B57 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +601,32 @@
 			name = "Local photos";
 			sourceTree = "<group>";
 		};
+		0F946AAA178700A8004F6B57 /* Flickr */ = {
+			isa = PBXGroup;
+			children = (
+				0F946AAB178700A8004F6B57 /* Supporting Files */,
+				0FC2ABB017894D6C009C7B02 /* OAuth */,
+				0F946AB4178700CF004F6B57 /* OPFlickrPlugin.h */,
+				0F946AB5178700CF004F6B57 /* OPFlickrPlugin.m */,
+				0FC55DC51787BE4A0095CCF0 /* OPFlickrService.h */,
+				0FC55DC61787BE4A0095CCF0 /* OPFlickrService.m */,
+				0FDE0ECE178822C700B81ADC /* OPFlickrServiceDelegate.h */,
+				0FDE0ECF1788254800B81ADC /* OPFlickrPhotoSet.h */,
+				0FDE0ED01788254800B81ADC /* OPFlickrPhotoSet.m */,
+			);
+			path = Flickr;
+			sourceTree = "<group>";
+		};
+		0F946AAB178700A8004F6B57 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0F946AAC178700A8004F6B57 /* Flickr-Info.plist */,
+				0F946AAD178700A8004F6B57 /* InfoPlist.strings */,
+				0F946AB0178700A8004F6B57 /* Flickr-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		0F962710170418F4007C1A86 /* Photo View */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +667,8 @@
 				0F9C80B216F891C700B2B6D8 /* Frameworks */,
 				0F9C80B116F891C700B2B6D8 /* Products */,
 				1915239F645F4207934EB0EC /* Pods.xcconfig */,
+				A6E6E22FF9514D63A56161ED /* Pods/Pods-Flickr.xcconfig */,
+				A5D812EA894147FA88274B61 /* Pods/Pods-Optique.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -598,6 +680,7 @@
 				0F04A6571737C7C300E53ED1 /* Finder.bundle */,
 				0FCA4D551738A272007DC9EF /* Facebook.bundle */,
 				0FCA4D7417391EA7007DC9EF /* Twitter.bundle */,
+				0F946AA8178700A8004F6B57 /* Flickr.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -605,6 +688,8 @@
 		0F9C80B216F891C700B2B6D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FDE0ECC1787F0F400B81ADC /* WebKit.framework */,
+				0FC55DC31787BB760095CCF0 /* libPods-objectiveflickr.a */,
 				0F44BAF1173DD3420039B00E /* SenTestingKit.framework */,
 				0F44BAD7173DCA620039B00E /* Accounts.framework */,
 				0FCA4D4F173874C6007DC9EF /* Social.framework */,
@@ -616,6 +701,8 @@
 				0FE3B2611702F25500FC0D6C /* QuartzCore.framework */,
 				E6B69E97783146C19C69AB43 /* libPods.a */,
 				0F04A5C91737C43800E53ED1 /* Other Frameworks */,
+				7AFC7861178F4C1091191A68 /* libPods-Flickr.a */,
+				938A6A86581545989549982D /* libPods-Optique.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -623,7 +710,6 @@
 		0F9C80B916F891C700B2B6D8 /* Optique */ = {
 			isa = PBXGroup;
 			children = (
-				0F50C39A178560A90017DF73 /* Optique.entitlements */,
 				0F9C80C516F891C700B2B6D8 /* OPAppDelegate.h */,
 				0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */,
 				0F9C80C816F891C700B2B6D8 /* MainMenu.xib */,
@@ -649,6 +735,7 @@
 		0F9C80BA16F891C700B2B6D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F50C39A178560A90017DF73 /* Optique.entitlements */,
 				0FEC674F171034E00086B264 /* Image resources */,
 				0F9C80BB16F891C700B2B6D8 /* Optique-Info.plist */,
 				0F9C80BC16F891C700B2B6D8 /* InfoPlist.strings */,
@@ -659,9 +746,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0FC2ABB017894D6C009C7B02 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				0FDE0ECA1787ED6100B81ADC /* GTMOAuthWindow.xib */,
+				0FEDFF8C17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.h */,
+				0FEDFF8D17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.m */,
+			);
+			name = OAuth;
+			sourceTree = "<group>";
+		};
 		0FCA4D1D1737CE8C007DC9EF /* Exposures */ = {
 			isa = PBXGroup;
 			children = (
+				0F946AAA178700A8004F6B57 /* Flickr */,
 				0FCA4D7617391EA7007DC9EF /* Twitter */,
 				0FCA4D571738A272007DC9EF /* Facebook */,
 				0F04A6591737C7C300E53ED1 /* Finder */,
@@ -683,6 +781,8 @@
 			children = (
 				0F04A63B1737C74800E53ED1 /* Exposure.h */,
 				0F04A6421737C74800E53ED1 /* XPPlugin.h */,
+				0F946AB7178701CD004F6B57 /* XPPhotoCollectionProvider.h */,
+				0F946AB9178702ED004F6B57 /* XPPhotoCollectionProviderDelegate.h */,
 				0FCA4D321737D89B007DC9EF /* Model */,
 				0FCA4D331737D8C4007DC9EF /* Classes */,
 				0FCA4D311737D88B007DC9EF /* Controllers */,
@@ -932,7 +1032,9 @@
 				0F04A6481737C74800E53ED1 /* XPPhotoManager.h in Headers */,
 				0F04A6491737C74800E53ED1 /* XPPhotoController.h in Headers */,
 				0F04A64A1737C74800E53ED1 /* XPPlugin.h in Headers */,
+				0F946AB8178701CD004F6B57 /* XPPhotoCollectionProvider.h in Headers */,
 				0F04A64F1737C77800E53ED1 /* Common.h in Headers */,
+				0F946ABA178702ED004F6B57 /* XPPhotoCollectionProviderDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -943,10 +1045,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F04A6381737C71000E53ED1 /* Build configuration list for PBXNativeTarget "Exposure" */;
 			buildPhases = (
+				E35C9DB048604472A650AEAC /* Check Pods Manifest.lock */,
 				0F04A6271737C70F00E53ED1 /* Sources */,
 				0F04A6281737C70F00E53ED1 /* Frameworks */,
 				0F04A6291737C70F00E53ED1 /* Headers */,
 				0F04A62A1737C70F00E53ED1 /* Resources */,
+				4D3B2E44B9324DE1A7FE0518 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -975,10 +1079,31 @@
 			productReference = 0F04A6571737C7C300E53ED1 /* Finder.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
+		0F946AA7178700A8004F6B57 /* Flickr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F946AB1178700A8004F6B57 /* Build configuration list for PBXNativeTarget "Flickr" */;
+			buildPhases = (
+				3F8596F85B21464F99C1415E /* Check Pods Manifest.lock */,
+				0F946AA4178700A8004F6B57 /* Sources */,
+				0F946AA5178700A8004F6B57 /* Frameworks */,
+				0F946AA6178700A8004F6B57 /* Resources */,
+				6EFCDCC8C49B41DB9F6BD7DA /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0F262A371787CFA4001A8178 /* PBXTargetDependency */,
+			);
+			name = Flickr;
+			productName = Flickr;
+			productReference = 0F946AA8178700A8004F6B57 /* Flickr.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		0F9C80AF16F891C700B2B6D8 /* Optique */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F9C80CD16F891C700B2B6D8 /* Build configuration list for PBXNativeTarget "Optique" */;
 			buildPhases = (
+				8716D22173444E63AB8C64CF /* Check Pods Manifest.lock */,
 				0F9C80AC16F891C700B2B6D8 /* Sources */,
 				0F9C80AD16F891C700B2B6D8 /* Frameworks */,
 				0F9C80AE16F891C700B2B6D8 /* Resources */,
@@ -1046,6 +1171,9 @@
 					0F9C80AF16F891C700B2B6D8 = {
 						DevelopmentTeam = QZEN9DJMR2;
 						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
 							com.apple.Sandbox = {
 								enabled = 1;
 							};
@@ -1070,6 +1198,7 @@
 				0F04A6561737C7C300E53ED1 /* Finder */,
 				0FCA4D541738A272007DC9EF /* Facebook */,
 				0FCA4D7317391EA7007DC9EF /* Twitter */,
+				0F946AA7178700A8004F6B57 /* Flickr */,
 			);
 		};
 /* End PBXProject section */
@@ -1088,6 +1217,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F04A65E1737C7C300E53ED1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F946AA6178700A8004F6B57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FDE0ECB1787ED6100B81ADC /* GTMOAuthWindow.xib in Resources */,
+				0F946AAF178700A8004F6B57 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1151,6 +1289,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3F8596F85B21464F99C1415E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4D3B2E44B9324DE1A7FE0518 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Flickr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6EFCDCC8C49B41DB9F6BD7DA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Flickr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		764F0ACCDB4C4803BB106785 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1163,7 +1346,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-Optique-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8716D22173444E63AB8C64CF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E35C9DB048604472A650AEAC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1181,6 +1395,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FCA4D1C1737CE2C007DC9EF /* OPFinderPlugin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F946AA4178700A8004F6B57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FEDFF8E17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.m in Sources */,
+				0FDE0ED11788259C00B81ADC /* OPFlickrPhotoSet.m in Sources */,
+				0FC55DC91787CB5A0095CCF0 /* OPFlickrService.m in Sources */,
+				0F946ABD178797F3004F6B57 /* OPFlickrPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1268,6 +1493,11 @@
 			target = 0F04A62B1737C70F00E53ED1 /* Exposure */;
 			targetProxy = 0F21E9D21737C9780013B601 /* PBXContainerItemProxy */;
 		};
+		0F262A371787CFA4001A8178 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F04A62B1737C70F00E53ED1 /* Exposure */;
+			targetProxy = 0F262A361787CFA4001A8178 /* PBXContainerItemProxy */;
+		};
 		0FCA4D181737CC38007DC9EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0F04A6561737C7C300E53ED1 /* Finder */;
@@ -1298,6 +1528,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				0F04A65D1737C7C300E53ED1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0F946AAD178700A8004F6B57 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F946AAE178700A8004F6B57 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1347,6 +1585,7 @@
 /* Begin XCBuildConfiguration section */
 		0F04A6391737C71000E53ED1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6E6E22FF9514D63A56161ED /* Pods/Pods-Flickr.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
@@ -1359,12 +1598,14 @@
 				INFOPLIST_FILE = "Exposure/Exposure-Info.plist";
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
 		};
 		0F04A63A1737C71000E53ED1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6E6E22FF9514D63A56161ED /* Pods/Pods-Flickr.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
@@ -1377,6 +1618,7 @@
 				INFOPLIST_FILE = "Exposure/Exposure-Info.plist";
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -1392,6 +1634,7 @@
 				INFOPLIST_FILE = "Finder/Finder-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -1406,6 +1649,66 @@
 				GCC_PREFIX_HEADER = "Finder/Finder-Prefix.pch";
 				INFOPLIST_FILE = "Finder/Finder-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		0F946AB2178700A8004F6B57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6E6E22FF9514D63A56161ED /* Pods/Pods-Flickr.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Flickr/Flickr-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Flickr/Flickr-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/DerivedData/Optique/Build/Products/Debug",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		0F946AB3178700A8004F6B57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6E6E22FF9514D63A56161ED /* Pods/Pods-Flickr.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Flickr/Flickr-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Flickr/Flickr-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/DerivedData/Optique/Build/Products/Debug",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -1470,7 +1773,7 @@
 		};
 		0F9C80CE16F891C700B2B6D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1915239F645F4207934EB0EC /* Pods.xcconfig */;
+			baseConfigurationReference = A5D812EA894147FA88274B61 /* Pods/Pods-Optique.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Optique/Optique.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
@@ -1493,7 +1796,7 @@
 		};
 		0F9C80CF16F891C700B2B6D8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1915239F645F4207934EB0EC /* Pods.xcconfig */;
+			baseConfigurationReference = A5D812EA894147FA88274B61 /* Pods/Pods-Optique.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Optique/Optique.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
@@ -1525,6 +1828,7 @@
 				INFOPLIST_FILE = "Facebook/Facebook-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -1540,6 +1844,7 @@
 				INFOPLIST_FILE = "Facebook/Facebook-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
@@ -1555,6 +1860,7 @@
 				INFOPLIST_FILE = "Twitter/Twitter-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -1570,6 +1876,7 @@
 				INFOPLIST_FILE = "Twitter/Twitter-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
@@ -1591,6 +1898,15 @@
 			buildConfigurations = (
 				0F04A6611737C7C300E53ED1 /* Debug */,
 				0F04A6621737C7C300E53ED1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F946AB1178700A8004F6B57 /* Build configuration list for PBXNativeTarget "Flickr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F946AB2178700A8004F6B57 /* Debug */,
+				0F946AB3178700A8004F6B57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

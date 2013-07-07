@@ -237,13 +237,25 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Debug" hidden="YES" id="Ej8-n3-t4k">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Debug" id="4zH-np-hZD">
+                        <items>
+                            <menuItem title="Clear cache" id="25N-ZP-LvF">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
             </items>
         </menu>
         <customObject id="494" customClass="OPAppDelegate">
             <connections>
+                <action selector="debugClearCache:" destination="25N-ZP-LvF" id="jIg-DM-fgz"/>
                 <action selector="newAlbum:" destination="82" id="566"/>
                 <action selector="openDirectory:" destination="72" id="563"/>
                 <outlet property="_userDefaultsController" destination="564" id="565"/>
+                <outlet property="debugMenu" destination="Ej8-n3-t4k" id="DFi-00-xJD"/>
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
@@ -260,9 +272,17 @@
         <class className="OPAppDelegate" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OPAppDelegate.h"/>
             <relationships>
+                <relationship kind="action" name="debugClearCache:"/>
                 <relationship kind="action" name="newAlbum:"/>
                 <relationship kind="action" name="openDirectory:"/>
                 <relationship kind="outlet" name="_userDefaultsController" candidateClass="NSUserDefaultsController"/>
+                <relationship kind="outlet" name="debugMenu" candidateClass="NSMenuItem"/>
+            </relationships>
+        </class>
+        <class className="WebView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebView.h"/>
+            <relationships>
+                <relationship kind="action" name="reloadFromOrigin:"/>
             </relationships>
         </class>
     </classes>

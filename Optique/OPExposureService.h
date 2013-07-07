@@ -18,4 +18,8 @@
 
 +(void)photoManager:(XPPhotoManager*)photoManager photoController:(id<XPPhotoController>)controller;
 
++(NSSet*)photoCollectionProviders;
+
++(NSArray*)debugMenuItems;
+
 @end

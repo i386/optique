@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 
 #import "XPPhotoCollection.h"
+#import "XPPhotoCollectionProviderDelegate.h"
 
 extern NSString *const XPPhotoManagerDidAddCollection;
 extern NSString *const XPPhotoManagerDidUpdateCollection;
 extern NSString *const XPPhotoManagerDidDeleteCollection;
 
-@interface XPPhotoManager : NSObject
+@interface XPPhotoManager : NSObject<XPPhotoCollectionProviderDelegate>
 
 @property (strong, readonly) NSURL *path;
 

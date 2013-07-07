@@ -38,7 +38,7 @@
         _photoManager = photoManager;
         
         _albumPredicate =[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-            return [evaluatedObject isKindOfClass:[OPPhotoAlbum class]];
+            return ![evaluatedObject isKindOfClass:[OPCamera class]];
         }];
         
         _currentPredicate = _albumPredicate;
@@ -227,44 +227,29 @@
 
 -(void)albumAdded:(NSNotification*)notification
 {
-    XPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
-    
-    if ([photoManager isEqual:_photoManager])
+    id<XPPhotoCollection> collection = [notification userInfo][@"collection"];
+    if (collection)
     {
-        id<XPPhotoCollection> collection = [notification userInfo][@"collection"];
-        if (collection)
-        {
-            [self performBlockOnMainThread:^{
-                [_gridView reloadData];
-            }];
-        }
+        [self performBlockOnMainThread:^{
+            [_gridView reloadData];
+        }];
     }
 }
 
 -(void)albumUpdated:(NSNotification*)notification
 {
     [self performBlockOnMainThread:^{
-        XPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
-        
-        if ([photoManager isEqual:_photoManager])
-        {
-            [_gridView reloadData];
-        }
+        [_gridView reloadData];
     }];
 }
 
 -(void)albumDeleted:(NSNotification*)notification
 {
     [self performBlockOnMainThread:^{
-        XPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
+        [_gridView reloadData];
         
-        if ([photoManager isEqual:_photoManager])
-        {
-            [_gridView reloadData];
-            
-            //If the album is deleted pop back to the root controller
-            [self.controller popToRootViewController];
-        }
+        //If the album is deleted pop back to the root controller
+        [self.controller popToRootViewController];
     }];
 }
 
@@ -272,12 +257,7 @@
 {
     [self performBlockOnMainThread:^
     {
-        XPPhotoManager *photoManager = [notification userInfo][@"photoManager"];
-        
-        if ([photoManager isEqual:_photoManager])
-        {
-            [self.controller updateNavigation];
-        }
+        [self.controller updateNavigation];
     }];
 }
 
