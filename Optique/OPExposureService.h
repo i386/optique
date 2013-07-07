@@ -12,6 +12,8 @@
 
 @property (readonly, strong) NSDictionary *exposures;
 
++(void)loadPlugins:(NSDictionary*)userInfo;
+
 +(void)photoManager:(XPPhotoManager*)photoManager collectionViewController:(id<XPCollectionViewController>)controller;
 
 +(void)photoManager:(XPPhotoManager*)photoManager photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller;

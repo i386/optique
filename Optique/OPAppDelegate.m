@@ -13,12 +13,7 @@
 @implementation OPAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-#if DEBUG
-    [_debugMenu setHidden:NO];
-    [self setupDebugMenu];
-#endif
-    
+{    
     NSData *bookmarkData = [[_userDefaultsController defaults] objectForKey:@"url"];
     
     NSURL *url;
@@ -45,6 +40,14 @@
     _cameraService = [[OPCameraService alloc] init];
     
     [self picturesAtDirectory:url];
+    
+    //Application is now ready to accept plugin loading
+    [OPExposureService loadPlugins:@{}];
+    
+#if DEBUG
+    [_debugMenu setHidden:NO];
+    [self setupDebugMenu];
+#endif
 }
 
 - (IBAction)openDirectory:(id)sender

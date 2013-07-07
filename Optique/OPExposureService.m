@@ -23,6 +23,23 @@
     return shared;
 }
 
++(void)loadPlugins:(NSDictionary*)userInfo
+{
+    [[[OPExposureService defaultLoader] exposures] each:^(NSString *pluginKey, id pluginInstance) {
+        if ([pluginInstance respondsToSelector:@selector(pluginDidLoad:)])
+        {
+            @try
+            {
+                [pluginInstance pluginDidLoad:userInfo];
+            }
+            @catch (NSException *exception)
+            {
+                NSLog(@"Could not load plugin '%@'\nReason:\n%@", pluginKey, exception);
+            }
+        }
+    }];
+}
+
 +(void)photoManager:(XPPhotoManager*)photoManager collectionViewController:(id<XPCollectionViewController>)controller
 {
     [[OPExposureService respondsToCollectionViewController] each:^(id<XPPlugin> sender) {
