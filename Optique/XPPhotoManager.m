@@ -64,7 +64,7 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
     return albums;
 }
 
--(id<XPPhotoCollection>)newAlbumWithName:(NSString *)albumName identifier:(NSString *)exposureId error:(NSError *__autoreleasing *)error
+-(id<XPPhotoCollection>)newAlbumWithName:(NSString *)albumName error:(NSError *__autoreleasing *)error
 {
     NSURL *albumPath = [self.path URLByAppendingPathComponent:albumName isDirectory:YES];
     
@@ -76,14 +76,6 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
         
         if (!directoryCreationError)
         {
-            if (exposureId)
-            {
-                NSDictionary *metadata = @{fOptiqueBundle: exposureId};
-                NSData* jsonData = [NSJSONSerialization dataWithJSONObject:metadata options:NSJSONWritingPrettyPrinted error:nil];
-                NSURL *metadataURL = [albumPath URLByAppendingPathComponent:fOptiqueMetadataFileName];
-                [jsonData writeToURL:metadataURL atomically:YES];
-            }
-            
             OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithTitle:albumName path:albumPath photoManager:self];
             [self addAlbum:album];
             [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:album];

@@ -852,6 +852,7 @@
 			children = (
 				0F04A63B1737C74800E53ED1 /* Exposure.h */,
 				0F04A6421737C74800E53ED1 /* XPPlugin.h */,
+				0F04A6401737C74800E53ED1 /* XPPhotoManager.h */,
 				0F946AB7178701CD004F6B57 /* XPPhotoCollectionProvider.h */,
 				0F946AB9178702ED004F6B57 /* XPPhotoCollectionProviderDelegate.h */,
 				0FCA4D321737D89B007DC9EF /* Model */,
@@ -877,7 +878,6 @@
 			isa = PBXGroup;
 			children = (
 				0F04A63D1737C74800E53ED1 /* XPPhoto.h */,
-				0F04A6401737C74800E53ED1 /* XPPhotoManager.h */,
 				0F04A63E1737C74800E53ED1 /* XPPhotoCollection.h */,
 			);
 			name = Model;

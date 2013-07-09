@@ -11,7 +11,6 @@
 #import <gtm-oauth/GTMOAuthWindowController.h>
 #import "OPFlickrServiceDelegate.h"
 #import "OPPhotoAlbum.h"
-#import <Exposure/Exposure.h>
 
 @interface OPFlickrService : NSObject
 

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Exposure/Exposure.h>
 #import "OPFlickrService.h"
 #import "OPFlickrServiceDelegate.h"
 

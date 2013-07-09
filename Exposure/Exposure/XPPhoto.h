@@ -35,20 +35,26 @@
  **/
 -(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(XPImageCompletionBlock)completionBlock;
 
-/** 
- Loads the data representing this photo and returns it via the completion block 
- **/
--(NSConditionLock*)resolveURL:(XPURLSupplier)block;
-
 @optional
 
 /**
- Thumbnail provided by implementor
+ Thumbnail image, if available
  */
 -(NSImage*)thumbnail;
 
+/**
+ URL to the photo, if available
+ */
 -(NSURL*)url;
 
+/**
+ Loads the data representing this photo and returns it via the completion block
+ **/
+-(NSConditionLock*)resolveURL:(XPURLSupplier)block;
+
+/**
+ Metadata that is stored for this Photo so that it can be rebuilt by the album scanner & collection provider on startup
+ */
 -(NSDictionary*)metadata;
 
 @end

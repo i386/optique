@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Exposure/Exposure.h>
 #import "OPFlickrPhotoSet.h"
 
 @interface OPFlickrPhoto : NSObject<XPPhoto>

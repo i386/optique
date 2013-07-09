@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Exposure/Exposure.h>
 
 @class OPFlickrPhoto;
 

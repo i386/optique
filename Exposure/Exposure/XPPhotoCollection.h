@@ -57,6 +57,9 @@ typedef NS_ENUM(NSUInteger, XPPhotoCollectionType) {
  */
 -(void)deletePhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock;
 
+/**
+ Metadata that is stored for this Collection so that it can be rebuilt by the album scanner & collection provider on startup
+ */
 -(NSDictionary*)metadata;
 
 @end
