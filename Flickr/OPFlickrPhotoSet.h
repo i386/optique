@@ -9,10 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <Exposure/Exposure.h>
 
+@class OPFlickrPhoto;
+
 @interface OPFlickrPhotoSet : NSObject<XPPhotoCollection>
 
--initWithDictionary:(NSDictionary*)dict;
+@property (strong, readonly) NSNumber *flickrId;
+
+-initWithDictionary:(NSDictionary*)dict photoManager:(XPPhotoManager*)photoManager;
 
 -(void)setPhotoManager:(XPPhotoManager*)photoManager;
+
+-(void)addPhoto:(OPFlickrPhoto*)photo;
+
+-(NSURL*)path;
 
 @end

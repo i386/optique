@@ -32,7 +32,7 @@
     
     NSError *error;
     
-    OPPhotoAlbum *album = [_photoManager newAlbumWithName:albumName error:&error];
+    OPPhotoAlbum *album = [_photoManager newAlbumWithName:albumName identifier:nil error:&error];
     if (album)
     {
         [self.window orderOut:nil];

@@ -20,7 +20,7 @@
         [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
          {
              id collection = weakPhotoManager.allCollections[index];
-             if ([collection collectionType] == kPhotoCollectionLocal && [collection respondsToSelector:@selector(path)])
+             if ([collection respondsToSelector:@selector(path)])
              {
                  [urls addObject:[collection path]];
              }

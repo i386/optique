@@ -13,9 +13,11 @@
 
 @protocol OPFlickrServiceDelegate <NSObject>
 
--(void)serviceDidSignIn:(OPFlickrService*)service error:(NSError**)error;
+-(void)serviceDidSignIn:(OPFlickrService*)service error:(NSError*)error;
 
 -(void)serviceDidSignOut:(OPFlickrService*)service;
+
+-(void)serviceRequestDidFail:(OPFlickrService*)service error:(NSError*)error;
 
 -(void)service:(OPFlickrService*)service foundSet:(OPFlickrPhotoSet*)photoSet;
 

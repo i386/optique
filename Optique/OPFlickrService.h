@@ -10,17 +10,26 @@
 #import <gtm-oauth/GTMOAuthAuthentication.h>
 #import <gtm-oauth/GTMOAuthWindowController.h>
 #import "OPFlickrServiceDelegate.h"
+#import "OPPhotoAlbum.h"
+#import <Exposure/Exposure.h>
 
 @interface OPFlickrService : NSObject
 
 @property (weak) id<OPFlickrServiceDelegate> delegate;
 @property (strong, readonly) GTMOAuthAuthentication *authentication;
 @property (strong, readonly) GTMOAuthWindowController *controller;
+@property (strong, readonly) XPPhotoManager *photoManager;
+
+-initWithPhotoManager:(XPPhotoManager*)photoManager;
 
 -(void)signin:(NSWindow*)window;
 
 -(void)signout;
 
 -(void)loadPhotoSets;
+
+-(void)syncPhotoSetToDisk:(OPFlickrPhotoSet*)photoSet;
+
+-(void)uploadPhotoAlbum:(OPPhotoAlbum*)photoAlbum;
 
 @end

@@ -52,7 +52,7 @@ static OPImagePreviewService *_defaultService;
 
 -(NSImage *)previewImageWithPhoto:(id<XPPhoto>)photo loaded:(XPImageCompletionBlock)completionBlock
 {
-    NSImage *image;
+    NSImage __block *image;
     if ([((id)photo) respondsToSelector:@selector(thumbnail)])
     {
         image = photo.thumbnail;
@@ -61,11 +61,19 @@ static OPImagePreviewService *_defaultService;
             image = [image imageCroppedToFitSize:kOPImageCacheThumbSize];
         }
     }
-    else
+    else if ([((id)photo) respondsToSelector:@selector(url)])
     {
-        OPLocalPhoto *localPhoto = (OPLocalPhoto*)photo;
-        image = [self previewImageAtURL:localPhoto.path loaded:completionBlock];
+        image = [self previewImageAtURL:photo.url loaded:completionBlock];
     }
+//    else
+//    {
+//        NSConditionLock *condition = [photo resolveURL:^(NSURL *suppliedUrl) {
+//           image = [self previewImageAtURL:suppliedUrl loaded:completionBlock];
+//        }];
+//        
+//        [condition lock];
+//        [condition unlockWithCondition:1];
+//    }
     return image == nil ? [NSImage imageNamed:@"loading-preview"] : image;
 }
 

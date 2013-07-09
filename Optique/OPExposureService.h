@@ -12,6 +12,10 @@
 
 @property (readonly, strong) NSDictionary *exposures;
 
++(id<XPPlugin>)pluginForBundle:(NSString*)bundleId;
+
++(id<XPPhotoCollectionProvider>)photoCollectionProviderForBundle:(NSString*)bundleId;
+
 +(void)loadPlugins:(NSDictionary*)userInfo;
 
 +(void)unloadPlugins:(NSDictionary*)userInfo;

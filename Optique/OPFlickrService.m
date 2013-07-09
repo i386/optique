@@ -10,6 +10,8 @@
 #import <AFNetworking/AFNetworking.h>
 #import <gtm-oauth/GTMHTTPFetcher.h>
 #import "GTMOAuthAuthentication+UserPreferences.h"
+#import "OPFlickrPhoto.h"
+#import "OPLocalPhoto.h"
 
 #define fFlickrAPIKey             @"ab0746e0e054e9b7326023fd25c767e1"
 #define fFlickrAPISecret          @"92360fbc2b26ecb0"
@@ -21,14 +23,16 @@
 
 #define fFlickrOAuthToken         @"flickr-oauth-token"
 #define fFlickrServiceName        @"Flickr"
+#define fFlickrExposureIdentifier @"com.whimsy.optique.Flickr"
 
 @implementation OPFlickrService
 
--(id)init
+-(id)initWithPhotoManager:(XPPhotoManager *)photoManager
 {
     self = [super init];
     if (self)
     {
+        _photoManager = photoManager;
         [self setupAuthentication];
     }
     return self;
@@ -69,7 +73,7 @@
                 NSLog(@"%@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
             }
             
-            [_delegate serviceDidSignIn:self error:&error];
+            [_delegate serviceDidSignIn:self error:error];
         }
         else
         {
@@ -109,7 +113,7 @@
 //TODO: work with pages
 -(void)loadPhotoSets
 {
-    NSString *urlAsString = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=%@&format=json&api_key=%@&page=%i&nojsoncallback=1", @"flickr.photosets.getList", fFlickrAPIKey, 1];
+    NSString *urlAsString = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?nojsoncallback=1&method=%@&format=json&api_key=%@&page=%i", @"flickr.photosets.getList", fFlickrAPIKey, 1];
     
     NSURL *url = [NSURL URLWithString:urlAsString];
     
@@ -124,15 +128,105 @@
         
         for (NSDictionary *photoSet in photoSets)
         {
-            OPFlickrPhotoSet *flickrPhotoSet = [[OPFlickrPhotoSet alloc] initWithDictionary:photoSet];
+            OPFlickrPhotoSet *flickrPhotoSet = [[OPFlickrPhotoSet alloc] initWithDictionary:photoSet photoManager:_photoManager];
+            [self loadPhotosForSet:flickrPhotoSet];
+            
             [_delegate service:self foundSet:flickrPhotoSet];
         }
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"error: %@", error.userInfo);
+        [_delegate serviceRequestDidFail:self error:error];
     }];
     
     [operation start];
+}
+
+-(void)loadPhotosForSet:(OPFlickrPhotoSet*)photoSet
+{
+    NSString *urlAsString = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?nojsoncallback=1&method=%@&format=json&api_key=%@&page=%i&photoset_id=%@&extras=%@", @"flickr.photosets.getPhotos", fFlickrAPIKey, 1, photoSet.flickrId, @"url_o,date_taken"];
+    
+    NSURL *url = [NSURL URLWithString:urlAsString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0f];
+    
+    [_authentication addResourceTokenHeaderToRequest:request];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
+        NSDictionary *result = (NSDictionary*)JSON;
+        NSArray *photos = result[@"photoset"][@"photo"];
+        
+        for (NSDictionary *dict in photos)
+        {
+            OPFlickrPhoto *photo = [[OPFlickrPhoto alloc] initWithDictionary:dict photoSet:photoSet];
+            [photoSet addPhoto:photo];
+        }
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        [_delegate serviceRequestDidFail:self error:error];
+    }];
+    
+    [operation start];
+    [operation waitUntilFinished];
+}
+
+-(void)syncPhotoSetToDisk:(OPFlickrPhotoSet *)photoSet
+{
+    NSError *error;
+    [_photoManager createLocalPhotoCollectionWithPrototype:photoSet identifier:fFlickrExposureIdentifier error:&error];
+    if (!error)
+    {
+        for (OPFlickrPhoto *photo in photoSet.allPhotos)
+        {
+            [photo download];
+        }
+    }
+    else
+    {
+        NSLog(@"Error syncing album '%@'. Reason: %@", photoSet.title, error);
+    }
+}
+
+-(void)uploadPhotoAlbum:(OPPhotoAlbum *)photoAlbum
+{
+    [self uploadPhotos:photoAlbum];
+}
+
+-(void)uploadPhotos:(OPPhotoAlbum*)album
+{
+    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://up.flickr.com"]];
+    
+    for (OPLocalPhoto *photo in album.allPhotos)
+    {
+        NSDictionary *params = @{@"title": photo.title};
+        NSMutableURLRequest *request = [client multipartFormRequestWithMethod:@"POST" path:@"/services/upload/?format=json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            [formData appendPartWithFileURL:photo.url name:@"photo" error:nil];
+        }];
+        
+        [_authentication addResourceTokenHeaderToRequest:request];
+        
+        [request setTimeoutInterval:5];
+        
+        AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            
+            NSDictionary *result = (NSDictionary*)JSON;
+            
+            NSLog(@"result %@", result);
+            
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+            [_delegate serviceRequestDidFail:self error:error];
+        }];
+        
+        [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+            
+            NSLog(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
+            CGFloat progress = ((CGFloat)totalBytesWritten) / totalBytesExpectedToWrite * 100;
+            NSLog(@"Progress: %@", [NSString stringWithFormat:@"%0.1f %%", progress]);
+        }];
+        
+        [operation start];
+        [operation waitUntilFinished];
+    }
 }
 
 @end

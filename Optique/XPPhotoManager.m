@@ -64,7 +64,7 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
     return albums;
 }
 
--(id<XPPhotoCollection>)newAlbumWithName:(NSString*)albumName error:(NSError **)error
+-(id<XPPhotoCollection>)newAlbumWithName:(NSString *)albumName identifier:(NSString *)exposureId error:(NSError *__autoreleasing *)error
 {
     NSURL *albumPath = [self.path URLByAppendingPathComponent:albumName isDirectory:YES];
     
@@ -76,6 +76,14 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
         
         if (!directoryCreationError)
         {
+            if (exposureId)
+            {
+                NSDictionary *metadata = @{fOptiqueBundle: exposureId};
+                NSData* jsonData = [NSJSONSerialization dataWithJSONObject:metadata options:NSJSONWritingPrettyPrinted error:nil];
+                NSURL *metadataURL = [albumPath URLByAppendingPathComponent:fOptiqueMetadataFileName];
+                [jsonData writeToURL:metadataURL atomically:YES];
+            }
+            
             OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithTitle:albumName path:albumPath photoManager:self];
             [self addAlbum:album];
             [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:album];
@@ -89,6 +97,56 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
     else
     {
         *error = [[NSError alloc] initWithDomain:@"XPPhotoManager" code:1 userInfo:@{@"message": [NSString stringWithFormat:@"Album with the name %@ already exists.", albumName], @"longmessage": @"Try choosing a different name that isn't the name of an existing album."}];
+    }
+    return nil;
+}
+
+-(id<XPPhotoCollection>)createLocalPhotoCollectionWithPrototype:(id<XPPhotoCollection>)prototype identifier:(NSString *)exposureId error:(NSError *__autoreleasing *)error
+{
+    NSURL *albumPath = [self.path URLByAppendingPathComponent:prototype.title isDirectory:YES];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[albumPath path]])
+    {
+        NSError *directoryCreationError;
+        
+        [[NSFileManager defaultManager] createDirectoryAtURL:albumPath withIntermediateDirectories:YES attributes:nil error:&directoryCreationError];
+        
+        if (!directoryCreationError)
+        {
+            if (exposureId)
+            {
+                NSMutableArray *photos = [NSMutableArray array];
+                
+                for (id<XPPhoto> photo in [prototype allPhotos])
+                {
+                    [photos addObject:photo.metadata];
+                }
+                
+                NSMutableDictionary *collectionMetadata = [NSMutableDictionary dictionaryWithDictionary:prototype.metadata];
+                [collectionMetadata setObject:photos forKey:fOptiqueBundlePhotos];
+                
+                NSDictionary *metadata = @{fOptiqueBundle: exposureId, fOptiqueBundleData: collectionMetadata, fOptiqueBundlePhotos: photos};
+                NSData* jsonData = [NSJSONSerialization dataWithJSONObject:metadata options:NSJSONWritingPrettyPrinted error:nil];
+                NSURL *metadataURL = [albumPath URLByAppendingPathComponent:fOptiqueMetadataFileName];
+                [jsonData writeToURL:metadataURL atomically:YES];
+                return prototype;
+            }
+            else
+            {
+                OPPhotoAlbum *album = [[OPPhotoAlbum alloc] initWithTitle:prototype.title path:albumPath photoManager:self];
+                [self addAlbum:album];
+                [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:album];
+                return album;
+            }
+        }
+        else
+        {
+            *error = [[NSError alloc] initWithDomain:@"XPPhotoManager" code:2 userInfo:@{@"message": [NSString stringWithFormat:@"Could not create album %@.", prototype.title], @"longmessage": @"There was a problem creating the album."}];
+        }
+    }
+    else
+    {
+        *error = [[NSError alloc] initWithDomain:@"XPPhotoManager" code:1 userInfo:@{@"message": [NSString stringWithFormat:@"Album with the name %@ already exists.", prototype.title], @"longmessage": @"Try choosing a different name that isn't the name of an existing album."}];
     }
     return nil;
 }
@@ -126,6 +184,8 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
     }
     
     [self withLock:^id{
+        
+        
         NSMutableOrderedSet *oldAlbums = [NSMutableOrderedSet orderedSetWithOrderedSet:_collectionSet];
         _collectionSet = [NSMutableOrderedSet orderedSetWithArray:albums];
         
@@ -138,7 +198,14 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
          }];
         
         NSMutableOrderedSet *newItems = [NSMutableOrderedSet orderedSetWithArray:albums];
+        
+        //Add all the collections owned by providers to the new items set so they are not removed
+        [[OPExposureService photoCollectionProviders] each:^(id<XPPhotoCollectionProvider> provider) {
+            [newItems addObjectsFromArray:provider.photoCollections];
+        }];
+        
         [newItems minusOrderedSet:oldAlbums];
+        
         [[newItems array] each:^(id sender) {
             [self performBlockInBackground:^{
                 [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:sender];
@@ -181,12 +248,6 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
 -(void)didAddPhotoCollection:(id<XPPhotoCollection>)photoCollection
 {
     [self withLock:^id{
-        
-        if ([photoCollection respondsToSelector:@selector(setPhotoManager:)])
-        {
-            [photoCollection setPhotoManager:self];
-        }
-        
         [_collectionSet addObject:photoCollection];
         [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:photoCollection];
         return nil;

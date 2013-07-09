@@ -68,23 +68,9 @@
     completionBlock(image);
 }
 
--(NSConditionLock*)resolveURL:(XPURLSupplier)block
+-(NSURL *)url
 {
-    NSConditionLock *condition = [[NSConditionLock alloc] initWithCondition:0];
-
-    [self performBlockInBackground:^{
-        @try
-        {
-            [condition lock];
-            block(_path);
-        }
-        @finally
-        {
-            [condition unlockWithCondition:1];
-        }
-    }];
-    
-    return condition;
+    return _path;
 }
 
 -(BOOL)isEqual:(id)object

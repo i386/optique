@@ -60,6 +60,14 @@
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
 		0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */; };
+		0F7A704517898D9200570180 /* flickr-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7A704317898D9200570180 /* flickr-small.png */; };
+		0F7A704617898D9200570180 /* flickr-large.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7A704417898D9200570180 /* flickr-large.png */; };
+		0F7A704717898E4F00570180 /* NSImage+CGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */; };
+		0F7A704D178ABA6600570180 /* XPBadgeLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7A704B178ABA6600570180 /* XPBadgeLayer.h */; };
+		0F7A704E178ABA6600570180 /* XPBadgeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A704C178ABA6600570180 /* XPBadgeLayer.m */; };
+		0F7A704F178ABB5800570180 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE3B2611702F25500FC0D6C /* QuartzCore.framework */; };
+		0F7A7052178ABBC300570180 /* OPFlickrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A7051178ABBC300570180 /* OPFlickrPhoto.m */; };
+		0F7A7053178AD59A00570180 /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
 		0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */; };
 		0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D6171BA077004D8082 /* OPPhotoController.m */; };
 		0F8B71D9171BA077004D8082 /* OPPhotoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8B71D7171BA077004D8082 /* OPPhotoController.xib */; };
@@ -312,6 +320,12 @@
 		0F6AF87E172A42750029724A /* OPCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCamera.m; path = ../Optique/OPCamera.m; sourceTree = "<group>"; };
 		0F79A5E3175DE2DC00BB3973 /* NSColor+Optique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+Optique.h"; sourceTree = "<group>"; };
 		0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Optique.m"; sourceTree = "<group>"; };
+		0F7A704317898D9200570180 /* flickr-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flickr-small.png"; sourceTree = "<group>"; };
+		0F7A704417898D9200570180 /* flickr-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flickr-large.png"; sourceTree = "<group>"; };
+		0F7A704B178ABA6600570180 /* XPBadgeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPBadgeLayer.h; sourceTree = "<group>"; };
+		0F7A704C178ABA6600570180 /* XPBadgeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPBadgeLayer.m; sourceTree = "<group>"; };
+		0F7A7050178ABBC300570180 /* OPFlickrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFlickrPhoto.h; sourceTree = "<group>"; };
+		0F7A7051178ABBC300570180 /* OPFlickrPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFlickrPhoto.m; sourceTree = "<group>"; };
 		0F8B71D2171AB9D8004D8082 /* NSImage+Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Transform.h"; sourceTree = "<group>"; };
 		0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Transform.m"; sourceTree = "<group>"; };
 		0F8B71D5171BA077004D8082 /* OPPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoController.h; sourceTree = "<group>"; };
@@ -444,6 +458,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F7A704F178ABB5800570180 /* QuartzCore.framework in Frameworks */,
 				0F04A62D1737C71000E53ED1 /* Cocoa.framework in Frameworks */,
 				D7C07EED260B44D1800F67CE /* libPods-Flickr.a in Frameworks */,
 			);
@@ -473,9 +488,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE3B2621702F25500FC0D6C /* QuartzCore.framework in Frameworks */,
 				0F62BA66173673B200E661DD /* Cocoa.framework in Frameworks */,
 				0F368A6C170531B500411503 /* Quartz.framework in Frameworks */,
-				0FE3B2621702F25500FC0D6C /* QuartzCore.framework in Frameworks */,
 				76AAAAFD273F4DD99BF0C8E7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +652,8 @@
 				0FDE0ECE178822C700B81ADC /* OPFlickrServiceDelegate.h */,
 				0FDE0ECF1788254800B81ADC /* OPFlickrPhotoSet.h */,
 				0FDE0ED01788254800B81ADC /* OPFlickrPhotoSet.m */,
+				0F7A7050178ABBC300570180 /* OPFlickrPhoto.h */,
+				0F7A7051178ABBC300570180 /* OPFlickrPhoto.m */,
 			);
 			path = Flickr;
 			sourceTree = "<group>";
@@ -644,6 +661,8 @@
 		0F946AAB178700A8004F6B57 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F7A704317898D9200570180 /* flickr-small.png */,
+				0F7A704417898D9200570180 /* flickr-large.png */,
 				0F946AAC178700A8004F6B57 /* Flickr-Info.plist */,
 				0F946AAD178700A8004F6B57 /* InfoPlist.strings */,
 				0F946AB0178700A8004F6B57 /* Flickr-Prefix.pch */,
@@ -869,6 +888,8 @@
 			children = (
 				0FCA4D2C1737D7F0007DC9EF /* XPMenuItem.h */,
 				0FCA4D2D1737D7F0007DC9EF /* XPMenuItem.m */,
+				0F7A704B178ABA6600570180 /* XPBadgeLayer.h */,
+				0F7A704C178ABA6600570180 /* XPBadgeLayer.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1074,6 +1095,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FCA4D6C17391D66007DC9EF /* XPController.h in Headers */,
+				0F7A704D178ABA6600570180 /* XPBadgeLayer.h in Headers */,
 				0FE719B1174E176B0092F801 /* XPSharingService.h in Headers */,
 				0FCA4D2E1737D7F0007DC9EF /* XPMenuItem.h in Headers */,
 				0F04A6431737C74800E53ED1 /* Exposure.h in Headers */,
@@ -1297,6 +1319,8 @@
 			files = (
 				0FDE0ECB1787ED6100B81ADC /* GTMOAuthWindow.xib in Resources */,
 				0F946AAF178700A8004F6B57 /* InfoPlist.strings in Resources */,
+				0F7A704517898D9200570180 /* flickr-small.png in Resources */,
+				0F7A704617898D9200570180 /* flickr-large.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1466,6 +1490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FCA4D2F1737D7F0007DC9EF /* XPMenuItem.m in Sources */,
+				0F7A704E178ABA6600570180 /* XPBadgeLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1481,6 +1506,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F7A7053178AD59A00570180 /* NSObject+PerformBlock.m in Sources */,
+				0F7A7052178ABBC300570180 /* OPFlickrPhoto.m in Sources */,
+				0F7A704717898E4F00570180 /* NSImage+CGImage.m in Sources */,
 				0FEDFF8E17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.m in Sources */,
 				0FDE0ED11788259C00B81ADC /* OPFlickrPhotoSet.m in Sources */,
 				0FC55DC91787CB5A0095CCF0 /* OPFlickrService.m in Sources */,

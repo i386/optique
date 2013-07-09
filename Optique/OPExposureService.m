@@ -23,6 +23,21 @@
     return shared;
 }
 
++(id<XPPlugin>)pluginForBundle:(NSString *)bundleId
+{
+    return [[[OPExposureService defaultLoader] exposures] objectForKey:bundleId];
+}
+
++(id<XPPhotoCollectionProvider>)photoCollectionProviderForBundle:(NSString *)bundleId
+{
+    id<XPPlugin> plugin = [OPExposureService pluginForBundle:bundleId];
+    if (plugin != nil && [plugin conformsToProtocol:@protocol(XPPhotoCollectionProvider)])
+    {
+        return (id<XPPhotoCollectionProvider>)plugin;
+    }
+    return nil;
+}
+
 +(void)loadPlugins:(NSDictionary*)userInfo
 {
     [[[OPExposureService defaultLoader] exposures] each:^(NSString *pluginKey, id pluginInstance) {

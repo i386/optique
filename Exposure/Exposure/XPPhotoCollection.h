@@ -57,7 +57,7 @@ typedef NS_ENUM(NSUInteger, XPPhotoCollectionType) {
  */
 -(void)deletePhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock;
 
--(void)setPhotoManager:(XPPhotoManager*)collection;
+-(NSDictionary*)metadata;
 
 @end
     

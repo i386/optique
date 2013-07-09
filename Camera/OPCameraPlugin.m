@@ -10,13 +10,15 @@
 
 @implementation OPCameraPlugin
 
--(CALayer *)layerForCollection:(id<XPPhotoCollection>)collection
+-(CALayer *)badgeLayerForCollection:(id<XPPhotoCollection>)collection
 {
     if ([collection isKindOfClass:[OPCamera class]])
     {
+        XPBadgeLayer *badgeLayer = [XPBadgeLayer layer];
         CATextLayer *layer = [CATextLayer layer];
         layer.string = @"Camera";
-        return layer;
+        [badgeLayer addSublayer:layer];
+        return badgeLayer;
     }
     return nil;
 }

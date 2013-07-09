@@ -11,6 +11,7 @@
 #import "XPPlugin.h"
 #import "XPPhotoCollection.h"
 #import "XPPhotoCollectionProviderDelegate.h"
+#import "XPBadgeLayer.h"
 
 @protocol XPPhotoCollectionProvider <XPPlugin>
 
@@ -24,8 +25,13 @@
 @optional
 
 /**
+ Create collection at path
+ */
+-(id<XPPhotoCollection>)createCollectionAtPath:(NSURL *)url metadata:(NSDictionary*)metadata photoManager:(XPPhotoManager*)photoManager;
+
+/**
  Layer to add to the grid item of the collection
  */
--(CALayer*)layerForCollection:(id<XPPhotoCollection>)collection;
+-(XPBadgeLayer*)badgeLayerForCollection:(id<XPPhotoCollection>)collection;
 
 @end

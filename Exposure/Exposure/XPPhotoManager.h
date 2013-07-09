@@ -28,7 +28,9 @@ extern NSString *const XPPhotoManagerDidDeleteCollection;
 -(NSArray*)allCollectionsForIndexSet:(NSIndexSet*)indexSet;
 
 /** create a new album **/
--(id<XPPhotoCollection>)newAlbumWithName:(NSString*)albumName error:(NSError **)error;
+-(id<XPPhotoCollection>)newAlbumWithName:(NSString*)albumName identifier:(NSString*)exposureId error:(NSError **)error;
+
+-(id<XPPhotoCollection>)createLocalPhotoCollectionWithPrototype:(id<XPPhotoCollection>)prototype identifier:(NSString *)exposureId error:(NSError *__autoreleasing *)error;
 
 /** delete the specified album **/
 -(void)deleteAlbum:(id<XPPhotoCollection>)collection;

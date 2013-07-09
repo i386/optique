@@ -47,4 +47,8 @@
  */
 -(NSImage*)thumbnail;
 
+-(NSURL*)url;
+
+-(NSDictionary*)metadata;
+
 @end

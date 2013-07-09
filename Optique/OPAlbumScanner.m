@@ -32,7 +32,7 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
 {
     if (event.isCreated || event.isRemoved || event.isRenamed)
     {
-        [self startScanAtURL:[_events.watchedURLs lastObject]];
+//        [self startScanAtURL:[_events.watchedURLs lastObject]];
     }
 }
 
@@ -64,12 +64,6 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
          
          if (_stopScan) return;
          
-         //TODO: this really shouldn't be here because technically its not a 'album'. What we *should* be doing is filtering it before we remove it in XPPhotoManager when OPAlbumScannerDidFindAlbumsNotification is responded to. No one is perfect.
-         
-         [[OPExposureService photoCollectionProviders] each:^(id<XPPhotoCollectionProvider> provider) {
-             [albumsFound addObjectsFromArray:[provider photoCollections]];
-         }];
-         
          [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumsNotification object:nil userInfo:@{@"albums": albumsFound, @"photoManager": _photoManager}];
          
          if (!_stopScan)
@@ -95,10 +89,40 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
         
         if (!UTTypeConformsTo(fileUTI, kUTTypeDirectory))
         {
-            return [[OPPhotoAlbum alloc] initWithTitle:[filePath lastPathComponent] path:url photoManager:_photoManager];
+            return [self resolveCollectionForPath:url];
         }
     }
     return nil;
+}
+
+-(id<XPPhotoCollection>)resolveCollectionForPath:(NSURL*)path
+{
+    NSURL *optiqueFilePath = [path URLByAppendingPathComponent:fOptiqueMetadataFileName];
+    NSData *data  = [NSData dataWithContentsOfURL:optiqueFilePath];
+    
+    id<XPPhotoCollection> collection;
+    if (data)
+    {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves|NSJSONReadingMutableContainers error:nil];
+        if (dict)
+        {
+            NSString *exposureId = dict[fOptiqueBundle];
+            if (exposureId)
+            {
+                id<XPPhotoCollectionProvider> photoProvider = [OPExposureService photoCollectionProviderForBundle:exposureId];
+                if (photoProvider)
+                {
+                    collection = [photoProvider createCollectionAtPath:path metadata:dict[fOptiqueBundleData] photoManager:_photoManager];
+                }
+            }
+        }
+    }
+    
+    if (!collection)
+    {
+        collection = [[OPPhotoAlbum alloc] initWithTitle:[path lastPathComponent] path:path photoManager:_photoManager];
+    }
+    return collection;
 }
 
 -(NSEnumerator*)albumURLsForURL:(NSURL*)url
