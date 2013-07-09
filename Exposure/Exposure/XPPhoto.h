@@ -14,25 +14,28 @@
 
 /**
  The photo title
- **/
+ */
 -(NSString*)title;
 
+/**
+ When the photo was created
+ */
 -(NSDate*)created;
 
 /**
  The collection (such as the album or camera) that the photo belongs to
- **/
+ */
 -(id<XPPhotoCollection>) collection;
 
 /**
  Loads the image and returns it via the completion block
- **/
+ */
 -(void)imageWithCompletionBlock:(XPImageCompletionBlock)completionBlock;
 
 /**
  Loads and scales the image and returns it via the completion block
  May return the full size image if scaling is not available.
- **/
+ */
 -(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(XPImageCompletionBlock)completionBlock;
 
 @optional
@@ -49,7 +52,7 @@
 
 /**
  Loads the data representing this photo and returns it via the completion block
- **/
+ */
 -(NSConditionLock*)resolveURL:(XPURLSupplier)block;
 
 /**
