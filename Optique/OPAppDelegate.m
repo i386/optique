@@ -38,7 +38,7 @@
     }
 
     //Application is now ready to accept plugin loading
-    [OPExposureService loadPlugins:@{}];
+    [OPExposureService loadPlugins:aNotification.userInfo];
     
     [self picturesAtDirectory:url];
     
