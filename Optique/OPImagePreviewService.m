@@ -65,15 +65,6 @@ static OPImagePreviewService *_defaultService;
     {
         image = [self previewImageAtURL:photo.url loaded:completionBlock];
     }
-//    else
-//    {
-//        NSConditionLock *condition = [photo resolveURL:^(NSURL *suppliedUrl) {
-//           image = [self previewImageAtURL:suppliedUrl loaded:completionBlock];
-//        }];
-//        
-//        [condition lock];
-//        [condition unlockWithCondition:1];
-//    }
     return image == nil ? [NSImage imageNamed:@"loading-preview"] : image;
 }
 

@@ -96,20 +96,16 @@
 
 -(void)addPhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock
 {
-    NSConditionLock *condition = [photo resolveURL:^(NSURL *suppliedUrl) {
-        NSError *error;
-        [[NSFileManager defaultManager] moveItemAtURL:suppliedUrl toURL:[self.path URLByAppendingPathComponent:photo.title] error:&error];
-        
-        if (completionBlock)
-        {
-            completionBlock(error);
-        }
-        
-        [self.photoManager collectionUpdated:self];
-        [photo.collection.photoManager collectionUpdated:photo.collection];
-    }];
-    [condition lock];
-    [condition unlockWithCondition:1];
+    NSError *error;
+    [[NSFileManager defaultManager] moveItemAtURL:photo.url toURL:[self.path URLByAppendingPathComponent:photo.title] error:&error];
+    
+    if (completionBlock)
+    {
+        completionBlock(error);
+    }
+    
+    [self.photoManager collectionUpdated:self];
+    [photo.collection.photoManager collectionUpdated:photo.collection];
 }
 
 

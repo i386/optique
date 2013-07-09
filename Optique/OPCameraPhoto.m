@@ -32,6 +32,7 @@
 @interface OPCameraPhoto() {
     volatile BOOL _fileDownloaded;
 }
+@property (readonly, strong) NSURL *localURL;
 @end
 
 @implementation OPCameraPhoto
@@ -88,26 +89,19 @@
     [self imageWithCompletionBlock:completionBlock];
 }
 
--(NSConditionLock *)resolveURL:(XPURLSupplier)block
+-(NSURL *)url
 {
-    OPCameraPhotoCondition *condition = [[OPCameraPhotoCondition alloc] initWithURLSupplier:block];
-    [condition lock];
-    
     if (!_fileDownloaded)
     {
+        NSConditionLock *condition = [[NSConditionLock alloc] init];
+        [condition lock];
+        
         [_cameraFile.device requestReadDataFromFile:_cameraFile atOffset:0 length:_cameraFile.fileSize readDelegate:self didReadDataSelector:@selector(didLoadData:fromFile:error:contextInfo:) contextInfo:(void*)CFBridgingRetain(condition)];
+        
+        [condition lock];
+        [condition unlockWithCondition:1];
     }
-    else
-    {
-        NSURL *fileURL = [self.camera.cacheDirectory URLByAppendingPathComponent:self.title];
-        @try {
-            condition.supplier(fileURL);
-        }
-        @finally {
-            [condition unlockWithCondition:1];
-        }
-    }
-    return nil;
+    return _localURL;
 }
 
 - (void)didLoadData:(NSData*)data fromFile:(ICCameraFile*)file error:(NSError*)error contextInfo:(void*)context
@@ -123,12 +117,8 @@
     _fileDownloaded = YES;
     
     OPCameraPhotoCondition *condition = CFBridgingRelease(context);
-    @try {
-        condition.supplier(fileURL);
-    }
-    @finally {
-        [condition unlockWithCondition:1];
-    }
+    _localURL = fileURL;
+    [condition unlockWithCondition:1];
 }
 
 - (void)didReadData:(NSData*)data fromFile:(ICCameraFile*)file error:(NSError*)error contextInfo:(void*)context

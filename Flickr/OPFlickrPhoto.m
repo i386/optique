@@ -67,12 +67,6 @@
     completionBlock(image);
 }
 
--(NSConditionLock *)resolveURL:(XPURLSupplier)block
-{
-    block(_url);
-    return nil;
-}
-
 -(NSDictionary *)metadata
 {
     NSString *dateAsString = [[[NSDateFormatter alloc] init] stringFromDate:_created];

@@ -22,13 +22,8 @@
         NSMutableArray *photos = [NSMutableArray array];
         for (id<XPPhoto> photo in [collection photosForIndexSet:indexes])
         {
-            NSConditionLock *condition = [photo resolveURL:^(NSURL *suppliedUrl) {
-                NSImage *image = [[NSImage alloc] initWithContentsOfURL:suppliedUrl];
-                [photos addObject:image];
-            }];
-            
-            [condition lock];
-            [condition unlockWithCondition:1];
+            NSImage *image = [[NSImage alloc] initWithContentsOfURL:photo.url];
+            [photos addObject:image];
         }
         
         [service performWithItems:photos];
