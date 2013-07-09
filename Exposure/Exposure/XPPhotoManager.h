@@ -21,24 +21,34 @@ extern NSString *const XPPhotoManagerDidDeleteCollection;
 
 -initWithPath:(NSURL*)path;
 
-/** all collections (albums, cameras, etc) that are available **/
+/**
+ All collections (albums, cameras, etc) that are available 
+ */
 -(NSArray*)allCollections;
 
-/** filter collections by index set **/
+/** 
+ Filter collections by index set 
+ */
 -(NSArray*)allCollectionsForIndexSet:(NSIndexSet*)indexSet;
 
-/** create a new album **/
+/** 
+ Create a new album 
+ */
 -(id<XPPhotoCollection>)newAlbumWithName:(NSString*)albumName error:(NSError **)error;
 
 /**
- Create new album using a bundle identifier. Not recommended to be called directly.
+ Create new album on the file system using a non-local photo collection prototype and a bundle identifier. Not recommended to be called directly.
  */
 -(id<XPPhotoCollection>)createLocalPhotoCollectionWithPrototype:(id<XPPhotoCollection>)prototype identifier:(NSString *)exposureId error:(NSError *__autoreleasing *)error;
 
-/** delete the specified album **/
+/** 
+ Delete the specified album
+ */
 -(void)deleteAlbum:(id<XPPhotoCollection>)collection;
 
-/** forces the collection to reload and sends a XPPhotoManagerDidUpdateCollection **/
+/** 
+ Forces the collection to reload and sends a XPPhotoManagerDidUpdateCollection 
+ */
 -(void)collectionUpdated:(id<XPPhotoCollection>)collection;
 
 @end
