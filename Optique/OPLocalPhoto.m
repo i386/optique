@@ -73,6 +73,11 @@
     return _path;
 }
 
+-(BOOL)hasLocalCopy
+{
+    return YES;
+}
+
 -(BOOL)isEqual:(id)object
 {
     if (object == self)
