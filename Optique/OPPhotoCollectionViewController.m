@@ -169,6 +169,16 @@
         
         item.title = photo.title;
         item.view.toolTip = photo.title;
+        
+        //Get badge layer from exposure
+        for (id<XPPhotoCollectionProvider> provider in [OPExposureService photoCollectionProviders])
+        {
+            item.badgeLayer = [provider badgeLayerForPhoto:photo];
+            if (item.badgeLayer)
+            {
+                break;
+            }
+        }
     }
     
     return item;

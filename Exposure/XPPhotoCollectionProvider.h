@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "XPPlugin.h"
 #import "XPPhotoCollection.h"
+#import "XPPhoto.h"
 #import "XPPhotoCollectionProviderDelegate.h"
 #import "XPBadgeLayer.h"
 
@@ -33,5 +34,10 @@
  Layer to add to the grid item of the collection
  */
 -(XPBadgeLayer*)badgeLayerForCollection:(id<XPPhotoCollection>)collection;
+
+/**
+ Layer to add to the grid item of the photo
+ */
+-(XPBadgeLayer*)badgeLayerForPhoto:(id<XPPhoto>)photo;
 
 @end
