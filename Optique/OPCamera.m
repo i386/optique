@@ -87,6 +87,11 @@
     return kPhotoCollectionCamera;
 }
 
+-(BOOL)hasLocalCopy
+{
+    return NO;
+}
+
 -(void)deletePhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock
 {
     OPCameraPhoto *cameraPhoto = (OPCameraPhoto*)photo;

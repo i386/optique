@@ -40,6 +40,8 @@ typedef NS_ENUM(NSUInteger, XPPhotoCollectionType) {
  */
 -(XPPhotoCollectionType)collectionType;
 
+-(BOOL)hasLocalCopy;
+
 @optional
 
 /** 

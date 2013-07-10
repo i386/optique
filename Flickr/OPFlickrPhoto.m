@@ -73,4 +73,12 @@
     return @{@"id": _flickrId, @"title": _title, @"datetaken": dateAsString, @"filename" : [_url lastPathComponent]};
 }
 
+-(BOOL)hasLocalCopy
+{
+    NSURL *url = [_photoSet.path URLByAppendingPathComponent:[_url lastPathComponent]];
+    BOOL isDirectory;
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:[url path] isDirectory:&isDirectory];
+    return exists && !isDirectory;
+}
+
 @end

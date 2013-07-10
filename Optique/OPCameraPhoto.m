@@ -141,4 +141,9 @@
     completionBlock(image);
 }
 
+-(BOOL)hasLocalCopy
+{
+    return _fileDownloaded;
+}
+
 @end

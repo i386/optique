@@ -55,9 +55,9 @@
         [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
          {
              id photo = controller.visibleCollection.allPhotos[index];
-             if ([photo respondsToSelector:@selector(path)])
+             if ([photo hasLocalCopy])
              {
-                 [urls addObject:[photo path]];
+                 [urls addObject:[photo url]];
              }
          }];
         [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
@@ -69,7 +69,7 @@
         
         for (id<XPPhotoCollection> collection in selectedItems)
         {
-            if ([collection collectionType] != kPhotoCollectionLocal)
+            if (![collection hasLocalCopy])
             {
                 visible = NO;
                 break;
@@ -86,14 +86,14 @@
 {
     XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:@"Show in Finder" keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
         id photo = controller.visiblePhoto;
-        if ([photo respondsToSelector:@selector(path)])
+        if ([photo hasLocalCopy])
         {
-            [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[[photo path]]];
+            [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[[photo url]]];
         }
     }];
     
     item.visibilityPredicate = [NSPredicate predicateWithBlock:^BOOL(id<XPPhoto> photo, NSDictionary *bindings) {
-        return [[photo collection] collectionType] != kPhotoCollectionLocal;
+        return ![photo hasLocalCopy];
     }];
     
     [[controller contextMenu] addItem:item];

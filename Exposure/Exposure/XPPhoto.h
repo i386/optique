@@ -43,6 +43,11 @@
  */
 -(NSURL*)url;
 
+/**
+ URL exits on local file system
+ */
+-(BOOL)hasLocalCopy;
+
 @optional
 
 /**

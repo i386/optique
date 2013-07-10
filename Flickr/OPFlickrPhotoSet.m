@@ -101,6 +101,13 @@
     return kPhotoCollectionOther;
 }
 
+-(BOOL)hasLocalCopy
+{
+    BOOL isDirectory;
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:[self.path path] isDirectory:&isDirectory];
+    return exists && isDirectory;
+}
+
 -(void)reload
 {
     //TODO: load collection

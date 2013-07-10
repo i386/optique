@@ -94,6 +94,11 @@
     return kPhotoCollectionLocal;
 }
 
+-(BOOL)hasLocalCopy
+{
+    return TRUE;
+}
+
 -(void)addPhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock
 {
     NSError *error;
