@@ -117,10 +117,9 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
                 NSMutableDictionary *collectionMetadata = [NSMutableDictionary dictionaryWithDictionary:prototype.metadata];
                 [collectionMetadata setObject:photos forKey:fOptiqueBundlePhotos];
                 
-                NSDictionary *metadata = @{fOptiqueBundle: exposureId, fOptiqueBundleData: collectionMetadata, fOptiqueBundlePhotos: photos};
-                NSData* jsonData = [NSJSONSerialization dataWithJSONObject:metadata options:NSJSONWritingPrettyPrinted error:nil];
-                NSURL *metadataURL = [albumPath URLByAppendingPathComponent:fOptiqueMetadataFileName];
-                [jsonData writeToURL:metadataURL atomically:YES];
+                XPMetadata *metadata = [XPMetadata createMetadataForPath:albumPath bundleId:exposureId];
+                [metadata.bundleData addEntriesFromDictionary:collectionMetadata];
+                
                 return prototype;
             }
             else

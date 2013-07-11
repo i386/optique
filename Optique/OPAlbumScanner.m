@@ -97,23 +97,17 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
 
 -(id<XPPhotoCollection>)resolveCollectionForPath:(NSURL*)path
 {
-    NSURL *optiqueFilePath = [path URLByAppendingPathComponent:fOptiqueMetadataFileName];
-    NSData *data  = [NSData dataWithContentsOfURL:optiqueFilePath];
+    XPMetadata *metadata = [XPMetadata metadataForPath:path];
     
     id<XPPhotoCollection> collection;
-    if (data)
+    if (metadata)
     {
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves|NSJSONReadingMutableContainers error:nil];
-        if (dict)
+        if (metadata.bundleId)
         {
-            NSString *exposureId = dict[fOptiqueBundle];
-            if (exposureId)
+            id<XPPhotoCollectionProvider> photoProvider = [OPExposureService photoCollectionProviderForBundle:metadata.bundleId];
+            if (photoProvider)
             {
-                id<XPPhotoCollectionProvider> photoProvider = [OPExposureService photoCollectionProviderForBundle:exposureId];
-                if (photoProvider)
-                {
-                    collection = [photoProvider createCollectionAtPath:path metadata:dict[fOptiqueBundleData] photoManager:_photoManager];
-                }
+                collection = [photoProvider createCollectionAtPath:path metadata:metadata.bundleData photoManager:_photoManager];
             }
         }
     }

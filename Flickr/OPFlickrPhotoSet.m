@@ -8,6 +8,7 @@
 
 #import "OPFlickrPhotoSet.h"
 #import "OPFlickrPhoto.h"
+#import "XPMetadata.h"
 
 @interface OPFlickrPhotoSet()
 
@@ -110,17 +111,94 @@
 
 -(void)reload
 {
-    //TODO: load collection
+    XPMetadata *metadata = [XPMetadata metadataForPath:self.path];
+    
+    NSArray *photos = [self findAllPhotosWithBlock:^BOOL(id<XPPhoto> photo) {
+        
+        for (OPFlickrPhoto *photo in self.photos)
+        {
+            //If filename is in metadata map, break and return false
+        }
+        
+        return TRUE;
+    }];
+    
+    [_photos addObjectsFromArray:photos];
 }
 
 -(void)addPhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock
 {
-    NSLog(@"Flickr TODO: addPhoto:completionBlock");
+    NSError *error;
+    [[NSFileManager defaultManager] moveItemAtURL:photo.url toURL:[self.path URLByAppendingPathComponent:photo.title] error:&error];
+    
+    if (completionBlock)
+    {
+        completionBlock(error);
+    }
+    
+    [self.photoManager collectionUpdated:self];
+    [photo.collection.photoManager collectionUpdated:photo.collection];
 }
+
 
 -(void)deletePhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock
 {
-    NSLog(@"Flickr TODO: deletePhoto:completionBlock");
+    NSError *error;
+    NSURL *url = [self.path URLByAppendingPathComponent:photo.title];
+    [[NSFileManager defaultManager] removeItemAtURL:url error:&error];
+    
+    if (completionBlock)
+    {
+        completionBlock(error);
+    }
+    
+    [self.photoManager collectionUpdated:self];
+    [photo.collection.photoManager collectionUpdated:photo.collection];
+}
+
+-(NSArray*)findAllPhotosWithBlock:(BOOL (^)(id<XPPhoto>))block;
+{
+    NSMutableArray *photos = [[NSMutableArray alloc] init];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSDirectoryEnumerator *enumerator = [fileManager
+                                         enumeratorAtURL:self.path includingPropertiesForKeys:[NSArray array] options:NSDirectoryEnumerationSkipsHiddenFiles errorHandler:^BOOL(NSURL *url, NSError *error) {
+                                             NSLog(@"error: %@", error.userInfo);
+                                             return YES;
+                                         }];
+    
+    for (NSURL *url in enumerator)
+    {
+        NSError *error;
+        NSNumber *isDirectory = nil;
+        if (! [url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error])
+        {
+            //TODO handle error
+        }
+        else if (![isDirectory boolValue])
+        {
+            NSString *filePath = [url path];
+            CFStringRef fileExtension = (__bridge CFStringRef) [filePath pathExtension];
+            CFStringRef fileUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, NULL);
+            
+            if (UTTypeConformsTo(fileUTI, kUTTypeImage))
+            {
+                OPFlickrPhoto *photo = [[OPFlickrPhoto alloc] initWithTitle:[filePath lastPathComponent] url:url photoSet:self];
+                if (block(photo))
+                {
+                    [photos addObject:photo];
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+    }
+    
+    
+    return photos;
 }
 
 -(BOOL)isEqual:(id)object

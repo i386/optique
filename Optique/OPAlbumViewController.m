@@ -294,13 +294,16 @@
         item.image = [NSImage imageNamed:@"empty-album"];
     }
     
-    //Get badge layer from exposure
-    for (id<XPPhotoCollectionProvider> provider in [OPExposureService photoCollectionProviders])
+    if (!item.badgeLayer)
     {
-        item.badgeLayer = [provider badgeLayerForCollection:collection];
-        if (item.badgeLayer)
+        //Get badge layer from exposure
+        for (id<XPPhotoCollectionProvider> provider in [OPExposureService photoCollectionProviders])
         {
-            break;
+            item.badgeLayer = [provider badgeLayerForCollection:collection];
+            if (item.badgeLayer)
+            {
+                break;
+            }
         }
     }
     

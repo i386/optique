@@ -43,6 +43,23 @@
     return self;
 }
 
+-(id)initWithTitle:(NSString *)title url:(NSURL *)url photoSet:(OPFlickrPhotoSet *)photoSet
+{
+    self = [super init];
+    if (self)
+    {
+        _photoSet = photoSet;
+        _flickrId = [NSNumber numberWithInteger:-1];
+        _title = title;
+        
+        NSDictionary* attributesDictionary = [[NSFileManager defaultManager] attributesOfItemAtPath:[url path] error: NULL];
+        _created = attributesDictionary[NSFileCreationDate];
+        
+        _url = url;
+    }
+    return self;
+}
+
 -(void)download
 {
     NSURL *url = [_photoSet.path URLByAppendingPathComponent:[_url lastPathComponent]];

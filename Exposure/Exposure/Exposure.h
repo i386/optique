@@ -19,6 +19,7 @@
 #import "XPPhotoCollectionProvider.h"
 #import "XPPhotoCollectionProviderDelegate.h"
 #import "XPBadgeLayer.h"
+#import "XPMetadata.h"
 #import "XPPlugin.h"
 
 #import "XPMenuItem.h"

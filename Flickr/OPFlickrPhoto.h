@@ -15,6 +15,8 @@
 
 -initWithDictionary:(NSDictionary*)dict photoSet:(OPFlickrPhotoSet*)photoSet;
 
+-initWithTitle:(NSString *)title url:(NSURL *)url photoSet:(OPFlickrPhotoSet*)photoSet;
+
 -(void)download;
 
 @end

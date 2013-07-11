@@ -16,7 +16,4 @@
 
 
 //Constants
-#define fOptiqueBundle              @"bundle"
-#define fOptiqueBundleData          @"bundle_data"
 #define fOptiqueBundlePhotos        @"photos"
-#define fOptiqueMetadataFileName    @".optique"
