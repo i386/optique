@@ -23,7 +23,14 @@
  */
 +(XPBundleMetadata*)metadataForPath:(NSURL*)collectionPath;
 
+/**
+ Bundle identifier for the Exposure plugin that wrote the metadata
+ */
 @property (readonly, strong) NSString *bundleId;
+
+/**
+ Bundle data private to the exposure plugin represented by the bundleId
+ */
 @property (readonly, strong) NSMutableDictionary *bundleData;
 
 /**
