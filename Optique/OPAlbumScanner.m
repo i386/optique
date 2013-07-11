@@ -97,7 +97,7 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
 
 -(id<XPPhotoCollection>)resolveCollectionForPath:(NSURL*)path
 {
-    XPMetadata *metadata = [XPMetadata metadataForPath:path];
+    XPBundleMetadata *metadata = [XPBundleMetadata metadataForPath:path];
     
     id<XPPhotoCollection> collection;
     if (metadata)

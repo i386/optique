@@ -117,7 +117,7 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
                 NSMutableDictionary *collectionMetadata = [NSMutableDictionary dictionaryWithDictionary:prototype.metadata];
                 [collectionMetadata setObject:photos forKey:fOptiqueBundlePhotos];
                 
-                XPMetadata *metadata = [XPMetadata createMetadataForPath:albumPath bundleId:exposureId];
+                XPBundleMetadata *metadata = [XPBundleMetadata createMetadataForPath:albumPath bundleId:exposureId];
                 [metadata.bundleData addEntriesFromDictionary:collectionMetadata];
                 
                 return prototype;

@@ -85,8 +85,8 @@
 		0F9C80C416F891C700B2B6D8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80C216F891C700B2B6D8 /* Credits.rtf */; };
 		0F9C80C716F891C700B2B6D8 /* OPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */; };
 		0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80C816F891C700B2B6D8 /* MainMenu.xib */; };
-		0FA29614178D4AF1005009C4 /* XPMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FA29612178D4AF1005009C4 /* XPMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FA29615178D4AF1005009C4 /* XPMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA29613178D4AF1005009C4 /* XPMetadata.m */; };
+		0FA29614178D4AF1005009C4 /* XPBundleMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FA29612178D4AF1005009C4 /* XPBundleMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FA29615178D4AF1005009C4 /* XPBundleMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA29613178D4AF1005009C4 /* XPBundleMetadata.m */; };
 		0FA706C2171911B900864CED /* OPNewAlbumSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA706C0171911B900864CED /* OPNewAlbumSheetController.m */; };
 		0FA706C3171911B900864CED /* OPNewAlbumSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C1171911B900864CED /* OPNewAlbumSheetController.xib */; };
 		0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA706C5171911CC00864CED /* OPDeleteAlbumSheetController.m */; };
@@ -389,8 +389,8 @@
 		0F9C80C516F891C700B2B6D8 /* OPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPAppDelegate.h; sourceTree = "<group>"; };
 		0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPAppDelegate.m; sourceTree = "<group>"; };
 		0F9C80C916F891C700B2B6D8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		0FA29612178D4AF1005009C4 /* XPMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPMetadata.h; sourceTree = "<group>"; };
-		0FA29613178D4AF1005009C4 /* XPMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPMetadata.m; sourceTree = "<group>"; };
+		0FA29612178D4AF1005009C4 /* XPBundleMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPBundleMetadata.h; sourceTree = "<group>"; };
+		0FA29613178D4AF1005009C4 /* XPBundleMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPBundleMetadata.m; sourceTree = "<group>"; };
 		0FA706BF171911B900864CED /* OPNewAlbumSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPNewAlbumSheetController.h; path = Optique/OPNewAlbumSheetController.h; sourceTree = "<group>"; };
 		0FA706C0171911B900864CED /* OPNewAlbumSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPNewAlbumSheetController.m; path = Optique/OPNewAlbumSheetController.m; sourceTree = "<group>"; };
 		0FA706C1171911B900864CED /* OPNewAlbumSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPNewAlbumSheetController.xib; path = Optique/OPNewAlbumSheetController.xib; sourceTree = "<group>"; };
@@ -819,8 +819,8 @@
 		0FA29616178D4AF5005009C4 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				0FA29612178D4AF1005009C4 /* XPMetadata.h */,
-				0FA29613178D4AF1005009C4 /* XPMetadata.m */,
+				0FA29612178D4AF1005009C4 /* XPBundleMetadata.h */,
+				0FA29613178D4AF1005009C4 /* XPBundleMetadata.m */,
 			);
 			name = Metadata;
 			sourceTree = "<group>";
@@ -1140,7 +1140,7 @@
 				0F04A6481737C74800E53ED1 /* XPPhotoManager.h in Headers */,
 				0F04A6491737C74800E53ED1 /* XPPhotoController.h in Headers */,
 				0F7A704D178ABA6600570180 /* XPBadgeLayer.h in Headers */,
-				0FA29614178D4AF1005009C4 /* XPMetadata.h in Headers */,
+				0FA29614178D4AF1005009C4 /* XPBundleMetadata.h in Headers */,
 				0F946AB8178701CD004F6B57 /* XPPhotoCollectionProvider.h in Headers */,
 				0F946ABA178702ED004F6B57 /* XPPhotoCollectionProviderDelegate.h in Headers */,
 				0F04A64A1737C74800E53ED1 /* XPPlugin.h in Headers */,
@@ -1497,7 +1497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FA29615178D4AF1005009C4 /* XPMetadata.m in Sources */,
+				0FA29615178D4AF1005009C4 /* XPBundleMetadata.m in Sources */,
 				0FCA4D2F1737D7F0007DC9EF /* XPMenuItem.m in Sources */,
 				0F7A704E178ABA6600570180 /* XPBadgeLayer.m in Sources */,
 			);

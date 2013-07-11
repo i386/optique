@@ -8,7 +8,7 @@
 
 #import "OPFlickrPhotoSet.h"
 #import "OPFlickrPhoto.h"
-#import "XPMetadata.h"
+#import "XPBundleMetadata.h"
 
 @interface OPFlickrPhotoSet()
 
@@ -111,7 +111,7 @@
 
 -(void)reload
 {
-    XPMetadata *metadata = [XPMetadata metadataForPath:self.path];
+    XPBundleMetadata *metadata = [XPBundleMetadata metadataForPath:self.path];
     
     NSArray *photos = [self findAllPhotosWithBlock:^BOOL(id<XPPhoto> photo) {
         
