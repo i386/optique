@@ -10,13 +10,13 @@
 #import <CDEvents/CDEvents.h>
 #import <CDEvents/CDEventsDelegate.h>
 
-/** scan started **/
+/** scan started */
 extern NSString *const OPAlbumScannerDidStartScanNotification;
 
-/** scan ended **/
+/** scan ended */
 extern NSString *const OPAlbumScannerDidFinishScanNotification;
 
-/** albums were found **/
+/** albums were found */
 extern NSString *const OPAlbumScannerDidFindAlbumsNotification;
 
 @interface OPAlbumScanner : NSObject<CDEventsDelegate> {
@@ -28,8 +28,15 @@ extern NSString *const OPAlbumScannerDidFindAlbumsNotification;
 
 @property (atomic) BOOL stopScan;
 
+/**
+ @param photoManager for this session
+ */
 -initWithPhotoManager:(XPPhotoManager*)photoManager;
 
+/**
+ Scan for new albums
+ @param url to scan for new item
+ */
 -(void)scanAtURL:(NSURL*)url;
 
 @end

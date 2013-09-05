@@ -212,6 +212,10 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
             [self sendAlbumDeletedNotification:sender];
         }];
         
+        [_collectionSet each:^(id sender) {
+            [self collectionUpdated:sender];
+        }];
+        
         return nil;
     }];
 }

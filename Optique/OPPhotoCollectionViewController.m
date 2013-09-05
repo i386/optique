@@ -175,10 +175,13 @@
             //Get badge layer from exposure
             for (id<XPPhotoCollectionProvider> provider in [OPExposureService photoCollectionProviders])
             {
-                item.badgeLayer = [provider badgeLayerForPhoto:photo];
-                if (item.badgeLayer)
+                if ([provider respondsToSelector:@selector(badgeLayerForPhoto:)])
                 {
-                    break;
+                    item.badgeLayer = [provider badgeLayerForPhoto:photo];
+                    if (item.badgeLayer)
+                    {
+                        break;
+                    }
                 }
             }
         }

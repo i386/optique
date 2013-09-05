@@ -98,4 +98,20 @@
     return exists && !isDirectory;
 }
 
+-(NSUInteger)hash
+{
+    return _url.hash;
+}
+
+-(BOOL)isEqual:(id)object
+{
+    if (object == self)
+        return YES;
+    if (!object || ![object isKindOfClass:[self class]])
+        return NO;
+    
+    OPFlickrPhoto *otherPhoto = object;
+    return [self.url.lastPathComponent isEqual:otherPhoto.url.lastPathComponent];
+}
+
 @end

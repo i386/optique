@@ -60,6 +60,12 @@
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves|NSJSONReadingMutableContainers error:nil];
         if (dict)
         {
+            //Only set the bundle id if there is not one set (e.g. reading an existing metadata)
+            if (!self.bundleId)
+            {
+                _bundleId = dict[fOptiqueBundle];
+            }
+            
             NSDictionary *data = dict[fOptiqueBundleData];
             if (data)
             {

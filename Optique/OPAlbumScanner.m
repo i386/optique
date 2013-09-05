@@ -32,7 +32,8 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
 {
     if (event.isCreated || event.isRemoved || event.isRenamed)
     {
-//        [self startScanAtURL:[_events.watchedURLs lastObject]];
+        NSLog(@"Detected fs change at '%@'. Will scan for new albums.", [_events.watchedURLs lastObject]);
+        [self startScanAtURL:[_events.watchedURLs lastObject]];
     }
 }
 
