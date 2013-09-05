@@ -15,7 +15,7 @@
 @property (strong) NSString *title;
 @property (strong) NSDate *created;
 @property (strong) XPPhotoManager *photoManager;
-@property (strong) NSMutableArray *photos;
+@property (strong) NSMutableSet *photos;
 
 @end
 
@@ -40,7 +40,7 @@
             _title = dict[@"title"];
         }
         
-        _photos = [NSMutableArray array];
+        _photos = [NSMutableSet set];
         
         NSArray *photoMetadataDicts = dict[@"photos"];
         if (photoMetadataDicts && [photoMetadataDicts isKindOfClass:[NSArray class]])
@@ -51,6 +51,8 @@
                 [_photos addObject:photo];
             }
         }
+        
+        [self reload];
     }
     return self;
 }
@@ -63,7 +65,7 @@
 
 -(NSArray *)allPhotos
 {
-    return _photos;
+    return _photos.allObjects;
 }
 
 -(void)addPhoto:(OPFlickrPhoto *)photo
@@ -92,7 +94,7 @@
 {
     if (_photos.count > 0)
     {
-        return _photos[0];
+        return [[_photos objectEnumerator] nextObject];
     }
     return nil;
 }
@@ -111,19 +113,18 @@
 
 -(void)reload
 {
-    XPBundleMetadata *metadata = [XPBundleMetadata metadataForPath:self.path];
-    
-    NSArray *photos = [self findAllPhotosWithBlock:^BOOL(id<XPPhoto> photo) {
+    if ([self hasLocalCopy])
+    {
+        NSArray *photos = [self findAllPhotosWithBlock:^BOOL(id<XPPhoto> photo) {
+            return TRUE;
+        }];
         
-        for (OPFlickrPhoto *photo in self.photos)
-        {
-            //If filename is in metadata map, break and return false
-        }
-        
-        return TRUE;
-    }];
-    
-    [_photos addObjectsFromArray:photos];
+        [_photos addObjectsFromArray:photos];
+    }
+    else
+    {
+        NSLog(@"TODO: refresh for FlickrPhotoSet should reload from internet");
+    }
 }
 
 -(void)addPhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock
@@ -170,6 +171,8 @@
     
     for (NSURL *url in enumerator)
     {
+        NSLog(@"url %@", url);
+        
         NSError *error;
         NSNumber *isDirectory = nil;
         if (! [url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error])
@@ -188,10 +191,6 @@
                 if (block(photo))
                 {
                     [photos addObject:photo];
-                }
-                else
-                {
-                    break;
                 }
             }
         }
