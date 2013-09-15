@@ -184,6 +184,8 @@ NSString *const OPNavigationSearchFilterDidChange = @"OPNavigationSearchFilterDi
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationSearchFilterDidChange object:nil userInfo:@{@"value":[sender stringValue]}];
+    
+    [self albumMode];
 }
 
 @end
