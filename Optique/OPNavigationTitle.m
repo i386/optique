@@ -98,11 +98,11 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
         
         if (_isAlbums)
         {
-            [self cameraMode];
+            [self albumMode];
         }
         else
         {
-            [self albumMode];
+            [self cameraMode];
         }
         
         [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationTitleFilterDidChange object:nil userInfo:@{@"isAlbumView": [NSNumber numberWithBool:_isAlbums]}];
@@ -117,11 +117,11 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
             
             if (_isAlbums)
             {
-                [self cameraMode];
+                [self albumMode];
             }
             else
             {
-                [self albumMode];
+                [self cameraMode];
             }
         }
     }
