@@ -21,14 +21,15 @@ typedef enum {
     IBOutlet OPNavigationController *_navigationController;
 }
 
-@property (strong) IBOutlet NSButton *backButton;
-@property (strong) IBOutlet NSSegmentedControl *cameraButton;
+@property (assign) BOOL isAlbums;
 @property (strong) IBOutlet NSButton *shareWithButton;
+@property (strong) IBOutlet NSSegmentedControl *navigationControl;
+@property (strong) IBOutlet NSButton *switchViewButton;
 
 - (void)updateTitle:(NSString*)label;
 
 - (IBAction)goBack:(id)sender;
-- (IBAction)cameraButtonPressed:(id)sender;
-- (IBAction)deleteButtonPressed:(id)sender;
+- (IBAction)switchViewButtonPressed:(id)sender;
+@property (strong) IBOutlet NSButton *backButton;
 
 @end

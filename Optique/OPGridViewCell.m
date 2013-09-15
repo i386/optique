@@ -23,8 +23,7 @@
         [self addSublayer:_selectionLayer];
         
         _titleLayer = [CATextLayer layer];
-        [_titleLayer setFont:@"HelveticaNeue-Light"];
-        [_titleLayer setFontSize:14];
+        [_titleLayer setFontSize:[NSFont systemFontSize]];
         [_titleLayer setAlignmentMode:kCAAlignmentCenter];
         [_titleLayer setForegroundColor:[[NSColor blackColor] CGColor]];
         [_titleLayer setBackgroundColor:[[NSColor optiqueBackgroundColor] CGColor]];

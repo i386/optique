@@ -21,6 +21,8 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 {
     [super awakeFromNib];
     
+    [_viewLabel setFont:[NSFont titleBarFontOfSize:[NSFont systemFontSize]]];
+    
     _shareWithButton.menu = [[NSMenu alloc] init];
     _shareWithButton.menu.showsStateColumn = NO;
     _shareWithButton.menu.delegate = self;
@@ -33,43 +35,32 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigationControllerChanged:) name:OPNavigationControllerViewDidChange object:_navigationController];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidEnterFullScreen:) name:NSWindowDidEnterFullScreenNotification object:nil];
+    _isAlbums = YES;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidExitFullScreen:) name:NSWindowDidExitFullScreenNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillExitFullScreen:) name:NSWindowWillExitFullScreenNotification object:nil];
+    [self albumMode];
 }
 
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidExitFullScreenNotification object:self.window];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidEnterFullScreenNotification object:self.window];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationControllerViewDidChange object:nil];
-}
-
--(void)windowDidEnterFullScreen:(NSNotification*)notification
-{
-    _backButton.animator.frame = NSMakeRect(20, _backButton.frame.origin.y, _backButton.frame.size.width, _backButton.frame.size.height);
-}
-
--(void)windowWillExitFullScreen:(NSNotification*)notification
-{
-    [_backButton setHidden:YES];
-}
-
--(void)windowDidExitFullScreen:(NSNotification*)notification
-{
-    _backButton.frame = NSMakeRect(97, _backButton.frame.origin.y, _backButton.frame.size.width, _backButton.frame.size.height);
-    [_backButton setHidden:NO];
 }
 
 -(void)cameraAdded:(NSNotification*)notification
 {
-    [_cameraButton setSelectedSegment:1];
+    [self cameraMode];
 }
 
 -(void)navigationControllerChanged:(NSNotification*)notification
 {
+    if ([_navigationController.visibleViewController isEqual:_navigationController.rootViewController])
+    {
+        [_backButton setHidden:YES];
+    }
+    else
+    {
+        [self backMode];
+    }
+    
     if ([_navigationController.visibleViewController conformsToProtocol:@protocol(XPSharingService)])
     {
         id<XPSharingService> sharingService = (id<XPSharingService>)_navigationController.visibleViewController;
@@ -91,16 +82,6 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 
 -(void)updateTitle:(NSString *)title
 {
-    OPNavigationViewController *previousViewController = [_navigationController peekAtPreviousViewController];
-    
-    if (previousViewController)
-    {
-        NSString *title = previousViewController == _navigationController.rootViewController ? @"Albums" : previousViewController.viewTitle;
-        
-        [_backButton setTitle:title];
-    }
-    
-    [self.window setTitle:title];
     [_viewLabel.animator setStringValue:title];
 }
 
@@ -109,18 +90,62 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
     [_navigationController popToPreviousViewController];
 }
 
-- (IBAction)cameraButtonPressed:(NSSegmentedControl*)sender
+- (IBAction)switchViewButtonPressed:(NSButton*)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationTitleFilterDidChange object:nil userInfo:@{@"segment": [NSNumber numberWithInteger:sender.selectedSegment]}];
+    if (_navigationController.isRootViewControllerVisible)
+    {
+        _isAlbums = !_isAlbums;
+        
+        if (_isAlbums)
+        {
+            [self cameraMode];
+        }
+        else
+        {
+            [self albumMode];
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationTitleFilterDidChange object:nil userInfo:@{@"isAlbumView": [NSNumber numberWithBool:_isAlbums]}];
+    }
+    else
+    {
+        [self backMode];
+        [_navigationController popToPreviousViewController];
+        if (_navigationController.isRootViewControllerVisible)
+        {
+            _isAlbums = !_isAlbums;
+            
+            if (_isAlbums)
+            {
+                [self cameraMode];
+            }
+            else
+            {
+                [self albumMode];
+            }
+        }
+    }
 }
 
-- (IBAction)deleteButtonPressed:(id)sender
+-(void)cameraMode
 {
-    if ([_navigationController.visibleViewController conformsToProtocol:@protocol(XPController)])
-    {
-        id<XPController> controller = (id<XPController>)_navigationController.visibleViewController;
-        [controller deleteSelected];
-    }
+    _switchViewButton.title = @"Albums";
+    _switchViewButton.image = nil;
+    _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 69, _switchViewButton.frame.size.height);
+}
+
+-(void)albumMode
+{
+    _switchViewButton.title = @"Cameras";
+    _switchViewButton.image = nil;
+    _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 72, _switchViewButton.frame.size.height);
+}
+
+-(void)backMode
+{
+    _switchViewButton.title = @"Back";
+    _switchViewButton.image = [NSImage imageNamed:NSImageNameGoLeftTemplate];
+    _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 65, _switchViewButton.frame.size.height);
 }
 
 -(void)showSharingMenu:(NSButton*)sender
@@ -152,11 +177,6 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
             [menu addItem:sender];
         }];
     }
-}
-
--(void)doNothing:(id)obj
-{
-    //Fuck appkit sucks
 }
 
 @end

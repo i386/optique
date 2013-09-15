@@ -639,13 +639,6 @@
 			name = "Custom Views";
 			sourceTree = "<group>";
 		};
-		0F6AF879172A3B130029724A /* Camera capture */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Camera capture";
-			sourceTree = "<group>";
-		};
 		0F8C561E172CC46D00CB7B1E /* Local photos */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,7 +783,6 @@
 				0F962710170418F4007C1A86 /* Photo View */,
 				0FEF33A116FEC6420096D72A /* Photo Manager */,
 				0F8C561E172CC46D00CB7B1E /* Local photos */,
-				0F6AF879172A3B130029724A /* Camera capture */,
 				0F368A671705128700411503 /* Album Scanner */,
 				0F97164917048737001835DC /* Image Previews */,
 				0FD5171D176B089F006E8F4D /* Grid View */,

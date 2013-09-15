@@ -79,6 +79,11 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
     return nil;
 }
 
+-(bool)isRootViewControllerVisible
+{
+    return [self.rootViewController isEqual:_visibleViewController];
+}
+
 -(void)updateNavigation
 {
     [_delegate showBackButton:(_rootViewController != _visibleViewController)];

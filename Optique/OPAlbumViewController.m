@@ -181,7 +181,7 @@
 
 -(NSString *)viewTitle
 {
-    return @"Optique";
+    return @"";
 }
 
 -(void)cameraAdded:(NSNotification*)notification
@@ -196,16 +196,17 @@
 
 -(void)filterChanged:(NSNotification*)notification
 {
-    NSNumber *segment = [notification userInfo][@"segment"];
-    switch (segment.integerValue) {
-        case OPNavigationTitleFilterAlbums:
-            _currentPredicate = _albumPredicate;
-            break;
-        case OPNavigationTitleFilterDevices:
-            _currentPredicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-                return ![_albumPredicate evaluateWithObject:evaluatedObject];
-            }];
-            break;
+    NSNumber *isAlbumView = [notification userInfo][@"isAlbumView"];
+    
+    if (isAlbumView.boolValue)
+    {
+        _currentPredicate = _albumPredicate;
+    }
+    else
+    {
+        _currentPredicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+            return ![_albumPredicate evaluateWithObject:evaluatedObject];
+        }];
     }
     
     //If the filter is changed, pop back to this view.

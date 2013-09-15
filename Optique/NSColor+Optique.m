@@ -22,7 +22,7 @@
 
 +(NSColor *)optiqueBackgroundColor
 {
-    return [NSColor colorWithCalibratedRed:0.92 green:0.94 blue:0.95 alpha:1.00];
+    return [NSColor controlBackgroundColor];
 }
 
 +(NSColor *)optiqueSelectedBackgroundColor
@@ -32,7 +32,7 @@
 
 +(NSColor *)optiqueDarkBackgroundColor
 {
-    return [NSColor colorWithCalibratedRed:0.19 green:0.28 blue:0.37 alpha:1.00];
+    return [NSColor colorWithCalibratedRed:0.30 green:0.30 blue:0.30 alpha:1.00];
 }
 
 +(NSColor *)optiqueTextColor

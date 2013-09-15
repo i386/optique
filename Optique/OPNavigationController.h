@@ -37,6 +37,8 @@ extern NSString *const OPNavigationControllerViewDidChange;
 
 - (OPNavigationViewController *)peekAtPreviousViewController;
 
+- (bool)isRootViewControllerVisible;
+
 /** update the state of the navigation for the visible view controller **/
 - (void)updateNavigation;
 

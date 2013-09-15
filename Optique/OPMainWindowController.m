@@ -68,7 +68,8 @@
 
 -(void)showBackButton:(BOOL)visible
 {
-    [_navigationController.navigationTitle.backButton setHidden:!visible];
+    //TODO
+//    [_navigationController.navigationTitle.backButton setHidden:!visible];
 }
 
 -(void)showNewAlbumSheet
