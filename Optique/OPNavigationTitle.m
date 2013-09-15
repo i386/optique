@@ -14,6 +14,7 @@
 #import "OPCameraService.h"
 
 NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidChange";
+NSString *const OPNavigationSearchFilterDidChange = @"OPNavigationSearchFilterDidChange";
 
 @implementation OPNavigationTitle
 
@@ -52,11 +53,7 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
 
 -(void)navigationControllerChanged:(NSNotification*)notification
 {
-    if ([_navigationController.visibleViewController isEqual:_navigationController.rootViewController])
-    {
-        [_backButton setHidden:YES];
-    }
-    else
+    if (!_navigationController.isRootViewControllerVisible)
     {
         [self backMode];
     }
@@ -177,6 +174,16 @@ NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidC
             [menu addItem:sender];
         }];
     }
+}
+
+- (IBAction)searchFilter:(id)sender
+{
+    if (!_navigationController.isRootViewControllerVisible)
+    {
+        [_navigationController popToRootViewControllerWithNoAnimation];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationSearchFilterDidChange object:nil userInfo:@{@"value":[sender stringValue]}];
 }
 
 @end

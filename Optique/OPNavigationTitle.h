@@ -10,6 +10,7 @@
 #import "OPNavigationController.h"
 
 extern NSString *const OPNavigationTitleFilterDidChange;
+extern NSString *const OPNavigationSearchFilterDidChange;
 
 typedef enum {
     OPNavigationTitleFilterAlbums = 0,
@@ -23,13 +24,12 @@ typedef enum {
 
 @property (assign) BOOL isAlbums;
 @property (strong) IBOutlet NSButton *shareWithButton;
-@property (strong) IBOutlet NSSegmentedControl *navigationControl;
 @property (strong) IBOutlet NSButton *switchViewButton;
+@property (strong) IBOutlet NSSearchField *searchFilter;
 
 - (void)updateTitle:(NSString*)label;
 
 - (IBAction)goBack:(id)sender;
 - (IBAction)switchViewButtonPressed:(id)sender;
-@property (strong) IBOutlet NSButton *backButton;
 
 @end

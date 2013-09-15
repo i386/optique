@@ -39,6 +39,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </searchFieldCell>
+                    <connections>
+                        <action selector="searchFilter:" target="3" id="i0m-Vq-H3D"/>
+                    </connections>
                 </searchField>
                 <button appearanceType="aqua" verticalHuggingPriority="750" id="N6G-kQ-kYu">
                     <rect key="frame" x="747" y="5" width="36" height="25"/>
@@ -63,6 +66,7 @@
             <connections>
                 <outlet property="_navigationController" destination="-2" id="32"/>
                 <outlet property="_viewLabel" destination="40" id="42"/>
+                <outlet property="searchFilter" destination="bmU-hJ-UeU" id="GDV-2G-x50"/>
                 <outlet property="shareWithButton" destination="N6G-kQ-kYu" id="WBF-SA-2jB"/>
                 <outlet property="switchViewButton" destination="CHQ-1S-cPR" id="A0r-CI-o4K"/>
             </connections>

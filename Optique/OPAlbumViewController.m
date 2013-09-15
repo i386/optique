@@ -54,6 +54,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFinishedLoading:) name:OPAlbumScannerDidFinishScanNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterChanged:) name:OPNavigationTitleFilterDidChange object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:@"OPCameraServiceDidAddCamera" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchFilterActivated:) name:OPNavigationSearchFilterDidChange object:nil];
+    
     
     [OPExposureService photoManager:_photoManager collectionViewController:self];
 }
@@ -191,6 +193,24 @@
     }];
     
     [self.controller popToRootViewController];
+    [_gridView reloadData];
+}
+
+-(void)searchFilterActivated:(NSNotification*)notification
+{
+    NSString *value = notification.userInfo[@"value"];
+    
+    if (![value isEqualToString:@""])
+    {
+        _currentPredicate = [NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> collection, NSDictionary *bindings) {
+            return [_albumPredicate evaluateWithObject:collection] && [[NSPredicate predicateWithFormat:@"self.title contains[cd] %@", value] evaluateWithObject:collection];
+        }];
+    }
+    else
+    {
+        _currentPredicate = _albumPredicate;
+    }
+    
     [_gridView reloadData];
 }
 
