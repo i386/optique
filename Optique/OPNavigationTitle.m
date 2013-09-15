@@ -129,6 +129,7 @@ NSString *const OPNavigationSearchFilterDidChange = @"OPNavigationSearchFilterDi
     _switchViewButton.title = @"Albums";
     _switchViewButton.image = nil;
     _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 69, _switchViewButton.frame.size.height);
+    _searchFilter.stringValue = @""; //Clear
 }
 
 -(void)albumMode
