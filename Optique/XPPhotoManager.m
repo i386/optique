@@ -119,6 +119,7 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
                 
                 XPBundleMetadata *metadata = [XPBundleMetadata createMetadataForPath:albumPath bundleId:exposureId];
                 [metadata.bundleData addEntriesFromDictionary:collectionMetadata];
+                [metadata write];
                 
                 return prototype;
             }

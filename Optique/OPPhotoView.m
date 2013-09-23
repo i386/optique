@@ -23,12 +23,15 @@
     
     unichar character = [characters characterAtIndex: 0];
     
-    if (character == NSRightArrowFunctionKey) {
+    if (character == NSRightArrowFunctionKey)
+    {
         [_controller nextPhoto];
-    } else if (character == NSLeftArrowFunctionKey) {
+    }
+    else if (character == NSLeftArrowFunctionKey)
+    {
         [_controller previousPhoto];
     }
-    else if (event.keyCode == 53)
+    else if (event.keyCode == 33)
     {
         [_controller backToPhotoCollection];
     }

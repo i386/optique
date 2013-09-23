@@ -75,6 +75,24 @@ NSString *const OPNavigationSearchFilterDidChange = @"OPNavigationSearchFilterDi
     {
         [_shareWithButton setEnabled:NO];
     }
+    
+    if (_navigationController.isRootViewControllerVisible)
+    {
+        _isAlbums = !_isAlbums;
+        
+        if (_isAlbums)
+        {
+            [self albumMode];
+        }
+        else
+        {
+            [self cameraMode];
+        }
+    }
+    else
+    {
+        [self backMode];
+    }
 }
 
 -(void)updateTitle:(NSString *)title
