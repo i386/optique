@@ -24,8 +24,6 @@
 		0F04A65E1737C7C300E53ED1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F04A65C1737C7C300E53ED1 /* InfoPlist.strings */; };
 		0F08A8D71770443C00DFEA02 /* 329-layers1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D51770443C00DFEA02 /* 329-layers1.png */; };
 		0F08A8D81770443C00DFEA02 /* 329-layers1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */; };
-		0F08A8DE177044FE00DFEA02 /* OPSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F08A8DD177044FD00DFEA02 /* OPSegmentedControl.m */; };
-		0F08A8E117704B6500DFEA02 /* OPSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F08A8E017704B6500DFEA02 /* OPSegmentedCell.m */; };
 		0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A6571737C7C300E53ED1 /* Finder.bundle */; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
 		0F262A381787CFAD001A8178 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
@@ -38,13 +36,11 @@
 		0F33D0ED1769E87A0032CCA0 /* 218-trash2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0E91769E87A0032CCA0 /* 218-trash2@2x.png */; };
 		0F33D0F01769E93D0032CCA0 /* 86-camera-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0EE1769E93D0032CCA0 /* 86-camera-alt.png */; };
 		0F33D0F11769E93D0032CCA0 /* 86-camera-alt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0EF1769E93D0032CCA0 /* 86-camera-alt@2x.png */; };
-		0F348147176D5A8800439AEA /* OPBackButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F348146176D5A8800439AEA /* OPBackButtonCell.m */; };
 		0F34814A176D669F00439AEA /* loading-preview.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0F348148176D669F00439AEA /* loading-preview.pdf */; };
 		0F34814B176D669F00439AEA /* loading-preview@2x.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0F348149176D669F00439AEA /* loading-preview@2x.pdf */; };
 		0F368A6C170531B500411503 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F368A6B170531B500411503 /* Quartz.framework */; };
 		0F368A71170677A700411503 /* OPPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A70170677A700411503 /* OPPhotoView.m */; };
 		0F368A74170678AC00411503 /* NSView+OptiqueBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A73170678AB00411503 /* NSView+OptiqueBackground.m */; };
-		0F368A7E170681F100411503 /* OPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A7D170681F100411503 /* OPScrollView.m */; };
 		0F368A8717068F0500411503 /* OPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A8617068F0500411503 /* OPWindow.m */; };
 		0F368A8A17068F1B00411503 /* OPWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A8917068F1A00411503 /* OPWindowContentView.m */; };
 		0F3DF46D16F98D0D00C003D3 /* OPPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */; };
@@ -94,7 +90,6 @@
 		0FA706CB171911F400864CED /* empty-album.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C9171911F400864CED /* empty-album.png */; };
 		0FA706CC171911F400864CED /* empty-album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706CA171911F400864CED /* empty-album@2x.png */; };
 		0FAEFFF3176736F700D60171 /* Optique.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEFFF2176736F700D60171 /* Optique.icns */; };
-		0FAEFFF617673F7A00D60171 /* OPShadowClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAEFFF517673F7A00D60171 /* OPShadowClipView.m */; };
 		0FB384CB17050B3200DEB770 /* OPAlbumScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */; };
 		0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */; };
 		0FC2ABB6178952F7009C7B02 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
@@ -146,6 +141,7 @@
 		0FE719B1174E176B0092F801 /* XPSharingService.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE719B0174E176B0092F801 /* XPSharingService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FEC675717103B5E0086B264 /* effectsbarselectedbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FEC675517103B5E0086B264 /* effectsbarselectedbg.png */; };
 		0FEC675817103B5E0086B264 /* effectsbarselectedbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FEC675617103B5E0086B264 /* effectsbarselectedbg@2x.png */; };
+		0FED7321180521480036CDCB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE3B2611702F25500FC0D6C /* QuartzCore.framework */; };
 		0FEDFF8E17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDFF8D17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.m */; };
 		0FEF33A616FEC8090096D72A /* OPAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEF33A416FEC8090096D72A /* OPAlbumViewController.m */; };
 		0FEF33A716FEC8090096D72A /* OPAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEF33A516FEC8090096D72A /* OPAlbumViewController.xib */; };
@@ -287,10 +283,6 @@
 		0F04A65F1737C7C300E53ED1 /* Finder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Finder-Prefix.pch"; sourceTree = "<group>"; };
 		0F08A8D51770443C00DFEA02 /* 329-layers1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "329-layers1.png"; sourceTree = "<group>"; };
 		0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "329-layers1@2x.png"; sourceTree = "<group>"; };
-		0F08A8DC177044FD00DFEA02 /* OPSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPSegmentedControl.h; sourceTree = "<group>"; };
-		0F08A8DD177044FD00DFEA02 /* OPSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPSegmentedControl.m; sourceTree = "<group>"; };
-		0F08A8DF17704B6500DFEA02 /* OPSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPSegmentedCell.h; sourceTree = "<group>"; };
-		0F08A8E017704B6500DFEA02 /* OPSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPSegmentedCell.m; sourceTree = "<group>"; };
 		0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+FullScreen.h"; sourceTree = "<group>"; };
 		0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+FullScreen.m"; sourceTree = "<group>"; };
 		0F3001E0172250E800ACAF9E /* OPPhotoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoImageView.h; sourceTree = "<group>"; };
@@ -303,8 +295,6 @@
 		0F33D0E91769E87A0032CCA0 /* 218-trash2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "218-trash2@2x.png"; sourceTree = "<group>"; };
 		0F33D0EE1769E93D0032CCA0 /* 86-camera-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera-alt.png"; sourceTree = "<group>"; };
 		0F33D0EF1769E93D0032CCA0 /* 86-camera-alt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera-alt@2x.png"; sourceTree = "<group>"; };
-		0F348145176D5A8800439AEA /* OPBackButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPBackButtonCell.h; sourceTree = "<group>"; };
-		0F348146176D5A8800439AEA /* OPBackButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPBackButtonCell.m; sourceTree = "<group>"; };
 		0F348148176D669F00439AEA /* loading-preview.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "loading-preview.pdf"; sourceTree = "<group>"; };
 		0F348149176D669F00439AEA /* loading-preview@2x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "loading-preview@2x.pdf"; sourceTree = "<group>"; };
 		0F3632C3178E2BE10000577B /* libPods-Optique-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-BlocksKit.a"; path = "Pods/build/Debug/libPods-Optique-BlocksKit.a"; sourceTree = "<group>"; };
@@ -317,8 +307,6 @@
 		0F368A70170677A700411503 /* OPPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoView.m; sourceTree = "<group>"; };
 		0F368A72170678AA00411503 /* NSView+OptiqueBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+OptiqueBackground.h"; sourceTree = "<group>"; };
 		0F368A73170678AB00411503 /* NSView+OptiqueBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+OptiqueBackground.m"; sourceTree = "<group>"; };
-		0F368A7C170681F100411503 /* OPScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPScrollView.h; sourceTree = "<group>"; };
-		0F368A7D170681F100411503 /* OPScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPScrollView.m; sourceTree = "<group>"; };
 		0F368A8517068F0400411503 /* OPWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPWindow.h; sourceTree = "<group>"; };
 		0F368A8617068F0500411503 /* OPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPWindow.m; sourceTree = "<group>"; };
 		0F368A8817068F1A00411503 /* OPWindowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPWindowContentView.h; sourceTree = "<group>"; };
@@ -400,8 +388,6 @@
 		0FA706C9171911F400864CED /* empty-album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album.png"; sourceTree = "<group>"; };
 		0FA706CA171911F400864CED /* empty-album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album@2x.png"; sourceTree = "<group>"; };
 		0FAEFFF2176736F700D60171 /* Optique.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Optique.icns; sourceTree = "<group>"; };
-		0FAEFFF417673F7A00D60171 /* OPShadowClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPShadowClipView.h; sourceTree = "<group>"; };
-		0FAEFFF517673F7A00D60171 /* OPShadowClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPShadowClipView.m; sourceTree = "<group>"; };
 		0FB384C917050B3200DEB770 /* OPAlbumScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAlbumScanner.h; sourceTree = "<group>"; };
 		0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAlbumScanner.m; sourceTree = "<group>"; };
 		0FB94DD01735E31400065536 /* NSNotificationCenter+Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Async.h"; sourceTree = "<group>"; };
@@ -530,6 +516,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FED7321180521480036CDCB /* QuartzCore.framework in Frameworks */,
 				0F03059917895AC00068D5E7 /* Exposure.framework in Frameworks */,
 				0FC2ABCD17895450009C7B02 /* ImageCaptureCore.framework in Frameworks */,
 				0FC2ABB6178952F7009C7B02 /* Cocoa.framework in Frameworks */,
@@ -621,20 +608,10 @@
 		0F368A7B170680DF00411503 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				0F368A7C170681F100411503 /* OPScrollView.h */,
-				0F368A7D170681F100411503 /* OPScrollView.m */,
 				0F368A8517068F0400411503 /* OPWindow.h */,
 				0F368A8617068F0500411503 /* OPWindow.m */,
 				0F368A8817068F1A00411503 /* OPWindowContentView.h */,
 				0F368A8917068F1A00411503 /* OPWindowContentView.m */,
-				0FAEFFF417673F7A00D60171 /* OPShadowClipView.h */,
-				0FAEFFF517673F7A00D60171 /* OPShadowClipView.m */,
-				0F348145176D5A8800439AEA /* OPBackButtonCell.h */,
-				0F348146176D5A8800439AEA /* OPBackButtonCell.m */,
-				0F08A8DC177044FD00DFEA02 /* OPSegmentedControl.h */,
-				0F08A8DD177044FD00DFEA02 /* OPSegmentedControl.m */,
-				0F08A8DF17704B6500DFEA02 /* OPSegmentedCell.h */,
-				0F08A8E017704B6500DFEA02 /* OPSegmentedCell.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -1531,14 +1508,12 @@
 				0FE3B2481702C69700FC0D6C /* OPNavigationTitle.m in Sources */,
 				0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */,
 				0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */,
-				0FAEFFF617673F7A00D60171 /* OPShadowClipView.m in Sources */,
 				0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */,
 				0FCFCB0A170420AA0040FF11 /* NSImage+MGCropExtensions.m in Sources */,
 				0FCFCB1217043D180040FF11 /* OPImageCache.m in Sources */,
 				0FB384CB17050B3200DEB770 /* OPAlbumScanner.m in Sources */,
 				0F368A71170677A700411503 /* OPPhotoView.m in Sources */,
 				0F368A74170678AC00411503 /* NSView+OptiqueBackground.m in Sources */,
-				0F368A7E170681F100411503 /* OPScrollView.m in Sources */,
 				0F368A8717068F0500411503 /* OPWindow.m in Sources */,
 				0F368A8A17068F1B00411503 /* OPWindowContentView.m in Sources */,
 				0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */,
@@ -1549,17 +1524,14 @@
 				0FA706C2171911B900864CED /* OPNewAlbumSheetController.m in Sources */,
 				0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */,
 				0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */,
-				0F348147176D5A8800439AEA /* OPBackButtonCell.m in Sources */,
 				0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */,
 				0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */,
 				0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */,
 				0F50C399178452580017DF73 /* CATextLayer+EmptyCollection.m in Sources */,
-				0F08A8E117704B6500DFEA02 /* OPSegmentedCell.m in Sources */,
 				0F8C561D172CC0D300CB7B1E /* OPLocalPhoto.m in Sources */,
 				0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */,
 				0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */,
 				0FCA4D291737D351007DC9EF /* OPExposureService.m in Sources */,
-				0F08A8DE177044FE00DFEA02 /* OPSegmentedControl.m in Sources */,
 				0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */,
 				0FD51720176B08BD006E8F4D /* OPGridView.m in Sources */,
 			);
@@ -1824,7 +1796,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/DerivedData/Optique/Build/Products/Debug",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -1852,7 +1824,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/DerivedData/Optique/Build/Products/Debug",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -1987,7 +1959,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Camera/Camera-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -2010,7 +1982,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "Camera/Camera-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = bundle;
 			};
