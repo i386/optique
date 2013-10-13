@@ -11,6 +11,7 @@
                 <outlet property="deleteAlbumMenuItem" destination="220" id="225"/>
                 <outlet property="gridView" destination="201" id="Qgj-AH-orG"/>
                 <outlet property="headingLine" destination="hLe-6d-FZj" id="de4-8A-avT"/>
+                <outlet property="titleLabel" destination="Obi-Dn-V3b" id="Qim-tx-fkJ"/>
                 <outlet property="view" destination="56" id="57"/>
             </connections>
         </customObject>

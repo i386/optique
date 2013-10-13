@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPDateValueTransformer : NSValueTransformer
+@interface OPDatePhotoCountValueTransformer : NSValueTransformer
 
 @end

@@ -200,6 +200,13 @@
     [_gridView reloadData];
 }
 
+- (void)reloadData
+{
+    [self willChangeValueForKey:@"numberOfItems"];
+    [_gridView reloadData];
+    [self didChangeValueForKey:@"numberOfItems"];
+}
+
 -(void)searchFilterActivated:(NSNotification*)notification
 {
     NSString *value = notification.userInfo[@"value"];
@@ -209,13 +216,15 @@
         _currentPredicate = [NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> collection, NSDictionary *bindings) {
             return [_albumPredicate evaluateWithObject:collection] && [[NSPredicate predicateWithFormat:@"self.title contains[cd] %@", value] evaluateWithObject:collection];
         }];
+        _titleLabel.stringValue = [NSString stringWithFormat:@"Searching for '%@'", value];
     }
     else
     {
         _currentPredicate = _albumPredicate;
+        _titleLabel.stringValue = @"Albums";
     }
     
-    [_gridView reloadData];
+    [self reloadData];
 }
 
 -(void)filterChanged:(NSNotification*)notification
@@ -225,19 +234,23 @@
     if (isAlbumView.boolValue)
     {
         _currentPredicate = _albumPredicate;
+        _titleLabel.stringValue = @"Albums";
     }
     else
     {
         _currentPredicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
             return ![_albumPredicate evaluateWithObject:evaluatedObject];
         }];
+        _titleLabel.stringValue = @"Cameras";
     }
     
     //If the filter is changed, pop back to this view.
     [self.controller popToRootViewControllerWithNoAnimation];
     
     //TODO: only reload if there has been a change
+    [self willChangeValueForKey:@"numberOfItems"];
     [_gridView reloadData];
+    [self didChangeValueForKey:@"numberOfItems"];
 }
 
 -(void)albumAdded:(NSNotification*)notification
@@ -246,7 +259,7 @@
     if (collection)
     {
         [self performBlockOnMainThread:^{
-            [_gridView reloadData];
+            [self reloadData];
         }];
     }
 }
@@ -254,14 +267,14 @@
 -(void)albumUpdated:(NSNotification*)notification
 {
     [self performBlockOnMainThread:^{
-        [_gridView reloadData];
+        [self reloadData];
     }];
 }
 
 -(void)albumDeleted:(NSNotification*)notification
 {
     [self performBlockOnMainThread:^{
-        [_gridView reloadData];
+        [self reloadData];
         
         //If the album is deleted pop back to the root controller
         [self.controller popToRootViewController];

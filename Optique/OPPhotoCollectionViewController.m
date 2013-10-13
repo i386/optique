@@ -109,7 +109,7 @@
             [NSThread sleepForTimeInterval:1];
         }
         
-        [_gridView reloadData];
+        [self reloadData];
     }
 }
 
@@ -159,7 +159,6 @@
             }];
         }];
         
-        item.title = photo.title;
         item.view.toolTip = photo.title;
         
         if (!item.badgeLayer)
@@ -186,7 +185,7 @@
 {
     [self performBlockOnMainThread:^
     {
-        [_gridView reloadData];
+        [self reloadData];
     }];
 }
 
@@ -207,7 +206,7 @@
 
 -(void)showView
 {
-    [_gridView reloadData];
+    [self reloadData];
 }
 
 -(void)menuNeedsUpdate:(NSMenu *)menu
@@ -239,6 +238,13 @@
     {
         [collection addPhoto:photo withCompletion:nil];
     }];
+}
+
+-(void)reloadData
+{
+    [self willChangeValueForKey:@"collection"];
+    [_gridView reloadData];
+    [self didChangeValueForKey:@"collection"];
 }
 
 @end

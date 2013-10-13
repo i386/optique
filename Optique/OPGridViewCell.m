@@ -35,6 +35,7 @@
         _imageLayer.masksToBounds = YES;
         _imageLayer.borderWidth = 0.3;
         _imageLayer.borderColor = [[NSColor blackColor] CGColor];
+        _imageLayer.backgroundColor = [[NSColor lightGrayColor] CGColor];
         [self addSublayer:_imageLayer];
     }
     return self;

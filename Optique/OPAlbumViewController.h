@@ -18,6 +18,7 @@
 @property (strong) IBOutlet NSMenuItem *deleteAlbumMenuItem;
 @property (strong) IBOutlet NSMenuItem *ejectMenuItem;
 @property (strong) IBOutlet OPGridView *gridView;
+@property (weak) IBOutlet NSTextField *titleLabel;
 @property (weak) IBOutlet NSBox *headingLine;
 
 -initWithPhotoManager:(XPPhotoManager*)photoManager;

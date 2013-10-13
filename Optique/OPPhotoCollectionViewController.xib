@@ -69,9 +69,9 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.collection.created" id="OgR-Z0-snn">
+                        <binding destination="-2" name="value" keyPath="self.collection" id="50u-53-1nx">
                             <dictionary key="options">
-                                <string key="NSValueTransformerName">OPDateValueTransformer</string>
+                                <string key="NSValueTransformerName">OPDatePhotoCountValueTransformer</string>
                             </dictionary>
                         </binding>
                     </connections>

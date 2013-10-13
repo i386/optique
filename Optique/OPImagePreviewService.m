@@ -60,7 +60,7 @@ static OPImagePreviewService *_defaultService;
     {
         image = [self previewImageAtURL:photo.url loaded:completionBlock];
     }
-    return image == nil ? [NSImage imageNamed:@"loading-preview"] : image;
+    return image;
 }
 
 -(NSImage *)previewImageAtURL:(NSURL *)url loaded:(XPImageCompletionBlock)completionBlock

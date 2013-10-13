@@ -62,7 +62,7 @@
 		0F7A704F178ABB5800570180 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE3B2611702F25500FC0D6C /* QuartzCore.framework */; };
 		0F7A7052178ABBC300570180 /* OPFlickrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A7051178ABBC300570180 /* OPFlickrPhoto.m */; };
 		0F7A7053178AD59A00570180 /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
-		0F85D9B9180A4EA60003C6ED /* OPDateValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85D9B8180A4EA60003C6ED /* OPDateValueTransformer.m */; };
+		0F85D9B9180A4EA60003C6ED /* OPDatePhotoCountValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85D9B8180A4EA60003C6ED /* OPDatePhotoCountValueTransformer.m */; };
 		0F85D9BC180A558F0003C6ED /* OPAlbumCountTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85D9BB180A558F0003C6ED /* OPAlbumCountTransformer.m */; };
 		0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */; };
 		0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D6171BA077004D8082 /* OPPhotoController.m */; };
@@ -340,8 +340,8 @@
 		0F7A704C178ABA6600570180 /* XPBadgeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPBadgeLayer.m; sourceTree = "<group>"; };
 		0F7A7050178ABBC300570180 /* OPFlickrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFlickrPhoto.h; sourceTree = "<group>"; };
 		0F7A7051178ABBC300570180 /* OPFlickrPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFlickrPhoto.m; sourceTree = "<group>"; };
-		0F85D9B7180A4EA60003C6ED /* OPDateValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDateValueTransformer.h; sourceTree = "<group>"; };
-		0F85D9B8180A4EA60003C6ED /* OPDateValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDateValueTransformer.m; sourceTree = "<group>"; };
+		0F85D9B7180A4EA60003C6ED /* OPDatePhotoCountValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDatePhotoCountValueTransformer.h; sourceTree = "<group>"; };
+		0F85D9B8180A4EA60003C6ED /* OPDatePhotoCountValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDatePhotoCountValueTransformer.m; sourceTree = "<group>"; };
 		0F85D9BA180A558F0003C6ED /* OPAlbumCountTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAlbumCountTransformer.h; sourceTree = "<group>"; };
 		0F85D9BB180A558F0003C6ED /* OPAlbumCountTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAlbumCountTransformer.m; sourceTree = "<group>"; };
 		0F8B71D2171AB9D8004D8082 /* NSImage+Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Transform.h"; sourceTree = "<group>"; };
@@ -980,8 +980,8 @@
 				0FDE075517030FCC00D5B456 /* OPPhotoCollectionViewController.h */,
 				0FDE075617030FCC00D5B456 /* OPPhotoCollectionViewController.m */,
 				0FDE075717030FCC00D5B456 /* OPPhotoCollectionViewController.xib */,
-				0F85D9B7180A4EA60003C6ED /* OPDateValueTransformer.h */,
-				0F85D9B8180A4EA60003C6ED /* OPDateValueTransformer.m */,
+				0F85D9B7180A4EA60003C6ED /* OPDatePhotoCountValueTransformer.h */,
+				0F85D9B8180A4EA60003C6ED /* OPDatePhotoCountValueTransformer.m */,
 			);
 			name = "Photo Collection View";
 			sourceTree = "<group>";
@@ -1533,7 +1533,7 @@
 				0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */,
 				0F50C399178452580017DF73 /* CATextLayer+EmptyCollection.m in Sources */,
 				0F8C561D172CC0D300CB7B1E /* OPLocalPhoto.m in Sources */,
-				0F85D9B9180A4EA60003C6ED /* OPDateValueTransformer.m in Sources */,
+				0F85D9B9180A4EA60003C6ED /* OPDatePhotoCountValueTransformer.m in Sources */,
 				0F85D9BC180A558F0003C6ED /* OPAlbumCountTransformer.m in Sources */,
 				0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */,
 				0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */,
