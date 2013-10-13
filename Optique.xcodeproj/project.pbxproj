@@ -126,7 +126,6 @@
 		0FCAF8CA1710461A00E6C903 /* effectsbarbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FCAF8C81710461A00E6C903 /* effectsbarbg@2x.png */; };
 		0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCAF8CD17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m */; };
 		0FCE744F1714136B00A5AE79 /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
-		0FCFCB0A170420AA0040FF11 /* NSImage+MGCropExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */; };
 		0FCFCB1217043D180040FF11 /* OPImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFCB1117043D180040FF11 /* OPImageCache.m */; };
 		0FD51720176B08BD006E8F4D /* OPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD5171F176B08BD006E8F4D /* OPGridView.m */; };
 		0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD51722176B431F006E8F4D /* OPGridViewCell.m */; };
@@ -435,8 +434,6 @@
 		0FCAF8CD17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+DrawAtPointWithShadow.m"; sourceTree = "<group>"; };
 		0FCE744D1714136B00A5AE79 /* NSObject+PerformBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PerformBlock.h"; sourceTree = "<group>"; };
 		0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PerformBlock.m"; sourceTree = "<group>"; };
-		0FCFCB08170420AA0040FF11 /* NSImage+MGCropExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+MGCropExtensions.h"; sourceTree = "<group>"; };
-		0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MGCropExtensions.m"; sourceTree = "<group>"; };
 		0FCFCB1017043D180040FF11 /* OPImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageCache.h; sourceTree = "<group>"; };
 		0FCFCB1117043D180040FF11 /* OPImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageCache.m; sourceTree = "<group>"; };
 		0FD5171E176B08BD006E8F4D /* OPGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPGridView.h; path = Optique/OPGridView.h; sourceTree = "<group>"; };
@@ -687,8 +684,6 @@
 				0F489933170BFFD60044ED0A /* OPImagePreviewService.m */,
 				0FCFCB1017043D180040FF11 /* OPImageCache.h */,
 				0FCFCB1117043D180040FF11 /* OPImageCache.m */,
-				0FCFCB08170420AA0040FF11 /* NSImage+MGCropExtensions.h */,
-				0FCFCB09170420AA0040FF11 /* NSImage+MGCropExtensions.m */,
 			);
 			name = "Image Previews";
 			sourceTree = "<group>";
@@ -1519,7 +1514,6 @@
 				0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */,
 				0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */,
 				0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */,
-				0FCFCB0A170420AA0040FF11 /* NSImage+MGCropExtensions.m in Sources */,
 				0FCFCB1217043D180040FF11 /* OPImageCache.m in Sources */,
 				0FB384CB17050B3200DEB770 /* OPAlbumScanner.m in Sources */,
 				0F368A71170677A700411503 /* OPPhotoView.m in Sources */,

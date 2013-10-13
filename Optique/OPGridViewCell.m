@@ -31,7 +31,8 @@
         [self addSublayer:_titleLayer];
         
         _imageLayer = [OEGridLayer layer];
-        _imageLayer.contentsGravity = kCAGravityResize;
+        _imageLayer.contentsGravity = kCAGravityResizeAspectFill;
+        _imageLayer.masksToBounds = YES;
         _imageLayer.borderWidth = 0.3;
         _imageLayer.borderColor = [[NSColor blackColor] CGColor];
         [self addSublayer:_imageLayer];

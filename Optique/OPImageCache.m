@@ -136,9 +136,7 @@ static OPImageCache *_sharedPreviewCache;
 
 -(NSImage*)resizeImageAndWriteToCache:(NSURL*)originalPath cachedPath:(NSURL*)cachedPath
 {
-    NSImage *image = [[NSImage alloc] initWithContentsOfURL:originalPath];
-    [image setCacheMode:NSImageCacheNever];
-    image = [image imageCroppedToFitSize:_size];
+    NSImage *image = [self scale:originalPath];
     
     NSData *imageData = [image TIFFRepresentation];
     NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imageData];
@@ -156,6 +154,25 @@ static OPImageCache *_sharedPreviewCache;
     NSDictionary *attrs = [fileManager attributesOfItemAtPath:[cachedPath path] error: NULL];
     NSUInteger fileSize = [attrs fileSize];
     [_cache setObject:cachedPath forKey:originalPath cost:fileSize];
+}
+
+-(NSImage*)scale:(NSURL*)originalPath
+{
+    NSSize size = kOPImageCacheThumbSize;
+    
+    CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)originalPath, NULL);
+    
+    NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
+                                      kCGImageSourceCreateThumbnailWithTransform, kCFBooleanTrue,
+                                      kCGImageSourceCreateThumbnailFromImageAlways, [NSNumber numberWithFloat:size.width],
+                                      kCGImageSourceThumbnailMaxPixelSize, kCFBooleanFalse, kCGImageSourceShouldCache, nil];
+    
+    CGImageRef thumbnail = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, (__bridge CFDictionaryRef)thumbnailOptions);
+    
+    NSImage *image = [[NSImage alloc] initWithCGImage:thumbnail size:NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail))];
+    
+    CGImageRelease(thumbnail);
+    return image;
 }
 
 @end
