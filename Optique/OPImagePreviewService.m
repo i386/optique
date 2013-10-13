@@ -9,7 +9,6 @@
 #import "OPImagePreviewService.h"
 #import "OPImageCache.h"
 #import "OPLocalPhoto.h"
-#import "NSImage+MGCropExtensions.h"
 
 #define fOPImagePreviewServiceLargeSize 25165824
 
@@ -56,10 +55,6 @@ static OPImagePreviewService *_defaultService;
     if ([((id)photo) respondsToSelector:@selector(thumbnail)])
     {
         image = photo.thumbnail;
-        if (image)
-        {
-            image = [image imageCroppedToFitSize:kOPImageCacheThumbSize];
-        }
     }
     else if ([((id)photo) respondsToSelector:@selector(url)])
     {

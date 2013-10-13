@@ -7,7 +7,6 @@
 //
 
 #import "OPImageCache.h"
-#import "NSImage+MGCropExtensions.h"
 #import <NSHash/NSString+NSHash.h>
 
 #define CACHE_SIZE 524288000
