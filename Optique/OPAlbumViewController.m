@@ -58,6 +58,10 @@
     
     
     [OPExposureService photoManager:_photoManager collectionViewController:self];
+    
+    [_headingLine setBorderWidth:2];
+    [_headingLine setBorderColor:[NSColor colorWithCalibratedRed:0.83 green:0.83 blue:0.83 alpha:1.00]];
+    [_headingLine setBoxType:NSBoxCustom];
 }
 
 -(void)dealloc
@@ -279,9 +283,14 @@
     [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:photoAlbum photoManager:_photoManager]];
 }
 
--(NSUInteger)numberOfItemsInGridView:(OEGridView *)gridView
+-(NSUInteger)numberOfItems
 {
     return [_photoManager.allCollections filteredArrayUsingPredicate:_currentPredicate].count;
+}
+
+-(NSUInteger)numberOfItemsInGridView:(OEGridView *)gridView
+{
+    return [self numberOfItems];
 }
 
 -(NSMenu *)gridView:(OEGridView *)gridView menuForItemsAtIndexes:(NSIndexSet *)indexes

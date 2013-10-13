@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4504" systemVersion="13A569" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4510" systemVersion="13A598" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1070" defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4510"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OPNavigationController">
@@ -19,20 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="930" height="36"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField wantsLayer="YES" verticalHuggingPriority="750" id="40">
-                    <rect key="frame" x="237" y="5" width="477" height="24"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="41">
-                        <font key="font" size="13" name="LucidaGrande"/>
-                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <action selector="goBack:" target="3" id="opY-Zs-Eu7"/>
-                    </connections>
-                </textField>
                 <searchField appearanceType="lightContent" verticalHuggingPriority="750" id="bmU-hJ-UeU">
-                    <rect key="frame" x="766" y="7" width="159" height="22"/>
+                    <rect key="frame" x="766.00000017525258" y="7" width="159" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                     <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="zrp-HA-mHz">
                         <font key="font" metaFont="system"/>
@@ -65,7 +53,6 @@
             </subviews>
             <connections>
                 <outlet property="_navigationController" destination="-2" id="32"/>
-                <outlet property="_viewLabel" destination="40" id="42"/>
                 <outlet property="searchFilter" destination="bmU-hJ-UeU" id="GDV-2G-x50"/>
                 <outlet property="shareWithButton" destination="N6G-kQ-kYu" id="WBF-SA-2jB"/>
                 <outlet property="switchViewButton" destination="CHQ-1S-cPR" id="A0r-CI-o4K"/>

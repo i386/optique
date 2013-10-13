@@ -19,6 +19,7 @@
 @property (strong, readonly) XPPhotoManager *photoManager;
 @property (strong) IBOutlet OPGridView *gridView;
 @property (strong) IBOutlet NSMenuItem *moveToAlbumItem;
+@property (weak) IBOutlet NSBox *headingLine;
 
 -initWithPhotoAlbum:(id<XPPhotoCollection>)collection photoManager:(XPPhotoManager*)photoManager;
 

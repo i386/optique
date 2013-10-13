@@ -136,14 +136,6 @@
 
 -(OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-//    OPGridViewCell *item = (OPGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
-//    if (!item) {
-//        item = (OPGridViewCell *)[gridView dequeueReusableCell];
-//    }
-//    if (!item) {
-//        item = [[OPGridViewCell alloc] init];
-//    }
-    
     OPGridViewCell *item = [[OPGridViewCell alloc] init];
     
     NSArray *allPhotos = _collection.allPhotos;
@@ -201,6 +193,9 @@
 -(void)awakeFromNib
 {
     [OPExposureService photoManager:_photoManager photoCollectionViewController:self];
+    [_headingLine setBorderWidth:2];
+    [_headingLine setBorderColor:[NSColor colorWithCalibratedRed:0.83 green:0.83 blue:0.83 alpha:1.00]];
+    [_headingLine setBoxType:NSBoxCustom];
 }
 
 -(void)loadView

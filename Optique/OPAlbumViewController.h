@@ -18,9 +18,12 @@
 @property (strong) IBOutlet NSMenuItem *deleteAlbumMenuItem;
 @property (strong) IBOutlet NSMenuItem *ejectMenuItem;
 @property (strong) IBOutlet OPGridView *gridView;
+@property (weak) IBOutlet NSBox *headingLine;
 
 -initWithPhotoManager:(XPPhotoManager*)photoManager;
 
 - (IBAction)deleteAlbum:(NSMenuItem*)sender;
+
+- (NSUInteger)numberOfItems;
 
 @end
