@@ -6,42 +6,37 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OPAlbumViewController.h"
+#import "OPCollectionViewController.h"
 
 #import "OPPhotoCollectionViewController.h"
 #import "OPAlbumScanner.h"
 #import "OPImagePreviewService.h"
 #import "OPDeleteAlbumSheetController.h"
-#import "OPNavigationTitle.h"
 #import "OPPhotoAlbum.h"
 #import "OPGridViewCell.h"
 #import "NSColor+Optique.h"
 #import "CATextLayer+EmptyCollection.h"
 #import "OPLocalPhoto.h"
 
-@interface OPAlbumViewController ()
+@interface OPCollectionViewController ()
 
 @property (strong) OPDeleteAlbumSheetController *deleteAlbumSheetController;
-@property (strong) NSPredicate *currentPredicate;
-@property (strong) NSPredicate *albumPredicate;
+@property (strong) NSPredicate *predicate;
 @property (strong) NSMutableArray *sharingMenuItems;
+@property (strong) NSString *viewTitle;
 
 @end
 
-@implementation OPAlbumViewController
+@implementation OPCollectionViewController
 
--(id)initWithPhotoManager:(XPPhotoManager *)photoManager
+-(id)initWithPhotoManager:(XPPhotoManager *)photoManager title:(NSString *)title collectionPredicate:(NSPredicate *)predicate
 {
-    self = [super initWithNibName:@"OPAlbumViewController" bundle:nil];
+    self = [super initWithNibName:@"OPCollectionViewController" bundle:nil];
     if (self)
     {
         _photoManager = photoManager;
-        
-        _albumPredicate =[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
-            return [evaluatedObject collectionType] == kPhotoCollectionLocal || [evaluatedObject collectionType] == kPhotoCollectionOther;
-        }];
-        
-        _currentPredicate = _albumPredicate;
+        _viewTitle = title;
+        _predicate = predicate;
     }
     return self;
 }
@@ -51,10 +46,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:XPPhotoManagerDidAddCollection object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:XPPhotoManagerDidDeleteCollection object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumsFinishedLoading:) name:OPAlbumScannerDidFinishScanNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterChanged:) name:OPNavigationTitleFilterDidChange object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:@"OPCameraServiceDidAddCamera" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchFilterActivated:) name:OPNavigationSearchFilterDidChange object:nil];
     
     
     [OPExposureService photoManager:_photoManager collectionViewController:self];
@@ -62,6 +54,8 @@
     [_headingLine setBorderWidth:2];
     [_headingLine setBorderColor:[NSColor colorWithCalibratedRed:0.83 green:0.83 blue:0.83 alpha:1.00]];
     [_headingLine setBoxType:NSBoxCustom];
+    
+    _titleLabel.stringValue = _viewTitle;
 }
 
 -(void)dealloc
@@ -70,8 +64,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidDeleteCollection object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidUpdateCollection object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFindAlbumsNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFinishScanNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationTitleFilterDidChange object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"OPCameraServiceDidAddCamera" object:nil];
 }
 
@@ -185,69 +177,14 @@
     }
 }
 
--(NSString *)viewTitle
-{
-    return @"";
-}
-
 -(void)cameraAdded:(NSNotification*)notification
 {
-    _currentPredicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        return ![_albumPredicate evaluateWithObject:evaluatedObject];
-    }];
-    
     [self.controller popToRootViewController];
-    [_gridView reloadData];
+    NSLog(@"TODO: open new controller with a camera predicate");
 }
 
 - (void)reloadData
 {
-    [self willChangeValueForKey:@"numberOfItems"];
-    [_gridView reloadData];
-    [self didChangeValueForKey:@"numberOfItems"];
-}
-
--(void)searchFilterActivated:(NSNotification*)notification
-{
-    NSString *value = notification.userInfo[@"value"];
-    
-    if (![value isEqualToString:@""])
-    {
-        _currentPredicate = [NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> collection, NSDictionary *bindings) {
-            return [_albumPredicate evaluateWithObject:collection] && [[NSPredicate predicateWithFormat:@"self.title contains[cd] %@", value] evaluateWithObject:collection];
-        }];
-        _titleLabel.stringValue = [NSString stringWithFormat:@"Searching for '%@'", value];
-    }
-    else
-    {
-        _currentPredicate = _albumPredicate;
-        _titleLabel.stringValue = @"Albums";
-    }
-    
-    [self reloadData];
-}
-
--(void)filterChanged:(NSNotification*)notification
-{
-    NSNumber *isAlbumView = [notification userInfo][@"isAlbumView"];
-    
-    if (isAlbumView.boolValue)
-    {
-        _currentPredicate = _albumPredicate;
-        _titleLabel.stringValue = @"Albums";
-    }
-    else
-    {
-        _currentPredicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-            return ![_albumPredicate evaluateWithObject:evaluatedObject];
-        }];
-        _titleLabel.stringValue = @"Cameras";
-    }
-    
-    //If the filter is changed, pop back to this view.
-    [self.controller popToRootViewControllerWithNoAnimation];
-    
-    //TODO: only reload if there has been a change
     [self willChangeValueForKey:@"numberOfItems"];
     [_gridView reloadData];
     [self didChangeValueForKey:@"numberOfItems"];
@@ -281,24 +218,16 @@
     }];
 }
 
--(void)albumsFinishedLoading:(NSNotification*)notification
-{
-    [self performBlockOnMainThread:^
-    {
-        [self.controller updateNavigation];
-    }];
-}
-
 -(void)gridView:(OEGridView *)gridView doubleClickedCellForItemAtIndex:(NSUInteger)index
 {
-    NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_currentPredicate];
+    NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_predicate];
     OPPhotoAlbum *photoAlbum = filteredCollections[index];
     [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:photoAlbum photoManager:_photoManager]];
 }
 
 -(NSUInteger)numberOfItems
 {
-    return [_photoManager.allCollections filteredArrayUsingPredicate:_currentPredicate].count;
+    return [_photoManager.allCollections filteredArrayUsingPredicate:_predicate].count;
 }
 
 -(NSUInteger)numberOfItemsInGridView:(OEGridView *)gridView
@@ -315,7 +244,7 @@
 {
     OPGridViewCell *item = [[OPGridViewCell alloc] init];
     
-    NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_currentPredicate];
+    NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_predicate];
     id<XPPhotoCollection> collection = filteredCollections[index];
     item.representedObject = collection;
     item.title = collection.title;

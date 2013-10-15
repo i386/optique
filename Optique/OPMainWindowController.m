@@ -12,12 +12,15 @@
 #import "OPPhotoCollectionViewController.h"
 #import "OPNewAlbumSheetController.h"
 #import "OPNavigationViewController.h"
-#import "OPNavigationTitle.h"
+#import "OPToolbarViewController.h"
 
 @interface OPMainWindowController () {
     OPNavigationController *_navigationController;
-    OPAlbumViewController *_albumViewController;
+    OPCollectionViewController *_albumViewController;
+    OPCollectionViewController *_cameraViewController;
+    OPCollectionViewController *_searchViewController;
     OPNewAlbumSheetController *_newAlbumSheetController;
+    OPToolbarViewController *_toolbarViewController;
 }
 
 @end
@@ -53,28 +56,90 @@
 {
     [super windowDidLoad];
     
-    _albumViewController = [[OPAlbumViewController alloc] initWithPhotoManager:_photoManager];
-    _navigationController = [[OPNavigationController alloc] initWithRootViewController:_albumViewController];
+    _toolbarViewController = [[OPToolbarViewController alloc] init];
+    
+    OPWindow *window = (OPWindow*)self.window;
+    [window.titleBarView addSubview:(NSView*)_toolbarViewController.view];
+    _toolbarViewController.view.frame = NSMakeRect(0, 0, window.frame.size.width, 36);
+    
+    _albumViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager title:@"Albums" collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject collectionType] == kPhotoCollectionLocal || [evaluatedObject collectionType] == kPhotoCollectionOther;
+    }]];
+    
+    _cameraViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager title:@"Cameras" collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject collectionType] == kPhotoCollectionCamera;
+    }]];
+    
+    [self addNavigationController:_albumViewController];
+}
+
+-(void)addNavigationController:(OPNavigationViewController*)viewController
+{
+    _navigationController = [[OPNavigationController alloc] initWithRootViewController:viewController];
     _newAlbumSheetController = [[OPNewAlbumSheetController alloc] initWithPhotoManager:_photoManager navigationController:_navigationController];
-    _navigationController.delegate = self;
+    
+    //Set weak ref to nav controller
+    _toolbarViewController.navigationController = _navigationController;
     
     OPWindow *window = (OPWindow*)self.window;
     NSView *contentView = (NSView*)window.contentView;
     [_navigationController.view setFrame:contentView.frame];
-    [window.titleBarView addSubview:(NSView*)_navigationController.navigationTitle];
     
-    [contentView addSubview:_navigationController.view positioned:NSWindowBelow relativeTo:nil];
-}
+    [[contentView subviews] each:^(id sender) {
+        [sender removeFromSuperview];
+    }];
 
--(void)showBackButton:(BOOL)visible
-{
-    //TODO
-//    [_navigationController.navigationTitle.backButton setHidden:!visible];
+    [contentView addSubview:_navigationController.view positioned:NSWindowBelow relativeTo:nil];
 }
 
 -(void)showNewAlbumSheet
 {
     [NSApp beginSheet:_newAlbumSheetController.window modalForWindow:self.window modalDelegate:self didEndSelector:nil contextInfo:nil];
+}
+
+-(void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterChanged:) name:OPApplicationModeDidChange object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchFilterChanged:) name:OPAlbumSearchFilterDidChange object:nil];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPApplicationModeDidChange object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumSearchFilterDidChange object:nil];
+}
+
+-(void)searchFilterChanged:(NSNotification*)notification
+{
+    NSString *value = notification.userInfo[@"value"];
+    if ([value isEqualToString:@""])
+    {
+        [self addNavigationController:_albumViewController];
+        _searchViewController = nil;
+    }
+    else
+    {
+        NSString *title = [NSString stringWithFormat:@"Search for '%@'", value];
+        _searchViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager title:title collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
+            return ([evaluatedObject collectionType] == kPhotoCollectionLocal || [evaluatedObject collectionType] == kPhotoCollectionOther) && [[NSPredicate predicateWithFormat:@"self.title contains[cd] %@", value] evaluateWithObject:evaluatedObject];
+        }]];
+        [self addNavigationController:_searchViewController];
+    }
+}
+
+-(void)filterChanged:(NSNotification*)notification
+{
+    OPApplicationMode mode = [notification.userInfo[@"mode"] shortValue];
+    NSLog(@"notification %@", notification.userInfo);
+    
+    if (mode == OPApplicationModeAlbum)
+    {
+        [self addNavigationController:_albumViewController];
+    }
+    else
+    {
+        [self addNavigationController:_cameraViewController];
+    }
 }
 
 @end

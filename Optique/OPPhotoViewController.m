@@ -144,8 +144,7 @@
 }
 
 - (void)pageController:(NSPageController *)pageController didTransitionToObject:(id)object
-{ 
-    [self.controller updateNavigation];
+{
 }
 
 -(void)windowFullscreenStateChanged:(NSNotification*)notification

@@ -10,7 +10,6 @@
 
 #import "OPNavigationController.h"
 #import "OPNavigationViewController.h"
-#import "OPNavigationTitle.h"
 
 NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerViewDidChange";
 
@@ -84,12 +83,6 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
     return [self.rootViewController isEqual:_visibleViewController];
 }
 
--(void)updateNavigation
-{
-    [_delegate showBackButton:(_rootViewController != _visibleViewController)];
-    [_navigationTitle updateTitle:_visibleViewController.viewTitle];
-}
-
 -(NSArray *)popToRootViewControllerWithAnimation:(BOOL)animate
 {
     if (_displayStack.count > 1)
@@ -121,7 +114,6 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
     //Make visible view first responder
     [_visibleViewController.view.window makeFirstResponder:_visibleViewController.view];
     
-    [self updateNavigation];
     [_visibleViewController showView];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationControllerViewDidChange object:self userInfo:@{@"controller": _visibleViewController}];
@@ -130,7 +122,7 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
 -(void)awakeFromNib
 {
     [self setVisibleViewController:_rootViewController animate:NO];
-    [self updateNavigation];
+    
     [_displayView addSubview:_rootViewController.view];
 }
 

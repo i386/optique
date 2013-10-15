@@ -1,28 +1,35 @@
 //
-//  OPNavigationBar.m
+//  OPToolbarViewController.m
 //  Optique
 //
-//  Created by James Dumay on 27/03/13.
+//  Created by James Dumay on 15/10/2013.
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OPNavigationTitle.h"
-#import "NSWindow+FullScreen.h"
-#import <Exposure/XPSharingService.h>
-#import "OPNavigationController.h"
+#import "OPToolbarViewController.h"
 #import "OPNavigationViewController.h"
-#import "OPCameraService.h"
 
-NSString *const OPNavigationTitleFilterDidChange = @"OPNavigationTitleFilterDidChange";
-NSString *const OPNavigationSearchFilterDidChange = @"OPNavigationSearchFilterDidChange";
+NSString *const OPApplicationModeDidChange = @"OPApplicationModeDidChange";
+NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
 
-@implementation OPNavigationTitle
+@interface OPToolbarViewController ()
+
+@end
+
+@implementation OPToolbarViewController
+
+- (id)init
+{
+    self = self = [super initWithNibName:@"OPToolbarViewController" bundle:nil];
+    if (self) {
+        
+    }
+    return self;
+}
 
 -(void)awakeFromNib
 {
     [super awakeFromNib];
-    
-    [_viewLabel setFont:[NSFont titleBarFontOfSize:[NSFont systemFontSize]]];
     
     _shareWithButton.menu = [[NSMenu alloc] init];
     _shareWithButton.menu.showsStateColumn = NO;
@@ -30,13 +37,11 @@ NSString *const OPNavigationSearchFilterDidChange = @"OPNavigationSearchFilterDi
     _shareWithButton.target = self;
     _shareWithButton.action = @selector(showSharingMenu:);
     
-    [self setPostsBoundsChangedNotifications:YES];
+    [self.view setPostsBoundsChangedNotifications:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:@"OPCameraServiceDidAddCamera" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigationControllerChanged:) name:OPNavigationControllerViewDidChange object:_navigationController];
-    
-    _isAlbums = YES;
     
     [self albumMode];
 }
@@ -49,6 +54,8 @@ NSString *const OPNavigationSearchFilterDidChange = @"OPNavigationSearchFilterDi
 -(void)cameraAdded:(NSNotification*)notification
 {
     [self cameraMode];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPApplicationModeDidChange object:nil userInfo:@{@"mode": [NSNumber numberWithBool:_filterMode]}];
 }
 
 -(void)navigationControllerChanged:(NSNotification*)notification
@@ -75,86 +82,58 @@ NSString *const OPNavigationSearchFilterDidChange = @"OPNavigationSearchFilterDi
     {
         [_shareWithButton setEnabled:NO];
     }
-    
-    if (_navigationController.isRootViewControllerVisible)
-    {
-        _isAlbums = !_isAlbums;
-        
-        if (_isAlbums)
-        {
-            [self albumMode];
-        }
-        else
-        {
-            [self cameraMode];
-        }
-    }
-    else
-    {
-        [self backMode];
-    }
-}
-
--(void)updateTitle:(NSString *)title
-{
-    [_viewLabel.animator setStringValue:title];
-}
-
-- (IBAction)goBack:(id)sender
-{
-    [_navigationController popToPreviousViewController];
 }
 
 - (IBAction)switchViewButtonPressed:(NSButton*)sender
 {
     if (_navigationController.isRootViewControllerVisible)
     {
-        _isAlbums = !_isAlbums;
-        
-        if (_isAlbums)
-        {
-            [self albumMode];
-        }
-        else
-        {
-            [self cameraMode];
-        }
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationTitleFilterDidChange object:nil userInfo:@{@"isAlbumView": [NSNumber numberWithBool:_isAlbums]}];
+        [self switchModesWithNotification:YES];
     }
     else
     {
         [self backMode];
         [_navigationController popToPreviousViewController];
-        if (_navigationController.isRootViewControllerVisible)
+        
+        [self switchModesWithNotification:NO];
+    }
+}
+
+-(void)switchModesWithNotification:(BOOL)sendNotification
+{
+    if (_navigationController.isRootViewControllerVisible)
+    {
+        if (_filterMode == OPApplicationModeAlbum)
         {
-            _isAlbums = !_isAlbums;
-            
-            if (_isAlbums)
-            {
-                [self albumMode];
-            }
-            else
-            {
-                [self cameraMode];
-            }
+            [self cameraMode];
+        }
+        else
+        {
+            [self albumMode];
+        }
+        
+        if (sendNotification)
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:OPApplicationModeDidChange object:nil userInfo:@{@"mode": [NSNumber numberWithBool:_filterMode]}];
         }
     }
 }
 
 -(void)cameraMode
 {
-    _switchViewButton.title = @"Albums";
+    _filterMode = OPApplicationModeCamera;
+    _switchViewButton.title = @"Camera";
     _switchViewButton.image = nil;
-    _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 69, _switchViewButton.frame.size.height);
+    _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 72, _switchViewButton.frame.size.height);
     _searchFilter.stringValue = @""; //Clear
 }
 
 -(void)albumMode
 {
-    _switchViewButton.title = @"Cameras";
+    _filterMode = OPApplicationModeAlbum;
+    _switchViewButton.title = @"Albums";
     _switchViewButton.image = nil;
-    _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 72, _switchViewButton.frame.size.height);
+    _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 69, _switchViewButton.frame.size.height);
 }
 
 -(void)backMode
@@ -167,13 +146,13 @@ NSString *const OPNavigationSearchFilterDidChange = @"OPNavigationSearchFilterDi
 -(void)showSharingMenu:(NSButton*)sender
 {
     NSPoint point = _shareWithButton.frame.origin;
-    point = NSMakePoint(point.x + 4, point.y + self.window.frame.size.height - 40);
+    point = NSMakePoint(point.x + 4, point.y + self.view.window.frame.size.height - 40);
     
     NSEvent *fakeMouseEvent = [NSEvent mouseEventWithType:NSLeftMouseDown
                                                  location:point
                                             modifierFlags:0
                                                 timestamp:0
-                                             windowNumber:[self.window windowNumber]
+                                             windowNumber:[self.view.window windowNumber]
                                                   context:nil
                                               eventNumber:0
                                                clickCount:0
@@ -202,7 +181,7 @@ NSString *const OPNavigationSearchFilterDidChange = @"OPNavigationSearchFilterDi
         [_navigationController popToRootViewControllerWithNoAnimation];
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationSearchFilterDidChange object:nil userInfo:@{@"value":[sender stringValue]}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumSearchFilterDidChange object:nil userInfo:@{@"value":[sender stringValue]}];
     
     [self albumMode];
 }

@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4510"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="OPAlbumViewController">
+        <customObject id="-2" userLabel="File's Owner" customClass="OPCollectionViewController">
             <connections>
                 <outlet property="albumItemContextMenu" destination="210" id="216"/>
                 <outlet property="deleteAlbumMenuItem" destination="220" id="225"/>
@@ -43,7 +43,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" id="203">
-                        <rect key="frame" x="465" y="0.0" width="15" height="219"/>
+                        <rect key="frame" x="464" y="0.0" width="16" height="219"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>

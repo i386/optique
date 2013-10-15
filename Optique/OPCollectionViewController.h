@@ -11,7 +11,7 @@
 
 #import "OPNavigationViewController.h"
 
-@interface OPAlbumViewController : OPNavigationViewController <OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPCollectionViewController>
+@interface OPCollectionViewController : OPNavigationViewController <OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPCollectionViewController>
 
 @property (strong) IBOutlet NSMenu *albumItemContextMenu;
 @property (strong, readonly) XPPhotoManager *photoManager;
@@ -21,7 +21,7 @@
 @property (weak) IBOutlet NSTextField *titleLabel;
 @property (weak) IBOutlet NSBox *headingLine;
 
--initWithPhotoManager:(XPPhotoManager*)photoManager;
+-initWithPhotoManager:(XPPhotoManager*)photoManager title:(NSString*)title collectionPredicate:(NSPredicate*)predicate;
 
 - (IBAction)deleteAlbum:(NSMenuItem*)sender;
 

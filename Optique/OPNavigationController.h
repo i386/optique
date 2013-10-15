@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "OPNavigationControllerDelegate.h"
 
 @class OPNavigationTitle;
 @class OPNavigationViewController;
@@ -19,7 +18,6 @@ extern NSString *const OPNavigationControllerViewDidChange;
 @property (strong, readonly) OPNavigationViewController *rootViewController;
 @property (strong, nonatomic, readonly) OPNavigationViewController *visibleViewController;
 @property (strong) IBOutlet OPNavigationTitle *navigationTitle;
-@property (strong) IBOutlet id<OPNavigationControllerDelegate> delegate;
 
 -initWithRootViewController:(OPNavigationViewController*)viewController;
 
@@ -38,8 +36,5 @@ extern NSString *const OPNavigationControllerViewDidChange;
 - (OPNavigationViewController *)peekAtPreviousViewController;
 
 - (bool)isRootViewControllerVisible;
-
-/** update the state of the navigation for the visible view controller **/
-- (void)updateNavigation;
 
 @end

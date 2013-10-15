@@ -7,10 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "OPAlbumViewController.h"
-#import "OPNavigationControllerDelegate.h"
+#import "OPCollectionViewController.h"
 
-@interface OPMainWindowController : NSWindowController<NSWindowDelegate, OPNavigationControllerDelegate>
+@interface OPMainWindowController : NSWindowController<NSWindowDelegate>
 
 @property (strong, readonly) XPPhotoManager *photoManager;
 @property (strong) IBOutlet NSButton *navBackButton;
