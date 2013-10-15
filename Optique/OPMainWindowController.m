@@ -108,6 +108,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumSearchFilterDidChange object:nil];
 }
 
+-(void)cameraAdded:(NSNotification*)notification
+{
+    [self addNavigationController:_cameraViewController];
+}
+
 -(void)searchFilterChanged:(NSNotification*)notification
 {
     NSString *value = notification.userInfo[@"value"];
@@ -136,7 +141,12 @@
     }
     else
     {
+        NSString *cameraTitle = notification.userInfo[@"title"];
         [self addNavigationController:_cameraViewController];
+        if (cameraTitle != nil)
+        {
+            [_cameraViewController showCollectionWithTitle:cameraTitle];
+        }
     }
 }
 

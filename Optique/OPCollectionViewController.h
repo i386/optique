@@ -27,4 +27,6 @@
 
 - (NSUInteger)numberOfItems;
 
+-(void)showCollectionWithTitle:(NSString*)title;
+
 @end

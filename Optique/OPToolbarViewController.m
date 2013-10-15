@@ -49,13 +49,14 @@ NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationControllerViewDidChange object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"OPCameraServiceDidAddCamera" object:nil];
 }
 
 -(void)cameraAdded:(NSNotification*)notification
 {
     [self cameraMode];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPApplicationModeDidChange object:nil userInfo:@{@"mode": [NSNumber numberWithBool:_filterMode]}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPApplicationModeDidChange object:nil userInfo:@{@"mode": [NSNumber numberWithBool:_filterMode], @"title":notification.userInfo[@"title"]}];
 }
 
 -(void)navigationControllerChanged:(NSNotification*)notification

@@ -10,13 +10,15 @@
 #import <ImageCaptureCore/ImageCaptureCore.h>
 #import <Exposure/Exposure.h>
 
+@class OPCameraService;
+
 @interface OPCamera : NSObject <XPPhotoCollection, ICCameraDeviceDelegate>
 
 @property (readonly, weak) ICCameraDevice *device;
 @property (readonly, weak) XPPhotoManager *photoManager;
 @property (readonly, strong) NSDate *created;
 
--(id)initWithDevice:(ICCameraDevice*)device photoManager:(XPPhotoManager*)photoManager;
+-(id)initWithDevice:(ICCameraDevice*)device photoManager:(XPPhotoManager*)photoManager service:(OPCameraService*)service;
 
 -(NSImage*)thumbnailForName:(NSString*)name;
 

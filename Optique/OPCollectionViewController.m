@@ -46,7 +46,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:XPPhotoManagerDidAddCollection object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:XPPhotoManagerDidDeleteCollection object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:@"OPCameraServiceDidAddCamera" object:nil];
     
     
     [OPExposureService photoManager:_photoManager collectionViewController:self];
@@ -64,7 +63,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidDeleteCollection object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidUpdateCollection object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFindAlbumsNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"OPCameraServiceDidAddCamera" object:nil];
 }
 
 -(void)loadView
@@ -177,12 +175,6 @@
     }
 }
 
--(void)cameraAdded:(NSNotification*)notification
-{
-    [self.controller popToRootViewController];
-    NSLog(@"TODO: open new controller with a camera predicate");
-}
-
 - (void)reloadData
 {
     [self willChangeValueForKey:@"numberOfItems"];
@@ -221,8 +213,20 @@
 -(void)gridView:(OEGridView *)gridView doubleClickedCellForItemAtIndex:(NSUInteger)index
 {
     NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_predicate];
-    OPPhotoAlbum *photoAlbum = filteredCollections[index];
-    [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:photoAlbum photoManager:_photoManager]];
+    id collection = filteredCollections[index];
+    [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:collection photoManager:_photoManager]];
+}
+
+-(void)showCollectionWithTitle:(NSString *)title
+{
+    id collection = [[_photoManager.allCollections filteredArrayUsingPredicate:_predicate] match:^BOOL(id<XPPhotoCollection> obj) {
+        return [[obj title] isEqualToString:title];
+    }];
+    
+    if (collection)
+    {
+        [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:collection photoManager:_photoManager]];
+    }
 }
 
 -(NSUInteger)numberOfItems

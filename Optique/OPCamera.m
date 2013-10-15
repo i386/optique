@@ -8,18 +8,20 @@
 
 #import "OPCamera.h"
 #import "OPCameraPhoto.h"
+#import "OPCameraService.h"
 
 @interface OPCamera() {
     NSMutableArray *_allPhotos;
     NSMutableDictionary *_thumbnails;
     NSTimer *_batchTimer;
     NSUInteger _thumbnailsRecieved;
+    OPCameraService *_cameraService;
 }
 @end
 
 @implementation OPCamera
 
--(id)initWithDevice:(ICCameraDevice *)device photoManager:(XPPhotoManager *)photoManager
+-(id)initWithDevice:(ICCameraDevice *)device photoManager:(XPPhotoManager *)photoManager service:(OPCameraService *)service
 {
     self = [super init];
     if (self)
@@ -31,6 +33,7 @@
         _device.delegate = self;
         _thumbnailsRecieved = 0;
         _created = [NSDate date];
+        _cameraService = service;
     }
     return self;
 }
@@ -147,7 +150,11 @@
 {
     if (error)
     {
-        NSLog(@"Session could not start for camera '%@'. Reason: %@", device.name, error);
+        //Phone is locked
+        if ([error.domain isEqualToString:@"com.apple.ImageCaptureCore"] && error.code == -9943)
+        {
+            [_cameraService userNeedsToUnlockCamera:error.userInfo[@"NSLocalizedDescription"]];
+        }
     }
     else
     {

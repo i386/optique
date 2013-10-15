@@ -76,7 +76,6 @@
 		0F946AAF178700A8004F6B57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F946AAD178700A8004F6B57 /* InfoPlist.strings */; };
 		0F946AB8178701CD004F6B57 /* XPPhotoCollectionProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F946AB7178701CD004F6B57 /* XPPhotoCollectionProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F946ABA178702ED004F6B57 /* XPPhotoCollectionProviderDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F946AB9178702ED004F6B57 /* XPPhotoCollectionProviderDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F946ABB178707F5004F6B57 /* Flickr.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F946AA8178700A8004F6B57 /* Flickr.bundle */; };
 		0F946ABD178797F3004F6B57 /* OPFlickrPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F946AB5178700CF004F6B57 /* OPFlickrPlugin.m */; };
 		0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F96270C170418EB007C1A86 /* OPPhotoViewController.m */; };
 		0F96270F170418EB007C1A86 /* OPPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F96270D170418EB007C1A86 /* OPPhotoViewController.xib */; };
@@ -241,7 +240,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				0FC2ABC91789539C009C7B02 /* Camera.bundle in CopyFiles */,
-				0F946ABB178707F5004F6B57 /* Flickr.bundle in CopyFiles */,
 				0FCA4D8317391EC3007DC9EF /* Twitter.bundle in CopyFiles */,
 				0FCA4D651738A28F007DC9EF /* Facebook.bundle in CopyFiles */,
 				0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */,

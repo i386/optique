@@ -56,6 +56,8 @@
 {
     [_photoCollections addObject:camera];
     [_delegate didAddPhotoCollection:camera];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"OPCameraServiceDidAddCamera" object:nil userInfo:@{@"title": camera.title}];
 }
 
 -(void)didRemoveCamera:(OPCamera *)camera

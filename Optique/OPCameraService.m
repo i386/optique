@@ -67,7 +67,7 @@
     }
 #endif
     
-    OPCamera *camera = [[OPCamera alloc] initWithDevice:cameraDevice photoManager:_photoManager];
+    OPCamera *camera = [[OPCamera alloc] initWithDevice:cameraDevice photoManager:_photoManager service:self];
     [camera removeCacheDirectory];
     
     [_devices setObject:camera forKey:device.name];
@@ -87,6 +87,14 @@
     [_cameraPlugin didRemoveCamera:camera];
     [_devices removeObjectForKey:device.name];
     [camera removeCacheDirectory];
+}
+
+-(void)userNeedsToUnlockCamera:(NSString*)message
+{
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    notification.title = message;
+    notification.subtitle = @"Optique cannot load your photos until you have unlocked the device";
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 
 @end
