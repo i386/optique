@@ -60,7 +60,6 @@
     
     OPWindow *window = (OPWindow*)self.window;
     [window.titleBarView addSubview:(NSView*)_toolbarViewController.view];
-    _toolbarViewController.view.frame = NSMakeRect(0, 0, window.frame.size.width, 36);
     
     _albumViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager title:@"Albums" collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject collectionType] == kPhotoCollectionLocal || [evaluatedObject collectionType] == kPhotoCollectionOther;
