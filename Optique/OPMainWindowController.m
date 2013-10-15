@@ -129,7 +129,6 @@
 -(void)filterChanged:(NSNotification*)notification
 {
     OPApplicationMode mode = [notification.userInfo[@"mode"] shortValue];
-    NSLog(@"notification %@", notification.userInfo);
     
     if (mode == OPApplicationModeAlbum)
     {
