@@ -10,10 +10,13 @@
 #import "OPPhotoViewController.h"
 #import "OPGridViewCell.h"
 #import "OPImagePreviewService.h"
+#import "OPPlaceHolderViewController.h"
 
 @interface OPPhotoCollectionViewController () {
     NSMutableArray *_sharingMenuItems;
+    OPPlaceHolderViewController *_placeHolderViewController;
 }
+
 @end
 
 @implementation OPPhotoCollectionViewController
@@ -26,6 +29,18 @@
         _collection = collection;
         _photoManager = photoManager;
         _sharingMenuItems = [NSMutableArray array];
+        
+        NSString *placeHolderText;
+        if ([collection collectionType] == kPhotoCollectionCamera)
+        {
+            placeHolderText = @"There are no photos on this camera";
+        }
+        else
+        {
+            placeHolderText = @"There are no photos in this album";
+        }
+        
+        _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:placeHolderText image:[NSImage imageNamed:@"folder"]];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
     }
@@ -245,6 +260,12 @@
     [self willChangeValueForKey:@"collection"];
     [_gridView reloadData];
     [self didChangeValueForKey:@"collection"];
+}
+
+-(NSView *)viewForNoItemsInGridView:(OEGridView *)gridView
+{
+    _placeHolderViewController.view.frame = gridView.frame;
+    return _placeHolderViewController.view;
 }
 
 @end

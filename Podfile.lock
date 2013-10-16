@@ -1,19 +1,25 @@
 PODS:
-  - AFNetworking (1.3.1)
-  - BlocksKit (1.8.2):
+  - AFNetworking (1.3.3)
+  - BlocksKit (1.8.3):
     - libffi
   - CDEvents (1.2.0)
+  - CNBaseView (1.0.11)
   - gtm-oauth (0.0.1):
     - gtm-oauth/nibs
   - gtm-oauth/nibs (0.0.1)
   - INAppStoreWindow (HEAD based on 1.2)
   - NSHash (1.0.1)
-  - OEGridView (0.0.1)
+  - OEGridView (0.0.1):
+    - OEGridView/arc
+    - OEGridView/no-arc
+  - OEGridView/arc (0.0.1)
+  - OEGridView/no-arc (0.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 1.3.1)
   - BlocksKit (~> 1.8.2)
   - CDEvents (~> 1.2.0)
+  - CNBaseView (~> 1.0.11)
   - gtm-oauth (~> 0.0.1)
   - INAppStoreWindow (HEAD)
   - NSHash (~> 1.0.1)
@@ -24,12 +30,13 @@ EXTERNAL SOURCES:
     :path: ~/code/OEGridView
 
 SPEC CHECKSUMS:
-  AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
-  BlocksKit: 7396526b0816734103f6133fbb1a520c8b04e80c
+  AFNetworking: 0700ec7a58c36ad217173e167f6e4df7270df66b
+  BlocksKit: 27257f9cbbec0ea98c80ba83cc2ea7111ae62eb2
   CDEvents: 079cd7b12501bafe6c7ec204f87cecdadce121cc
-  gtm-oauth: b255cc385c2b1bd4af099f4d31eb809a9c67b6d6
+  CNBaseView: 37956c9d903e37d50ef164b07a13688d95880fa5
+  gtm-oauth: b2725c564e3d50c8b6109ac292414a9cceb47dd0
   INAppStoreWindow: d00327caee47d951043169df9aaab952389defcb
-  NSHash: 08e81b655e7d2e3d9b872c192e52f77b76694918
-  OEGridView: 6cc3fe2d15b2c13ecc04832fdf678fe513241a77
+  NSHash: 7e728a3e7fdff6828f3fce387049b1e0ca7fe8a0
+  OEGridView: f9785be67f6851f4805739252282623fae591338
 
-COCOAPODS: 0.22.2
+COCOAPODS: 0.26.2

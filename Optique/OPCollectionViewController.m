@@ -17,6 +17,7 @@
 #import "NSColor+Optique.h"
 #import "CATextLayer+EmptyCollection.h"
 #import "OPLocalPhoto.h"
+#import "OPPlaceHolderViewController.h"
 
 @interface OPCollectionViewController ()
 
@@ -24,12 +25,14 @@
 @property (strong) NSPredicate *predicate;
 @property (strong) NSMutableArray *sharingMenuItems;
 @property (strong) NSString *viewTitle;
+@property (strong) OPPlaceHolderViewController *placeHolderViewController;
+@property (assign) BOOL shouldDisplayViewForNoGridItems;
 
 @end
 
 @implementation OPCollectionViewController
 
--(id)initWithPhotoManager:(XPPhotoManager *)photoManager title:(NSString *)title collectionPredicate:(NSPredicate *)predicate
+-(id)initWithPhotoManager:(XPPhotoManager *)photoManager title:(NSString *)title icon:(NSImage *)icon collectionPredicate:(NSPredicate *)predicate
 {
     self = [super initWithNibName:@"OPCollectionViewController" bundle:nil];
     if (self)
@@ -37,6 +40,7 @@
         _photoManager = photoManager;
         _viewTitle = title;
         _predicate = predicate;
+        _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:[NSString stringWithFormat:@"There are no %@", [title lowercaseString]] image:icon];
     }
     return self;
 }
@@ -46,7 +50,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:XPPhotoManagerDidAddCollection object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:XPPhotoManagerDidDeleteCollection object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
-    
     
     [OPExposureService photoManager:_photoManager collectionViewController:self];
     
@@ -287,6 +290,12 @@
     }
     
     return item;
+}
+
+-(NSView *)viewForNoItemsInGridView:(OEGridView *)gridView
+{
+    _placeHolderViewController.view.frame = gridView.frame;
+    return _placeHolderViewController.view;
 }
 
 @end

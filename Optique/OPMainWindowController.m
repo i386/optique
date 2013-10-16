@@ -61,11 +61,11 @@
     OPWindow *window = (OPWindow*)self.window;
     [window.titleBarView addSubview:(NSView*)_toolbarViewController.view];
     
-    _albumViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager title:@"Albums" collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
+    _albumViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager title:@"Albums" icon:[NSImage imageNamed:@"picture"] collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject collectionType] == kPhotoCollectionLocal || [evaluatedObject collectionType] == kPhotoCollectionOther;
     }]];
     
-    _cameraViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager title:@"Cameras" collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
+    _cameraViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager title:@"Cameras" icon: [NSImage imageNamed:@"camera"] collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject collectionType] == kPhotoCollectionCamera;
     }]];
     
@@ -124,7 +124,7 @@
     else
     {
         NSString *title = [NSString stringWithFormat:@"Search for '%@'", value];
-        _searchViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager title:title collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
+        _searchViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager title:title icon:[NSImage imageNamed:@"search"] collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
             return ([evaluatedObject collectionType] == kPhotoCollectionLocal || [evaluatedObject collectionType] == kPhotoCollectionOther) && [[NSPredicate predicateWithFormat:@"self.title contains[cd] %@", value] evaluateWithObject:evaluatedObject];
         }]];
         [self addNavigationController:_searchViewController];

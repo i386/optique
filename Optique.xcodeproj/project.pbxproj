@@ -24,6 +24,7 @@
 		0F04A65E1737C7C300E53ED1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F04A65C1737C7C300E53ED1 /* InfoPlist.strings */; };
 		0F08A8D71770443C00DFEA02 /* 329-layers1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D51770443C00DFEA02 /* 329-layers1.png */; };
 		0F08A8D81770443C00DFEA02 /* 329-layers1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */; };
+		0F1B4020180E970200C1CBF5 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F1B401F180E970200C1CBF5 /* search.png */; };
 		0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A6571737C7C300E53ED1 /* Finder.bundle */; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
 		0F262A381787CFAD001A8178 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
@@ -53,6 +54,9 @@
 		0F62BA66173673B200E661DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
+		0F70718A180E354F00ED5799 /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F707187180E354F00ED5799 /* folder.png */; };
+		0F70718B180E354F00ED5799 /* picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F707188180E354F00ED5799 /* picture.png */; };
+		0F70718C180E354F00ED5799 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F707189180E354F00ED5799 /* camera.png */; };
 		0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */; };
 		0F7A704517898D9200570180 /* flickr-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7A704317898D9200570180 /* flickr-small.png */; };
 		0F7A704617898D9200570180 /* flickr-large.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7A704417898D9200570180 /* flickr-large.png */; };
@@ -66,6 +70,8 @@
 		0F85D9BC180A558F0003C6ED /* OPAlbumCountTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85D9BB180A558F0003C6ED /* OPAlbumCountTransformer.m */; };
 		0F85D9C0180CD2300003C6ED /* OPToolbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85D9BE180CD2300003C6ED /* OPToolbarViewController.m */; };
 		0F85D9C1180CD2300003C6ED /* OPToolbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F85D9BF180CD2300003C6ED /* OPToolbarViewController.xib */; };
+		0F85D9C6180DF8F20003C6ED /* OPPlaceHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85D9C4180DF8F20003C6ED /* OPPlaceHolderViewController.m */; };
+		0F85D9C7180DF8F20003C6ED /* OPPlaceHolderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F85D9C5180DF8F20003C6ED /* OPPlaceHolderViewController.xib */; };
 		0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */; };
 		0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D6171BA077004D8082 /* OPPhotoController.m */; };
 		0F8B71D9171BA077004D8082 /* OPPhotoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8B71D7171BA077004D8082 /* OPPhotoController.xib */; };
@@ -283,6 +289,7 @@
 		0F04A65F1737C7C300E53ED1 /* Finder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Finder-Prefix.pch"; sourceTree = "<group>"; };
 		0F08A8D51770443C00DFEA02 /* 329-layers1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "329-layers1.png"; sourceTree = "<group>"; };
 		0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "329-layers1@2x.png"; sourceTree = "<group>"; };
+		0F1B401F180E970200C1CBF5 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+FullScreen.h"; sourceTree = "<group>"; };
 		0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+FullScreen.m"; sourceTree = "<group>"; };
 		0F3001E0172250E800ACAF9E /* OPPhotoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoImageView.h; sourceTree = "<group>"; };
@@ -330,6 +337,9 @@
 		0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageCaptureCore.framework; path = System/Library/Frameworks/ImageCaptureCore.framework; sourceTree = SDKROOT; };
 		0F6AF87D172A42750029724A /* OPCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPCamera.h; path = ../Optique/OPCamera.h; sourceTree = "<group>"; };
 		0F6AF87E172A42750029724A /* OPCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCamera.m; path = ../Optique/OPCamera.m; sourceTree = "<group>"; };
+		0F707187180E354F00ED5799 /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
+		0F707188180E354F00ED5799 /* picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture.png; sourceTree = "<group>"; };
+		0F707189180E354F00ED5799 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		0F79A5E3175DE2DC00BB3973 /* NSColor+Optique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+Optique.h"; sourceTree = "<group>"; };
 		0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Optique.m"; sourceTree = "<group>"; };
 		0F7A704317898D9200570180 /* flickr-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flickr-small.png"; sourceTree = "<group>"; };
@@ -345,6 +355,9 @@
 		0F85D9BD180CD2300003C6ED /* OPToolbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPToolbarViewController.h; sourceTree = "<group>"; };
 		0F85D9BE180CD2300003C6ED /* OPToolbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPToolbarViewController.m; sourceTree = "<group>"; };
 		0F85D9BF180CD2300003C6ED /* OPToolbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPToolbarViewController.xib; sourceTree = "<group>"; };
+		0F85D9C3180DF8F20003C6ED /* OPPlaceHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPlaceHolderViewController.h; sourceTree = "<group>"; };
+		0F85D9C4180DF8F20003C6ED /* OPPlaceHolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPlaceHolderViewController.m; sourceTree = "<group>"; };
+		0F85D9C5180DF8F20003C6ED /* OPPlaceHolderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPlaceHolderViewController.xib; sourceTree = "<group>"; };
 		0F8B71D2171AB9D8004D8082 /* NSImage+Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Transform.h"; sourceTree = "<group>"; };
 		0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Transform.m"; sourceTree = "<group>"; };
 		0F8B71D5171BA077004D8082 /* OPPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoController.h; sourceTree = "<group>"; };
@@ -614,6 +627,9 @@
 				0F368A8617068F0500411503 /* OPWindow.m */,
 				0F368A8817068F1A00411503 /* OPWindowContentView.h */,
 				0F368A8917068F1A00411503 /* OPWindowContentView.m */,
+				0F85D9C3180DF8F20003C6ED /* OPPlaceHolderViewController.h */,
+				0F85D9C4180DF8F20003C6ED /* OPPlaceHolderViewController.m */,
+				0F85D9C5180DF8F20003C6ED /* OPPlaceHolderViewController.xib */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -784,6 +800,10 @@
 		0F9C80BA16F891C700B2B6D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F1B401F180E970200C1CBF5 /* search.png */,
+				0F707187180E354F00ED5799 /* folder.png */,
+				0F707188180E354F00ED5799 /* picture.png */,
+				0F707189180E354F00ED5799 /* camera.png */,
 				0F50C39A178560A90017DF73 /* Optique.entitlements */,
 				0FEC674F171034E00086B264 /* Image resources */,
 				0F9C80BB16F891C700B2B6D8 /* Optique-Info.plist */,
@@ -1344,17 +1364,21 @@
 				0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */,
 				0FEF33A716FEC8090096D72A /* OPCollectionViewController.xib in Resources */,
 				0F33D0ED1769E87A0032CCA0 /* 218-trash2@2x.png in Resources */,
+				0F85D9C7180DF8F20003C6ED /* OPPlaceHolderViewController.xib in Resources */,
 				0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */,
 				0FE3B2451702C62D00FC0D6C /* OPNavigationController.xib in Resources */,
 				0F34814A176D669F00439AEA /* loading-preview.pdf in Resources */,
+				0F70718A180E354F00ED5799 /* folder.png in Resources */,
 				0FDE075917030FCC00D5B456 /* OPPhotoCollectionViewController.xib in Resources */,
 				0F08A8D81770443C00DFEA02 /* 329-layers1@2x.png in Resources */,
 				0F96270F170418EB007C1A86 /* OPPhotoViewController.xib in Resources */,
 				0FEC675717103B5E0086B264 /* effectsbarselectedbg.png in Resources */,
 				0FEC675817103B5E0086B264 /* effectsbarselectedbg@2x.png in Resources */,
 				0F33D0E41769E7800032CCA0 /* 298-circlex.png in Resources */,
+				0F70718B180E354F00ED5799 /* picture.png in Resources */,
 				0F33D0E51769E7800032CCA0 /* 298-circlex@2x.png in Resources */,
 				0F33D0EC1769E87A0032CCA0 /* 218-trash2.png in Resources */,
+				0F70718C180E354F00ED5799 /* camera.png in Resources */,
 				0F85D9C1180CD2300003C6ED /* OPToolbarViewController.xib in Resources */,
 				0F33D0F11769E93D0032CCA0 /* 86-camera-alt@2x.png in Resources */,
 				0FCAF8C91710461A00E6C903 /* effectsbarbg.png in Resources */,
@@ -1370,6 +1394,7 @@
 				0FA706CC171911F400864CED /* empty-album@2x.png in Resources */,
 				0F8B71D9171BA077004D8082 /* OPPhotoController.xib in Resources */,
 				0F8FEBBA1769E283004BB523 /* 212-action2.png in Resources */,
+				0F1B4020180E970200C1CBF5 /* search.png in Resources */,
 				0FFE24B2172907AA00513AD2 /* back.png in Resources */,
 				0FAEFFF3176736F700D60171 /* Optique.icns in Resources */,
 				0FFE24B61729206B00513AD2 /* back@2x.png in Resources */,
@@ -1508,6 +1533,7 @@
 				0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */,
 				0F3DF46D16F98D0D00C003D3 /* OPPhotoAlbum.m in Sources */,
 				0FEF33A616FEC8090096D72A /* OPCollectionViewController.m in Sources */,
+				0F85D9C6180DF8F20003C6ED /* OPPlaceHolderViewController.m in Sources */,
 				0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */,
 				0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */,
 				0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */,

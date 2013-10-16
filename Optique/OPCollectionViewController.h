@@ -21,7 +21,7 @@
 @property (weak) IBOutlet NSTextField *titleLabel;
 @property (weak) IBOutlet NSBox *headingLine;
 
--initWithPhotoManager:(XPPhotoManager*)photoManager title:(NSString*)title collectionPredicate:(NSPredicate*)predicate;
+-initWithPhotoManager:(XPPhotoManager*)photoManager title:(NSString*)title icon:(NSImage*)icon collectionPredicate:(NSPredicate*)predicate;
 
 - (IBAction)deleteAlbum:(NSMenuItem*)sender;
 

@@ -6,6 +6,7 @@ target :Optique, :exclusive => false do
   pod 'NSHash', '~> 1.0.1'
   pod 'BlocksKit', '~> 1.8.2'
   pod 'OEGridView', :path => '~/code/OEGridView'
+  pod 'CNBaseView', '~> 1.0.11'
 end
 
 target :Flickr, :exclusive => true do
