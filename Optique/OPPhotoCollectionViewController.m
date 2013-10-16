@@ -40,7 +40,7 @@
             placeHolderText = @"There are no photos in this album";
         }
         
-        _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:placeHolderText image:[NSImage imageNamed:@"folder"]];
+        _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:placeHolderText image:[NSImage imageNamed:@"picture"]];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
     }

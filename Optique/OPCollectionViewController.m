@@ -25,6 +25,7 @@
 @property (strong) NSPredicate *predicate;
 @property (strong) NSMutableArray *sharingMenuItems;
 @property (strong) NSString *viewTitle;
+@property (strong) NSString *emptyMessage;
 @property (strong) OPPlaceHolderViewController *placeHolderViewController;
 @property (assign) BOOL shouldDisplayViewForNoGridItems;
 
@@ -32,15 +33,16 @@
 
 @implementation OPCollectionViewController
 
--(id)initWithPhotoManager:(XPPhotoManager *)photoManager title:(NSString *)title icon:(NSImage *)icon collectionPredicate:(NSPredicate *)predicate
+-(id)initWithPhotoManager:(XPPhotoManager *)photoManager title:(NSString *)title emptyMessage:(NSString*)emptyMessage icon:(NSImage *)icon collectionPredicate:(NSPredicate *)predicate
 {
     self = [super initWithNibName:@"OPCollectionViewController" bundle:nil];
     if (self)
     {
         _photoManager = photoManager;
         _viewTitle = title;
+        _emptyMessage = emptyMessage;
         _predicate = predicate;
-        _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:[NSString stringWithFormat:@"There are no %@", [title lowercaseString]] image:icon];
+        _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:emptyMessage image:icon];
     }
     return self;
 }
