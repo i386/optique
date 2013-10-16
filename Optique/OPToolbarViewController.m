@@ -123,7 +123,7 @@ NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
 -(void)cameraMode
 {
     _filterMode = OPApplicationModeCamera;
-    _switchViewButton.title = @"Camera";
+    _switchViewButton.title = @"Albums";
     _switchViewButton.image = nil;
     _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 72, _switchViewButton.frame.size.height);
     _searchFilter.stringValue = @""; //Clear
@@ -132,7 +132,7 @@ NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
 -(void)albumMode
 {
     _filterMode = OPApplicationModeAlbum;
-    _switchViewButton.title = @"Albums";
+    _switchViewButton.title = @"Cameras";
     _switchViewButton.image = nil;
     _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 69, _switchViewButton.frame.size.height);
 }
