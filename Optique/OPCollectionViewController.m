@@ -13,7 +13,6 @@
 #import "OPDeleteAlbumSheetController.h"
 #import "OPGridViewCell.h"
 #import "NSColor+Optique.h"
-#import "CATextLayer+EmptyCollection.h"
 #import "OPLocalPhoto.h"
 #import "OPPlaceHolderViewController.h"
 

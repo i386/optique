@@ -9,9 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import <OEGridView/OEGridView.h>
 
-#define kGridViewRowSpacing 40.f
-#define kGridViewColumnSpacing 20.f
-
 @interface OPGridView : OEGridView
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "OPNavigationViewController.h"
-#import "OPGridView.h"
+#import "OPPhotoGridView.h"
 
 @interface OPPhotoCollectionViewController : OPNavigationViewController <OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPPhotoCollectionViewController>
 
@@ -16,7 +16,7 @@
 
 @property (strong, readonly) id<XPPhotoCollection> collection;
 @property (strong, readonly) XPPhotoManager *photoManager;
-@property (strong) IBOutlet OPGridView *gridView;
+@property (strong) IBOutlet OPPhotoGridView *gridView;
 @property (strong) IBOutlet NSMenuItem *moveToAlbumItem;
 @property (weak) IBOutlet NSBox *headingLine;
 

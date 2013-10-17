@@ -1,17 +1,17 @@
 //
-//  OPGridView.m
+//  OPPhotoGridView.m
 //  Optique
 //
-//  Created by James Dumay on 14/06/2013.
+//  Created by James Dumay on 17/10/2013.
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OPGridView.h"
+#import "OPPhotoGridView.h"
 
-#define kGridViewRowSpacing 40.f
-#define kGridViewColumnSpacing 20.f
+@implementation OPPhotoGridView
 
-@implementation OPGridView
+#define kGridViewRowSpacing 20.0f
+#define kGridViewColumnSpacing 20.0f
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

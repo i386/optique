@@ -8,7 +8,7 @@
 
 #import "OPPhotoCollectionViewController.h"
 #import "OPPhotoViewController.h"
-#import "OPGridViewCell.h"
+#import "OPPhotoGridViewCell.h"
 #import "OPImagePreviewService.h"
 #import "OPPlaceHolderViewController.h"
 
@@ -151,7 +151,7 @@
 
 -(OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    OPGridViewCell *item = [[OPGridViewCell alloc] init];
+    OPPhotoGridViewCell *item = [[OPPhotoGridViewCell alloc] init];
     
     NSArray *allPhotos = _collection.allPhotos;
     
@@ -160,7 +160,7 @@
         id<XPPhoto> photo = allPhotos[index];
         item.representedObject = photo;
         
-        OPGridViewCell * __weak weakItem = item;
+        OPPhotoGridViewCell * __weak weakItem = item;
         id<XPPhoto> __weak weakPhoto = photo;
         
         item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
