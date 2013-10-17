@@ -29,4 +29,10 @@ typedef enum {
 
 - (IBAction)switchViewButtonPressed:(id)sender;
 
+- (void)backMode;
+
+- (void)albumMode;
+
+- (void)cameraMode;
+
 @end

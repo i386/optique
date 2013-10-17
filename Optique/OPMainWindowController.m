@@ -82,7 +82,15 @@
 
 -(void)addNavigationController:(OPNavigationViewController*)viewController
 {
+    if (_navigationController)
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationControllerViewDidChange object:_navigationController];
+    }
+    
     _navigationController = [[OPNavigationController alloc] initWithRootViewController:viewController];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigationControllerChanged:) name:OPNavigationControllerViewDidChange object:_navigationController];
+    
     _newAlbumSheetController = [[OPNewAlbumSheetController alloc] initWithPhotoManager:_photoManager navigationController:_navigationController];
     
     //Set weak ref to nav controller
@@ -159,6 +167,26 @@
         {
             [_cameraViewController showCollectionWithTitle:cameraTitle];
         }
+    }
+}
+
+-(void)navigationControllerChanged:(NSNotification*)notification
+{
+    OPNavigationController *controllerForNotification = (OPNavigationController*)notification.object;
+    
+    if (controllerForNotification.isRootViewControllerVisible &&
+        [controllerForNotification.visibleViewController isEqual:_cameraViewController])
+    {
+        [_toolbarViewController cameraMode];
+    }
+    else if (controllerForNotification.isRootViewControllerVisible &&
+             [controllerForNotification.visibleViewController isEqual:_albumViewController])
+    {
+        [_toolbarViewController albumMode];
+    }
+    else if (!controllerForNotification.isRootViewControllerVisible)
+    {
+        [_toolbarViewController backMode];
     }
 }
 

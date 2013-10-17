@@ -61,11 +61,6 @@ NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
 
 -(void)navigationControllerChanged:(NSNotification*)notification
 {
-    if (!_navigationController.isRootViewControllerVisible)
-    {
-        [self backMode];
-    }
-    
     if ([_navigationController.visibleViewController conformsToProtocol:@protocol(XPSharingService)])
     {
         id<XPSharingService> sharingService = (id<XPSharingService>)_navigationController.visibleViewController;

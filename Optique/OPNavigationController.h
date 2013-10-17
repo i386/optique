@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class OPNavigationTitle;
 @class OPNavigationViewController;
 
 extern NSString *const OPNavigationControllerViewDidChange;
@@ -17,7 +16,6 @@ extern NSString *const OPNavigationControllerViewDidChange;
 
 @property (strong, readonly) OPNavigationViewController *rootViewController;
 @property (strong, nonatomic, readonly) OPNavigationViewController *visibleViewController;
-@property (strong) IBOutlet OPNavigationTitle *navigationTitle;
 
 -initWithRootViewController:(OPNavigationViewController*)viewController;
 
