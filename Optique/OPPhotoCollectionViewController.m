@@ -35,8 +35,7 @@
         if ([collection collectionType] == kPhotoCollectionCamera)
         {
             id camera = collection;
-            
-            if ([camera isLocked])
+            if ([camera respondsToSelector:@selector(isLocked)] && [camera isLocked])
             {
                 placeHolderText = @"You will need to unlock this device before viewing photos";
                 placeHolderImage = [NSImage imageNamed:@"lock"];
