@@ -64,7 +64,6 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
         if (!directoryCreationError)
         {
             id<XPPhotoCollection> album = [XPExposureService createCollectionWithTitle:albumName path:albumPath];
-            [self addAlbum:album];
             [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:album];
             return album;
         }

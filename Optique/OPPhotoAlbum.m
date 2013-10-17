@@ -9,6 +9,7 @@
 #import "OPPhotoAlbum.h"
 #import "OPLocalPhoto.h"
 #import "NSURL+EqualToURL.h"
+#import "NSURL+URLWithoutQuery.h"
 
 @interface OPPhotoAlbum() {
     NSLock *_arrayLock;
@@ -183,12 +184,7 @@
         return NO;
     
     OPPhotoAlbum *otherAlbum = object;
-    
-    NSLog(@"=====");
-    NSLog(@"This obj: %@", [self.path path]);
-    NSLog(@"This oth: %@", [otherAlbum.path path]);
-    
-    return [[self path] isEqualToURL:otherAlbum.path];
+    return [[[self path] URLWithoutQuery] isEqualToURL:[otherAlbum.path URLWithoutQuery]];
 }
 
 -(NSUInteger)hash
