@@ -7,21 +7,9 @@
 //
 
 #import "OPCameraPlugin.h"
+#import "NSImage+CGImage.h"
 
 @implementation OPCameraPlugin
-
--(CALayer *)badgeLayerForCollection:(id<XPPhotoCollection>)collection
-{
-    if ([collection isKindOfClass:[OPCamera class]])
-    {
-        XPBadgeLayer *badgeLayer = [XPBadgeLayer layer];
-        CATextLayer *layer = [CATextLayer layer];
-        layer.string = @"Camera";
-        [badgeLayer addSublayer:layer];
-        return badgeLayer;
-    }
-    return nil;
-}
 
 -(void)pluginDidLoad:(NSDictionary *)userInfo
 {
@@ -50,6 +38,29 @@
         [_cameraService stop];
         [_cameraService start];
     }
+}
+
+-(CALayer *)badgeLayerForCollection:(id<XPPhotoCollection>)collection
+{
+    if ([collection isKindOfClass:[OPCamera class]])
+    {
+        OPCamera *camera  = (OPCamera*)collection;
+        if (camera.isLocked)
+        {
+            NSImage *image = [NSImage imageNamed:@"lock"];
+            
+            XPBadgeLayer *layer = [XPBadgeLayer layer];
+            XPBadgeLayer *imageLayer = [XPBadgeLayer layer];
+            imageLayer.contents = (id)image.CGImageRef;
+            imageLayer.bounds = NSMakeRect(0, 0, 128, 128);
+            imageLayer.position = NSMakePoint(140, 87.5);
+            
+            [layer addSublayer:imageLayer];
+            
+            return layer;
+        }
+    }
+    return nil;
 }
 
 -(NSArray *)debugMenuItems
