@@ -189,7 +189,7 @@
 
 -(NSUInteger)hash
 {
-    return self.path.hash;
+    return self.path.URLWithoutQuery.hash;
 }
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "OPLocalPhoto.h"
+#import "NSURL+EqualToURL.h"
+#import "NSURL+URLWithoutQuery.h"
 
 @implementation OPLocalPhoto
 
@@ -86,12 +88,12 @@
         return NO;
     
     OPLocalPhoto *photo = object;
-    return [self.path isEqual:photo.path];
+    return [[[self path] URLWithoutQuery] isEqualToURL:[photo.path URLWithoutQuery]];
 }
 
 -(NSUInteger)hash
 {
-    return self.path.hash;
+    return self.path.URLWithoutQuery.hash;
 }
 
 @end
