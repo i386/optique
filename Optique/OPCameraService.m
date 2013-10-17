@@ -73,8 +73,6 @@
     [_devices setObject:camera forKey:device.name];
     
     [camera.device requestOpenSession];
-    
-    [_cameraPlugin didAddCamera:camera];
 }
 
 -(void)deviceBrowser:(ICDeviceBrowser *)browser didRemoveDevice:(ICDevice *)device moreGoing:(BOOL)moreGoing
@@ -84,17 +82,24 @@
 #endif
     
     OPCamera *camera = [_devices objectForKey:device.name];
-    [_cameraPlugin didRemoveCamera:camera];
+    [self didRemoveCamera:camera];
     [_devices removeObjectForKey:device.name];
     [camera removeCacheDirectory];
 }
 
--(void)userNeedsToUnlockCamera:(NSString*)message
+-(void)didAddCamera:(OPCamera *)camera
 {
-    NSUserNotification *notification = [[NSUserNotification alloc] init];
-    notification.title = message;
-    notification.subtitle = @"Optique cannot load your photos until you have unlocked the device";
-    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    [[_cameraPlugin photoCollections] addObject:camera];
+    [[_cameraPlugin delegate] didAddPhotoCollection:camera];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"OPCameraServiceDidAddCamera" object:nil userInfo:@{@"title": camera.title}];
 }
+
+-(void)didRemoveCamera:(OPCamera *)camera
+{
+    [[_cameraPlugin photoCollections] removeObject:camera];
+    [[_cameraPlugin delegate] didRemovePhotoCollection:camera];
+}
+
 
 @end

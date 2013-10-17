@@ -200,7 +200,6 @@
 
 -(void)albumDeleted:(NSNotification*)notification
 {
-    NSLog(@"");
     [self performBlockOnMainThread:^{
         [self reloadData];
         

@@ -31,6 +31,8 @@
 /** remove all the caches **/
 -(void)removeCaches;
 
--(void)userNeedsToUnlockCamera:(NSString*)message;
+-(void)didAddCamera:(OPCamera*)camera;
+
+-(void)didRemoveCamera:(OPCamera*)camera;
 
 @end

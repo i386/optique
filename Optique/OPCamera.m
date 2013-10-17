@@ -74,6 +74,11 @@
     [_device requestEjectOrDisconnect];
 }
 
+-(BOOL)isLocked
+{
+    return [_device isAccessRestrictedAppleDevice];
+}
+
 -(void)reload
 {
     NSMutableArray *newPhotos = [NSMutableArray array];
@@ -139,6 +144,8 @@
         [file thumbnailIfAvailable];
         [file largeThumbnailIfAvailable];
     }
+    
+    [_cameraService didAddCamera:self];
 }
 
 -(void)device:(ICDevice *)device didEncounterError:(NSError *)error
@@ -148,15 +155,7 @@
 
 -(void)device:(ICDevice *)device didOpenSessionWithError:(NSError *)error
 {
-    if (error)
-    {
-        //Phone is locked
-        if ([error.domain isEqualToString:@"com.apple.ImageCaptureCore"] && error.code == -9943)
-        {
-            [_cameraService userNeedsToUnlockCamera:error.userInfo[@"NSLocalizedDescription"]];
-        }
-    }
-    else
+    if (!error)
     {
 #if DEBUG
         NSLog(@"Session opened for camera '%@'", device.name);

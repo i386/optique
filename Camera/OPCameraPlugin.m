@@ -52,20 +52,6 @@
     }
 }
 
--(void)didAddCamera:(OPCamera *)camera
-{
-    [_photoCollections addObject:camera];
-    [_delegate didAddPhotoCollection:camera];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"OPCameraServiceDidAddCamera" object:nil userInfo:@{@"title": camera.title}];
-}
-
--(void)didRemoveCamera:(OPCamera *)camera
-{
-    [_photoCollections removeObject:camera];
-    [_delegate didRemovePhotoCollection:camera];
-}
-
 -(NSArray *)debugMenuItems
 {
     XPMenuItem *clearCacheItem = [[XPMenuItem alloc] initWithTitle:@"Clear cache" keyEquivalent:@"" block:^(NSMenuItem *sender) {

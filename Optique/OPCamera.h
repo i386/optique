@@ -34,4 +34,6 @@
 
 -(void)requestEject;
 
+-(BOOL)isLocked;
+
 @end

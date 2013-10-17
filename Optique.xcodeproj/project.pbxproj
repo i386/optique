@@ -103,6 +103,7 @@
 		0FA29D06180FE8740066077D /* OPPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA29D05180FE8740066077D /* OPPhotoGridView.m */; };
 		0FA29D09180FE8C60066077D /* OPPhotoGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA29D08180FE8C60066077D /* OPPhotoGridViewCell.m */; };
 		0FA29D0E180FF34A0066077D /* NSURL+URLWithoutQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA29D0D180FF34A0066077D /* NSURL+URLWithoutQuery.m */; };
+		0FA29D12180FFB080066077D /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA29D11180FFB080066077D /* lock.png */; };
 		0FA706C2171911B900864CED /* OPNewAlbumSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA706C0171911B900864CED /* OPNewAlbumSheetController.m */; };
 		0FA706C3171911B900864CED /* OPNewAlbumSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C1171911B900864CED /* OPNewAlbumSheetController.xib */; };
 		0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA706C5171911CC00864CED /* OPDeleteAlbumSheetController.m */; };
@@ -428,6 +429,7 @@
 		0FA29D08180FE8C60066077D /* OPPhotoGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPPhotoGridViewCell.m; path = Optique/OPPhotoGridViewCell.m; sourceTree = "<group>"; };
 		0FA29D0C180FF34A0066077D /* NSURL+URLWithoutQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+URLWithoutQuery.h"; sourceTree = "<group>"; };
 		0FA29D0D180FF34A0066077D /* NSURL+URLWithoutQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+URLWithoutQuery.m"; sourceTree = "<group>"; };
+		0FA29D11180FFB080066077D /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		0FA706BF171911B900864CED /* OPNewAlbumSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPNewAlbumSheetController.h; path = Optique/OPNewAlbumSheetController.h; sourceTree = "<group>"; };
 		0FA706C0171911B900864CED /* OPNewAlbumSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPNewAlbumSheetController.m; path = Optique/OPNewAlbumSheetController.m; sourceTree = "<group>"; };
 		0FA706C1171911B900864CED /* OPNewAlbumSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPNewAlbumSheetController.xib; path = Optique/OPNewAlbumSheetController.xib; sourceTree = "<group>"; };
@@ -870,6 +872,7 @@
 		0F9C80BA16F891C700B2B6D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0FA29D11180FFB080066077D /* lock.png */,
 				0F1B401F180E970200C1CBF5 /* search.png */,
 				0F707187180E354F00ED5799 /* folder.png */,
 				0F707188180E354F00ED5799 /* picture.png */,
@@ -1471,6 +1474,7 @@
 				0F9C80BE16F891C700B2B6D8 /* InfoPlist.strings in Resources */,
 				0F9C80C416F891C700B2B6D8 /* Credits.rtf in Resources */,
 				0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */,
+				0FA29D12180FFB080066077D /* lock.png in Resources */,
 				0FEF33A716FEC8090096D72A /* OPCollectionViewController.xib in Resources */,
 				0F33D0ED1769E87A0032CCA0 /* 218-trash2@2x.png in Resources */,
 				0F85D9C7180DF8F20003C6ED /* OPPlaceHolderViewController.xib in Resources */,

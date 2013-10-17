@@ -17,7 +17,4 @@
 @property (weak) id<XPPhotoCollectionProviderDelegate> delegate;
 @property (strong, readonly) NSMutableArray *photoCollections;
 
--(void)didAddCamera:(OPCamera*)camera;
--(void)didRemoveCamera:(OPCamera*)camera;
-
 @end

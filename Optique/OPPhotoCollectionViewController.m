@@ -30,17 +30,28 @@
         _photoManager = photoManager;
         _sharingMenuItems = [NSMutableArray array];
         
+        NSImage *placeHolderImage = [NSImage imageNamed:@"picture"];
         NSString *placeHolderText;
         if ([collection collectionType] == kPhotoCollectionCamera)
         {
-            placeHolderText = @"There are no photos on this camera";
+            id camera = collection;
+            
+            if ([camera isLocked])
+            {
+                placeHolderText = @"You will need to unlock this device before viewing photos";
+                placeHolderImage = [NSImage imageNamed:@"lock"];
+            }
+            else
+            {
+                placeHolderText = @"There are no photos on this camera";
+            }
         }
         else
         {
             placeHolderText = @"There are no photos in this album";
         }
         
-        _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:placeHolderText image:[NSImage imageNamed:@"picture"]];
+        _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:placeHolderText image:placeHolderImage];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
     }
