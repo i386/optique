@@ -187,12 +187,12 @@
     }
 }
 
--(void)uploadPhotoAlbum:(OPPhotoAlbum *)photoAlbum
+-(void)uploadPhotoAlbum:(id<XPPhotoCollection>)photoAlbum
 {
     [self uploadPhotos:photoAlbum];
 }
 
--(void)uploadPhotos:(OPPhotoAlbum*)album
+-(void)uploadPhotos:(id<XPPhotoCollection>)album
 {
     AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://up.flickr.com"]];
     

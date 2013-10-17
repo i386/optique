@@ -44,7 +44,7 @@
 		0F368A74170678AC00411503 /* NSView+OptiqueBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A73170678AB00411503 /* NSView+OptiqueBackground.m */; };
 		0F368A8717068F0500411503 /* OPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A8617068F0500411503 /* OPWindow.m */; };
 		0F368A8A17068F1B00411503 /* OPWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A8917068F1A00411503 /* OPWindowContentView.m */; };
-		0F3DF46D16F98D0D00C003D3 /* OPPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */; };
+		0F3B6C53180F4FB200119C10 /* XPExposureService.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCA4D281737D351007DC9EF /* XPExposureService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F413C50178EA32300FCE1EA /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0F44BAD9173DCA6D0039B00E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F44BAD7173DCA620039B00E /* Accounts.framework */; };
 		0F44BB4E173E011E0039B00E /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
@@ -75,9 +75,14 @@
 		0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */; };
 		0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D6171BA077004D8082 /* OPPhotoController.m */; };
 		0F8B71D9171BA077004D8082 /* OPPhotoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8B71D7171BA077004D8082 /* OPPhotoController.xib */; };
-		0F8C561D172CC0D300CB7B1E /* OPLocalPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C561C172CC0D300CB7B1E /* OPLocalPhoto.m */; };
 		0F8FEBBA1769E283004BB523 /* 212-action2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8FEBB81769E283004BB523 /* 212-action2.png */; };
 		0F8FEBBB1769E283004BB523 /* 212-action2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8FEBB91769E283004BB523 /* 212-action2@2x.png */; };
+		0F905943180F43BF000D4A53 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F905942180F43BF000D4A53 /* CoreFoundation.framework */; };
+		0F905949180F43BF000D4A53 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F905947180F43BF000D4A53 /* InfoPlist.strings */; };
+		0F905953180F4415000D4A53 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
+		0F905954180F4427000D4A53 /* Local.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F905941180F43BF000D4A53 /* Local.bundle */; };
+		0F905955180F44C0000D4A53 /* OPAlbumScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */; };
+		0F905956180F44C0000D4A53 /* OPLocalPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F90594F180F43DF000D4A53 /* OPLocalPlugin.m */; };
 		0F946AA9178700A8004F6B57 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0F946AAF178700A8004F6B57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F946AAD178700A8004F6B57 /* InfoPlist.strings */; };
 		0F946AB8178701CD004F6B57 /* XPPhotoCollectionProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F946AB7178701CD004F6B57 /* XPPhotoCollectionProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -92,6 +97,10 @@
 		0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80C816F891C700B2B6D8 /* MainMenu.xib */; };
 		0FA29614178D4AF1005009C4 /* XPBundleMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FA29612178D4AF1005009C4 /* XPBundleMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FA29615178D4AF1005009C4 /* XPBundleMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA29613178D4AF1005009C4 /* XPBundleMetadata.m */; };
+		0FA29CE2180FC87F0066077D /* NSURL+EqualToURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA29CE1180FC87F0066077D /* NSURL+EqualToURL.m */; };
+		0FA29CE3180FC87F0066077D /* NSURL+EqualToURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA29CE1180FC87F0066077D /* NSURL+EqualToURL.m */; };
+		0FA29CE4180FC87F0066077D /* NSURL+EqualToURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA29CE1180FC87F0066077D /* NSURL+EqualToURL.m */; };
+		0FA29CE5180FC87F0066077D /* NSURL+EqualToURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA29CE1180FC87F0066077D /* NSURL+EqualToURL.m */; };
 		0FA706C2171911B900864CED /* OPNewAlbumSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA706C0171911B900864CED /* OPNewAlbumSheetController.m */; };
 		0FA706C3171911B900864CED /* OPNewAlbumSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C1171911B900864CED /* OPNewAlbumSheetController.xib */; };
 		0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA706C5171911CC00864CED /* OPDeleteAlbumSheetController.m */; };
@@ -99,7 +108,6 @@
 		0FA706CB171911F400864CED /* empty-album.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C9171911F400864CED /* empty-album.png */; };
 		0FA706CC171911F400864CED /* empty-album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706CA171911F400864CED /* empty-album@2x.png */; };
 		0FAEFFF3176736F700D60171 /* Optique.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEFFF2176736F700D60171 /* Optique.icns */; };
-		0FB384CB17050B3200DEB770 /* OPAlbumScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */; };
 		0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */; };
 		0FC2ABB6178952F7009C7B02 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0FC2ABBC178952F7009C7B02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2ABBA178952F7009C7B02 /* InfoPlist.strings */; };
@@ -113,7 +121,6 @@
 		0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */; };
 		0FCA4D191737CC4A007DC9EF /* Exposure.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0FCA4D1C1737CE2C007DC9EF /* OPFinderPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D1B1737CE2C007DC9EF /* OPFinderPlugin.m */; };
-		0FCA4D291737D351007DC9EF /* OPExposureService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D271737D351007DC9EF /* OPExposureService.m */; };
 		0FCA4D2E1737D7F0007DC9EF /* XPMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCA4D2C1737D7F0007DC9EF /* XPMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FCA4D2F1737D7F0007DC9EF /* XPMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D2D1737D7F0007DC9EF /* XPMenuItem.m */; };
 		0FCA4D301737D84F007DC9EF /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
@@ -136,6 +143,11 @@
 		0FCFCB1217043D180040FF11 /* OPImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFCB1117043D180040FF11 /* OPImageCache.m */; };
 		0FD51720176B08BD006E8F4D /* OPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD5171F176B08BD006E8F4D /* OPGridView.m */; };
 		0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD51722176B431F006E8F4D /* OPGridViewCell.m */; };
+		0FD85FDB180F46A300429320 /* OPPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */; };
+		0FD85FDC180F46A300429320 /* OPLocalPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C561C172CC0D300CB7B1E /* OPLocalPhoto.m */; };
+		0FD85FDE180F472500429320 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F368A6B170531B500411503 /* Quartz.framework */; };
+		0FD86BDF180F4C7300BFF807 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
+		0FD86BE0180F4D1E00BFF807 /* XPExposureService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D271737D351007DC9EF /* XPExposureService.m */; };
 		0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE075617030FCC00D5B456 /* OPPhotoCollectionViewController.m */; };
 		0FDE075917030FCC00D5B456 /* OPPhotoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE075717030FCC00D5B456 /* OPPhotoCollectionViewController.xib */; };
 		0FDE0ECB1787ED6100B81ADC /* GTMOAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE0ECA1787ED6100B81ADC /* GTMOAuthWindow.xib */; };
@@ -154,7 +166,9 @@
 		0FEF33A716FEC8090096D72A /* OPCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEF33A516FEC8090096D72A /* OPCollectionViewController.xib */; };
 		0FFE24B2172907AA00513AD2 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B0172907AA00513AD2 /* back.png */; };
 		0FFE24B61729206B00513AD2 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B51729206B00513AD2 /* back@2x.png */; };
+		1373B7D69D7D477FA5D36CD2 /* libPods-Exposure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CE02E9006D49619346BA66 /* libPods-Exposure.a */; };
 		1791BFD324934B749367A850 /* libPods-Optique.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938A6A86581545989549982D /* libPods-Optique.a */; };
+		5485CBA8B3D447C9AF7B4466 /* libPods-Local.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BF5E4871694D2D83796B64 /* libPods-Local.a */; };
 		8B9210D9546442B0B9B2743C /* libPods-Flickr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFC7861178F4C1091191A68 /* libPods-Flickr.a */; };
 /* End PBXBuildFile section */
 
@@ -194,13 +208,6 @@
 			remoteGlobalIDString = 0FCA4D7317391EA7007DC9EF;
 			remoteInfo = Twitter;
 		};
-		0F3632BF178E2BD10000577B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0F946AA7178700A8004F6B57;
-			remoteInfo = Flickr;
-		};
 		0F3632C1178E2BD10000577B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
@@ -209,6 +216,13 @@
 			remoteInfo = Camera;
 		};
 		0F413C51178EA32B00FCE1EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F04A62B1737C70F00E53ED1;
+			remoteInfo = Exposure;
+		};
+		0F905951180F4412000D4A53 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
 			proxyType = 1;
@@ -245,6 +259,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				0F905954180F4427000D4A53 /* Local.bundle in CopyFiles */,
 				0FC2ABC91789539C009C7B02 /* Camera.bundle in CopyFiles */,
 				0FCA4D8317391EC3007DC9EF /* Twitter.bundle in CopyFiles */,
 				0FCA4D651738A28F007DC9EF /* Facebook.bundle in CopyFiles */,
@@ -318,8 +333,8 @@
 		0F368A8617068F0500411503 /* OPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPWindow.m; sourceTree = "<group>"; };
 		0F368A8817068F1A00411503 /* OPWindowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPWindowContentView.h; sourceTree = "<group>"; };
 		0F368A8917068F1A00411503 /* OPWindowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPWindowContentView.m; sourceTree = "<group>"; };
-		0F3DF46B16F98D0D00C003D3 /* OPPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoAlbum.h; sourceTree = "<group>"; };
-		0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoAlbum.m; sourceTree = "<group>"; };
+		0F3DF46B16F98D0D00C003D3 /* OPPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPPhotoAlbum.h; path = ../Optique/OPPhotoAlbum.h; sourceTree = "<group>"; };
+		0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPPhotoAlbum.m; path = ../Optique/OPPhotoAlbum.m; sourceTree = "<group>"; };
 		0F44BAD7173DCA620039B00E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		0F44BAF1173DD3420039B00E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0F489932170BFFD60044ED0A /* OPImagePreviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImagePreviewService.h; sourceTree = "<group>"; };
@@ -365,10 +380,17 @@
 		0F8B71D7171BA077004D8082 /* OPPhotoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPhotoController.xib; sourceTree = "<group>"; };
 		0F8C5618172CBB4B00CB7B1E /* OPCameraPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPCameraPhoto.h; path = ../Optique/OPCameraPhoto.h; sourceTree = "<group>"; };
 		0F8C5619172CBB4B00CB7B1E /* OPCameraPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCameraPhoto.m; path = ../Optique/OPCameraPhoto.m; sourceTree = "<group>"; };
-		0F8C561B172CC0D300CB7B1E /* OPLocalPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPLocalPhoto.h; sourceTree = "<group>"; };
-		0F8C561C172CC0D300CB7B1E /* OPLocalPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPLocalPhoto.m; sourceTree = "<group>"; };
+		0F8C561B172CC0D300CB7B1E /* OPLocalPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPLocalPhoto.h; path = ../Optique/OPLocalPhoto.h; sourceTree = "<group>"; };
+		0F8C561C172CC0D300CB7B1E /* OPLocalPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPLocalPhoto.m; path = ../Optique/OPLocalPhoto.m; sourceTree = "<group>"; };
 		0F8FEBB81769E283004BB523 /* 212-action2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "212-action2.png"; sourceTree = "<group>"; };
 		0F8FEBB91769E283004BB523 /* 212-action2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "212-action2@2x.png"; sourceTree = "<group>"; };
+		0F905941180F43BF000D4A53 /* Local.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Local.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F905942180F43BF000D4A53 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		0F905946180F43BF000D4A53 /* Local-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Local-Info.plist"; sourceTree = "<group>"; };
+		0F905948180F43BF000D4A53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0F90594A180F43BF000D4A53 /* Local-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Local-Prefix.pch"; sourceTree = "<group>"; };
+		0F90594E180F43DF000D4A53 /* OPLocalPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPLocalPlugin.h; sourceTree = "<group>"; };
+		0F90594F180F43DF000D4A53 /* OPLocalPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPLocalPlugin.m; sourceTree = "<group>"; };
 		0F93120E178D891200C0A358 /* libPods-Optique-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-BlocksKit.a"; path = "Pods/build/Debug/libPods-Optique-BlocksKit.a"; sourceTree = "<group>"; };
 		0F93120F178D891200C0A358 /* libPods-Optique-CDEvents.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-CDEvents.a"; path = "Pods/build/Debug/libPods-Optique-CDEvents.a"; sourceTree = "<group>"; };
 		0F931210178D891300C0A358 /* libPods-Optique-INAppStoreWindow.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-INAppStoreWindow.a"; path = "Pods/build/Debug/libPods-Optique-INAppStoreWindow.a"; sourceTree = "<group>"; };
@@ -398,6 +420,8 @@
 		0F9C80C916F891C700B2B6D8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		0FA29612178D4AF1005009C4 /* XPBundleMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPBundleMetadata.h; sourceTree = "<group>"; };
 		0FA29613178D4AF1005009C4 /* XPBundleMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPBundleMetadata.m; sourceTree = "<group>"; };
+		0FA29CE0180FC87F0066077D /* NSURL+EqualToURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+EqualToURL.h"; path = "../../../Downloads/NSURLEqualToURL/NSURL+EqualToURL.h"; sourceTree = "<group>"; };
+		0FA29CE1180FC87F0066077D /* NSURL+EqualToURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+EqualToURL.m"; path = "../../../Downloads/NSURLEqualToURL/NSURL+EqualToURL.m"; sourceTree = "<group>"; };
 		0FA706BF171911B900864CED /* OPNewAlbumSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPNewAlbumSheetController.h; path = Optique/OPNewAlbumSheetController.h; sourceTree = "<group>"; };
 		0FA706C0171911B900864CED /* OPNewAlbumSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPNewAlbumSheetController.m; path = Optique/OPNewAlbumSheetController.m; sourceTree = "<group>"; };
 		0FA706C1171911B900864CED /* OPNewAlbumSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPNewAlbumSheetController.xib; path = Optique/OPNewAlbumSheetController.xib; sourceTree = "<group>"; };
@@ -407,8 +431,8 @@
 		0FA706C9171911F400864CED /* empty-album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album.png"; sourceTree = "<group>"; };
 		0FA706CA171911F400864CED /* empty-album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album@2x.png"; sourceTree = "<group>"; };
 		0FAEFFF2176736F700D60171 /* Optique.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Optique.icns; sourceTree = "<group>"; };
-		0FB384C917050B3200DEB770 /* OPAlbumScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAlbumScanner.h; sourceTree = "<group>"; };
-		0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAlbumScanner.m; sourceTree = "<group>"; };
+		0FB384C917050B3200DEB770 /* OPAlbumScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPAlbumScanner.h; path = ../Optique/OPAlbumScanner.h; sourceTree = "<group>"; };
+		0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPAlbumScanner.m; path = ../Optique/OPAlbumScanner.m; sourceTree = "<group>"; };
 		0FB94DD01735E31400065536 /* NSNotificationCenter+Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Async.h"; sourceTree = "<group>"; };
 		0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Async.m"; sourceTree = "<group>"; };
 		0FC2ABB5178952F7009C7B02 /* Camera.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Camera.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -422,10 +446,12 @@
 		0FC55DC61787BE4A0095CCF0 /* OPFlickrService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPFlickrService.m; path = ../Optique/OPFlickrService.m; sourceTree = "<group>"; };
 		0FC8A7AE170FD9E000650D7C /* NSImage+CGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+CGImage.h"; sourceTree = "<group>"; };
 		0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+CGImage.m"; sourceTree = "<group>"; };
+		0FC92774180F502900C51076 /* libPods-Local-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Local-BlocksKit.a"; path = "../../Library/Developer/Xcode/DerivedData/Optique-dtfhunhrkomrwkhcuczxtospffyt/Build/Products/Debug/libPods-Local-BlocksKit.a"; sourceTree = "<group>"; };
+		0FC92775180F502900C51076 /* libPods-Local-CDEvents.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Local-CDEvents.a"; path = "../../Library/Developer/Xcode/DerivedData/Optique-dtfhunhrkomrwkhcuczxtospffyt/Build/Products/Debug/libPods-Local-CDEvents.a"; sourceTree = "<group>"; };
 		0FCA4D1A1737CE2C007DC9EF /* OPFinderPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFinderPlugin.h; sourceTree = "<group>"; };
 		0FCA4D1B1737CE2C007DC9EF /* OPFinderPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFinderPlugin.m; sourceTree = "<group>"; };
-		0FCA4D271737D351007DC9EF /* OPExposureService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPExposureService.m; sourceTree = "<group>"; };
-		0FCA4D281737D351007DC9EF /* OPExposureService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPExposureService.h; sourceTree = "<group>"; };
+		0FCA4D271737D351007DC9EF /* XPExposureService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPExposureService.m; path = ../Optique/XPExposureService.m; sourceTree = "<group>"; };
+		0FCA4D281737D351007DC9EF /* XPExposureService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPExposureService.h; path = ../Optique/XPExposureService.h; sourceTree = "<group>"; };
 		0FCA4D2C1737D7F0007DC9EF /* XPMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPMenuItem.h; sourceTree = "<group>"; };
 		0FCA4D2D1737D7F0007DC9EF /* XPMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPMenuItem.m; sourceTree = "<group>"; };
 		0FCA4D4F173874C6007DC9EF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -454,6 +480,7 @@
 		0FD5171F176B08BD006E8F4D /* OPGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPGridView.m; path = Optique/OPGridView.m; sourceTree = "<group>"; };
 		0FD51721176B431F006E8F4D /* OPGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPGridViewCell.h; path = Optique/OPGridViewCell.h; sourceTree = "<group>"; };
 		0FD51722176B431F006E8F4D /* OPGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPGridViewCell.m; path = Optique/OPGridViewCell.m; sourceTree = "<group>"; };
+		0FD86BE1180F4D8F00BFF807 /* libPods-Optique-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-BlocksKit.a"; path = "../../Library/Developer/Xcode/DerivedData/Optique-dtfhunhrkomrwkhcuczxtospffyt/Build/Products/Debug/libPods-Optique-BlocksKit.a"; sourceTree = "<group>"; };
 		0FDE075517030FCC00D5B456 /* OPPhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoCollectionViewController.h; sourceTree = "<group>"; };
 		0FDE075617030FCC00D5B456 /* OPPhotoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoCollectionViewController.m; sourceTree = "<group>"; };
 		0FDE075717030FCC00D5B456 /* OPPhotoCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPhotoCollectionViewController.xib; sourceTree = "<group>"; };
@@ -478,9 +505,13 @@
 		0FEF33A516FEC8090096D72A /* OPCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPCollectionViewController.xib; path = Optique/OPCollectionViewController.xib; sourceTree = "<group>"; };
 		0FFE24B0172907AA00513AD2 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		0FFE24B51729206B00513AD2 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		16513AE00F4544C59D21B885 /* Pods-Local.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local.xcconfig"; path = "Pods/Pods-Local.xcconfig"; sourceTree = "<group>"; };
+		28CE02E9006D49619346BA66 /* libPods-Exposure.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Exposure.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		414A439A63084757BE245F01 /* Pods/Pods-Optique.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods/Pods-Optique.xcconfig"; sourceTree = SOURCE_ROOT; };
 		7AFC7861178F4C1091191A68 /* libPods-Flickr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Flickr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		903EF40C10B94861A91EB68D /* Pods-Exposure.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exposure.xcconfig"; path = "Pods/Pods-Exposure.xcconfig"; sourceTree = "<group>"; };
 		938A6A86581545989549982D /* libPods-Optique.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Optique.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96BF5E4871694D2D83796B64 /* libPods-Local.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Local.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B69E97783146C19C69AB43 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66DD2097C7C4BA4A913E231 /* Pods/Pods-Flickr.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods/Pods-Flickr.xcconfig"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -492,6 +523,7 @@
 			files = (
 				0F7A704F178ABB5800570180 /* QuartzCore.framework in Frameworks */,
 				0F04A62D1737C71000E53ED1 /* Cocoa.framework in Frameworks */,
+				1373B7D69D7D477FA5D36CD2 /* libPods-Exposure.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +533,18 @@
 			files = (
 				0FCA4D301737D84F007DC9EF /* Exposure.framework in Frameworks */,
 				0F04A6581737C7C300E53ED1 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F90593E180F43BF000D4A53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FD86BDF180F4C7300BFF807 /* Cocoa.framework in Frameworks */,
+				0FD85FDE180F472500429320 /* Quartz.framework in Frameworks */,
+				0F905953180F4415000D4A53 /* Exposure.framework in Frameworks */,
+				0F905943180F43BF000D4A53 /* CoreFoundation.framework in Frameworks */,
+				5485CBA8B3D447C9AF7B4466 /* libPods-Local.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,8 +658,6 @@
 		0F368A671705128700411503 /* Album Scanner */ = {
 			isa = PBXGroup;
 			children = (
-				0FB384C917050B3200DEB770 /* OPAlbumScanner.h */,
-				0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */,
 			);
 			name = "Album Scanner";
 			sourceTree = "<group>";
@@ -627,9 +669,7 @@
 				0F368A8617068F0500411503 /* OPWindow.m */,
 				0F368A8817068F1A00411503 /* OPWindowContentView.h */,
 				0F368A8917068F1A00411503 /* OPWindowContentView.m */,
-				0F85D9C3180DF8F20003C6ED /* OPPlaceHolderViewController.h */,
-				0F85D9C4180DF8F20003C6ED /* OPPlaceHolderViewController.m */,
-				0F85D9C5180DF8F20003C6ED /* OPPlaceHolderViewController.xib */,
+				0F90591C180F3CB9000D4A53 /* Placeholder */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -644,15 +684,40 @@
 			name = Toolbar;
 			sourceTree = "<group>";
 		};
-		0F8C561E172CC46D00CB7B1E /* Local photos */ = {
+		0F90591C180F3CB9000D4A53 /* Placeholder */ = {
 			isa = PBXGroup;
 			children = (
+				0F85D9C3180DF8F20003C6ED /* OPPlaceHolderViewController.h */,
+				0F85D9C4180DF8F20003C6ED /* OPPlaceHolderViewController.m */,
+				0F85D9C5180DF8F20003C6ED /* OPPlaceHolderViewController.xib */,
+			);
+			name = Placeholder;
+			sourceTree = "<group>";
+		};
+		0F905944180F43BF000D4A53 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				0F905945180F43BF000D4A53 /* Supporting Files */,
 				0F3DF46B16F98D0D00C003D3 /* OPPhotoAlbum.h */,
 				0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */,
 				0F8C561B172CC0D300CB7B1E /* OPLocalPhoto.h */,
 				0F8C561C172CC0D300CB7B1E /* OPLocalPhoto.m */,
+				0FB384C917050B3200DEB770 /* OPAlbumScanner.h */,
+				0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */,
+				0F90594E180F43DF000D4A53 /* OPLocalPlugin.h */,
+				0F90594F180F43DF000D4A53 /* OPLocalPlugin.m */,
 			);
-			name = "Local photos";
+			path = Local;
+			sourceTree = "<group>";
+		};
+		0F905945180F43BF000D4A53 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0F905946180F43BF000D4A53 /* Local-Info.plist */,
+				0F905947180F43BF000D4A53 /* InfoPlist.strings */,
+				0F90594A180F43BF000D4A53 /* Local-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		0F946AAA178700A8004F6B57 /* Flickr */ = {
@@ -724,6 +789,8 @@
 				0F9C80B116F891C700B2B6D8 /* Products */,
 				F66DD2097C7C4BA4A913E231 /* Pods/Pods-Flickr.xcconfig */,
 				414A439A63084757BE245F01 /* Pods/Pods-Optique.xcconfig */,
+				16513AE00F4544C59D21B885 /* Pods-Local.xcconfig */,
+				903EF40C10B94861A91EB68D /* Pods-Exposure.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -737,6 +804,7 @@
 				0FCA4D7417391EA7007DC9EF /* Twitter.bundle */,
 				0F946AA8178700A8004F6B57 /* Flickr.bundle */,
 				0FC2ABB5178952F7009C7B02 /* Camera.bundle */,
+				0F905941180F43BF000D4A53 /* Local.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -744,6 +812,9 @@
 		0F9C80B216F891C700B2B6D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FC92774180F502900C51076 /* libPods-Local-BlocksKit.a */,
+				0FC92775180F502900C51076 /* libPods-Local-CDEvents.a */,
+				0FD86BE1180F4D8F00BFF807 /* libPods-Optique-BlocksKit.a */,
 				0F3632C3178E2BE10000577B /* libPods-Optique-BlocksKit.a */,
 				0F3632C4178E2BE10000577B /* libPods-Optique-CDEvents.a */,
 				0F3632C5178E2BE10000577B /* libPods-Optique-INAppStoreWindow.a */,
@@ -766,9 +837,12 @@
 				0F368A6B170531B500411503 /* Quartz.framework */,
 				0FE3B2611702F25500FC0D6C /* QuartzCore.framework */,
 				E6B69E97783146C19C69AB43 /* libPods.a */,
+				0F905942180F43BF000D4A53 /* CoreFoundation.framework */,
 				0F04A5C91737C43800E53ED1 /* Other Frameworks */,
 				7AFC7861178F4C1091191A68 /* libPods-Flickr.a */,
 				938A6A86581545989549982D /* libPods-Optique.a */,
+				96BF5E4871694D2D83796B64 /* libPods-Local.a */,
+				28CE02E9006D49619346BA66 /* libPods-Exposure.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -780,12 +854,12 @@
 				0F9C80C616F891C700B2B6D8 /* OPAppDelegate.m */,
 				0F9C80C816F891C700B2B6D8 /* MainMenu.xib */,
 				0FE3B2401702C61000FC0D6C /* Navigation Controller */,
+				0F85D9C2180CD3160003C6ED /* Toolbar */,
 				0FEF33A216FEC6500096D72A /* Main Window */,
 				0FEF33A016FEC6350096D72A /* Collection View */,
 				0FDE075A170317AE00D5B456 /* Photo Collection View */,
 				0F962710170418F4007C1A86 /* Photo View */,
 				0FEF33A116FEC6420096D72A /* Photo Manager */,
-				0F8C561E172CC46D00CB7B1E /* Local photos */,
 				0F368A671705128700411503 /* Album Scanner */,
 				0F97164917048737001835DC /* Image Previews */,
 				0FD5171D176B089F006E8F4D /* Grid View */,
@@ -863,6 +937,7 @@
 		0FCA4D1D1737CE8C007DC9EF /* Exposures */ = {
 			isa = PBXGroup;
 			children = (
+				0F905944180F43BF000D4A53 /* Local */,
 				0FC2ABB7178952F7009C7B02 /* Camera */,
 				0F946AAA178700A8004F6B57 /* Flickr */,
 				0FCA4D7617391EA7007DC9EF /* Twitter */,
@@ -875,8 +950,6 @@
 		0FCA4D2A1737D355007DC9EF /* Exposure service */ = {
 			isa = PBXGroup;
 			children = (
-				0FCA4D281737D351007DC9EF /* OPExposureService.h */,
-				0FCA4D271737D351007DC9EF /* OPExposureService.m */,
 			);
 			name = "Exposure service";
 			sourceTree = "<group>";
@@ -921,6 +994,8 @@
 		0FCA4D331737D8C4007DC9EF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0FCA4D281737D351007DC9EF /* XPExposureService.h */,
+				0FCA4D271737D351007DC9EF /* XPExposureService.m */,
 				0FCA4D2C1737D7F0007DC9EF /* XPMenuItem.h */,
 				0FCA4D2D1737D7F0007DC9EF /* XPMenuItem.m */,
 				0F7A704B178ABA6600570180 /* XPBadgeLayer.h */,
@@ -1030,6 +1105,8 @@
 		0FEC674E171034C20086B264 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				0FA29CE0180FC87F0066077D /* NSURL+EqualToURL.h */,
+				0FA29CE1180FC87F0066077D /* NSURL+EqualToURL.m */,
 				0F8B71D2171AB9D8004D8082 /* NSImage+Transform.h */,
 				0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */,
 				0FCAF8CC17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.h */,
@@ -1107,7 +1184,6 @@
 		0FEF33A216FEC6500096D72A /* Main Window */ = {
 			isa = PBXGroup;
 			children = (
-				0F85D9C2180CD3160003C6ED /* Toolbar */,
 				0F6AEF821701C02200A797E4 /* OPMainWindowController.h */,
 				0F6AEF831701C02200A797E4 /* OPMainWindowController.m */,
 				0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */,
@@ -1122,10 +1198,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F04A6431737C74800E53ED1 /* Exposure.h in Headers */,
 				0FCA4D6C17391D66007DC9EF /* XPController.h in Headers */,
 				0FE719B1174E176B0092F801 /* XPSharingService.h in Headers */,
 				0FCA4D2E1737D7F0007DC9EF /* XPMenuItem.h in Headers */,
-				0F04A6431737C74800E53ED1 /* Exposure.h in Headers */,
 				0F04A6441737C74800E53ED1 /* XPCollectionViewController.h in Headers */,
 				0F04A6451737C74800E53ED1 /* XPPhoto.h in Headers */,
 				0F04A6461737C74800E53ED1 /* XPPhotoCollection.h in Headers */,
@@ -1138,6 +1214,7 @@
 				0F946ABA178702ED004F6B57 /* XPPhotoCollectionProviderDelegate.h in Headers */,
 				0F04A64A1737C74800E53ED1 /* XPPlugin.h in Headers */,
 				0F04A64F1737C77800E53ED1 /* Common.h in Headers */,
+				0F3B6C53180F4FB200119C10 /* XPExposureService.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1148,10 +1225,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F04A6381737C71000E53ED1 /* Build configuration list for PBXNativeTarget "Exposure" */;
 			buildPhases = (
+				17624C3C152E4BFA8C204CF2 /* Check Pods Manifest.lock */,
 				0F04A6271737C70F00E53ED1 /* Sources */,
 				0F04A6281737C70F00E53ED1 /* Frameworks */,
 				0F04A6291737C70F00E53ED1 /* Headers */,
 				0F04A62A1737C70F00E53ED1 /* Resources */,
+				6FC78DBE8B3C4028AE2B7A34 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1178,6 +1257,26 @@
 			name = Finder;
 			productName = Finder;
 			productReference = 0F04A6571737C7C300E53ED1 /* Finder.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		0F905940180F43BF000D4A53 /* Local */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F90594B180F43BF000D4A53 /* Build configuration list for PBXNativeTarget "Local" */;
+			buildPhases = (
+				8495CE12E8BC409EA0CE5ADF /* Check Pods Manifest.lock */,
+				0F90593D180F43BF000D4A53 /* Sources */,
+				0F90593E180F43BF000D4A53 /* Frameworks */,
+				0F90593F180F43BF000D4A53 /* Resources */,
+				54B3332FFEB643D0A243ACB9 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0F905952180F4412000D4A53 /* PBXTargetDependency */,
+			);
+			name = Local;
+			productName = Local;
+			productReference = 0F905941180F43BF000D4A53 /* Local.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		0F946AA7178700A8004F6B57 /* Flickr */ = {
@@ -1219,7 +1318,6 @@
 				0F3632BA178E2BD10000577B /* PBXTargetDependency */,
 				0F3632BC178E2BD10000577B /* PBXTargetDependency */,
 				0F3632BE178E2BD10000577B /* PBXTargetDependency */,
-				0F3632C0178E2BD10000577B /* PBXTargetDependency */,
 				0F3632C2178E2BD10000577B /* PBXTargetDependency */,
 			);
 			name = Optique;
@@ -1323,6 +1421,7 @@
 				0FCA4D7317391EA7007DC9EF /* Twitter */,
 				0F946AA7178700A8004F6B57 /* Flickr */,
 				0FC2ABB4178952F7009C7B02 /* Camera */,
+				0F905940180F43BF000D4A53 /* Local */,
 			);
 		};
 /* End PBXProject section */
@@ -1341,6 +1440,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F04A65E1737C7C300E53ED1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F90593F180F43BF000D4A53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F905949180F43BF000D4A53 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1429,6 +1536,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		17624C3C152E4BFA8C204CF2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		3F8596F85B21464F99C1415E /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1442,6 +1564,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		54B3332FFEB643D0A243ACB9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Local-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6EFCDCC8C49B41DB9F6BD7DA /* Copy Pods Resources */ = {
@@ -1459,6 +1596,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-Flickr-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6FC78DBE8B3C4028AE2B7A34 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Exposure-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		764F0ACCDB4C4803BB106785 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1472,6 +1624,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-Optique-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8495CE12E8BC409EA0CE5ADF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8716D22173444E63AB8C64CF /* Check Pods Manifest.lock */ = {
@@ -1496,6 +1663,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FD86BE0180F4D1E00BFF807 /* XPExposureService.m in Sources */,
 				0FA29615178D4AF1005009C4 /* XPBundleMetadata.m in Sources */,
 				0FCA4D2F1737D7F0007DC9EF /* XPMenuItem.m in Sources */,
 				0F7A704E178ABA6600570180 /* XPBadgeLayer.m in Sources */,
@@ -1510,12 +1678,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F90593D180F43BF000D4A53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FA29CE5180FC87F0066077D /* NSURL+EqualToURL.m in Sources */,
+				0FD85FDB180F46A300429320 /* OPPhotoAlbum.m in Sources */,
+				0FD85FDC180F46A300429320 /* OPLocalPhoto.m in Sources */,
+				0F905955180F44C0000D4A53 /* OPAlbumScanner.m in Sources */,
+				0F905956180F44C0000D4A53 /* OPLocalPlugin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F946AA4178700A8004F6B57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0F7A7053178AD59A00570180 /* NSObject+PerformBlock.m in Sources */,
 				0F7A7052178ABBC300570180 /* OPFlickrPhoto.m in Sources */,
+				0FA29CE3180FC87F0066077D /* NSURL+EqualToURL.m in Sources */,
 				0F7A704717898E4F00570180 /* NSImage+CGImage.m in Sources */,
 				0FEDFF8E17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.m in Sources */,
 				0FDE0ED11788259C00B81ADC /* OPFlickrPhotoSet.m in Sources */,
@@ -1531,7 +1712,6 @@
 				0F9C80C016F891C700B2B6D8 /* main.m in Sources */,
 				0F9C80C716F891C700B2B6D8 /* OPAppDelegate.m in Sources */,
 				0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */,
-				0F3DF46D16F98D0D00C003D3 /* OPPhotoAlbum.m in Sources */,
 				0FEF33A616FEC8090096D72A /* OPCollectionViewController.m in Sources */,
 				0F85D9C6180DF8F20003C6ED /* OPPlaceHolderViewController.m in Sources */,
 				0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */,
@@ -1539,8 +1719,8 @@
 				0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */,
 				0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */,
 				0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */,
+				0FA29CE2180FC87F0066077D /* NSURL+EqualToURL.m in Sources */,
 				0FCFCB1217043D180040FF11 /* OPImageCache.m in Sources */,
-				0FB384CB17050B3200DEB770 /* OPAlbumScanner.m in Sources */,
 				0F368A71170677A700411503 /* OPPhotoView.m in Sources */,
 				0F368A74170678AC00411503 /* NSView+OptiqueBackground.m in Sources */,
 				0F368A8717068F0500411503 /* OPWindow.m in Sources */,
@@ -1558,12 +1738,10 @@
 				0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */,
 				0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */,
 				0F50C399178452580017DF73 /* CATextLayer+EmptyCollection.m in Sources */,
-				0F8C561D172CC0D300CB7B1E /* OPLocalPhoto.m in Sources */,
 				0F85D9B9180A4EA60003C6ED /* OPDatePhotoCountValueTransformer.m in Sources */,
 				0F85D9BC180A558F0003C6ED /* OPAlbumCountTransformer.m in Sources */,
 				0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */,
 				0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */,
-				0FCA4D291737D351007DC9EF /* OPExposureService.m in Sources */,
 				0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */,
 				0FD51720176B08BD006E8F4D /* OPGridView.m in Sources */,
 			);
@@ -1573,6 +1751,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA29CE4180FC87F0066077D /* NSURL+EqualToURL.m in Sources */,
 				0FC2ABCA1789541A009C7B02 /* OPCameraService.m in Sources */,
 				0FC2ABCB1789541A009C7B02 /* OPCamera.m in Sources */,
 				0FC2ABCC1789541A009C7B02 /* OPCameraPhoto.m in Sources */,
@@ -1625,11 +1804,6 @@
 			target = 0FCA4D7317391EA7007DC9EF /* Twitter */;
 			targetProxy = 0F3632BD178E2BD10000577B /* PBXContainerItemProxy */;
 		};
-		0F3632C0178E2BD10000577B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0F946AA7178700A8004F6B57 /* Flickr */;
-			targetProxy = 0F3632BF178E2BD10000577B /* PBXContainerItemProxy */;
-		};
 		0F3632C2178E2BD10000577B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0FC2ABB4178952F7009C7B02 /* Camera */;
@@ -1639,6 +1813,11 @@
 			isa = PBXTargetDependency;
 			target = 0F04A62B1737C70F00E53ED1 /* Exposure */;
 			targetProxy = 0F413C51178EA32B00FCE1EA /* PBXContainerItemProxy */;
+		};
+		0F905952180F4412000D4A53 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F04A62B1737C70F00E53ED1 /* Exposure */;
+			targetProxy = 0F905951180F4412000D4A53 /* PBXContainerItemProxy */;
 		};
 		0FC2ABC817895376009C7B02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1670,6 +1849,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				0F04A65D1737C7C300E53ED1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0F905947180F43BF000D4A53 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F905948180F43BF000D4A53 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1735,6 +1922,7 @@
 /* Begin XCBuildConfiguration section */
 		0F04A6391737C71000E53ED1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 903EF40C10B94861A91EB68D /* Pods-Exposure.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
@@ -1746,6 +1934,10 @@
 				GCC_PREFIX_HEADER = "Exposure/Exposure-Prefix.pch";
 				INFOPLIST_FILE = "Exposure/Exposure-Info.plist";
 				INSTALL_PATH = "@rpath";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Optique-dtfhunhrkomrwkhcuczxtospffyt/Build/Products/Debug",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -1754,6 +1946,7 @@
 		};
 		0F04A63A1737C71000E53ED1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 903EF40C10B94861A91EB68D /* Pods-Exposure.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
@@ -1765,6 +1958,10 @@
 				GCC_PREFIX_HEADER = "Exposure/Exposure-Prefix.pch";
 				INFOPLIST_FILE = "Exposure/Exposure-Info.plist";
 				INSTALL_PATH = "@rpath";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Optique-dtfhunhrkomrwkhcuczxtospffyt/Build/Products/Debug",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -1799,6 +1996,55 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		0F90594C180F43BF000D4A53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16513AE00F4544C59D21B885 /* Pods-Local.xcconfig */;
+			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Local/Local-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Local/Local-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		0F90594D180F43BF000D4A53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16513AE00F4544C59D21B885 /* Pods-Local.xcconfig */;
+			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Local/Local-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Local/Local-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
@@ -2101,6 +2347,15 @@
 			buildConfigurations = (
 				0F04A6611737C7C300E53ED1 /* Debug */,
 				0F04A6621737C7C300E53ED1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F90594B180F43BF000D4A53 /* Build configuration list for PBXNativeTarget "Local" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F90594C180F43BF000D4A53 /* Debug */,
+				0F90594D180F43BF000D4A53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

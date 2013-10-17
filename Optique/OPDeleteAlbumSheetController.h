@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "OPPhotoAlbum.h"
 
 @interface OPDeleteAlbumSheetController : NSWindowController <NSFileManagerDelegate>
 

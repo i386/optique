@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "XPController.h"
 #import "XPSharingService.h"
+#import "XPPhotoCollection.h"
 
 @protocol XPPhotoCollectionViewController <NSObject, XPController, XPSharingService>
 

@@ -8,7 +8,7 @@
 
 #import "OPAppDelegate.h"
 #import "OPImageCache.h"
-#import "OPExposureService.h"
+#import <Exposure/Exposure.h>
 
 @implementation OPAppDelegate
 
@@ -38,7 +38,7 @@
     }
 
     //Application is now ready to accept plugin loading
-    [OPExposureService loadPlugins:aNotification.userInfo];
+    [XPExposureService loadPlugins:aNotification.userInfo];
     
     [self picturesAtDirectory:url];
     
@@ -60,7 +60,6 @@
     {
         if (result == NSFileHandlingPanelOKButton)
         {
-            [_albumScaner setStopScan:YES];
             [[OPImageCache sharedPreviewCache] clearCache];
             
             NSError *error;
@@ -95,18 +94,15 @@
     }
     
     _photoManager = [[XPPhotoManager alloc] initWithPath:url];
-    [OPExposureService photoManagerWasCreated:_photoManager];
+    [XPExposureService photoManagerWasCreated:_photoManager];
     
     _mainWindowController = [[OPMainWindowController alloc] initWithPhotoManager:_photoManager];
     [_mainWindowController.window makeKeyAndOrderFront:self];
-    
-    _albumScaner = [[OPAlbumScanner alloc] initWithPhotoManager:_photoManager];
-    [_albumScaner scanAtURL:url];
 }
 
 -(void)applicationWillTerminate:(NSNotification *)notification
 {
-    [OPExposureService unloadPlugins:notification.userInfo];
+    [XPExposureService unloadPlugins:notification.userInfo];
 }
 
 -(NSURL*)resolvePicturesDirectoryURL
@@ -119,7 +115,7 @@
     NSArray *defaultItems = [[[_debugMenu submenu] itemArray] copy];
     [_debugMenu.submenu removeAllItems];
     
-    [[OPExposureService debugMenuItems] each:^(id sender) {
+    [[XPExposureService debugMenuItems] each:^(id sender) {
         [_debugMenu.submenu addItem:sender];
     }];
     

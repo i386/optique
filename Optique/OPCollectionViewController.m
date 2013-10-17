@@ -9,10 +9,8 @@
 #import "OPCollectionViewController.h"
 
 #import "OPPhotoCollectionViewController.h"
-#import "OPAlbumScanner.h"
 #import "OPImagePreviewService.h"
 #import "OPDeleteAlbumSheetController.h"
-#import "OPPhotoAlbum.h"
 #import "OPGridViewCell.h"
 #import "NSColor+Optique.h"
 #import "CATextLayer+EmptyCollection.h"
@@ -53,7 +51,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:XPPhotoManagerDidDeleteCollection object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
     
-    [OPExposureService photoManager:_photoManager collectionViewController:self];
+    [XPExposureService photoManager:_photoManager collectionViewController:self];
     
     [_headingLine setBorderWidth:2];
     [_headingLine setBorderColor:[NSColor colorWithCalibratedRed:0.83 green:0.83 blue:0.83 alpha:1.00]];
@@ -67,7 +65,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidAddCollection object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidDeleteCollection object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidUpdateCollection object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPAlbumScannerDidFindAlbumsNotification object:nil];
 }
 
 -(void)loadView
@@ -122,17 +119,14 @@
     if (allSelectedAreLocal)
     {
         [_deleteAlbumMenuItem setHidden:NO];
-        [_ejectMenuItem setHidden:YES];
     }
     else if (allSelectedAreNotLocal)
     {
         [_deleteAlbumMenuItem setHidden:YES];
-        [_ejectMenuItem setHidden:NO];
     }
     else
     {
         [_deleteAlbumMenuItem setHidden:YES];
-        [_ejectMenuItem setHidden:YES];
     }
 }
 
@@ -159,7 +153,7 @@
     }
     else
     {
-        OPPhotoAlbum *album = [_deleteAlbumSheetController.albums lastObject];
+        id<XPPhotoCollection> album = [_deleteAlbumSheetController.albums lastObject];
         alertMessage = [NSString stringWithFormat:@"Do you want to delete '%@'?", album.title];
     }
     
@@ -207,6 +201,7 @@
 
 -(void)albumDeleted:(NSNotification*)notification
 {
+    NSLog(@"");
     [self performBlockOnMainThread:^{
         [self reloadData];
         
@@ -278,7 +273,7 @@
     if (!item.badgeLayer)
     {
         //Get badge layer from exposure
-        for (id<XPPhotoCollectionProvider> provider in [OPExposureService photoCollectionProviders])
+        for (id<XPPhotoCollectionProvider> provider in [XPExposureService photoCollectionProviders])
         {
             if ([provider respondsToSelector:@selector(badgeLayerForCollection:)])
             {

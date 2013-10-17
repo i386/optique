@@ -7,23 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Exposure/Exposure.h>
 #import <CDEvents/CDEvents.h>
 #import <CDEvents/CDEventsDelegate.h>
 
-/** scan started */
-extern NSString *const OPAlbumScannerDidStartScanNotification;
-
-/** scan ended */
-extern NSString *const OPAlbumScannerDidFinishScanNotification;
-
-/** albums were found */
-extern NSString *const OPAlbumScannerDidFindAlbumsNotification;
+@class OPLocalPlugin;
 
 @interface OPAlbumScanner : NSObject<CDEventsDelegate> {
     NSOperationQueue *_scanningQueue;
     NSOperationQueue *_thumbQueue;
     CDEvents *_events;
     XPPhotoManager *_photoManager;
+    OPLocalPlugin *_plugin;
 }
 
 @property (atomic) BOOL stopScan;
@@ -31,12 +26,11 @@ extern NSString *const OPAlbumScannerDidFindAlbumsNotification;
 /**
  @param photoManager for this session
  */
--initWithPhotoManager:(XPPhotoManager*)photoManager;
+-initWithPhotoManager:(XPPhotoManager*)photoManager plugin:(OPLocalPlugin*)plugin;
 
 /**
  Scan for new albums
- @param url to scan for new item
  */
--(void)scanAtURL:(NSURL*)url;
+-(void)startScan;
 
 @end

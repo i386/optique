@@ -234,7 +234,7 @@
     [[NSFileManager defaultManager] removeItemAtURL:self.cacheDirectory error:nil];
 }
 
--(BOOL)isEqual:(id)object
+-(BOOL)isEqualTo:(id)object
 {
     if (object == self)
         return YES;
@@ -242,7 +242,7 @@
         return NO;
     
     OPCamera *otherDevice = object;
-    return [self.device isEqual:otherDevice.device];
+    return [self.device isEqualTo:otherDevice.device];
 }
 
 -(NSUInteger)hash

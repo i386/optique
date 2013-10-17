@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Exposure/Exposure.h>
 
 @interface OPLocalPhoto : NSObject <XPPhoto>
 

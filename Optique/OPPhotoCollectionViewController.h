@@ -7,7 +7,6 @@
 //
 
 #import "OPNavigationViewController.h"
-#import "OPPhotoAlbum.h"
 #import "OPGridView.h"
 
 @interface OPPhotoCollectionViewController : OPNavigationViewController <OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPPhotoCollectionViewController>

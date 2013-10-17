@@ -11,6 +11,7 @@
 #import "XPCollectionViewController.h"
 #import "XPPhotoCollectionViewController.h"
 #import "XPPhotoController.h"
+#import "XPPhotoManager.h"
 
 @protocol XPPlugin <NSObject>
 

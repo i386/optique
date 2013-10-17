@@ -13,10 +13,9 @@
 
 @interface OPCollectionViewController : OPNavigationViewController <OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPCollectionViewController>
 
-@property (strong) IBOutlet NSMenu *albumItemContextMenu;
 @property (strong, readonly) XPPhotoManager *photoManager;
+@property (strong) IBOutlet NSMenu *albumItemContextMenu;
 @property (strong) IBOutlet NSMenuItem *deleteAlbumMenuItem;
-@property (strong) IBOutlet NSMenuItem *ejectMenuItem;
 @property (strong) IBOutlet OPGridView *gridView;
 @property (weak) IBOutlet NSTextField *titleLabel;
 @property (weak) IBOutlet NSBox *headingLine;

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <Exposure/Exposure.h>
 #import "OPImageCache.h"
 
 @class XPPhotoManager;

@@ -47,7 +47,7 @@
 
 -(void)awakeFromNib
 {
-    [OPExposureService photoManager:_photoViewController.collection.photoManager photoController:self];
+    [XPExposureService photoManager:_photoViewController.collection.photoManager photoController:self];
 }
 
 @end

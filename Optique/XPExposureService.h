@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPExposureService : NSObject
+#import "XPPlugin.h"
+#import "XPPhotoCollectionProvider.h"
+#import "XPPhotoManager.h"
+
+@interface XPExposureService : NSObject
 
 @property (readonly, strong) NSDictionary *exposures;
 
@@ -31,5 +35,7 @@
 +(NSSet*)photoCollectionProviders;
 
 +(NSArray*)debugMenuItems;
+
++(id<XPPhotoCollection>)createCollectionWithTitle:(NSString*)title path:(NSURL*)path;
 
 @end

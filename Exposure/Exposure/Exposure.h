@@ -22,4 +22,5 @@
 #import "XPBundleMetadata.h"
 #import "XPPlugin.h"
 
+#import "XPExposureService.h"
 #import "XPMenuItem.h"

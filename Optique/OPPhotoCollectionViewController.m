@@ -179,7 +179,7 @@
         if (!item.badgeLayer)
         {
             //Get badge layer from exposure
-            for (id<XPPhotoCollectionProvider> provider in [OPExposureService photoCollectionProviders])
+            for (id<XPPhotoCollectionProvider> provider in [XPExposureService photoCollectionProviders])
             {
                 if ([provider respondsToSelector:@selector(badgeLayerForPhoto:)])
                 {
@@ -206,7 +206,7 @@
 
 -(void)awakeFromNib
 {
-    [OPExposureService photoManager:_photoManager photoCollectionViewController:self];
+    [XPExposureService photoManager:_photoManager photoCollectionViewController:self];
     [_headingLine setBorderWidth:2];
     [_headingLine setBorderColor:[NSColor colorWithCalibratedRed:0.83 green:0.83 blue:0.83 alpha:1.00]];
     [_headingLine setBoxType:NSBoxCustom];

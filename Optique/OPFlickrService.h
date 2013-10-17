@@ -10,7 +10,6 @@
 #import <gtm-oauth/GTMOAuthAuthentication.h>
 #import <gtm-oauth/GTMOAuthWindowController.h>
 #import "OPFlickrServiceDelegate.h"
-#import "OPPhotoAlbum.h"
 
 @interface OPFlickrService : NSObject
 
@@ -29,6 +28,6 @@
 
 -(void)syncPhotoSetToDisk:(OPFlickrPhotoSet*)photoSet;
 
--(void)uploadPhotoAlbum:(OPPhotoAlbum*)photoAlbum;
+-(void)uploadPhotoAlbum:(id<XPPhotoCollection>)photoAlbum;
 
 @end

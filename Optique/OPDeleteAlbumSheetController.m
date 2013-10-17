@@ -37,7 +37,7 @@
     }
     else
     {
-        OPPhotoAlbum *album = [_albums lastObject];
+        id<XPPhotoCollection> album = [_albums lastObject];
         message = [NSString stringWithFormat:@"Deleting album '%@'...", album.title];
     }
     

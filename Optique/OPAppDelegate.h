@@ -9,12 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import <INAppStoreWindow/INAppStoreWindow.h>
 
-#import "OPAlbumScanner.h"
 #import "OPCameraService.h"
 #import "OPMainWindowController.h"
 
 @interface OPAppDelegate : NSObject <NSApplicationDelegate> {
-    OPAlbumScanner *_albumScaner;
     XPPhotoManager *_photoManager;
     OPMainWindowController *_mainWindowController;
     IBOutlet NSUserDefaultsController *_userDefaultsController;

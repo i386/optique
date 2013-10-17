@@ -6,17 +6,18 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OPExposureService.h"
+#import "XPExposureService.h"
+#import <BlocksKit/BlocksKit.h>
 
-@implementation OPExposureService
+@implementation XPExposureService
 
-+(OPExposureService *)defaultLoader
++(XPExposureService *)defaultLoader
 {
     static dispatch_once_t pred;
-    static OPExposureService *shared = nil;
+    static XPExposureService *shared = nil;
     
     dispatch_once(&pred, ^{
-        shared = [[OPExposureService alloc] init];
+        shared = [[XPExposureService alloc] init];
         [shared loadExposures];
     });
     
@@ -25,12 +26,12 @@
 
 +(id<XPPlugin>)pluginForBundle:(NSString *)bundleId
 {
-    return [[[OPExposureService defaultLoader] exposures] objectForKey:bundleId];
+    return [[[XPExposureService defaultLoader] exposures] objectForKey:bundleId];
 }
 
 +(id<XPPhotoCollectionProvider>)photoCollectionProviderForBundle:(NSString *)bundleId
 {
-    id<XPPlugin> plugin = [OPExposureService pluginForBundle:bundleId];
+    id<XPPlugin> plugin = [XPExposureService pluginForBundle:bundleId];
     if (plugin != nil && [plugin conformsToProtocol:@protocol(XPPhotoCollectionProvider)])
     {
         return (id<XPPhotoCollectionProvider>)plugin;
@@ -40,7 +41,7 @@
 
 +(void)loadPlugins:(NSDictionary*)userInfo
 {
-    [[[OPExposureService defaultLoader] exposures] each:^(NSString *pluginKey, id pluginInstance) {
+    [[[XPExposureService defaultLoader] exposures] each:^(NSString *pluginKey, id pluginInstance) {
         if ([pluginInstance respondsToSelector:@selector(pluginDidLoad:)])
         {
             @try
@@ -57,7 +58,7 @@
 
 +(void)unloadPlugins:(NSDictionary*)userInfo
 {
-    [[[OPExposureService defaultLoader] exposures] each:^(NSString *pluginKey, id pluginInstance) {
+    [[[XPExposureService defaultLoader] exposures] each:^(NSString *pluginKey, id pluginInstance) {
         if ([pluginInstance respondsToSelector:@selector(pluginWillUnload:)])
         {
             @try
@@ -74,42 +75,52 @@
 
 +(void)photoManagerWasCreated:(XPPhotoManager *)photoManager
 {
-    [[OPExposureService respondsToPhotoManagerWasCreated] each:^(id sender) {
+    [[XPExposureService respondsToPhotoManagerWasCreated] each:^(id sender) {
         [sender photoManagerWasCreated:photoManager];
     }];
 }
 
 +(void)photoManager:(XPPhotoManager*)photoManager collectionViewController:(id<XPCollectionViewController>)controller
 {
-    [[OPExposureService respondsToCollectionViewController] each:^(id<XPPlugin> sender) {
+    [[XPExposureService respondsToCollectionViewController] each:^(id<XPPlugin> sender) {
         [sender photoManager:photoManager collectionViewController:controller];
     }];
 }
 
 +(void)photoManager:(XPPhotoManager*)photoManager photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller
 {
-    [[OPExposureService respondsToPhotoCollectionViewController] each:^(id<XPPlugin> sender) {
+    [[XPExposureService respondsToPhotoCollectionViewController] each:^(id<XPPlugin> sender) {
         [sender photoManager:photoManager photoCollectionViewController:controller];
     }];
 }
 
 +(void)photoManager:(XPPhotoManager*)photoManager photoController:(id<XPPhotoController>)controller
 {
-    [[OPExposureService respondsToPhotoViewController] each:^(id<XPPlugin> sender) {
+    [[XPExposureService respondsToPhotoViewController] each:^(id<XPPlugin> sender) {
         [sender photoManager:photoManager photoController:controller];
     }];
 }
 
++(id<XPPhotoCollection>)createCollectionWithTitle:(NSString *)title path:(NSURL *)path
+{
+    id localPlugin = [XPExposureService pluginForBundle:@"com.whimsy.optique.Local"];
+    if (!localPlugin)
+    {
+        NSLog(@"Could not find local plugin");
+    }
+    return [localPlugin createCollectionWithTitle:title path:path];
+}
+
 +(NSSet *)photoCollectionProviders
 {
-    return [OPExposureService conformsToPhotoCollectionProvider];
+    return [XPExposureService conformsToPhotoCollectionProvider];
 }
 
 +(NSArray *)debugMenuItems
 {
     NSMutableArray *debugMenuItems = [NSMutableArray array];
     
-    [[[OPExposureService defaultLoader] exposures] each:^(NSString *name, id<XPPlugin> plugin) {
+    [[[XPExposureService defaultLoader] exposures] each:^(NSString *name, id<XPPlugin> plugin) {
         if ([plugin respondsToSelector:@selector(debugMenuItems)])
         {
             NSMenuItem *subMenuItem = [[NSMenuItem alloc] initWithTitle:name action:nil keyEquivalent:@""];
@@ -124,7 +135,7 @@
 
 +(NSSet *)conformsToPhotoCollectionProvider
 {
-    NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
+    NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject conformsToProtocol:@protocol(XPPhotoCollectionProvider)];
@@ -133,7 +144,7 @@
 
 +(NSSet *)respondsToPhotoManagerWasCreated
 {
-    NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
+    NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject respondsToSelector:@selector(photoManagerWasCreated:)];
@@ -142,7 +153,7 @@
 
 +(NSSet *)respondsToCollectionViewController
 {
-    NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
+    NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject respondsToSelector:@selector(photoManager:collectionViewController:)];
@@ -151,7 +162,7 @@
 
 +(NSSet *)respondsToPhotoCollectionViewController
 {
-    NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
+    NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject respondsToSelector:@selector(photoManager:photoCollectionViewController:)];
@@ -160,7 +171,7 @@
 
 +(NSSet *)respondsToPhotoViewController
 {
-    NSSet *exposures = [NSMutableSet setWithArray:[[OPExposureService defaultLoader] exposures].allValues];
+    NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject respondsToSelector:@selector(photoManager:photoController:)];

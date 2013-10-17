@@ -4,16 +4,14 @@
 
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
+
+    #import <Exposure/Exposure.h>
+
+    #import <BlocksKit/BlocksKit.h>
+
+    #import "NSObject+PerformBlock.h"
+    #import "NSNotificationCenter+Async.h"
+
+    //Constants
+    #define fOptiqueBundlePhotos        @"photos"
 #endif
-
-#import <Exposure/Exposure.h>
-#import "OPExposureService.h"
-
-#import <BlocksKit/BlocksKit.h>
-
-#import "NSObject+PerformBlock.h"
-#import "NSNotificationCenter+Async.h"
-
-
-//Constants
-#define fOptiqueBundlePhotos        @"photos"

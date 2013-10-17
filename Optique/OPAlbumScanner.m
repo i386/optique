@@ -8,15 +8,13 @@
 
 #import "OPAlbumScanner.h"
 #import "OPPhotoAlbum.h"
+#import "OPLocalPlugin.h"
 
-/** Events **/
-NSString *const OPAlbumScannerDidStartScanNotification = @"OPAlbumScannerDidStartScanNotification";
-NSString *const OPAlbumScannerDidFinishScanNotification = @"OPAlbumScannerDidFinishScanNotification";
-NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFindAlbumsNotification";
+#import <Exposure/Exposure.h>
 
 @implementation OPAlbumScanner
 
--(id)initWithPhotoManager:(XPPhotoManager *)photoManager
+-initWithPhotoManager:(XPPhotoManager*)photoManager plugin:(OPLocalPlugin*)plugin;
 {
     self = [super init];
     if (self)
@@ -24,6 +22,7 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
         _scanningQueue = [[NSOperationQueue alloc] init];
         [_scanningQueue setMaxConcurrentOperationCount:1];
         _photoManager = photoManager;
+        _plugin = plugin;
     }
     return self;
 }
@@ -37,10 +36,10 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
     }
 }
 
--(void)scanAtURL:(NSURL *)url
+-(void)startScan
 {
-    _events = [[CDEvents alloc] initWithURLs:@[url] delegate:self];
-    [self startScanAtURL:url];
+    _events = [[CDEvents alloc] initWithURLs:@[_photoManager.path] delegate:self];
+    [self startScanAtURL:_photoManager.path];
 }
 
 -(void)startScanAtURL:(NSURL *)url
@@ -49,9 +48,6 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
      {
          if (_stopScan) return;
          
-         [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidStartScanNotification object:nil userInfo:@{@"photoManager" : _photoManager}];
-         NSMutableArray *albumsFound = [[NSMutableArray alloc] init];
-         
          for (NSURL *albumURL in [self albumURLsForURL:url])
          {
              if (_stopScan) return;
@@ -59,17 +55,8 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
              if (album)
              {
                  if (_stopScan) return;
-                 [albumsFound addObject:album];
+                 [_plugin didAddAlbum:album];
              }
-         }
-         
-         if (_stopScan) return;
-         
-         [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFindAlbumsNotification object:nil userInfo:@{@"albums": albumsFound, @"photoManager": _photoManager}];
-         
-         if (!_stopScan)
-         {
-             [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumScannerDidFinishScanNotification object:nil userInfo:@{@"photoManager" : _photoManager}];
          }
      }];
 }
@@ -105,7 +92,7 @@ NSString *const OPAlbumScannerDidFindAlbumsNotification = @"OPAlbumScannerDidFin
     {
         if (metadata.bundleId)
         {
-            id<XPPhotoCollectionProvider> photoProvider = [OPExposureService photoCollectionProviderForBundle:metadata.bundleId];
+            id<XPPhotoCollectionProvider> photoProvider = [XPExposureService photoCollectionProviderForBundle:metadata.bundleId];
             if (photoProvider)
             {
                 collection = [photoProvider createCollectionAtPath:path metadata:metadata.bundleData photoManager:_photoManager];
