@@ -11,4 +11,6 @@
 
 @interface OPPhotoGridView : OEGridView
 
+@property (nonatomic, assign) BOOL isSelectionSticky;
+
 @end

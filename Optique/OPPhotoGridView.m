@@ -19,8 +19,36 @@
         self.minimumColumnSpacing = kGridViewColumnSpacing;
         self.rowSpacing = kGridViewRowSpacing;
         self.itemSize = CGSizeMake(280.0, 175.0);
+        self.isSelectionSticky = NO;
     }
     return self;
+}
+
+-(void)mouseDown:(NSEvent *)theEvent
+{
+    if (_isSelectionSticky)
+    {
+        NSPoint pointInView = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+        NSUInteger index = [self indexForCellAtPoint:pointInView];
+        
+        const NSUInteger modifierFlags = [[NSApp currentEvent] modifierFlags];
+        const BOOL commandKeyDown      = ((modifierFlags & NSCommandKeyMask) == NSCommandKeyMask);
+        const BOOL shiftKeyDown        = ((modifierFlags & NSShiftKeyMask) == NSShiftKeyMask);
+        const BOOL invertSelection     = commandKeyDown || shiftKeyDown;
+
+        if (!invertSelection)
+        {
+            [self selectCellAtIndex:index];
+        }
+        else
+        {
+            [self deselectCellAtIndex:index];
+        }
+    }
+    else
+    {
+        [super mouseDown:theEvent];
+    }
 }
 
 @end
