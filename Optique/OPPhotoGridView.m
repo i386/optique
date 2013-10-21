@@ -31,23 +31,30 @@
         NSPoint pointInView = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         NSUInteger index = [self indexForCellAtPoint:pointInView];
         
-        NSUInteger modifierFlags = [[NSApp currentEvent] modifierFlags];
-        BOOL commandKeyDown      = ((modifierFlags & NSCommandKeyMask) == NSCommandKeyMask);
-        BOOL shiftKeyDown        = ((modifierFlags & NSShiftKeyMask) == NSShiftKeyMask);
-        BOOL invertSelection     = commandKeyDown || shiftKeyDown;
-        BOOL isSelected          = [[self selectionIndexes] containsIndex:index];
-
-        if (isSelected)
+        if (index != NSNotFound)
         {
-            [self deselectCellAtIndex:index];
-        }
-        else if (!invertSelection || isSelected)
-        {
-            [self selectCellAtIndex:index];
+            NSUInteger modifierFlags = [[NSApp currentEvent] modifierFlags];
+            BOOL commandKeyDown      = ((modifierFlags & NSCommandKeyMask) == NSCommandKeyMask);
+            BOOL shiftKeyDown        = ((modifierFlags & NSShiftKeyMask) == NSShiftKeyMask);
+            BOOL invertSelection     = commandKeyDown || shiftKeyDown;
+            BOOL isSelected          = [[self selectionIndexes] containsIndex:index];
+            
+            if (isSelected)
+            {
+                [self deselectCellAtIndex:index];
+            }
+            else if (!invertSelection || isSelected)
+            {
+                [self selectCellAtIndex:index];
+            }
+            else
+            {
+                [self selectCellAtIndex:index];
+            }
         }
         else
         {
-            [self selectCellAtIndex:index];
+            [self deselectAll:nil];
         }
     }
     else
