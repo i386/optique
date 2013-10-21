@@ -31,18 +31,23 @@
         NSPoint pointInView = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         NSUInteger index = [self indexForCellAtPoint:pointInView];
         
-        const NSUInteger modifierFlags = [[NSApp currentEvent] modifierFlags];
-        const BOOL commandKeyDown      = ((modifierFlags & NSCommandKeyMask) == NSCommandKeyMask);
-        const BOOL shiftKeyDown        = ((modifierFlags & NSShiftKeyMask) == NSShiftKeyMask);
-        const BOOL invertSelection     = commandKeyDown || shiftKeyDown;
+        NSUInteger modifierFlags = [[NSApp currentEvent] modifierFlags];
+        BOOL commandKeyDown      = ((modifierFlags & NSCommandKeyMask) == NSCommandKeyMask);
+        BOOL shiftKeyDown        = ((modifierFlags & NSShiftKeyMask) == NSShiftKeyMask);
+        BOOL invertSelection     = commandKeyDown || shiftKeyDown;
+        BOOL isSelected          = [[self selectionIndexes] containsIndex:index];
 
-        if (!invertSelection)
+        if (isSelected)
+        {
+            [self deselectCellAtIndex:index];
+        }
+        else if (!invertSelection || isSelected)
         {
             [self selectCellAtIndex:index];
         }
         else
         {
-            [self deselectCellAtIndex:index];
+            [self selectCellAtIndex:index];
         }
     }
     else
