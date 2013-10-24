@@ -8,10 +8,13 @@
         <customObject id="-2" userLabel="File's Owner" customClass="OPPhotoCollectionViewController">
             <connections>
                 <outlet property="contextMenu" destination="36" id="49"/>
+                <outlet property="dateLabel" destination="bgi-hc-P7X" id="LuW-54-YX3"/>
                 <outlet property="gridView" destination="30" id="33"/>
                 <outlet property="headingLine" destination="o6E-mG-yq3" id="4F3-O9-QVd"/>
                 <outlet property="moveToAlbumItem" destination="45" id="48"/>
                 <outlet property="photoItemContextMenu" destination="36" id="38"/>
+                <outlet property="primaryActionButton" destination="MzD-3v-udp" id="6y3-re-3wf"/>
+                <outlet property="secondaryActionButton" destination="GX9-pb-DA1" id="ngM-gD-Riu"/>
                 <outlet property="sharingMenu" destination="54" id="66"/>
                 <outlet property="view" destination="1" id="2"/>
             </connections>
@@ -44,12 +47,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" id="32">
-                        <rect key="frame" x="465" y="0.0" width="15" height="219"/>
+                        <rect key="frame" x="464" y="0.0" width="16" height="219"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="kP3-dk-JV6">
-                    <rect key="frame" x="16" y="225" width="334" height="29"/>
+                    <rect key="frame" x="16" y="225" width="220" height="29"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="xjn-zZ-fKk">
                         <font key="font" size="24" name="HelveticaNeue-Light"/>
@@ -83,6 +86,28 @@
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
+                <button hidden="YES" id="MzD-3v-udp" customClass="KBButton">
+                    <rect key="frame" x="358" y="229" width="106" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" title="Primary" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a24-I5-iLS">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="primaryActionActivated:" target="-2" id="99M-Wm-zpo"/>
+                    </connections>
+                </button>
+                <button hidden="YES" id="GX9-pb-DA1" customClass="KBButton">
+                    <rect key="frame" x="242" y="229" width="106" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" title="Secondary" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ukh-G7-7jq">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="secondaryActionActivated:" target="-2" id="wPZ-H5-Kk5"/>
+                    </connections>
+                </button>
             </subviews>
         </customView>
         <menu id="36">

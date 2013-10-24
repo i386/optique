@@ -8,14 +8,13 @@
 
 #import "OPPhotoCollectionViewController.h"
 #import "OPPhotoViewController.h"
-#import "OPPhotoGridViewCell.h"
 #import "OPImagePreviewService.h"
 #import "OPPlaceHolderViewController.h"
 
-@interface OPPhotoCollectionViewController () {
-    NSMutableArray *_sharingMenuItems;
-    OPPlaceHolderViewController *_placeHolderViewController;
-}
+@interface OPPhotoCollectionViewController()
+
+@property (strong) NSMutableArray *sharingMenuItems;
+@property (strong) OPPlaceHolderViewController *placeHolderViewController;
 
 @end
 
@@ -159,10 +158,15 @@
     return _collection.allPhotos.count;
 }
 
+-(OPPhotoGridViewCell*)createPhotoGridViewCell
+{
+    return [[OPPhotoGridViewCell alloc] init];
+}
+
 -(OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    OPPhotoGridViewCell *item = [[OPPhotoGridViewCell alloc] init];
-    
+    OPPhotoGridViewCell *item = [self createPhotoGridViewCell];
+                                 
     NSArray *allPhotos = _collection.allPhotos;
     
     if (allPhotos.count > 0)
@@ -220,6 +224,11 @@
     [_headingLine setBorderWidth:2];
     [_headingLine setBorderColor:[NSColor colorWithCalibratedRed:0.83 green:0.83 blue:0.83 alpha:1.00]];
     [_headingLine setBoxType:NSBoxCustom];
+    
+    [[_primaryActionButton cell] setKBButtonType:BButtonTypePrimary];
+    [[_secondaryActionButton cell] setKBButtonType:BButtonTypeDefault];
+    
+//    self.gridView.isSelectionSticky = YES;
 }
 
 -(void)loadView
@@ -278,4 +287,33 @@
     return _placeHolderViewController.view;
 }
 
+- (IBAction)primaryActionActivated:(id)sender
+{
+}
+
+-(void)secondaryActionActivated:(id)sender
+{
+    [[self gridView] deselectAll:sender];
+}
+
+-(void)selectionChangedInGridView:(OEGridView *)gridView
+{
+    OPPhotoGridView *photoGridView = (OPPhotoGridView*)gridView;
+    
+    if (photoGridView.isSelectionSticky)
+    {
+        if (gridView.selectionIndexes.count > 0)
+        {
+            [[self primaryActionButton] setHidden:NO];
+            [[self secondaryActionButton] setHidden:NO];
+            [[self dateLabel] setHidden:YES];
+        }
+        else
+        {
+            [[self primaryActionButton] setHidden:YES];
+            [[self secondaryActionButton] setHidden:YES];
+            [[self dateLabel] setHidden:NO];
+        }
+    }
+}
 @end

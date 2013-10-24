@@ -47,6 +47,8 @@ typedef NS_ENUM(NSUInteger, XPPhotoCollectionType) {
 
 @optional
 
+-(NSURL*)path;
+
 /** 
  reloads the content of the collection
  */

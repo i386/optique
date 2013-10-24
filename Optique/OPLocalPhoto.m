@@ -27,11 +27,6 @@
     return self;
 }
 
--(void)imageWithCompletionBlock:(XPImageCompletionBlock)completionBlock
-{
-    completionBlock([[NSImage alloc] initWithContentsOfURL:_path]);
-}
-
 -(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(XPImageCompletionBlock)completionBlock
 {
     NSImage *image;

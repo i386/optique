@@ -10,12 +10,15 @@
 #import <ImageCaptureCore/ImageCaptureCore.h>
 #import <Exposure/Exposure.h>
 
-@interface OPCameraPhoto : NSObject <XPPhoto>
+@interface OPCameraPhoto : NSObject <XPPhoto, ICCameraDeviceDownloadDelegate>
 
 @property (strong) ICCameraFile *cameraFile;
 @property (weak) id<XPPhotoCollection> collection;
+@property (strong) NSURL *path;
 
 -(id)initWithCameraFile:(ICCameraFile*)cameraFile collection:(id<XPPhotoCollection>)collection;
+
+-(void)requestLocalCopy;
 
 -(NSImage*)thumbnail;
 

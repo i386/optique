@@ -13,12 +13,10 @@
 
 NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerViewDidChange";
 
-@interface OPNavigationController () {
-    NSMutableArray *_displayStack;
-    NSView *_displayView;
-}
+@interface OPNavigationController ()
 
 @property (strong) IBOutlet NSView *displayView;
+@property (strong) NSMutableArray *displayStack;
 
 @end
 

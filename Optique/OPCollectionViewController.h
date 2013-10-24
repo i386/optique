@@ -28,4 +28,6 @@
 
 -(void)showCollectionWithTitle:(NSString*)title;
 
+-(OPNavigationViewController*)viewForCollection:(id<XPPhotoCollection>)collection photoManager:(XPPhotoManager*)photoManager;
+
 @end

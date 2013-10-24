@@ -40,9 +40,8 @@
     XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:service.title keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
         id<XPPhoto> photo = controller.visiblePhoto;
         
-        [photo imageWithCompletionBlock:^(NSImage *image) {
-            [service performWithItems:@[image]];
-        }];
+        NSImage *image = [[NSImage alloc] initWithContentsOfURL:photo.url];
+        [service performWithItems:@[image]];
         
     }];
     

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F01F46F171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m */; };
 		0F03059917895AC00068D5E7 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
+		0F03CD0D18152E8E00A73D8F /* OPCameraPhotoGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F03CD0C18152E8E00A73D8F /* OPCameraPhotoGridViewCell.m */; };
+		0F03CD0F18153BA500A73D8F /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F03CD0E18153BA500A73D8F /* check.png */; };
 		0F04A62D1737C71000E53ED1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0F04A6331737C71000E53ED1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F04A6311737C71000E53ED1 /* InfoPlist.strings */; };
 		0F04A6431737C74800E53ED1 /* Exposure.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F04A63B1737C74800E53ED1 /* Exposure.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -120,6 +122,10 @@
 		0FC2ABCB1789541A009C7B02 /* OPCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF87E172A42750029724A /* OPCamera.m */; };
 		0FC2ABCC1789541A009C7B02 /* OPCameraPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C5619172CBB4B00CB7B1E /* OPCameraPhoto.m */; };
 		0FC2ABCD17895450009C7B02 /* ImageCaptureCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */; };
+		0FC2EC2C1813EB0600D02EC5 /* OPCameraCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2EC2B1813EB0600D02EC5 /* OPCameraCollectionViewController.m */; };
+		0FC2EC2F1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2EC2E1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.m */; };
+		0FC2EC741813F5BA00D02EC5 /* OPImportPhotosWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2EC721813F5BA00D02EC5 /* OPImportPhotosWindowController.m */; };
+		0FC2EC751813F5BA00D02EC5 /* OPImportPhotosWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2EC731813F5BA00D02EC5 /* OPImportPhotosWindowController.xib */; };
 		0FC55DC91787CB5A0095CCF0 /* OPFlickrService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC55DC61787BE4A0095CCF0 /* OPFlickrService.m */; };
 		0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */; };
 		0FCA4D191737CC4A007DC9EF /* Exposure.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
@@ -285,6 +291,9 @@
 /* Begin PBXFileReference section */
 		0F01F46E171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSGraphicsContext+GraphicsContext.h"; sourceTree = "<group>"; };
 		0F01F46F171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSGraphicsContext+GraphicsContext.m"; sourceTree = "<group>"; };
+		0F03CD0B18152E8E00A73D8F /* OPCameraPhotoGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCameraPhotoGridViewCell.h; sourceTree = "<group>"; };
+		0F03CD0C18152E8E00A73D8F /* OPCameraPhotoGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCameraPhotoGridViewCell.m; sourceTree = "<group>"; };
+		0F03CD0E18153BA500A73D8F /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		0F04A5CA1737C43800E53ED1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		0F04A5CB1737C43800E53ED1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0F04A5CC1737C43800E53ED1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -322,7 +331,6 @@
 		0F33D0EF1769E93D0032CCA0 /* 86-camera-alt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera-alt@2x.png"; sourceTree = "<group>"; };
 		0F348148176D669F00439AEA /* loading-preview.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "loading-preview.pdf"; sourceTree = "<group>"; };
 		0F348149176D669F00439AEA /* loading-preview@2x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "loading-preview@2x.pdf"; sourceTree = "<group>"; };
-		0F3632C3178E2BE10000577B /* libPods-Optique-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-BlocksKit.a"; path = "Pods/build/Debug/libPods-Optique-BlocksKit.a"; sourceTree = "<group>"; };
 		0F3632C4178E2BE10000577B /* libPods-Optique-CDEvents.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-CDEvents.a"; path = "Pods/build/Debug/libPods-Optique-CDEvents.a"; sourceTree = "<group>"; };
 		0F3632C5178E2BE10000577B /* libPods-Optique-INAppStoreWindow.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-INAppStoreWindow.a"; path = "Pods/build/Debug/libPods-Optique-INAppStoreWindow.a"; sourceTree = "<group>"; };
 		0F3632C6178E2BE20000577B /* libPods-Optique-NSHash.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-NSHash.a"; path = "Pods/build/Debug/libPods-Optique-NSHash.a"; sourceTree = "<group>"; };
@@ -395,7 +403,6 @@
 		0F93120E178D891200C0A358 /* libPods-Optique-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-BlocksKit.a"; path = "Pods/build/Debug/libPods-Optique-BlocksKit.a"; sourceTree = "<group>"; };
 		0F93120F178D891200C0A358 /* libPods-Optique-CDEvents.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-CDEvents.a"; path = "Pods/build/Debug/libPods-Optique-CDEvents.a"; sourceTree = "<group>"; };
 		0F931210178D891300C0A358 /* libPods-Optique-INAppStoreWindow.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-INAppStoreWindow.a"; path = "Pods/build/Debug/libPods-Optique-INAppStoreWindow.a"; sourceTree = "<group>"; };
-		0F931211178D891300C0A358 /* libPods-Optique-NSHash.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-NSHash.a"; path = "Pods/build/Debug/libPods-Optique-NSHash.a"; sourceTree = "<group>"; };
 		0F931212178D891300C0A358 /* libPods-Optique-OEGridView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-OEGridView.a"; path = "Pods/build/Debug/libPods-Optique-OEGridView.a"; sourceTree = "<group>"; };
 		0F946AA8178700A8004F6B57 /* Flickr.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Flickr.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F946AAC178700A8004F6B57 /* Flickr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Flickr-Info.plist"; sourceTree = "<group>"; };
@@ -449,6 +456,13 @@
 		0FC2ABBD178952F7009C7B02 /* Camera-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Camera-Prefix.pch"; sourceTree = "<group>"; };
 		0FC2ABC417895355009C7B02 /* OPCameraPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCameraPlugin.h; sourceTree = "<group>"; };
 		0FC2ABC517895355009C7B02 /* OPCameraPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCameraPlugin.m; sourceTree = "<group>"; };
+		0FC2EC2A1813EB0600D02EC5 /* OPCameraCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCameraCollectionViewController.h; sourceTree = "<group>"; };
+		0FC2EC2B1813EB0600D02EC5 /* OPCameraCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCameraCollectionViewController.m; sourceTree = "<group>"; };
+		0FC2EC2D1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPCameraPhotoCollectionViewController.h; path = ../OPCameraPhotoCollectionViewController.h; sourceTree = "<group>"; };
+		0FC2EC2E1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCameraPhotoCollectionViewController.m; path = ../OPCameraPhotoCollectionViewController.m; sourceTree = "<group>"; };
+		0FC2EC711813F5BA00D02EC5 /* OPImportPhotosWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImportPhotosWindowController.h; sourceTree = "<group>"; };
+		0FC2EC721813F5BA00D02EC5 /* OPImportPhotosWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImportPhotosWindowController.m; sourceTree = "<group>"; };
+		0FC2EC731813F5BA00D02EC5 /* OPImportPhotosWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPImportPhotosWindowController.xib; sourceTree = "<group>"; };
 		0FC55DC31787BB760095CCF0 /* libPods-objectiveflickr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-objectiveflickr.a"; path = "DerivedData/Optique/Build/Products/Debug/libPods-objectiveflickr.a"; sourceTree = "<group>"; };
 		0FC55DC51787BE4A0095CCF0 /* OPFlickrService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPFlickrService.h; path = ../Optique/OPFlickrService.h; sourceTree = "<group>"; };
 		0FC55DC61787BE4A0095CCF0 /* OPFlickrService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPFlickrService.m; path = ../Optique/OPFlickrService.m; sourceTree = "<group>"; };
@@ -816,7 +830,6 @@
 				0FC92774180F502900C51076 /* libPods-Local-BlocksKit.a */,
 				0FC92775180F502900C51076 /* libPods-Local-CDEvents.a */,
 				0FD86BE1180F4D8F00BFF807 /* libPods-Optique-BlocksKit.a */,
-				0F3632C3178E2BE10000577B /* libPods-Optique-BlocksKit.a */,
 				0F3632C4178E2BE10000577B /* libPods-Optique-CDEvents.a */,
 				0F3632C5178E2BE10000577B /* libPods-Optique-INAppStoreWindow.a */,
 				0F3632C6178E2BE20000577B /* libPods-Optique-NSHash.a */,
@@ -824,7 +837,6 @@
 				0F93120E178D891200C0A358 /* libPods-Optique-BlocksKit.a */,
 				0F93120F178D891200C0A358 /* libPods-Optique-CDEvents.a */,
 				0F931210178D891300C0A358 /* libPods-Optique-INAppStoreWindow.a */,
-				0F931211178D891300C0A358 /* libPods-Optique-NSHash.a */,
 				0F931212178D891300C0A358 /* libPods-Optique-OEGridView.a */,
 				0FDE0ECC1787F0F400B81ADC /* WebKit.framework */,
 				0FC55DC31787BB760095CCF0 /* libPods-objectiveflickr.a */,
@@ -859,6 +871,7 @@
 				0FEF33A216FEC6500096D72A /* Main Window */,
 				0FEF33A016FEC6350096D72A /* Collection View */,
 				0FDE075A170317AE00D5B456 /* Photo Collection View */,
+				0FC2EC301813EC4D00D02EC5 /* Camera Collection View */,
 				0F962710170418F4007C1A86 /* Photo View */,
 				0FEF33A116FEC6420096D72A /* Photo Manager */,
 				0F97164917048737001835DC /* Image Previews */,
@@ -872,6 +885,7 @@
 		0F9C80BA16F891C700B2B6D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F03CD0E18153BA500A73D8F /* check.png */,
 				0FA29D11180FFB080066077D /* lock.png */,
 				0F1B401F180E970200C1CBF5 /* search.png */,
 				0F707187180E354F00ED5799 /* folder.png */,
@@ -954,6 +968,22 @@
 				0FC2ABBD178952F7009C7B02 /* Camera-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0FC2EC301813EC4D00D02EC5 /* Camera Collection View */ = {
+			isa = PBXGroup;
+			children = (
+				0FC2EC2A1813EB0600D02EC5 /* OPCameraCollectionViewController.h */,
+				0FC2EC2B1813EB0600D02EC5 /* OPCameraCollectionViewController.m */,
+				0FC2EC2D1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.h */,
+				0FC2EC2E1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.m */,
+				0FC2EC711813F5BA00D02EC5 /* OPImportPhotosWindowController.h */,
+				0FC2EC721813F5BA00D02EC5 /* OPImportPhotosWindowController.m */,
+				0FC2EC731813F5BA00D02EC5 /* OPImportPhotosWindowController.xib */,
+				0F03CD0B18152E8E00A73D8F /* OPCameraPhotoGridViewCell.h */,
+				0F03CD0C18152E8E00A73D8F /* OPCameraPhotoGridViewCell.m */,
+			);
+			name = "Camera Collection View";
 			sourceTree = "<group>";
 		};
 		0FCA4D1D1737CE8C007DC9EF /* Exposures */ = {
@@ -1473,6 +1503,7 @@
 			files = (
 				0F9C80BE16F891C700B2B6D8 /* InfoPlist.strings in Resources */,
 				0F9C80C416F891C700B2B6D8 /* Credits.rtf in Resources */,
+				0F03CD0F18153BA500A73D8F /* check.png in Resources */,
 				0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */,
 				0FA29D12180FFB080066077D /* lock.png in Resources */,
 				0FEF33A716FEC8090096D72A /* OPCollectionViewController.xib in Resources */,
@@ -1491,6 +1522,7 @@
 				0F70718B180E354F00ED5799 /* picture.png in Resources */,
 				0F33D0E51769E7800032CCA0 /* 298-circlex@2x.png in Resources */,
 				0F33D0EC1769E87A0032CCA0 /* 218-trash2.png in Resources */,
+				0FC2EC751813F5BA00D02EC5 /* OPImportPhotosWindowController.xib in Resources */,
 				0F70718C180E354F00ED5799 /* camera.png in Resources */,
 				0F85D9C1180CD2300003C6ED /* OPToolbarViewController.xib in Resources */,
 				0F33D0F11769E93D0032CCA0 /* 86-camera-alt@2x.png in Resources */,
@@ -1723,6 +1755,7 @@
 				0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */,
 				0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */,
 				0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */,
+				0FC2EC2F1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.m in Sources */,
 				0FDE075817030FCC00D5B456 /* OPPhotoCollectionViewController.m in Sources */,
 				0F96270E170418EB007C1A86 /* OPPhotoViewController.m in Sources */,
 				0FA29CE2180FC87F0066077D /* NSURL+EqualToURL.m in Sources */,
@@ -1735,6 +1768,7 @@
 				0F85D9C0180CD2300003C6ED /* OPToolbarViewController.m in Sources */,
 				0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */,
 				0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */,
+				0F03CD0D18152E8E00A73D8F /* OPCameraPhotoGridViewCell.m in Sources */,
 				0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */,
 				0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */,
 				0FCE744F1714136B00A5AE79 /* NSObject+PerformBlock.m in Sources */,
@@ -1742,6 +1776,7 @@
 				0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */,
 				0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */,
 				0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */,
+				0FC2EC741813F5BA00D02EC5 /* OPImportPhotosWindowController.m in Sources */,
 				0FA29D09180FE8C60066077D /* OPPhotoGridViewCell.m in Sources */,
 				0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */,
 				0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */,
@@ -1751,6 +1786,7 @@
 				0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */,
 				0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */,
 				0FD51720176B08BD006E8F4D /* OPGridView.m in Sources */,
+				0FC2EC2C1813EB0600D02EC5 /* OPCameraCollectionViewController.m in Sources */,
 				0FA29D06180FE8740066077D /* OPPhotoGridView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2142,9 +2178,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -2168,8 +2204,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				SDKROOT = macosx;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};

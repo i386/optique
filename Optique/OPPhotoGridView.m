@@ -26,40 +26,54 @@
 
 -(void)mouseDown:(NSEvent *)theEvent
 {
-    if (_isSelectionSticky)
+    NSPoint pointInView = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    NSUInteger index = [self indexForCellAtPoint:pointInView];
+    
+    if (_isSelectionSticky && [theEvent clickCount] == 1)
     {
-        NSPoint pointInView = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-        NSUInteger index = [self indexForCellAtPoint:pointInView];
-        
-        if (index != NSNotFound)
-        {
-            NSUInteger modifierFlags = [[NSApp currentEvent] modifierFlags];
-            BOOL commandKeyDown      = ((modifierFlags & NSCommandKeyMask) == NSCommandKeyMask);
-            BOOL shiftKeyDown        = ((modifierFlags & NSShiftKeyMask) == NSShiftKeyMask);
-            BOOL invertSelection     = commandKeyDown || shiftKeyDown;
-            BOOL isSelected          = [[self selectionIndexes] containsIndex:index];
-            
-            if (isSelected)
-            {
-                [self deselectCellAtIndex:index];
-            }
-            else if (!invertSelection || isSelected)
-            {
-                [self selectCellAtIndex:index];
-            }
-            else
-            {
-                [self selectCellAtIndex:index];
-            }
-        }
-        else
-        {
-            [self deselectAll:nil];
-        }
+        [self toggleSelectedState:theEvent];
+    }
+    else if (_isSelectionSticky && index != NSNotFound && [theEvent clickCount] == 2)
+    {
+        [NSRunLoop cancelPreviousPerformRequestsWithTarget:self];
+        [self.delegate gridView:self doubleClickedCellForItemAtIndex:index];
+        [self deselectAll:nil];
     }
     else
     {
         [super mouseDown:theEvent];
+    }
+}
+
+-(void)toggleSelectedState:(NSEvent*)theEvent
+{
+    NSPoint pointInView = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    NSUInteger index = [self indexForCellAtPoint:pointInView];
+    
+    if (index != NSNotFound)
+    {
+        NSUInteger modifierFlags = [[NSApp currentEvent] modifierFlags];
+        BOOL commandKeyDown      = ((modifierFlags & NSCommandKeyMask) == NSCommandKeyMask);
+        BOOL shiftKeyDown        = ((modifierFlags & NSShiftKeyMask) == NSShiftKeyMask);
+        BOOL invertSelection     = commandKeyDown || shiftKeyDown;
+        BOOL isSelected          = [[self selectionIndexes] containsIndex:index];
+        
+        if (isSelected)
+        {
+            [self deselectCellAtIndex:index];
+        }
+        else if (!invertSelection || isSelected)
+        {
+            [self selectCellAtIndex:index];
+        }
+        else
+        {
+            [self selectCellAtIndex:index];
+        }
+    }
+    else
+    {
+        [self deselectAll:nil];
     }
 }
 

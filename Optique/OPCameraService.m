@@ -13,6 +13,7 @@
 @interface OPCameraService()
 
 @property (strong) NSMutableDictionary *devices;
+@property (strong) NSRunLoop *loop;
 
 @end
 
@@ -27,6 +28,7 @@
         _deviceBrowser = [[ICDeviceBrowser alloc] init];
         _deviceBrowser.delegate = self;
         _deviceBrowser.browsedDeviceTypeMask = _deviceBrowser.browsedDeviceTypeMask | ICDeviceLocationTypeMaskLocal |ICDeviceLocationTypeMaskRemote|ICDeviceTypeMaskCamera;
+        _loop = [[NSRunLoop alloc] init];
     }
     return self;
 }
@@ -38,6 +40,7 @@
 
 -(void)start
 {
+    [_deviceBrowser stop];
     [_deviceBrowser start];
 }
 

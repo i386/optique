@@ -138,9 +138,6 @@
     
     for (ICCameraFile *file in _device.mediaFiles)
     {
-#if DEBUG
-        NSLog(@"Found image '%@' on camera '%@'. Requesting thumbnail...", file.name, device.name);
-#endif
         [file thumbnailIfAvailable];
         [file largeThumbnailIfAvailable];
     }
@@ -170,10 +167,6 @@
 
 - (void)cameraDevice:(ICCameraDevice*)device didReceiveThumbnailForItem:(ICCameraItem*)item
 {
-#if DEBUG
-    NSLog(@"Thumbnail received from camera '%@' for item '%@'", device.name, item.name);
-#endif
-    
     _thumbnailsRecieved++;
     
     if (!_batchTimer)

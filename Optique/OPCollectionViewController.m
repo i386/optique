@@ -212,7 +212,12 @@
 {
     NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_predicate];
     id collection = filteredCollections[index];
-    [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:collection photoManager:_photoManager]];
+    [self.controller pushViewController:[self viewForCollection:collection photoManager:_photoManager]];
+}
+
+-(OPNavigationViewController*)viewForCollection:(id<XPPhotoCollection>)collection photoManager:(XPPhotoManager*)photoManager
+{
+    return [[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:collection photoManager:photoManager];
 }
 
 -(void)showCollectionWithTitle:(NSString *)title
@@ -223,7 +228,7 @@
     
     if (collection)
     {
-        [self.controller pushViewController:[[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:collection photoManager:_photoManager]];
+        [self.controller pushViewController:[self viewForCollection:collection photoManager:_photoManager]];
     }
 }
 

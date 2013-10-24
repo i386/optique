@@ -10,6 +10,7 @@
 #import "OPWindow.h"
 #import "OPNavigationController.h"
 #import "OPPhotoCollectionViewController.h"
+#import "OPCameraCollectionViewController.h"
 #import "OPNewAlbumSheetController.h"
 #import "OPNavigationViewController.h"
 #import "OPToolbarViewController.h"
@@ -17,7 +18,7 @@
 @interface OPMainWindowController () {
     OPNavigationController *_navigationController;
     OPCollectionViewController *_albumViewController;
-    OPCollectionViewController *_cameraViewController;
+    OPCameraCollectionViewController *_cameraViewController;
     OPCollectionViewController *_searchViewController;
     OPNewAlbumSheetController *_newAlbumSheetController;
     OPToolbarViewController *_toolbarViewController;
@@ -69,7 +70,7 @@
         return [evaluatedObject collectionType] == kPhotoCollectionLocal || [evaluatedObject collectionType] == kPhotoCollectionOther;
     }]];
     
-    _cameraViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager
+    _cameraViewController = [[OPCameraCollectionViewController alloc] initWithPhotoManager:_photoManager
                                                                                title:@"Cameras"
                                                                         emptyMessage:@"There are no cameras connected"
                                                                                 icon:[NSImage imageNamed:@"camera"]

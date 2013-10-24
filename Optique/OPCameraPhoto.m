@@ -8,31 +8,12 @@
 
 #import "OPCameraPhoto.h"
 #import "OPCamera.h"
+#import "NSObject+PerformBlock.h"
 
-@interface OPCameraPhotoCondition : NSConditionLock
-
-@property (readonly, strong) XPURLSupplier supplier;
-
-@end
-
-@implementation OPCameraPhotoCondition
-
--initWithURLSupplier:(XPURLSupplier)supplier
-{
-    self = [super initWithCondition:0];
-    if (self)
-    {
-        _supplier = supplier;
-    }
-    return self;
-}
-
-@end
 
 @interface OPCameraPhoto() {
-    volatile BOOL _fileDownloaded;
+    volatile BOOL _fileDownloadRequested;
 }
-@property (readonly, strong) NSURL *localURL;
 @end
 
 @implementation OPCameraPhoto
@@ -44,7 +25,7 @@
     {
         _cameraFile = cameraFile;
         _collection = collection;
-        _fileDownloaded = NO;
+        _fileDownloadRequested = NO;
     }
     return self;
 }
@@ -70,80 +51,85 @@
     return thumbnail;
 }
 
--(void)imageWithCompletionBlock:(XPImageCompletionBlock)completionBlock
+-(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(XPImageCompletionBlock)completionBlock
 {
-    if (!_fileDownloaded)
+    if ([self url])
     {
-        [_cameraFile.device requestReadDataFromFile:_cameraFile atOffset:0 length:_cameraFile.fileSize readDelegate:self didReadDataSelector:@selector(didReadData:fromFile:error:contextInfo:) contextInfo:(void*)CFBridgingRetain(completionBlock)];
-    }
-    else
-    {
-        NSImage  *image = [[NSImage alloc] initByReferencingURL:[self.camera.cacheDirectory URLByAppendingPathComponent:self.title]];
+        NSImage *image;
+        
+        CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)_path, NULL);
+        
+        CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL);
+        CFNumberRef pixelWidthRef  = CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelWidth);
+        CFNumberRef pixelHeightRef = CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelHeight);
+        CGFloat pixelWidth = [(__bridge NSNumber *)pixelWidthRef floatValue];
+        CGFloat pixelHeight = [(__bridge NSNumber *)pixelHeightRef floatValue];
+        CGFloat maxEdge = MAX(pixelWidth, pixelHeight);
+        
+        float maxEdgeSize = MAX(size.width, size.height);
+        
+        if (maxEdge > maxEdgeSize)
+        {
+            NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
+                                              kCGImageSourceCreateThumbnailWithTransform, kCFBooleanTrue,
+                                              kCGImageSourceCreateThumbnailFromImageAlways, [NSNumber numberWithFloat:maxEdgeSize],
+                                              kCGImageSourceThumbnailMaxPixelSize, kCFBooleanFalse, kCGImageSourceShouldCache, nil];
+            
+            CGImageRef thumbnail = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, (__bridge CFDictionaryRef)thumbnailOptions);
+            
+            image = [[NSImage alloc] initWithCGImage:thumbnail size:NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail))];
+            
+            CGImageRelease(thumbnail);
+        }
+        else
+        {
+            image = [[NSImage alloc] initWithContentsOfURL:_path];
+        }
+        
+        CFRelease(imageProperties);
+        
         completionBlock(image);
     }
 }
 
-
--(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(XPImageCompletionBlock)completionBlock
-{
-    [self imageWithCompletionBlock:completionBlock];
-}
-
 -(NSURL *)url
 {
-    if (!_fileDownloaded)
+    return _path;
+}
+
+- (void)didDownloadFile:(ICCameraFile*)file error:(NSError*)error options:(NSDictionary*)options contextInfo:(void*)contextInfo
+{
+    OPCamera *camera = (OPCamera*)_collection;
+    if ([options[ICDownloadsDirectoryURL] isEqual:[camera cacheDirectory]])
     {
-        NSConditionLock *condition = [[NSConditionLock alloc] init];
-        [condition lock];
-        
-        [_cameraFile.device requestReadDataFromFile:_cameraFile atOffset:0 length:_cameraFile.fileSize readDelegate:self didReadDataSelector:@selector(didLoadData:fromFile:error:contextInfo:) contextInfo:(void*)CFBridgingRetain(condition)];
-        
-        [condition lock];
-        [condition unlockWithCondition:1];
+        _path = [camera.cacheDirectory URLByAppendingPathComponent:file.name];
     }
-    return _localURL;
+    
+    XPCompletionBlock callback = CFBridgingRelease(contextInfo);
+    callback(nil);
 }
 
-- (void)didLoadData:(NSData*)data fromFile:(ICCameraFile*)file error:(NSError*)error contextInfo:(void*)context
+-(void)requestLocalCopyInCacheWhenDone:(XPCompletionBlock)callback
 {
-#if DEBUG
-    NSLog(@"Downloading image '%@' from camera '%@'", file.name, file.device.name);
-#endif
-    
-    NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
-    
-    NSURL *fileURL = [self.camera.cacheDirectory URLByAppendingPathComponent:file.name];
-    [data writeToURL:fileURL atomically:YES];
-    _fileDownloaded = YES;
-    
-    OPCameraPhotoCondition *condition = CFBridgingRelease(context);
-    _localURL = fileURL;
-    [condition unlockWithCondition:1];
+    OPCamera *camera = (OPCamera*)_collection;
+    [self requestLocalCopy:[camera cacheDirectory] whenDone:callback];
 }
 
-- (void)didReadData:(NSData*)data fromFile:(ICCameraFile*)file error:(NSError*)error contextInfo:(void*)context
+-(void)requestLocalCopy:(NSURL *)directory whenDone:(XPCompletionBlock)callback
 {
-#if DEBUG
-    NSLog(@"Downloading image '%@' from camera '%@'", file.name, file.device.name);
-#endif
-    
-    NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
-    
-    NSURL *fileURL = [self.camera.cacheDirectory URLByAppendingPathComponent:file.name];
-    [data writeToURL:fileURL atomically:YES];
-    _fileDownloaded = YES;
-    
-    [[self.collection photoManager] collectionUpdated:self.collection];
-    
-    NSImage *image = [[NSImage alloc] initByReferencingURL:fileURL];
-    
-    XPImageCompletionBlock completionBlock = CFBridgingRelease(context);
-    completionBlock(image);
+    if (_path == nil && !_fileDownloadRequested)
+    {
+        _fileDownloadRequested = YES;
+        
+        NSDictionary* options = @{ICDownloadsDirectoryURL: directory};
+        
+        [_cameraFile.device requestDownloadFile:_cameraFile options:options downloadDelegate:self didDownloadSelector:@selector(didDownloadFile:error:options:contextInfo:) contextInfo:(void*)CFBridgingRetain(callback)];
+    }
 }
 
 -(BOOL)hasLocalCopy
 {
-    return _fileDownloaded;
+    return _path != nil;
 }
 
 @end

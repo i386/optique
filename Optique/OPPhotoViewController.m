@@ -138,9 +138,22 @@
     }
     
     NSSize windowSize = [[NSApplication sharedApplication] mainWindow].frame.size;
-    [_visiblePhoto scaleImageToFitSize:windowSize withCompletionBlock:^void(NSImage *image) {
-        viewController.representedObject = image;
-    }];
+    
+    id photo = _visiblePhoto;
+    if ([photo respondsToSelector:@selector(requestLocalCopyInCacheWhenDone:)])
+    {
+        [_visiblePhoto requestLocalCopyInCacheWhenDone:^(NSError *error) {
+            [_visiblePhoto scaleImageToFitSize:windowSize withCompletionBlock:^void(NSImage *image) {
+                viewController.representedObject = image;
+            }];
+        }];
+    }
+    else
+    {
+        [_visiblePhoto scaleImageToFitSize:windowSize withCompletionBlock:^void(NSImage *image) {
+            viewController.representedObject = image;
+        }];
+    }
 }
 
 - (void)pageController:(NSPageController *)pageController didTransitionToObject:(id)object

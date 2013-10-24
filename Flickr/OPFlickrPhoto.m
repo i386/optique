@@ -73,11 +73,6 @@
     return _photoSet;
 }
 
--(void)imageWithCompletionBlock:(XPImageCompletionBlock)completionBlock
-{
-    
-}
-
 -(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(XPImageCompletionBlock)completionBlock
 {
     NSImage *image = [[NSImage alloc] initWithContentsOfURL:_url];

@@ -28,11 +28,6 @@
 -(id<XPPhotoCollection>) collection;
 
 /**
- Loads the image and returns it via the completion block
- */
--(void)imageWithCompletionBlock:(XPImageCompletionBlock)completionBlock;
-
-/**
  Loads and scales the image and returns it via the completion block
  May return the full size image if scaling is not available.
  */
@@ -49,6 +44,13 @@
 -(BOOL)hasLocalCopy;
 
 @optional
+
+/**
+ Fetches the local copy
+ */
+-(void)requestLocalCopy:(NSURL*)directory whenDone:(XPCompletionBlock)callback;
+
+-(void)requestLocalCopyInCacheWhenDone:(XPCompletionBlock)callback;
 
 /**
  Thumbnail image, if available
