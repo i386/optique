@@ -142,6 +142,9 @@
     id photo = _visiblePhoto;
     if ([photo respondsToSelector:@selector(requestLocalCopyInCacheWhenDone:)])
     {
+        //Blank the current image so we dont get flashes of it when we async load the new image
+        viewController.representedObject = nil;
+        
         [_visiblePhoto requestLocalCopyInCacheWhenDone:^(NSError *error) {
             [_visiblePhoto scaleImageToFitSize:windowSize withCompletionBlock:^void(NSImage *image) {
                 viewController.representedObject = image;
