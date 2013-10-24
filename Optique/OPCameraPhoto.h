@@ -18,8 +18,6 @@
 
 -(id)initWithCameraFile:(ICCameraFile*)cameraFile collection:(id<XPPhotoCollection>)collection;
 
--(void)requestLocalCopy;
-
 -(NSImage*)thumbnail;
 
 @end
