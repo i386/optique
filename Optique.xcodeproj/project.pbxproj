@@ -51,6 +51,8 @@
 		0F44BAD9173DCA6D0039B00E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F44BAD7173DCA620039B00E /* Accounts.framework */; };
 		0F44BB4E173E011E0039B00E /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
 		0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F489933170BFFD60044ED0A /* OPImagePreviewService.m */; };
+		0F4A6DAA18191834009AD08C /* NSURL+Renamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A6DA918191834009AD08C /* NSURL+Renamer.m */; };
+		0F4A6DAB181918B6009AD08C /* NSURL+Renamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A6DA918191834009AD08C /* NSURL+Renamer.m */; };
 		0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE86217366CF900DF2356 /* XPPhotoManager.m */; };
 		0F62BA66173673B200E661DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
@@ -350,6 +352,8 @@
 		0F44BAF1173DD3420039B00E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0F489932170BFFD60044ED0A /* OPImagePreviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImagePreviewService.h; sourceTree = "<group>"; };
 		0F489933170BFFD60044ED0A /* OPImagePreviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImagePreviewService.m; sourceTree = "<group>"; };
+		0F4A6DA818191834009AD08C /* NSURL+Renamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Renamer.h"; sourceTree = "<group>"; };
+		0F4A6DA918191834009AD08C /* NSURL+Renamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Renamer.m"; sourceTree = "<group>"; };
 		0F50C39A178560A90017DF73 /* Optique.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Optique.entitlements; sourceTree = "<group>"; };
 		0F5FE86217366CF900DF2356 /* XPPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPPhotoManager.m; sourceTree = "<group>"; };
 		0F62BA65173673B200E661DD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -1159,6 +1163,8 @@
 				0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */,
 				0F79A5E3175DE2DC00BB3973 /* NSColor+Optique.h */,
 				0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */,
+				0F4A6DA818191834009AD08C /* NSURL+Renamer.h */,
+				0F4A6DA918191834009AD08C /* NSURL+Renamer.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1752,6 +1758,7 @@
 				0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */,
 				0FEF33A616FEC8090096D72A /* OPCollectionViewController.m in Sources */,
 				0F85D9C6180DF8F20003C6ED /* OPPlaceHolderViewController.m in Sources */,
+				0F4A6DAA18191834009AD08C /* NSURL+Renamer.m in Sources */,
 				0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */,
 				0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */,
 				0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */,
@@ -1795,6 +1802,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F4A6DAB181918B6009AD08C /* NSURL+Renamer.m in Sources */,
 				0FA29CE4180FC87F0066077D /* NSURL+EqualToURL.m in Sources */,
 				0FC2ABCA1789541A009C7B02 /* OPCameraService.m in Sources */,
 				0FC2ABCB1789541A009C7B02 /* OPCamera.m in Sources */,

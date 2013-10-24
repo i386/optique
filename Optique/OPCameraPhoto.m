@@ -9,6 +9,7 @@
 #import "OPCameraPhoto.h"
 #import "OPCamera.h"
 #import "NSObject+PerformBlock.h"
+#import "NSURL+Renamer.h"
 
 
 @interface OPCameraPhoto() {
@@ -99,6 +100,7 @@
 
 - (void)didDownloadFile:(ICCameraFile*)file error:(NSError*)error options:(NSDictionary*)options contextInfo:(void*)contextInfo
 {
+    //Do not set the path if its the cached version
     OPCamera *camera = (OPCamera*)_collection;
     if ([options[ICDownloadsDirectoryURL] isEqual:[camera cacheDirectory]])
     {
@@ -121,7 +123,10 @@
     {
         _fileDownloadRequested = YES;
         
-        NSDictionary* options = @{ICDownloadsDirectoryURL: directory};
+        NSURL *renamedUrl = [[directory URLByAppendingPathComponent:_cameraFile.name] URLWithUniqueNameIfExistsAtParent];
+        NSString *filename = [renamedUrl lastPathComponent];
+        
+        NSDictionary* options = @{ICDownloadsDirectoryURL: directory, ICSaveAsFilename: filename};
         
         [_cameraFile.device requestDownloadFile:_cameraFile options:options downloadDelegate:self didDownloadSelector:@selector(didDownloadFile:error:options:contextInfo:) contextInfo:(void*)CFBridgingRetain(callback)];
     }

@@ -10,6 +10,7 @@
 #import "OPLocalPhoto.h"
 #import "NSURL+EqualToURL.h"
 #import "NSURL+URLWithoutQuery.h"
+#import "NSURL+Renamer.h"
 
 @interface OPPhotoAlbum() {
     NSLock *_arrayLock;
@@ -103,8 +104,10 @@
 
 -(void)addPhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock
 {
+    NSURL *newLocation = [[self.path URLByAppendingPathComponent:photo.title] URLWithUniqueNameIfExistsAtParent];
+    
     NSError *error;
-    [[NSFileManager defaultManager] moveItemAtURL:photo.url toURL:[self.path URLByAppendingPathComponent:photo.title] error:&error];
+    [[NSFileManager defaultManager] moveItemAtURL:photo.url toURL:newLocation error:&error];
     
     if (completionBlock)
     {
