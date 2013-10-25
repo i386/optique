@@ -20,6 +20,8 @@
         self.rowSpacing = kGridViewRowSpacing;
         self.itemSize = CGSizeMake(280.0, 175.0);
         self.isSelectionSticky = NO;
+        
+        [self registerForDraggedTypes:@[NSFilenamesPboardType]];
     }
     return self;
 }

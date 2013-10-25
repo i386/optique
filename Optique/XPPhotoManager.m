@@ -160,8 +160,19 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
 
 -(void)didAddPhotoCollection:(id<XPPhotoCollection>)photoCollection
 {
-    [_collectionSet addObject:photoCollection];
-    [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:photoCollection];
+    //TODO: check for where we do reloads
+    NSUInteger index = [_collectionSet indexOfObject:photoCollection];
+    if (index != NSNotFound)
+    {
+        id<XPPhotoCollection> collection = [_collectionSet objectAtIndex:index];
+        [collection reload];
+        [self sendNotificationWithName:XPPhotoManagerDidUpdateCollection forPhotoCollection:collection];
+    }
+    else
+    {
+        [_collectionSet addObject:photoCollection];
+        [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:photoCollection];
+    }
 }
 
 -(void)didRemovePhotoCollection:(id<XPPhotoCollection>)photoCollection

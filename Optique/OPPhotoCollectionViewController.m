@@ -10,6 +10,7 @@
 #import "OPPhotoViewController.h"
 #import "OPImagePreviewService.h"
 #import "OPPlaceHolderViewController.h"
+#import "NSURL+Renamer.h"
 
 @interface OPPhotoCollectionViewController()
 
@@ -316,4 +317,36 @@
         }
     }
 }
+
+- (NSDragOperation)gridView:(OEGridView *)gridView validateDrop:(id<NSDraggingInfo>)sender
+{
+    return NSDragOperationCopy;
+}
+- (NSDragOperation)gridView:(OEGridView *)gridView draggingUpdated:(id<NSDraggingInfo>)sender
+{
+    return NSDragOperationCopy;
+}
+
+- (BOOL)gridView:(OEGridView *)gridView acceptDrop:(id<NSDraggingInfo>)sender
+{
+    NSPasteboard *pboard = [sender draggingPasteboard];
+    
+    id collection = _collection;
+    if ( [[pboard types] containsObject:NSFilenamesPboardType] && [collection respondsToSelector:@selector(path)])
+    {
+        NSURL *fileURL = [NSURL URLFromPasteboard:pboard];
+        NSString *fileName = [fileURL lastPathComponent];
+        NSURL *destURL = (NSURL*)[collection path];
+        destURL = [[destURL URLByAppendingPathComponent:fileName] URLWithUniqueNameIfExistsAtParent];
+        
+        NSError *error;
+        [[NSFileManager defaultManager] copyItemAtURL:fileURL toURL:destURL error:&error];
+        
+        return error ? NO : YES;
+    }
+    
+    return NO;
+}
+
+
 @end
