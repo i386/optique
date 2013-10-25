@@ -320,11 +320,12 @@
 
 - (NSDragOperation)gridView:(OEGridView *)gridView validateDrop:(id<NSDraggingInfo>)sender
 {
-    return NSDragOperationCopy;
+    return [self isFileDrop:sender] ? NSDragOperationCopy : NSDragOperationNone;
 }
+
 - (NSDragOperation)gridView:(OEGridView *)gridView draggingUpdated:(id<NSDraggingInfo>)sender
 {
-    return NSDragOperationCopy;
+    return [self isFileDrop:sender] ? NSDragOperationCopy : NSDragOperationNone;
 }
 
 - (BOOL)gridView:(OEGridView *)gridView acceptDrop:(id<NSDraggingInfo>)sender
@@ -335,18 +336,37 @@
     if ( [[pboard types] containsObject:NSFilenamesPboardType] && [collection respondsToSelector:@selector(path)])
     {
         NSURL *fileURL = [NSURL URLFromPasteboard:pboard];
-        NSString *fileName = [fileURL lastPathComponent];
-        NSURL *destURL = (NSURL*)[collection path];
-        destURL = [[destURL URLByAppendingPathComponent:fileName] URLWithUniqueNameIfExistsAtParent];
         
-        NSError *error;
-        [[NSFileManager defaultManager] copyItemAtURL:fileURL toURL:destURL error:&error];
-        
-        return error ? NO : YES;
+        BOOL isDir;
+        if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDir] && !isDir)
+        {
+            NSString *fileName = [fileURL lastPathComponent];
+            NSURL *destURL = (NSURL*)[collection path];
+            destURL = [[destURL URLByAppendingPathComponent:fileName] URLWithUniqueNameIfExistsAtParent];
+            
+            NSError *error;
+            [[NSFileManager defaultManager] copyItemAtURL:fileURL toURL:destURL error:&error];
+            
+            return error ? NO : YES;
+        }
     }
     
     return NO;
 }
 
+-(BOOL)isFileDrop:(id<NSDraggingInfo>)sender
+{
+    id collection = _collection;
+    NSPasteboard *pboard = [sender draggingPasteboard];
+    
+    if ( [[pboard types] containsObject:NSFilenamesPboardType] && [collection respondsToSelector:@selector(path)])
+    {
+        NSURL *fileURL = [NSURL URLFromPasteboard:pboard];
+        
+        BOOL isDir;
+        return [[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDir] && !isDir;
+    }
+    return NO;
+}
 
 @end

@@ -15,6 +15,7 @@
 #import "NSColor+Optique.h"
 #import "OPLocalPhoto.h"
 #import "OPPlaceHolderViewController.h"
+#import "NSURL+Renamer.h"
 
 @interface OPCollectionViewController ()
 
@@ -296,6 +297,61 @@
 {
     _placeHolderViewController.view.frame = gridView.frame;
     return _placeHolderViewController.view;
+}
+
+- (NSDragOperation)gridView:(OEGridView *)gridView validateDrop:(id<NSDraggingInfo>)sender
+{
+    return [self isDirectoryDrop:sender] ? NSDragOperationCopy : NSDragOperationNone;
+}
+- (NSDragOperation)gridView:(OEGridView *)gridView draggingUpdated:(id<NSDraggingInfo>)sender
+{
+    return [self isDirectoryDrop:sender] ? NSDragOperationCopy : NSDragOperationNone;
+}
+
+- (BOOL)gridView:(OEGridView *)gridView acceptDrop:(id<NSDraggingInfo>)sender
+{
+//    NSEvent *event = [NSApp currentEvent];
+//    
+//    NSPoint pointInView = [_gridView convertPoint:[event locationInWindow] fromView:nil];
+//    NSUInteger index = [_gridView indexForCellAtPoint:pointInView];
+//    
+//    NSLog(@"Index of item: %lu %@", (unsigned long)index, event);
+    
+    NSPasteboard *pboard = [sender draggingPasteboard];
+    
+    if ( [[pboard types] containsObject:NSFilenamesPboardType])
+    {
+        NSURL *fileURL = [NSURL URLFromPasteboard:pboard];
+        
+        BOOL isDir;
+        if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDir] && isDir)
+        {
+            NSString *fileName = [fileURL lastPathComponent];
+            NSURL *destURL = [_photoManager path];
+            destURL = [[destURL URLByAppendingPathComponent:fileName] URLWithUniqueNameIfExistsAtParent];
+            
+            NSError *error;
+            [[NSFileManager defaultManager] copyItemAtURL:fileURL toURL:destURL error:&error];
+            
+            return error ? NO : YES;
+        }
+    }
+    
+    return NO;
+}
+
+-(BOOL)isDirectoryDrop:(id<NSDraggingInfo>)sender
+{
+    NSPasteboard *pboard = [sender draggingPasteboard];
+    
+    if ( [[pboard types] containsObject:NSFilenamesPboardType])
+    {
+        NSURL *fileURL = [NSURL URLFromPasteboard:pboard];
+        
+        BOOL isDir;
+        return [[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDir] && isDir;
+    }
+    return NO;
 }
 
 @end

@@ -19,6 +19,8 @@
         self.minimumColumnSpacing = kGridViewColumnSpacing;
         self.rowSpacing = kGridViewRowSpacing;
         self.itemSize = CGSizeMake(280.0, 175.0);
+        
+        [self registerForDraggedTypes:@[NSFilenamesPboardType]];
     }
     return self;
 }
