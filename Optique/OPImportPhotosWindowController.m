@@ -17,6 +17,7 @@
 @property (assign) int imported;
 @property (weak) IBOutlet NSButton *importButton;
 @property (strong) XPCompletionBlock completionBlock;
+@property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 
 @end
 
@@ -51,6 +52,7 @@
     if (selected)
     {
         [_importButton setEnabled:NO];
+        [_progressIndicator startAnimation:self];
         
         [self performBlockInBackground:^{
            
@@ -71,6 +73,7 @@
     {
         [self.window orderOut:nil];
         [NSApp endSheet:self.window];
+        [_progressIndicator stopAnimation:self];
         
         _completionBlock(nil);
     }
@@ -103,6 +106,11 @@
         }
     }
     return 0;
+}
+
+-(void)awakeFromNib
+{
+    [_progressIndicator setDisplayedWhenStopped:NO];
 }
 
 @end

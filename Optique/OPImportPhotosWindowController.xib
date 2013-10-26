@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="albumSelectionBox" destination="kPh-Xf-id8" id="Fn4-Cj-mIa"/>
                 <outlet property="importButton" destination="l5m-9f-9KU" id="YX0-Iz-YM9"/>
+                <outlet property="progressIndicator" destination="2I2-id-SGA" id="8tz-jR-gtL"/>
                 <outlet property="window" destination="sbq-6z-umg" id="I1v-v6-p07"/>
             </connections>
         </customObject>
@@ -81,6 +82,10 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="2I2-id-SGA">
+                        <rect key="frame" x="208" y="13" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </progressIndicator>
                 </subviews>
             </view>
             <connections>
