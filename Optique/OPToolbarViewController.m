@@ -84,34 +84,20 @@ NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
 {
     if (_navigationController.isRootViewControllerVisible)
     {
-        [self switchModesWithNotification:YES];
-    }
-    else
-    {
-        [self backMode];
-        [_navigationController popToPreviousViewController];
-        
-        [self switchModesWithNotification:NO];
-    }
-}
-
--(void)switchModesWithNotification:(BOOL)sendNotification
-{
-    if (_navigationController.isRootViewControllerVisible)
-    {
         if (_filterMode == OPApplicationModeAlbum)
         {
-            [self cameraMode];
+            _filterMode = OPApplicationModeCamera;
         }
         else
         {
-            [self albumMode];
+            _filterMode = OPApplicationModeAlbum;
         }
         
-        if (sendNotification)
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:OPApplicationModeDidChange object:nil userInfo:@{@"mode": [NSNumber numberWithBool:_filterMode]}];
-        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:OPApplicationModeDidChange object:nil userInfo:@{@"mode": [NSNumber numberWithBool:_filterMode]}];
+    }
+    else
+    {
+        [_navigationController popToPreviousViewController];
     }
 }
 

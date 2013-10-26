@@ -175,7 +175,11 @@
 {
     OPNavigationController *controllerForNotification = (OPNavigationController*)notification.object;
     
-    if (controllerForNotification.isRootViewControllerVisible &&
+    if (!controllerForNotification.isRootViewControllerVisible)
+    {
+        [_toolbarViewController backMode];
+    }
+    else if (controllerForNotification.isRootViewControllerVisible &&
         [controllerForNotification.visibleViewController isEqual:_cameraViewController])
     {
         [_toolbarViewController cameraMode];
@@ -185,9 +189,9 @@
     {
         [_toolbarViewController albumMode];
     }
-    else if (!controllerForNotification.isRootViewControllerVisible)
+    else
     {
-        [_toolbarViewController backMode];
+        NSLog(@"Unknown");
     }
 }
 
