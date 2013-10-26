@@ -32,7 +32,7 @@
     
     NSError *error;
     
-    id<XPPhotoCollection> album = [_photoManager newAlbumWithName:albumName error:&error];
+    id<XPPhotoCollection> album = [_photoManager newAlbumWithName:albumName error:error];
     if (album)
     {
         [self.window orderOut:nil];

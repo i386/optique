@@ -36,4 +36,9 @@
     [super setSelected:selected animated:animated];
 }
 
+-(void)dealloc
+{
+    CGImageRelease((CGImageRef)self.badgeLayer.contents);
+}
+
 @end

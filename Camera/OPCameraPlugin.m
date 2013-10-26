@@ -11,6 +11,22 @@
 
 @implementation OPCameraPlugin
 
+-(id)init
+{
+    self = [super init];
+    if (self)
+    {
+        NSImage *image = [NSImage imageNamed:@"lock"];
+        
+        _badgeLayer = [XPBadgeLayer layer];
+        _imageLayer = [XPBadgeLayer layer];
+        _imageLayer.contents = (id)image.CGImageRef;
+        _imageLayer.bounds = NSMakeRect(0, 0, 128, 128);
+        _imageLayer.position = NSMakePoint(140, 87.5);
+    }
+    return self;
+}
+
 -(void)pluginDidLoad:(NSDictionary *)userInfo
 {
     _cameraService = [[OPCameraService alloc] init];
@@ -47,17 +63,7 @@
         OPCamera *camera  = (OPCamera*)collection;
         if (camera.isLocked)
         {
-            NSImage *image = [NSImage imageNamed:@"lock"];
-            
-            XPBadgeLayer *layer = [XPBadgeLayer layer];
-            XPBadgeLayer *imageLayer = [XPBadgeLayer layer];
-            imageLayer.contents = (id)image.CGImageRef;
-            imageLayer.bounds = NSMakeRect(0, 0, 128, 128);
-            imageLayer.position = NSMakePoint(140, 87.5);
-            
-            [layer addSublayer:imageLayer];
-            
-            return layer;
+            return _badgeLayer;
         }
     }
     return nil;
@@ -69,6 +75,11 @@
        [_cameraService removeCaches];
     }];
     return @[clearCacheItem];
+}
+
+-(void)dealloc
+{
+    CGImageRelease((CGImageRef)_imageLayer.contents);
 }
 
 @end

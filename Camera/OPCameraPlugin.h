@@ -16,5 +16,7 @@
 @property (strong, readonly) OPCameraService *cameraService;
 @property (weak) id<XPPhotoCollectionProviderDelegate> delegate;
 @property (strong, readonly) NSMutableArray *photoCollections;
+@property (strong) XPBadgeLayer *badgeLayer;
+@property (strong) XPBadgeLayer *imageLayer;
 
 @end
