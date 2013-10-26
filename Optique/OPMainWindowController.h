@@ -19,10 +19,6 @@
 
 -initWithPhotoManager:(XPPhotoManager*)photoManager;
 
-- (IBAction)navigateBack:(id)sender;
-
--(void)navigateBackward;
-
 -(void)showNewAlbumSheet;
 
 @end

@@ -32,7 +32,7 @@
     
     NSError *error;
     
-    id<XPPhotoCollection> album = [_photoManager newAlbumWithName:albumName error:error];
+    id<XPPhotoCollection> album = [_photoManager newAlbumWithName:albumName error:&error];
     if (album)
     {
         [self.window orderOut:nil];
@@ -46,10 +46,10 @@
     }
     else
     {
-        NSString *message = error ? error.userInfo[@"message"] : @"Could not create album";
-        NSString *longMessage = error ? error.userInfo[@"longmessage"] : @"An error prevented the album from being created.";
-        
-        NSBeginAlertSheet(message, @"OK", nil, nil, self.window, self, nil, nil, nil, longMessage, nil);
+        NSAlert *alert = [NSAlert alertWithError:error];
+        [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+            
+        }];
     }
 }
 

@@ -51,19 +51,46 @@
     
     if (selected)
     {
-        [_importButton setEnabled:NO];
-        [_progressIndicator startAnimation:self];
-        
-        [self performBlockInBackground:^{
-           
-            for (id<XPPhoto> photo in _photos)
-            {
-                [photo requestLocalCopy:[selected path] whenDone:^(NSError *error) {
-                    [self updateImported:photo];
-                }];
-            }
-        }];
+        [self startImport:selected];
     }
+    else
+    {
+        NSError *error;
+        id<XPPhotoCollection> album = [_photoManager newAlbumWithName:_albumSelectionBox.stringValue error:&error];
+        if (error)
+        {
+            [self.window orderOut:nil];
+            [NSApp endSheet:self.window];
+            
+            NSAlert *alert = [NSAlert alertWithError:error];
+            [alert addButtonWithTitle:@"OK"];
+            
+            [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                [NSApp beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                    
+                }];
+            }];
+        }
+        else
+        {
+            [self startImport:album];
+        }
+    }
+}
+
+-(void)startImport:(id<XPPhotoCollection>)collection
+{
+    [_importButton setEnabled:NO];
+    [_progressIndicator startAnimation:self];
+    
+    [self performBlockInBackground:^{
+        for (id<XPPhoto> photo in _photos)
+        {
+            [photo requestLocalCopy:[collection path] whenDone:^(NSError *error) {
+                [self updateImported:photo];
+            }];
+        }
+    }];
 }
 
 -(void)updateImported:(id<XPPhoto>)photo
@@ -71,10 +98,11 @@
     _imported++;
     if (_imported == _photos.count)
     {
+        //Close window
         [self.window orderOut:nil];
         [NSApp endSheet:self.window];
-        [_progressIndicator stopAnimation:self];
         
+        //Deselect
         _completionBlock(nil);
     }
 }
@@ -105,7 +133,12 @@
             return i;
         }
     }
-    return 0;
+    return NSNotFound;
+}
+
+-(NSString *)comboBox:(NSComboBox *)aComboBox completedString:(NSString *)string
+{
+    return string;
 }
 
 -(void)awakeFromNib

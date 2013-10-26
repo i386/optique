@@ -34,7 +34,7 @@ extern NSString *const XPPhotoManagerDidDeleteCollection;
 /** 
  Create a new album 
  */
--(id<XPPhotoCollection>)newAlbumWithName:(NSString*)albumName error:(NSError *)error;
+-(id<XPPhotoCollection>)newAlbumWithName:(NSString*)albumName error:(NSError**)error;
 
 /**
  Create new album on the file system using a non-local photo collection prototype and a bundle identifier. Not recommended to be called directly.

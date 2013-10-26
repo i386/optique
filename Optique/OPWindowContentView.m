@@ -21,20 +21,6 @@
     return self;
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-    [self drawBackground];
-}
-
--(void)keyDown:(NSEvent *)event
-{
-    //Escape key
-    if (event.keyCode == 53 && [self.window.windowController respondsToSelector:@selector(navigateBackward)])
-    {
-        [self.window.windowController performSelector:@selector(navigateBackward)];
-    }
-}
-
 -(BOOL)acceptsFirstResponder
 {
     return YES;

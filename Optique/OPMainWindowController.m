@@ -38,16 +38,6 @@
     return self;
 }
 
-- (IBAction)navigateBack:(id)sender
-{
-    [self navigateBackward];
-}
-
--(void)navigateBackward
-{
-    [_navigationController popToPreviousViewController];
-}
-
 -(NSString *)windowNibName
 {
     return @"OPMainWindowController";
@@ -64,7 +54,7 @@
     
     _albumViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager
                                                                               title:@"Albums"
-                                                                       emptyMessage:@"There are no albums"
+                                                                       emptyMessage:@"Drop folders or photos here to add or create new albums"
                                                                                icon:[NSImage imageNamed:@"picture"]
                                                                 collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject collectionType] == kPhotoCollectionLocal || [evaluatedObject collectionType] == kPhotoCollectionOther;

@@ -9,11 +9,11 @@ target :Optique, :exclusive => false do
   pod 'KBButton', :git => 'git@github.com:i386/KBButton.git'
 end
 
-target :Exposure, :exclusive => true do
+target :Exposure do
   pod 'BlocksKit', '~> 1.8.2'
 end
 
-target :Local, :exclusive => true do
+target :Local do
   pod 'CDEvents', '~> 1.2.0'
   pod 'BlocksKit', '~> 1.8.2'
 end

@@ -14,7 +14,6 @@
 @property (readonly, strong) XPPhotoManager *photoManager;
 @property (readonly, weak) OPNavigationController *navigationController;
 @property (strong) IBOutlet NSTextField *albumNameTextField;
-@property (strong) IBOutlet NSTextField *errorLabel;
 
 -initWithPhotoManager:(XPPhotoManager*)photoManager navigationController:(OPNavigationController*)navigationController;
 
