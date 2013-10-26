@@ -17,6 +17,36 @@
 #import "OPPlaceHolderViewController.h"
 #import "NSURL+Renamer.h"
 
+@interface PhotoCollectionPasteboardWriting : NSObject<NSPasteboardWriting>
+
+@property (weak) id<XPPhotoCollection> collection;
+
+@end
+
+@implementation PhotoCollectionPasteboardWriting
+
+-(NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard
+{
+    static NSArray *writableTypes = nil;
+    if (!writableTypes)
+    {
+        writableTypes = @[(NSString *)kUTTypeURL];
+    }
+    return writableTypes;
+}
+
+-(id)pasteboardPropertyListForType:(NSString *)type
+{
+    id collection = _collection;
+    if ([type isEqualToString:(NSString *)kUTTypeURL] && [collection respondsToSelector:@selector(path)])
+    {
+        return [[collection path] pasteboardPropertyListForType:(NSString *)kUTTypeURL];
+    }
+    return nil;
+}
+
+@end
+
 @interface OPCollectionViewController ()
 
 @property (strong) OPDeleteAlbumSheetController *deleteAlbumSheetController;
@@ -352,6 +382,47 @@
         return [[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDir] && isDir;
     }
     return NO;
+}
+
+-(id<NSPasteboardWriting>)gridView:(OEGridView *)gridView pasteboardWriterForIndex:(NSInteger)index
+{
+    PhotoCollectionPasteboardWriting *photoCollectionPasteboardWriting = [[PhotoCollectionPasteboardWriting alloc] init];
+    photoCollectionPasteboardWriting.collection = [_photoManager.allCollections objectAtIndex:index];
+    return photoCollectionPasteboardWriting;
+}
+
+-(NSArray *)fileTypesForDraggingOperation:(OEGridView *)gridView
+{
+    NSMutableSet *extensions = [NSMutableSet set];
+    for (id<XPPhotoCollection> collection in [_photoManager allCollectionsForIndexSet:_gridView.selectionIndexes])
+    {
+        for (id<XPPhoto> photo in [collection photosForIndexSet:gridView.selectionIndexes])
+        {
+            [extensions addObject:[photo.url pathExtension]];
+        }
+    }
+    return [extensions allObjects];
+}
+
+-(NSArray *)namesOfPromisedFilesDroppedForGrid:(OEGridView *)gridView atDestination:(NSURL *)dropDestination
+{
+    NSMutableArray *names = [NSMutableArray array];
+    for (id<XPPhotoCollection> collection in [_photoManager allCollectionsForIndexSet:_gridView.selectionIndexes])
+    {
+        NSString *filename = [collection.path lastPathComponent];
+        [names addObject:filename];
+        
+        [self performBlockInBackground:^{
+            NSURL *destinationURL = [[dropDestination URLByAppendingPathComponent:filename] URLWithUniqueNameIfExistsAtParent];
+            [[[NSFileManager alloc] init] copyItemAtURL:collection.path toURL:destinationURL error:nil];
+        }];
+    }
+    return names;
+}
+
+- (NSDragOperation)gridView:(OEGridView *)gridView draggingSourceOperationMaskForLocal:(BOOL)flag
+{
+    return flag ? NSDragOperationCopy : NSDragOperationNone;
 }
 
 @end
