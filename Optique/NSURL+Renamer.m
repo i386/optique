@@ -19,7 +19,7 @@
     }
     
     static NSString *formatWithoutExt;
-    if (!formatWithExt)
+    if (!formatWithoutExt)
     {
         formatWithoutExt = @"%@ (%d)";
     }
