@@ -12,6 +12,18 @@
 
 -(NSURL *)URLWithUniqueNameIfExistsAtParent
 {
+    static NSString *formatWithExt;
+    if (!formatWithExt)
+    {
+        formatWithExt = @"%@ (%d).%@";
+    }
+    
+    static NSString *formatWithoutExt;
+    if (!formatWithExt)
+    {
+        formatWithoutExt = @"%@ (%d)";
+    }
+    
     NSString *filename = [self lastPathComponent];
     NSString *filenameWithNoExt = [filename stringByDeletingPathExtension];
     NSString *extension = [filename pathExtension];
@@ -21,7 +33,14 @@
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     while ([fileManager fileExistsAtPath: [[folder URLByAppendingPathComponent:filename] path]])
     {
-        filename = [NSString stringWithFormat:@"%@ (%d).%@", filenameWithNoExt, count, extension];
+        if ([extension isEqualToString:@""])
+        {
+            filename = [NSString stringWithFormat:formatWithoutExt, filenameWithNoExt, count];
+        }
+        else
+        {
+            filename = [NSString stringWithFormat:formatWithExt, filenameWithNoExt, count, extension];
+        }
         count++;
     }
     
