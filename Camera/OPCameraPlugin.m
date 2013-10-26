@@ -77,9 +77,4 @@
     return @[clearCacheItem];
 }
 
--(void)dealloc
-{
-    CGImageRelease((CGImageRef)_imageLayer.contents);
-}
-
 @end
