@@ -85,9 +85,4 @@
     }
 }
 
--(void)dealloc
-{
-    CGPathRelease(_imageLayer.shadowPath);
-}
-
 @end

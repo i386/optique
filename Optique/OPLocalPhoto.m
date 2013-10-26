@@ -60,6 +60,7 @@
         image = [[NSImage alloc] initWithContentsOfURL:_path];
     }
     
+    CFRelease(imageSource);
     CFRelease(imageProperties);
     
     completionBlock(image);

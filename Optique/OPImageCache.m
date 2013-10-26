@@ -170,7 +170,9 @@ static OPImageCache *_sharedPreviewCache;
     
     NSImage *image = [[NSImage alloc] initWithCGImage:thumbnail size:NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail))];
     
+    CFRelease(imageSource);
     CGImageRelease(thumbnail);
+    
     return image;
 }
 

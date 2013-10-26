@@ -113,9 +113,4 @@
     return _titleLayer.string;
 }
 
--(void)dealloc
-{
-    CGPathRelease(_imageLayer.shadowPath);
-}
-
 @end

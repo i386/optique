@@ -13,7 +13,9 @@
 -(CGImageRef)CGImageRef
 {
     CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)[self TIFFRepresentation], NULL);
-    return CGImageSourceCreateImageAtIndex(source, 0, NULL);
+    CGImageRef imageRef = CGImageSourceCreateImageAtIndex(source, 0, NULL);
+    CFRelease(source);
+    return imageRef;
 }
 
 @end
