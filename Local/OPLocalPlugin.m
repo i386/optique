@@ -40,4 +40,12 @@
     [_delegate didRemovePhotoCollection:album];
 }
 
+-(NSArray *)debugMenuItems
+{
+    XPMenuItem *clearCacheItem = [[XPMenuItem alloc] initWithTitle:@"Rescan" keyEquivalent:@"" block:^(NSMenuItem *sender) {
+        [_albumScanner startScan];
+    }];
+    return @[clearCacheItem];
+}
+
 @end
