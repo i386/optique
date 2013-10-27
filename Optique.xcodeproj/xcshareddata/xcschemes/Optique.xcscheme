@@ -10,20 +10,6 @@
             buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0F04A62B1737C70F00E53ED1"
-               BuildableName = "Exposure.framework"
-               BlueprintName = "Exposure"
-               ReferencedContainer = "container:Optique.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
             buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
@@ -31,20 +17,6 @@
                BlueprintIdentifier = "0F9C80AF16F891C700B2B6D8"
                BuildableName = "Optique.app"
                BlueprintName = "Optique"
-               ReferencedContainer = "container:Optique.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0F04A6561737C7C300E53ED1"
-               BuildableName = "Finder.bundle"
-               BlueprintName = "Finder"
                ReferencedContainer = "container:Optique.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

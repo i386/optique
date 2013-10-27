@@ -342,7 +342,7 @@
                         <items>
                             <menuItem title="Optique Help" keyEquivalent="?" id="492">
                                 <connections>
-                                    <action selector="showHelp:" target="-1" id="493"/>
+                                    <action selector="showHelp:" target="-2" id="jDs-M2-nBb"/>
                                 </connections>
                             </menuItem>
                         </items>

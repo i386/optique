@@ -150,4 +150,10 @@
     [_mainWindowController goBack];
 }
 
+- (IBAction)showHelp:(id)sender
+{
+    NSURL *url = [NSURL URLWithString:@"http://www.optiqueapp.com/help"];
+    [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
 @end
