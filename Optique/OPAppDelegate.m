@@ -48,6 +48,11 @@
 #endif
 }
 
+-(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
+{
+    return YES;
+}
+
 - (IBAction)openDirectory:(id)sender
 {
     NSOpenPanel *openPanel = [NSOpenPanel openPanel];
@@ -128,6 +133,21 @@
 {
     [[OPImageCache sharedPreviewCache] clearCache];
     [self picturesAtDirectory:_photoManager.path];
+}
+
+- (IBAction)showAlbums:(id)sender
+{
+    [_mainWindowController showAlbums];
+}
+
+- (IBAction)showCameras:(id)sender
+{
+    [_mainWindowController showCameras];
+}
+
+- (IBAction)goBack:(id)sender
+{
+    [_mainWindowController goBack];
 }
 
 @end

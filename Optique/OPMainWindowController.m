@@ -43,6 +43,21 @@
     return @"OPMainWindowController";
 }
 
+-(void)goBack
+{
+    [_navigationController popToPreviousViewController];
+}
+
+-(void)showAlbums
+{
+    [self addNavigationController:_albumViewController];
+}
+
+-(void)showCameras
+{
+    [self addNavigationController:_cameraViewController];
+}
+
 - (void)windowDidLoad
 {
     [super windowDidLoad];

@@ -21,4 +21,10 @@
 
 -(void)showNewAlbumSheet;
 
+-(void)goBack;
+
+-(void)showAlbums;
+
+-(void)showCameras;
+
 @end
