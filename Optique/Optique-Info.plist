@@ -32,7 +32,5 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SUFeedURL</key>
-	<string>https://rink.hockeyapp.net/api/2/apps/52814104cfd270328887432ee78c4dd1</string>
 </dict>
 </plist>
