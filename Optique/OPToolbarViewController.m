@@ -34,8 +34,6 @@ NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
     _shareWithButton.menu = [[NSMenu alloc] init];
     _shareWithButton.menu.showsStateColumn = NO;
     _shareWithButton.menu.delegate = self;
-    _shareWithButton.target = self;
-    _shareWithButton.action = @selector(showSharingMenu:);
     
     [self.view setPostsBoundsChangedNotifications:YES];
     
@@ -125,25 +123,6 @@ NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
     _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 65, _switchViewButton.frame.size.height);
 }
 
--(void)showSharingMenu:(NSButton*)sender
-{
-    NSPoint point = _shareWithButton.frame.origin;
-    point = NSMakePoint(point.x + 4, point.y + self.view.window.frame.size.height - 40);
-    
-    NSEvent *fakeMouseEvent = [NSEvent mouseEventWithType:NSLeftMouseDown
-                                                 location:point
-                                            modifierFlags:0
-                                                timestamp:0
-                                             windowNumber:[self.view.window windowNumber]
-                                                  context:nil
-                                              eventNumber:0
-                                               clickCount:0
-                                                 pressure:0];
-    
-    
-    [NSMenu popUpContextMenu:[sender menu] withEvent:fakeMouseEvent forView:sender];
-}
-
 -(void)menuNeedsUpdate:(NSMenu *)menu
 {
     if (menu.itemArray.count < 1 && [_navigationController.visibleViewController conformsToProtocol:@protocol(XPSharingService)])
@@ -154,6 +133,11 @@ NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
             [menu addItem:sender];
         }];
     }
+}
+
+- (IBAction)sharingButtonActivated:(id)sender
+{
+    NSLog(@"sharingButtonActivated");
 }
 
 - (IBAction)searchFilter:(id)sender

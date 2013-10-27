@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "OPNavigationController.h"
+#import "OPDropDownButton.h"
 
 extern NSString *const OPApplicationModeDidChange;
 extern NSString *const OPAlbumSearchFilterDidChange;
@@ -22,7 +23,7 @@ typedef enum {
 @interface OPToolbarViewController : NSViewController<NSMenuDelegate>
 
 @property (assign) OPApplicationMode filterMode;
-@property (strong) IBOutlet NSButton *shareWithButton;
+@property (strong) IBOutlet OPDropDownButton *shareWithButton;
 @property (strong) IBOutlet NSButton *switchViewButton;
 @property (strong) IBOutlet NSSearchField *searchFilter;
 @property (weak) OPNavigationController *navigationController;
