@@ -19,9 +19,12 @@
 }
 
 @property (weak) IBOutlet NSMenuItem *debugMenu;
+@property (weak) IBOutlet NSMenuItem *fullscreenMenuItem;
+@property (weak) IBOutlet NSMenuItem *exitFullscreenMenuItem;
 
 - (IBAction)openDirectory:(id)sender;
 
 - (IBAction)newAlbum:(id)sender;
+- (IBAction)toggleFullScreen:(id)sender;
 
 @end

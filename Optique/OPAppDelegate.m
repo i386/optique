@@ -9,6 +9,7 @@
 #import "OPAppDelegate.h"
 #import "OPImageCache.h"
 #import <Exposure/Exposure.h>
+#import "NSWindow+FullScreen.h"
 
 @implementation OPAppDelegate
 
@@ -101,6 +102,16 @@
     _photoManager = [[XPPhotoManager alloc] initWithPath:url];
     [XPExposureService photoManagerWasCreated:_photoManager];
     
+    if (_mainWindowController)
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidEnterFullScreenNotification object:_mainWindowController.window];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidExitFullScreenNotification object:_mainWindowController.window];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterFullscreen:) name:NSWindowDidEnterFullScreenNotification object:_mainWindowController.window];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didExitFullscreen:) name:NSWindowDidExitFullScreenNotification object:_mainWindowController.window];
+    
     _mainWindowController = [[OPMainWindowController alloc] initWithPhotoManager:_photoManager];
     [_mainWindowController.window makeKeyAndOrderFront:self];
 }
@@ -154,6 +165,23 @@
 {
     NSURL *url = [NSURL URLWithString:@"http://www.optiqueapp.com/help"];
     [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
+- (IBAction)toggleFullScreen:(id)sender
+{
+    [_mainWindowController.window toggleFullScreen:sender];
+}
+
+-(void)didEnterFullscreen:(NSNotification*)notification
+{
+    [_fullscreenMenuItem setHidden:YES];
+    [_exitFullscreenMenuItem setHidden:NO];
+}
+
+-(void)didExitFullscreen:(NSNotification*)notification
+{
+    [_fullscreenMenuItem setHidden:NO];
+    [_exitFullscreenMenuItem setHidden:YES];
 }
 
 @end
