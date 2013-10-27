@@ -21,6 +21,11 @@
     return self;
 }
 
+- (void)drawRect:(NSRect)dirtyRect
+{
+    [self drawBackground];
+}
+
 -(BOOL)acceptsFirstResponder
 {
     return YES;
