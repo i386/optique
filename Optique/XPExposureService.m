@@ -213,7 +213,7 @@
     {
         
 #if DEBUG
-        NSLog(@"Loaded Exposure plugin '%@'", pluginClass);
+        NSLog(@"Loaded '%@'", pluginClass);
 #endif
         
         pluginInstance = [[pluginClass alloc] init];
