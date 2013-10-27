@@ -14,7 +14,9 @@
 @implementation OPAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{    
+{
+    _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:@[]];
+    
     NSData *bookmarkData = [[_userDefaultsController defaults] objectForKey:@"url"];
     
     NSURL *url;
@@ -170,6 +172,11 @@
 - (IBAction)toggleFullScreen:(id)sender
 {
     [_mainWindowController.window toggleFullScreen:sender];
+}
+
+- (IBAction)openPreferences:(id)sender
+{
+    [_preferencesWindowController.window makeKeyAndOrderFront:sender];
 }
 
 -(void)didEnterFullscreen:(NSNotification*)notification

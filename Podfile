@@ -6,6 +6,7 @@ target :Optique, :exclusive => false do
   pod 'OEGridView', :path => '~/code/OEGridView'
   pod 'CNBaseView', '~> 1.0.11'
   pod 'KBButton', :git => 'git@github.com:i386/KBButton.git'
+  pod 'MASPreferences', '~> 1.0'
 end
 
 target :Exposure do

@@ -9,6 +9,7 @@ PODS:
   - gtm-oauth/nibs (0.0.1)
   - INAppStoreWindow (HEAD based on 1.2)
   - KBButton (0.0.1)
+  - MASPreferences (1.0)
   - NSHash (1.0.1)
   - OEGridView (0.0.1)
 
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - gtm-oauth (~> 0.0.1)
   - INAppStoreWindow (HEAD)
   - KBButton (from `git@github.com:i386/KBButton.git`)
+  - MASPreferences (~> 1.0)
   - NSHash (~> 1.0.1)
   - OEGridView (from `~/code/OEGridView`)
 
@@ -37,7 +39,8 @@ SPEC CHECKSUMS:
   gtm-oauth: b2725c564e3d50c8b6109ac292414a9cceb47dd0
   INAppStoreWindow: d00327caee47d951043169df9aaab952389defcb
   KBButton: 627facd1b7e7f484755107e62d2d85b20f429e6e
+  MASPreferences: b8c112b4b6e6cbd32b8f49d249eb152d1eeb38f8
   NSHash: 7e728a3e7fdff6828f3fce387049b1e0ca7fe8a0
   OEGridView: c675deaa9fceaabec54803f2bd6bf88b8f96f70d
 
-COCOAPODS: 0.26.2
+COCOAPODS: 0.27.1
