@@ -12,11 +12,11 @@
 #import "OPCameraService.h"
 #import "OPMainWindowController.h"
 
-@interface OPAppDelegate : NSObject <NSApplicationDelegate> {
-    XPPhotoManager *_photoManager;
-    OPMainWindowController *_mainWindowController;
-    IBOutlet NSUserDefaultsController *_userDefaultsController;
-}
+@interface OPAppDelegate : NSObject <NSApplicationDelegate>
+
+@property (readonly, strong) XPPhotoManager *photoManager;
+@property (readonly, strong) OPMainWindowController *mainWindowController;
+@property (strong) IBOutlet NSUserDefaultsController *userDefaultsController;
 
 @property (weak) IBOutlet NSMenuItem *debugMenu;
 @property (weak) IBOutlet NSMenuItem *fullscreenMenuItem;

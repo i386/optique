@@ -382,6 +382,7 @@
                 <outlet property="debugMenu" destination="Ej8-n3-t4k" id="DFi-00-xJD"/>
                 <outlet property="exitFullscreenMenuItem" destination="yYR-Mq-xIl" id="vKi-RI-82G"/>
                 <outlet property="fullscreenMenuItem" destination="VWB-iV-2F4" id="IvL-m0-FOq"/>
+                <outlet property="userDefaultsController" destination="564" id="BAP-ID-y58"/>
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
