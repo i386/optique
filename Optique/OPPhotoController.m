@@ -50,4 +50,9 @@
     [XPExposureService photoManager:_photoViewController.collection.photoManager photoController:self];
 }
 
+-(BOOL)shareableItemsSelected
+{
+    return YES;
+}
+
 @end

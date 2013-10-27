@@ -15,4 +15,9 @@
  */
 -(NSMutableArray*)sharingMenuItems;
 
+/**
+ Are there any items that are sharable
+ */
+-(BOOL)shareableItemsSelected;
+
 @end

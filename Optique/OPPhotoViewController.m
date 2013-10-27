@@ -181,4 +181,9 @@
     }];
 }
 
+-(BOOL)shareableItemsSelected
+{
+    return YES;
+}
+
 @end

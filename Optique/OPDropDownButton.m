@@ -34,7 +34,10 @@
 
 - (void)mouseDown:(NSEvent*)theEvent
 {
-    [self runPopUp:theEvent];
+    if (self.isEnabled)
+    {
+        [self runPopUp:theEvent];
+    }
 }
 
 @end

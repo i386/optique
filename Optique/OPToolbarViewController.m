@@ -11,6 +11,7 @@
 
 NSString *const OPApplicationModeDidChange = @"OPApplicationModeDidChange";
 NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
+NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
 
 @interface OPToolbarViewController ()
 
@@ -39,15 +40,18 @@ NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:@"OPCameraServiceDidAddCamera" object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigationControllerChanged:) name:OPNavigationControllerViewDidChange object:_navigationController];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sharableSelectionChanged:) name:OPNavigationControllerViewDidChange object:_navigationController];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sharableSelectionChanged:) name:OPSharableSelectionChanged object:nil];
     
     [self albumMode];
 }
 
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationControllerViewDidChange object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationControllerViewDidChange object:_navigationController];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"OPCameraServiceDidAddCamera" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPSharableSelectionChanged object:nil];
 }
 
 -(void)cameraAdded:(NSNotification*)notification
@@ -57,13 +61,13 @@ NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
     [[NSNotificationCenter defaultCenter] postNotificationName:OPApplicationModeDidChange object:nil userInfo:@{@"mode": [NSNumber numberWithBool:_filterMode], @"title":notification.userInfo[@"title"]}];
 }
 
--(void)navigationControllerChanged:(NSNotification*)notification
+-(void)sharableSelectionChanged:(NSNotification*)notification
 {
     if ([_navigationController.visibleViewController conformsToProtocol:@protocol(XPSharingService)])
     {
         id<XPSharingService> sharingService = (id<XPSharingService>)_navigationController.visibleViewController;
         
-        if ([sharingService sharingMenuItems].count > 0)
+        if ([sharingService sharingMenuItems].count > 0 && [sharingService shareableItemsSelected])
         {
             [_shareWithButton setEnabled:YES];
         }

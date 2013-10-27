@@ -12,6 +12,7 @@
 
 extern NSString *const OPApplicationModeDidChange;
 extern NSString *const OPAlbumSearchFilterDidChange;
+extern NSString *const OPSharableSelectionChanged;
 
 
 typedef enum {

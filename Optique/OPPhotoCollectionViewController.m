@@ -11,6 +11,7 @@
 #import "OPImagePreviewService.h"
 #import "OPPlaceHolderViewController.h"
 #import "NSURL+Renamer.h"
+#import "OPToolbarViewController.h"
 
 @interface PhotoPasteboardWriting : NSObject<NSPasteboardWriting>
 
@@ -111,6 +112,11 @@
 -(NSMutableArray *)sharingMenuItems
 {
     return _sharingMenuItems;
+}
+
+-(BOOL)shareableItemsSelected
+{
+    return [self selectedItems].count > 0;
 }
 
 -(void)deleteSelected
@@ -346,6 +352,8 @@
             [[self dateLabel] setHidden:NO];
         }
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPSharableSelectionChanged object:nil];
 }
 
 -(id<NSPasteboardWriting>)gridView:(OEGridView *)gridView pasteboardWriterForIndex:(NSInteger)index
