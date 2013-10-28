@@ -51,7 +51,7 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
     return albums;
 }
 
--(id<XPPhotoCollection>)newAlbumWithName:(NSString *)albumName error:(NSError**)error
+-(id<XPPhotoCollection>)newAlbumWithName:(NSString *)albumName error:(NSError *__autoreleasing *)error
 {
     NSURL *albumPath = [self.path URLByAppendingPathComponent:albumName isDirectory:YES];
     
@@ -81,6 +81,39 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
         *error = [[NSError alloc] initWithDomain:@"com.whimsy.optique" code:1 userInfo:userInfo];
     }
     return nil;
+}
+
+-(void)deleteAlbum:(id<XPPhotoCollection>)collection error:(NSError *__autoreleasing *)error
+{
+    id album = collection;
+    [self sendAlbumDeletedNotification:collection];
+    
+    if ([album respondsToSelector:@selector(path)])
+    {
+        [[NSFileManager defaultManager] removeItemAtURL:(NSURL*)[album path] error:error];
+        [self removeAlbum:collection];
+    }
+}
+
+-(void)renameAlbum:(id<XPPhotoCollection>)collection to:(NSString *)name error:(NSError *__autoreleasing *)error
+{
+    id album = collection;
+    BOOL srcIsDir;
+    if ([album respondsToSelector:@selector(path)] && [[NSFileManager defaultManager] fileExistsAtPath:[collection.path path] isDirectory:&srcIsDir])
+    {
+        NSURL *destURL = [[collection.path URLByDeletingLastPathComponent] URLByAppendingPathComponent:name];
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:destURL.path])
+        {
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Album with the name %@ already exists.", name], NSLocalizedRecoverySuggestionErrorKey: @"Try choosing a different name that isn't the name of an existing album."};
+            
+            *error = [[NSError alloc] initWithDomain:@"com.whimsy.optique" code:1 userInfo:userInfo];
+        }
+        else
+        {
+            [[NSFileManager defaultManager] moveItemAtURL:collection.path toURL:destURL error:error];
+        }
+    }
 }
 
 -(id<XPPhotoCollection>)createLocalPhotoCollectionWithPrototype:(id<XPPhotoCollection>)prototype identifier:(NSString *)exposureId error:(NSError *__autoreleasing *)error
@@ -131,18 +164,6 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
         *error = [[NSError alloc] initWithDomain:@"XPPhotoManager" code:1 userInfo:@{@"message": [NSString stringWithFormat:@"Album with the name %@ already exists.", prototype.title], @"longmessage": @"Try choosing a different name that isn't the name of an existing album."}];
     }
     return nil;
-}
-
--(void)deleteAlbum:(id<XPPhotoCollection>)collection
-{
-    id album = collection;
-    [self sendAlbumDeletedNotification:collection];
-    
-    if ([album respondsToSelector:@selector(path)])
-    {
-        [[NSFileManager defaultManager] removeItemAtURL:(NSURL*)[album path] error:nil];
-        [self removeAlbum:collection];
-    }
 }
 
 -(void)collectionUpdated:(id<XPPhotoCollection>)collection

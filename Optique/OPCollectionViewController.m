@@ -9,6 +9,7 @@
 #import "OPCollectionViewController.h"
 
 #import "OPPhotoCollectionViewController.h"
+#import "OPRenameAlbumWindowController.h"
 #import "OPImagePreviewService.h"
 #import "OPDeleteAlbumSheetController.h"
 #import "OPGridViewCell.h"
@@ -50,6 +51,7 @@
 @interface OPCollectionViewController ()
 
 @property (strong) OPDeleteAlbumSheetController *deleteAlbumSheetController;
+@property (strong) OPRenameAlbumWindowController *renameAlbumWindowController;
 @property (strong) NSPredicate *predicate;
 @property (strong) NSMutableArray *sharingMenuItems;
 @property (strong) NSString *viewTitle;
@@ -149,14 +151,18 @@
     if (allSelectedAreLocal)
     {
         [_deleteAlbumMenuItem setHidden:NO];
-    }
-    else if (allSelectedAreNotLocal)
-    {
-        [_deleteAlbumMenuItem setHidden:YES];
+        
+        NSIndexSet *indexes = self.gridView.selectionIndexes;
+        
+        if (indexes.count == 1)
+        {
+            [_renameAlbumMenuItem setHidden:NO];
+        }
     }
     else
     {
         [_deleteAlbumMenuItem setHidden:YES];
+        [_renameAlbumMenuItem setHidden:YES];
     }
 }
 
@@ -172,9 +178,23 @@
     [self deleteAlbumsAtIndexes:indexes];
 }
 
+- (IBAction)renameAlbum:(id)sender
+{
+    NSUInteger index = [[_gridView selectionIndexes] lastIndex];
+    id<XPPhotoCollection> collection = _photoManager.allCollections[index];
+    if (collection)
+    {
+        _renameAlbumWindowController = [[OPRenameAlbumWindowController alloc] initWithPhotoManager:_photoManager collection:collection parentController:self];
+        
+        [self.window beginSheet:_renameAlbumWindowController.window completionHandler:^(NSModalResponse returnCode) {
+            NSLog(@"return code %ld", (long)returnCode);
+        }];
+    }
+}
+
 -(void)deleteAlbumsAtIndexes:(NSIndexSet*)indexes
 {
-    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithPhotoAlbums:[_photoManager allCollectionsForIndexSet:indexes] photoManager:_photoManager];
+    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithPhotoAlbums:[_photoManager allCollectionsForIndexSet:indexes] photoManager:_photoManager parentController:self];
     
     NSString *alertMessage;
     if (indexes.count > 1)

@@ -14,12 +14,13 @@
 
 @implementation OPDeleteAlbumSheetController
 
--(id)initWithPhotoAlbums:(NSArray *)albums photoManager:(XPPhotoManager *)photoManager
+-(id)initWithPhotoAlbums:(NSArray *)albums photoManager:(XPPhotoManager *)photoManager parentController:(NSViewController *)viewController
 {
     self = [super initWithWindowNibName:@"OPDeleteAlbumSheetController"];
     if (self) {
         _albums = albums;
         _photoManager = photoManager;
+        _viewController = viewController;
     }
     
     return self;
@@ -48,7 +49,16 @@
 {
     [self performBlockInBackground:^{
         [_albums each:^(id sender) {
-            [_photoManager deleteAlbum:sender];
+            NSError *error;
+            [_photoManager deleteAlbum:sender error:&error];
+            
+            if (error)
+            {
+                NSAlert *alert = [NSAlert alertWithError:error];
+                [alert beginSheetModalForWindow:_viewController.view.window completionHandler:^(NSModalResponse returnCode) {
+                    
+                }];
+            }
         }];
         
         [self performBlockOnMainThread:^{

@@ -14,8 +14,9 @@
 @property (readonly, weak) XPPhotoManager *photoManager;
 @property (strong) IBOutlet NSTextField *labelTextField;
 @property (strong) IBOutlet NSProgressIndicator *progressIndicator;
+@property (strong, readonly) NSViewController *viewController;
 
--initWithPhotoAlbums:(NSArray*)albums photoManager:(XPPhotoManager*)photoManager;
+-initWithPhotoAlbums:(NSArray*)albums photoManager:(XPPhotoManager*)photoManager parentController:(NSViewController*)viewController;
 
 -(void)startAlbumDeletion;
 

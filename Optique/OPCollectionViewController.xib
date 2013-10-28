@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4510" systemVersion="13A598" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1070" defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4510"/>
+        <deployment version="1070" defaultVersion="1090" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OPCollectionViewController">
@@ -11,6 +11,7 @@
                 <outlet property="deleteAlbumMenuItem" destination="220" id="225"/>
                 <outlet property="gridView" destination="201" id="Qgj-AH-orG"/>
                 <outlet property="headingLine" destination="hLe-6d-FZj" id="de4-8A-avT"/>
+                <outlet property="renameAlbumMenuItem" destination="jaz-VC-DJ6" id="gSb-Mt-Nni"/>
                 <outlet property="titleLabel" destination="Obi-Dn-V3b" id="Qim-tx-fkJ"/>
                 <outlet property="view" destination="56" id="57"/>
             </connections>
@@ -38,12 +39,12 @@
                             </view>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" verticalHuggingPriority="750" id="202">
+                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="202">
                         <rect key="frame" x="0.0" y="203" width="480" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" id="203">
-                        <rect key="frame" x="464" y="0.0" width="16" height="219"/>
+                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="203">
+                        <rect key="frame" x="465" y="0.0" width="15" height="219"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -84,12 +85,19 @@
         </customView>
         <menu id="210">
             <items>
+                <menuItem title="Rename album" hidden="YES" id="jaz-VC-DJ6">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="renameAlbum:" target="-2" id="68k-r8-xot"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Delete album" id="220">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="deleteAlbum:" target="-2" id="221"/>
                     </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="NDG-cX-Sak"/>
             </items>
             <connections>
                 <outlet property="delegate" destination="-2" id="223"/>

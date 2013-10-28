@@ -176,6 +176,8 @@
 		0FEDFF8E17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDFF8D17892C3600CD3DCC /* GTMOAuthAuthentication+UserPreferences.m */; };
 		0FEF33A616FEC8090096D72A /* OPCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEF33A416FEC8090096D72A /* OPCollectionViewController.m */; };
 		0FEF33A716FEC8090096D72A /* OPCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEF33A516FEC8090096D72A /* OPCollectionViewController.xib */; };
+		0FF3186E181E6C4900CD3637 /* OPRenameAlbumWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF3186C181E6C4900CD3637 /* OPRenameAlbumWindowController.m */; };
+		0FF3186F181E6C4900CD3637 /* OPRenameAlbumWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3186D181E6C4900CD3637 /* OPRenameAlbumWindowController.xib */; };
 		0FFE24B2172907AA00513AD2 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B0172907AA00513AD2 /* back.png */; };
 		0FFE24B61729206B00513AD2 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B51729206B00513AD2 /* back@2x.png */; };
 		1373B7D69D7D477FA5D36CD2 /* libPods-Exposure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CE02E9006D49619346BA66 /* libPods-Exposure.a */; };
@@ -532,6 +534,9 @@
 		0FEF33A316FEC8090096D72A /* OPCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPCollectionViewController.h; path = Optique/OPCollectionViewController.h; sourceTree = "<group>"; };
 		0FEF33A416FEC8090096D72A /* OPCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCollectionViewController.m; path = Optique/OPCollectionViewController.m; sourceTree = "<group>"; };
 		0FEF33A516FEC8090096D72A /* OPCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPCollectionViewController.xib; path = Optique/OPCollectionViewController.xib; sourceTree = "<group>"; };
+		0FF3186B181E6C4900CD3637 /* OPRenameAlbumWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPRenameAlbumWindowController.h; path = Optique/OPRenameAlbumWindowController.h; sourceTree = "<group>"; };
+		0FF3186C181E6C4900CD3637 /* OPRenameAlbumWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPRenameAlbumWindowController.m; path = Optique/OPRenameAlbumWindowController.m; sourceTree = "<group>"; };
+		0FF3186D181E6C4900CD3637 /* OPRenameAlbumWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPRenameAlbumWindowController.xib; path = Optique/OPRenameAlbumWindowController.xib; sourceTree = "<group>"; };
 		0FFE24B0172907AA00513AD2 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		0FFE24B51729206B00513AD2 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		16513AE00F4544C59D21B885 /* Pods-Local.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local.xcconfig"; path = "Pods/Pods-Local.xcconfig"; sourceTree = "<group>"; };
@@ -1209,6 +1214,7 @@
 				0FA29D0A180FE9890066077D /* Grid View */,
 				0FCB492C17161E0800FB4229 /* New Album sheet */,
 				0FCB492D17161E1300FB4229 /* Delete Album sheet */,
+				0FF31870181E6C4E00CD3637 /* Rename Album sheet */,
 				0FEF33A316FEC8090096D72A /* OPCollectionViewController.h */,
 				0FEF33A416FEC8090096D72A /* OPCollectionViewController.m */,
 				0FEF33A516FEC8090096D72A /* OPCollectionViewController.xib */,
@@ -1235,6 +1241,16 @@
 				0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */,
 			);
 			name = "Main Window";
+			sourceTree = "<group>";
+		};
+		0FF31870181E6C4E00CD3637 /* Rename Album sheet */ = {
+			isa = PBXGroup;
+			children = (
+				0FF3186B181E6C4900CD3637 /* OPRenameAlbumWindowController.h */,
+				0FF3186C181E6C4900CD3637 /* OPRenameAlbumWindowController.m */,
+				0FF3186D181E6C4900CD3637 /* OPRenameAlbumWindowController.xib */,
+			);
+			name = "Rename Album sheet";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1537,6 +1553,7 @@
 				0F33D0E51769E7800032CCA0 /* 298-circlex@2x.png in Resources */,
 				0F33D0EC1769E87A0032CCA0 /* 218-trash2.png in Resources */,
 				0FC2EC751813F5BA00D02EC5 /* OPImportPhotosWindowController.xib in Resources */,
+				0FF3186F181E6C4900CD3637 /* OPRenameAlbumWindowController.xib in Resources */,
 				0F70718C180E354F00ED5799 /* camera.png in Resources */,
 				0F85D9C1180CD2300003C6ED /* OPToolbarViewController.xib in Resources */,
 				0F33D0F11769E93D0032CCA0 /* 86-camera-alt@2x.png in Resources */,
@@ -1763,6 +1780,7 @@
 			files = (
 				0F9C80C016F891C700B2B6D8 /* main.m in Sources */,
 				0F9C80C716F891C700B2B6D8 /* OPAppDelegate.m in Sources */,
+				0FF3186E181E6C4900CD3637 /* OPRenameAlbumWindowController.m in Sources */,
 				0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */,
 				0FEF33A616FEC8090096D72A /* OPCollectionViewController.m in Sources */,
 				0F85D9C6180DF8F20003C6ED /* OPPlaceHolderViewController.m in Sources */,

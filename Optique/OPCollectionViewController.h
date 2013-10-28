@@ -19,10 +19,13 @@
 @property (strong) IBOutlet OPGridView *gridView;
 @property (weak) IBOutlet NSTextField *titleLabel;
 @property (weak) IBOutlet NSBox *headingLine;
+@property (weak) IBOutlet NSMenuItem *renameAlbumMenuItem;
 
 -(id)initWithPhotoManager:(XPPhotoManager *)photoManager title:(NSString *)title emptyMessage:(NSString*)emptyMessage icon:(NSImage *)icon collectionPredicate:(NSPredicate *)predicate;
 
 - (IBAction)deleteAlbum:(NSMenuItem*)sender;
+
+- (IBAction)renameAlbum:(id)sender;
 
 - (NSUInteger)numberOfItems;
 
