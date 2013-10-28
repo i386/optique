@@ -15,12 +15,12 @@
 
 @property (weak) XPPhotoManager *photomanager;
 @property (weak) id<XPPhotoCollectionProviderDelegate> delegate;
-@property (strong, readonly) NSMutableArray *photoCollections;
+@property (strong, readonly) NSMutableSet *photoCollections;
 @property (strong) OPAlbumScanner *albumScanner;
 
 -(id<XPPhotoCollection>)createCollectionWithTitle:(NSString *)title path:(NSURL *)path;
 
--(void)didAddAlbum:(OPPhotoAlbum*)album;
+-(void)didAddAlbums:(NSObject*)albums;
 -(void)didRemoveAlbum:(OPPhotoAlbum*)album;
 
 @end

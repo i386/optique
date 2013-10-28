@@ -137,8 +137,12 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
 {
     id album = collection;
     [self sendAlbumDeletedNotification:collection];
-    [[NSFileManager defaultManager] removeItemAtURL:[album path] error:nil];
-    [self removeAlbum:collection];
+    
+    if ([album respondsToSelector:@selector(path)])
+    {
+        [[NSFileManager defaultManager] removeItemAtURL:(NSURL*)[album path] error:nil];
+        [self removeAlbum:collection];
+    }
 }
 
 -(void)collectionUpdated:(id<XPPhotoCollection>)collection

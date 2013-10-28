@@ -12,7 +12,7 @@
 
 @interface OPFlickrPlugin : NSObject<XPPlugin, XPPhotoCollectionProvider, OPFlickrServiceDelegate>
 
-@property (strong) NSMutableArray* photoCollections;
+@property (strong) NSSet* photoCollections;
 @property (weak) id<XPPhotoCollectionProviderDelegate> delegate;
 @property (strong) OPFlickrService *flickrService;
 

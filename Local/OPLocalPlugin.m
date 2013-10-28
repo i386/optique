@@ -11,6 +11,16 @@
 
 @implementation OPLocalPlugin
 
+-(void)pluginDidLoad:(NSDictionary *)userInfo
+{
+    _photoCollections = [NSMutableSet set];
+}
+
+-(void)pluginWillUnload:(NSDictionary *)userInfo
+{
+    [_photoCollections removeAllObjects];
+}
+
 -(void)photoManagerWasCreated:(XPPhotoManager *)photoManager
 {
     if (_albumScanner)
@@ -26,6 +36,22 @@
 -(id<XPPhotoCollection>)createCollectionWithTitle:(NSString *)title path:(NSURL *)path
 {
     return [[OPPhotoAlbum alloc] initWithTitle:title path:path photoManager:_photomanager];
+}
+
+-(void)didAddAlbums:(NSArray *)albums
+{
+    NSMutableSet *albumsToRemove = [NSMutableSet setWithSet:self.photoCollections];
+    [albumsToRemove minusSet:[NSMutableSet setWithArray:albums]];
+    
+    for (OPPhotoAlbum *album in albumsToRemove)
+    {
+        [self didRemoveAlbum:album];
+    }
+    
+    for (OPPhotoAlbum *album in albums)
+    {
+        [self didAddAlbum:album];
+    }
 }
 
 -(void)didAddAlbum:(OPPhotoAlbum *)album

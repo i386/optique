@@ -48,6 +48,7 @@
      {
          if (_stopScan) return;
          
+         NSMutableArray *albums = [NSMutableArray array];
          for (NSURL *albumURL in [self albumURLsForURL:url])
          {
              if (_stopScan) return;
@@ -55,9 +56,11 @@
              if (album)
              {
                  if (_stopScan) return;
-                 [_plugin didAddAlbum:album];
+                 [albums addObject:album];
              }
          }
+         
+         [_plugin didAddAlbums:albums];
      }];
 }
 

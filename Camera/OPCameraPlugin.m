@@ -31,6 +31,7 @@
 {
     _cameraService = [[OPCameraService alloc] init];
     _cameraService.cameraPlugin = self;
+    _photoCollections = [NSMutableSet set];
 }
 
 -(void)pluginWillUnload:(NSDictionary *)userInfo
@@ -40,6 +41,8 @@
     {
         [_cameraService removeCaches];
     }
+    
+    [_photoCollections removeAllObjects];
 }
 
 -(void)photoManagerWasCreated:(XPPhotoManager *)photoManager

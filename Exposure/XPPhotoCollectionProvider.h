@@ -21,7 +21,7 @@
 /**
  PhotoCollections that belong to this provider
  */
--(NSArray*)photoCollections;
+-(NSSet*)photoCollections;
 
 @optional
 
