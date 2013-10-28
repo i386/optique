@@ -353,7 +353,7 @@
         }
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPSharableSelectionChanged object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPSharableSelectionChanged object:nil userInfo:nil];
 }
 
 -(id<NSPasteboardWriting>)gridView:(OEGridView *)gridView pasteboardWriterForIndex:(NSInteger)index

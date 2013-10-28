@@ -40,11 +40,22 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:@"OPCameraServiceDidAddCamera" object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sharableSelectionChanged:) name:OPNavigationControllerViewDidChange object:_navigationController];
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sharableSelectionChanged:) name:OPSharableSelectionChanged object:nil];
     
     [self albumMode];
+}
+
+-(void)setNavigationController:(OPNavigationController *)navigationController
+{
+    if (_navigationController)
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationControllerViewDidChange object:_navigationController];
+    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sharableSelectionChanged:) name:OPNavigationControllerViewDidChange object:navigationController];
+    
+    _navigationController = navigationController;
 }
 
 -(void)dealloc

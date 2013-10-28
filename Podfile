@@ -1,4 +1,4 @@
-platform :osx, 10.8
+platform :osx, 10.9
 
 target :Optique, :exclusive => false do
   pod 'INAppStoreWindow', :head 

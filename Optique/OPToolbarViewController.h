@@ -27,7 +27,7 @@ typedef enum {
 @property (strong) IBOutlet OPDropDownButton *shareWithButton;
 @property (strong) IBOutlet NSButton *switchViewButton;
 @property (strong) IBOutlet NSSearchField *searchFilter;
-@property (weak) OPNavigationController *navigationController;
+@property (weak, nonatomic) OPNavigationController *navigationController;
 
 - (IBAction)switchViewButtonPressed:(id)sender;
 
