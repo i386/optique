@@ -23,14 +23,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="200">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="219"/>
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="215"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="itZ-HB-iPM">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="219"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="215"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view id="201" customClass="OPGridView">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="219"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="215"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="-2" id="15Q-AE-687"/>
@@ -40,11 +40,11 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="202">
-                        <rect key="frame" x="0.0" y="203" width="480" height="16"/>
+                        <rect key="frame" x="0.0" y="199" width="480" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="203">
-                        <rect key="frame" x="465" y="0.0" width="15" height="219"/>
+                        <rect key="frame" x="464" y="0.0" width="16" height="215"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
