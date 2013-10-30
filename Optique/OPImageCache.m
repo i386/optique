@@ -160,21 +160,37 @@ static OPImageCache *_sharedPreviewCache;
     NSSize size = kOPImageCacheThumbSize;
     
     CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)originalPath, NULL);
+    NSImage *image;
     
-    NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
-                                      kCGImageSourceCreateThumbnailWithTransform, kCFBooleanTrue,
-                                      kCGImageSourceCreateThumbnailFromImageAlways, [NSNumber numberWithFloat:size.width],
-                                      kCGImageSourceThumbnailMaxPixelSize, kCFBooleanFalse, kCGImageSourceShouldCache, nil];
-    
-    CGImageRef thumbnail = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, (__bridge CFDictionaryRef)thumbnailOptions);
-    
-    NSImage *image = [[NSImage alloc] initWithCGImage:thumbnail size:NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail))];
+    if (imageSource != nil)
+    {
+        NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
+                                          kCGImageSourceCreateThumbnailWithTransform, kCFBooleanTrue,
+                                          kCGImageSourceCreateThumbnailFromImageAlways, [NSNumber numberWithFloat:size.width],
+                                          kCGImageSourceThumbnailMaxPixelSize, kCFBooleanFalse, kCGImageSourceShouldCache, nil];
+        
+        CGImageRef thumbnail = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, (__bridge CFDictionaryRef)thumbnailOptions);
+        
+        if (thumbnail != nil)
+        {
+            image = [[NSImage alloc] initWithCGImage:thumbnail size:NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail))];
+            
+            CGImageRelease(thumbnail);
+        }
+        else
+        {
+            NSLog(@"Could not generate preview thumbnail was nil %@", originalPath);
+        }
+    }
+    else
+    {
+        NSLog(@"Could not generate preview img src was nil %@", originalPath);
+    }
     
     if (imageSource != nil)
     {
         CFRelease(imageSource);
     }
-    CGImageRelease(thumbnail);
     
     return image;
 }
