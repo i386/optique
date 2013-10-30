@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
+#import <Carbon/Carbon.h>
 #import "OPCollectionViewController.h"
 
 #import "OPPhotoCollectionViewController.h"
@@ -264,6 +265,25 @@
     NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_predicate];
     id collection = filteredCollections[index];
     [self.controller pushViewController:[self viewForCollection:collection photoManager:_photoManager]];
+}
+
+-(BOOL)gridView:(OEGridView *)gridView keyDown:(NSEvent *)event
+{
+    if ([event keyCode] == kVK_Delete || [event keyCode] == kVK_ForwardDelete)
+    {
+        [self deleteSelected];
+        return YES;
+    }
+    else if ([event keyCode] == kVK_Return)
+    {
+        NSIndexSet *indexes = gridView.selectionIndexes;
+        if (indexes.count == 1)
+        {
+            [self gridView:gridView doubleClickedCellForItemAtIndex:indexes.lastIndex];
+        }
+        return YES;
+    }
+    return NO;
 }
 
 -(OPNavigationViewController*)viewForCollection:(id<XPPhotoCollection>)collection photoManager:(XPPhotoManager*)photoManager

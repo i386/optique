@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
+#import <Carbon/Carbon.h>
 #import "OPPhotoCollectionViewController.h"
 #import "OPPhotoViewController.h"
 #import "OPImagePreviewService.h"
@@ -245,6 +246,25 @@
     }
     
     return item;
+}
+
+-(BOOL)gridView:(OEGridView *)gridView keyDown:(NSEvent *)event
+{
+    if ([event keyCode] == kVK_Delete || [event keyCode] == kVK_ForwardDelete)
+    {
+        [self deleteSelected];
+        return YES;
+    }
+    else if ([event keyCode] == kVK_Return)
+    {
+        NSIndexSet *indexes = gridView.selectionIndexes;
+        if (indexes.count == 1)
+        {
+            [self gridView:gridView doubleClickedCellForItemAtIndex:indexes.lastIndex];
+        }
+        return YES;
+    }
+    return NO;
 }
 
 -(void)albumUpdated:(NSNotification*)notification
