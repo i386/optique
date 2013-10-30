@@ -21,7 +21,6 @@
     OPCameraCollectionViewController *_cameraViewController;
     OPCollectionViewController *_searchViewController;
     OPNewAlbumSheetController *_newAlbumSheetController;
-    OPToolbarViewController *_toolbarViewController;
 }
 
 @end
@@ -196,7 +195,7 @@
     }
     else
     {
-        NSLog(@"Unknown");
+        NSLog(@"navigationControllerChanged but we ran out of things to do");
     }
 }
 

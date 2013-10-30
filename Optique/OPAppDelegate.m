@@ -179,6 +179,11 @@
     [_preferencesWindowController.window makeKeyAndOrderFront:sender];
 }
 
+- (IBAction)findAlbum:(id)sender
+{
+    [_mainWindowController.toolbarViewController.searchFilter becomeFirstResponder];
+}
+
 -(void)didEnterFullscreen:(NSNotification*)notification
 {
     [_fullscreenMenuItem setHidden:YES];

@@ -8,14 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import "OPCollectionViewController.h"
+#import "OPToolbarViewController.h"
 
 @interface OPMainWindowController : NSWindowController<NSWindowDelegate>
 
 @property (strong, readonly) XPPhotoManager *photoManager;
-@property (strong) IBOutlet NSButton *navBackButton;
-
-@property (strong) IBOutlet NSWindow *createAlbumSheetWindow;
-@property (strong) IBOutlet NSTextField *albumNameTextField;
+@property (strong, readonly) OPToolbarViewController *toolbarViewController;
 
 -initWithPhotoManager:(XPPhotoManager*)photoManager;
 

@@ -28,5 +28,6 @@
 - (IBAction)newAlbum:(id)sender;
 - (IBAction)toggleFullScreen:(id)sender;
 - (IBAction)openPreferences:(id)sender;
+- (IBAction)findAlbum:(id)sender;
 
 @end
