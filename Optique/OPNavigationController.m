@@ -110,7 +110,7 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
     _visibleViewController = visibleViewController;
     
     //Make visible view first responder
-//    [_visibleViewController.view.window makeFirstResponder:_visibleViewController.view];
+    [_visibleViewController.view.window makeFirstResponder:_visibleViewController.view];
     
     [_visibleViewController showView];
     
