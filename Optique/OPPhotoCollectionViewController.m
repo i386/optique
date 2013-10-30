@@ -215,16 +215,19 @@
         OPPhotoGridViewCell * __weak weakItem = item;
         id<XPPhoto> __weak weakPhoto = photo;
         
-        item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
+        if (!item.image)
         {
-            [self performBlockOnMainThread:^
-            {
-                if (weakPhoto == weakItem.representedObject)
-                {
-                    weakItem.image = image;
-                }
-            }];
-        }];
+            item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
+                          {
+                              [self performBlockOnMainThread:^
+                               {
+                                   if (weakPhoto == weakItem.representedObject)
+                                   {
+                                       weakItem.image = image;
+                                   }
+                               }];
+                          }];
+        }
         
         item.view.toolTip = photo.title;
         
