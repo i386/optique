@@ -65,8 +65,16 @@
             
             CFRelease(imageProperties);
         }
+        else
+        {
+            NSLog(@"Could not get image properties for '%@'", _path);
+        }
         
         CFRelease(imageSource);
+    }
+    else
+    {
+        NSLog(@"Could not create image src for '%@'", _path);
     }
     
     completionBlock(image);
