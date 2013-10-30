@@ -15,4 +15,6 @@
 
 @property (strong) IBOutlet OPPhotoViewController *controller;
 
+-(void)copy:(id)sender;
+
 @end

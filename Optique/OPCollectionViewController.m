@@ -53,7 +53,6 @@
 
 @property (strong) OPDeleteAlbumSheetController *deleteAlbumSheetController;
 @property (strong) OPRenameAlbumWindowController *renameAlbumWindowController;
-@property (strong) NSPredicate *predicate;
 @property (strong) NSMutableArray *sharingMenuItems;
 @property (strong) NSString *viewTitle;
 @property (strong) NSString *emptyMessage;

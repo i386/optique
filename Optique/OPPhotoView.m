@@ -9,6 +9,7 @@
 #import "OPPhotoView.h"
 #import "OPPhotoViewController.h"
 #import "NSView+OptiqueBackground.h"
+#import "NSPasteboard+XPPhoto.h"
 
 @implementation OPPhotoView
 
@@ -40,6 +41,15 @@
 -(BOOL)acceptsFirstResponder
 {
     return YES;
+}
+
+-(void)copy:(id)sender
+{
+    NSURL *url = _controller.visiblePhoto.url;
+    NSImage *image = [[NSImage alloc] initWithContentsOfURL:url];
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    [pasteboard clearContents];
+    [pasteboard writeObjects:@[url, image]];
 }
 
 @end

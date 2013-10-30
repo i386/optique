@@ -9,8 +9,13 @@
 #import "OEGridView.h"
 #import <OEGridView/OEGridView.h>
 
+@class OPPhotoCollectionViewController;
+
 @interface OPPhotoGridView : OEGridView
 
+@property (weak) IBOutlet OPPhotoCollectionViewController *controller;
 @property (nonatomic, assign) BOOL isSelectionSticky;
+
+-(void)copy:(id)sender;
 
 @end

@@ -20,6 +20,7 @@
 @property (weak) IBOutlet NSTextField *titleLabel;
 @property (weak) IBOutlet NSBox *headingLine;
 @property (weak) IBOutlet NSMenuItem *renameAlbumMenuItem;
+@property (strong) NSPredicate *predicate;
 
 -(id)initWithPhotoManager:(XPPhotoManager *)photoManager title:(NSString *)title emptyMessage:(NSString*)emptyMessage icon:(NSImage *)icon collectionPredicate:(NSPredicate *)predicate;
 

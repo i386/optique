@@ -9,6 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import <OEGridView/OEGridView.h>
 
+@class OPCollectionViewController;
+
 @interface OPGridView : OEGridView
+
+@property (weak) IBOutlet OPCollectionViewController *controller;
+
+-(void)copy:(id)sender;
 
 @end

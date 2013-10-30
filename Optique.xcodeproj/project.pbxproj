@@ -55,6 +55,8 @@
 		0F5C40AA181CC1DF00F265FC /* OPDropDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */; };
 		0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE86217366CF900DF2356 /* XPPhotoManager.m */; };
 		0F62BA66173673B200E661DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
+		0F67499A1820F5F500CEEEA9 /* NSLock+DoWithLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6749991820F5F500CEEEA9 /* NSLock+DoWithLock.m */; };
+		0F67499D18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67499C18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.m */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
 		0F70718A180E354F00ED5799 /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F707187180E354F00ED5799 /* folder.png */; };
@@ -339,6 +341,10 @@
 		0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDropDownButton.m; sourceTree = "<group>"; };
 		0F5FE86217366CF900DF2356 /* XPPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPPhotoManager.m; sourceTree = "<group>"; };
 		0F62BA65173673B200E661DD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0F6749981820F5F500CEEEA9 /* NSLock+DoWithLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLock+DoWithLock.h"; sourceTree = "<group>"; };
+		0F6749991820F5F500CEEEA9 /* NSLock+DoWithLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLock+DoWithLock.m"; sourceTree = "<group>"; };
+		0F67499B18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPasteboard+XPPhoto.h"; sourceTree = "<group>"; };
+		0F67499C18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPasteboard+XPPhoto.m"; sourceTree = "<group>"; };
 		0F6AEF821701C02200A797E4 /* OPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMainWindowController.h; sourceTree = "<group>"; };
 		0F6AEF831701C02200A797E4 /* OPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMainWindowController.m; sourceTree = "<group>"; };
 		0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPMainWindowController.xib; sourceTree = "<group>"; };
@@ -1139,6 +1145,10 @@
 				0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */,
 				0F4A6DA818191834009AD08C /* NSURL+Renamer.h */,
 				0F4A6DA918191834009AD08C /* NSURL+Renamer.m */,
+				0F6749981820F5F500CEEEA9 /* NSLock+DoWithLock.h */,
+				0F6749991820F5F500CEEEA9 /* NSLock+DoWithLock.m */,
+				0F67499B18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.h */,
+				0F67499C18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1696,6 +1706,7 @@
 				0FA706C2171911B900864CED /* OPNewAlbumSheetController.m in Sources */,
 				0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */,
 				0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */,
+				0F67499A1820F5F500CEEEA9 /* NSLock+DoWithLock.m in Sources */,
 				0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */,
 				0FC2EC741813F5BA00D02EC5 /* OPImportPhotosWindowController.m in Sources */,
 				0FA29D09180FE8C60066077D /* OPPhotoGridViewCell.m in Sources */,
@@ -1706,6 +1717,7 @@
 				0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */,
 				0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */,
 				0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */,
+				0F67499D18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.m in Sources */,
 				0FD51720176B08BD006E8F4D /* OPGridView.m in Sources */,
 				0FC2EC2C1813EB0600D02EC5 /* OPCameraCollectionViewController.m in Sources */,
 				0FA29D06180FE8740066077D /* OPPhotoGridView.m in Sources */,

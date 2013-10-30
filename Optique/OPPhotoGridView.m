@@ -7,6 +7,8 @@
 //
 
 #import "OPPhotoGridView.h"
+#import "OPPhotoCollectionViewController.h"
+#import "NSPasteboard+XPPhoto.h"
 
 @implementation OPPhotoGridView
 
@@ -76,6 +78,21 @@
     else
     {
         [self deselectAll:nil];
+    }
+}
+
+-(void)copy:(id)sender
+{
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    NSArray *selected = [_controller.collection photosForIndexSet:[_controller selectedItems]];
+    if (selected.count == 1)
+    {
+        id<XPPhoto> photo = [selected lastObject];
+        [pasteboard writePhoto:photo];
+    }
+    else if (selected.count > 1)
+    {
+        [pasteboard writePhotos:selected];
     }
 }
 
