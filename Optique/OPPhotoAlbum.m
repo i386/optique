@@ -11,10 +11,11 @@
 #import "NSURL+EqualToURL.h"
 #import "NSURL+URLWithoutQuery.h"
 #import "NSURL+Renamer.h"
+#import "NSObject+PerformBlock.h"
 
 @interface OPPhotoAlbum() {
     NSLock *_arrayLock;
-    volatile NSMutableOrderedSet *_allPhotos;
+    NSMutableOrderedSet *_allPhotos;
 }
 
 @end
@@ -30,6 +31,7 @@
         _path = path;
         _photoManager = photoManager;
         _arrayLock = [[NSLock alloc] init];
+        _allPhotos = [NSMutableOrderedSet orderedSet];
         
         NSDictionary* attributesDictionary = [[NSFileManager defaultManager] attributesOfItemAtPath:[_path path] error: NULL];
         _created = attributesDictionary[NSFileCreationDate];
@@ -37,22 +39,13 @@
     return self;
 }
 
--(NSArray *)allPhotos
+-(NSOrderedSet *)allPhotos
 {
-    if (_allPhotos == nil)
+    if (_allPhotos.count == 0)
     {
         [self reload];
     }
-    
-    [_arrayLock lock];
-    @try
-    {
-        return [(NSArray*)_allPhotos sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO]]];
-    }
-    @finally
-    {
-        [_arrayLock unlock];
-    }
+    return _allPhotos;
 }
 
 -(NSArray *)photosForIndexSet:(NSIndexSet *)indexSet
@@ -69,27 +62,14 @@
 
 -(id<XPPhoto>)coverPhoto
 {
-    id<XPPhoto> __block photo;
-    [self findAllPhotosWithBlock:^BOOL(id<XPPhoto> foundPhoto) {
-        photo = foundPhoto;
-        return FALSE;
-    }];
-    return photo;
+    return [_allPhotos firstObject];
 }
 
 -(void)reload
 {
-    [_arrayLock lock];
-    @try
-    {
-        _allPhotos = [NSMutableOrderedSet orderedSetWithArray:[self findAllPhotosWithBlock:^BOOL(id<XPPhoto> photo) {
-            return TRUE;
-        }]];
-    }
-    @finally
-    {
-        [_arrayLock unlock];
-    }
+    [self performBlockInBackground:^{
+        [self updatePhotos];
+    }];
 }
 
 -(XPPhotoCollectionType)collectionType
@@ -114,8 +94,8 @@
         completionBlock(error);
     }
     
-    [self.photoManager collectionUpdated:self];
-    [photo.collection.photoManager collectionUpdated:photo.collection];
+    [self.photoManager collectionUpdated:self reload:YES];
+    [photo.collection.photoManager collectionUpdated:photo.collection reload:YES];
 }
 
 
@@ -130,13 +110,13 @@
         completionBlock(error);
     }
     
-    [self.photoManager collectionUpdated:self];
-    [photo.collection.photoManager collectionUpdated:photo.collection];
+    [self.photoManager collectionUpdated:self reload:YES];
+    [photo.collection.photoManager collectionUpdated:photo.collection reload:YES];
 }
 
--(NSArray*)findAllPhotosWithBlock:(BOOL (^)(id<XPPhoto>))block;
+-(void)updatePhotos
 {
-    NSMutableArray *photos = [[NSMutableArray alloc] init];
+    NSMutableOrderedSet *photos = [NSMutableOrderedSet orderedSet];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
@@ -146,6 +126,7 @@
                                              return YES;
                                          }];
     
+    NSUInteger count = 0;
     for (NSURL *url in enumerator)
     {
         NSError *error;
@@ -156,6 +137,8 @@
         }
         else if (![isDirectory boolValue])
         {
+            count++;
+            
             NSString *filePath = [url path];
             CFStringRef fileExtension = (__bridge CFStringRef) [filePath pathExtension];
             CFStringRef fileUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, NULL);
@@ -163,13 +146,11 @@
             if (UTTypeConformsTo(fileUTI, kUTTypeImage))
             {
                 OPLocalPhoto *photo = [[OPLocalPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
-                if (block(photo))
+                [photos addObject:photo];
+                
+                if (count % 1000 == 1)
                 {
-                    [photos addObject:photo];
-                }
-                else
-                {
-                    break;
+//                    [self.photoManager collectionUpdated:self reload:NO];
                 }
             }
             
@@ -177,8 +158,24 @@
         }
     }
     
+    __block NSMutableOrderedSet *setToRemove;
     
-    return photos;
+    
+    [self performBlockOnMainThreadAndWaitUntilDone:^{
+        _allPhotos = photos;
+        [self.photoManager collectionUpdated:self reload:NO];
+        
+//        setToRemove = [NSMutableOrderedSet orderedSetWithOrderedSet:_allPhotos];
+//        [setToRemove minusOrderedSet:photos];
+    }];
+    
+//    [self performBlockOnMainThread:^{
+//        [setToRemove enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//            [_allPhotos removeObject:obj];
+//        }];
+//        
+//        [self.photoManager collectionUpdated:self reload:NO];
+//    }];
 }
 
 -(BOOL)isEqual:(id)object

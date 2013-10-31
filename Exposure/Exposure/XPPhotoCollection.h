@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, XPPhotoCollectionType) {
 -(NSDate*)created;
 
 /** all objects conforming to OPPhoto that belong to this collection */
--(NSArray*)allPhotos;
+-(NSOrderedSet*)allPhotos;
 
 /** all objects filtered by the provided index set conforming to OPPhoto that belong to this collection */
 -(NSArray*)photosForIndexSet:(NSIndexSet*)indexSet;

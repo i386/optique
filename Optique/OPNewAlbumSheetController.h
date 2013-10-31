@@ -13,7 +13,7 @@
 
 @property (readonly, strong) XPPhotoManager *photoManager;
 @property (readonly, weak) OPNavigationController *navigationController;
-@property (strong) IBOutlet NSTextField *albumNameTextField;
+@property (weak) IBOutlet NSTextField *albumNameTextField;
 
 -initWithPhotoManager:(XPPhotoManager*)photoManager navigationController:(OPNavigationController*)navigationController;
 

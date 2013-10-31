@@ -20,9 +20,6 @@
         _title = title;
         _path = path;
         _collection = collection;
-        
-        NSDictionary* attributesDictionary = [[NSFileManager defaultManager] attributesOfItemAtPath:[_path path] error: NULL];
-        _created = attributesDictionary[NSFileCreationDate];
     }
     return self;
 }
@@ -80,6 +77,16 @@
     completionBlock(image);
 }
 
+-(NSDate *)created
+{
+    if (__created == nil)
+    {
+        NSDictionary* attributesDictionary = [[NSFileManager defaultManager] attributesOfItemAtPath:[_path path] error: NULL];
+        __created = attributesDictionary[NSFileCreationDate];
+    }
+    return __created;
+}
+
 -(NSURL *)url
 {
     return _path;
@@ -98,12 +105,12 @@
         return NO;
     
     OPLocalPhoto *photo = object;
-    return [[[self path] URLWithoutQuery] isEqualToURL:[photo.path URLWithoutQuery]];
+    return [self.path.path isEqualToString:photo.path.path];
 }
 
 -(NSUInteger)hash
 {
-    return self.path.URLWithoutQuery.hash;
+    return self.path.path.hash;
 }
 
 @end

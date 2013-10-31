@@ -12,7 +12,7 @@
 @interface OPLocalPhoto : NSObject <XPPhoto>
 
 @property (strong, readonly) NSString *title;
-@property (strong, readonly) NSDate *created;
+@property (strong, readonly) NSDate *_created;
 @property (strong, readonly) NSURL *path;
 @property (weak, readonly) id<XPPhotoCollection> collection;
 

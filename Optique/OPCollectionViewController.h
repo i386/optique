@@ -13,7 +13,7 @@
 
 @interface OPCollectionViewController : OPNavigationViewController <OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPCollectionViewController>
 
-@property (strong, readonly) XPPhotoManager *photoManager;
+@property (weak, readonly) XPPhotoManager *photoManager;
 @property (weak) IBOutlet NSMenu *albumItemContextMenu;
 @property (weak) IBOutlet NSMenuItem *deleteAlbumMenuItem;
 @property (weak) IBOutlet OPGridView *gridView;

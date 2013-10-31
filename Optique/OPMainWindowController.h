@@ -12,7 +12,7 @@
 
 @interface OPMainWindowController : NSWindowController<NSWindowDelegate>
 
-@property (strong, readonly) XPPhotoManager *photoManager;
+@property (weak, readonly) XPPhotoManager *photoManager;
 @property (strong, readonly) OPToolbarViewController *toolbarViewController;
 
 -initWithPhotoManager:(XPPhotoManager*)photoManager;

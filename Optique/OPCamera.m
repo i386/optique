@@ -11,7 +11,7 @@
 #import "OPCameraService.h"
 
 @interface OPCamera() {
-    NSMutableArray *_allPhotos;
+    NSMutableOrderedSet *_allPhotos;
     NSMutableDictionary *_thumbnails;
     NSTimer *_batchTimer;
     NSUInteger _thumbnailsRecieved;
@@ -26,7 +26,7 @@
     self = [super init];
     if (self)
     {
-        _allPhotos = [[NSMutableArray alloc] init];
+        _allPhotos = [[NSMutableOrderedSet alloc] init];
         _thumbnails = [NSMutableDictionary dictionary];
         _photoManager = photoManager;
         _device = device;
@@ -43,9 +43,9 @@
     return _device.name;
 }
 
--(NSArray *)allPhotos
+-(NSOrderedSet *)allPhotos
 {
-    return [_allPhotos sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO]]];
+    return _allPhotos;
 }
 
 -(NSArray *)photosForIndexSet:(NSIndexSet *)indexSet
@@ -127,7 +127,7 @@
         [_thumbnails removeObjectForKey:cameraFile.name];
     }
     
-    [self.photoManager collectionUpdated:self];
+    [self.photoManager collectionUpdated:self reload:YES];
 }
 
 - (void)deviceDidBecomeReadyWithCompleteContentCatalog:(ICDevice*)device
@@ -162,7 +162,7 @@
 
 - (void)collectionUpdated:(NSDictionary*)userInfo
 {
-    [_photoManager collectionUpdated:self];
+    [_photoManager collectionUpdated:self reload:YES];
 }
 
 - (void)cameraDevice:(ICCameraDevice*)device didReceiveThumbnailForItem:(ICCameraItem*)item

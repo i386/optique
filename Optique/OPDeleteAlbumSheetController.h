@@ -12,9 +12,9 @@
 
 @property (readonly, strong) NSArray *albums;
 @property (readonly, weak) XPPhotoManager *photoManager;
-@property (strong) IBOutlet NSTextField *labelTextField;
-@property (strong) IBOutlet NSProgressIndicator *progressIndicator;
-@property (strong, readonly) NSViewController *viewController;
+@property (weak) IBOutlet NSTextField *labelTextField;
+@property (weak) IBOutlet NSProgressIndicator *progressIndicator;
+@property (weak, readonly) NSViewController *viewController;
 
 -initWithPhotoAlbums:(NSArray*)albums photoManager:(XPPhotoManager*)photoManager parentController:(NSViewController*)viewController;
 

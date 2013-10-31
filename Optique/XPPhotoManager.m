@@ -182,9 +182,12 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
     }];
 }
 
--(void)collectionUpdated:(id<XPPhotoCollection>)collection
+-(void)collectionUpdated:(id<XPPhotoCollection>)collection reload:(BOOL)shouldReload
 {
-    [collection reload];
+    if (shouldReload)
+    {
+        [collection reload];
+    }
     [self sendNotificationWithName:XPPhotoManagerDidUpdateCollection forPhotoCollection:collection];
 }
 

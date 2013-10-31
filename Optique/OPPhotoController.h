@@ -12,8 +12,8 @@
 
 @interface OPPhotoController : NSViewController <NSMenuDelegate, XPPhotoController, XPSharingService>
 
-@property (strong) IBOutlet NSImageView *imageView;
-@property (strong) IBOutlet NSMenu *contextMenu;
+@property (weak) IBOutlet NSImageView *imageView;
+@property (weak) IBOutlet NSMenu *contextMenu;
 
 -initWithPhotoViewController:(OPPhotoViewController*)photoViewController;
 

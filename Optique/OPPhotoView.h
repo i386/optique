@@ -13,7 +13,7 @@
 
 @interface OPPhotoView : NSView
 
-@property (strong) IBOutlet OPPhotoViewController *controller;
+@property (weak) IBOutlet OPPhotoViewController *controller;
 
 -(void)copy:(id)sender;
 

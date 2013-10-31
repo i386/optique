@@ -54,6 +54,6 @@ extern NSString *const XPPhotoManagerDidDeleteCollection;
 /** 
  Forces the collection to reload and sends a XPPhotoManagerDidUpdateCollection 
  */
--(void)collectionUpdated:(id<XPPhotoCollection>)collection;
+-(void)collectionUpdated:(id<XPPhotoCollection>)collection reload:(BOOL)shouldReload;
 
 @end
