@@ -46,7 +46,7 @@
 
 @interface OPPhotoCollectionViewController()
 
-@property (strong) NSMutableArray *sharingMenuItems;
+@property (nonatomic, strong) NSMutableArray *sharingMenuItems;
 @property (strong) OPPlaceHolderViewController *placeHolderViewController;
 
 @end
@@ -203,8 +203,18 @@
 
 -(OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    OPPhotoGridViewCell *item = [self createPhotoGridViewCell];
-                                 
+    OPPhotoGridViewCell *item = (OPPhotoGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
+    if (!item)
+    {
+        item = (OPPhotoGridViewCell *)[gridView dequeueReusableCell];
+    }
+
+    if (!item)
+    {
+        item = [self createPhotoGridViewCell];
+    }
+    
+    
     NSArray *allPhotos = _collection.allPhotos;
     
     if (allPhotos.count > 0)
@@ -215,19 +225,16 @@
         OPPhotoGridViewCell * __weak weakItem = item;
         id<XPPhoto> __weak weakPhoto = photo;
         
-        if (!item.image)
-        {
-            item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
-                          {
-                              [self performBlockOnMainThread:^
+        item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
+                      {
+                          [self performBlockOnMainThread:^
+                           {
+                               if (weakPhoto == weakItem.representedObject)
                                {
-                                   if (weakPhoto == weakItem.representedObject)
-                                   {
-                                       weakItem.image = image;
-                                   }
-                               }];
-                          }];
-        }
+                                   weakItem.image = image;
+                               }
+                           }];
+                      }];
         
         item.view.toolTip = photo.title;
         
@@ -288,7 +295,7 @@
     [[_primaryActionButton cell] setKBButtonType:BButtonTypePrimary];
     [[_secondaryActionButton cell] setKBButtonType:BButtonTypeDefault];
     
-//    self.gridView.isSelectionSticky = YES;
+    self.gridView.disableCellReuse = YES;
 }
 
 -(void)loadView

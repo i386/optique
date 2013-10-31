@@ -90,6 +90,7 @@
     [_headingLine setBoxType:NSBoxCustom];
     
     _titleLabel.stringValue = _viewTitle;
+    self.gridView.disableCellReuse = YES;
 }
 
 -(void)dealloc
@@ -319,7 +320,16 @@
 
 - (OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    OPGridViewCell *item = [[OPGridViewCell alloc] init];
+    OPGridViewCell *item = (OPGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
+    if (!item)
+    {
+        item = (OPGridViewCell *)[gridView dequeueReusableCell];
+    }
+    
+    if (!item)
+    {
+        item = [[OPGridViewCell alloc] init];
+    }
     
     NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_predicate];
     id<XPPhotoCollection> collection = filteredCollections[index];

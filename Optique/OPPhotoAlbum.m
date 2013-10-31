@@ -172,6 +172,8 @@
                     break;
                 }
             }
+            
+            CFRelease(fileUTI);
         }
     }
     

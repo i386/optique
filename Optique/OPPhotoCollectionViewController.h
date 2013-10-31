@@ -13,13 +13,13 @@
 
 @interface OPPhotoCollectionViewController : OPNavigationViewController <OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPPhotoCollectionViewController>
 
-@property (strong) IBOutlet NSMenu *contextMenu;
-@property (strong) IBOutlet NSMenu *sharingMenu;
+@property (weak) IBOutlet NSMenu *contextMenu;
+@property (weak) IBOutlet NSMenu *sharingMenu;
 
-@property (strong, readonly) id<XPPhotoCollection> collection;
-@property (strong, readonly) XPPhotoManager *photoManager;
-@property (strong) IBOutlet OPPhotoGridView *gridView;
-@property (strong) IBOutlet NSMenuItem *moveToAlbumItem;
+@property (weak, readonly) id<XPPhotoCollection> collection;
+@property (weak, readonly) XPPhotoManager *photoManager;
+@property (weak) IBOutlet OPPhotoGridView *gridView;
+@property (weak) IBOutlet NSMenuItem *moveToAlbumItem;
 @property (weak) IBOutlet NSBox *headingLine;
 @property (weak) IBOutlet NSTextField *dateLabel;
 @property (weak) IBOutlet KBButton *primaryActionButton;
