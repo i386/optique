@@ -6,6 +6,12 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
+
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <dirent.h>
+#include <fts.h>
+
 #import "OPPhotoAlbum.h"
 #import "OPLocalPhoto.h"
 #import "NSURL+EqualToURL.h"
@@ -116,6 +122,45 @@
 
 -(void)updatePhotos
 {
+    FTS *fts;
+    
+    fts = fts_open_b(self.path.path.UTF8String, FTS_NOCHDIR, ^int(const FTSENT ** entry1, const FTSENT ** entry2) {
+        return 1;
+    });
+    
+    if (fts)
+    {
+        
+    }
+    
+//    struct dirent **namelist;
+//    int n;
+//    
+//    n = scandir_b(self.path.path.UTF8String, &namelist, ^int(const struct dirent * dir) {
+//        return 1; //Include all for the moment
+//    }, ^int(const struct dirent ** dir1, const struct dirent ** dir2) {
+//        return 1;
+//    });
+//    
+//    n = scandir(self.path.path.UTF8String, &namelist, 0, alphasort);
+//    if (n < 0)
+//        perror("scandir");
+//    else {
+//        while(n--) {
+//            printf("%s\n", namelist[n]->d_name);
+//            
+//            struct stat st;
+//            stat(namelist[n]->d_name, &st);
+//            int size = st.st_size;
+//            
+//            NSLog(@"%s, %d", namelist[n]->d_name, size);
+//            
+//            free(namelist[n]);
+//        }
+//        free(namelist);
+//    }
+    
+    
     NSMutableOrderedSet *photos = [NSMutableOrderedSet orderedSet];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
