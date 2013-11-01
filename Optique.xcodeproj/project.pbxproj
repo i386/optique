@@ -685,6 +685,8 @@
 				0F85D9BD180CD2300003C6ED /* OPToolbarViewController.h */,
 				0F85D9BE180CD2300003C6ED /* OPToolbarViewController.m */,
 				0F85D9BF180CD2300003C6ED /* OPToolbarViewController.xib */,
+				0F3E26A41823746E009E74BD /* OPNotificationSynchronizer.h */,
+				0F3E26A51823746E009E74BD /* OPNotificationSynchronizer.m */,
 			);
 			name = Toolbar;
 			sourceTree = "<group>";
@@ -867,8 +869,6 @@
 				0F368A7B170680DF00411503 /* Custom Views */,
 				0FEC674E171034C20086B264 /* Categories */,
 				0F9C80BA16F891C700B2B6D8 /* Supporting Files */,
-				0F3E26A41823746E009E74BD /* OPNotificationSynchronizer.h */,
-				0F3E26A51823746E009E74BD /* OPNotificationSynchronizer.m */,
 			);
 			path = Optique;
 			sourceTree = "<group>";
