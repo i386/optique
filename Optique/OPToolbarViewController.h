@@ -28,6 +28,7 @@ typedef enum {
 @property (strong) IBOutlet NSButton *switchViewButton;
 @property (strong) IBOutlet NSSearchField *searchFilter;
 @property (weak, nonatomic) OPNavigationController *navigationController;
+@property (weak) IBOutlet NSProgressIndicator *loadProgressIndicator;
 
 - (IBAction)switchViewButtonPressed:(id)sender;
 

@@ -57,6 +57,7 @@
 		0F62BA66173673B200E661DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0F67499A1820F5F500CEEEA9 /* NSLock+DoWithLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6749991820F5F500CEEEA9 /* NSLock+DoWithLock.m */; };
 		0F67499D18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67499C18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.m */; };
+		0F67499F18236B8700CEEEA9 /* XPPhotoCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67499E18236B8700CEEEA9 /* XPPhotoCollection.m */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
 		0F70718A180E354F00ED5799 /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F707187180E354F00ED5799 /* folder.png */; };
@@ -345,6 +346,7 @@
 		0F6749991820F5F500CEEEA9 /* NSLock+DoWithLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLock+DoWithLock.m"; sourceTree = "<group>"; };
 		0F67499B18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPasteboard+XPPhoto.h"; sourceTree = "<group>"; };
 		0F67499C18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPasteboard+XPPhoto.m"; sourceTree = "<group>"; };
+		0F67499E18236B8700CEEEA9 /* XPPhotoCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPPhotoCollection.m; path = Exposure/XPPhotoCollection.m; sourceTree = "<group>"; };
 		0F6AEF821701C02200A797E4 /* OPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMainWindowController.h; sourceTree = "<group>"; };
 		0F6AEF831701C02200A797E4 /* OPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMainWindowController.m; sourceTree = "<group>"; };
 		0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPMainWindowController.xib; sourceTree = "<group>"; };
@@ -1016,6 +1018,7 @@
 			children = (
 				0F04A63D1737C74800E53ED1 /* XPPhoto.h */,
 				0F04A63E1737C74800E53ED1 /* XPPhotoCollection.h */,
+				0F67499E18236B8700CEEEA9 /* XPPhotoCollection.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1645,6 +1648,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FD86BE0180F4D1E00BFF807 /* XPExposureService.m in Sources */,
+				0F67499F18236B8700CEEEA9 /* XPPhotoCollection.m in Sources */,
 				0FA29615178D4AF1005009C4 /* XPBundleMetadata.m in Sources */,
 				0FCA4D2F1737D7F0007DC9EF /* XPMenuItem.m in Sources */,
 				0F7A704E178ABA6600570180 /* XPBadgeLayer.m in Sources */,

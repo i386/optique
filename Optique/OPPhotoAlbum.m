@@ -18,6 +18,8 @@
     NSMutableOrderedSet *_allPhotos;
 }
 
+@property (nonatomic) BOOL loading;
+
 @end
 
 @implementation OPPhotoAlbum
@@ -67,9 +69,15 @@
 
 -(void)reload
 {
-    [self performBlockInBackground:^{
-        [self updatePhotos];
-    }];
+    if (!_loading)
+    {
+        _loading = YES;
+        
+        [self performBlockInBackground:^{
+            [self updatePhotos];
+            _loading = NO;
+        }];
+    }
 }
 
 -(XPPhotoCollectionType)collectionType
@@ -116,6 +124,10 @@
 
 -(void)updatePhotos
 {
+    [self performBlockOnMainThread:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:XPPhotoCollectionDidStartLoading object:nil];
+    }];
+    
     NSMutableOrderedSet *photos = [NSMutableOrderedSet orderedSet];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -164,6 +176,8 @@
     [self performBlockOnMainThreadAndWaitUntilDone:^{
         _allPhotos = photos;
         [self.photoManager collectionUpdated:self reload:NO];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:XPPhotoCollectionDidStopLoading object:nil];
         
 //        setToRemove = [NSMutableOrderedSet orderedSetWithOrderedSet:_allPhotos];
 //        [setToRemove minusOrderedSet:photos];

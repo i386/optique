@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "XPPhoto.h"
 
+extern NSString *const XPPhotoCollectionDidStartLoading;
+extern NSString *const XPPhotoCollectionDidStopLoading;
+
 @class XPPhotoManager;
 
 typedef NS_ENUM(NSUInteger, XPPhotoCollectionType) {
