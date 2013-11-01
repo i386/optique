@@ -43,10 +43,6 @@
 
 -(NSOrderedSet *)allPhotos
 {
-    if (_allPhotos.count == 0)
-    {
-        [self reload];
-    }
     return _allPhotos;
 }
 
@@ -124,8 +120,8 @@
 
 -(void)updatePhotos
 {
-    [self performBlockOnMainThread:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:XPPhotoCollectionDidStartLoading object:nil];
+    [self performBlockOnMainThreadAndWaitUntilDone:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:XPPhotoCollectionDidStartLoading object:nil userInfo:@{@"collection": self}];
     }];
     
     NSMutableOrderedSet *photos = [NSMutableOrderedSet orderedSet];
@@ -159,37 +155,18 @@
             {
                 OPLocalPhoto *photo = [[OPLocalPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
                 [photos addObject:photo];
-                
-                if (count % 1000 == 1)
-                {
-//                    [self.photoManager collectionUpdated:self reload:NO];
-                }
             }
             
             CFRelease(fileUTI);
         }
     }
     
-    __block NSMutableOrderedSet *setToRemove;
-    
-    
     [self performBlockOnMainThreadAndWaitUntilDone:^{
         _allPhotos = photos;
         [self.photoManager collectionUpdated:self reload:NO];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:XPPhotoCollectionDidStopLoading object:nil];
-        
-//        setToRemove = [NSMutableOrderedSet orderedSetWithOrderedSet:_allPhotos];
-//        [setToRemove minusOrderedSet:photos];
+        [[NSNotificationCenter defaultCenter] postNotificationName:XPPhotoCollectionDidStopLoading object:nil userInfo:@{@"collection": self}];
     }];
-    
-//    [self performBlockOnMainThread:^{
-//        [setToRemove enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//            [_allPhotos removeObject:obj];
-//        }];
-//        
-//        [self.photoManager collectionUpdated:self reload:NO];
-//    }];
 }
 
 -(BOOL)isEqual:(id)object

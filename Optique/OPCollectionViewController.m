@@ -263,7 +263,7 @@
 -(void)gridView:(OEGridView *)gridView doubleClickedCellForItemAtIndex:(NSUInteger)index
 {
     NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_predicate];
-    id collection = filteredCollections[index];
+    id<XPPhotoCollection> collection = filteredCollections[index];
     [self.controller pushViewController:[self viewForCollection:collection photoManager:_photoManager]];
 }
 

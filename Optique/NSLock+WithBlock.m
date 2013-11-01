@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "NSLock+DoWithLock.h"
+#import "NSLock+WithBlock.h"
 
-@implementation NSLock (DoWithLock)
+@implementation NSLock (WithBlock)
 
 -(id)withBlock:(OPLockBlock)block
 {

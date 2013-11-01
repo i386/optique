@@ -46,6 +46,7 @@
 		0F368A8717068F0500411503 /* OPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A8617068F0500411503 /* OPWindow.m */; };
 		0F368A8A17068F1B00411503 /* OPWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A8917068F1A00411503 /* OPWindowContentView.m */; };
 		0F3B6C53180F4FB200119C10 /* XPExposureService.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCA4D281737D351007DC9EF /* XPExposureService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F3E26A61823746E009E74BD /* OPNotificationSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3E26A51823746E009E74BD /* OPNotificationSynchronizer.m */; };
 		0F413C50178EA32300FCE1EA /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0F44BAD9173DCA6D0039B00E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F44BAD7173DCA620039B00E /* Accounts.framework */; };
 		0F44BB4E173E011E0039B00E /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
@@ -55,7 +56,7 @@
 		0F5C40AA181CC1DF00F265FC /* OPDropDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */; };
 		0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE86217366CF900DF2356 /* XPPhotoManager.m */; };
 		0F62BA66173673B200E661DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
-		0F67499A1820F5F500CEEEA9 /* NSLock+DoWithLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6749991820F5F500CEEEA9 /* NSLock+DoWithLock.m */; };
+		0F67499A1820F5F500CEEEA9 /* NSLock+WithBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6749991820F5F500CEEEA9 /* NSLock+WithBlock.m */; };
 		0F67499D18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67499C18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.m */; };
 		0F67499F18236B8700CEEEA9 /* XPPhotoCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67499E18236B8700CEEEA9 /* XPPhotoCollection.m */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
@@ -331,6 +332,8 @@
 		0F368A8917068F1A00411503 /* OPWindowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPWindowContentView.m; sourceTree = "<group>"; };
 		0F3DF46B16F98D0D00C003D3 /* OPPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPPhotoAlbum.h; path = ../Optique/OPPhotoAlbum.h; sourceTree = "<group>"; };
 		0F3DF46C16F98D0D00C003D3 /* OPPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPPhotoAlbum.m; path = ../Optique/OPPhotoAlbum.m; sourceTree = "<group>"; };
+		0F3E26A41823746E009E74BD /* OPNotificationSynchronizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNotificationSynchronizer.h; sourceTree = "<group>"; };
+		0F3E26A51823746E009E74BD /* OPNotificationSynchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNotificationSynchronizer.m; sourceTree = "<group>"; };
 		0F44BAD7173DCA620039B00E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		0F44BAF1173DD3420039B00E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0F489932170BFFD60044ED0A /* OPImagePreviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImagePreviewService.h; sourceTree = "<group>"; };
@@ -342,8 +345,8 @@
 		0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDropDownButton.m; sourceTree = "<group>"; };
 		0F5FE86217366CF900DF2356 /* XPPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPPhotoManager.m; sourceTree = "<group>"; };
 		0F62BA65173673B200E661DD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		0F6749981820F5F500CEEEA9 /* NSLock+DoWithLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLock+DoWithLock.h"; sourceTree = "<group>"; };
-		0F6749991820F5F500CEEEA9 /* NSLock+DoWithLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLock+DoWithLock.m"; sourceTree = "<group>"; };
+		0F6749981820F5F500CEEEA9 /* NSLock+WithBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLock+WithBlock.h"; sourceTree = "<group>"; };
+		0F6749991820F5F500CEEEA9 /* NSLock+WithBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLock+WithBlock.m"; sourceTree = "<group>"; };
 		0F67499B18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPasteboard+XPPhoto.h"; sourceTree = "<group>"; };
 		0F67499C18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPasteboard+XPPhoto.m"; sourceTree = "<group>"; };
 		0F67499E18236B8700CEEEA9 /* XPPhotoCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPPhotoCollection.m; path = Exposure/XPPhotoCollection.m; sourceTree = "<group>"; };
@@ -864,6 +867,8 @@
 				0F368A7B170680DF00411503 /* Custom Views */,
 				0FEC674E171034C20086B264 /* Categories */,
 				0F9C80BA16F891C700B2B6D8 /* Supporting Files */,
+				0F3E26A41823746E009E74BD /* OPNotificationSynchronizer.h */,
+				0F3E26A51823746E009E74BD /* OPNotificationSynchronizer.m */,
 			);
 			path = Optique;
 			sourceTree = "<group>";
@@ -1148,8 +1153,8 @@
 				0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */,
 				0F4A6DA818191834009AD08C /* NSURL+Renamer.h */,
 				0F4A6DA918191834009AD08C /* NSURL+Renamer.m */,
-				0F6749981820F5F500CEEEA9 /* NSLock+DoWithLock.h */,
-				0F6749991820F5F500CEEEA9 /* NSLock+DoWithLock.m */,
+				0F6749981820F5F500CEEEA9 /* NSLock+WithBlock.h */,
+				0F6749991820F5F500CEEEA9 /* NSLock+WithBlock.m */,
 				0F67499B18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.h */,
 				0F67499C18210A7B00CEEEA9 /* NSPasteboard+XPPhoto.m */,
 			);
@@ -1697,6 +1702,7 @@
 				0F368A71170677A700411503 /* OPPhotoView.m in Sources */,
 				0FA29D0E180FF34A0066077D /* NSURL+URLWithoutQuery.m in Sources */,
 				0F368A74170678AC00411503 /* NSView+OptiqueBackground.m in Sources */,
+				0F3E26A61823746E009E74BD /* OPNotificationSynchronizer.m in Sources */,
 				0F368A8717068F0500411503 /* OPWindow.m in Sources */,
 				0F368A8A17068F1B00411503 /* OPWindowContentView.m in Sources */,
 				0F85D9C0180CD2300003C6ED /* OPToolbarViewController.m in Sources */,
@@ -1710,7 +1716,7 @@
 				0FA706C2171911B900864CED /* OPNewAlbumSheetController.m in Sources */,
 				0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */,
 				0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */,
-				0F67499A1820F5F500CEEEA9 /* NSLock+DoWithLock.m in Sources */,
+				0F67499A1820F5F500CEEEA9 /* NSLock+WithBlock.m in Sources */,
 				0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */,
 				0FC2EC741813F5BA00D02EC5 /* OPImportPhotosWindowController.m in Sources */,
 				0FA29D09180FE8C60066077D /* OPPhotoGridViewCell.m in Sources */,

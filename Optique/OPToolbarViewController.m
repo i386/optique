@@ -34,6 +34,17 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     
     [_loadProgressIndicator setDisplayedWhenStopped:NO];
     
+    __block NSProgressIndicator *indicatorForBlock = _loadProgressIndicator;
+    
+    _syncCollectionEvents = [OPNotificationSynchronizer watchForIncrementNotification:XPPhotoCollectionDidStartLoading
+                                                             deincrementNotification:XPPhotoCollectionDidStopLoading
+                                                                       incrementBlock:^{
+                                                                        [indicatorForBlock startAnimation:self];
+    }
+                                                                    deincrementBlock:^{
+                                                                        [indicatorForBlock stopAnimation:self];
+    }];
+    
     _shareWithButton.menu = [[NSMenu alloc] init];
     _shareWithButton.menu.showsStateColumn = NO;
     _shareWithButton.menu.delegate = self;
@@ -43,10 +54,6 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:@"OPCameraServiceDidAddCamera" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sharableSelectionChanged:) name:OPSharableSelectionChanged object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionStartedLoading:) name:XPPhotoCollectionDidStartLoading object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionFinishedLoading:) name:XPPhotoCollectionDidStopLoading object:nil];
     
     [self albumMode];
 }
@@ -67,8 +74,6 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationControllerViewDidChange object:_navigationController];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"OPCameraServiceDidAddCamera" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPSharableSelectionChanged object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoCollectionDidStartLoading object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoCollectionDidStopLoading object:nil];
 }
 
 -(void)cameraAdded:(NSNotification*)notification
@@ -171,16 +176,6 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumSearchFilterDidChange object:nil userInfo:@{@"value":[sender stringValue]}];
     
     [self albumMode];
-}
-
--(void)collectionStartedLoading:(NSNotification *)notification
-{
-    [_loadProgressIndicator startAnimation:self];
-}
-
--(void)collectionFinishedLoading:(NSNotification *)notification
-{
-    [_loadProgressIndicator stopAnimation:self];
 }
 
 @end
