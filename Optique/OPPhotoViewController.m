@@ -45,7 +45,7 @@
     [super loadView];
     
     //Setup page controller
-    [_pageController setArrangedObjects:_collection.allPhotos];
+    [_pageController setArrangedObjects:_collection.allPhotos.array];
     [_pageController setSelectedIndex:_index];
     
     //Subscribe to window & view events

@@ -6,12 +6,6 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <dirent.h>
-#include <fts.h>
-
 #import "OPPhotoAlbum.h"
 #import "OPLocalPhoto.h"
 #import "NSURL+EqualToURL.h"
@@ -19,10 +13,14 @@
 #import "NSURL+Renamer.h"
 #import "NSObject+PerformBlock.h"
 
+typedef void (^XPPhotoSearch)(id, BOOL*);
+
 @interface OPPhotoAlbum() {
     NSLock *_arrayLock;
     NSMutableOrderedSet *_allPhotos;
 }
+
+@property (nonatomic) BOOL loading;
 
 @end
 
@@ -47,10 +45,6 @@
 
 -(NSOrderedSet *)allPhotos
 {
-    if (_allPhotos.count == 0)
-    {
-        [self reload];
-    }
     return _allPhotos;
 }
 
@@ -68,14 +62,28 @@
 
 -(id<XPPhoto>)coverPhoto
 {
-    return [_allPhotos firstObject];
+    __block id<XPPhoto> photo =  [_allPhotos firstObject];
+    if (!photo)
+    {
+        [self searchDirectoryForPhotos:^(id foundPhoto, BOOL *shouldStop) {
+            photo = foundPhoto;
+            *shouldStop = YES;
+        }];
+    }
+    return photo;
 }
 
 -(void)reload
 {
-    [self performBlockInBackground:^{
-        [self updatePhotos];
-    }];
+    if (!_loading)
+    {
+        _loading = YES;
+        
+        [self performBlockInBackground:^{
+            [self updatePhotos];
+            _loading = NO;
+        }];
+    }
 }
 
 -(XPPhotoCollectionType)collectionType
@@ -122,47 +130,26 @@
 
 -(void)updatePhotos
 {
-    FTS *fts;
-    
-    fts = fts_open_b(self.path.path.UTF8String, FTS_NOCHDIR, ^int(const FTSENT ** entry1, const FTSENT ** entry2) {
-        return 1;
-    });
-    
-    if (fts)
-    {
-        
-    }
-    
-//    struct dirent **namelist;
-//    int n;
-//    
-//    n = scandir_b(self.path.path.UTF8String, &namelist, ^int(const struct dirent * dir) {
-//        return 1; //Include all for the moment
-//    }, ^int(const struct dirent ** dir1, const struct dirent ** dir2) {
-//        return 1;
-//    });
-//    
-//    n = scandir(self.path.path.UTF8String, &namelist, 0, alphasort);
-//    if (n < 0)
-//        perror("scandir");
-//    else {
-//        while(n--) {
-//            printf("%s\n", namelist[n]->d_name);
-//            
-//            struct stat st;
-//            stat(namelist[n]->d_name, &st);
-//            int size = st.st_size;
-//            
-//            NSLog(@"%s, %d", namelist[n]->d_name, size);
-//            
-//            free(namelist[n]);
-//        }
-//        free(namelist);
-//    }
-    
+    [self performBlockOnMainThreadAndWaitUntilDone:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:XPPhotoCollectionDidStartLoading object:nil userInfo:@{@"collection": self}];
+    }];
     
     NSMutableOrderedSet *photos = [NSMutableOrderedSet orderedSet];
     
+    [self searchDirectoryForPhotos:^(id photo, BOOL *shouldStop) {
+        [photos addObject:photo];
+    }];
+    
+    [self performBlockOnMainThreadAndWaitUntilDone:^{
+        _allPhotos = photos;
+        [self.photoManager collectionUpdated:self reload:NO];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:XPPhotoCollectionDidStopLoading object:nil userInfo:@{@"collection": self}];
+    }];
+}
+
+-(void)searchDirectoryForPhotos:(XPPhotoSearch)block
+{
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSDirectoryEnumerator *enumerator = [fileManager
@@ -188,39 +175,22 @@
             CFStringRef fileExtension = (__bridge CFStringRef) [filePath pathExtension];
             CFStringRef fileUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, NULL);
             
+            BOOL shouldStop = NO;
+            OPLocalPhoto *photo;
             if (UTTypeConformsTo(fileUTI, kUTTypeImage))
             {
-                OPLocalPhoto *photo = [[OPLocalPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
-                [photos addObject:photo];
-                
-                if (count % 1000 == 1)
-                {
-//                    [self.photoManager collectionUpdated:self reload:NO];
-                }
+                photo = [[OPLocalPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
+                block(photo, &shouldStop);
             }
             
             CFRelease(fileUTI);
+            
+            if (shouldStop)
+            {
+                break;
+            }
         }
     }
-    
-    __block NSMutableOrderedSet *setToRemove;
-    
-    
-    [self performBlockOnMainThreadAndWaitUntilDone:^{
-        _allPhotos = photos;
-        [self.photoManager collectionUpdated:self reload:NO];
-        
-//        setToRemove = [NSMutableOrderedSet orderedSetWithOrderedSet:_allPhotos];
-//        [setToRemove minusOrderedSet:photos];
-    }];
-    
-//    [self performBlockOnMainThread:^{
-//        [setToRemove enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//            [_allPhotos removeObject:obj];
-//        }];
-//        
-//        [self.photoManager collectionUpdated:self reload:NO];
-//    }];
 }
 
 -(BOOL)isEqual:(id)object

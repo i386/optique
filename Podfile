@@ -7,7 +7,6 @@ target :Optique, :exclusive => false do
   pod 'CNBaseView', '~> 1.0.11'
   pod 'KBButton', :git => 'git@github.com:i386/KBButton.git'
   pod 'MASPreferences', '~> 1.0'
-  pod 'libextobjc', '~> 0.3'
 end
 
 target :Exposure do

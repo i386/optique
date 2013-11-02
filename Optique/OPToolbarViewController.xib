@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OPToolbarViewController">
             <connections>
+                <outlet property="loadProgressIndicator" destination="8M1-EZ-PjK" id="ljJ-P7-O5S"/>
                 <outlet property="searchFilter" destination="l6g-Ne-vin" id="Q8w-kn-Lle"/>
                 <outlet property="shareWithButton" destination="sQU-rD-OeF" id="Paj-pL-Vpz"/>
                 <outlet property="switchViewButton" destination="XIN-Ja-7hD" id="O2z-8T-WhO"/>
@@ -54,6 +55,10 @@
                         <action selector="searchFilter:" target="-2" id="Nf6-uf-AiZ"/>
                     </connections>
                 </searchField>
+                <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="8M1-EZ-PjK">
+                    <rect key="frame" x="85" y="10" width="16" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </progressIndicator>
             </subviews>
         </customView>
         <menu id="lcP-HC-UBg"/>

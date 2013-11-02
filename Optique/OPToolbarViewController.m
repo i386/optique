@@ -32,6 +32,19 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
 {
     [super awakeFromNib];
     
+    [_loadProgressIndicator setDisplayedWhenStopped:NO];
+    
+    __block NSProgressIndicator *indicatorForBlock = _loadProgressIndicator;
+    
+    _syncCollectionEvents = [OPNotificationSynchronizer watchForIncrementNotification:XPPhotoCollectionDidStartLoading
+                                                             deincrementNotification:XPPhotoCollectionDidStopLoading
+                                                                       incrementBlock:^{
+                                                                        [indicatorForBlock startAnimation:self];
+    }
+                                                                    deincrementBlock:^{
+                                                                        [indicatorForBlock stopAnimation:self];
+    }];
+    
     _shareWithButton.menu = [[NSMenu alloc] init];
     _shareWithButton.menu.showsStateColumn = NO;
     _shareWithButton.menu.delegate = self;
@@ -39,8 +52,6 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     [self.view setPostsBoundsChangedNotifications:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:@"OPCameraServiceDidAddCamera" object:nil];
-    
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sharableSelectionChanged:) name:OPSharableSelectionChanged object:nil];
     

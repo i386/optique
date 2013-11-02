@@ -10,7 +10,7 @@
 #import <BlocksKit/NSMutableOrderedSet+BlocksKit.h>
 #import <BlocksKit/NSArray+BlocksKit.h>
 #import <Exposure/Exposure.h>
-#import "NSLock+DoWithLock.h"
+#import "NSLock+WithBlock.h"
 
 NSString *const XPPhotoManagerDidAddCollection = @"XPPhotoManagerDidAddAlbum";
 NSString *const XPPhotoManagerDidUpdateCollection = @"XPPhotoManagerDidUpdateAlbum";

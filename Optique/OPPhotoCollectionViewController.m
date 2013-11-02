@@ -215,7 +215,7 @@
     }
     
     
-    NSArray *allPhotos = _collection.allPhotos;
+    NSOrderedSet *allPhotos = _collection.allPhotos;
     
     if (allPhotos.count > 0)
     {
@@ -303,6 +303,11 @@
     [super loadView];
     _contextMenu.delegate = self;
     [[_gridView enclosingScrollView] setDrawsBackground:NO];
+    
+    if ([_collection allPhotos].count == 0)
+    {
+        [_collection reload];
+    }
 }
 
 -(void)showView

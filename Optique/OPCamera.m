@@ -81,7 +81,7 @@
 
 -(void)reload
 {
-    NSMutableArray *newPhotos = [NSMutableArray array];
+    NSMutableOrderedSet *newPhotos = [NSMutableOrderedSet orderedSet];
     for (ICCameraFile *cameraFile in self.device.mediaFiles)
     {
         OPCameraPhoto *photo = [[OPCameraPhoto alloc] initWithCameraFile:cameraFile collection:self];

@@ -10,7 +10,7 @@
 
 typedef id (^OPLockBlock)();
 
-@interface NSLock (DoWithLock)
+@interface NSLock (WithBlock)
 
 -(id)withBlock:(OPLockBlock)block;
 

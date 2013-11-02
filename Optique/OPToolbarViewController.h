@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "OPNavigationController.h"
 #import "OPDropDownButton.h"
+#import "OPNotificationSynchronizer.h"
 
 extern NSString *const OPApplicationModeDidChange;
 extern NSString *const OPAlbumSearchFilterDidChange;
@@ -28,6 +29,8 @@ typedef enum {
 @property (strong) IBOutlet NSButton *switchViewButton;
 @property (strong) IBOutlet NSSearchField *searchFilter;
 @property (weak, nonatomic) OPNavigationController *navigationController;
+@property (weak) IBOutlet NSProgressIndicator *loadProgressIndicator;
+@property (strong) OPNotificationSynchronizer *syncCollectionEvents;
 
 - (IBAction)switchViewButtonPressed:(id)sender;
 
