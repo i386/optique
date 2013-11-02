@@ -13,6 +13,8 @@
 #import "NSURL+Renamer.h"
 #import "NSObject+PerformBlock.h"
 
+typedef void (^XPPhotoSearch)(id, BOOL*);
+
 @interface OPPhotoAlbum() {
     NSLock *_arrayLock;
     NSMutableOrderedSet *_allPhotos;
@@ -60,7 +62,15 @@
 
 -(id<XPPhoto>)coverPhoto
 {
-    return [_allPhotos firstObject];
+    __block id<XPPhoto> photo =  [_allPhotos firstObject];
+    if (!photo)
+    {
+        [self searchDirectoryForPhotos:^(id foundPhoto, BOOL *shouldStop) {
+            photo = foundPhoto;
+            *shouldStop = YES;
+        }];
+    }
+    return photo;
 }
 
 -(void)reload
@@ -126,6 +136,20 @@
     
     NSMutableOrderedSet *photos = [NSMutableOrderedSet orderedSet];
     
+    [self searchDirectoryForPhotos:^(id photo, BOOL *shouldStop) {
+        [photos addObject:photo];
+    }];
+    
+    [self performBlockOnMainThreadAndWaitUntilDone:^{
+        _allPhotos = photos;
+        [self.photoManager collectionUpdated:self reload:NO];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:XPPhotoCollectionDidStopLoading object:nil userInfo:@{@"collection": self}];
+    }];
+}
+
+-(void)searchDirectoryForPhotos:(XPPhotoSearch)block
+{
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSDirectoryEnumerator *enumerator = [fileManager
@@ -151,22 +175,22 @@
             CFStringRef fileExtension = (__bridge CFStringRef) [filePath pathExtension];
             CFStringRef fileUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, NULL);
             
+            BOOL shouldStop = NO;
+            OPLocalPhoto *photo;
             if (UTTypeConformsTo(fileUTI, kUTTypeImage))
             {
-                OPLocalPhoto *photo = [[OPLocalPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
-                [photos addObject:photo];
+                photo = [[OPLocalPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
+                block(photo, &shouldStop);
             }
             
             CFRelease(fileUTI);
+            
+            if (shouldStop)
+            {
+                break;
+            }
         }
     }
-    
-    [self performBlockOnMainThreadAndWaitUntilDone:^{
-        _allPhotos = photos;
-        [self.photoManager collectionUpdated:self reload:NO];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:XPPhotoCollectionDidStopLoading object:nil userInfo:@{@"collection": self}];
-    }];
 }
 
 -(BOOL)isEqual:(id)object
