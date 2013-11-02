@@ -28,6 +28,12 @@
     return self;
 }
 
+-(void)awakeFromNib
+{
+    _nameTextField.stringValue = _collection.title;
+    [_nameTextField selectText:self];
+}
+
 - (IBAction)rename:(id)sender
 {
     NSString *value = _nameTextField.stringValue;
