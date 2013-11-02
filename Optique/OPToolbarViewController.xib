@@ -59,6 +59,17 @@
                     <rect key="frame" x="85" y="10" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </progressIndicator>
+                <button verticalHuggingPriority="750" id="caY-Uz-LC7">
+                    <rect key="frame" x="646" y="5" width="36" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Vlz-y5-tQ5">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="rotateLeft:" target="-1" id="1bk-xw-9O3"/>
+                    </connections>
+                </button>
             </subviews>
         </customView>
         <menu id="lcP-HC-UBg"/>
