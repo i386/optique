@@ -39,9 +39,11 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     _syncCollectionEvents = [OPNotificationSynchronizer watchForIncrementNotification:XPPhotoCollectionDidStartLoading
                                                              deincrementNotification:XPPhotoCollectionDidStopLoading
                                                                        incrementBlock:^{
+                                                                        [indicatorForBlock setHidden:NO];
                                                                         [indicatorForBlock startAnimation:self];
     }
                                                                     deincrementBlock:^{
+                                                                        [indicatorForBlock setHidden:YES];
                                                                         [indicatorForBlock stopAnimation:self];
     }];
     
