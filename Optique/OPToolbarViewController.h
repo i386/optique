@@ -31,7 +31,6 @@ typedef enum {
 @property (weak, nonatomic) OPNavigationController *navigationController;
 @property (weak) IBOutlet NSProgressIndicator *loadProgressIndicator;
 @property (strong) OPNotificationSynchronizer *syncCollectionEvents;
-@property (weak) IBOutlet NSButton *rotateImageButton;
 
 - (IBAction)switchViewButtonPressed:(id)sender;
 

@@ -127,9 +127,7 @@
 
 -(NSViewController *)pageController:(NSPageController *)pageController viewControllerForIdentifier:(NSString *)identifier
 {
-    OPPhotoController *controller = [[OPPhotoController alloc] initWithPhotoViewController:self];
-    _currentPhotoController = controller;
-    return controller;
+    return [[OPPhotoController alloc] initWithPhotoViewController:self];
 }
 
 -(void)pageController:(NSPageController *)pageController prepareViewController:(NSViewController *)viewController withObject:(id)object

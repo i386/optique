@@ -8,7 +8,6 @@
 
 #import <Quartz/Quartz.h>
 #import "OPNavigationViewController.h"
-#import "OPPhotoController.h"
 
 @interface OPPhotoViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate, XPSharingService, XPPhotoController>
 
@@ -17,12 +16,10 @@
 @property (weak) id<XPPhoto> visiblePhoto;
 @property (weak) IBOutlet NSPageController *pageController;
 @property (weak) IBOutlet NSMenu *contextMenu;
-@property (weak) OPPhotoController *currentPhotoController;
 
 -initWithPhotoCollection:(id<XPPhotoCollection>)collection photo:(id<XPPhoto>)photo;
 
 -(void)nextPhoto;
-
 -(void)previousPhoto;
 
 -(void)backToPhotoCollection;

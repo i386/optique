@@ -17,6 +17,4 @@
 
 -(void)copy:(id)sender;
 
--(void)rotateLeft:(id)sender;
-
 @end
