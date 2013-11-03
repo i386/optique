@@ -308,6 +308,8 @@
     {
         [_collection reload];
     }
+    
+    _primaryActionButton.boldText = YES;
 }
 
 -(void)showView
