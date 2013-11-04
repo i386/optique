@@ -242,9 +242,11 @@ CA
                 <outlet property="debugMenu" destination="Ej8-n3-t4k" id="DFi-00-xJD"/>
                 <outlet property="exitFullscreenMenuItem" destination="yYR-Mq-xIl" id="vKi-RI-82G"/>
                 <outlet property="fullscreenMenuItem" destination="VWB-iV-2F4" id="IvL-m0-FOq"/>
+                <outlet property="updater" destination="FaB-34-8Q7" id="MFW-mt-hNC"/>
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
         <userDefaultsController id="564"/>
+        <customObject id="FaB-34-8Q7" customClass="SUUpdater"/>
     </objects>
 </document>

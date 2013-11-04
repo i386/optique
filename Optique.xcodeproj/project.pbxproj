@@ -109,6 +109,8 @@
 		0FA706C8171911CC00864CED /* OPDeleteAlbumSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C6171911CC00864CED /* OPDeleteAlbumSheetController.xib */; };
 		0FA706CB171911F400864CED /* empty-album.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C9171911F400864CED /* empty-album.png */; };
 		0FA706CC171911F400864CED /* empty-album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706CA171911F400864CED /* empty-album@2x.png */; };
+		0FABADE31826636C003766AA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FABADE21826636C003766AA /* Sparkle.framework */; };
+		0FABADE4182663B7003766AA /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FABADE21826636C003766AA /* Sparkle.framework */; };
 		0FAEFFF3176736F700D60171 /* Optique.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEFFF2176736F700D60171 /* Optique.icns */; };
 		0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */; };
 		0FC2ABB6178952F7009C7B02 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
@@ -268,6 +270,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0FABADE4182663B7003766AA /* Sparkle.framework in CopyFiles */,
 				0FCA4D191737CC4A007DC9EF /* Exposure.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +444,7 @@
 		0FA706C6171911CC00864CED /* OPDeleteAlbumSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPDeleteAlbumSheetController.xib; path = Optique/OPDeleteAlbumSheetController.xib; sourceTree = "<group>"; };
 		0FA706C9171911F400864CED /* empty-album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album.png"; sourceTree = "<group>"; };
 		0FA706CA171911F400864CED /* empty-album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album@2x.png"; sourceTree = "<group>"; };
+		0FABADE21826636C003766AA /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		0FAEFFF2176736F700D60171 /* Optique.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Optique.icns; sourceTree = "<group>"; };
 		0FB384C917050B3200DEB770 /* OPAlbumScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPAlbumScanner.h; path = ../Optique/OPAlbumScanner.h; sourceTree = "<group>"; };
 		0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPAlbumScanner.m; path = ../Optique/OPAlbumScanner.m; sourceTree = "<group>"; };
@@ -573,6 +577,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FABADE31826636C003766AA /* Sparkle.framework in Frameworks */,
 				0F413C50178EA32300FCE1EA /* Exposure.framework in Frameworks */,
 				0FE3B2621702F25500FC0D6C /* QuartzCore.framework in Frameworks */,
 				0F62BA66173673B200E661DD /* Cocoa.framework in Frameworks */,
@@ -818,6 +823,7 @@
 		0F9C80B216F891C700B2B6D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FABADE21826636C003766AA /* Sparkle.framework */,
 				0FC92774180F502900C51076 /* libPods-Local-BlocksKit.a */,
 				0FC92775180F502900C51076 /* libPods-Local-CDEvents.a */,
 				0FD86BE1180F4D8F00BFF807 /* libPods-Optique-BlocksKit.a */,
@@ -1334,6 +1340,7 @@
 				764F0ACCDB4C4803BB106785 /* Copy Pods Resources */,
 				0FB94DD51735F4D200065536 /* CopyFiles */,
 				0F415C8E1737250E00CDE679 /* CopyFiles */,
+				0F2185131827846E00213484 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1426,6 +1433,9 @@
 								enabled = 1;
 							};
 						};
+					};
+					0FC2ABB4178952F7009C7B02 = {
+						DevelopmentTeam = QZEN9DJMR2;
 					};
 				};
 			};
@@ -1555,6 +1565,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0F2185131827846E00213484 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "codesign --force --verify --verbose --sign \"3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)\" $BUILT_PRODUCTS_DIR/Optique.app/Contents/Frameworks/Sparkle.framework";
+		};
 		17624C3C152E4BFA8C204CF2 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1908,8 +1931,8 @@
 			baseConfigurationReference = 903EF40C10B94861A91EB68D /* Pods-Exposure.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1934,8 +1957,8 @@
 			baseConfigurationReference = 903EF40C10B94861A91EB68D /* Pods-Exposure.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1959,7 +1982,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Finder/Finder-Prefix.pch";
@@ -1976,7 +1999,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Finder/Finder-Prefix.pch";
@@ -1997,7 +2020,7 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Local/Local-Prefix.pch";
@@ -2026,7 +2049,7 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2056,7 +2079,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2091,7 +2114,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2111,13 +2134,14 @@
 			baseConfigurationReference = 414A439A63084757BE245F01 /* Pods/Pods-Optique.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Optique/Optique.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/DerivedData/Optique/Build/Products/Debug/\"",
-					"\"$(SRCROOT)/Frameworks\"",
+					"$(SRCROOT)",
+					"\\\"$(SRCROOT)/DerivedData/Optique/Build/Products/Debug/\\\"",
+					"\\\"$(SRCROOT)/Frameworks\\\"",
+					/Users/jdumay/code/Optique/Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Optique/Optique-Prefix.pch";
@@ -2135,13 +2159,14 @@
 			baseConfigurationReference = 414A439A63084757BE245F01 /* Pods/Pods-Optique.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Optique/Optique.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/DerivedData/Optique/Build/Products/Release\"",
-					"\"$(SRCROOT)/Frameworks\"",
+					"$(SRCROOT)",
+					"\\\"$(SRCROOT)/DerivedData/Optique/Build/Products/Release\\\"",
+					"\\\"$(SRCROOT)/Frameworks\\\"",
+					/Users/jdumay/code/Optique/Frameworks,
 				);
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
 					"$(inherited)",
@@ -2168,7 +2193,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Camera/Camera-Prefix.pch";
@@ -2197,7 +2223,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2219,7 +2246,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Facebook/Facebook-Prefix.pch";
@@ -2236,7 +2263,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Facebook/Facebook-Prefix.pch";
@@ -2253,7 +2280,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Twitter/Twitter-Prefix.pch";
@@ -2270,7 +2297,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Mac Developer: James Dumay (H5HMB59MLA)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Twitter/Twitter-Prefix.pch";

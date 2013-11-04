@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <INAppStoreWindow/INAppStoreWindow.h>
 #import <MASPreferences/MASPreferencesWindowController.h>
+#import <Sparkle/Sparkle.h>
 
 #import "OPCameraService.h"
 #import "OPMainWindowController.h"
@@ -23,6 +24,7 @@
 @property (weak) IBOutlet NSMenuItem *debugMenu;
 @property (weak) IBOutlet NSMenuItem *fullscreenMenuItem;
 @property (weak) IBOutlet NSMenuItem *exitFullscreenMenuItem;
+@property (weak) IBOutlet SUUpdater *updater;
 
 - (IBAction)openDirectory:(id)sender;
 - (IBAction)newAlbum:(id)sender;
