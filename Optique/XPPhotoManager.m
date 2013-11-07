@@ -59,7 +59,7 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
 
 -(id<XPPhotoCollection>)newAlbumWithName:(NSString *)albumName error:(NSError *__autoreleasing *)error
 {
-    return [_collectionLock withBlock:^id{
+    id<XPPhotoCollection> collection =  [_collectionLock withBlock:^id{
         NSURL *albumPath = [self.path URLByAppendingPathComponent:albumName isDirectory:YES];
         
         if (![[NSFileManager defaultManager] fileExistsAtPath:[albumPath path]])
@@ -71,7 +71,7 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
             if (!directoryCreationError)
             {
                 id<XPPhotoCollection> album = [XPExposureService createCollectionWithTitle:albumName path:albumPath];
-                [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:album];
+                [_collectionSet addObject:album];
                 return album;
             }
             else
@@ -89,6 +89,10 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
         }
         return nil;
     }];
+    
+    [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:collection];
+    
+    return collection;
 }
 
 -(void)deleteAlbum:(id<XPPhotoCollection>)collection error:(NSError *__autoreleasing *)error
