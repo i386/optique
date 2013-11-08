@@ -90,8 +90,10 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
         return nil;
     }];
     
-    [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:collection];
-    
+    if (collection)
+    {
+        [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:collection];
+    }
     return collection;
 }
 
@@ -104,7 +106,7 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
         if ([album respondsToSelector:@selector(path)])
         {
             [[NSFileManager defaultManager] removeItemAtURL:(NSURL*)[album path] error:error];
-            [self removeAlbum:collection];
+            [_collectionSet removeObject:collection];
         }
         return nil;
     }];

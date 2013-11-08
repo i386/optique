@@ -10,16 +10,19 @@
 #import <INAppStoreWindow/INAppStoreWindow.h>
 #import <MASPreferences/MASPreferencesWindowController.h>
 #import <Sparkle/Sparkle.h>
+#import <HockeySDK/HockeySDK.h>
 
 #import "OPCameraService.h"
 #import "OPMainWindowController.h"
+#import "OPNewsletterWindowController.h"
 
-@interface OPAppDelegate : NSObject <NSApplicationDelegate>
+@interface OPAppDelegate : NSObject <NSApplicationDelegate, BITHockeyManagerDelegate>
 
 @property (readonly, strong) XPPhotoManager *photoManager;
 @property (readonly, strong) OPMainWindowController *mainWindowController;
 @property (strong) IBOutlet NSUserDefaultsController *userDefaultsController;
 @property (strong) MASPreferencesWindowController *preferencesWindowController;
+@property (strong) OPNewsletterWindowController *newsletterWindowController;
 
 @property (weak) IBOutlet NSMenuItem *debugMenu;
 @property (weak) IBOutlet NSMenuItem *fullscreenMenuItem;

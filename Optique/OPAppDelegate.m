@@ -10,10 +10,17 @@
 #import "OPImageCache.h"
 #import <Exposure/Exposure.h>
 #import "NSWindow+FullScreen.h"
+#import <HockeySDK/BITHockeyManager.h>
 
 @implementation OPAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"52814104cfd270328887432ee78c4dd1" companyName:@"Whimsy Apps" delegate:self];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+}
+
+-(void)showMainApplicationWindowForCrashManager:(BITCrashManager *)crashManager
 {
     _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:@[]];
     
@@ -39,9 +46,9 @@
     {
         url = [self resolvePicturesDirectoryURL];
     }
-
+    
     //Application is now ready to accept plugin loading
-    [XPExposureService loadPlugins:aNotification.userInfo];
+    [XPExposureService loadPlugins:@{}];
     
     [self picturesAtDirectory:url];
     
@@ -49,6 +56,14 @@
     [_debugMenu setHidden:NO];
     [self setupDebugMenu];
 #endif
+    
+//    if (![[_userDefaultsController defaults] boolForKey:@"shown-newsletter"])
+//    {
+//        _newsletterWindowController = [[OPNewsletterWindowController alloc] init];
+//        [_mainWindowController.window beginSheet:_newsletterWindowController.window completionHandler:^(NSModalResponse returnCode) {
+//           //Do nada
+//        }];
+//    }
 }
 
 -(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
@@ -165,7 +180,13 @@
 
 - (IBAction)showHelp:(id)sender
 {
-    NSURL *url = [NSURL URLWithString:@"http://www.optiqueapp.com/help"];
+    NSURL *url = [NSURL URLWithString:@"http://whimsyapps.uservoice.com/forums/202362-general"];
+    [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
+- (IBAction)followOnTwitter:(id)sender
+{
+    NSURL *url = [NSURL URLWithString:@"http://twitter.com/whimsyapps"];
     [[NSWorkspace sharedWorkspace] openURL:url];
 }
 

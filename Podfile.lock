@@ -5,6 +5,7 @@ PODS:
   - CNBaseView (1.0.11)
   - INAppStoreWindow (HEAD based on 1.2)
   - KBButton (0.0.1)
+  - KBTextField (0.0.1)
   - MASPreferences (1.0)
   - NSHash (1.0.1)
   - OEGridView (0.0.1)
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - CNBaseView (~> 1.0.11)
   - INAppStoreWindow (HEAD)
   - KBButton (from `git@github.com:i386/KBButton.git`)
+  - KBTextField (from `git@github.com:i386/KBTextField.git`)
   - MASPreferences (~> 1.0)
   - NSHash (~> 1.0.1)
   - OEGridView (from `~/code/OEGridView`)
@@ -22,6 +24,8 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   KBButton:
     :git: git@github.com:i386/KBButton.git
+  KBTextField:
+    :git: git@github.com:i386/KBTextField.git
   OEGridView:
     :path: ~/code/OEGridView
 
@@ -31,6 +35,7 @@ SPEC CHECKSUMS:
   CNBaseView: 37956c9d903e37d50ef164b07a13688d95880fa5
   INAppStoreWindow: d00327caee47d951043169df9aaab952389defcb
   KBButton: 627facd1b7e7f484755107e62d2d85b20f429e6e
+  KBTextField: b2dedfc5ada8ffc26f87aa00454da27a687f3ded
   MASPreferences: b8c112b4b6e6cbd32b8f49d249eb152d1eeb38f8
   NSHash: 7e728a3e7fdff6828f3fce387049b1e0ca7fe8a0
   OEGridView: c675deaa9fceaabec54803f2bd6bf88b8f96f70d

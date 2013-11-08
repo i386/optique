@@ -445,7 +445,7 @@
     NSMutableSet *extensions = [NSMutableSet set];
     for (id<XPPhotoCollection> collection in [_photoManager allCollectionsForIndexSet:_gridView.selectionIndexes])
     {
-        for (id<XPPhoto> photo in [collection photosForIndexSet:gridView.selectionIndexes])
+        for (id<XPPhoto> photo in [collection allPhotos])
         {
             [extensions addObject:[photo.url pathExtension]];
         }

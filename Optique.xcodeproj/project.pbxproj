@@ -26,6 +26,11 @@
 		0F04A65E1737C7C300E53ED1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F04A65C1737C7C300E53ED1 /* InfoPlist.strings */; };
 		0F08A8D71770443C00DFEA02 /* 329-layers1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D51770443C00DFEA02 /* 329-layers1.png */; };
 		0F08A8D81770443C00DFEA02 /* 329-layers1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */; };
+		0F1750E2182892DD0021853D /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1750E0182892C70021853D /* HockeySDK.framework */; };
+		0F1750E3182892F40021853D /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F1750E0182892C70021853D /* HockeySDK.framework */; };
+		0F1750E71828ACD30021853D /* OPNewsletterWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */; };
+		0F1750E81828ACD30021853D /* OPNewsletterWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1750E61828ACD30021853D /* OPNewsletterWindowController.xib */; };
+		0F1750EC1828AD3C0021853D /* ChimpKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1750EB1828AD3C0021853D /* ChimpKit.m */; };
 		0F1B4020180E970200C1CBF5 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F1B401F180E970200C1CBF5 /* search.png */; };
 		0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A6571737C7C300E53ED1 /* Finder.bundle */; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
@@ -270,6 +275,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0F1750E3182892F40021853D /* HockeySDK.framework in CopyFiles */,
 				0FABADE4182663B7003766AA /* Sparkle.framework in CopyFiles */,
 				0FCA4D191737CC4A007DC9EF /* Exposure.framework in CopyFiles */,
 			);
@@ -305,6 +311,12 @@
 		0F04A65F1737C7C300E53ED1 /* Finder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Finder-Prefix.pch"; sourceTree = "<group>"; };
 		0F08A8D51770443C00DFEA02 /* 329-layers1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "329-layers1.png"; sourceTree = "<group>"; };
 		0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "329-layers1@2x.png"; sourceTree = "<group>"; };
+		0F1750E0182892C70021853D /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = Frameworks/HockeySDK.framework; sourceTree = "<group>"; };
+		0F1750E41828ACD30021853D /* OPNewsletterWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNewsletterWindowController.h; sourceTree = "<group>"; };
+		0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNewsletterWindowController.m; sourceTree = "<group>"; };
+		0F1750E61828ACD30021853D /* OPNewsletterWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNewsletterWindowController.xib; sourceTree = "<group>"; };
+		0F1750EA1828AD3C0021853D /* ChimpKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChimpKit.h; sourceTree = "<group>"; };
+		0F1750EB1828AD3C0021853D /* ChimpKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChimpKit.m; sourceTree = "<group>"; };
 		0F1B401F180E970200C1CBF5 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+FullScreen.h"; sourceTree = "<group>"; };
 		0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+FullScreen.m"; sourceTree = "<group>"; };
@@ -463,7 +475,6 @@
 		0FC2EC711813F5BA00D02EC5 /* OPImportPhotosWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImportPhotosWindowController.h; sourceTree = "<group>"; };
 		0FC2EC721813F5BA00D02EC5 /* OPImportPhotosWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImportPhotosWindowController.m; sourceTree = "<group>"; };
 		0FC2EC731813F5BA00D02EC5 /* OPImportPhotosWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPImportPhotosWindowController.xib; sourceTree = "<group>"; };
-		0FC55DC31787BB760095CCF0 /* libPods-objectiveflickr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-objectiveflickr.a"; path = "DerivedData/Optique/Build/Products/Debug/libPods-objectiveflickr.a"; sourceTree = "<group>"; };
 		0FC55DC51787BE4A0095CCF0 /* OPFlickrService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPFlickrService.h; path = ../Optique/OPFlickrService.h; sourceTree = "<group>"; };
 		0FC55DC61787BE4A0095CCF0 /* OPFlickrService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPFlickrService.m; path = ../Optique/OPFlickrService.m; sourceTree = "<group>"; };
 		0FC8A7AE170FD9E000650D7C /* NSImage+CGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+CGImage.h"; sourceTree = "<group>"; };
@@ -533,11 +544,9 @@
 		16513AE00F4544C59D21B885 /* Pods-Local.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local.xcconfig"; path = "Pods/Pods-Local.xcconfig"; sourceTree = "<group>"; };
 		28CE02E9006D49619346BA66 /* libPods-Exposure.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Exposure.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		414A439A63084757BE245F01 /* Pods/Pods-Optique.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods/Pods-Optique.xcconfig"; sourceTree = SOURCE_ROOT; };
-		7AFC7861178F4C1091191A68 /* libPods-Flickr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Flickr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		903EF40C10B94861A91EB68D /* Pods-Exposure.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exposure.xcconfig"; path = "Pods/Pods-Exposure.xcconfig"; sourceTree = "<group>"; };
 		938A6A86581545989549982D /* libPods-Optique.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Optique.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BF5E4871694D2D83796B64 /* libPods-Local.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Local.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6B69E97783146C19C69AB43 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66DD2097C7C4BA4A913E231 /* Pods/Pods-Flickr.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods/Pods-Flickr.xcconfig"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -583,6 +592,7 @@
 				0F62BA66173673B200E661DD /* Cocoa.framework in Frameworks */,
 				0F368A6C170531B500411503 /* Quartz.framework in Frameworks */,
 				1791BFD324934B749367A850 /* libPods-Optique.a in Frameworks */,
+				0F1750E2182892DD0021853D /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,6 +678,18 @@
 				0F04A65F1737C7C300E53ED1 /* Finder-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0F1750E91828AD250021853D /* Newsletter */ = {
+			isa = PBXGroup;
+			children = (
+				0F1750EA1828AD3C0021853D /* ChimpKit.h */,
+				0F1750EB1828AD3C0021853D /* ChimpKit.m */,
+				0F1750E41828ACD30021853D /* OPNewsletterWindowController.h */,
+				0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */,
+				0F1750E61828ACD30021853D /* OPNewsletterWindowController.xib */,
+			);
+			name = Newsletter;
 			sourceTree = "<group>";
 		};
 		0F368A7B170680DF00411503 /* Custom Views */ = {
@@ -823,6 +845,7 @@
 		0F9C80B216F891C700B2B6D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F1750E0182892C70021853D /* HockeySDK.framework */,
 				0FABADE21826636C003766AA /* Sparkle.framework */,
 				0FC92774180F502900C51076 /* libPods-Local-BlocksKit.a */,
 				0FC92775180F502900C51076 /* libPods-Local-CDEvents.a */,
@@ -836,7 +859,6 @@
 				0F931210178D891300C0A358 /* libPods-Optique-INAppStoreWindow.a */,
 				0F931212178D891300C0A358 /* libPods-Optique-OEGridView.a */,
 				0FDE0ECC1787F0F400B81ADC /* WebKit.framework */,
-				0FC55DC31787BB760095CCF0 /* libPods-objectiveflickr.a */,
 				0F44BAF1173DD3420039B00E /* SenTestingKit.framework */,
 				0F44BAD7173DCA620039B00E /* Accounts.framework */,
 				0FCA4D4F173874C6007DC9EF /* Social.framework */,
@@ -846,10 +868,8 @@
 				0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */,
 				0F368A6B170531B500411503 /* Quartz.framework */,
 				0FE3B2611702F25500FC0D6C /* QuartzCore.framework */,
-				E6B69E97783146C19C69AB43 /* libPods.a */,
 				0F905942180F43BF000D4A53 /* CoreFoundation.framework */,
 				0F04A5C91737C43800E53ED1 /* Other Frameworks */,
-				7AFC7861178F4C1091191A68 /* libPods-Flickr.a */,
 				938A6A86581545989549982D /* libPods-Optique.a */,
 				96BF5E4871694D2D83796B64 /* libPods-Local.a */,
 				28CE02E9006D49619346BA66 /* libPods-Exposure.a */,
@@ -875,6 +895,7 @@
 				0F368A7B170680DF00411503 /* Custom Views */,
 				0FEC674E171034C20086B264 /* Categories */,
 				0F9C80BA16F891C700B2B6D8 /* Supporting Files */,
+				0F1750E91828AD250021853D /* Newsletter */,
 			);
 			path = Optique;
 			sourceTree = "<group>";
@@ -1430,7 +1451,7 @@
 								enabled = 0;
 							};
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -1507,6 +1528,7 @@
 				0F08A8D81770443C00DFEA02 /* 329-layers1@2x.png in Resources */,
 				0F96270F170418EB007C1A86 /* OPPhotoViewController.xib in Resources */,
 				0FEC675717103B5E0086B264 /* effectsbarselectedbg.png in Resources */,
+				0F1750E81828ACD30021853D /* OPNewsletterWindowController.xib in Resources */,
 				0FEC675817103B5E0086B264 /* effectsbarselectedbg@2x.png in Resources */,
 				0F33D0E41769E7800032CCA0 /* 298-circlex.png in Resources */,
 				0F70718B180E354F00ED5799 /* picture.png in Resources */,
@@ -1576,7 +1598,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "codesign --force --verify --verbose --sign \"3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)\" $BUILT_PRODUCTS_DIR/Optique.app/Contents/Frameworks/Sparkle.framework";
+			shellScript = "codesign --force --verify --verbose --sign \"3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)\" $BUILT_PRODUCTS_DIR/Optique.app/Contents/Frameworks/Sparkle.framework\ncodesign --force --verify --verbose --sign \"3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)\" $BUILT_PRODUCTS_DIR/Optique.app/Contents/Frameworks/HockeySDK.framework/Versions/Current/Frameworks/CrashReporter.framework\ncodesign --force --verify --verbose --sign \"3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)\" $BUILT_PRODUCTS_DIR/Optique.app/Contents/Frameworks/HockeySDK.framework";
 		};
 		17624C3C152E4BFA8C204CF2 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1711,6 +1733,7 @@
 				0F9C80C716F891C700B2B6D8 /* OPAppDelegate.m in Sources */,
 				0FF3186E181E6C4900CD3637 /* OPRenameAlbumWindowController.m in Sources */,
 				0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */,
+				0F1750EC1828AD3C0021853D /* ChimpKit.m in Sources */,
 				0FEF33A616FEC8090096D72A /* OPCollectionViewController.m in Sources */,
 				0F85D9C6180DF8F20003C6ED /* OPPlaceHolderViewController.m in Sources */,
 				0F4A6DAA18191834009AD08C /* NSURL+Renamer.m in Sources */,
@@ -1740,6 +1763,7 @@
 				0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */,
 				0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */,
 				0F67499A1820F5F500CEEEA9 /* NSLock+WithBlock.m in Sources */,
+				0F1750E71828ACD30021853D /* OPNewsletterWindowController.m in Sources */,
 				0F8B71D8171BA077004D8082 /* OPPhotoController.m in Sources */,
 				0FC2EC741813F5BA00D02EC5 /* OPImportPhotosWindowController.m in Sources */,
 				0FA29D09180FE8C60066077D /* OPPhotoGridViewCell.m in Sources */,

@@ -25,6 +25,9 @@
                             </menuItem>
                             <menuItem title="Check for updates..." id="568">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="checkForUpdates:" target="FaB-34-8Q7" id="YVr-nx-h4P"/>
+                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="236">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
@@ -213,7 +216,13 @@ CA
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="491">
                         <items>
-                            <menuItem title="Optique Help" keyEquivalent="?" id="492">
+                            <menuItem title="Follow us on Twitter" id="MMI-RZ-6yV">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="followOnTwitter:" target="494" id="Btj-S1-YdL"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Optique Help &amp; Feedback" keyEquivalent="?" id="492">
                                 <connections>
                                     <action selector="showHelp:" target="-2" id="jDs-M2-nBb"/>
                                 </connections>
@@ -243,6 +252,7 @@ CA
                 <outlet property="exitFullscreenMenuItem" destination="yYR-Mq-xIl" id="vKi-RI-82G"/>
                 <outlet property="fullscreenMenuItem" destination="VWB-iV-2F4" id="IvL-m0-FOq"/>
                 <outlet property="updater" destination="FaB-34-8Q7" id="MFW-mt-hNC"/>
+                <outlet property="userDefaultsController" destination="564" id="AcJ-eZ-1vp"/>
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
