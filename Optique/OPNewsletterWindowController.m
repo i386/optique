@@ -7,9 +7,8 @@
 //
 
 #import "OPNewsletterWindowController.h"
-#import "ChimpKit.h"
 
-@interface OPNewsletterWindowController () <ChimpKitDelegate>
+@interface OPNewsletterWindowController ()
 
 @property (strong) IBOutlet NSUserDefaultsController *userPrefs;
 
@@ -34,13 +33,6 @@
     [_subscribeButton setBoldText:YES];
 }
 
-- (IBAction)confirm:(id)sender
-{
-    ChimpKit *chimp = [[ChimpKit alloc] initWithDelegate:self andApiKey:nil];
-    
-    [chimp callApiMethod:@"lists/subscribe" withParams:nil];
-}
-
 - (IBAction)cancel:(id)sender
 {
     [self writeToUserPrefs];
@@ -50,22 +42,6 @@
 - (void)writeToUserPrefs
 {
     [self.userPrefs.defaults setBool:YES forKey:@"shown-newsletter"];
-}
-
--(void)ckRequestSucceeded:(ChimpKit *)ckRequest
-{
-    [self writeToUserPrefs];
-    [NSApp endSheet:self.window];
-}
-
--(void)ckRequestFailed:(ChimpKit *)ckRequest andError:(NSError *)error
-{
-    
-}
-
--(void)ckRequestFailed:(NSError *)error
-{
-    
 }
 
 @end
