@@ -14,6 +14,8 @@
 #import "OPNewAlbumSheetController.h"
 #import "OPNavigationViewController.h"
 #import "OPToolbarViewController.h"
+#import "OPPhotoViewController.h"
+#import "NSWindow+FullScreen.h"
 
 @interface OPMainWindowController () {
     OPNavigationController *_navigationController;
@@ -197,6 +199,42 @@
     {
         NSLog(@"navigationControllerChanged but we ran out of things to do");
     }
+    
+    if ([_navigationController.visibleViewController isKindOfClass:[OPPhotoViewController class]] && self.window.isFullscreen)
+    {
+        [self hideToolbar];
+    }
+    else
+    {
+        [self showToolbar];
+    }
+}
+
+-(void)windowWillEnterFullScreen:(NSNotification *)notification
+{
+    if ([_navigationController.visibleViewController isKindOfClass:[OPPhotoViewController class]])
+    {
+        [self hideToolbar];
+    }
+}
+
+-(void)windowWillExitFullScreen:(NSNotification *)notification
+{
+    [self showToolbar];
+}
+
+-(void)hideToolbar
+{
+    OPWindow *window = (OPWindow*)self.window;
+    window.animator.titleBarHeight = 0;
+    [window.animator.titleBarView setHidden:YES];
+}
+
+-(void)showToolbar
+{
+    OPWindow *window = (OPWindow*)self.window;
+    window.animator.titleBarHeight = 53;
+    [window.animator.titleBarView setHidden:NO];
 }
 
 @end

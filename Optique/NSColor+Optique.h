@@ -20,6 +20,8 @@
 
 +(NSColor*)optiqueDarkBackgroundColor;
 
++(NSColor*)optiqueDarkFullscreenColor;
+
 +(NSColor*)optiqueTextColor;
 
 @end

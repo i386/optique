@@ -115,6 +115,7 @@
 		0FA706CC171911F400864CED /* empty-album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706CA171911F400864CED /* empty-album@2x.png */; };
 		0FABADE31826636C003766AA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FABADE21826636C003766AA /* Sparkle.framework */; };
 		0FABADE4182663B7003766AA /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FABADE21826636C003766AA /* Sparkle.framework */; };
+		0FADFAEA1831BB2F00DAEE4E /* OPToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FADFAE91831BB2F00DAEE4E /* OPToolbarView.m */; };
 		0FAEFFF3176736F700D60171 /* Optique.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEFFF2176736F700D60171 /* Optique.icns */; };
 		0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */; };
 		0FC2ABB6178952F7009C7B02 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
@@ -454,6 +455,8 @@
 		0FA706C9171911F400864CED /* empty-album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album.png"; sourceTree = "<group>"; };
 		0FA706CA171911F400864CED /* empty-album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album@2x.png"; sourceTree = "<group>"; };
 		0FABADE21826636C003766AA /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
+		0FADFAE81831BB2F00DAEE4E /* OPToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPToolbarView.h; sourceTree = "<group>"; };
+		0FADFAE91831BB2F00DAEE4E /* OPToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPToolbarView.m; sourceTree = "<group>"; };
 		0FAEFFF2176736F700D60171 /* Optique.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Optique.icns; sourceTree = "<group>"; };
 		0FB384C917050B3200DEB770 /* OPAlbumScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPAlbumScanner.h; path = ../Optique/OPAlbumScanner.h; sourceTree = "<group>"; };
 		0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPAlbumScanner.m; path = ../Optique/OPAlbumScanner.m; sourceTree = "<group>"; };
@@ -709,6 +712,8 @@
 				0F85D9BF180CD2300003C6ED /* OPToolbarViewController.xib */,
 				0F3E26A41823746E009E74BD /* OPNotificationSynchronizer.h */,
 				0F3E26A51823746E009E74BD /* OPNotificationSynchronizer.m */,
+				0FADFAE81831BB2F00DAEE4E /* OPToolbarView.h */,
+				0FADFAE91831BB2F00DAEE4E /* OPToolbarView.m */,
 			);
 			name = Toolbar;
 			sourceTree = "<group>";
@@ -1763,6 +1768,7 @@
 				0FA29D09180FE8C60066077D /* OPPhotoGridViewCell.m in Sources */,
 				0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */,
 				0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */,
+				0FADFAEA1831BB2F00DAEE4E /* OPToolbarView.m in Sources */,
 				0F85D9B9180A4EA60003C6ED /* OPDatePhotoCountValueTransformer.m in Sources */,
 				0F85D9BC180A558F0003C6ED /* OPAlbumCountTransformer.m in Sources */,
 				0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */,

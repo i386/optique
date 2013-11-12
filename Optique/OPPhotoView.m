@@ -10,12 +10,20 @@
 #import "OPPhotoViewController.h"
 #import "NSView+OptiqueBackground.h"
 #import "NSPasteboard+XPPhoto.h"
+#import "NSWindow+FullScreen.h"
 
 @implementation OPPhotoView
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    [self drawDarkBackground];
+    if (self.window.isFullscreen)
+    {
+        [self drawDarkFullscreenBackground];
+    }
+    else
+    {
+        [self drawDarkBackground];
+    }
 }
 
 - (void)keyDown:(NSEvent *)event

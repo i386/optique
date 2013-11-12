@@ -16,4 +16,6 @@
 
 -(void)drawDarkBackground;
 
+-(void)drawDarkFullscreenBackground;
+
 @end

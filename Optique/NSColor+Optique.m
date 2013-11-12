@@ -35,6 +35,11 @@
     return [NSColor colorWithCalibratedRed:0.30 green:0.30 blue:0.30 alpha:1.00];
 }
 
++(NSColor *)optiqueDarkFullscreenColor
+{
+    return [NSColor blackColor];
+}
+
 +(NSColor *)optiqueTextColor
 {
     return [NSColor blackColor];

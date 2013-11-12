@@ -29,4 +29,10 @@
     NSRectFill(self.bounds);
 }
 
+-(void)drawDarkFullscreenBackground
+{
+    [[NSColor optiqueDarkFullscreenColor] set];
+    NSRectFill(self.bounds);
+}
+
 @end
