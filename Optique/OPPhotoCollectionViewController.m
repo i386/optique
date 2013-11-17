@@ -474,6 +474,9 @@
             [[[NSFileManager alloc] init] copyItemAtURL:photo.url toURL:destinationURL error:nil];
         }];
     }
+    
+    [_photoManager collectionUpdated:_collection reload:YES];
+    
     return names;
 }
 
