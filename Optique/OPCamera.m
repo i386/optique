@@ -9,6 +9,7 @@
 #import "OPCamera.h"
 #import "OPCameraPhoto.h"
 #import "OPCameraService.h"
+#import "ICCameraDevice+OrderedMediaFiles.h"
 
 @interface OPCamera() {
     NSMutableOrderedSet *_allPhotos;
@@ -82,7 +83,7 @@
 -(void)reload
 {
     NSMutableOrderedSet *newPhotos = [NSMutableOrderedSet orderedSet];
-    for (ICCameraFile *cameraFile in self.device.mediaFiles)
+    for (ICCameraFile *cameraFile in self.device.orderedMediaFiles)
     {
         OPCameraPhoto *photo = [[OPCameraPhoto alloc] initWithCameraFile:cameraFile collection:self];
         [newPhotos addObject:photo];
@@ -136,7 +137,7 @@
     NSLog(@"Camera '%@' is now ready to accept commands", device.name);
 #endif
     
-    for (ICCameraFile *file in _device.mediaFiles)
+    for (ICCameraFile *file in self.device.orderedMediaFiles)
     {
         [file thumbnailIfAvailable];
         [file largeThumbnailIfAvailable];
