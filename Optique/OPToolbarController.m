@@ -6,27 +6,18 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OPToolbarViewController.h"
+#import "OPToolbarController.h"
 #import "OPNavigationViewController.h"
 
 NSString *const OPApplicationModeDidChange = @"OPApplicationModeDidChange";
 NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
 NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
 
-@interface OPToolbarViewController ()
+@interface OPToolbarController ()
 
 @end
 
-@implementation OPToolbarViewController
-
-- (id)init
-{
-    self = self = [super initWithNibName:@"OPToolbarViewController" bundle:nil];
-    if (self) {
-        
-    }
-    return self;
-}
+@implementation OPToolbarController
 
 -(void)awakeFromNib
 {
@@ -50,8 +41,6 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     _shareWithButton.menu = [[NSMenu alloc] init];
     _shareWithButton.menu.showsStateColumn = NO;
     _shareWithButton.menu.delegate = self;
-    
-    [self.view setPostsBoundsChangedNotifications:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:@"OPCameraServiceDidAddCamera" object:nil];
     

@@ -1,7 +1,6 @@
 platform :osx, 10.9
 
 target :Optique, :exclusive => false do
-  pod 'INAppStoreWindow', :head 
   pod 'NSHash', '~> 1.0.1'
   pod 'OEGridView', :path => '~/code/OEGridView'
   pod 'CNBaseView', '~> 1.0.11'

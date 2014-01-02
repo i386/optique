@@ -3,7 +3,6 @@ PODS:
     - libffi
   - CDEvents (1.2.0)
   - CNBaseView (1.0.11)
-  - INAppStoreWindow (HEAD based on 1.2)
   - KBButton (0.0.1)
   - KBTextField (0.0.1)
   - MASPreferences (1.0)
@@ -14,7 +13,6 @@ DEPENDENCIES:
   - BlocksKit (~> 1.8.2)
   - CDEvents (~> 1.2.0)
   - CNBaseView (~> 1.0.11)
-  - INAppStoreWindow (HEAD)
   - KBButton (from `git@github.com:i386/KBButton.git`)
   - KBTextField (from `git@github.com:i386/KBTextField.git`)
   - MASPreferences (~> 1.0)
@@ -33,7 +31,6 @@ SPEC CHECKSUMS:
   BlocksKit: 27257f9cbbec0ea98c80ba83cc2ea7111ae62eb2
   CDEvents: 079cd7b12501bafe6c7ec204f87cecdadce121cc
   CNBaseView: 37956c9d903e37d50ef164b07a13688d95880fa5
-  INAppStoreWindow: d00327caee47d951043169df9aaab952389defcb
   KBButton: 627facd1b7e7f484755107e62d2d85b20f429e6e
   KBTextField: b2dedfc5ada8ffc26f87aa00454da27a687f3ded
   MASPreferences: b8c112b4b6e6cbd32b8f49d249eb152d1eeb38f8

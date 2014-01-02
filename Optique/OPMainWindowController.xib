@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
@@ -7,12 +7,13 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OPMainWindowController">
             <connections>
+                <outlet property="toolbarViewController" destination="7Y5-cf-qca" id="dbb-OV-xew"/>
                 <outlet property="window" destination="1" id="3"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
-        <window title="Optique" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" wantsToBeColor="NO" animationBehavior="default" id="1" customClass="OPWindow">
+        <window title="Optique" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" wantsToBeColor="NO" animationBehavior="default" id="1">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <rect key="contentRect" x="196" y="240" width="950" height="700"/>
@@ -22,9 +23,93 @@
                 <rect key="frame" x="0.0" y="0.0" width="950" height="700"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="91DB36F2-7076-4066-A9B9-749ACF26ACBB" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="7bg-oX-rUL">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="JI3-ZT-0bl"/>
+                    <toolbarItem implicitItemIdentifier="B8DC136D-8E91-4683-9199-4499147FDB2F" label="Search" paletteLabel="Search" id="tRa-hG-kqx">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="96" height="22"/>
+                        <size key="maxSize" width="212" height="22"/>
+                        <searchField key="view" verticalHuggingPriority="750" id="FOA-4z-wyI">
+                            <rect key="frame" x="0.0" y="14" width="212" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="7xq-S9-kea">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </searchFieldCell>
+                        </searchField>
+                        <connections>
+                            <action selector="searchFilter:" target="7Y5-cf-qca" id="99f-rv-EBX"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="357E6DED-4812-4270-A967-9D21EA9792A4" label="Navigate" paletteLabel="Navigate" id="LLx-dH-1Dl">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="72" height="25"/>
+                        <size key="maxSize" width="72" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="ZsN-fP-PyH">
+                            <rect key="frame" x="0.0" y="14" width="72" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" title="Albums" bezelStyle="texturedRounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Qe-hx-MQq">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="switchViewButtonPressed:" target="7Y5-cf-qca" id="Zyc-pz-8OP"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="329C8100-33A3-4415-8921-C584A01B5756" label="Share" paletteLabel="Share" image="NSShareTemplate" id="t76-i3-tYv">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="36" height="25"/>
+                        <size key="maxSize" width="36" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="DVn-fh-aKO" customClass="OPDropDownButton">
+                            <rect key="frame" x="1" y="14" width="36" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="v8D-8a-O8B">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="sharingButtonActivated:" target="7Y5-cf-qca" id="RbR-eD-00l"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="0C14F116-6291-458B-8A98-E73E01666A0B" label="Progress" paletteLabel="Progress" tag="-1" id="A1P-7Z-8Kc">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="16" height="16"/>
+                        <size key="maxSize" width="16" height="16"/>
+                        <progressIndicator key="view" hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="egL-Ut-R8w">
+                            <rect key="frame" x="18" y="14" width="16" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </progressIndicator>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="LLx-dH-1Dl"/>
+                    <toolbarItem reference="A1P-7Z-8Kc"/>
+                    <toolbarItem reference="JI3-ZT-0bl"/>
+                    <toolbarItem reference="t76-i3-tYv"/>
+                    <toolbarItem reference="tRa-hG-kqx"/>
+                </defaultToolbarItems>
+                <connections>
+                    <outlet property="delegate" destination="7Y5-cf-qca" id="Oyc-Ix-3tY"/>
+                </connections>
+            </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="4"/>
             </connections>
         </window>
+        <customObject id="7Y5-cf-qca" customClass="OPToolbarController">
+            <connections>
+                <outlet property="loadProgressIndicator" destination="egL-Ut-R8w" id="NJ3-Ot-29V"/>
+                <outlet property="searchFilter" destination="FOA-4z-wyI" id="bNb-tv-BEZ"/>
+                <outlet property="shareWithButton" destination="DVn-fh-aKO" id="lJk-VD-cVg"/>
+                <outlet property="switchViewButton" destination="ZsN-fP-PyH" id="5nt-MD-90Z"/>
+            </connections>
+        </customObject>
     </objects>
+    <resources>
+        <image name="NSShareTemplate" width="18" height="16"/>
+    </resources>
 </document>

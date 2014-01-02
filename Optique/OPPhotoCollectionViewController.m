@@ -12,7 +12,7 @@
 #import "OPImagePreviewService.h"
 #import "OPPlaceHolderViewController.h"
 #import "NSURL+Renamer.h"
-#import "OPToolbarViewController.h"
+#import "OPToolbarController.h"
 
 @interface PhotoPasteboardWriting : NSObject<NSPasteboardWriting>
 

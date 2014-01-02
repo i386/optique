@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <INAppStoreWindow/INAppStoreWindow.h>
 #import <MASPreferences/MASPreferencesWindowController.h>
 #import <Sparkle/Sparkle.h>
 #import <HockeySDK/HockeySDK.h>

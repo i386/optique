@@ -22,7 +22,7 @@ typedef enum {
 } OPApplicationMode;
 
 
-@interface OPToolbarViewController : NSViewController<NSMenuDelegate>
+@interface OPToolbarController : NSObject<NSMenuDelegate, NSToolbarDelegate>
 
 @property (assign) OPApplicationMode filterMode;
 @property (strong) IBOutlet OPDropDownButton *shareWithButton;

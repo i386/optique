@@ -7,13 +7,12 @@
 //
 
 #import "OPMainWindowController.h"
-#import "OPWindow.h"
 #import "OPNavigationController.h"
 #import "OPPhotoCollectionViewController.h"
 #import "OPCameraCollectionViewController.h"
 #import "OPNewAlbumSheetController.h"
 #import "OPNavigationViewController.h"
-#import "OPToolbarViewController.h"
+#import "OPToolbarController.h"
 #import "OPPhotoViewController.h"
 #import "NSWindow+FullScreen.h"
 
@@ -63,11 +62,6 @@
 {
     [super windowDidLoad];
     
-    _toolbarViewController = [[OPToolbarViewController alloc] init];
-    
-    OPWindow *window = (OPWindow*)self.window;
-    [window.titleBarView addSubview:(NSView*)_toolbarViewController.view];
-    
     _albumViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager
                                                                               title:@"Albums"
                                                                        emptyMessage:@"Drop folders or photos here to add or create new albums"
@@ -103,8 +97,7 @@
     //Set weak ref to nav controller
     _toolbarViewController.navigationController = _navigationController;
     
-    OPWindow *window = (OPWindow*)self.window;
-    NSView *contentView = (NSView*)window.contentView;
+    NSView *contentView = (NSView*)self.window.contentView;
     [_navigationController.view setFrame:contentView.frame];
     
     [[contentView subviews] each:^(id sender) {
@@ -199,42 +192,14 @@
     {
         NSLog(@"navigationControllerChanged but we ran out of things to do");
     }
-    
-    if ([_navigationController.visibleViewController isKindOfClass:[OPPhotoViewController class]] && self.window.isFullscreen)
-    {
-        [self hideToolbar];
-    }
-    else
-    {
-        [self showToolbar];
-    }
 }
 
--(void)windowWillEnterFullScreen:(NSNotification *)notification
+-(NSApplicationPresentationOptions)window:(NSWindow *)window willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions
 {
-    if ([_navigationController.visibleViewController isKindOfClass:[OPPhotoViewController class]])
-    {
-        [self hideToolbar];
-    }
-}
-
--(void)windowWillExitFullScreen:(NSNotification *)notification
-{
-    [self showToolbar];
-}
-
--(void)hideToolbar
-{
-    OPWindow *window = (OPWindow*)self.window;
-    window.animator.titleBarHeight = 0;
-    [window.animator.titleBarView setHidden:YES];
-}
-
--(void)showToolbar
-{
-    OPWindow *window = (OPWindow*)self.window;
-    window.animator.titleBarHeight = 53;
-    [window.animator.titleBarView setHidden:NO];
+    return (NSApplicationPresentationFullScreen |
+            NSApplicationPresentationHideDock |
+            NSApplicationPresentationAutoHideMenuBar |
+            NSApplicationPresentationAutoHideToolbar);
 }
 
 @end

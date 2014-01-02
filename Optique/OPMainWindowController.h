@@ -8,12 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import "OPCollectionViewController.h"
-#import "OPToolbarViewController.h"
+#import "OPToolbarController.h"
 
 @interface OPMainWindowController : NSWindowController<NSWindowDelegate>
 
 @property (weak, readonly) XPPhotoManager *photoManager;
-@property (strong, readonly) OPToolbarViewController *toolbarViewController;
+@property (weak, readwrite) IBOutlet OPToolbarController *toolbarViewController;
 
 -initWithPhotoManager:(XPPhotoManager*)photoManager;
 
