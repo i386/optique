@@ -144,8 +144,23 @@
 
 -(void)popoverWillShow:(NSNotification *)notification
 {
+    CGFloat itemHeight = _gridView.rowSpacing + _gridView.itemSize.height;
+    CGFloat estimatedHeight = itemHeight * _items.count;
     NSRect windowFrame = [[NSApp mainWindow] frame];
-    NSRect frame = NSMakeRect(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, windowFrame.size.height / 1.1);
+
+    CGFloat popoverHeight = windowFrame.size.height / 1.1;
+    
+    if (estimatedHeight < popoverHeight)
+    {
+        popoverHeight = estimatedHeight;
+    }
+    else
+    {
+        CGFloat visibleItems = floorf(popoverHeight / itemHeight);
+        popoverHeight = visibleItems * itemHeight;
+    }
+    
+    NSRect frame = NSMakeRect(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, popoverHeight);
     
     [self.view setFrame:frame];
     [_popover setContentSize:self.view.frame.size];
