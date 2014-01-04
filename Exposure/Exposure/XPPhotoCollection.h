@@ -39,19 +39,19 @@ typedef NS_ENUM(NSUInteger, XPPhotoCollectionType) {
 
 -(id<XPPhoto>)coverPhoto;
 
--(NSImage*)thumbnail;
-
 /**
  The type of collection that this is (local, camera, other)
  */
 -(XPPhotoCollectionType)collectionType;
 
 /**
- Collection exits on local file system
+ Collection exists on local file system
  */
 -(BOOL)hasLocalCopy;
 
 @optional
+
+-(NSImage*)thumbnail;
 
 -(NSURL*)path;
 

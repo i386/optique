@@ -49,8 +49,6 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareableSelectionHasChanged:) name:OPSharableSelectionChanged object:nil];
     
-    _switchViewButton.popover = _historyPeekPopover;
-    
     [self albumMode];
 }
 
@@ -102,28 +100,18 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
 
 -(void)navigationControllerViewDidChange:(NSNotification*)notification
 {
+    NSArray *items = nil;
+    
     OPNavigationViewController *viewController = _navigationController.peekAtPreviousViewController;
     if (viewController && [viewController conformsToProtocol:@protocol(XPPhotoCollectionViewController)])
     {
         id<XPPhotoCollectionViewController> photoCollectionViewController = (id<XPPhotoCollectionViewController>)viewController;
-        
-        NSArray *photos = [[[photoCollectionViewController visibleCollection] allPhotos] array];
-        
-        _peekViewController = [[OPHistoryPeekViewController alloc] initWithItems:photos navigationController:_navigationController];
-        _historyPeekPopoverController.view = _peekViewController.view;
-        
-        _switchViewButton.peek = YES;
+        items = [[[photoCollectionViewController visibleCollection] allPhotos] array];
     }
     else if (viewController && [viewController conformsToProtocol:@protocol(XPCollectionViewController)])
     {
         id<XPCollectionViewController> collectionViewController = (id<XPCollectionViewController>)viewController;
-        
-        NSArray *collections = [collectionViewController collections];
-        
-        _peekViewController = [[OPHistoryPeekViewController alloc] initWithItems:collections navigationController:_navigationController];
-        _historyPeekPopoverController.view = _peekViewController.view;
-        
-        _switchViewButton.peek = YES;
+        items = [collectionViewController collections];
     }
     else if ([_navigationController.visibleViewController conformsToProtocol:@protocol(XPPhotoController)])
     {
@@ -132,6 +120,13 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     else
     {
         _switchViewButton.peek = NO;
+    }
+    
+    if (items && ![_peekViewController.popover isShown])
+    {
+        _peekViewController = [[OPHistoryPeekViewController alloc] initWithItems:items navigationController:_navigationController];
+        _switchViewButton.historyPeekViewController = _peekViewController;
+        _switchViewButton.peek = YES;
     }
 }
 
@@ -208,38 +203,4 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     
     [self albumMode];
 }
-
--(void)popoverDidShow:(NSNotification *)notification
-{
-    NSUInteger index = NSNotFound;
-    
-    OPNavigationViewController *viewController = _navigationController.peekAtPreviousViewController;
-    if (viewController && [viewController conformsToProtocol:@protocol(XPPhotoCollectionViewController)])
-    {
-        id<XPPhotoCollectionViewController> photoCollectionViewController = (id<XPPhotoCollectionViewController>)viewController;
-        
-        id<XPPhotoController> photoController = (id<XPPhotoController>)_navigationController.visibleViewController;
-        
-        index = [[[photoCollectionViewController visibleCollection] allPhotos] indexOfObject:[photoController visiblePhoto]];
-    }
-    else if (viewController && [viewController conformsToProtocol:@protocol(XPCollectionViewController)])
-    {
-        id<XPCollectionViewController> collectionViewController = (id<XPCollectionViewController>)viewController;
-        
-        id<XPPhotoCollectionViewController> photoCollectionViewController = (id<XPPhotoCollectionViewController>)_navigationController.visibleViewController;
-        
-        index = [[collectionViewController collections] indexOfObject:[photoCollectionViewController visibleCollection]];
-    }
-    
-    if (index != NSNotFound)
-    {
-        NSRect cellRect = [_peekViewController.gridView rectForCellAtIndex:index];
-        
-        NSPoint pointToScrollTo = NSMakePoint(cellRect.origin.x, cellRect.origin.y - 10);
-        [_peekViewController.gridView scrollPoint:pointToScrollTo];
-        [_peekViewController.gridView deselectAll:self];
-        [_peekViewController.gridView selectCellAtIndex:index];
-    }
-}
-
 @end

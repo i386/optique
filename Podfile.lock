@@ -1,11 +1,11 @@
 PODS:
   - BlocksKit (1.8.3):
     - libffi
-  - CDEvents (1.2.0)
+  - CDEvents (1.2.1)
   - CNBaseView (1.0.11)
   - KBButton (0.0.1)
   - KBTextField (0.0.1)
-  - MASPreferences (1.0)
+  - MASPreferences (1.1)
   - NSHash (1.0.1)
   - OEGridView (0.0.1)
 
@@ -29,12 +29,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BlocksKit: 27257f9cbbec0ea98c80ba83cc2ea7111ae62eb2
-  CDEvents: 079cd7b12501bafe6c7ec204f87cecdadce121cc
+  CDEvents: c687ea1003a5810a072607ede30db470dfce2338
   CNBaseView: 37956c9d903e37d50ef164b07a13688d95880fa5
   KBButton: 627facd1b7e7f484755107e62d2d85b20f429e6e
   KBTextField: b2dedfc5ada8ffc26f87aa00454da27a687f3ded
-  MASPreferences: b8c112b4b6e6cbd32b8f49d249eb152d1eeb38f8
+  MASPreferences: 103fda1283c701dfed5503edbe24b1ab504ed6d9
   NSHash: 7e728a3e7fdff6828f3fce387049b1e0ca7fe8a0
-  OEGridView: c675deaa9fceaabec54803f2bd6bf88b8f96f70d
+  OEGridView: 10adfc6f57d3e486a066c89e2742ac16305b27be
 
 COCOAPODS: 0.27.1

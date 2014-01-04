@@ -23,7 +23,7 @@ typedef enum {
 } OPApplicationMode;
 
 
-@interface OPToolbarController : NSObject<NSMenuDelegate, NSToolbarDelegate, NSPopoverDelegate>
+@interface OPToolbarController : NSObject<NSMenuDelegate, NSToolbarDelegate>
 
 @property (assign) OPApplicationMode filterMode;
 @property (strong) IBOutlet OPDropDownButton *shareWithButton;
@@ -32,8 +32,6 @@ typedef enum {
 @property (weak, nonatomic) OPNavigationController *navigationController;
 @property (weak) IBOutlet NSProgressIndicator *loadProgressIndicator;
 @property (strong) OPNotificationSynchronizer *syncCollectionEvents;
-@property (weak) IBOutlet NSPopover *historyPeekPopover;
-@property (unsafe_unretained) IBOutlet NSViewController *historyPeekPopoverController;
 
 - (IBAction)switchViewButtonPressed:(id)sender;
 

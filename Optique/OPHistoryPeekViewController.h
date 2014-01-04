@@ -12,13 +12,15 @@
 #import "OPPhotoGridViewCell.h"
 #import "OPNavigationController.h"
 
-@interface OPHistoryPeekViewController : NSViewController<OEGridViewDelegate, OEGridViewDataSource>
+@interface OPHistoryPeekViewController : NSViewController<OEGridViewDelegate, OEGridViewDataSource, NSPopoverDelegate>
 
-@property (weak) OEGridView *gridView;
+@property (strong) OEGridView *gridView;
 @property (strong) IBOutlet OPGridView *collectionGridView;
 @property (strong) IBOutlet OPPhotoGridView *photoGridView;
 @property (strong) NSArray *items;
 @property (weak) OPNavigationController *navigationController;
+@property (strong) IBOutlet NSPopover *popover;
+@property (strong) IBOutlet NSViewController *popoverViewController;
 
 -initWithItems:(NSArray*)items navigationController:(OPNavigationController*)navigationController;
 

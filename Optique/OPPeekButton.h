@@ -7,10 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "OPHistoryPeekViewController.h"
 
 @interface OPPeekButton : NSButton
 
-@property (weak) NSPopover *popover;
+@property (assign) OPHistoryPeekViewController *historyPeekViewController;
 @property (assign) BOOL peek;
 
 @end

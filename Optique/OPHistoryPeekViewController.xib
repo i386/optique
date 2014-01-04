@@ -9,7 +9,9 @@
             <connections>
                 <outlet property="collectionGridView" destination="7pR-eF-Z5l" id="C8Q-zc-heR"/>
                 <outlet property="photoGridView" destination="bTi-Oj-7ia" id="Qbh-yv-dwm"/>
-                <outlet property="view" destination="1" id="7R1-t5-SqC"/>
+                <outlet property="popover" destination="t9R-va-I7R" id="A9H-wo-DPY"/>
+                <outlet property="popoverViewController" destination="GK1-L7-ekl" id="bj0-27-Jfi"/>
+                <outlet property="view" destination="1" id="Wyh-gL-l6Q"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -72,5 +74,16 @@
                 </scrollView>
             </subviews>
         </customView>
+        <viewController id="GK1-L7-ekl" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="1" id="V8U-VP-xfJ"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="t9R-va-I7R">
+            <connections>
+                <outlet property="contentViewController" destination="GK1-L7-ekl" id="jPW-qT-R7a"/>
+                <outlet property="delegate" destination="-2" id="vwX-wE-eKY"/>
+            </connections>
+        </popover>
     </objects>
 </document>

@@ -43,7 +43,7 @@
         controller = [[OPPhotoViewController alloc] initWithPhotoCollection:[item collection] photo:_items[index]];
     }
     
-    [_navigationController popToRootViewControllerWithNoAnimation];
+    [_navigationController popToPreviousViewController];
     [_navigationController pushViewController:controller];
     
     NSRect cellRect = [_gridView rectForCellAtIndex:index];
@@ -69,7 +69,7 @@
     {
         cell = [[OPPhotoGridViewCell alloc] init];
     }
-    
+
     return cell;
 }
 
@@ -140,6 +140,48 @@
 -(NSUInteger)numberOfItemsInGridView:(OEGridView *)gridView
 {
     return _items.count;
+}
+
+-(void)popoverWillShow:(NSNotification *)notification
+{
+    NSRect windowFrame = [[NSApp mainWindow] frame];
+    NSRect frame = NSMakeRect(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, windowFrame.size.height / 1.1);
+    
+    [self.view setFrame:frame];
+    [_popover setContentSize:self.view.frame.size];
+}
+
+-(void)popoverDidShow:(NSNotification *)notification
+{
+    NSUInteger index = NSNotFound;
+    
+    OPNavigationViewController *viewController = _navigationController.peekAtPreviousViewController;
+    if (viewController && [viewController conformsToProtocol:@protocol(XPPhotoCollectionViewController)])
+    {
+        id<XPPhotoCollectionViewController> photoCollectionViewController = (id<XPPhotoCollectionViewController>)viewController;
+        
+        id<XPPhotoController> photoController = (id<XPPhotoController>)_navigationController.visibleViewController;
+        
+        index = [[[photoCollectionViewController visibleCollection] allPhotos] indexOfObject:[photoController visiblePhoto]];
+    }
+    else if (viewController && [viewController conformsToProtocol:@protocol(XPCollectionViewController)])
+    {
+        id<XPCollectionViewController> collectionViewController = (id<XPCollectionViewController>)viewController;
+        
+        id<XPPhotoCollectionViewController> photoCollectionViewController = (id<XPPhotoCollectionViewController>)_navigationController.visibleViewController;
+        
+        index = [[collectionViewController collections] indexOfObject:[photoCollectionViewController visibleCollection]];
+    }
+    
+    if (index != NSNotFound)
+    {
+        NSRect cellRect = [_gridView rectForCellAtIndex:index];
+        
+        NSPoint pointToScrollTo = NSMakePoint(cellRect.origin.x, cellRect.origin.y - 10);
+        [_gridView scrollPoint:pointToScrollTo];
+        [_gridView deselectAll:self];
+        [_gridView selectCellAtIndex:index];
+    }
 }
 
 -(void)awakeFromNib

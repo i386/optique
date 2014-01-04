@@ -18,9 +18,9 @@
 
 -(void)mouseEntered:(NSEvent *)theEvent
 {
-    if (_peek)
+    if (_peek && _historyPeekViewController.view)
     {
-        [_popover showRelativeToRect:self.frame ofView:self preferredEdge:CGRectMaxYEdge];
+        [_historyPeekViewController.popover showRelativeToRect:self.frame ofView:self preferredEdge:CGRectMaxYEdge];
     }
 }
 
