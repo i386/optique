@@ -15,4 +15,6 @@
 
 -(NSIndexSet*)selectedItems;
 
+-(NSArray*)collections;
+
 @end

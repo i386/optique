@@ -474,4 +474,9 @@
     return flag ? NSDragOperationCopy : NSDragOperationNone;
 }
 
+-(NSArray *)collections
+{
+    return _photoManager.allCollections;
+}
+
 @end

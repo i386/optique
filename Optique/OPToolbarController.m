@@ -8,12 +8,15 @@
 
 #import "OPToolbarController.h"
 #import "OPNavigationViewController.h"
+#import "OPHistoryPeekViewController.h"
 
 NSString *const OPApplicationModeDidChange = @"OPApplicationModeDidChange";
 NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
 NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
 
 @interface OPToolbarController ()
+
+@property (strong) OPHistoryPeekViewController *peekViewController;
 
 @end
 
@@ -44,7 +47,9 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:@"OPCameraServiceDidAddCamera" object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sharableSelectionChanged:) name:OPSharableSelectionChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareableSelectionHasChanged:) name:OPSharableSelectionChanged object:nil];
+    
+    _switchViewButton.popover = _historyPeekPopover;
     
     [self albumMode];
 }
@@ -55,7 +60,7 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationControllerViewDidChange object:_navigationController];
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sharableSelectionChanged:) name:OPNavigationControllerViewDidChange object:navigationController];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigationControllerViewDidChange:) name:OPNavigationControllerViewDidChange object:navigationController];
     
     _navigationController = navigationController;
 }
@@ -74,7 +79,7 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     [[NSNotificationCenter defaultCenter] postNotificationName:OPApplicationModeDidChange object:nil userInfo:@{@"mode": [NSNumber numberWithBool:_filterMode], @"title":notification.userInfo[@"title"]}];
 }
 
--(void)sharableSelectionChanged:(NSNotification*)notification
+-(void)shareableSelectionHasChanged:(NSNotification*)notification
 {
     if ([_navigationController.visibleViewController conformsToProtocol:@protocol(XPSharingService)])
     {
@@ -92,6 +97,41 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     else
     {
         [_shareWithButton setEnabled:NO];
+    }
+}
+
+-(void)navigationControllerViewDidChange:(NSNotification*)notification
+{
+    OPNavigationViewController *viewController = _navigationController.peekAtPreviousViewController;
+    if (viewController && [viewController conformsToProtocol:@protocol(XPPhotoCollectionViewController)])
+    {
+        id<XPPhotoCollectionViewController> photoCollectionViewController = (id<XPPhotoCollectionViewController>)viewController;
+        
+        NSArray *photos = [[[photoCollectionViewController visibleCollection] allPhotos] array];
+        
+        _peekViewController = [[OPHistoryPeekViewController alloc] initWithItems:photos navigationController:_navigationController];
+        _historyPeekPopoverController.view = _peekViewController.view;
+        
+        _switchViewButton.peek = YES;
+    }
+    else if (viewController && [viewController conformsToProtocol:@protocol(XPCollectionViewController)])
+    {
+        id<XPCollectionViewController> collectionViewController = (id<XPCollectionViewController>)viewController;
+        
+        NSArray *collections = [collectionViewController collections];
+        
+        _peekViewController = [[OPHistoryPeekViewController alloc] initWithItems:collections navigationController:_navigationController];
+        _historyPeekPopoverController.view = _peekViewController.view;
+        
+        _switchViewButton.peek = YES;
+    }
+    else if ([_navigationController.visibleViewController conformsToProtocol:@protocol(XPPhotoController)])
+    {
+        _switchViewButton.peek = YES;
+    }
+    else
+    {
+        _switchViewButton.peek = NO;
     }
 }
 
@@ -167,6 +207,39 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     [[NSNotificationCenter defaultCenter] postNotificationName:OPAlbumSearchFilterDidChange object:nil userInfo:@{@"value":[sender stringValue]}];
     
     [self albumMode];
+}
+
+-(void)popoverDidShow:(NSNotification *)notification
+{
+    NSUInteger index = NSNotFound;
+    
+    OPNavigationViewController *viewController = _navigationController.peekAtPreviousViewController;
+    if (viewController && [viewController conformsToProtocol:@protocol(XPPhotoCollectionViewController)])
+    {
+        id<XPPhotoCollectionViewController> photoCollectionViewController = (id<XPPhotoCollectionViewController>)viewController;
+        
+        id<XPPhotoController> photoController = (id<XPPhotoController>)_navigationController.visibleViewController;
+        
+        index = [[[photoCollectionViewController visibleCollection] allPhotos] indexOfObject:[photoController visiblePhoto]];
+    }
+    else if (viewController && [viewController conformsToProtocol:@protocol(XPCollectionViewController)])
+    {
+        id<XPCollectionViewController> collectionViewController = (id<XPCollectionViewController>)viewController;
+        
+        id<XPPhotoCollectionViewController> photoCollectionViewController = (id<XPPhotoCollectionViewController>)_navigationController.visibleViewController;
+        
+        index = [[collectionViewController collections] indexOfObject:[photoCollectionViewController visibleCollection]];
+    }
+    
+    if (index != NSNotFound)
+    {
+        NSRect cellRect = [_peekViewController.gridView rectForCellAtIndex:index];
+        
+        NSPoint pointToScrollTo = NSMakePoint(cellRect.origin.x, cellRect.origin.y - 10);
+        [_peekViewController.gridView scrollPoint:pointToScrollTo];
+        [_peekViewController.gridView deselectAll:self];
+        [_peekViewController.gridView selectCellAtIndex:index];
+    }
 }
 
 @end

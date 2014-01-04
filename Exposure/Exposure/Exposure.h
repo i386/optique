@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "Common.h"
+#import "XPItem.h"
 #import "XPPhoto.h"
 #import "XPPhotoCollection.h"
 #import "XPPhotoManager.h"

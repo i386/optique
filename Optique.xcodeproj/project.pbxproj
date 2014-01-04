@@ -34,6 +34,7 @@
 		0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A6571737C7C300E53ED1 /* Finder.bundle */; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
 		0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3001E1172250E800ACAF9E /* OPPhotoImageView.m */; };
+		0F32EFCB1877965C00483761 /* OPPeekButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F32EFCA1877965C00483761 /* OPPeekButton.m */; };
 		0F33D0E01769E4D40032CCA0 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0DE1769E4D40032CCA0 /* 86-camera.png */; };
 		0F33D0E11769E4D40032CCA0 /* 86-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0DF1769E4D40032CCA0 /* 86-camera@2x.png */; };
 		0F33D0E41769E7800032CCA0 /* 298-circlex.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0E21769E7800032CCA0 /* 298-circlex.png */; };
@@ -112,6 +113,9 @@
 		0FABADE4182663B7003766AA /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FABADE21826636C003766AA /* Sparkle.framework */; };
 		0FAEFFF3176736F700D60171 /* Optique.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEFFF2176736F700D60171 /* Optique.icns */; };
 		0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */; };
+		0FC0AD8818779E8E009C619F /* OPHistoryPeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0AD8618779E8E009C619F /* OPHistoryPeekViewController.m */; };
+		0FC0AD8918779E8E009C619F /* OPHistoryPeekViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0AD8718779E8E009C619F /* OPHistoryPeekViewController.xib */; };
+		0FC0ADEB1877CE73009C619F /* XPItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC0ADEA1877CE73009C619F /* XPItem.h */; };
 		0FC2ABB6178952F7009C7B02 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0FC2ABBC178952F7009C7B02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2ABBA178952F7009C7B02 /* InfoPlist.strings */; };
 		0FC2ABC617895355009C7B02 /* OPCameraPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2ABC517895355009C7B02 /* OPCameraPlugin.m */; };
@@ -318,6 +322,8 @@
 		0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+FullScreen.m"; sourceTree = "<group>"; };
 		0F3001E0172250E800ACAF9E /* OPPhotoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoImageView.h; sourceTree = "<group>"; };
 		0F3001E1172250E800ACAF9E /* OPPhotoImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPhotoImageView.m; sourceTree = "<group>"; };
+		0F32EFC91877965C00483761 /* OPPeekButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPeekButton.h; sourceTree = "<group>"; };
+		0F32EFCA1877965C00483761 /* OPPeekButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPeekButton.m; sourceTree = "<group>"; };
 		0F33D0DE1769E4D40032CCA0 /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
 		0F33D0DF1769E4D40032CCA0 /* 86-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera@2x.png"; sourceTree = "<group>"; };
 		0F33D0E21769E7800032CCA0 /* 298-circlex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "298-circlex.png"; sourceTree = "<group>"; };
@@ -453,6 +459,10 @@
 		0FB384CA17050B3200DEB770 /* OPAlbumScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPAlbumScanner.m; path = ../Optique/OPAlbumScanner.m; sourceTree = "<group>"; };
 		0FB94DD01735E31400065536 /* NSNotificationCenter+Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Async.h"; sourceTree = "<group>"; };
 		0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Async.m"; sourceTree = "<group>"; };
+		0FC0AD8518779E8E009C619F /* OPHistoryPeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPHistoryPeekViewController.h; sourceTree = "<group>"; };
+		0FC0AD8618779E8E009C619F /* OPHistoryPeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPHistoryPeekViewController.m; sourceTree = "<group>"; };
+		0FC0AD8718779E8E009C619F /* OPHistoryPeekViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPHistoryPeekViewController.xib; sourceTree = "<group>"; };
+		0FC0ADEA1877CE73009C619F /* XPItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPItem.h; sourceTree = "<group>"; };
 		0FC2ABB5178952F7009C7B02 /* Camera.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Camera.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC2ABB9178952F7009C7B02 /* Camera-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Camera-Info.plist"; sourceTree = "<group>"; };
 		0FC2ABBB178952F7009C7B02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -704,6 +714,7 @@
 				0F85D9BE180CD2300003C6ED /* OPToolbarController.m */,
 				0F3E26A41823746E009E74BD /* OPNotificationSynchronizer.h */,
 				0F3E26A51823746E009E74BD /* OPNotificationSynchronizer.m */,
+				0FC0ADEC1877FE38009C619F /* History peek */,
 			);
 			name = Toolbar;
 			sourceTree = "<group>";
@@ -942,6 +953,18 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		0FC0ADEC1877FE38009C619F /* History peek */ = {
+			isa = PBXGroup;
+			children = (
+				0F32EFC91877965C00483761 /* OPPeekButton.h */,
+				0F32EFCA1877965C00483761 /* OPPeekButton.m */,
+				0FC0AD8518779E8E009C619F /* OPHistoryPeekViewController.h */,
+				0FC0AD8618779E8E009C619F /* OPHistoryPeekViewController.m */,
+				0FC0AD8718779E8E009C619F /* OPHistoryPeekViewController.xib */,
+			);
+			name = "History peek";
+			sourceTree = "<group>";
+		};
 		0FC2ABB017894D6C009C7B02 /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -1040,6 +1063,7 @@
 		0FCA4D321737D89B007DC9EF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0FC0ADEA1877CE73009C619F /* XPItem.h */,
 				0F04A63D1737C74800E53ED1 /* XPPhoto.h */,
 				0F04A63E1737C74800E53ED1 /* XPPhotoCollection.h */,
 				0F67499E18236B8700CEEEA9 /* XPPhotoCollection.m */,
@@ -1266,6 +1290,7 @@
 				0FE719B1174E176B0092F801 /* XPSharingService.h in Headers */,
 				0FCA4D2E1737D7F0007DC9EF /* XPMenuItem.h in Headers */,
 				0F04A6441737C74800E53ED1 /* XPCollectionViewController.h in Headers */,
+				0FC0ADEB1877CE73009C619F /* XPItem.h in Headers */,
 				0F04A6451737C74800E53ED1 /* XPPhoto.h in Headers */,
 				0F04A6461737C74800E53ED1 /* XPPhotoCollection.h in Headers */,
 				0F04A6471737C74800E53ED1 /* XPPhotoCollectionViewController.h in Headers */,
@@ -1539,6 +1564,7 @@
 				0F34814B176D669F00439AEA /* loading-preview@2x.pdf in Resources */,
 				0FA706C8171911CC00864CED /* OPDeleteAlbumSheetController.xib in Resources */,
 				0FA706CB171911F400864CED /* empty-album.png in Resources */,
+				0FC0AD8918779E8E009C619F /* OPHistoryPeekViewController.xib in Resources */,
 				0F33D0E11769E4D40032CCA0 /* 86-camera@2x.png in Resources */,
 				0FA706CC171911F400864CED /* empty-album@2x.png in Resources */,
 				0F8B71D9171BA077004D8082 /* OPPhotoController.xib in Resources */,
@@ -1745,6 +1771,7 @@
 				0F03CD0D18152E8E00A73D8F /* OPCameraPhotoGridViewCell.m in Sources */,
 				0FE285A618397AF2009536D7 /* NSURL+EqualToURL.m in Sources */,
 				0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */,
+				0F32EFCB1877965C00483761 /* OPPeekButton.m in Sources */,
 				0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */,
 				0F5C40AA181CC1DF00F265FC /* OPDropDownButton.m in Sources */,
 				0FCE744F1714136B00A5AE79 /* NSObject+PerformBlock.m in Sources */,
@@ -1760,6 +1787,7 @@
 				0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */,
 				0F85D9B9180A4EA60003C6ED /* OPDatePhotoCountValueTransformer.m in Sources */,
 				0F85D9BC180A558F0003C6ED /* OPAlbumCountTransformer.m in Sources */,
+				0FC0AD8818779E8E009C619F /* OPHistoryPeekViewController.m in Sources */,
 				0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */,
 				0F5FE86317366CF900DF2356 /* XPPhotoManager.m in Sources */,
 				0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */,

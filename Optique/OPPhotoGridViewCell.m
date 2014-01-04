@@ -17,18 +17,18 @@
     self = [super init];
     if (self)
     {
-        _selectionLayer = [OEGridLayer layer];
-        _selectionLayer.borderColor = [[NSColor optiqueSelectedBackgroundColor] CGColor];
-        _selectionLayer.borderWidth = 5.0f;
-        [self addSublayer:_selectionLayer];
+        self.selectionLayer = [OEGridLayer layer];
+        self.selectionLayer.borderColor = [[NSColor optiqueSelectedBackgroundColor] CGColor];
+        self.selectionLayer.borderWidth = 5.0f;
+        [self addSublayer:self.selectionLayer];
         
-        _imageLayer = [OEGridLayer layer];
-        _imageLayer.contentsGravity = kCAGravityResizeAspectFill;
-        _imageLayer.masksToBounds = YES;
-        _imageLayer.borderWidth = 0.3;
-        _imageLayer.borderColor = [[NSColor blackColor] CGColor];
-        _imageLayer.backgroundColor = [[NSColor lightGrayColor] CGColor];
-        [self addSublayer:_imageLayer];
+        self.imageLayer = [OEGridLayer layer];
+        self.imageLayer.contentsGravity = kCAGravityResizeAspectFill;
+        self.imageLayer.masksToBounds = YES;
+        self.imageLayer.borderWidth = 0.3;
+        self.imageLayer.borderColor = [[NSColor blackColor] CGColor];
+        self.imageLayer.backgroundColor = [[NSColor lightGrayColor] CGColor];
+        [self addSublayer:self.imageLayer];
     }
     return self;
 }
@@ -40,25 +40,25 @@
                                        self.bounds.size.width + 10, //width
                                        self.bounds.size.height + 10); //height
     
-    [_selectionLayer setFrame:selectionFrame];
+    [self.selectionLayer setFrame:selectionFrame];
     
-    [_imageLayer setFrame:self.bounds];
+    [self.imageLayer setFrame:self.bounds];
     
-    if (_badgeLayer)
+    if (self.badgeLayer)
     {
-        _badgeLayer.frame = self.bounds;
+        self.badgeLayer.frame = self.bounds;
     }
 }
 
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    _selectionLayer.hidden = YES;
+    self.selectionLayer.hidden = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    _selectionLayer.hidden = !selected;
+    self.selectionLayer.hidden = !selected;
 	[super setSelected:selected animated:animated];
 }
 
@@ -66,22 +66,22 @@
 {
     if (image)
     {
-        [_imageLayer setContents:image];
+        [self.imageLayer setContents:image];
     }
 }
 
 - (NSImage*)image
 {
-    return _imageLayer.contents;
+    return self.imageLayer.contents;
 }
 
 -(void)setBadgeLayer:(CALayer *)badgeLayer
 {
-    if (badgeLayer != nil && _badgeLayer == nil)
+    if (self.badgeLayer != nil && self.badgeLayer == nil)
     {
-        _badgeLayer = badgeLayer;
-        _badgeLayer.frame = self.bounds;
-        [self addSublayer:_badgeLayer];
+        self.badgeLayer = badgeLayer;
+        self.badgeLayer.frame = self.bounds;
+        [self addSublayer:self.badgeLayer];
     }
 }
 

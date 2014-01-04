@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XPItem.h"
 
 @protocol XPPhotoCollection;
 
-@protocol XPPhoto
+@protocol XPPhoto<XPItem>
 
 /**
  The photo title
@@ -46,16 +47,16 @@
 @optional
 
 /**
+ Thumbnail image, if available
+ */
+-(NSImage*)thumbnail;
+
+/**
  Fetches the local copy
  */
 -(void)requestLocalCopy:(NSURL*)directory whenDone:(XPCompletionBlock)callback;
 
 -(void)requestLocalCopyInCacheWhenDone:(XPCompletionBlock)callback;
-
-/**
- Thumbnail image, if available
- */
--(NSImage*)thumbnail;
 
 /**
  Metadata that is stored for this Photo so that it can be rebuilt by the album scanner & collection provider on startup

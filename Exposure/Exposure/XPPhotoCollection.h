@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "XPPhoto.h"
+#import "XPItem.h"
 
 extern NSString *const XPPhotoCollectionDidStartLoading;
 extern NSString *const XPPhotoCollectionDidStopLoading;
@@ -20,7 +21,7 @@ typedef NS_ENUM(NSUInteger, XPPhotoCollectionType) {
     kPhotoCollectionOther
 };
 
-@protocol XPPhotoCollection <NSObject>
+@protocol XPPhotoCollection <NSObject, XPItem>
 
 /** the photo manager that the collection belongs to */
 -(XPPhotoManager*)photoManager;
@@ -37,6 +38,8 @@ typedef NS_ENUM(NSUInteger, XPPhotoCollectionType) {
 -(NSArray*)photosForIndexSet:(NSIndexSet*)indexSet;
 
 -(id<XPPhoto>)coverPhoto;
+
+-(NSImage*)thumbnail;
 
 /**
  The type of collection that this is (local, camera, other)

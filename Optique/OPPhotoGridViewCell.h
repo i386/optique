@@ -6,12 +6,11 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OEGridViewCell.h"
+#import "OPGridViewCell.h"
 
-@interface OPPhotoGridViewCell : OEGridViewCell
+@interface OPPhotoGridViewCell : OPGridViewCell
 
 @property (nonatomic, retain) id representedObject;
-@property (nonatomic, retain) NSImage *image;
 
 @property (nonatomic, retain) OEGridLayer *imageLayer;
 @property (nonatomic, retain) CALayer *selectionLayer;
