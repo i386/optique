@@ -18,7 +18,6 @@
 
 @implementation OPPlaceHolderViewController
 
-
 -(id)initWithText:(NSString *)text image:(NSImage*)image
 {
     self = [super initWithNibName:@"OPPlaceHolderViewController" bundle:nil];
@@ -31,11 +30,27 @@
 
 -(void)awakeFromNib
 {
+    [super awakeFromNib];
+    
     CNBaseView *baseView = (CNBaseView*)self.view;
     baseView.icon = _image;
     baseView.text = _text;
-    baseView.textBoxWidth = 600.0f;
     baseView.iconVerticalOffset = 50.0f;
+    
+    self.view.postsFrameChangedNotifications = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDidResize:) name:NSViewFrameDidChangeNotification object:self.view];
+}
+
+-(void)viewDidResize:(NSNotification*)notification
+{
+    CNBaseView *baseView = (CNBaseView*)self.view;
+    baseView.textBoxWidth = self.view.frame.size.width - (self.view.frame.size.width * 0.4);
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSViewFrameDidChangeNotification object:self];
 }
 
 @end
