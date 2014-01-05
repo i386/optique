@@ -476,7 +476,7 @@
 
 -(NSArray *)collections
 {
-    return _photoManager.allCollections;
+    return [_photoManager.allCollections filteredArrayUsingPredicate:_predicate];
 }
 
 @end
