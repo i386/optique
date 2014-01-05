@@ -9,9 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "OPCollectionViewController.h"
 #import "OPToolbarController.h"
-#import "OPWindowSidebar.h"
+#import "OPWindowSidebarController.h"
 
-@interface OPMainWindowController : NSWindowController<NSWindowDelegate, OPWindowSidebar, NSSplitViewDelegate>
+@interface OPMainWindowController : NSWindowController<NSWindowDelegate, OPWindowSidebarController, NSSplitViewDelegate>
 
 @property (weak, readonly) XPPhotoManager *photoManager;
 @property (weak, readwrite) IBOutlet OPToolbarController *toolbarViewController;

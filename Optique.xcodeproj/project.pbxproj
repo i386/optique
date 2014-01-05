@@ -325,7 +325,7 @@
 		0F1C228E1878DAAB00A6878C /* OPNewAlbumPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNewAlbumPanelViewController.h; sourceTree = "<group>"; };
 		0F1C228F1878DAAB00A6878C /* OPNewAlbumPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNewAlbumPanelViewController.m; sourceTree = "<group>"; };
 		0F1C22901878DAAB00A6878C /* OPNewAlbumPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNewAlbumPanelViewController.xib; sourceTree = "<group>"; };
-		0F1C229418791A3E00A6878C /* OPWindowSidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPWindowSidebar.h; sourceTree = "<group>"; };
+		0F1C229418791A3E00A6878C /* OPWindowSidebarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPWindowSidebarController.h; sourceTree = "<group>"; };
 		0F1C2299187937F400A6878C /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 		0F1C229A187937F400A6878C /* down@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down@2.png"; sourceTree = "<group>"; };
 		0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+FullScreen.h"; sourceTree = "<group>"; };
@@ -1287,7 +1287,7 @@
 				0F6AEF821701C02200A797E4 /* OPMainWindowController.h */,
 				0F6AEF831701C02200A797E4 /* OPMainWindowController.m */,
 				0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */,
-				0F1C229418791A3E00A6878C /* OPWindowSidebar.h */,
+				0F1C229418791A3E00A6878C /* OPWindowSidebarController.h */,
 			);
 			name = "Main Window";
 			sourceTree = "<group>";

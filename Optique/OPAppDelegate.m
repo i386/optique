@@ -105,7 +105,7 @@
 
 - (IBAction)newAlbum:(id)sender
 {
-    OPNewAlbumPanelViewController *controller = [[OPNewAlbumPanelViewController alloc] initWithPhotoManager:_photoManager sidebar:_mainWindowController];
+    OPNewAlbumPanelViewController *controller = [[OPNewAlbumPanelViewController alloc] initWithPhotoManager:_photoManager sidebarController:_mainWindowController];
     [_mainWindowController showSidebarWithViewController:controller];
 }
 

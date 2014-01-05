@@ -18,12 +18,12 @@
 
 @implementation OPNewAlbumPanelViewController
 
--(id)initWithPhotoManager:(XPPhotoManager *)photoManager sidebar:(id<OPWindowSidebar>)sidebar
+-(id)initWithPhotoManager:(XPPhotoManager *)photoManager sidebarController:(id<OPWindowSidebarController>)sidebarController
 {
     self = [super initWithNibName:@"OPNewAlbumPanelViewController" bundle:nil];
     if (self) {
         _photoManager = photoManager;
-        _sidebar = sidebar;
+        _sidebarController = sidebarController;
         _items = [[NSMutableArray alloc] init];
     }
     return self;
@@ -33,11 +33,14 @@
 {
     [super awakeFromNib];
     
-    [self.view.window makeFirstResponder:_albumNameTextField];
-    
     _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:@"Drag photos here" image:[NSImage imageNamed:@"down"]];
     
     [_gridview reloadData];
+}
+
+-(void)activate
+{
+    [self.view.window makeFirstResponder:_albumNameTextField];
 }
 
 - (IBAction)albumNameChanged:(id)sender
@@ -59,7 +62,7 @@
 
 - (IBAction)done:(id)sender
 {
-    [_sidebar hideSidebar];
+    [_sidebarController hideSidebar];
 }
 
 -(NSUInteger)numberOfItemsInGridView:(OEGridView *)gridView

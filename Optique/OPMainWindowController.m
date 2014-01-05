@@ -128,6 +128,11 @@
         
         [_rightSplitView addSubview:viewController.view];
         viewController.view.frame = NSMakeRect(0, 0, kMaxSplitViewWidth, _splitView.frame.size.height);
+        
+        if ([viewController conformsToProtocol:@protocol(OPWindowSidebar)])
+        {
+            [((id<OPWindowSidebar>)viewController) activate];
+        }
     }
 }
 
@@ -267,7 +272,7 @@
 
 - (IBAction)newAlbum:(id)sender
 {
-    OPNewAlbumPanelViewController *controller = [[OPNewAlbumPanelViewController alloc] initWithPhotoManager:_photoManager sidebar:self];
+    OPNewAlbumPanelViewController *controller = [[OPNewAlbumPanelViewController alloc] initWithPhotoManager:_photoManager sidebarController:self];
     [self showSidebarWithViewController:controller];
 }
 

@@ -6,15 +6,21 @@
 //  Copyright (c) 2014 James Dumay. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 /**
  Controls the sidebar on the main window that is commonly used for creating new albums, etc
  */
-@protocol OPWindowSidebar <NSObject>
+@protocol OPWindowSidebarController <NSObject>
 
 -(void)showSidebarWithViewController:(NSViewController*)viewController;
 
 -(void)hideSidebar;
+
+@end
+
+@protocol OPWindowSidebar
+
+-(void)activate;
 
 @end
