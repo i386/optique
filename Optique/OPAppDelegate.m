@@ -11,6 +11,7 @@
 #import <Exposure/Exposure.h>
 #import "NSWindow+FullScreen.h"
 #import <HockeySDK/BITHockeyManager.h>
+#import "OPNewAlbumPanelViewController.h"
 
 @implementation OPAppDelegate
 
@@ -104,7 +105,8 @@
 
 - (IBAction)newAlbum:(id)sender
 {
-    [_mainWindowController showNewAlbumSheet];
+    OPNewAlbumPanelViewController *controller = [[OPNewAlbumPanelViewController alloc] initWithPhotoManager:_photoManager sidebar:_mainWindowController];
+    [_mainWindowController showSidebarWithViewController:controller];
 }
 
 -(void)picturesAtDirectory:(NSURL*)url

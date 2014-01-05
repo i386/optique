@@ -7,6 +7,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OPMainWindowController">
             <connections>
+                <outlet property="leftSplitView" destination="g50-57-OSU" id="fkN-re-QFB"/>
+                <outlet property="rightSplitView" destination="deB-2D-kex" id="bXs-ft-sSV"/>
+                <outlet property="splitView" destination="Oqr-1I-ikl" id="vtu-jZ-ZvU"/>
                 <outlet property="toolbarViewController" destination="7Y5-cf-qca" id="dbb-OV-xew"/>
                 <outlet property="window" destination="1" id="3"/>
             </connections>
@@ -22,6 +25,26 @@
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="950" height="700"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <splitView dividerStyle="thin" vertical="YES" id="Oqr-1I-ikl">
+                        <rect key="frame" x="0.0" y="0.0" width="950" height="700"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <customView id="g50-57-OSU">
+                                <rect key="frame" x="0.0" y="0.0" width="646" height="700"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </customView>
+                            <customView id="deB-2D-kex">
+                                <rect key="frame" x="647" y="0.0" width="303" height="700"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </customView>
+                        </subviews>
+                        <holdingPriorities>
+                            <real value="250"/>
+                            <real value="300"/>
+                        </holdingPriorities>
+                    </splitView>
+                </subviews>
             </view>
             <toolbar key="toolbar" implicitIdentifier="91DB36F2-7076-4066-A9B9-749ACF26ACBB" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="7bg-oX-rUL">
                 <allowedToolbarItems>

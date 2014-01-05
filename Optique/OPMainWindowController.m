@@ -10,7 +10,6 @@
 #import "OPNavigationController.h"
 #import "OPPhotoCollectionViewController.h"
 #import "OPCameraCollectionViewController.h"
-#import "OPNewAlbumSheetController.h"
 #import "OPNavigationViewController.h"
 #import "OPToolbarController.h"
 #import "OPPhotoViewController.h"
@@ -21,8 +20,9 @@
     OPCollectionViewController *_albumViewController;
     OPCameraCollectionViewController *_cameraViewController;
     OPCollectionViewController *_searchViewController;
-    OPNewAlbumSheetController *_newAlbumSheetController;
 }
+
+@property (strong) NSViewController *sidebarViewController;
 
 @end
 
@@ -92,13 +92,13 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigationControllerChanged:) name:OPNavigationControllerViewDidChange object:_navigationController];
     
-    _newAlbumSheetController = [[OPNewAlbumSheetController alloc] initWithPhotoManager:_photoManager navigationController:_navigationController];
-    
     //Set weak ref to nav controller
     _toolbarViewController.navigationController = _navigationController;
     
-    NSView *contentView = (NSView*)self.window.contentView;
-    [_navigationController.view setFrame:contentView.frame];
+    [_rightSplitView setHidden:YES];
+    
+    NSView *contentView = _leftSplitView;
+    [_navigationController.view setFrame:_leftSplitView.frame];
     
     [[contentView subviews] each:^(id sender) {
         [sender removeFromSuperview];
@@ -107,9 +107,34 @@
     [contentView addSubview:_navigationController.view positioned:NSWindowBelow relativeTo:nil];
 }
 
--(void)showNewAlbumSheet
+-(void)showSidebarWithViewController:(NSViewController *)viewController
 {
-    [NSApp beginSheet:_newAlbumSheetController.window modalForWindow:self.window modalDelegate:self didEndSelector:nil contextInfo:nil];
+    //Do not open another sidebar unless there is no sidebar showing
+    if (!_sidebarViewController)
+    {
+        _sidebarViewController = viewController;
+        
+        [_rightSplitView setHidden:NO];
+        
+        CGFloat leftHandWidth = _splitView.frame.size.width * 0.8;
+        CGFloat rightHandWidth = _splitView.frame.size.width * 0.2;
+        
+        _leftSplitView.frame = NSMakeRect(_leftSplitView.frame.origin.x, _leftSplitView.frame.origin.y, leftHandWidth, _leftSplitView.frame.size.height);
+        
+        _rightSplitView.frame = NSMakeRect(_rightSplitView.frame.origin.x, _rightSplitView.frame.origin.y, rightHandWidth, _rightSplitView.frame.size.height);
+        
+        _navigationController.view.frame = _leftSplitView.frame;
+        
+        [_rightSplitView addSubview:viewController.view];
+        viewController.view.frame = NSMakeRect(0, 0, rightHandWidth, _splitView.frame.size.height);
+    }
+}
+
+-(void)hideSidebar
+{
+    [_rightSplitView setHidden:YES];
+    _leftSplitView.frame = NSMakeRect(0, 0, self.window.frame.size.width, self.window.frame.size.height);
+    _sidebarViewController = nil;
 }
 
 -(void)awakeFromNib

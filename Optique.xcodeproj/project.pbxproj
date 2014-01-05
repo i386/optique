@@ -31,6 +31,10 @@
 		0F1750E71828ACD30021853D /* OPNewsletterWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */; };
 		0F1750E81828ACD30021853D /* OPNewsletterWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1750E61828ACD30021853D /* OPNewsletterWindowController.xib */; };
 		0F1B4020180E970200C1CBF5 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F1B401F180E970200C1CBF5 /* search.png */; };
+		0F1C22911878DAAB00A6878C /* OPNewAlbumPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C228F1878DAAB00A6878C /* OPNewAlbumPanelViewController.m */; };
+		0F1C22921878DAAB00A6878C /* OPNewAlbumPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1C22901878DAAB00A6878C /* OPNewAlbumPanelViewController.xib */; };
+		0F1C229B187937F400A6878C /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F1C2299187937F400A6878C /* down.png */; };
+		0F1C229C187937F400A6878C /* down@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F1C229A187937F400A6878C /* down@2.png */; };
 		0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A6571737C7C300E53ED1 /* Finder.bundle */; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
 		0F3001E2172250E800ACAF9E /* OPPhotoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3001E1172250E800ACAF9E /* OPPhotoImageView.m */; };
@@ -318,6 +322,12 @@
 		0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNewsletterWindowController.m; sourceTree = "<group>"; };
 		0F1750E61828ACD30021853D /* OPNewsletterWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNewsletterWindowController.xib; sourceTree = "<group>"; };
 		0F1B401F180E970200C1CBF5 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		0F1C228E1878DAAB00A6878C /* OPNewAlbumPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNewAlbumPanelViewController.h; sourceTree = "<group>"; };
+		0F1C228F1878DAAB00A6878C /* OPNewAlbumPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNewAlbumPanelViewController.m; sourceTree = "<group>"; };
+		0F1C22901878DAAB00A6878C /* OPNewAlbumPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNewAlbumPanelViewController.xib; sourceTree = "<group>"; };
+		0F1C229418791A3E00A6878C /* OPWindowSidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPWindowSidebar.h; sourceTree = "<group>"; };
+		0F1C2299187937F400A6878C /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		0F1C229A187937F400A6878C /* down@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down@2.png"; sourceTree = "<group>"; };
 		0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+FullScreen.h"; sourceTree = "<group>"; };
 		0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+FullScreen.m"; sourceTree = "<group>"; };
 		0F3001E0172250E800ACAF9E /* OPPhotoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPhotoImageView.h; sourceTree = "<group>"; };
@@ -695,6 +705,16 @@
 			name = Newsletter;
 			sourceTree = "<group>";
 		};
+		0F1C2293187916FA00A6878C /* New Album Panel */ = {
+			isa = PBXGroup;
+			children = (
+				0F1C228E1878DAAB00A6878C /* OPNewAlbumPanelViewController.h */,
+				0F1C228F1878DAAB00A6878C /* OPNewAlbumPanelViewController.m */,
+				0F1C22901878DAAB00A6878C /* OPNewAlbumPanelViewController.xib */,
+			);
+			name = "New Album Panel";
+			sourceTree = "<group>";
+		};
 		0F368A7B170680DF00411503 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -890,6 +910,7 @@
 				0FEF33A016FEC6350096D72A /* Collection View */,
 				0FDE075A170317AE00D5B456 /* Photo Collection View */,
 				0FC2EC301813EC4D00D02EC5 /* Camera Collection View */,
+				0F1C2293187916FA00A6878C /* New Album Panel */,
 				0F962710170418F4007C1A86 /* Photo View */,
 				0FEF33A116FEC6420096D72A /* Photo Manager */,
 				0F97164917048737001835DC /* Image Previews */,
@@ -904,6 +925,8 @@
 		0F9C80BA16F891C700B2B6D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F1C2299187937F400A6878C /* down.png */,
+				0F1C229A187937F400A6878C /* down@2.png */,
 				0F03CD0E18153BA500A73D8F /* check.png */,
 				0FA29D11180FFB080066077D /* lock.png */,
 				0F1B401F180E970200C1CBF5 /* search.png */,
@@ -1264,6 +1287,7 @@
 				0F6AEF821701C02200A797E4 /* OPMainWindowController.h */,
 				0F6AEF831701C02200A797E4 /* OPMainWindowController.m */,
 				0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */,
+				0F1C229418791A3E00A6878C /* OPWindowSidebar.h */,
 			);
 			name = "Main Window";
 			sourceTree = "<group>";
@@ -1538,8 +1562,10 @@
 				0F33D0ED1769E87A0032CCA0 /* 218-trash2@2x.png in Resources */,
 				0F85D9C7180DF8F20003C6ED /* OPPlaceHolderViewController.xib in Resources */,
 				0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */,
+				0F1C22921878DAAB00A6878C /* OPNewAlbumPanelViewController.xib in Resources */,
 				0FE3B2451702C62D00FC0D6C /* OPNavigationController.xib in Resources */,
 				0F34814A176D669F00439AEA /* loading-preview.pdf in Resources */,
+				0F1C229B187937F400A6878C /* down.png in Resources */,
 				0F70718A180E354F00ED5799 /* folder.png in Resources */,
 				0FDE075917030FCC00D5B456 /* OPPhotoCollectionViewController.xib in Resources */,
 				0F08A8D81770443C00DFEA02 /* 329-layers1@2x.png in Resources */,
@@ -1566,6 +1592,7 @@
 				0FA706CB171911F400864CED /* empty-album.png in Resources */,
 				0FC0AD8918779E8E009C619F /* OPHistoryPeekViewController.xib in Resources */,
 				0F33D0E11769E4D40032CCA0 /* 86-camera@2x.png in Resources */,
+				0F1C229C187937F400A6878C /* down@2.png in Resources */,
 				0FA706CC171911F400864CED /* empty-album@2x.png in Resources */,
 				0F8B71D9171BA077004D8082 /* OPPhotoController.xib in Resources */,
 				0F8FEBBA1769E283004BB523 /* 212-action2.png in Resources */,
@@ -1753,6 +1780,7 @@
 				0FEF33A616FEC8090096D72A /* OPCollectionViewController.m in Sources */,
 				0F85D9C6180DF8F20003C6ED /* OPPlaceHolderViewController.m in Sources */,
 				0F4A6DAA18191834009AD08C /* NSURL+Renamer.m in Sources */,
+				0F1C22911878DAAB00A6878C /* OPNewAlbumPanelViewController.m in Sources */,
 				0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */,
 				0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */,
 				0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */,
