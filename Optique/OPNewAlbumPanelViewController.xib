@@ -17,7 +17,7 @@
         <customObject id="-3" userLabel="Application"/>
         <customView id="1">
             <rect key="frame" x="0.0" y="0.0" width="300" height="432"/>
-            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="v4W-Y3-OmE">
                     <rect key="frame" x="0.0" y="53" width="300" height="319"/>
@@ -58,7 +58,7 @@
                 </button>
                 <textField verticalHuggingPriority="750" id="ChQ-m4-qG5" customClass="KBTextField">
                     <rect key="frame" x="20" y="388" width="260" height="25"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="New album name" drawsBackground="YES" id="t7f-ua-zsG">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>

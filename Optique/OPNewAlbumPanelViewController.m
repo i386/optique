@@ -104,7 +104,7 @@
         NSURL *fileURL = [NSURL URLFromPasteboard:pboard];
         
         BOOL isDir;
-        if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDir] && isDir)
+        if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDir] && !isDir)
         {
             NSString *fileName = [fileURL lastPathComponent];
             NSLog(@"dropped %@", fileName);

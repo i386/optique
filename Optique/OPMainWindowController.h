@@ -11,7 +11,7 @@
 #import "OPToolbarController.h"
 #import "OPWindowSidebar.h"
 
-@interface OPMainWindowController : NSWindowController<NSWindowDelegate, OPWindowSidebar>
+@interface OPMainWindowController : NSWindowController<NSWindowDelegate, OPWindowSidebar, NSSplitViewDelegate>
 
 @property (weak, readonly) XPPhotoManager *photoManager;
 @property (weak, readwrite) IBOutlet OPToolbarController *toolbarViewController;

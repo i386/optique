@@ -13,7 +13,11 @@
 #import "OPNavigationViewController.h"
 #import "OPToolbarController.h"
 #import "OPPhotoViewController.h"
+#import "OPNewAlbumPanelViewController.h"
 #import "NSWindow+FullScreen.h"
+
+#define kMaxSplitViewWidth 300
+#define kSidebarIndex 1
 
 @interface OPMainWindowController () {
     OPNavigationController *_navigationController;
@@ -95,8 +99,6 @@
     //Set weak ref to nav controller
     _toolbarViewController.navigationController = _navigationController;
     
-    [_rightSplitView setHidden:YES];
-    
     NSView *contentView = _leftSplitView;
     [_navigationController.view setFrame:_leftSplitView.frame];
     
@@ -116,17 +118,16 @@
         
         [_rightSplitView setHidden:NO];
         
-        CGFloat leftHandWidth = _splitView.frame.size.width * 0.8;
-        CGFloat rightHandWidth = _splitView.frame.size.width * 0.2;
-        
+        CGFloat leftHandWidth = _splitView.frame.size.width - kMaxSplitViewWidth;
+
         _leftSplitView.frame = NSMakeRect(_leftSplitView.frame.origin.x, _leftSplitView.frame.origin.y, leftHandWidth, _leftSplitView.frame.size.height);
-        
-        _rightSplitView.frame = NSMakeRect(_rightSplitView.frame.origin.x, _rightSplitView.frame.origin.y, rightHandWidth, _rightSplitView.frame.size.height);
-        
+
+        _rightSplitView.frame = NSMakeRect(_rightSplitView.frame.origin.x, _rightSplitView.frame.origin.y, kMaxSplitViewWidth, _rightSplitView.frame.size.height);
+
         _navigationController.view.frame = _leftSplitView.frame;
         
         [_rightSplitView addSubview:viewController.view];
-        viewController.view.frame = NSMakeRect(0, 0, rightHandWidth, _splitView.frame.size.height);
+        viewController.view.frame = NSMakeRect(0, 0, kMaxSplitViewWidth, _splitView.frame.size.height);
     }
 }
 
@@ -135,12 +136,16 @@
     [_rightSplitView setHidden:YES];
     _leftSplitView.frame = NSMakeRect(0, 0, self.window.frame.size.width, self.window.frame.size.height);
     _sidebarViewController = nil;
+    [[_rightSplitView subviews] each:^(id sender) {
+        [sender removeFromSuperview];
+    }];
 }
 
 -(void)awakeFromNib
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterChanged:) name:OPApplicationModeDidChange object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchFilterChanged:) name:OPAlbumSearchFilterDidChange object:nil];
+    [_rightSplitView setHidden:YES];
 }
 
 -(void)dealloc
@@ -225,6 +230,45 @@
             NSApplicationPresentationHideDock |
             NSApplicationPresentationAutoHideMenuBar |
             NSApplicationPresentationAutoHideToolbar);
+}
+
+-(NSRect)splitView:(NSSplitView *)splitView effectiveRect:(NSRect)proposedEffectiveRect forDrawnRect:(NSRect)drawnRect ofDividerAtIndex:(NSInteger)dividerIndex
+{
+    //Disables the split view control when no side bar is present
+    if (!_sidebarViewController)
+    {
+        return NSZeroRect;
+    }
+    return proposedEffectiveRect;
+}
+
+-(BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)view
+{
+    return ![view isEqual:_rightSplitView];
+}
+
+-(CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex
+{
+    if (dividerIndex == kSidebarIndex)
+    {
+        return kMaxSplitViewWidth;
+    }
+    return proposedMinimumPosition;
+}
+
+-(CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex
+{
+    if (dividerIndex == kSidebarIndex)
+    {
+        return kMaxSplitViewWidth;
+    }
+    return proposedMaximumPosition;
+}
+
+- (IBAction)newAlbum:(id)sender
+{
+    OPNewAlbumPanelViewController *controller = [[OPNewAlbumPanelViewController alloc] initWithPhotoManager:_photoManager sidebar:self];
+    [self showSidebarWithViewController:controller];
 }
 
 @end

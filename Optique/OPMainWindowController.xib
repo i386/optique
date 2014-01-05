@@ -43,6 +43,9 @@
                             <real value="250"/>
                             <real value="300"/>
                         </holdingPriorities>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="A1g-qM-HFl"/>
+                        </connections>
                     </splitView>
                 </subviews>
             </view>
@@ -107,9 +110,26 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </progressIndicator>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="9816C303-4B32-4A3D-8163-E8C9608C383A" label="New Album" paletteLabel="New Album" id="JcO-an-8wk">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="36" height="25"/>
+                        <size key="maxSize" width="36" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="05d-BX-04f">
+                            <rect key="frame" x="16" y="14" width="36" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dIP-no-kPz">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="newAlbum:" target="-2" id="Q8S-9E-vbf"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="LLx-dH-1Dl"/>
+                    <toolbarItem reference="JcO-an-8wk"/>
                     <toolbarItem reference="A1P-7Z-8Kc"/>
                     <toolbarItem reference="JI3-ZT-0bl"/>
                     <toolbarItem reference="t76-i3-tYv"/>
@@ -125,7 +145,9 @@
         </window>
         <customObject id="7Y5-cf-qca" customClass="OPToolbarController">
             <connections>
+                <outlet property="createAlbumButton" destination="05d-BX-04f" id="tAz-WS-J8D"/>
                 <outlet property="loadProgressIndicator" destination="egL-Ut-R8w" id="NJ3-Ot-29V"/>
+                <outlet property="newAlbumButton" destination="05d-BX-04f" id="oQb-jk-7Nr"/>
                 <outlet property="searchFilter" destination="FOA-4z-wyI" id="bNb-tv-BEZ"/>
                 <outlet property="shareWithButton" destination="DVn-fh-aKO" id="lJk-VD-cVg"/>
                 <outlet property="switchViewButton" destination="ZsN-fP-PyH" id="5nt-MD-90Z"/>

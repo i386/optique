@@ -16,12 +16,10 @@ extern NSString *const OPApplicationModeDidChange;
 extern NSString *const OPAlbumSearchFilterDidChange;
 extern NSString *const OPSharableSelectionChanged;
 
-
 typedef enum {
     OPApplicationModeAlbum = 0,
     OPApplicationModeCamera = 1,
 } OPApplicationMode;
-
 
 @interface OPToolbarController : NSObject<NSMenuDelegate, NSToolbarDelegate>
 
@@ -32,8 +30,7 @@ typedef enum {
 @property (weak, nonatomic) OPNavigationController *navigationController;
 @property (weak) IBOutlet NSProgressIndicator *loadProgressIndicator;
 @property (strong) OPNotificationSynchronizer *syncCollectionEvents;
-
-- (IBAction)switchViewButtonPressed:(id)sender;
+@property (weak) IBOutlet NSButton *createAlbumButton;
 
 - (void)backMode;
 

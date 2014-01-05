@@ -49,6 +49,8 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareableSelectionHasChanged:) name:OPSharableSelectionChanged object:nil];
     
+    _createAlbumButton.image = [NSImage imageNamed:NSImageNameAddTemplate];
+    
     [self albumMode];
 }
 
