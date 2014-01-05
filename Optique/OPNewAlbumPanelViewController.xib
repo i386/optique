@@ -21,7 +21,7 @@
             <subviews>
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="v4W-Y3-OmE">
                     <rect key="frame" x="0.0" y="53" width="300" height="319"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="IEq-3w-Z6H">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="319"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="zLt-fv-Zi6">
-                        <rect key="frame" x="284" y="0.0" width="16" height="319"/>
+                        <rect key="frame" x="285" y="0.0" width="15" height="319"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>

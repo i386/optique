@@ -8,6 +8,7 @@
 
 #import "OPNewAlbumPanelViewController.h"
 #import "OPPlaceHolderViewController.h"
+#import "OPPhotoGridViewCell.h"
 
 @interface OPNewAlbumPanelViewController ()
 
@@ -72,7 +73,27 @@
 
 -(OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    return nil;
+    OPPhotoGridViewCell *item = (OPPhotoGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
+    if (!item)
+    {
+        item = (OPPhotoGridViewCell *)[gridView dequeueReusableCell];
+    }
+    
+    if (!item)
+    {
+        item = [[OPPhotoGridViewCell alloc] init];
+    }
+    
+    if (_items.count > 0)
+    {
+        NSURL *url = _items[index];
+        item.representedObject = url;
+        
+        //TODO: preview this
+        item.image = [[NSImage alloc] initWithContentsOfURL:url];
+    }
+    
+    return item;
 }
 
 -(NSView *)viewForNoItemsInGridView:(OEGridView *)gridView
@@ -109,11 +130,9 @@
         BOOL isDir;
         if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDir] && !isDir)
         {
-            NSString *fileName = [fileURL lastPathComponent];
-            NSLog(@"dropped %@", fileName);
-            
-            NSError *error;
-            return error ? NO : YES;
+            [_items addObject:fileURL];
+            [_gridview reloadData];
+            return YES;
         }
     }
     
