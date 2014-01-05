@@ -10,7 +10,6 @@
 #import "OPNavigationViewController.h"
 #import "OPHistoryPeekViewController.h"
 
-NSString *const OPApplicationModeDidChange = @"OPApplicationModeDidChange";
 NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
 NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
 

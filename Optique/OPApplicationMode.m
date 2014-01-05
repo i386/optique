@@ -1,0 +1,2 @@
+
+NSString *const OPApplicationModeDidChange = @"OPApplicationModeDidChange";

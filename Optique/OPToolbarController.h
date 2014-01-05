@@ -11,15 +11,10 @@
 #import "OPDropDownButton.h"
 #import "OPNotificationSynchronizer.h"
 #import "OPPeekButton.h"
+#import "OPApplicationMode.h"
 
-extern NSString *const OPApplicationModeDidChange;
 extern NSString *const OPAlbumSearchFilterDidChange;
 extern NSString *const OPSharableSelectionChanged;
-
-typedef enum {
-    OPApplicationModeAlbum = 0,
-    OPApplicationModeCamera = 1,
-} OPApplicationMode;
 
 @interface OPToolbarController : NSObject<NSMenuDelegate, NSToolbarDelegate>
 
