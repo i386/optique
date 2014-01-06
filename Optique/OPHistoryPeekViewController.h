@@ -24,4 +24,6 @@
 
 -initWithItems:(NSArray*)items navigationController:(OPNavigationController*)navigationController;
 
+-(bool)showable;
+
 @end

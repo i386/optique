@@ -7,7 +7,6 @@
 //
 
 #import "OPPeekButton.h"
-#import "NSWindow+FullScreen.h"
 
 @interface OPPeekButton()
 
@@ -19,7 +18,7 @@
 
 -(void)mouseEntered:(NSEvent *)theEvent
 {
-    if (_peek && _historyPeekViewController.view && !self.window.isFullscreen)
+    if (_peek && _historyPeekViewController.view && _historyPeekViewController.showable)
     {
         [_historyPeekViewController.popover showRelativeToRect:self.frame ofView:self preferredEdge:CGRectMaxYEdge];
     }

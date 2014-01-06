@@ -11,6 +11,7 @@
 #import "OPPhotoViewController.h"
 #import "OPPhotoCollectionViewController.h"
 #import "OPGridViewCell.h"
+#import "NSWindow+FullScreen.h"
 
 @interface OPHistoryPeekViewController ()
 
@@ -26,6 +27,11 @@
         _navigationController = navigationController;
     }
     return self;
+}
+
+-(bool)showable
+{
+    return !self.view.window.isFullscreen && _items.count > 1;
 }
 
 -(void)gridView:(OEGridView *)gridView clickedCellForItemAtIndex:(NSUInteger)index
