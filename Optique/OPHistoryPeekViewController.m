@@ -151,14 +151,13 @@
 -(void)popoverWillShow:(NSNotification *)notification
 {
     CGFloat itemHeight = _gridView.rowSpacing + _gridView.itemSize.height;
-    CGFloat estimatedHeight = itemHeight * _items.count;
+    CGFloat estimatedPopoverHeight = itemHeight * _items.count;
     NSRect windowFrame = [[NSApp mainWindow] frame];
-
-    CGFloat popoverHeight = windowFrame.size.height / 1.1;
+    CGFloat popoverHeight = windowFrame.size.height;
     
-    if (estimatedHeight < popoverHeight)
+    if (estimatedPopoverHeight < popoverHeight)
     {
-        popoverHeight = estimatedHeight;
+        popoverHeight = estimatedPopoverHeight;
     }
     else
     {
