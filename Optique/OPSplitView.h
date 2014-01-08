@@ -8,6 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+#define kOPSplitViewDividerThicknessNone        0
+#define kOPSplitViewDividerThicknessCocoa       -1
+
 @interface OPSplitView : NSSplitView
 
 @end

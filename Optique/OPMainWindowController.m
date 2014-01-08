@@ -272,7 +272,7 @@
 
 -(CGFloat)dividerThickness
 {
-    return _sidebarViewController ? -1 : 0;
+    return _sidebarViewController ? kOPSplitViewDividerThicknessCocoa : kOPSplitViewDividerThicknessNone;
 }
 
 - (IBAction)newAlbum:(id)sender
