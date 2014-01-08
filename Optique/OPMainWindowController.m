@@ -118,16 +118,18 @@
         
         [_rightSplitView setHidden:NO];
         
-        CGFloat leftHandWidth = _splitView.frame.size.width - kMaxSplitViewWidth;
+        NSView *contentView = self.window.contentView;
+        
+        CGFloat leftHandWidth = contentView.frame.size.width - kMaxSplitViewWidth;
 
-        _leftSplitView.frame = NSMakeRect(_leftSplitView.frame.origin.x, _leftSplitView.frame.origin.y, leftHandWidth, _leftSplitView.frame.size.height);
-
-        _rightSplitView.frame = NSMakeRect(_rightSplitView.frame.origin.x, _rightSplitView.frame.origin.y, kMaxSplitViewWidth, _rightSplitView.frame.size.height);
-
+        _leftSplitView.frame = NSMakeRect(0, 0, leftHandWidth, contentView.frame.size.height);
+        _rightSplitView.frame = NSMakeRect(0, 0, kMaxSplitViewWidth, contentView.frame.size.height);
         _navigationController.view.frame = _leftSplitView.frame;
+        viewController.view.frame = NSMakeRect(0, 0, kMaxSplitViewWidth, contentView.frame.size.height);
+        
+        NSLog(@"%@", NSStringFromRect(viewController.view.frame));
         
         [_rightSplitView addSubview:viewController.view];
-        viewController.view.frame = NSMakeRect(0, 0, kMaxSplitViewWidth, _splitView.frame.size.height);
         
         if ([viewController conformsToProtocol:@protocol(OPWindowSidebar)])
         {
