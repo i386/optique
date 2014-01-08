@@ -10,12 +10,13 @@
 #import "OPCollectionViewController.h"
 #import "OPToolbarController.h"
 #import "OPWindowSidebarController.h"
+#import "OPSplitView.h"
 
 @interface OPMainWindowController : NSWindowController<NSWindowDelegate, OPWindowSidebarController, NSSplitViewDelegate>
 
 @property (weak, readonly) XPPhotoManager *photoManager;
 @property (weak, readwrite) IBOutlet OPToolbarController *toolbarViewController;
-@property (weak) IBOutlet NSSplitView *splitView;
+@property (weak) IBOutlet OPSplitView *splitView;
 @property (weak) IBOutlet NSView *leftSplitView;
 @property (weak) IBOutlet NSView *rightSplitView;
 

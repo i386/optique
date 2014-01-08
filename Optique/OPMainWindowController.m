@@ -270,6 +270,11 @@
     return proposedMaximumPosition;
 }
 
+-(CGFloat)dividerThickness
+{
+    return _sidebarViewController ? -1 : 0;
+}
+
 - (IBAction)newAlbum:(id)sender
 {
     OPNewAlbumPanelViewController *controller = [[OPNewAlbumPanelViewController alloc] initWithPhotoManager:_photoManager sidebarController:self];
