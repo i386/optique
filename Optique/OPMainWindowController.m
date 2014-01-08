@@ -126,9 +126,7 @@
         _rightSplitView.frame = NSMakeRect(0, 0, kMaxSplitViewWidth, contentView.frame.size.height);
         _navigationController.view.frame = _leftSplitView.frame;
         viewController.view.frame = NSMakeRect(0, 0, kMaxSplitViewWidth, contentView.frame.size.height);
-        
-        NSLog(@"%@", NSStringFromRect(viewController.view.frame));
-        
+
         [_rightSplitView addSubview:viewController.view];
         
         if ([viewController conformsToProtocol:@protocol(OPWindowSidebar)])
