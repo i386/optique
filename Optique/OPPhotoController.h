@@ -7,12 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "OPPhotoImageView.h"
 
 @class OPPhotoViewController;
 
 @interface OPPhotoController : NSViewController <NSMenuDelegate, XPPhotoController, XPSharingService>
 
-@property (weak) IBOutlet NSImageView *imageView;
+@property (weak) IBOutlet OPPhotoImageView *imageView;
 @property (weak) IBOutlet NSMenu *contextMenu;
 
 -initWithPhotoViewController:(OPPhotoViewController*)photoViewController;

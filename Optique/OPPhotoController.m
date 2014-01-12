@@ -47,6 +47,7 @@
 
 -(void)awakeFromNib
 {
+    _imageView.representedObject = _photoViewController.visiblePhoto;
     [XPExposureService photoManager:_photoViewController.collection.photoManager photoController:self];
 }
 

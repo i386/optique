@@ -8,8 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface OPPhotoImageView : NSImageView
+@interface OPPhotoImageView : NSImageView<NSDraggingSource>
 
 @property (nonatomic, weak) IBOutlet NSMenu *contextMenu;
+@property id representedObject;
 
 @end
