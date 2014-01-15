@@ -59,42 +59,53 @@ NSString *const XPPhotoManagerDidDeleteCollection = @"XPPhotoManagerDidDeleteAlb
 
 -(id<XPPhotoCollection>)newAlbumWithName:(NSString *)albumName error:(NSError *__autoreleasing *)error
 {
-    id<XPPhotoCollection> collection =  [_collectionLock withBlock:^id{
-        NSURL *albumPath = [self.path URLByAppendingPathComponent:albumName isDirectory:YES];
-        
-        if (![[NSFileManager defaultManager] fileExistsAtPath:[albumPath path]])
-        {
-            NSError *directoryCreationError;
+    if ([@"" isEqualToString:albumName])
+    {
+        NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Album cannot have an empty name.", NSLocalizedRecoverySuggestionErrorKey: @"Specify a valid name before creating an album."};
+        *error = [[NSError alloc] initWithDomain:@"com.whimsy.optique" code:1 userInfo:userInfo];
+    }
+    else
+    {
+    
+        id<XPPhotoCollection> collection =  [_collectionLock withBlock:^id{
+            NSURL *albumPath = [self.path URLByAppendingPathComponent:albumName isDirectory:YES];
             
-            [[NSFileManager defaultManager] createDirectoryAtURL:albumPath withIntermediateDirectories:YES attributes:nil error:&directoryCreationError];
-            
-            if (!directoryCreationError)
+            if (![[NSFileManager defaultManager] fileExistsAtPath:[albumPath path]])
             {
-                id<XPPhotoCollection> album = [XPExposureService createCollectionWithTitle:albumName path:albumPath];
-                [_collectionSet addObject:album];
-                return album;
+                NSError *directoryCreationError;
+                
+                [[NSFileManager defaultManager] createDirectoryAtURL:albumPath withIntermediateDirectories:YES attributes:nil error:&directoryCreationError];
+                
+                if (!directoryCreationError)
+                {
+                    id<XPPhotoCollection> album = [XPExposureService createCollectionWithTitle:albumName path:albumPath];
+                    [_collectionSet addObject:album];
+                    return album;
+                }
+                else
+                {
+                    NSDictionary *userInfo = @{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Could not create album %@.", albumName],
+                                               NSLocalizedRecoverySuggestionErrorKey: @"There was a problem creating the album."};
+                    *error = [[NSError alloc] initWithDomain:@"com.whimsy.optique" code:2 userInfo:userInfo];
+                }
             }
             else
             {
-                NSDictionary *userInfo = @{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Could not create album %@.", albumName],
-                                           NSLocalizedRecoverySuggestionErrorKey: @"There was a problem creating the album."};
-                *error = [[NSError alloc] initWithDomain:@"com.whimsy.optique" code:2 userInfo:userInfo];
+                NSDictionary *userInfo = @{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Album with the name %@ already exists.", albumName], NSLocalizedRecoverySuggestionErrorKey: @"Try choosing a different name that isn't the name of an existing album."};
+                
+                *error = [[NSError alloc] initWithDomain:@"com.whimsy.optique" code:1 userInfo:userInfo];
             }
-        }
-        else
+            return nil;
+        }];
+        
+        if (collection)
         {
-            NSDictionary *userInfo = @{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Album with the name %@ already exists.", albumName], NSLocalizedRecoverySuggestionErrorKey: @"Try choosing a different name that isn't the name of an existing album."};
-            
-            *error = [[NSError alloc] initWithDomain:@"com.whimsy.optique" code:1 userInfo:userInfo];
+            [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:collection];
         }
-        return nil;
-    }];
-    
-    if (collection)
-    {
-        [self sendNotificationWithName:XPPhotoManagerDidAddCollection forPhotoCollection:collection];
+        return collection;
+        
     }
-    return collection;
+    return nil;
 }
 
 -(void)deleteAlbum:(id<XPPhotoCollection>)collection error:(NSError *__autoreleasing *)error

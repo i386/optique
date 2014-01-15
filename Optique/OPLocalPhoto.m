@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
+#import <Carbon/Carbon.h>
 #import "OPLocalPhoto.h"
 #import "NSURL+EqualToURL.h"
 #import "NSURL+URLWithoutQuery.h"
@@ -95,6 +96,24 @@
 -(BOOL)hasLocalCopy
 {
     return YES;
+}
+
+-(NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard
+{
+    return @[XPPhotoPboardType, (NSString *)kUTTypeURL];
+}
+
+-(id)pasteboardPropertyListForType:(NSString *)type
+{
+    if ([type isEqualToString:XPPhotoPboardType])
+    {
+        return [NSKeyedArchiver archivedDataWithRootObject:@{@"photo-title": self.title, @"collection-title": [self.collection title]}];
+    }
+    else if ([type isEqualToString:(NSString *)kUTTypeURL])
+    {
+        return [self.url pasteboardPropertyListForType:(NSString *)kUTTypeURL];
+    }
+    return nil;
 }
 
 -(BOOL)isEqual:(id)object

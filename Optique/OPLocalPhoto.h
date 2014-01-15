@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Exposure/Exposure.h>
 
-@interface OPLocalPhoto : NSObject <XPPhoto>
+@interface OPLocalPhoto : NSObject <XPPhoto, NSPasteboardWriting>
 
 @property (strong, readonly) NSString *title;
 @property (strong, readonly) NSDate *_created;

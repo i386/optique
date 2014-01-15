@@ -14,36 +14,6 @@
 #import "NSURL+Renamer.h"
 #import "OPToolbarController.h"
 
-@interface PhotoPasteboardWriting : NSObject<NSPasteboardWriting>
-
-@property (weak) id<XPPhoto> photo;
-
-@end
-
-@implementation PhotoPasteboardWriting
-
--(NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard
-{
-    static NSArray *writableTypes = nil;
-    if (!writableTypes)
-    {
-        writableTypes = @[(NSString *)kUTTypeURL];
-    }
-    return writableTypes;
-}
-
--(id)pasteboardPropertyListForType:(NSString *)type
-{
-    id photo = _photo;
-    if ([type isEqualToString:(NSString *)kUTTypeURL] && [photo respondsToSelector:@selector(path)])
-    {
-        return [[photo url] pasteboardPropertyListForType:(NSString *)kUTTypeURL];
-    }
-    return nil;
-}
-
-@end
-
 @interface OPPhotoCollectionViewController()
 
 @property (nonatomic, strong) NSMutableArray *sharingMenuItems;
@@ -395,9 +365,7 @@
 
 -(id<NSPasteboardWriting>)gridView:(OEGridView *)gridView pasteboardWriterForIndex:(NSInteger)index
 {
-    PhotoPasteboardWriting *photoPasteboardWriting = [[PhotoPasteboardWriting alloc] init];
-    photoPasteboardWriting.photo = [_collection.allPhotos objectAtIndex:index];
-    return photoPasteboardWriting;
+    return [self.collection allPhotos][index];
 }
 
 - (NSDragOperation)gridView:(OEGridView *)gridView validateDrop:(id<NSDraggingInfo>)sender

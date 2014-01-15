@@ -9,6 +9,7 @@
 #import "OPNewAlbumPanelViewController.h"
 #import "OPPlaceHolderViewController.h"
 #import "OPPhotoGridViewCell.h"
+#import "OPImagePreviewService.h"
 
 @interface OPNewAlbumPanelViewController ()
 
@@ -44,12 +45,18 @@
     [self.view.window makeFirstResponder:_albumNameTextField];
 }
 
+- (NSString*)albumName
+{
+    return [_albumNameTextField.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 - (IBAction)albumNameChanged:(id)sender
 {
-    NSString *trimmedName = [_albumNameTextField.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [_doneButton setEnabled:![trimmedName isEqualToString:@""]];
+    NSString *name = [self albumName];
     
-    if ([trimmedName isEqualToString:@""])
+    [_doneButton setEnabled:![name isEqualToString:@""]];
+    
+    if ([name isEqualToString:@""])
     {
         [_doneButton setKBButtonType:BButtonTypeDefault];
         _doneButton.stringValue = @"Cancel";
@@ -63,7 +70,35 @@
 
 - (IBAction)done:(id)sender
 {
-    [_sidebarController hideSidebar];
+    NSString *albumName = [self albumName];
+    NSError *error;
+    id<XPPhotoCollection> album = [_photoManager newAlbumWithName:albumName error:&error];
+    if (album)
+    {
+        [_items each:^(id sender) {
+            if ([sender conformsToProtocol:@protocol(XPPhoto)])
+            {
+                [album addPhoto:sender withCompletion:nil];
+            }
+            else if ([sender isKindOfClass:[NSURL class]])
+            {
+                NSLog(@"TODO: create me");
+            }
+            else
+            {
+                NSLog(@"Not sure what to do with item '%@' when creating album", [sender class]);
+            }
+        }];
+        
+        [_sidebarController hideSidebar];
+    }
+    else
+    {
+        NSAlert *alert = [NSAlert alertWithError:error];
+        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+            
+        }];
+    }
 }
 
 -(NSUInteger)numberOfItemsInGridView:(OEGridView *)gridView
@@ -86,11 +121,51 @@
     
     if (_items.count > 0)
     {
-        NSURL *url = _items[index];
-        item.representedObject = url;
+        id obj = _items[index];
         
-        //TODO: preview this
-        item.image = [[NSImage alloc] initWithContentsOfURL:url];
+        if ([obj isKindOfClass:[NSURL class]])
+        {
+            NSURL *url = (NSURL*)obj;
+            
+            item.representedObject = url;
+            
+            //TODO: preview this
+            item.image = [[NSImage alloc] initWithContentsOfURL:url];
+        }
+        else if ([obj conformsToProtocol:@protocol(XPPhoto)])
+        {
+            OPPhotoGridViewCell * __weak weakItem = item;
+            id<XPPhoto> __weak weakPhoto = obj;
+            
+            item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:(id<XPPhoto>)obj loaded:^(NSImage *image)
+                          {
+                              [self performBlockOnMainThread:^
+                               {
+                                   if (weakPhoto == weakItem.representedObject)
+                                   {
+                                       weakItem.image = image;
+                                   }
+                               }];
+                          }];
+            
+            item.view.toolTip = [obj title];
+            
+            if (!item.badgeLayer)
+            {
+                //Get badge layer from exposure
+                for (id<XPPhotoCollectionProvider> provider in [XPExposureService photoCollectionProviders])
+                {
+                    if ([provider respondsToSelector:@selector(badgeLayerForPhoto:)])
+                    {
+                        item.badgeLayer = [provider badgeLayerForPhoto:(id<XPPhoto>)obj];
+                        if (item.badgeLayer)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
     
     return item;
@@ -114,13 +189,6 @@
 
 - (BOOL)gridView:(OEGridView *)gridView acceptDrop:(id<NSDraggingInfo>)sender
 {
-    //    NSEvent *event = [NSApp currentEvent];
-    //
-    //    NSPoint pointInView = [_gridView convertPoint:[event locationInWindow] fromView:nil];
-    //    NSUInteger index = [_gridView indexForCellAtPoint:pointInView];
-    //
-    //    NSLog(@"Index of item: %lu %@", (unsigned long)index, event);
-    
     NSPasteboard *pboard = [sender draggingPasteboard];
     
     if ( [[pboard types] containsObject:NSFilenamesPboardType])
@@ -134,6 +202,40 @@
             [_gridview reloadData];
             return YES;
         }
+    }
+    else if ([[pboard types] containsObject:XPPhotoPboardType])
+    {
+        __block BOOL reload = NO;
+        
+        [[pboard pasteboardItems] each:^(NSPasteboardItem *item) {
+            
+            NSData *data = [item dataForType:XPPhotoPboardType];
+            if (data)
+            {
+                NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                
+                id<XPPhotoCollection> collection = [_photoManager.allCollections match:^BOOL(id<XPPhotoCollection> obj) {
+                    return [[obj title] isEqualToString:dict[@"collection-title"]];
+                }];
+                
+                if (collection)
+                {
+                    id<XPPhoto> photo = [[collection allPhotos] match:^BOOL(id<XPPhoto> obj) {
+                        return [[obj title] isEqualToString:dict[@"photo-title"]];
+                    }];
+                    
+                    [_items addObject:photo];
+                    reload = YES;
+                }
+            }
+            
+        }];
+        
+        if (reload)
+        {
+            [_gridview reloadData];
+        }
+        
     }
     
     return NO;
