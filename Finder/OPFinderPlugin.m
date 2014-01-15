@@ -69,7 +69,7 @@
         
         for (id<XPPhotoCollection> collection in selectedItems)
         {
-            if (![collection hasLocalCopy])
+            if (![collection collectionType] != kPhotoCollectionLocal)
             {
                 visible = NO;
                 break;
@@ -93,7 +93,7 @@
     }];
     
     item.visibilityPredicate = [NSPredicate predicateWithBlock:^BOOL(id<XPPhoto> photo, NSDictionary *bindings) {
-        return ![photo hasLocalCopy];
+        return [[photo collection] collectionType] != kPhotoCollectionLocal;
     }];
     
     [[controller contextMenu] addItem:item];
