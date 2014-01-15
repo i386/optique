@@ -18,10 +18,12 @@
 
 -(void)mouseEntered:(NSEvent *)theEvent
 {
-    if (_peek && _historyPeekViewController.view && _historyPeekViewController.showable)
-    {
-        [_historyPeekViewController.popover showRelativeToRect:self.frame ofView:self preferredEdge:CGRectMaxYEdge];
-    }
+    [self performSelector:@selector(showPopover) withObject:nil afterDelay:0.8];
+}
+
+-(void)mouseExited:(NSEvent *)theEvent
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
 -(void)updateTrackingAreas
@@ -36,6 +38,14 @@
     NSTrackingAreaOptions options = NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways;
     _trackingArea = [[NSTrackingArea alloc] initWithRect:self.frame options:options owner:self userInfo:nil];
     [self addTrackingArea:_trackingArea];
+}
+
+-(void)showPopover
+{
+    if (_peek && _historyPeekViewController.view && _historyPeekViewController.showable)
+    {
+        [_historyPeekViewController.popover showRelativeToRect:self.frame ofView:self preferredEdge:CGRectMaxYEdge];
+    }
 }
 
 @end
