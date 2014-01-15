@@ -389,13 +389,6 @@
 
 - (BOOL)gridView:(OEGridView *)gridView acceptDrop:(id<NSDraggingInfo>)sender
 {
-//    NSEvent *event = [NSApp currentEvent];
-//    
-//    NSPoint pointInView = [_gridView convertPoint:[event locationInWindow] fromView:nil];
-//    NSUInteger index = [_gridView indexForCellAtPoint:pointInView];
-//    
-//    NSLog(@"Index of item: %lu %@", (unsigned long)index, event);
-    
     NSPasteboard *pboard = [sender draggingPasteboard];
     
     if ( [[pboard types] containsObject:NSFilenamesPboardType])
