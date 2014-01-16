@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A476u" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4457.6"/>
+        <deployment defaultVersion="1090" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OPPhotoViewController">
@@ -45,33 +45,9 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>
+            <connections>
+                <outlet property="delegate" destination="-2" id="byi-oM-BEZ"/>
+            </connections>
         </menu>
     </objects>
-    <classes>
-        <class className="NSPageController" superclassName="NSViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSPageController.h"/>
-            <relationships>
-                <relationship kind="action" name="navigateBack:"/>
-                <relationship kind="action" name="navigateForward:"/>
-                <relationship kind="action" name="takeSelectedIndexFrom:"/>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-        <class className="OPNavigationViewController" superclassName="NSViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPNavigationViewController.h"/>
-        </class>
-        <class className="OPPhotoView" superclassName="NSView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPPhotoView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="controller" candidateClass="OPPhotoViewController"/>
-            </relationships>
-        </class>
-        <class className="OPPhotoViewController" superclassName="OPNavigationViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OPPhotoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contextMenu" candidateClass="NSMenu"/>
-                <relationship kind="outlet" name="pageController" candidateClass="NSPageController"/>
-            </relationships>
-        </class>
-    </classes>
 </document>

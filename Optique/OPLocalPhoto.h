@@ -15,7 +15,8 @@
 @property (strong, readonly) NSDate *_created;
 @property (strong, readonly) NSURL *path;
 @property (weak, readonly) id<XPPhotoCollection> collection;
+@property (assign) XPPhotoType type;
 
--(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(id<XPPhotoCollection>)collection;
+-(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(id<XPPhotoCollection>)collection type:(XPPhotoType)type;
 
 @end

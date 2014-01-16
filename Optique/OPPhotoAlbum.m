@@ -177,9 +177,11 @@ typedef void (^XPPhotoSearch)(id, BOOL*);
             
             BOOL shouldStop = NO;
             OPLocalPhoto *photo;
-            if (UTTypeConformsTo(fileUTI, kUTTypeImage))
+            
+            XPPhotoType type = XPPhotoTypeFromUTICFString(fileUTI);
+            if (type != XPPhotoTypeUnknown)
             {
-                photo = [[OPLocalPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self];
+                photo = [[OPLocalPhoto alloc] initWithTitle:[filePath lastPathComponent] path:url album:self type:type];
                 block(photo, &shouldStop);
             }
             

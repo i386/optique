@@ -11,6 +11,19 @@
 
 @protocol XPPhotoCollection;
 
+typedef NS_ENUM(NSUInteger, XPPhotoType) {
+    XPPhotoTypeUnknown,
+    XPPhotoTypePhoto,
+    XPPhotoTypeVideo
+};
+
+/**
+ Converts UTI type to XPPhotoType.
+ */
+XPPhotoType XPPhotoTypeFromUTICFString(CFStringRef fileUTI);
+
+XPPhotoType XPPhotoTypeFromUTINSString(NSString *fileUTI);
+
 @protocol XPPhoto<XPItem>
 
 /**
@@ -43,6 +56,11 @@
  URL exits on local file system
  */
 -(BOOL)hasLocalCopy;
+
+/**
+ Type of item
+ */
+-(XPPhotoType)type;
 
 @optional
 

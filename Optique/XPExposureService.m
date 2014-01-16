@@ -7,6 +7,7 @@
 //
 
 #import "XPExposureService.h"
+#import "XPMenuItem.h"
 #import <BlocksKit/BlocksKit.h>
 
 @implementation XPExposureService
@@ -98,6 +99,28 @@
 {
     [[XPExposureService respondsToPhotoViewController] each:^(id<XPPlugin> sender) {
         [sender photoManager:photoManager photoController:controller];
+    }];
+}
+
++(void)menuVisiblity:(NSMenu *)menu items:(NSArray *)items
+{
+    [[menu itemArray] each:^(id sender) {
+        if ([sender isKindOfClass:[XPMenuItem class]])
+        {
+            XPMenuItem *item = (XPMenuItem*)sender;
+            [item setHidden:![item.visibilityPredicate evaluateWithObject:items]];
+        }
+    }];
+}
+
++(void)menuVisiblity:(NSMenu *)menu item:(id)item
+{
+    [[menu itemArray] each:^(id sender) {
+        if ([sender isKindOfClass:[XPMenuItem class]])
+        {
+            XPMenuItem *item = (XPMenuItem*)sender;
+            [item setHidden:[item.visibilityPredicate evaluateWithObject:item]];
+        }
     }];
 }
 

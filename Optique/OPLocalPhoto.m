@@ -13,7 +13,7 @@
 
 @implementation OPLocalPhoto
 
--(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(id<XPPhotoCollection>)collection
+-(id)initWithTitle:(NSString *)title path:(NSURL *)path album:(id<XPPhotoCollection>)collection type:(XPPhotoType)type
 {
     self = [super init];
     if (self)
@@ -21,6 +21,7 @@
         _title = title;
         _path = path;
         _collection = collection;
+        _type = type;
     }
     return self;
 }

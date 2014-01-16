@@ -186,4 +186,9 @@
     return YES;
 }
 
+-(void)menuNeedsUpdate:(NSMenu *)menu
+{
+    [XPExposureService menuVisiblity:self.contextMenu item:_visiblePhoto];
+}
+
 @end

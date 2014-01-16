@@ -32,6 +32,10 @@
 
 +(void)photoManager:(XPPhotoManager*)photoManager photoController:(id<XPPhotoController>)controller;
 
++(void)menuVisiblity:(NSMenu*)menu items:(NSArray*)items;
+
++(void)menuVisiblity:(NSMenu*)menu item:(id)item;
+
 +(NSSet*)photoCollectionProviders;
 
 +(NSArray*)debugMenuItems;

@@ -85,8 +85,12 @@
     NSMutableOrderedSet *newPhotos = [NSMutableOrderedSet orderedSet];
     for (ICCameraFile *cameraFile in self.device.orderedMediaFiles)
     {
-        OPCameraPhoto *photo = [[OPCameraPhoto alloc] initWithCameraFile:cameraFile collection:self];
-        [newPhotos addObject:photo];
+        XPPhotoType type = XPPhotoTypeFromUTINSString(cameraFile.UTI);
+        if (type != XPPhotoTypeUnknown)
+        {
+            OPCameraPhoto *photo = [[OPCameraPhoto alloc] initWithCameraFile:cameraFile collection:self type:type];
+            [newPhotos addObject:photo];
+        }
     }
     _allPhotos = newPhotos;
 }
@@ -175,19 +179,23 @@
         _batchTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(collectionUpdated:) userInfo:nil repeats:YES];
     }
     
-    OPCameraPhoto *photo = [[OPCameraPhoto alloc] initWithCameraFile:(ICCameraFile*)item collection:self];
-    [_allPhotos addObject:photo];
-    
-    CGImageRef thumbnail = item.largeThumbnailIfAvailable;
-    if (!thumbnail)
+    XPPhotoType type = XPPhotoTypeFromUTINSString(item.UTI);
+    if (type != XPPhotoTypeUnknown)
     {
-        thumbnail = item.thumbnailIfAvailable;
+        OPCameraPhoto *photo = [[OPCameraPhoto alloc] initWithCameraFile:(ICCameraFile*)item collection:self type:type];
+        [_allPhotos addObject:photo];
+        
+        CGImageRef thumbnail = item.largeThumbnailIfAvailable;
+        if (!thumbnail)
+        {
+            thumbnail = item.thumbnailIfAvailable;
+        }
+        
+        NSSize size = NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail));
+        NSImage *image = [[NSImage alloc] initWithCGImage:thumbnail size:size];
+        
+        [_thumbnails setObject:image forKey:item.name];
     }
-    
-    NSSize size = NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail));
-    NSImage *image = [[NSImage alloc] initWithCGImage:thumbnail size:size];
-    
-    [_thumbnails setObject:image forKey:item.name];
     
     //If all the thumbnails have been recieved, stop the timer.
     if (_thumbnailsRecieved == _device.mediaFiles.count)

@@ -69,7 +69,7 @@
         
         for (id<XPPhotoCollection> collection in selectedItems)
         {
-            if (![collection collectionType] != kPhotoCollectionLocal)
+            if ([collection collectionType] != kPhotoCollectionLocal)
             {
                 visible = NO;
                 break;

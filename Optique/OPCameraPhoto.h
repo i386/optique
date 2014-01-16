@@ -15,8 +15,9 @@
 @property (strong) ICCameraFile *cameraFile;
 @property (weak) id<XPPhotoCollection> collection;
 @property (strong) NSURL *path;
+@property (assign) XPPhotoType type;
 
--(id)initWithCameraFile:(ICCameraFile*)cameraFile collection:(id<XPPhotoCollection>)collection;
+-(id)initWithCameraFile:(ICCameraFile*)cameraFile collection:(id<XPPhotoCollection>)collection type:(XPPhotoType)type;
 
 -(NSImage*)thumbnail;
 

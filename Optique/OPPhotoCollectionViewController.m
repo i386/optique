@@ -304,6 +304,8 @@
             [_moveToAlbumItem.submenu addItem:item];
         }
     }];
+    
+    [XPExposureService menuVisiblity:_contextMenu items:[collections allObjects]];
 }
     
 -(void)moveToCollection:(NSMenuItem*)item

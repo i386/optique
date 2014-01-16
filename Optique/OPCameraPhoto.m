@@ -19,7 +19,7 @@
 
 @implementation OPCameraPhoto
 
--(id)initWithCameraFile:(ICCameraFile *)cameraFile collection:(id<XPPhotoCollection>)collection
+-(id)initWithCameraFile:(ICCameraFile *)cameraFile collection:(id<XPPhotoCollection>)collection type:(XPPhotoType)type
 {
     self = [super init];
     if (self)
@@ -27,6 +27,7 @@
         _cameraFile = cameraFile;
         _collection = collection;
         _fileDownloadRequested = NO;
+        _type = type;
     }
     return self;
 }

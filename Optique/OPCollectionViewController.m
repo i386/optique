@@ -165,6 +165,8 @@
         [_deleteAlbumMenuItem setHidden:YES];
         [_renameAlbumMenuItem setHidden:YES];
     }
+    
+    [XPExposureService menuVisiblity:_albumItemContextMenu items:collections];
 }
 
 -(void)deleteSelected
