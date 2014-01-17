@@ -8,11 +8,11 @@
 
 #import "OPMainWindowController.h"
 #import "OPNavigationController.h"
-#import "OPPhotoCollectionViewController.h"
+#import "OPItemCollectionViewController.h"
 #import "OPCameraCollectionViewController.h"
 #import "OPNavigationViewController.h"
 #import "OPToolbarController.h"
-#import "OPPhotoViewController.h"
+#import "OPPItemViewController.h"
 #import "OPNewAlbumPanelViewController.h"
 #import "NSWindow+FullScreen.h"
 
@@ -32,12 +32,12 @@
 
 @implementation OPMainWindowController
 
--(id)initWithPhotoManager:(XPPhotoManager *)photoManager
+-(id)initWithCollectionManager:(XPCollectionManager *)collectionManager
 {
     self = [super init];
     if (self)
     {
-        _photoManager = photoManager;
+        _collectionManager = collectionManager;
     }
     return self;
 }
@@ -66,20 +66,20 @@
 {
     [super windowDidLoad];
     
-    _albumViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager
+    _albumViewController = [[OPCollectionViewController alloc] initWithCollectionManager:_collectionManager
                                                                               title:@"Albums"
                                                                        emptyMessage:@"Drop folders or photos here to add or create new albums"
                                                                                icon:[NSImage imageNamed:@"picture"]
-                                                                collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject collectionType] == kPhotoCollectionLocal || [evaluatedObject collectionType] == kPhotoCollectionOther;
+                                                                collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPItemCollection> evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject collectionType] == XPItemCollectionLocal || [evaluatedObject collectionType] == XPItemCollectionOther;
     }]];
     
-    _cameraViewController = [[OPCameraCollectionViewController alloc] initWithPhotoManager:_photoManager
+    _cameraViewController = [[OPCameraCollectionViewController alloc] initWithCollectionManager:_collectionManager
                                                                                title:@"Cameras"
                                                                         emptyMessage:@"There are no cameras connected"
                                                                                 icon:[NSImage imageNamed:@"camera"]
-                                                                 collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject collectionType] == kPhotoCollectionCamera;
+                                                                 collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPItemCollection> evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject collectionType] == XPItemCollectionCamera;
     }]];
     
     [self addNavigationController:_albumViewController];
@@ -175,12 +175,12 @@
     else
     {
         NSString *title = [NSString stringWithFormat:@"Search for '%@'", value];
-        _searchViewController = [[OPCollectionViewController alloc] initWithPhotoManager:_photoManager
+        _searchViewController = [[OPCollectionViewController alloc] initWithCollectionManager:_collectionManager
                                                                                    title:title
                                                                             emptyMessage:@"There were no matches"
                                                                                     icon:[NSImage imageNamed:@"search"]
-                                                                     collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPhotoCollection> evaluatedObject, NSDictionary *bindings) {
-            return ([evaluatedObject collectionType] == kPhotoCollectionLocal || [evaluatedObject collectionType] == kPhotoCollectionOther) && [[NSPredicate predicateWithFormat:@"self.title contains[cd] %@", value] evaluateWithObject:evaluatedObject];
+                                                                     collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPItemCollection> evaluatedObject, NSDictionary *bindings) {
+            return ([evaluatedObject collectionType] == XPItemCollectionLocal || [evaluatedObject collectionType] == XPItemCollectionOther) && [[NSPredicate predicateWithFormat:@"self.title contains[cd] %@", value] evaluateWithObject:evaluatedObject];
         }]];
         [self addNavigationController:_searchViewController];
     }
@@ -277,7 +277,7 @@
 
 - (IBAction)newAlbum:(id)sender
 {
-    OPNewAlbumPanelViewController *controller = [[OPNewAlbumPanelViewController alloc] initWithPhotoManager:_photoManager sidebarController:self];
+    OPNewAlbumPanelViewController *controller = [[OPNewAlbumPanelViewController alloc] initWithCollectionManager:_collectionManager sidebarController:self];
     [self showSidebarWithViewController:controller];
 }
 

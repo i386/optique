@@ -14,13 +14,13 @@
 
 @interface OPMainWindowController : NSWindowController<NSWindowDelegate, OPWindowSidebarController, NSSplitViewDelegate>
 
-@property (weak, readonly) XPPhotoManager *photoManager;
+@property (weak, readonly) XPCollectionManager *collectionManager;
 @property (weak, readwrite) IBOutlet OPToolbarController *toolbarViewController;
 @property (weak) IBOutlet OPSplitView *splitView;
 @property (weak) IBOutlet NSView *leftSplitView;
 @property (weak) IBOutlet NSView *rightSplitView;
 
--initWithPhotoManager:(XPPhotoManager*)photoManager;
+-initWithCollectionManager:(XPCollectionManager*)collectionManager;
 
 -(void)goBack;
 

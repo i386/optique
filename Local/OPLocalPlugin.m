@@ -7,69 +7,69 @@
 //
 
 #import "OPLocalPlugin.h"
-#import "OPPhotoAlbum.h"
+#import "OPLocalCollection.h"
 
 @implementation OPLocalPlugin
 
 -(void)pluginDidLoad:(NSDictionary *)userInfo
 {
-    _photoCollections = [NSMutableSet set];
+    _collections = [NSMutableSet set];
 }
 
 -(void)pluginWillUnload:(NSDictionary *)userInfo
 {
-    [_photoCollections removeAllObjects];
+    [_collections removeAllObjects];
 }
 
--(void)photoManagerWasCreated:(XPPhotoManager *)photoManager
+-(void)collectionManagerWasCreated:(XPCollectionManager *)collectionManager
 {
-    if (_albumScanner)
+    if (_scanner)
     {
-        [_albumScanner stopScan];
+        [_scanner stopScan];
     }
     
-    _photomanager = photoManager;
-    _albumScanner = [[OPAlbumScanner alloc] initWithPhotoManager:_photomanager plugin:self];
-    [_albumScanner startScan];
+    _collectionManager = collectionManager;
+    _scanner = [[OPCollectionScanner alloc] initWithCollectionManager:_collectionManager plugin:self];
+    [_scanner startScan];
 }
 
--(id<XPPhotoCollection>)createCollectionWithTitle:(NSString *)title path:(NSURL *)path
+-(id<XPItemCollection>)createCollectionWithTitle:(NSString *)title path:(NSURL *)path
 {
-    return [[OPPhotoAlbum alloc] initWithTitle:title path:path photoManager:_photomanager];
+    return [[OPLocalCollection alloc] initWithTitle:title path:path collectionManager:_collectionManager];
 }
 
 -(void)didAddAlbums:(NSArray *)albums
 {
-    NSMutableSet *albumsToRemove = [NSMutableSet setWithSet:self.photoCollections];
+    NSMutableSet *albumsToRemove = [NSMutableSet setWithSet:self.collections];
     [albumsToRemove minusSet:[NSMutableSet setWithArray:albums]];
     
-    for (OPPhotoAlbum *album in albumsToRemove)
+    for (OPLocalCollection *album in albumsToRemove)
     {
         [self didRemoveAlbum:album];
     }
     
-    for (OPPhotoAlbum *album in albums)
+    for (OPLocalCollection *album in albums)
     {
         [self didAddAlbum:album];
     }
 }
 
--(void)didAddAlbum:(OPPhotoAlbum *)album
+-(void)didAddAlbum:(OPLocalCollection *)album
 {
-    [_photoCollections addObject:album];
-    [_delegate didAddPhotoCollection:album];
+    [_collections addObject:album];
+    [_delegate didAddItemCollection:album];
 }
 
--(void)didRemoveAlbum:(OPPhotoAlbum *)album
+-(void)didRemoveAlbum:(OPLocalCollection *)album
 {
-    [_photoCollections removeObject:album];
-    [_delegate didRemovePhotoCollection:album];
+    [_collections removeObject:album];
+    [_delegate didRemoveItemCollection:album];
 }
 
 -(NSArray *)debugMenuItems
 {
     XPMenuItem *clearCacheItem = [[XPMenuItem alloc] initWithTitle:@"Rescan" keyEquivalent:@"" block:^(NSMenuItem *sender) {
-        [_albumScanner startScan];
+        [_scanner startScan];
     }];
     return @[clearCacheItem];
 }

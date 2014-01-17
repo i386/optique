@@ -7,12 +7,12 @@
 //
 
 #import "OPCamera.h"
-#import "OPCameraPhoto.h"
+#import "OPCameraItem.h"
 #import "OPCameraService.h"
 #import "ICCameraDevice+OrderedMediaFiles.h"
 
 @interface OPCamera() {
-    NSMutableOrderedSet *_allPhotos;
+    NSMutableOrderedSet *_allItems;
     NSMutableDictionary *_thumbnails;
     NSTimer *_batchTimer;
     NSUInteger _thumbnailsRecieved;
@@ -22,14 +22,14 @@
 
 @implementation OPCamera
 
--(id)initWithDevice:(ICCameraDevice *)device photoManager:(XPPhotoManager *)photoManager service:(OPCameraService *)service
+-(id)initWithDevice:(ICCameraDevice *)device collectionManager:(XPCollectionManager *)collectionManager service:(OPCameraService *)service
 {
     self = [super init];
     if (self)
     {
-        _allPhotos = [[NSMutableOrderedSet alloc] init];
+        _allItems = [[NSMutableOrderedSet alloc] init];
         _thumbnails = [NSMutableDictionary dictionary];
-        _photoManager = photoManager;
+        _collectionManager = collectionManager;
         _device = device;
         _device.delegate = self;
         _thumbnailsRecieved = 0;
@@ -44,28 +44,28 @@
     return _device.name;
 }
 
--(NSOrderedSet *)allPhotos
+-(NSOrderedSet *)allItems
 {
-    return _allPhotos;
+    return _allItems;
 }
 
--(NSArray *)photosForIndexSet:(NSIndexSet *)indexSet
+-(NSArray *)itemsAtIndexes:(NSIndexSet *)indexSet
 {
-    NSMutableArray *photos = [NSMutableArray array];
+    NSMutableArray *items = [NSMutableArray array];
     
-    [self.allPhotos enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+    [self.allItems enumerateObjectsAtIndexes:indexSet options:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop)
      {
-         [photos addObject:obj];
+         [items addObject:obj];
      }];
     
-    return photos;
+    return items;
 }
 
--(id<XPPhoto>)coverPhoto
+-(id<XPItem>)coverItem
 {
-    if (_allPhotos.count > 0)
+    if (_allItems.count > 0)
     {
-        return _allPhotos[0];
+        return _allItems[0];
     }
     return nil;
 }
@@ -82,22 +82,22 @@
 
 -(void)reload
 {
-    NSMutableOrderedSet *newPhotos = [NSMutableOrderedSet orderedSet];
+    NSMutableOrderedSet *newItems = [NSMutableOrderedSet orderedSet];
     for (ICCameraFile *cameraFile in self.device.orderedMediaFiles)
     {
-        XPPhotoType type = XPPhotoTypeFromUTINSString(cameraFile.UTI);
-        if (type != XPPhotoTypeUnknown)
+        XPItemType type = XPItemTypeFromUTINSString(cameraFile.UTI);
+        if (type != XPItemTypeUnknown)
         {
-            OPCameraPhoto *photo = [[OPCameraPhoto alloc] initWithCameraFile:cameraFile collection:self type:type];
-            [newPhotos addObject:photo];
+            OPCameraItem *item = [[OPCameraItem alloc] initWithCameraFile:cameraFile collection:self type:type];
+            [newItems addObject:item];
         }
     }
-    _allPhotos = newPhotos;
+    _allItems = newItems;
 }
 
--(XPPhotoCollectionType)collectionType
+-(XPItemCollectionType)collectionType
 {
-    return kPhotoCollectionCamera;
+    return XPItemCollectionCamera;
 }
 
 -(BOOL)hasLocalCopy
@@ -105,9 +105,9 @@
     return NO;
 }
 
--(void)deletePhoto:(id<XPPhoto>)photo withCompletion:(XPCompletionBlock)completionBlock
+-(void)deletePhoto:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock
 {
-    OPCameraPhoto *cameraPhoto = (OPCameraPhoto*)photo;
+    OPCameraItem *cameraPhoto = (OPCameraItem*)item;
     [cameraPhoto.cameraFile.device requestDeleteFiles:@[cameraPhoto.cameraFile]];
     if (completionBlock)
     {
@@ -132,7 +132,7 @@
         [_thumbnails removeObjectForKey:cameraFile.name];
     }
     
-    [self.photoManager collectionUpdated:self reload:YES];
+    [self.collectionManager collectionUpdated:self reload:YES];
 }
 
 - (void)deviceDidBecomeReadyWithCompleteContentCatalog:(ICDevice*)device
@@ -167,7 +167,7 @@
 
 - (void)collectionUpdated:(NSDictionary*)userInfo
 {
-    [_photoManager collectionUpdated:self reload:YES];
+    [_collectionManager collectionUpdated:self reload:YES];
 }
 
 - (void)cameraDevice:(ICCameraDevice*)device didReceiveThumbnailForItem:(ICCameraItem*)item
@@ -179,11 +179,11 @@
         _batchTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(collectionUpdated:) userInfo:nil repeats:YES];
     }
     
-    XPPhotoType type = XPPhotoTypeFromUTINSString(item.UTI);
-    if (type != XPPhotoTypeUnknown)
+    XPItemType type = XPItemTypeFromUTINSString(item.UTI);
+    if (type != XPItemTypeUnknown)
     {
-        OPCameraPhoto *photo = [[OPCameraPhoto alloc] initWithCameraFile:(ICCameraFile*)item collection:self type:type];
-        [_allPhotos addObject:photo];
+        OPCameraItem *cameraItem = [[OPCameraItem alloc] initWithCameraFile:(ICCameraFile*)item collection:self type:type];
+        [_allItems addObject:cameraItem];
         
         CGImageRef thumbnail = item.largeThumbnailIfAvailable;
         if (!thumbnail)

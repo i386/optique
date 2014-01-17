@@ -26,7 +26,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="319"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view id="wbq-YD-BL9" customClass="OPPhotoGridView">
+                            <view id="wbq-YD-BL9" customClass="OPItemGridView">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="319"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>

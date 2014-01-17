@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #import "XPPlugin.h"
-#import "XPPhotoCollectionProvider.h"
-#import "XPPhotoManager.h"
+#import "XPItemCollectionProvider.h"
+#import "XPCollectionManager.h"
 
 @interface XPExposureService : NSObject
 
@@ -18,28 +18,28 @@
 
 +(id<XPPlugin>)pluginForBundle:(NSString*)bundleId;
 
-+(id<XPPhotoCollectionProvider>)photoCollectionProviderForBundle:(NSString*)bundleId;
++(id<XPItemCollectionProvider>)itemCollectionProviderForBundle:(NSString*)bundleId;
 
 +(void)loadPlugins:(NSDictionary*)userInfo;
 
 +(void)unloadPlugins:(NSDictionary*)userInfo;
 
-+(void)photoManagerWasCreated:(XPPhotoManager*)photoManager;
++(void)collectionManagerWasCreated:(XPCollectionManager*)collectionManager;
 
-+(void)photoManager:(XPPhotoManager*)photoManager collectionViewController:(id<XPCollectionViewController>)controller;
++(void)collectionManager:(XPCollectionManager*)collectionManager collectionViewController:(id<XPCollectionViewController>)controller;
 
-+(void)photoManager:(XPPhotoManager*)photoManager photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller;
++(void)collectionManager:(XPCollectionManager*)collectionManager itemCollectionViewController:(id<XPItemCollectionViewController>)controller;
 
-+(void)photoManager:(XPPhotoManager*)photoManager photoController:(id<XPPhotoController>)controller;
++(void)collectionManager:(XPCollectionManager*)collectionManager itemController:(id<XPItemController>)controller;
 
 +(void)menuVisiblity:(NSMenu*)menu items:(NSArray*)items;
 
 +(void)menuVisiblity:(NSMenu*)menu item:(id)item;
 
-+(NSSet*)photoCollectionProviders;
++(NSSet*)itemCollectionProviders;
 
 +(NSArray*)debugMenuItems;
 
-+(id<XPPhotoCollection>)createCollectionWithTitle:(NSString*)title path:(NSURL*)path;
++(id<XPItemCollection>)collectionWithTitle:(NSString*)title path:(NSURL*)path;
 
 @end

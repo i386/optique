@@ -14,12 +14,12 @@
 
 @implementation OPDeleteAlbumSheetController
 
--(id)initWithPhotoAlbums:(NSArray *)albums photoManager:(XPPhotoManager *)photoManager parentController:(NSViewController *)viewController
+-(id)initWithPhotoAlbums:(NSArray *)albums collectionManager:(XPCollectionManager *)collectionManager parentController:(NSViewController *)viewController
 {
     self = [super initWithWindowNibName:@"OPDeleteAlbumSheetController"];
     if (self) {
         _albums = albums;
-        _photoManager = photoManager;
+        _collectionManager = collectionManager;
         _viewController = viewController;
     }
     
@@ -38,7 +38,7 @@
     }
     else
     {
-        id<XPPhotoCollection> album = [_albums lastObject];
+        id<XPItemCollection> album = [_albums lastObject];
         message = [NSString stringWithFormat:@"Deleting album '%@'...", album.title];
     }
     
@@ -50,7 +50,7 @@
     [self performBlockInBackground:^{
         [_albums each:^(id sender) {
             NSError *error;
-            [_photoManager deleteAlbum:sender error:&error];
+            [_collectionManager deleteAlbum:sender error:&error];
             
             if (error)
             {

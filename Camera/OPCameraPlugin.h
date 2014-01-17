@@ -11,11 +11,11 @@
 
 #import "OPCameraService.h"
 
-@interface OPCameraPlugin : NSObject<XPPlugin, XPPhotoCollectionProvider>
+@interface OPCameraPlugin : NSObject<XPPlugin, XPItemCollectionProvider>
 
 @property (strong, readonly) OPCameraService *cameraService;
-@property (weak) id<XPPhotoCollectionProviderDelegate> delegate;
-@property (strong, readonly) NSMutableSet *photoCollections;
+@property (weak) id<XPItemCollectionProviderDelegate> delegate;
+@property (strong, readonly) NSMutableSet *collections;
 @property (strong) XPBadgeLayer *badgeLayer;
 @property (strong) XPBadgeLayer *imageLayer;
 

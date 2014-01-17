@@ -8,7 +8,7 @@
 
 #import "OPImagePreviewService.h"
 #import "OPImageCache.h"
-#import "OPLocalPhoto.h"
+#import "OPLocalItem.h"
 
 #define fOPImagePreviewServiceLargeSize 25165824
 
@@ -49,16 +49,16 @@ static OPImagePreviewService *_defaultService;
     return self;
 }
 
--(NSImage *)previewImageWithPhoto:(id<XPPhoto>)photo loaded:(XPImageCompletionBlock)completionBlock
+-(NSImage *)previewImageWithItem:(id<XPItem>)item loaded:(XPImageCompletionBlock)completionBlock
 {
     NSImage __block *image;
-    if ([((id)photo) respondsToSelector:@selector(thumbnail)])
+    if ([((id)item) respondsToSelector:@selector(thumbnail)])
     {
-        image = photo.thumbnail;
+        image = item.thumbnail;
     }
-    else if ([((id)photo) respondsToSelector:@selector(url)])
+    else if ([((id)item) respondsToSelector:@selector(url)])
     {
-        image = [self previewImageAtURL:photo.url loaded:completionBlock];
+        image = [self previewImageAtURL:item.url loaded:completionBlock];
     }
     return image;
 }

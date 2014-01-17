@@ -11,11 +11,11 @@
 
 @interface OPNewAlbumSheetController : NSWindowController
 
-@property (readonly, strong) XPPhotoManager *photoManager;
+@property (readonly, strong) XPCollectionManager *collectionManager;
 @property (readonly, weak) OPNavigationController *navigationController;
 @property (weak) IBOutlet NSTextField *albumNameTextField;
 
--initWithPhotoManager:(XPPhotoManager*)photoManager navigationController:(OPNavigationController*)navigationController;
+-initWithCollectionManager:(XPCollectionManager*)collectionManager navigationController:(OPNavigationController*)navigationController;
 
 - (IBAction)createAlbum:(id)sender;
 - (IBAction)cancel:(id)sender;

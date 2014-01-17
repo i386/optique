@@ -9,19 +9,19 @@
 #import <Carbon/Carbon.h>
 #import "OPCollectionViewController.h"
 
-#import "OPPhotoCollectionViewController.h"
+#import "OPItemCollectionViewController.h"
 #import "OPRenameAlbumWindowController.h"
 #import "OPImagePreviewService.h"
 #import "OPDeleteAlbumSheetController.h"
 #import "OPGridViewCell.h"
 #import "NSColor+Optique.h"
-#import "OPLocalPhoto.h"
+#import "OPLocalItem.h"
 #import "OPPlaceHolderViewController.h"
 #import "NSURL+Renamer.h"
 
 @interface PhotoCollectionPasteboardWriting : NSObject<NSPasteboardWriting>
 
-@property (weak) id<XPPhotoCollection> collection;
+@property (weak) id<XPItemCollection> collection;
 
 @end
 
@@ -63,12 +63,12 @@
 
 @implementation OPCollectionViewController
 
--(id)initWithPhotoManager:(XPPhotoManager *)photoManager title:(NSString *)title emptyMessage:(NSString*)emptyMessage icon:(NSImage *)icon collectionPredicate:(NSPredicate *)predicate
+-(id)initWithCollectionManager:(XPCollectionManager *)collectionManager title:(NSString *)title emptyMessage:(NSString*)emptyMessage icon:(NSImage *)icon collectionPredicate:(NSPredicate *)predicate
 {
     self = [super initWithNibName:@"OPCollectionViewController" bundle:nil];
     if (self)
     {
-        _photoManager = photoManager;
+        _collectionManager = collectionManager;
         _viewTitle = title;
         _emptyMessage = emptyMessage;
         _predicate = predicate;
@@ -79,11 +79,11 @@
 
 -(void)awakeFromNib
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:XPPhotoManagerDidAddCollection object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:XPPhotoManagerDidDeleteCollection object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPPhotoManagerDidUpdateCollection object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumAdded:) name:XPCollectionManagerDidAddCollection object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDeleted:) name:XPCollectionManagerDidDeleteCollection object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPCollectionManagerDidUpdateCollection object:nil];
     
-    [XPExposureService photoManager:_photoManager collectionViewController:self];
+    [XPExposureService collectionManager:_collectionManager collectionViewController:self];
     
     [_headingLine setBorderWidth:2];
     [_headingLine setBorderColor:[NSColor colorWithCalibratedRed:0.83 green:0.83 blue:0.83 alpha:1.00]];
@@ -95,9 +95,9 @@
 
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidAddCollection object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidDeleteCollection object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPPhotoManagerDidUpdateCollection object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPCollectionManagerDidAddCollection object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPCollectionManagerDidDeleteCollection object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPCollectionManagerDidUpdateCollection object:nil];
 }
 
 -(void)loadView
@@ -129,21 +129,21 @@
 -(void)menuNeedsUpdate:(NSMenu *)menu
 {
     NSIndexSet *indexes = _gridView.indexesForSelectedCells;
-    NSArray *collections = [_photoManager allCollectionsForIndexSet:indexes];
+    NSArray *collections = [_collectionManager allCollectionsForIndexSet:indexes];
     
     //TODO: check menu for XPMenuItems and run predicate to hide
     
     __block BOOL allSelectedAreLocal = YES;
-    [collections each:^(id<XPPhotoCollection> sender) {
-        if (allSelectedAreLocal && [sender collectionType] != kPhotoCollectionLocal)
+    [collections each:^(id<XPItemCollection> sender) {
+        if (allSelectedAreLocal && [sender collectionType] != XPItemCollectionLocal)
         {
             allSelectedAreLocal = NO;
         }
     }];
     
     __block BOOL allSelectedAreNotLocal = YES;
-    [collections each:^(id<XPPhotoCollection> sender) {
-        if (allSelectedAreNotLocal && [sender collectionType] != kPhotoCollectionLocal)
+    [collections each:^(id<XPItemCollection> sender) {
+        if (allSelectedAreNotLocal && [sender collectionType] != XPItemCollectionLocal)
         {
             allSelectedAreNotLocal = NO;
         }
@@ -184,10 +184,10 @@
 - (IBAction)renameAlbum:(id)sender
 {
     NSUInteger index = [[_gridView selectionIndexes] lastIndex];
-    id<XPPhotoCollection> collection = _photoManager.allCollections[index];
+    id<XPItemCollection> collection = _collectionManager.allCollections[index];
     if (collection)
     {
-        _renameAlbumWindowController = [[OPRenameAlbumWindowController alloc] initWithPhotoManager:_photoManager collection:collection parentController:self];
+        _renameAlbumWindowController = [[OPRenameAlbumWindowController alloc] initWithCollectionManager:_collectionManager collection:collection parentController:self];
         
         [self.window beginSheet:_renameAlbumWindowController.window completionHandler:^(NSModalResponse returnCode) {
             NSLog(@"return code %ld", (long)returnCode);
@@ -197,7 +197,7 @@
 
 -(void)deleteAlbumsAtIndexes:(NSIndexSet*)indexes
 {
-    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithPhotoAlbums:[_photoManager allCollectionsForIndexSet:indexes] photoManager:_photoManager parentController:self];
+    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithPhotoAlbums:[_collectionManager allCollectionsForIndexSet:indexes] collectionManager:_collectionManager parentController:self];
     
     NSString *alertMessage;
     if (indexes.count > 1)
@@ -206,7 +206,7 @@
     }
     else
     {
-        id<XPPhotoCollection> album = [_deleteAlbumSheetController.albums lastObject];
+        id<XPItemCollection> album = [_deleteAlbumSheetController.albums lastObject];
         alertMessage = [NSString stringWithFormat:@"Do you want to delete '%@'?", album.title];
     }
     
@@ -236,7 +236,7 @@
 
 -(void)albumAdded:(NSNotification*)notification
 {
-    id<XPPhotoCollection> collection = [notification userInfo][@"collection"];
+    id<XPItemCollection> collection = [notification userInfo][@"collection"];
     if (collection)
     {
         [self performBlockOnMainThread:^{
@@ -264,9 +264,9 @@
 
 -(void)gridView:(OEGridView *)gridView doubleClickedCellForItemAtIndex:(NSUInteger)index
 {
-    NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_predicate];
-    id<XPPhotoCollection> collection = filteredCollections[index];
-    [self.controller pushViewController:[self viewForCollection:collection photoManager:_photoManager]];
+    NSArray *filteredCollections = [_collectionManager.allCollections filteredArrayUsingPredicate:_predicate];
+    id<XPItemCollection> collection = filteredCollections[index];
+    [self.controller pushViewController:[self viewForCollection:collection collectionManager:_collectionManager]];
 }
 
 -(BOOL)gridView:(OEGridView *)gridView keyDown:(NSEvent *)event
@@ -288,26 +288,26 @@
     return NO;
 }
 
--(OPNavigationViewController*)viewForCollection:(id<XPPhotoCollection>)collection photoManager:(XPPhotoManager*)photoManager
+-(OPNavigationViewController*)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager*)collectionManager
 {
-    return [[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:collection photoManager:photoManager];
+    return [[OPItemCollectionViewController alloc] initWithPhotoAlbum:collection collectionManager:collectionManager];
 }
 
 -(void)showCollectionWithTitle:(NSString *)title
 {
-    id collection = [[_photoManager.allCollections filteredArrayUsingPredicate:_predicate] match:^BOOL(id<XPPhotoCollection> obj) {
+    id collection = [[_collectionManager.allCollections filteredArrayUsingPredicate:_predicate] match:^BOOL(id<XPItemCollection> obj) {
         return [[obj title] isEqualToString:title];
     }];
     
     if (collection)
     {
-        [self.controller pushViewController:[self viewForCollection:collection photoManager:_photoManager]];
+        [self.controller pushViewController:[self viewForCollection:collection collectionManager:_collectionManager]];
     }
 }
 
 -(NSUInteger)numberOfItems
 {
-    return [_photoManager.allCollections filteredArrayUsingPredicate:_predicate].count;
+    return [_collectionManager.allCollections filteredArrayUsingPredicate:_predicate].count;
 }
 
 -(NSUInteger)numberOfItemsInGridView:(OEGridView *)gridView
@@ -322,48 +322,48 @@
 
 - (OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    OPGridViewCell *item = (OPGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
-    if (!item)
+    OPGridViewCell *cell = (OPGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
+    if (!cell)
     {
-        item = (OPGridViewCell *)[gridView dequeueReusableCell];
+        cell = (OPGridViewCell *)[gridView dequeueReusableCell];
     }
     
-    if (!item)
+    if (!cell)
     {
-        item = [[OPGridViewCell alloc] init];
+        cell = [[OPGridViewCell alloc] init];
     }
     
-    NSArray *filteredCollections = [_photoManager.allCollections filteredArrayUsingPredicate:_predicate];
-    id<XPPhotoCollection> collection = filteredCollections[index];
-    item.representedObject = collection;
-    item.title = collection.title;
-    item.view.toolTip = collection.title;
+    NSArray *filteredCollections = [_collectionManager.allCollections filteredArrayUsingPredicate:_predicate];
+    id<XPItemCollection> collection = filteredCollections[index];
+    cell.representedObject = collection;
+    cell.title = collection.title;
+    cell.view.toolTip = collection.title;
     
-    id<XPPhoto> coverPhoto = [collection coverPhoto];
-    if (coverPhoto)
+    id<XPItem> item = [collection coverItem];
+    if (item)
     {
-        OPGridViewCell * __weak weakItem = item;
+        OPGridViewCell * __weak weakCell = cell;
         
-        item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:coverPhoto loaded:^(NSImage *image) {
+        weakCell.image = [[OPImagePreviewService defaultService] previewImageWithItem:item loaded:^(NSImage *image) {
               [self performBlockOnMainThread:^{
-                   weakItem.image = image;
+                   weakCell.image = image;
                }];
           }];
     }
     else
     {
-        item.image = [NSImage imageNamed:@"empty-album"];
+        cell.image = [NSImage imageNamed:@"empty-album"];
     }
     
-    if (!item.badgeLayer)
+    if (!cell.badgeLayer)
     {
         //Get badge layer from exposure
-        for (id<XPPhotoCollectionProvider> provider in [XPExposureService photoCollectionProviders])
+        for (id<XPItemCollectionProvider> provider in [XPExposureService itemCollectionProviders])
         {
             if ([provider respondsToSelector:@selector(badgeLayerForCollection:)])
             {
-                item.badgeLayer = [provider badgeLayerForCollection:collection];
-                if (item.badgeLayer)
+                cell.badgeLayer = [provider badgeLayerForCollection:collection];
+                if (cell.badgeLayer)
                 {
                     break;
                 }
@@ -371,7 +371,7 @@
         }
     }
     
-    return item;
+    return cell;
 }
 
 -(NSView *)viewForNoItemsInGridView:(OEGridView *)gridView
@@ -401,7 +401,7 @@
         if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDir] && isDir)
         {
             NSString *fileName = [fileURL lastPathComponent];
-            NSURL *destURL = [_photoManager path];
+            NSURL *destURL = [_collectionManager path];
             destURL = [[destURL URLByAppendingPathComponent:fileName] URLWithUniqueNameIfExistsAtParent];
             
             NSError *error;
@@ -431,18 +431,18 @@
 -(id<NSPasteboardWriting>)gridView:(OEGridView *)gridView pasteboardWriterForIndex:(NSInteger)index
 {
     PhotoCollectionPasteboardWriting *photoCollectionPasteboardWriting = [[PhotoCollectionPasteboardWriting alloc] init];
-    photoCollectionPasteboardWriting.collection = [_photoManager.allCollections objectAtIndex:index];
+    photoCollectionPasteboardWriting.collection = [_collectionManager.allCollections objectAtIndex:index];
     return photoCollectionPasteboardWriting;
 }
 
 -(NSArray *)fileTypesForDraggingOperation:(OEGridView *)gridView
 {
     NSMutableSet *extensions = [NSMutableSet set];
-    for (id<XPPhotoCollection> collection in [_photoManager allCollectionsForIndexSet:_gridView.selectionIndexes])
+    for (id<XPItemCollection> collection in [_collectionManager allCollectionsForIndexSet:_gridView.selectionIndexes])
     {
-        for (id<XPPhoto> photo in [collection allPhotos])
+        for (id<XPItem> item in [collection allItems])
         {
-            [extensions addObject:[photo.url pathExtension]];
+            [extensions addObject:[item.url pathExtension]];
         }
     }
     return [extensions allObjects];
@@ -451,7 +451,7 @@
 -(NSArray *)namesOfPromisedFilesDroppedForGrid:(OEGridView *)gridView atDestination:(NSURL *)dropDestination
 {
     NSMutableArray *names = [NSMutableArray array];
-    for (id<XPPhotoCollection> collection in [_photoManager allCollectionsForIndexSet:_gridView.selectionIndexes])
+    for (id<XPItemCollection> collection in [_collectionManager allCollectionsForIndexSet:_gridView.selectionIndexes])
     {
         NSString *filename = [collection.path lastPathComponent];
         [names addObject:filename];
@@ -471,7 +471,7 @@
 
 -(NSArray *)collections
 {
-    return [_photoManager.allCollections filteredArrayUsingPredicate:_predicate];
+    return [_collectionManager.allCollections filteredArrayUsingPredicate:_predicate];
 }
 
 @end

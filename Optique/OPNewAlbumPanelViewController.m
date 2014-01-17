@@ -8,7 +8,7 @@
 
 #import "OPNewAlbumPanelViewController.h"
 #import "OPPlaceHolderViewController.h"
-#import "OPPhotoGridViewCell.h"
+#import "OPItemGridViewCell.h"
 #import "OPImagePreviewService.h"
 
 @interface OPNewAlbumPanelViewController ()
@@ -20,11 +20,11 @@
 
 @implementation OPNewAlbumPanelViewController
 
--(id)initWithPhotoManager:(XPPhotoManager *)photoManager sidebarController:(id<OPWindowSidebarController>)sidebarController
+-(id)initWithCollectionManager:(XPCollectionManager *)collectionManager sidebarController:(id<OPWindowSidebarController>)sidebarController
 {
     self = [super initWithNibName:@"OPNewAlbumPanelViewController" bundle:nil];
     if (self) {
-        _photoManager = photoManager;
+        _collectionManager = collectionManager;
         _sidebarController = sidebarController;
         _items = [[NSMutableArray alloc] init];
     }
@@ -72,11 +72,11 @@
 {
     NSString *albumName = [self albumName];
     NSError *error;
-    id<XPPhotoCollection> album = [_photoManager newAlbumWithName:albumName error:&error];
+    id<XPItemCollection> album = [_collectionManager newAlbumWithName:albumName error:&error];
     if (album)
     {
         [_items each:^(id sender) {
-            if ([sender conformsToProtocol:@protocol(XPPhoto)])
+            if ([sender conformsToProtocol:@protocol(XPItem)])
             {
                 [album addPhoto:sender withCompletion:nil];
             }
@@ -108,15 +108,15 @@
 
 -(OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    OPPhotoGridViewCell *item = (OPPhotoGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
+    OPItemGridViewCell *item = (OPItemGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
     if (!item)
     {
-        item = (OPPhotoGridViewCell *)[gridView dequeueReusableCell];
+        item = (OPItemGridViewCell *)[gridView dequeueReusableCell];
     }
     
     if (!item)
     {
-        item = [[OPPhotoGridViewCell alloc] init];
+        item = [[OPItemGridViewCell alloc] init];
     }
     
     if (_items.count > 0)
@@ -132,12 +132,12 @@
             //TODO: preview this
             item.image = [[NSImage alloc] initWithContentsOfURL:url];
         }
-        else if ([obj conformsToProtocol:@protocol(XPPhoto)])
+        else if ([obj conformsToProtocol:@protocol(XPItem)])
         {
-            OPPhotoGridViewCell * __weak weakItem = item;
-            id<XPPhoto> __weak weakPhoto = obj;
+            OPItemGridViewCell * __weak weakItem = item;
+            id<XPItem> __weak weakPhoto = obj;
             
-            item.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:(id<XPPhoto>)obj loaded:^(NSImage *image)
+            item.image = [[OPImagePreviewService defaultService] previewImageWithItem:(id<XPItem>)obj loaded:^(NSImage *image)
                           {
                               [self performBlockOnMainThread:^
                                {
@@ -153,11 +153,11 @@
             if (!item.badgeLayer)
             {
                 //Get badge layer from exposure
-                for (id<XPPhotoCollectionProvider> provider in [XPExposureService photoCollectionProviders])
+                for (id<XPItemCollectionProvider> provider in [XPExposureService itemCollectionProviders])
                 {
                     if ([provider respondsToSelector:@selector(badgeLayerForPhoto:)])
                     {
-                        item.badgeLayer = [provider badgeLayerForPhoto:(id<XPPhoto>)obj];
+                        item.badgeLayer = [provider badgeLayerForPhoto:(id<XPItem>)obj];
                         if (item.badgeLayer)
                         {
                             break;
@@ -214,17 +214,17 @@
             {
                 NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
                 
-                id<XPPhotoCollection> collection = [_photoManager.allCollections match:^BOOL(id<XPPhotoCollection> obj) {
+                id<XPItemCollection> collection = [_collectionManager.allCollections match:^BOOL(id<XPItemCollection> obj) {
                     return [[obj title] isEqualToString:dict[@"collection-title"]];
                 }];
                 
                 if (collection)
                 {
-                    id<XPPhoto> photo = [[collection allPhotos] match:^BOOL(id<XPPhoto> obj) {
+                    id<XPItem> item = [[collection allItems] match:^BOOL(id<XPItem> obj) {
                         return [[obj title] isEqualToString:dict[@"photo-title"]];
                     }];
                     
-                    [_items addObject:photo];
+                    [_items addObject:item];
                     reload = YES;
                 }
             }

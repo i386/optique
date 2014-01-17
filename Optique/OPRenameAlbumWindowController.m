@@ -16,12 +16,12 @@
 
 @implementation OPRenameAlbumWindowController
 
--(id)initWithPhotoManager:(XPPhotoManager *)photoManager collection:(id<XPPhotoCollection>)collection parentController:(NSViewController *)viewController
+-(id)initWithCollectionManager:(XPCollectionManager *)collectionManager collection:(id<XPItemCollection>)collection parentController:(NSViewController *)viewController
 {
     self = [super initWithWindowNibName:@"OPRenameAlbumWindowController"];
     if (self)
     {
-        _photoManager = photoManager;
+        _collectionManager = collectionManager;
         _collection = collection;
         _viewController = viewController;
     }
@@ -40,7 +40,7 @@
     if (![value isEqualToString:@""])
     {
         NSError *error;
-        [_photoManager renameAlbum:_collection to:value error:&error];
+        [_collectionManager renameAlbum:_collection to:value error:&error];
         
         [NSApp endSheet:self.window];
         [self.window close];

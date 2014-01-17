@@ -105,7 +105,7 @@
 
 - (IBAction)newAlbum:(id)sender
 {
-    OPNewAlbumPanelViewController *controller = [[OPNewAlbumPanelViewController alloc] initWithPhotoManager:_photoManager sidebarController:_mainWindowController];
+    OPNewAlbumPanelViewController *controller = [[OPNewAlbumPanelViewController alloc] initWithCollectionManager:_collectionManager sidebarController:_mainWindowController];
     [_mainWindowController showSidebarWithViewController:controller];
 }
 
@@ -118,8 +118,8 @@
         [_mainWindowController close];
     }
     
-    _photoManager = [[XPPhotoManager alloc] initWithPath:url];
-    [XPExposureService photoManagerWasCreated:_photoManager];
+    _collectionManager = [[XPCollectionManager alloc] initWithPath:url];
+    [XPExposureService collectionManagerWasCreated:_collectionManager];
     
     if (_mainWindowController)
     {
@@ -131,7 +131,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didExitFullscreen:) name:NSWindowDidExitFullScreenNotification object:_mainWindowController.window];
     
-    _mainWindowController = [[OPMainWindowController alloc] initWithPhotoManager:_photoManager];
+    _mainWindowController = [[OPMainWindowController alloc] initWithCollectionManager:_collectionManager];
     [_mainWindowController.window makeKeyAndOrderFront:self];
 }
 
@@ -162,7 +162,7 @@
 - (IBAction)debugClearCache:(id)sender
 {
     [[OPImageCache sharedPreviewCache] clearCache];
-    [self picturesAtDirectory:_photoManager.path];
+    [self picturesAtDirectory:_collectionManager.path];
 }
 
 - (IBAction)showAlbums:(id)sender

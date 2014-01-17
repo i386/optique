@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 #import "XPCollectionViewController.h"
-#import "XPPhotoCollectionViewController.h"
-#import "XPPhotoController.h"
-#import "XPPhotoManager.h"
+#import "XPItemCollectionViewController.h"
+#import "XPItemController.h"
+#import "XPCollectionManager.h"
 
 @protocol XPPlugin <NSObject>
 
@@ -29,25 +29,25 @@
 -(void)pluginWillUnload:(NSDictionary*)userInfo;
 
 /**
- Called when a photo manager is created. 
- Any references to the old photo manager *must* be immediately dereferenced.
+ Called when a collection manager is created.
+ Any references to the old collection manager *must* be immediately dereferenced.
  */
--(void)photoManagerWasCreated:(XPPhotoManager*)photoManager;
+-(void)collectionManagerWasCreated:(XPCollectionManager*)collectionManager;
 
 /**
  Called whenever the collection view is loaded
  */
--(void)photoManager:(XPPhotoManager*)photoManager collectionViewController:(id<XPCollectionViewController>)controller;
+-(void)collectionManager:(XPCollectionManager*)collectionManager collectionViewController:(id<XPCollectionViewController>)controller;
 
 /**
- Called whenever the photo collection view is called
+ Called whenever the item collection view is called
  */
--(void)photoManager:(XPPhotoManager*)photoManager photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller;
+-(void)collectionManager:(XPCollectionManager*)collectionManager itemCollectionViewController:(id<XPItemCollectionViewController>)controller;
 
 /**
- Called whenever the photo view is loaded
+ Called whenever the item view is loaded
  */
--(void)photoManager:(XPPhotoManager*)photoManager photoController:(id<XPPhotoController>)controller;
+-(void)collectionManager:(XPCollectionManager*)collectionManager itemController:(id<XPItemController>)controller;
 
 /**
  NSMenuItems to add to the 'Debug' menu to make plugin development easier

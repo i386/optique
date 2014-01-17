@@ -15,9 +15,9 @@
 
 @implementation OPCameraCollectionViewController
 
--(OPNavigationViewController *)viewForCollection:(id<XPPhotoCollection>)collection photoManager:(XPPhotoManager *)photoManager
+-(OPNavigationViewController *)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager *)collectionManager
 {
-    return [[OPCameraPhotoCollectionViewController alloc] initWithPhotoAlbum:collection photoManager:photoManager];
+    return [[OPCameraPhotoCollectionViewController alloc] initWithPhotoAlbum:collection collectionManager:collectionManager];
 }
 
 @end

@@ -10,44 +10,44 @@
 
 @implementation OPTwitterPlugin
 
--(void)photoManager:(XPPhotoManager *)photoManager photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller
+-(void)collectionManager:(XPCollectionManager *)collectionManager itemCollectionViewController:(id<XPItemCollectionViewController>)controller
 {
     NSSharingService * service = [NSSharingService sharingServiceNamed:NSSharingServiceNamePostOnTwitter];
     
-    XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:service.title keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
-        id<XPPhotoCollection> collection = controller.visibleCollection;
+    XPMenuItem *menuItem = [[XPMenuItem alloc] initWithTitle:service.title keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
+        id<XPItemCollection> collection = controller.visibleCollection;
         
         NSIndexSet *indexes = [controller selectedItems];
         
-        NSMutableArray *photos = [NSMutableArray array];
-        for (id<XPPhoto> photo in [collection photosForIndexSet:indexes])
+        NSMutableArray *items = [NSMutableArray array];
+        for (id<XPItem> item in [collection itemsAtIndexes:indexes])
         {
-            NSImage *image = [[NSImage alloc] initWithContentsOfURL:photo.url];
-            [photos addObject:image];
+            NSImage *image = [[NSImage alloc] initWithContentsOfURL:item.url];
+            [items addObject:image];
         }
         
-        [service performWithItems:photos];
+        [service performWithItems:items];
     }];
     
-    item.image = service.image;
+    menuItem.image = service.image;
     
-    [[controller sharingMenuItems] addObject:item];
+    [[controller sharingMenuItems] addObject:menuItem];
 }
 
--(void)photoManager:(XPPhotoManager *)photoManager photoController:(id<XPPhotoController>)controller
+-(void)collectionManager:(XPCollectionManager *)collectionManager itemController:(id<XPItemController>)controller
 {
     NSSharingService * service = [NSSharingService sharingServiceNamed:NSSharingServiceNamePostOnTwitter];
     
-    XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:service.title keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
-        id<XPPhoto> photo = controller.visiblePhoto;
+    XPMenuItem *menuItem = [[XPMenuItem alloc] initWithTitle:service.title keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
+        id<XPItem> item = controller.item;
         
-        NSImage *image = [[NSImage alloc] initWithContentsOfURL:photo.url];
+        NSImage *image = [[NSImage alloc] initWithContentsOfURL:item.url];
         [service performWithItems:@[image]];
     }];
     
-    item.image = service.image;
+    menuItem.image = service.image;
     
-    [[controller sharingMenuItems] addObject:item];
+    [[controller sharingMenuItems] addObject:menuItem];
 }
 
 @end

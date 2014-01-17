@@ -104,17 +104,17 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     NSArray *items = nil;
     
     OPNavigationViewController *viewController = _navigationController.peekAtPreviousViewController;
-    if (viewController && [viewController conformsToProtocol:@protocol(XPPhotoCollectionViewController)])
+    if (viewController && [viewController conformsToProtocol:@protocol(XPItemCollectionViewController)])
     {
-        id<XPPhotoCollectionViewController> photoCollectionViewController = (id<XPPhotoCollectionViewController>)viewController;
-        items = [[[photoCollectionViewController visibleCollection] allPhotos] array];
+        id<XPItemCollectionViewController> itemCollectionViewController = (id<XPItemCollectionViewController>)viewController;
+        items = [[[itemCollectionViewController visibleCollection] allItems] array];
     }
     else if (viewController && [viewController conformsToProtocol:@protocol(XPCollectionViewController)])
     {
         id<XPCollectionViewController> collectionViewController = (id<XPCollectionViewController>)viewController;
         items = [collectionViewController collections];
     }
-    else if ([_navigationController.visibleViewController conformsToProtocol:@protocol(XPPhotoController)])
+    else if ([_navigationController.visibleViewController conformsToProtocol:@protocol(XPItemController)])
     {
         _switchViewButton.peek = YES;
     }

@@ -30,12 +30,12 @@
     return [[[XPExposureService defaultLoader] exposures] objectForKey:bundleId];
 }
 
-+(id<XPPhotoCollectionProvider>)photoCollectionProviderForBundle:(NSString *)bundleId
++(id<XPItemCollectionProvider>)itemCollectionProviderForBundle:(NSString *)bundleId
 {
     id<XPPlugin> plugin = [XPExposureService pluginForBundle:bundleId];
-    if (plugin != nil && [plugin conformsToProtocol:@protocol(XPPhotoCollectionProvider)])
+    if (plugin != nil && [plugin conformsToProtocol:@protocol(XPItemCollectionProvider)])
     {
-        return (id<XPPhotoCollectionProvider>)plugin;
+        return (id<XPItemCollectionProvider>)plugin;
     }
     return nil;
 }
@@ -74,31 +74,31 @@
     }];
 }
 
-+(void)photoManagerWasCreated:(XPPhotoManager *)photoManager
++(void)collectionManagerWasCreated:(XPCollectionManager *)collectionManager
 {
-    [[XPExposureService respondsToPhotoManagerWasCreated] each:^(id sender) {
-        [sender photoManagerWasCreated:photoManager];
+    [[XPExposureService respondsToCollectionManagerWasCreated] each:^(id sender) {
+        [sender collectionManagerWasCreated:collectionManager];
     }];
 }
 
-+(void)photoManager:(XPPhotoManager*)photoManager collectionViewController:(id<XPCollectionViewController>)controller
++(void)collectionManager:(XPCollectionManager*)collectionManager collectionViewController:(id<XPCollectionViewController>)controller
 {
     [[XPExposureService respondsToCollectionViewController] each:^(id<XPPlugin> sender) {
-        [sender photoManager:photoManager collectionViewController:controller];
+        [sender collectionManager:collectionManager collectionViewController:controller];
     }];
 }
 
-+(void)photoManager:(XPPhotoManager*)photoManager photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller
++(void)collectionManager:(XPCollectionManager*)collectionManager itemCollectionViewController:(id<XPItemCollectionViewController>)controller
 {
     [[XPExposureService respondsToPhotoCollectionViewController] each:^(id<XPPlugin> sender) {
-        [sender photoManager:photoManager photoCollectionViewController:controller];
+        [sender collectionManager:collectionManager itemCollectionViewController:controller];
     }];
 }
 
-+(void)photoManager:(XPPhotoManager*)photoManager photoController:(id<XPPhotoController>)controller
++(void)collectionManager:(XPCollectionManager*)collectionManager itemController:(id<XPItemController>)controller
 {
     [[XPExposureService respondsToPhotoViewController] each:^(id<XPPlugin> sender) {
-        [sender photoManager:photoManager photoController:controller];
+        [sender collectionManager:collectionManager itemController:controller];
     }];
 }
 
@@ -124,17 +124,17 @@
     }];
 }
 
-+(id<XPPhotoCollection>)createCollectionWithTitle:(NSString *)title path:(NSURL *)path
++(id<XPItemCollection>)collectionWithTitle:(NSString *)title path:(NSURL *)path
 {
     id localPlugin = [XPExposureService pluginForBundle:@"com.whimsy.optique.Local"];
     if (!localPlugin)
     {
         NSLog(@"Could not find local plugin");
     }
-    return [localPlugin createCollectionWithTitle:title path:path];
+    return [localPlugin collectionWithTitle:title path:path];
 }
 
-+(NSSet *)photoCollectionProviders
++(NSSet *)itemCollectionProviders
 {
     return [XPExposureService conformsToPhotoCollectionProvider];
 }
@@ -161,16 +161,16 @@
     NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject conformsToProtocol:@protocol(XPPhotoCollectionProvider)];
+        return [evaluatedObject conformsToProtocol:@protocol(XPItemCollectionProvider)];
     }]];
 }
 
-+(NSSet *)respondsToPhotoManagerWasCreated
++(NSSet *)respondsToCollectionManagerWasCreated
 {
     NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject respondsToSelector:@selector(photoManagerWasCreated:)];
+        return [evaluatedObject respondsToSelector:@selector(collectionManagerWasCreated:)];
     }]];
 }
 
@@ -179,7 +179,7 @@
     NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject respondsToSelector:@selector(photoManager:collectionViewController:)];
+        return [evaluatedObject respondsToSelector:@selector(collectionManager:collectionViewController:)];
     }]];
 }
 
@@ -188,7 +188,7 @@
     NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject respondsToSelector:@selector(photoManager:photoCollectionViewController:)];
+        return [evaluatedObject respondsToSelector:@selector(collectionManager:itemCollectionViewController:)];
     }]];
 }
 
@@ -197,7 +197,7 @@
     NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject respondsToSelector:@selector(photoManager:photoController:)];
+        return [evaluatedObject respondsToSelector:@selector(collectionManager:itemController:)];
     }]];
 }
 

@@ -8,8 +8,8 @@
 
 #import "OPHistoryPeekViewController.h"
 #import "OPImagePreviewService.h"
-#import "OPPhotoViewController.h"
-#import "OPPhotoCollectionViewController.h"
+#import "OPPItemViewController.h"
+#import "OPItemCollectionViewController.h"
 #import "OPGridViewCell.h"
 #import "NSWindow+FullScreen.h"
 
@@ -41,12 +41,12 @@
     OPNavigationViewController *controller;
     if (![item respondsToSelector:@selector(collection)])
     {
-        id<XPPhotoCollection> collection = (id<XPPhotoCollection>)item;
-        controller = [[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:collection photoManager:[collection photoManager]];
+        id<XPItemCollection> collection = (id<XPItemCollection>)item;
+        controller = [[OPItemCollectionViewController alloc] initWithPhotoAlbum:collection collectionManager:[collection collectionManager]];
     }
     else
     {
-        controller = [[OPPhotoViewController alloc] initWithPhotoCollection:[item collection] photo:_items[index]];
+        controller = [[OPPItemViewController alloc] initWithItemCollection:[item collection] item:_items[index]];
     }
     
     [_navigationController popToPreviousViewController];
@@ -60,20 +60,21 @@
     [_gridView selectCellAtIndex:index];
 }
 
--(OPGridViewCell*)cellForItem:(id<XPItem>)item gridView:(OEGridView*)gridView index:(NSUInteger)index
+-(OPGridViewCell*)cellForObject:(id)obj gridView:(OEGridView*)gridView index:(NSUInteger)index
 {
     OPGridViewCell *cell = (OPGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
     if (!cell)
     {
         cell = (OPGridViewCell *)[gridView dequeueReusableCell];
     }
-    if (![item respondsToSelector:@selector(collection)])
+    
+    if (![obj conformsToProtocol:@protocol(XPItem)])
     {
         cell = [[OPGridViewCell alloc] init];
     }
     else
     {
-        cell = [[OPPhotoGridViewCell alloc] init];
+        cell = [[OPItemGridViewCell alloc] init];
     }
 
     return cell;
@@ -81,33 +82,31 @@
 
 -(OPGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    id<XPItem> item = _items[index];
+    id obj = _items[index];
     
-    OPGridViewCell *cell = [self cellForItem:item gridView:gridView index:index];
+    OPGridViewCell *cell = [self cellForObject:obj gridView:gridView index:index];
     
-    cell.representedObject = item;
+    cell.representedObject = obj;
     
     OPGridViewCell * __weak weakCell = cell;
-    id<XPItem> __weak weakItem = item;
+    id<XPItem> __weak item;
     
-    id<XPPhoto> photo;
-    
-    if (![item respondsToSelector:@selector(collection)])
+    if ([obj conformsToProtocol:@protocol(XPItemCollection)])
     {
-        id<XPPhotoCollection> collection = (id<XPPhotoCollection>)item;
-        photo = [collection coverPhoto];
+        id<XPItemCollection> collection = (id<XPItemCollection>)obj;
+        item = [collection coverItem];
     }
     else
     {
-        photo = (id<XPPhoto>)item;
+        item = (id<XPItem>)obj;
     }
     
     cell.title = [item title];
-    cell.image = [[OPImagePreviewService defaultService] previewImageWithPhoto:photo loaded:^(NSImage *image)
+    cell.image = [[OPImagePreviewService defaultService] previewImageWithItem:item loaded:^(NSImage *image)
                   {
                       [self performBlockOnMainThread:^
                        {
-                           if (weakItem == weakCell.representedObject)
+                           if (item == weakCell.representedObject)
                            {
                                weakCell.image = image;
                            }
@@ -119,11 +118,11 @@
     if (!cell.badgeLayer)
     {
         //Get badge layer from exposure
-        for (id<XPPhotoCollectionProvider> provider in [XPExposureService photoCollectionProviders])
+        for (id<XPItemCollectionProvider> provider in [XPExposureService itemCollectionProviders])
         {
             if ([provider respondsToSelector:@selector(badgeLayerForPhoto:)] && [item respondsToSelector:@selector(collection)])
             {
-                cell.badgeLayer = [provider badgeLayerForPhoto:(id<XPPhoto>)item];
+                cell.badgeLayer = [provider badgeLayerForPhoto:(id<XPItem>)item];
                 if (cell.badgeLayer)
                 {
                     break;
@@ -131,7 +130,7 @@
             }
             else if ([provider respondsToSelector:@selector(badgeLayerForCollection:)] && ![item respondsToSelector:@selector(collection)])
             {
-                cell.badgeLayer = [provider badgeLayerForCollection:(id<XPPhotoCollection>)item];
+                cell.badgeLayer = [provider badgeLayerForCollection:(id<XPItemCollection>)item];
                 if (cell.badgeLayer)
                 {
                     break;
@@ -176,21 +175,21 @@
     NSUInteger index = NSNotFound;
     
     OPNavigationViewController *viewController = _navigationController.peekAtPreviousViewController;
-    if (viewController && [viewController conformsToProtocol:@protocol(XPPhotoCollectionViewController)])
+    if (viewController && [viewController conformsToProtocol:@protocol(XPItemCollectionViewController)])
     {
-        id<XPPhotoCollectionViewController> photoCollectionViewController = (id<XPPhotoCollectionViewController>)viewController;
+        id<XPItemCollectionViewController> itemCollectionViewController = (id<XPItemCollectionViewController>)viewController;
         
-        id<XPPhotoController> photoController = (id<XPPhotoController>)_navigationController.visibleViewController;
+        id<XPItemController> itemController = (id<XPItemController>)_navigationController.visibleViewController;
         
-        index = [[[photoCollectionViewController visibleCollection] allPhotos] indexOfObject:[photoController visiblePhoto]];
+        index = [[[itemCollectionViewController visibleCollection] allItems] indexOfObject:[itemController item]];
     }
     else if (viewController && [viewController conformsToProtocol:@protocol(XPCollectionViewController)])
     {
         id<XPCollectionViewController> collectionViewController = (id<XPCollectionViewController>)viewController;
         
-        id<XPPhotoCollectionViewController> photoCollectionViewController = (id<XPPhotoCollectionViewController>)_navigationController.visibleViewController;
+        id<XPItemCollectionViewController> itemCollectionViewController = (id<XPItemCollectionViewController>)_navigationController.visibleViewController;
         
-        index = [[collectionViewController collections] indexOfObject:[photoCollectionViewController visibleCollection]];
+        index = [[collectionViewController collections] indexOfObject:[itemCollectionViewController visibleCollection]];
     }
     
     if (index != NSNotFound)
@@ -213,7 +212,7 @@
         id<XPItem> item = [_items firstObject];
         if ([item respondsToSelector:@selector(collection)])
         {
-            _gridView = _photoGridView;
+            _gridView = _itemGridView;
         }
         else
         {
@@ -224,7 +223,7 @@
     }
     else
     {
-        [_photoGridView.enclosingScrollView setHidden:YES];
+        [_itemGridView.enclosingScrollView setHidden:YES];
         [_collectionGridView.enclosingScrollView setHidden:YES];
     }
 }

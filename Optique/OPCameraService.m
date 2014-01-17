@@ -70,7 +70,7 @@
     }
 #endif
     
-    OPCamera *camera = [[OPCamera alloc] initWithDevice:cameraDevice photoManager:_photoManager service:self];
+    OPCamera *camera = [[OPCamera alloc] initWithDevice:cameraDevice collectionManager:_collectionManager service:self];
     [camera removeCacheDirectory];
     
     [_devices setObject:camera forKey:device.name];
@@ -92,16 +92,16 @@
 
 -(void)didAddCamera:(OPCamera *)camera
 {
-    [[_cameraPlugin photoCollections] addObject:camera];
-    [[_cameraPlugin delegate] didAddPhotoCollection:camera];
+    [[_cameraPlugin collections] addObject:camera];
+    [[_cameraPlugin delegate] didAddItemCollection:camera];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"OPCameraServiceDidAddCamera" object:nil userInfo:@{@"title": camera.title}];
 }
 
 -(void)didRemoveCamera:(OPCamera *)camera
 {
-    [[_cameraPlugin photoCollections] removeObject:camera];
-    [[_cameraPlugin delegate] didRemovePhotoCollection:camera];
+    [[_cameraPlugin collections] removeObject:camera];
+    [[_cameraPlugin delegate] didRemoveItemCollection:camera];
 }
 
 

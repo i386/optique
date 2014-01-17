@@ -12,13 +12,13 @@
 
 @class OPCameraService;
 
-@interface OPCamera : NSObject <XPPhotoCollection, ICCameraDeviceDelegate>
+@interface OPCamera : NSObject <XPItemCollection, ICCameraDeviceDelegate>
 
 @property (readonly, weak) ICCameraDevice *device;
-@property (readonly, weak) XPPhotoManager *photoManager;
+@property (readonly, weak) XPCollectionManager *collectionManager;
 @property (readonly, strong) NSDate *created;
 
--(id)initWithDevice:(ICCameraDevice*)device photoManager:(XPPhotoManager*)photoManager service:(OPCameraService*)service;
+-(id)initWithDevice:(ICCameraDevice*)device collectionManager:(XPCollectionManager*)collectionManager service:(OPCameraService*)service;
 
 -(NSImage*)thumbnailForName:(NSString*)name;
 

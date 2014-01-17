@@ -31,7 +31,7 @@
 {
     _cameraService = [[OPCameraService alloc] init];
     _cameraService.cameraPlugin = self;
-    _photoCollections = [NSMutableSet set];
+    _collections = [NSMutableSet set];
 }
 
 -(void)pluginWillUnload:(NSDictionary *)userInfo
@@ -42,12 +42,12 @@
         [_cameraService removeCaches];
     }
     
-    [_photoCollections removeAllObjects];
+    [_collections removeAllObjects];
 }
 
--(void)photoManagerWasCreated:(XPPhotoManager *)photoManager
+-(void)collectionManagerWasCreated:(XPCollectionManager *)collectionManager
 {
-    [_cameraService setPhotoManager:photoManager];
+    [_cameraService setCollectionManager:collectionManager];
     if (!_cameraService.deviceBrowser.isBrowsing)
     {
         [_cameraService start];
@@ -59,7 +59,7 @@
     }
 }
 
--(CALayer *)badgeLayerForCollection:(id<XPPhotoCollection>)collection
+-(CALayer *)badgeLayerForCollection:(id<XPItemCollection>)collection
 {
     if ([collection isKindOfClass:[OPCamera class]])
     {

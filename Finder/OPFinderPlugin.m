@@ -10,16 +10,16 @@
 
 @implementation OPFinderPlugin
 
--(void)photoManager:(XPPhotoManager *)photoManager collectionViewController:(id<XPCollectionViewController>)controller
+-(void)collectionManager:(XPCollectionManager *)collectionManager collectionViewController:(id<XPCollectionViewController>)controller
 {
-    XPPhotoManager * __weak weakPhotoManager = photoManager;
+    XPCollectionManager * __weak weakCollectionManager = collectionManager;
     
     XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:@"Show in Finder" keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
         NSIndexSet *indexes = [controller selectedItems];
         NSMutableArray *urls = [NSMutableArray array];
         [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
          {
-             id collection = weakPhotoManager.allCollections[index];
+             id collection = weakCollectionManager.allCollections[index];
              if ([collection respondsToSelector:@selector(path)])
              {
                  [urls addObject:[collection path]];
@@ -32,9 +32,9 @@
         
         BOOL visible = YES;
         
-        for (id<XPPhotoCollection> collection in selectedItems)
+        for (id<XPItemCollection> collection in selectedItems)
         {
-            if ([collection collectionType] != kPhotoCollectionLocal)
+            if ([collection collectionType] != XPItemCollectionLocal)
             {
                 visible = NO;
                 break;
@@ -47,17 +47,17 @@
     [[controller contextMenu] addItem:item];
 }
 
--(void)photoManager:(XPPhotoManager *)photoManager photoCollectionViewController:(id<XPPhotoCollectionViewController>)controller
+-(void)collectionManager:(XPCollectionManager *)collectionManager itemCollectionViewController:(id<XPItemCollectionViewController>)controller
 {
     XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:@"Show in Finder" keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
         NSIndexSet *indexes = [controller selectedItems];
         NSMutableArray *urls = [NSMutableArray array];
         [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
          {
-             id photo = controller.visibleCollection.allPhotos[index];
-             if ([photo hasLocalCopy])
+             id item = controller.visibleCollection.allItems[index];
+             if ([item hasLocalCopy])
              {
-                 [urls addObject:[photo url]];
+                 [urls addObject:[item url]];
              }
          }];
         [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
@@ -67,9 +67,9 @@
         
         BOOL visible = YES;
         
-        for (id<XPPhotoCollection> collection in selectedItems)
+        for (id<XPItemCollection> collection in selectedItems)
         {
-            if ([collection collectionType] != kPhotoCollectionLocal)
+            if ([collection collectionType] != XPItemCollectionLocal)
             {
                 visible = NO;
                 break;
@@ -82,18 +82,18 @@
     [[controller contextMenu] addItem:item];
 }
 
--(void)photoManager:(XPPhotoManager *)photoManager photoController:(id<XPPhotoController>)controller
+-(void)collectionManager:(XPCollectionManager *)collectionManager itemController:(id<XPItemController>)controller
 {
     XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:@"Show in Finder" keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
-        id photo = controller.visiblePhoto;
-        if ([photo hasLocalCopy])
+        id item = controller.item;
+        if ([item hasLocalCopy])
         {
-            [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[[photo url]]];
+            [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[[item url]]];
         }
     }];
     
-    item.visibilityPredicate = [NSPredicate predicateWithBlock:^BOOL(id<XPPhoto> photo, NSDictionary *bindings) {
-        return [[photo collection] collectionType] != kPhotoCollectionLocal;
+    item.visibilityPredicate = [NSPredicate predicateWithBlock:^BOOL(id<XPItem> item, NSDictionary *bindings) {
+        return [[item collection] collectionType] != XPItemCollectionLocal;
     }];
     
     [[controller contextMenu] addItem:item];

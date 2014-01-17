@@ -17,7 +17,7 @@
 @property (readonly, strong) ICDeviceBrowser *deviceBrowser;
 @property (weak) OPCameraPlugin *cameraPlugin;
 
-@property (strong) XPPhotoManager *photoManager;
+@property (strong) XPCollectionManager *collectionManager;
 
 /** all of the available cameras **/
 -(NSArray*)allCameras;

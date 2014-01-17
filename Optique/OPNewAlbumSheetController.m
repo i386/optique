@@ -7,7 +7,7 @@
 //
 
 #import "OPNewAlbumSheetController.h"
-#import "OPPhotoCollectionViewController.h"
+#import "OPItemCollectionViewController.h"
 
 @interface OPNewAlbumSheetController ()
 
@@ -15,12 +15,12 @@
 
 @implementation OPNewAlbumSheetController
 
--(id)initWithPhotoManager:(XPPhotoManager *)photoManager navigationController:(OPNavigationController *)navigationController
+-(id)initWithCollectionManager:(XPCollectionManager *)collectionManager navigationController:(OPNavigationController *)navigationController
 {
     self = [super initWithWindowNibName:@"OPNewAlbumSheetController"];
     if (self)
     {
-        _photoManager = photoManager;
+        _collectionManager = collectionManager;
         _navigationController = navigationController;
     }
     return self;
@@ -32,7 +32,7 @@
     
     NSError *error;
     
-    id<XPPhotoCollection> album = [_photoManager newAlbumWithName:albumName error:&error];
+    id<XPItemCollection> album = [_collectionManager newAlbumWithName:albumName error:&error];
     if (album)
     {
         [self.window orderOut:nil];
@@ -41,8 +41,8 @@
         [_albumNameTextField setStringValue:@""];
         [_navigationController popToRootViewController];
         
-        OPPhotoCollectionViewController *photoCollectionController = [[OPPhotoCollectionViewController alloc] initWithPhotoAlbum:album photoManager:_photoManager];
-        [_navigationController pushViewController:photoCollectionController];
+        OPItemCollectionViewController *itemCollectionController = [[OPItemCollectionViewController alloc] initWithPhotoAlbum:album collectionManager:_collectionManager];
+        [_navigationController pushViewController:itemCollectionController];
     }
     else
     {

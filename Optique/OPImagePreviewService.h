@@ -12,6 +12,6 @@
 
 +(OPImagePreviewService *)defaultService;
 
--(NSImage*)previewImageWithPhoto:(id<XPPhoto>)photo loaded:(XPImageCompletionBlock)completionBlock;
+-(NSImage*)previewImageWithItem:(id<XPItem>)item loaded:(XPImageCompletionBlock)completionBlock;
 
 @end

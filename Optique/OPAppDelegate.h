@@ -17,7 +17,7 @@
 
 @interface OPAppDelegate : NSObject <NSApplicationDelegate, BITHockeyManagerDelegate>
 
-@property (readonly, strong) XPPhotoManager *photoManager;
+@property (readonly, strong) XPCollectionManager *collectionManager;
 @property (readonly, strong) OPMainWindowController *mainWindowController;
 @property (strong) IBOutlet NSUserDefaultsController *userDefaultsController;
 @property (strong) MASPreferencesWindowController *preferencesWindowController;

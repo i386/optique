@@ -13,7 +13,7 @@
 
 @interface OPCollectionViewController : OPNavigationViewController <OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPCollectionViewController>
 
-@property (weak, readonly) XPPhotoManager *photoManager;
+@property (weak, readonly) XPCollectionManager *collectionManager;
 @property (weak) IBOutlet NSMenu *albumItemContextMenu;
 @property (weak) IBOutlet NSMenuItem *deleteAlbumMenuItem;
 @property (weak) IBOutlet OPGridView *gridView;
@@ -22,7 +22,7 @@
 @property (weak) IBOutlet NSMenuItem *renameAlbumMenuItem;
 @property (strong) NSPredicate *predicate;
 
--(id)initWithPhotoManager:(XPPhotoManager *)photoManager title:(NSString *)title emptyMessage:(NSString*)emptyMessage icon:(NSImage *)icon collectionPredicate:(NSPredicate *)predicate;
+-(id)initWithCollectionManager:(XPCollectionManager *)collectionManager title:(NSString *)title emptyMessage:(NSString*)emptyMessage icon:(NSImage *)icon collectionPredicate:(NSPredicate *)predicate;
 
 - (IBAction)deleteAlbum:(NSMenuItem*)sender;
 
@@ -32,6 +32,6 @@
 
 -(void)showCollectionWithTitle:(NSString*)title;
 
--(OPNavigationViewController*)viewForCollection:(id<XPPhotoCollection>)collection photoManager:(XPPhotoManager*)photoManager;
+-(OPNavigationViewController*)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager*)collectionManager;
 
 @end

@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OPPhotoCollectionViewController.h"
+#import "OPItemCollectionViewController.h"
 
-@interface OPCameraPhotoCollectionViewController : OPPhotoCollectionViewController
+@interface OPCameraPhotoCollectionViewController : OPItemCollectionViewController
 
 @end

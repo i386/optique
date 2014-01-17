@@ -10,10 +10,10 @@
 
 @interface OPRenameAlbumWindowController : NSWindowController
 
-@property (strong, readonly) XPPhotoManager *photoManager;
-@property (strong, readonly) id<XPPhotoCollection> collection;
+@property (strong, readonly) XPCollectionManager *collectionManager;
+@property (strong, readonly) id<XPItemCollection> collection;
 @property (strong, readonly) NSViewController *viewController;
 
--initWithPhotoManager:(XPPhotoManager*)photoManager collection:(id<XPPhotoCollection>)collection parentController:(NSViewController*)viewController;
+-initWithCollectionManager:(XPCollectionManager*)collectionManager collection:(id<XPItemCollection>)collection parentController:(NSViewController*)viewController;
 
 @end

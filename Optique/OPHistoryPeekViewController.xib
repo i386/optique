@@ -8,7 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="OPHistoryPeekViewController">
             <connections>
                 <outlet property="collectionGridView" destination="7pR-eF-Z5l" id="C8Q-zc-heR"/>
-                <outlet property="photoGridView" destination="bTi-Oj-7ia" id="Qbh-yv-dwm"/>
+                <outlet property="itemGridView" destination="bTi-Oj-7ia" id="ZZ6-mY-zPz"/>
                 <outlet property="popover" destination="t9R-va-I7R" id="A9H-wo-DPY"/>
                 <outlet property="popoverViewController" destination="GK1-L7-ekl" id="bj0-27-Jfi"/>
                 <outlet property="view" destination="1" id="Wyh-gL-l6Q"/>
@@ -53,7 +53,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="310" height="580"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view id="bTi-Oj-7ia" customClass="OPPhotoGridView">
+                            <view id="bTi-Oj-7ia" customClass="OPItemGridView">
                                 <rect key="frame" x="0.0" y="0.0" width="310" height="580"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
