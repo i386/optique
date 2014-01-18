@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OPImagePreviewService.h"
+#import "OPItemPreviewService.h"
 #import "OPImageCache.h"
 #import "OPLocalItem.h"
 
 #define fOPImagePreviewServiceLargeSize 25165824
 
-@interface OPImagePreviewService() {
+@interface OPItemPreviewService() {
     NSMapTable *_locks;
     NSOperationQueue *_smallImageQueue;
     NSOperationQueue *_largeImageQueue;
@@ -20,15 +20,15 @@
 
 @end
 
-@implementation OPImagePreviewService
+@implementation OPItemPreviewService
 
-static OPImagePreviewService *_defaultService;
+static OPItemPreviewService *_defaultService;
 
-+(OPImagePreviewService *)defaultService
++(OPItemPreviewService *)defaultService
 {
     if (!_defaultService)
     {
-        _defaultService = [[OPImagePreviewService alloc] init];
+        _defaultService = [[OPItemPreviewService alloc] init];
     }
     return _defaultService;
 }
@@ -49,8 +49,14 @@ static OPImagePreviewService *_defaultService;
     return self;
 }
 
--(NSImage *)previewImageWithItem:(id<XPItem>)item loaded:(XPImageCompletionBlock)completionBlock
+-(NSImage *)previewImage:(id<XPItem>)item loaded:(XPImageCompletionBlock)completionBlock
 {
+    if ([item type] != XPItemTypePhoto)
+    {
+        NSLog(@"Cannot previewImageWithItem:loaded: as type is unsupported");
+        return nil;
+    }
+    
     NSImage __block *image;
     if ([((id)item) respondsToSelector:@selector(thumbnail)])
     {
@@ -59,6 +65,10 @@ static OPImagePreviewService *_defaultService;
     else if ([((id)item) respondsToSelector:@selector(url)])
     {
         image = [self previewImageAtURL:item.url loaded:completionBlock];
+    }
+    else
+    {
+        NSLog(@"Cannot previewImageWithItem:loaded: for %@", [item class]);
     }
     return image;
 }

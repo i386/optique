@@ -9,7 +9,7 @@
 #import "OPNewAlbumPanelViewController.h"
 #import "OPPlaceHolderViewController.h"
 #import "OPItemGridViewCell.h"
-#import "OPImagePreviewService.h"
+#import "OPItemPreviewService.h"
 
 @interface OPNewAlbumPanelViewController ()
 
@@ -137,7 +137,7 @@
             OPItemGridViewCell * __weak weakItem = item;
             id<XPItem> __weak weakPhoto = obj;
             
-            item.image = [[OPImagePreviewService defaultService] previewImageWithItem:(id<XPItem>)obj loaded:^(NSImage *image)
+            item.image = [[OPItemPreviewService defaultService] previewImage:(id<XPItem>)obj loaded:^(NSImage *image)
                           {
                               [self performBlockOnMainThread:^
                                {

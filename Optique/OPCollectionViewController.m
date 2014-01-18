@@ -11,7 +11,7 @@
 
 #import "OPItemCollectionViewController.h"
 #import "OPRenameAlbumWindowController.h"
-#import "OPImagePreviewService.h"
+#import "OPItemPreviewService.h"
 #import "OPDeleteAlbumSheetController.h"
 #import "OPGridViewCell.h"
 #import "NSColor+Optique.h"
@@ -344,7 +344,7 @@
     {
         OPGridViewCell * __weak weakCell = cell;
         
-        weakCell.image = [[OPImagePreviewService defaultService] previewImageWithItem:item loaded:^(NSImage *image) {
+        weakCell.image = [[OPItemPreviewService defaultService] previewImage:item loaded:^(NSImage *image) {
               [self performBlockOnMainThread:^{
                    weakCell.image = image;
                }];

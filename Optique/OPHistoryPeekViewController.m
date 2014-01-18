@@ -7,7 +7,7 @@
 //
 
 #import "OPHistoryPeekViewController.h"
-#import "OPImagePreviewService.h"
+#import "OPItemPreviewService.h"
 #import "OPPItemViewController.h"
 #import "OPItemCollectionViewController.h"
 #import "OPGridViewCell.h"
@@ -102,7 +102,7 @@
     }
     
     cell.title = [item title];
-    cell.image = [[OPImagePreviewService defaultService] previewImageWithItem:item loaded:^(NSImage *image)
+    cell.image = [[OPItemPreviewService defaultService] previewImage:item loaded:^(NSImage *image)
                   {
                       [self performBlockOnMainThread:^
                        {

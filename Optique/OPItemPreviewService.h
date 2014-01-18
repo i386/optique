@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPImagePreviewService : NSObject
+@interface OPItemPreviewService : NSObject
 
-+(OPImagePreviewService *)defaultService;
++(OPItemPreviewService *)defaultService;
 
--(NSImage*)previewImageWithItem:(id<XPItem>)item loaded:(XPImageCompletionBlock)completionBlock;
+-(NSImage*)previewImage:(id<XPItem>)item loaded:(XPImageCompletionBlock)completionBlock;
 
 @end

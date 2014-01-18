@@ -57,7 +57,7 @@
 		0F413C50178EA32300FCE1EA /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0F44BAD9173DCA6D0039B00E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F44BAD7173DCA620039B00E /* Accounts.framework */; };
 		0F44BB4E173E011E0039B00E /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
-		0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F489933170BFFD60044ED0A /* OPImagePreviewService.m */; };
+		0F489934170BFFD60044ED0A /* OPItemPreviewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F489933170BFFD60044ED0A /* OPItemPreviewService.m */; };
 		0F4A6DAA18191834009AD08C /* NSURL+Renamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A6DA918191834009AD08C /* NSURL+Renamer.m */; };
 		0F4A6DAB181918B6009AD08C /* NSURL+Renamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A6DA918191834009AD08C /* NSURL+Renamer.m */; };
 		0F5C40AA181CC1DF00F265FC /* OPDropDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */; };
@@ -365,8 +365,8 @@
 		0F3E26A51823746E009E74BD /* OPNotificationSynchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNotificationSynchronizer.m; sourceTree = "<group>"; };
 		0F44BAD7173DCA620039B00E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		0F44BAF1173DD3420039B00E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		0F489932170BFFD60044ED0A /* OPImagePreviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImagePreviewService.h; sourceTree = "<group>"; };
-		0F489933170BFFD60044ED0A /* OPImagePreviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImagePreviewService.m; sourceTree = "<group>"; };
+		0F489932170BFFD60044ED0A /* OPItemPreviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPItemPreviewService.h; sourceTree = "<group>"; };
+		0F489933170BFFD60044ED0A /* OPItemPreviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPItemPreviewService.m; sourceTree = "<group>"; };
 		0F4A6DA818191834009AD08C /* NSURL+Renamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Renamer.h"; sourceTree = "<group>"; };
 		0F4A6DA918191834009AD08C /* NSURL+Renamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Renamer.m"; sourceTree = "<group>"; };
 		0F50C39A178560A90017DF73 /* Optique.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Optique.entitlements; sourceTree = "<group>"; };
@@ -805,8 +805,8 @@
 		0F97164917048737001835DC /* Image Previews */ = {
 			isa = PBXGroup;
 			children = (
-				0F489932170BFFD60044ED0A /* OPImagePreviewService.h */,
-				0F489933170BFFD60044ED0A /* OPImagePreviewService.m */,
+				0F489932170BFFD60044ED0A /* OPItemPreviewService.h */,
+				0F489933170BFFD60044ED0A /* OPItemPreviewService.m */,
 				0FCFCB1017043D180040FF11 /* OPImageCache.h */,
 				0FCFCB1117043D180040FF11 /* OPImageCache.m */,
 			);
@@ -1750,7 +1750,7 @@
 				0F368A8A17068F1B00411503 /* OPWindowContentView.m in Sources */,
 				0F85D9C0180CD2300003C6ED /* OPToolbarController.m in Sources */,
 				0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */,
-				0F489934170BFFD60044ED0A /* OPImagePreviewService.m in Sources */,
+				0F489934170BFFD60044ED0A /* OPItemPreviewService.m in Sources */,
 				0F03CD0D18152E8E00A73D8F /* OPItemPhotoGridViewCell.m in Sources */,
 				0FE285A618397AF2009536D7 /* NSURL+EqualToURL.m in Sources */,
 				0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */,
