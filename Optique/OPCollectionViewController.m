@@ -19,13 +19,13 @@
 #import "OPPlaceHolderViewController.h"
 #import "NSURL+Renamer.h"
 
-@interface PhotoCollectionPasteboardWriting : NSObject<NSPasteboardWriting>
+@interface ItemCollectionPasteboardWriting : NSObject<NSPasteboardWriting>
 
 @property (weak) id<XPItemCollection> collection;
 
 @end
 
-@implementation PhotoCollectionPasteboardWriting
+@implementation ItemCollectionPasteboardWriting
 
 -(NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard
 {
@@ -197,7 +197,7 @@
 
 -(void)deleteAlbumsAtIndexes:(NSIndexSet*)indexes
 {
-    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithPhotoAlbums:[_collectionManager allCollectionsForIndexSet:indexes] collectionManager:_collectionManager parentController:self];
+    _deleteAlbumSheetController = [[OPDeleteAlbumSheetController alloc] initWithCollections:[_collectionManager allCollectionsForIndexSet:indexes] collectionManager:_collectionManager parentController:self];
     
     NSString *alertMessage;
     if (indexes.count > 1)
@@ -290,7 +290,7 @@
 
 -(OPNavigationViewController*)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager*)collectionManager
 {
-    return [[OPItemCollectionViewController alloc] initWithPhotoAlbum:collection collectionManager:collectionManager];
+    return [[OPItemCollectionViewController alloc] initWithIemCollection:collection collectionManager:collectionManager];
 }
 
 -(void)showCollectionWithTitle:(NSString *)title
@@ -430,7 +430,7 @@
 
 -(id<NSPasteboardWriting>)gridView:(OEGridView *)gridView pasteboardWriterForIndex:(NSInteger)index
 {
-    PhotoCollectionPasteboardWriting *photoCollectionPasteboardWriting = [[PhotoCollectionPasteboardWriting alloc] init];
+    ItemCollectionPasteboardWriting *photoCollectionPasteboardWriting = [[ItemCollectionPasteboardWriting alloc] init];
     photoCollectionPasteboardWriting.collection = [_collectionManager.allCollections objectAtIndex:index];
     return photoCollectionPasteboardWriting;
 }

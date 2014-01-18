@@ -1,2 +1,2 @@
-NSString *const XPPhotoCollectionDidStartLoading = @"XPPhotoCollectionDidStartLoading";
-NSString *const XPPhotoCollectionDidStopLoading = @"XPPhotoCollectionDidStopLoading";
+NSString *const XPItemCollectionDidStartLoading = @"XPPhotoCollectionDidStartLoading";
+NSString *const XPItemCollectionDidStopLoading = @"XPPhotoCollectionDidStopLoading";

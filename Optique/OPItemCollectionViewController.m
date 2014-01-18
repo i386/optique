@@ -23,7 +23,7 @@
 
 @implementation OPItemCollectionViewController
 
--(id)initWithPhotoAlbum:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager*)collectionManager
+-(id)initWithIemCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager*)collectionManager
 {
     self = [super initWithNibName:@"OPItemCollectionViewController" bundle:nil];
     if (self)
@@ -93,17 +93,17 @@
 -(void)deleteSelected
 {
     NSIndexSet *indexes = _gridView.indexesForSelectedCells;
-    [self deleteSelectedPhotosAtIndexes:indexes];
+    [self deleteSelectedItemsAtIndexes:indexes];
 }
 
--(void)deleteSelectedPhotosAtIndexes:(NSIndexSet*)indexes
+-(void)deleteSelectedItemsAtIndexes:(NSIndexSet*)indexes
 {
     NSArray *items = [_collection itemsAtIndexes:indexes];
     
     NSString *message;
     if (items.count > 1)
     {
-        message = [NSString stringWithFormat:@"Do you want to delete the %lu selected photos?", items.count];
+        message = [NSString stringWithFormat:@"Do you want to delete the %lu selected items?", items.count];
     }
     else
     {
@@ -114,10 +114,10 @@
     NSBeginAlertSheet(message, @"Delete", nil, @"Cancel", self.view.window, self, @selector(deleteSheetDidEndShouldClose:returnCode:contextInfo:), nil, (void*)CFBridgingRetain(items), @"This operation can not be undone.");
 }
 
-- (IBAction)deletePhoto:(NSMenuItem*)sender
+- (IBAction)deleteItem:(NSMenuItem*)sender
 {
     NSIndexSet *indexes = [_gridView selectionIndexes];
-    [self deleteSelectedPhotosAtIndexes:indexes];
+    [self deleteSelectedItemsAtIndexes:indexes];
 }
 
 - (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet
@@ -131,7 +131,7 @@
         volatile int __block itemCount = 0;
         [items each:^(id sender)
         {
-            [_collection deletePhoto:sender withCompletion:^(NSError *error) {
+            [_collection deleteItem:sender withCompletion:^(NSError *error) {
                 itemCount++;
             }];
         }];
@@ -157,8 +157,8 @@
 
 -(void)gridView:(OEGridView *)gridView doubleClickedCellForItemAtIndex:(NSUInteger)index
 {
-    OPPItemViewController *photoViewContoller = [[OPPItemViewController alloc] initWithItemCollection:_collection item:_collection.allItems[index]];
-    [self.controller pushViewController:photoViewContoller];
+    OPPItemViewController *controller = [[OPPItemViewController alloc] initWithItemCollection:_collection item:_collection.allItems[index]];
+    [self.controller pushViewController:controller];
 }
 
 -(NSUInteger)numberOfItemsInGridView:(OEGridView *)gridView
@@ -166,30 +166,30 @@
     return _collection.allItems.count;
 }
 
--(OPItemGridViewCell*)createPhotoGridViewCell
+-(OPItemGridViewCell*)createItemGridViewCell:(id<XPItem>)item
 {
     return [[OPItemGridViewCell alloc] init];
 }
 
 -(OEGridViewCell *)gridView:(OEGridView *)gridView cellForItemAtIndex:(NSUInteger)index
 {
-    OPItemGridViewCell *cell = (OPItemGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
-    if (!cell)
-    {
-        cell = (OPItemGridViewCell *)[gridView dequeueReusableCell];
-    }
-
-    if (!cell)
-    {
-        cell = [self createPhotoGridViewCell];
-    }
+    NSOrderedSet *items = _collection.allItems;
     
-    
-    NSOrderedSet *allPhotos = _collection.allItems;
-    
-    if (allPhotos.count > 0)
+    if (items.count > 0)
     {
-        id<XPItem> item = allPhotos[index];
+        id<XPItem> item = items[index];
+        
+        OPItemGridViewCell *cell = (OPItemGridViewCell *)[gridView cellForItemAtIndex:index makeIfNecessary:NO];
+        if (!cell)
+        {
+            cell = (OPItemGridViewCell *)[gridView dequeueReusableCell];
+        }
+        
+        if (!cell)
+        {
+            cell = [self createItemGridViewCell:item];
+        }
+        
         cell.representedObject = item;
         
         OPItemGridViewCell * __weak weakCell = cell;
@@ -213,9 +213,9 @@
             //Get badge layer from exposure
             for (id<XPItemCollectionProvider> provider in [XPExposureService itemCollectionProviders])
             {
-                if ([provider respondsToSelector:@selector(badgeLayerForPhoto:)])
+                if ([provider respondsToSelector:@selector(badgeLayerForItem:)])
                 {
-                    cell.badgeLayer = [provider badgeLayerForPhoto:item];
+                    cell.badgeLayer = [provider badgeLayerForItem:item];
                     if (cell.badgeLayer)
                     {
                         break;
@@ -223,9 +223,11 @@
                 }
             }
         }
+        
+        return cell;
     }
     
-    return cell;
+    return nil;
 }
 
 -(BOOL)gridView:(OEGridView *)gridView keyDown:(NSEvent *)event
@@ -316,7 +318,7 @@
     
     [items each:^(id<XPItem> item)
     {
-        [collection addPhoto:item withCompletion:nil];
+        [collection addItem:item withCompletion:nil];
     }];
 }
 

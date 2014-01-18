@@ -1,4 +1,6 @@
 
 #import "Common.h"
 
-NSString *const XPPhotoPboardType = @"com.whimsy.optique.internal.photo";
+NSString *const XPItemPboardType = @"com.whimsy.optique.internal.item";
+
+NSString *const XPBundleItems = @"items";

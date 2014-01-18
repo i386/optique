@@ -42,7 +42,7 @@
     if (![item respondsToSelector:@selector(collection)])
     {
         id<XPItemCollection> collection = (id<XPItemCollection>)item;
-        controller = [[OPItemCollectionViewController alloc] initWithPhotoAlbum:collection collectionManager:[collection collectionManager]];
+        controller = [[OPItemCollectionViewController alloc] initWithIemCollection:collection collectionManager:[collection collectionManager]];
     }
     else
     {
@@ -120,9 +120,9 @@
         //Get badge layer from exposure
         for (id<XPItemCollectionProvider> provider in [XPExposureService itemCollectionProviders])
         {
-            if ([provider respondsToSelector:@selector(badgeLayerForPhoto:)] && [item respondsToSelector:@selector(collection)])
+            if ([provider respondsToSelector:@selector(badgeLayerForItem:)] && [item respondsToSelector:@selector(collection)])
             {
-                cell.badgeLayer = [provider badgeLayerForPhoto:(id<XPItem>)item];
+                cell.badgeLayer = [provider badgeLayerForItem:(id<XPItem>)item];
                 if (cell.badgeLayer)
                 {
                     break;

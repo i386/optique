@@ -96,7 +96,7 @@ typedef void (^XPItemSearch)(id, BOOL*);
     return TRUE;
 }
 
--(void)addPhoto:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock
+-(void)addItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock
 {
     NSURL *newLocation = [[self.path URLByAppendingPathComponent:item.title] URLWithUniqueNameIfExistsAtParent];
     
@@ -113,7 +113,7 @@ typedef void (^XPItemSearch)(id, BOOL*);
 }
 
 
--(void)deletePhoto:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock
+-(void)deleteItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock
 {
     NSError *error;
     NSURL *url = [self.path URLByAppendingPathComponent:item.title];
@@ -131,7 +131,7 @@ typedef void (^XPItemSearch)(id, BOOL*);
 -(void)updatePhotos
 {
     [self performBlockOnMainThreadAndWaitUntilDone:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:XPPhotoCollectionDidStartLoading object:nil userInfo:@{@"collection": self}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:XPItemCollectionDidStartLoading object:nil userInfo:@{@"collection": self}];
     }];
     
     NSMutableOrderedSet *items = [NSMutableOrderedSet orderedSet];
@@ -144,7 +144,7 @@ typedef void (^XPItemSearch)(id, BOOL*);
         _allItems = items;
         [self.collectionManager collectionUpdated:self reload:NO];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:XPPhotoCollectionDidStopLoading object:nil userInfo:@{@"collection": self}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:XPItemCollectionDidStopLoading object:nil userInfo:@{@"collection": self}];
     }];
 }
 

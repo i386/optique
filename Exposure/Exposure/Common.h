@@ -6,4 +6,5 @@ typedef void (^XPURLSupplier)(NSURL *suppliedUrl);
 typedef void (^XPCompletionBlock)(NSError *error);
 typedef void (^XPBlock)();
 
-extern NSString *const XPPhotoPboardType;
+extern NSString *const XPItemPboardType;
+extern NSString *const XPBundleItems;

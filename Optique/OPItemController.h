@@ -16,8 +16,8 @@
 @property (weak) IBOutlet OPPhotoImageView *imageView;
 @property (weak) IBOutlet NSMenu *contextMenu;
 
--initWithPhotoViewController:(OPPItemViewController*)itemViewController;
+-initWithItemViewController:(OPPItemViewController*)itemViewController;
 
-- (IBAction)deletePhoto:(id)sender;
+- (IBAction)deleteItem:(id)sender;
 
 @end

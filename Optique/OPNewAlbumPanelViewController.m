@@ -78,7 +78,7 @@
         [_items each:^(id sender) {
             if ([sender conformsToProtocol:@protocol(XPItem)])
             {
-                [album addPhoto:sender withCompletion:nil];
+                [album addItem:sender withCompletion:nil];
             }
             else if ([sender isKindOfClass:[NSURL class]])
             {
@@ -157,7 +157,7 @@
                 {
                     if ([provider respondsToSelector:@selector(badgeLayerForPhoto:)])
                     {
-                        item.badgeLayer = [provider badgeLayerForPhoto:(id<XPItem>)obj];
+                        item.badgeLayer = [provider badgeLayerForItem:(id<XPItem>)obj];
                         if (item.badgeLayer)
                         {
                             break;
@@ -203,13 +203,13 @@
             return YES;
         }
     }
-    else if ([[pboard types] containsObject:XPPhotoPboardType])
+    else if ([[pboard types] containsObject:XPItemPboardType])
     {
         __block BOOL reload = NO;
         
         [[pboard pasteboardItems] each:^(NSPasteboardItem *item) {
             
-            NSData *data = [item dataForType:XPPhotoPboardType];
+            NSData *data = [item dataForType:XPItemPboardType];
             if (data)
             {
                 NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -221,7 +221,7 @@
                 if (collection)
                 {
                     id<XPItem> item = [[collection allItems] match:^BOOL(id<XPItem> obj) {
-                        return [[obj title] isEqualToString:dict[@"photo-title"]];
+                        return [[obj title] isEqualToString:dict[@"item-title"]];
                     }];
                     
                     [_items addObject:item];

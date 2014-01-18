@@ -29,7 +29,7 @@ NSString *const XPCollectionManagerDidDeleteCollection = @"XPCollectionManagerDi
         _path = path;
         _collectionSet = [[NSMutableOrderedSet alloc] init];
         
-        //Register all photocollection providers
+        //Register all collection providers
         [[XPExposureService itemCollectionProviders] each:^(id<XPItemCollectionProvider> sender) {
             sender.delegate = self;
         }];
@@ -100,7 +100,7 @@ NSString *const XPCollectionManagerDidDeleteCollection = @"XPCollectionManagerDi
         
         if (collection)
         {
-            [self sendNotificationWithName:XPCollectionManagerDidAddCollection forPhotoCollection:collection];
+            [self sendNotificationWithName:XPCollectionManagerDidAddCollection collection:collection];
         }
         return collection;
         
@@ -170,7 +170,7 @@ NSString *const XPCollectionManagerDidDeleteCollection = @"XPCollectionManagerDi
                     }
                     
                     NSMutableDictionary *collectionMetadata = [NSMutableDictionary dictionaryWithDictionary:prototype.metadata];
-                    [collectionMetadata setObject:items forKey:fOptiqueBundlePhotos];
+                    [collectionMetadata setObject:items forKey:XPBundleItems];
                     
                     XPBundleMetadata *metadata = [XPBundleMetadata createMetadataForPath:albumPath bundleId:exposureId];
                     [metadata.bundleData addEntriesFromDictionary:collectionMetadata];
@@ -180,10 +180,10 @@ NSString *const XPCollectionManagerDidDeleteCollection = @"XPCollectionManagerDi
                 }
                 else
                 {
-                    id<XPItemCollection> album = [XPExposureService collectionWithTitle:prototype.title path:albumPath];
-                    [self addAlbum:album];
-                    [self sendNotificationWithName:XPCollectionManagerDidAddCollection forPhotoCollection:album];
-                    return album;
+                    id<XPItemCollection> collection = [XPExposureService collectionWithTitle:prototype.title path:albumPath];
+                    [self addAlbum:collection];
+                    [self sendNotificationWithName:XPCollectionManagerDidAddCollection collection:collection];
+                    return collection;
                 }
             }
             else
@@ -205,7 +205,7 @@ NSString *const XPCollectionManagerDidDeleteCollection = @"XPCollectionManagerDi
     {
         [collection reload];
     }
-    [self sendNotificationWithName:XPCollectionManagerDidUpdateCollection forPhotoCollection:collection];
+    [self sendNotificationWithName:XPCollectionManagerDidUpdateCollection collection:collection];
 }
 
 -(id<XPItemCollection>)addAlbum:(id<XPItemCollection>)album
@@ -228,20 +228,20 @@ NSString *const XPCollectionManagerDidDeleteCollection = @"XPCollectionManagerDi
     }];
 }
 
--(void)didAddItemCollection:(id<XPItemCollection>)photoCollection
+-(void)didAddItemCollection:(id<XPItemCollection>)collection
 {
-    __block id<XPItemCollection> collection;
+    __block id<XPItemCollection> blockCollection;
     __block bool isUpdate = NO;
     [_collectionLock withBlock:^id{
-        NSUInteger index = [_collectionSet indexOfObject:photoCollection];
+        NSUInteger index = [_collectionSet indexOfObject:collection];
         if (index != NSNotFound)
         {
-            collection = [_collectionSet objectAtIndex:index];
+            blockCollection = [_collectionSet objectAtIndex:index];
         }
         else
         {
-            [_collectionSet addObject:photoCollection];
-            collection = photoCollection;
+            [_collectionSet addObject:collection];
+            blockCollection = collection;
         }
         return nil;
     }];
@@ -249,24 +249,24 @@ NSString *const XPCollectionManagerDidDeleteCollection = @"XPCollectionManagerDi
     if (isUpdate)
     {
         [collection reload];
-        [self sendNotificationWithName:XPCollectionManagerDidUpdateCollection forPhotoCollection:collection];
+        [self sendNotificationWithName:XPCollectionManagerDidUpdateCollection collection:collection];
     }
     else
     {
-        [self sendNotificationWithName:XPCollectionManagerDidAddCollection forPhotoCollection:photoCollection];
+        [self sendNotificationWithName:XPCollectionManagerDidAddCollection collection:collection];
     }
 }
 
--(void)didRemoveItemCollection:(id<XPItemCollection>)photoCollection
+-(void)didRemoveItemCollection:(id<XPItemCollection>)collection
 {
     [_collectionLock withBlock:^id{
-        [_collectionSet removeObject:photoCollection];
+        [_collectionSet removeObject:collection];
         return nil;
     }];
-    [self sendNotificationWithName:XPCollectionManagerDidDeleteCollection forPhotoCollection:photoCollection];
+    [self sendNotificationWithName:XPCollectionManagerDidDeleteCollection collection:collection];
 }
 
--(void)sendNotificationWithName:(NSString*)notificationName forPhotoCollection:(id<XPItemCollection>)collection
+-(void)sendNotificationWithName:(NSString*)notificationName collection:(id<XPItemCollection>)collection
 {
     [[NSNotificationCenter defaultCenter] postAsyncNotificationName:notificationName object:nil userInfo:@{@"collection": collection, @"collectionManager": self}];
 }

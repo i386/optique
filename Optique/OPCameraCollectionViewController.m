@@ -7,7 +7,7 @@
 //
 
 #import "OPCameraCollectionViewController.h"
-#import "OPCameraPhotoCollectionViewController.h"
+#import "OPCameraItemCollectionViewController.h"
 
 @interface OPCameraCollectionViewController ()
 
@@ -17,7 +17,7 @@
 
 -(OPNavigationViewController *)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager *)collectionManager
 {
-    return [[OPCameraPhotoCollectionViewController alloc] initWithPhotoAlbum:collection collectionManager:collectionManager];
+    return [[OPCameraItemCollectionViewController alloc] initWithIemCollection:collection collectionManager:collectionManager];
 }
 
 @end

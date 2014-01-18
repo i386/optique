@@ -34,15 +34,15 @@
     
     if (character == NSRightArrowFunctionKey)
     {
-        [_controller nextPhoto];
+        [_controller next];
     }
     else if (character == NSLeftArrowFunctionKey)
     {
-        [_controller previousPhoto];
+        [_controller previous];
     }
     else if (event.keyCode == 33)
     {
-        [_controller backToPhotoCollection];
+        [_controller backToCollection];
     }
 }
 

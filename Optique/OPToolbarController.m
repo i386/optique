@@ -29,8 +29,8 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     
     __block NSProgressIndicator *indicatorForBlock = _loadProgressIndicator;
     
-    _syncCollectionEvents = [OPNotificationSynchronizer watchForIncrementNotification:XPPhotoCollectionDidStartLoading
-                                                             deincrementNotification:XPPhotoCollectionDidStopLoading
+    _syncCollectionEvents = [OPNotificationSynchronizer watchForIncrementNotification:XPItemCollectionDidStartLoading
+                                                             deincrementNotification:XPItemCollectionDidStopLoading
                                                                        incrementBlock:^{
                                                                         [indicatorForBlock setHidden:NO];
                                                                         [indicatorForBlock startAnimation:self];

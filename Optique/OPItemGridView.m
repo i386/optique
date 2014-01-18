@@ -23,7 +23,7 @@
         self.itemSize = CGSizeMake(280.0, 175.0);
         self.isSelectionSticky = NO;
         
-        [self registerForDraggedTypes:@[NSFilenamesPboardType, XPPhotoPboardType]];
+        [self registerForDraggedTypes:@[NSFilenamesPboardType, XPItemPboardType]];
     }
     return self;
 }

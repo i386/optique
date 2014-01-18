@@ -1,5 +1,5 @@
 //
-//  NSPasteboard+XPPhoto.m
+//  NSPasteboard+XPItem.m
 //  Optique
 //
 //  Created by James Dumay on 30/10/2013.

@@ -133,7 +133,7 @@
 		0FC2ABCC1789541A009C7B02 /* OPCameraItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C5619172CBB4B00CB7B1E /* OPCameraItem.m */; };
 		0FC2ABCD17895450009C7B02 /* ImageCaptureCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */; };
 		0FC2EC2C1813EB0600D02EC5 /* OPCameraCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2EC2B1813EB0600D02EC5 /* OPCameraCollectionViewController.m */; };
-		0FC2EC2F1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2EC2E1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.m */; };
+		0FC2EC2F1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2EC2E1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.m */; };
 		0FC2EC741813F5BA00D02EC5 /* OPImportItemsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2EC721813F5BA00D02EC5 /* OPImportItemsWindowController.m */; };
 		0FC2EC751813F5BA00D02EC5 /* OPImportItemsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2EC731813F5BA00D02EC5 /* OPImportItemsWindowController.xib */; };
 		0FC6F836188691350070CAA3 /* OPItemCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC6F835188691350070CAA3 /* OPItemCollectionViewController.xib */; };
@@ -483,8 +483,8 @@
 		0FC2ABC517895355009C7B02 /* OPCameraPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCameraPlugin.m; sourceTree = "<group>"; };
 		0FC2EC2A1813EB0600D02EC5 /* OPCameraCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCameraCollectionViewController.h; sourceTree = "<group>"; };
 		0FC2EC2B1813EB0600D02EC5 /* OPCameraCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCameraCollectionViewController.m; sourceTree = "<group>"; };
-		0FC2EC2D1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPCameraPhotoCollectionViewController.h; path = ../OPCameraPhotoCollectionViewController.h; sourceTree = "<group>"; };
-		0FC2EC2E1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCameraPhotoCollectionViewController.m; path = ../OPCameraPhotoCollectionViewController.m; sourceTree = "<group>"; };
+		0FC2EC2D1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPCameraItemCollectionViewController.h; path = ../OPCameraItemCollectionViewController.h; sourceTree = "<group>"; };
+		0FC2EC2E1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCameraItemCollectionViewController.m; path = ../OPCameraItemCollectionViewController.m; sourceTree = "<group>"; };
 		0FC2EC711813F5BA00D02EC5 /* OPImportItemsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImportItemsWindowController.h; sourceTree = "<group>"; };
 		0FC2EC721813F5BA00D02EC5 /* OPImportItemsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImportItemsWindowController.m; sourceTree = "<group>"; };
 		0FC2EC731813F5BA00D02EC5 /* OPImportItemsWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPImportItemsWindowController.xib; sourceTree = "<group>"; };
@@ -1001,8 +1001,8 @@
 			children = (
 				0FC2EC2A1813EB0600D02EC5 /* OPCameraCollectionViewController.h */,
 				0FC2EC2B1813EB0600D02EC5 /* OPCameraCollectionViewController.m */,
-				0FC2EC2D1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.h */,
-				0FC2EC2E1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.m */,
+				0FC2EC2D1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.h */,
+				0FC2EC2E1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.m */,
 				0FC2EC711813F5BA00D02EC5 /* OPImportItemsWindowController.h */,
 				0FC2EC721813F5BA00D02EC5 /* OPImportItemsWindowController.m */,
 				0FC2EC731813F5BA00D02EC5 /* OPImportItemsWindowController.xib */,
@@ -1739,7 +1739,7 @@
 				0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */,
 				0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */,
 				0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */,
-				0FC2EC2F1813EC1D00D02EC5 /* OPCameraPhotoCollectionViewController.m in Sources */,
+				0FC2EC2F1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.m in Sources */,
 				0FDE075817030FCC00D5B456 /* OPItemCollectionViewController.m in Sources */,
 				0F96270E170418EB007C1A86 /* OPPItemViewController.m in Sources */,
 				0FCFCB1217043D180040FF11 /* OPImageCache.m in Sources */,

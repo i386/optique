@@ -19,11 +19,11 @@
 
 -initWithItemCollection:(id<XPItemCollection>)collection item:(id<XPItem>)item;
 
--(void)nextPhoto;
--(void)previousPhoto;
+-(void)next;
+-(void)previous;
 
--(void)backToPhotoCollection;
+-(void)backToCollection;
 
--(void)deletePhoto;
+-(void)deleteItem;
 
 @end

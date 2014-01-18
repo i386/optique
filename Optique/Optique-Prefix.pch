@@ -11,7 +11,4 @@
 
     #import "NSObject+PerformBlock.h"
     #import "NSNotificationCenter+Async.h"
-
-    //Constants
-    #define fOptiqueBundlePhotos        @"photos"
 #endif

@@ -25,9 +25,9 @@
 @property (weak) IBOutlet KBButton *primaryActionButton;
 @property (weak) IBOutlet KBButton *secondaryActionButton;
 
--initWithPhotoAlbum:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager*)collectionManager;
+-initWithIemCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager*)collectionManager;
 
-- (IBAction)deletePhoto:(id)sender;
+- (IBAction)deleteItem:(id)sender;
 
 //TODO: move the items below and use a delegate
 
@@ -35,6 +35,6 @@
 
 - (IBAction)secondaryActionActivated:(id)sender;
 
--(OPItemGridViewCell*)createPhotoGridViewCell;
+-(OPItemGridViewCell*)createItemGridViewCell:(id<XPItem>)item;
 
 @end

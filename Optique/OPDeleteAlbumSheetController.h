@@ -16,7 +16,7 @@
 @property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 @property (weak, readonly) NSViewController *viewController;
 
--initWithPhotoAlbums:(NSArray*)albums collectionManager:(XPCollectionManager*)collectionManager parentController:(NSViewController*)viewController;
+-initWithCollections:(NSArray*)albums collectionManager:(XPCollectionManager*)collectionManager parentController:(NSViewController*)viewController;
 
 -(void)startAlbumDeletion;
 

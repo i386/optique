@@ -34,7 +34,7 @@
                 <menuItem title="Delete photo" id="25">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="deletePhoto:" target="-2" id="38"/>
+                        <action selector="deleteItem:" target="-2" id="PU9-YC-VP4"/>
                     </connections>
                 </menuItem>
             </items>

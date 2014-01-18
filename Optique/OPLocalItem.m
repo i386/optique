@@ -101,14 +101,14 @@
 
 -(NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard
 {
-    return @[XPPhotoPboardType, (NSString *)kUTTypeURL];
+    return @[XPItemPboardType, (NSString *)kUTTypeURL];
 }
 
 -(id)pasteboardPropertyListForType:(NSString *)type
 {
-    if ([type isEqualToString:XPPhotoPboardType])
+    if ([type isEqualToString:XPItemPboardType])
     {
-        return [NSKeyedArchiver archivedDataWithRootObject:@{@"photo-title": self.title, @"collection-title": [self.collection title]}];
+        return [NSKeyedArchiver archivedDataWithRootObject:@{@"item-title": self.title, @"collection-title": [self.collection title]}];
     }
     else if ([type isEqualToString:(NSString *)kUTTypeURL])
     {

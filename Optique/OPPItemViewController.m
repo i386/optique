@@ -74,22 +74,22 @@
     return YES;
 }
 
--(void)nextPhoto
+-(void)next
 {
     [_pageController navigateForward:self];
 }
 
--(void)previousPhoto
+-(void)previous
 {
     [_pageController navigateBack:self];
 }
 
--(void)backToPhotoCollection
+-(void)backToCollection
 {
     [self.controller popToPreviousViewController];
 }
 
--(void)deletePhoto
+-(void)deleteItem
 {
     NSString *message = [NSString stringWithFormat:@"Do you want to delete '%@'?", _item.title];
     
@@ -98,7 +98,7 @@
 
 -(void)deleteSelected
 {
-    [self deletePhoto];
+    [self deleteItem];
 }
 
 - (void)deleteSheetDidEndShouldClose: (NSWindow *)sheet
@@ -109,7 +109,7 @@
     {
         id<XPItem> item = CFBridgingRelease(contextInfo);
         
-        [_collection deletePhoto:item withCompletion:nil];
+        [_collection deleteItem:item withCompletion:nil];
         
         [self.controller popToPreviousViewController];
     }
@@ -127,7 +127,7 @@
 
 -(NSViewController *)pageController:(NSPageController *)pageController viewControllerForIdentifier:(NSString *)identifier
 {
-    return [[OPItemController alloc] initWithPhotoViewController:self];
+    return [[OPItemController alloc] initWithItemViewController:self];
 }
 
 -(void)pageController:(NSPageController *)pageController prepareViewController:(NSViewController *)viewController withObject:(id<XPItem>)item

@@ -41,7 +41,7 @@
         [_albumNameTextField setStringValue:@""];
         [_navigationController popToRootViewController];
         
-        OPItemCollectionViewController *itemCollectionController = [[OPItemCollectionViewController alloc] initWithPhotoAlbum:album collectionManager:_collectionManager];
+        OPItemCollectionViewController *itemCollectionController = [[OPItemCollectionViewController alloc] initWithIemCollection:album collectionManager:_collectionManager];
         [_navigationController pushViewController:itemCollectionController];
     }
     else

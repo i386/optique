@@ -38,6 +38,6 @@
 /**
  Layer to add to the cell of the item
  */
--(XPBadgeLayer*)badgeLayerForPhoto:(id<XPItem>)item;
+-(XPBadgeLayer*)badgeLayerForItem:(id<XPItem>)item;
 
 @end

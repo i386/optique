@@ -127,7 +127,7 @@
                 <menuItem title="Delete photo" id="42">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="deletePhoto:" target="-2" id="43"/>
+                        <action selector="deleteItem:" target="-2" id="wpJ-hj-2rK"/>
                     </connections>
                 </menuItem>
             </items>

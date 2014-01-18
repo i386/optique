@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "XPItem.h"
 
-extern NSString *const XPPhotoCollectionDidStartLoading;
-extern NSString *const XPPhotoCollectionDidStopLoading;
+extern NSString *const XPItemCollectionDidStartLoading;
+extern NSString *const XPItemCollectionDidStopLoading;
 
 @class XPCollectionManager;
 
@@ -62,12 +62,12 @@ typedef NS_ENUM(NSUInteger, XPItemCollectionType) {
 /** 
  add the provided item to this collection and call the completion block when done;
  */
--(void)addPhoto:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock;
+-(void)addItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock;
 
 /**
  delete the item from this collection and call the completion block when done;
  */
--(void)deletePhoto:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock;
+-(void)deleteItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock;
 
 /**
  Metadata that is stored for this Collection so that it can be rebuilt by the album scanner & collection provider on startup

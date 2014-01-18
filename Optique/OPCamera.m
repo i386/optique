@@ -105,10 +105,10 @@
     return NO;
 }
 
--(void)deletePhoto:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock
+-(void)deleteItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock
 {
-    OPCameraItem *cameraPhoto = (OPCameraItem*)item;
-    [cameraPhoto.cameraFile.device requestDeleteFiles:@[cameraPhoto.cameraFile]];
+    OPCameraItem *cameraItem = (OPCameraItem*)item;
+    [cameraItem.cameraFile.device requestDeleteFiles:@[cameraItem.cameraFile]];
     if (completionBlock)
     {
         completionBlock(nil);

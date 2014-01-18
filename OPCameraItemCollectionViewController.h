@@ -8,6 +8,6 @@
 
 #import "OPItemCollectionViewController.h"
 
-@interface OPCameraPhotoCollectionViewController : OPItemCollectionViewController
+@interface OPCameraItemCollectionViewController : OPItemCollectionViewController
 
 @end

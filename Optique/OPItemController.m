@@ -16,7 +16,7 @@
 
 @implementation OPItemController
 
--(id)initWithPhotoViewController:(OPPItemViewController *)itemViewController
+-(id)initWithItemViewController:(OPPItemViewController *)itemViewController
 {
     self = [super initWithNibName:@"OPItemController" bundle:nil];
     if (self) {
@@ -37,12 +37,12 @@
 
 -(void)deleteSelected
 {
-    [_itemViewController deletePhoto];
+    [_itemViewController deleteItem];
 }
 
-- (IBAction)deletePhoto:(id)sender
+- (IBAction)deleteItem:(id)sender
 {
-    [_itemViewController deletePhoto];
+    [_itemViewController deleteItem];
 }
 
 -(void)awakeFromNib
