@@ -9,11 +9,11 @@ XPItemType XPItemTypeFromUTICFString(CFStringRef fileUTI)
         type = XPItemTypePhoto;
     }
     
-//    if (UTTypeConformsTo(fileUTI, kUTTypeMovie) ||
-//        UTTypeConformsTo(fileUTI, kUTTypeVideo))
-//    {
-//        type = XPItemTypeVideo;
-//    }
+    if (UTTypeConformsTo(fileUTI, kUTTypeMovie) ||
+        UTTypeConformsTo(fileUTI, kUTTypeVideo))
+    {
+        type = XPItemTypeVideo;
+    }
     
     return type;
 }

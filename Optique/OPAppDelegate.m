@@ -7,7 +7,7 @@
 //
 
 #import "OPAppDelegate.h"
-#import "OPImageCache.h"
+#import "OPItemPreviewManager.h"
 #import <Exposure/Exposure.h>
 #import "NSWindow+FullScreen.h"
 #import <HockeySDK/BITHockeyManager.h>
@@ -84,7 +84,7 @@
     {
         if (result == NSFileHandlingPanelOKButton)
         {
-            [[OPImageCache sharedPreviewCache] clearCache];
+            [[OPItemPreviewManager defaultManager] clearCache];
             
             NSError *error;
             NSData *data = [openPanel.URL bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope includingResourceValuesForKeys:nil relativeToURL:nil error:&error];
@@ -161,7 +161,7 @@
 
 - (IBAction)debugClearCache:(id)sender
 {
-    [[OPImageCache sharedPreviewCache] clearCache];
+    [[OPItemPreviewManager defaultManager] clearCache];
     [self picturesAtDirectory:_collectionManager.path];
 }
 

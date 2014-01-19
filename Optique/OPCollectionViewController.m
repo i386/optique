@@ -11,7 +11,7 @@
 
 #import "OPItemCollectionViewController.h"
 #import "OPRenameAlbumWindowController.h"
-#import "OPItemPreviewService.h"
+#import "OPItemPreviewManager.h"
 #import "OPDeleteAlbumSheetController.h"
 #import "OPGridViewCell.h"
 #import "NSColor+Optique.h"
@@ -335,24 +335,27 @@
     
     NSArray *filteredCollections = [_collectionManager.allCollections filteredArrayUsingPredicate:_predicate];
     id<XPItemCollection> collection = filteredCollections[index];
-    cell.representedObject = collection;
     cell.title = collection.title;
     cell.view.toolTip = collection.title;
+    cell.image = [NSImage imageNamed:@"empty-album"];
     
     id<XPItem> item = [collection coverItem];
     if (item)
     {
+        cell.representedObject = item;
+        
+        id<XPItem> __weak weakItem = item;
         OPGridViewCell * __weak weakCell = cell;
         
-        weakCell.image = [[OPItemPreviewService defaultService] previewImage:item loaded:^(NSImage *image) {
-              [self performBlockOnMainThread:^{
-                   weakCell.image = image;
-               }];
-          }];
-    }
-    else
-    {
-        cell.image = [NSImage imageNamed:@"empty-album"];
+        [[OPItemPreviewManager defaultManager] previewItem:item loaded:^(NSImage *image) {
+            [self performBlockOnMainThread:^
+             {
+                 if (weakItem == weakCell.representedObject)
+                 {
+                     weakCell.image = image;
+                 }
+             }];
+        }];
     }
     
     if (!cell.badgeLayer)

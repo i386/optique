@@ -47,7 +47,24 @@
 
 -(void)awakeFromNib
 {
-    _imageView.representedObject = _itemViewController.item;
+    id<XPItem> item = _itemViewController.item;
+    
+    _imageView.representedObject = item;
+    _playerView.representedObject = item;
+    
+    if ([item type] == XPItemTypePhoto)
+    {
+        [_imageView setHidden:NO];
+    }
+    else if ([item type] == XPItemTypeVideo)
+    {
+        [_playerView setHidden:NO];
+    }
+    else
+    {
+        NSLog(@"Cannot display item of type %@", [item class]);
+    }
+    
     [XPExposureService collectionManager:_itemViewController.collection.collectionManager itemController:self];
 }
 

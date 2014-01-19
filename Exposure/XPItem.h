@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 James Dumay. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 typedef NS_ENUM(NSUInteger, XPItemType) {
     XPItemTypeUnknown,
@@ -22,7 +22,7 @@ XPItemType XPItemTypeFromUTINSString(NSString *fileUTI);
 
 @protocol XPItemCollection;
 
-@protocol XPItem <NSObject>
+@protocol XPItem <NSObject, NSPasteboardWriting>
 
 /**
  The photo title

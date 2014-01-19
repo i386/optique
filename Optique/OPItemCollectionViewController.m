@@ -9,7 +9,7 @@
 #import <Carbon/Carbon.h>
 #import "OPItemCollectionViewController.h"
 #import "OPPItemViewController.h"
-#import "OPItemPreviewService.h"
+#import "OPItemPreviewManager.h"
 #import "OPPlaceHolderViewController.h"
 #import "NSURL+Renamer.h"
 #import "OPToolbarController.h"
@@ -195,16 +195,15 @@
         OPItemGridViewCell * __weak weakCell = cell;
         id<XPItem> __weak weakItem = item;
         
-        cell.image = [[OPItemPreviewService defaultService] previewImage:item loaded:^(NSImage *image)
-                      {
-                          [self performBlockOnMainThread:^
-                           {
-                               if (weakItem == weakCell.representedObject)
-                               {
-                                   cell.image = image;
-                               }
-                           }];
-                      }];
+        [[OPItemPreviewManager defaultManager] previewItem:item loaded:^(NSImage *image) {
+            [self performBlockOnMainThread:^
+             {
+                 if (weakItem == weakCell.representedObject)
+                 {
+                     weakCell.image = image;
+                 }
+             }];
+        }];
         
         cell.view.toolTip = item.title;
         

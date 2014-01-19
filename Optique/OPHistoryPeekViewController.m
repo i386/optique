@@ -7,7 +7,7 @@
 //
 
 #import "OPHistoryPeekViewController.h"
-#import "OPItemPreviewService.h"
+#import "OPItemPreviewManager.h"
 #import "OPPItemViewController.h"
 #import "OPItemCollectionViewController.h"
 #import "OPGridViewCell.h"
@@ -101,17 +101,18 @@
         item = (id<XPItem>)obj;
     }
     
+    cell.representedObject = item;
     cell.title = [item title];
-    cell.image = [[OPItemPreviewService defaultService] previewImage:item loaded:^(NSImage *image)
-                  {
-                      [self performBlockOnMainThread:^
-                       {
-                           if (item == weakCell.representedObject)
-                           {
-                               weakCell.image = image;
-                           }
-                       }];
-                  }];
+    
+    [[OPItemPreviewManager defaultManager] previewItem:item loaded:^(NSImage *image) {
+        [self performBlockOnMainThread:^
+        {
+            if (item == weakCell.representedObject)
+            {
+                weakCell.image = image;
+            }
+        }];
+    }];
     
     cell.view.toolTip = item.title;
     

@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "OPPlayerView.h"
 #import "OPPhotoImageView.h"
 
 @class OPPItemViewController;
@@ -14,6 +15,7 @@
 @interface OPItemController : NSViewController <NSMenuDelegate, XPItemController, XPSharingService>
 
 @property (weak) IBOutlet OPPhotoImageView *imageView;
+@property (weak) IBOutlet OPPlayerView *playerView;
 @property (weak) IBOutlet NSMenu *contextMenu;
 
 -initWithItemViewController:(OPPItemViewController*)itemViewController;
