@@ -122,6 +122,13 @@ static OPItemPreviewManager *_defaultManager;
 {
     if (!item) return;
     
+    //If there is a thumbnail
+    if ([item respondsToSelector:@selector(thumbnail)])
+    {
+        completionBlock(item.thumbnail);
+        return;
+    }
+    
     volatile NSLock *lock = [self lockForItem:item];
     
     [lock withBlock:^id{
@@ -197,10 +204,6 @@ static OPItemPreviewManager *_defaultManager;
             [image setCacheMode:NSImageCacheNever];
             return image;
         }
-    }
-    else
-    {
-        return item.thumbnail;
     }
     return nil;
 }

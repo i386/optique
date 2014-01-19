@@ -136,26 +136,32 @@
     //Blank the current image so we dont get flashes of it when we async load the new image
     viewController.representedObject = nil;
     
-    NSSize windowSize = [[NSApplication sharedApplication] mainWindow].frame.size;
-    
     if ([item respondsToSelector:@selector(requestLocalCopyInCacheWhenDone:)])
     {
         [item requestLocalCopyInCacheWhenDone:^(NSError *error) {
-            [item scaleImageToFitSize:windowSize withCompletionBlock:^void(NSImage *image) {
-                viewController.representedObject = image;
-            }];
+            [self updateViewController:viewController item:item];
         }];
     }
     else
+    {
+        [self updateViewController:viewController item:item];
+    }
+}
+
+-(void)updateViewController:(NSViewController*)viewController item:(id<XPItem>)item
+{
+    NSSize windowSize = [[NSApplication sharedApplication] mainWindow].frame.size;
+    
+    if (item.type == XPItemTypePhoto)
     {
         [item scaleImageToFitSize:windowSize withCompletionBlock:^void(NSImage *image) {
             viewController.representedObject = image;
         }];
     }
-}
-
-- (void)pageController:(NSPageController *)pageController didTransitionToObject:(id)object
-{
+    else
+    {
+        viewController.representedObject = item;
+    }
 }
 
 -(void)windowFullscreenStateChanged:(NSNotification*)notification
@@ -165,6 +171,10 @@
         [controller.view setNeedsDisplay:YES];
         [controller.imageView setNeedsDisplay:YES];
     }];
+}
+
+- (void)pageController:(NSPageController *)pageController didTransitionToObject:(id)object
+{
 }
 
 -(void)collectionUpdated:(NSNotification*)notification
@@ -185,5 +195,6 @@
 {
     [XPExposureService menuVisiblity:self.contextMenu item:_item];
 }
+
 
 @end

@@ -55,7 +55,11 @@
 
 -(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(XPImageCompletionBlock)completionBlock
 {
-    if ([self url])
+    if (_type != XPItemTypePhoto)
+    {
+        completionBlock(nil);
+    }
+    else if ([self url])
     {
         NSImage *image;
         

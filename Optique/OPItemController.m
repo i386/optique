@@ -66,6 +66,12 @@
     [XPExposureService collectionManager:_itemViewController.collection.collectionManager itemController:self];
 }
 
+-(void)setRepresentedObject:(id)representedObject
+{
+    [super setRepresentedObject:representedObject];
+    _playerView.representedObject = representedObject;
+}
+
 -(BOOL)shareableItemsSelected
 {
     return YES;
