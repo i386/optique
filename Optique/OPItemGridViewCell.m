@@ -9,6 +9,13 @@
 #import "OPItemGridViewCell.h"
 #import "NSColor+Optique.h"
 #import "OPItemGridView.h"
+#import "NSImage+CGImage.h"
+
+@interface OPItemGridViewCell()
+
+@property (assign, getter = isVideo) BOOL video;
+
+@end
 
 @implementation OPItemGridViewCell
 
@@ -29,6 +36,13 @@
         self.imageLayer.borderColor = [[NSColor blackColor] CGColor];
         self.imageLayer.backgroundColor = [[NSColor lightGrayColor] CGColor];
         [self addSublayer:self.imageLayer];
+        
+        NSImage *image = [NSImage imageNamed:@"play"];
+        self.videoLayer = [OEGridLayer layer];
+        self.videoLayer.contents = (id)image.CGImageRef;
+        self.videoLayer.bounds = NSMakeRect(0, 0, 36, 36);
+        
+        [self addSublayer:self.videoLayer];
     }
     return self;
 }
@@ -48,6 +62,13 @@
     {
         self.badgeLayer.frame = self.bounds;
     }
+    
+    if ([self.representedObject type] != XPItemTypeVideo)
+    {
+        [self.videoLayer setHidden:YES];
+    }
+    
+    self.videoLayer.position = NSMakePoint(self.bounds.size.width / 2, self.bounds.size.height / 2);
 }
 
 - (void)prepareForReuse

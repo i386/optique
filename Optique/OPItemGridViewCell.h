@@ -10,10 +10,11 @@
 
 @interface OPItemGridViewCell : OPGridViewCell
 
-@property (nonatomic, retain) id representedObject;
+@property (nonatomic, retain) id<XPItem> representedObject;
 
 @property (nonatomic, retain) OEGridLayer *imageLayer;
 @property (nonatomic, retain) CALayer *selectionLayer;
 @property (nonatomic, retain) CALayer *badgeLayer;
+@property (nonatomic, retain) CALayer *videoLayer;
 
 @end
