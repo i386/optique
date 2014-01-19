@@ -17,14 +17,6 @@
 
 @implementation OPPlayerView
 
--(void)rightMouseDown:(NSEvent *)theEvent
-{
-    if (_contextMenu)
-    {
-        [NSMenu popUpContextMenu:_contextMenu withEvent:theEvent forView:self];
-    }
-}
-
 -(void)mouseDragged:(NSEvent *)theEvent
 {
     NSDraggingItem *dragItem = [[NSDraggingItem alloc] initWithPasteboardWriter:self.representedObject];

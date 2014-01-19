@@ -10,7 +10,6 @@
 
 @interface OPPlayerView : AVPlayerView<NSDraggingSource>
 
-@property (nonatomic, weak) IBOutlet NSMenu *contextMenu;
 @property (nonatomic) id<XPItem> representedObject;
 
 @end

@@ -42,7 +42,7 @@
         </customView>
         <menu id="24">
             <items>
-                <menuItem title="Delete photo" id="25">
+                <menuItem title="Delete" id="25">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="deleteItem:" target="-2" id="PU9-YC-VP4"/>
