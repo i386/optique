@@ -119,8 +119,6 @@
 		0FA29D09180FE8C60066077D /* OPItemGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA29D08180FE8C60066077D /* OPItemGridViewCell.m */; };
 		0FA29D0E180FF34A0066077D /* NSURL+URLWithoutQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA29D0D180FF34A0066077D /* NSURL+URLWithoutQuery.m */; };
 		0FA29D12180FFB080066077D /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA29D11180FFB080066077D /* lock.png */; };
-		0FA706C2171911B900864CED /* OPNewAlbumSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA706C0171911B900864CED /* OPNewAlbumSheetController.m */; };
-		0FA706C3171911B900864CED /* OPNewAlbumSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C1171911B900864CED /* OPNewAlbumSheetController.xib */; };
 		0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA706C5171911CC00864CED /* OPDeleteAlbumSheetController.m */; };
 		0FA706C8171911CC00864CED /* OPDeleteAlbumSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C6171911CC00864CED /* OPDeleteAlbumSheetController.xib */; };
 		0FA706CB171911F400864CED /* empty-album.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C9171911F400864CED /* empty-album.png */; };
@@ -472,9 +470,6 @@
 		0FA29D0C180FF34A0066077D /* NSURL+URLWithoutQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+URLWithoutQuery.h"; sourceTree = "<group>"; };
 		0FA29D0D180FF34A0066077D /* NSURL+URLWithoutQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+URLWithoutQuery.m"; sourceTree = "<group>"; };
 		0FA29D11180FFB080066077D /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
-		0FA706BF171911B900864CED /* OPNewAlbumSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPNewAlbumSheetController.h; path = Optique/OPNewAlbumSheetController.h; sourceTree = "<group>"; };
-		0FA706C0171911B900864CED /* OPNewAlbumSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPNewAlbumSheetController.m; path = Optique/OPNewAlbumSheetController.m; sourceTree = "<group>"; };
-		0FA706C1171911B900864CED /* OPNewAlbumSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPNewAlbumSheetController.xib; path = Optique/OPNewAlbumSheetController.xib; sourceTree = "<group>"; };
 		0FA706C4171911CC00864CED /* OPDeleteAlbumSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPDeleteAlbumSheetController.h; path = Optique/OPDeleteAlbumSheetController.h; sourceTree = "<group>"; };
 		0FA706C5171911CC00864CED /* OPDeleteAlbumSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPDeleteAlbumSheetController.m; path = Optique/OPDeleteAlbumSheetController.m; sourceTree = "<group>"; };
 		0FA706C6171911CC00864CED /* OPDeleteAlbumSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPDeleteAlbumSheetController.xib; path = Optique/OPDeleteAlbumSheetController.xib; sourceTree = "<group>"; };
@@ -1126,16 +1121,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0FCB492C17161E0800FB4229 /* New Album sheet */ = {
-			isa = PBXGroup;
-			children = (
-				0FA706BF171911B900864CED /* OPNewAlbumSheetController.h */,
-				0FA706C0171911B900864CED /* OPNewAlbumSheetController.m */,
-				0FA706C1171911B900864CED /* OPNewAlbumSheetController.xib */,
-			);
-			name = "New Album sheet";
-			sourceTree = "<group>";
-		};
 		0FCB492D17161E1300FB4229 /* Delete Album sheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -1239,7 +1224,6 @@
 			isa = PBXGroup;
 			children = (
 				0FA29D0A180FE9890066077D /* Grid View */,
-				0FCB492C17161E0800FB4229 /* New Album sheet */,
 				0FCB492D17161E1300FB4229 /* Delete Album sheet */,
 				0FF31870181E6C4E00CD3637 /* Rename Album sheet */,
 				0FEF33A316FEC8090096D72A /* OPCollectionViewController.h */,
@@ -1564,7 +1548,6 @@
 				0F33D0F11769E93D0032CCA0 /* 86-camera-alt@2x.png in Resources */,
 				0FCAF8C91710461A00E6C903 /* effectsbarbg.png in Resources */,
 				0FCAF8CA1710461A00E6C903 /* effectsbarbg@2x.png in Resources */,
-				0FA706C3171911B900864CED /* OPNewAlbumSheetController.xib in Resources */,
 				0F8FEBBB1769E283004BB523 /* 212-action2@2x.png in Resources */,
 				0F08A8D71770443C00DFEA02 /* 329-layers1.png in Resources */,
 				0F33D0E01769E4D40032CCA0 /* 86-camera.png in Resources */,
@@ -1786,7 +1769,6 @@
 				0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */,
 				0F5C40AA181CC1DF00F265FC /* OPDropDownButton.m in Sources */,
 				0FCE744F1714136B00A5AE79 /* NSObject+PerformBlock.m in Sources */,
-				0FA706C2171911B900864CED /* OPNewAlbumSheetController.m in Sources */,
 				0FA706C7171911CC00864CED /* OPDeleteAlbumSheetController.m in Sources */,
 				0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */,
 				0F67499A1820F5F500CEEEA9 /* NSLock+WithBlock.m in Sources */,

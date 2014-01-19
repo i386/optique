@@ -7,7 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="OPNewAlbumPanelViewController">
             <connections>
                 <outlet property="albumNameTextField" destination="ChQ-m4-qG5" id="aef-re-0f5"/>
-                <outlet property="doneButton" destination="6EU-oU-OLX" id="QBY-EP-XYL"/>
+                <outlet property="doneButton" destination="VPF-pp-dIV" id="7EH-GD-Qi3"/>
                 <outlet property="gridview" destination="wbq-YD-BL9" id="R9i-Ic-3Pq"/>
                 <outlet property="view" destination="1" id="2"/>
             </connections>
@@ -40,19 +40,30 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="zLt-fv-Zi6">
-                        <rect key="frame" x="285" y="0.0" width="15" height="319"/>
+                        <rect key="frame" x="284" y="0.0" width="16" height="319"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
                 <button id="6EU-oU-OLX" customClass="KBButton">
-                    <rect key="frame" x="97" y="14" width="106" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="20" y="14" width="106" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="square" title="Cancel" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m18-ZN-zR6">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="done:" target="-2" id="Fjs-XK-SsR"/>
+                        <action selector="cancel:" target="-2" id="Qsl-vv-0ch"/>
+                    </connections>
+                </button>
+                <button id="VPF-pp-dIV" customClass="KBButton">
+                    <rect key="frame" x="174" y="14" width="106" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="square" title="Create" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VkX-GC-PhP">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="done:" target="-2" id="KRg-AU-rWM"/>
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" id="ChQ-m4-qG5" customClass="KBTextField">
@@ -64,7 +75,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <action selector="albumNameChanged:" target="-2" id="LpS-Ec-5EK"/>
+                        <outlet property="delegate" destination="-2" id="5jB-6g-Xni"/>
                     </connections>
                 </textField>
             </subviews>

@@ -37,7 +37,17 @@
     
     _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:@"Drag photos here" image:[NSImage imageNamed:@"down"]];
     
+    [_doneButton setKBButtonType:BButtonTypePrimary];
+    [_doneButton setEnabled:NO];
+    
     [_gridview reloadData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumNameChanged:) name:NSControlTextDidChangeNotification object:_albumNameTextField];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidChangeNotification object:_albumNameTextField];
 }
 
 -(void)activate
@@ -50,7 +60,7 @@
     return [_albumNameTextField.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-- (IBAction)albumNameChanged:(id)sender
+- (void)albumNameChanged:(NSNotification*)notification
 {
     NSString *name = [self albumName];
     
@@ -58,14 +68,17 @@
     
     if ([name isEqualToString:@""])
     {
-        [_doneButton setKBButtonType:BButtonTypeDefault];
-        _doneButton.stringValue = @"Cancel";
+        [_doneButton setEnabled:NO];
     }
     else
     {
-        [_doneButton setKBButtonType:BButtonTypePrimary];
-        _doneButton.stringValue = @"Done";
+        [_doneButton setEnabled:YES];
     }
+}
+
+- (IBAction)cancel:(id)sender
+{
+    [_sidebarController hideSidebar];
 }
 
 - (IBAction)done:(id)sender
@@ -126,8 +139,6 @@
         if ([obj isKindOfClass:[NSURL class]])
         {
             NSURL *url = (NSURL*)obj;
-            
-            item.representedObject = url;
             
             //TODO: preview this
             item.image = [[NSImage alloc] initWithContentsOfURL:url];
