@@ -1257,10 +1257,10 @@
 		0FEF33A216FEC6500096D72A /* Main Window */ = {
 			isa = PBXGroup;
 			children = (
+				0F1C229418791A3E00A6878C /* OPWindowSidebarController.h */,
 				0F6AEF821701C02200A797E4 /* OPMainWindowController.h */,
 				0F6AEF831701C02200A797E4 /* OPMainWindowController.m */,
 				0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */,
-				0F1C229418791A3E00A6878C /* OPWindowSidebarController.h */,
 			);
 			name = "Main Window";
 			sourceTree = "<group>";

@@ -10,7 +10,7 @@
             <connections>
                 <outlet property="contextMenu" destination="24" id="27"/>
                 <outlet property="imageView" destination="3" id="17"/>
-                <outlet property="playerView" destination="AoG-Ka-Lc7" id="xHP-Ez-dbJ"/>
+                <outlet property="playerView" destination="NDg-dZ-rMw" id="Nny-9J-joH"/>
                 <outlet property="view" destination="1" id="2"/>
             </connections>
         </customObject>
@@ -25,15 +25,17 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="4"/>
                     <connections>
+                        <binding destination="-2" name="hidden" keyPath="self.isVideo" id="Nq0-cg-N70"/>
                         <binding destination="-2" name="value" keyPath="self.representedObject" id="18"/>
                         <outlet property="contextMenu" destination="24" id="33"/>
                     </connections>
                 </imageView>
-                <avPlayerView hidden="YES" controlsStyle="floating" id="AoG-Ka-Lc7" customClass="OPPlayerView">
-                    <rect key="frame" x="0.0" y="1" width="480" height="270"/>
+                <avPlayerView controlsStyle="floating" id="NDg-dZ-rMw" customClass="OPPlayerView">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <connections>
-                        <outlet property="contextMenu" destination="24" id="C5t-eC-dE9"/>
+                        <binding destination="-2" name="hidden" keyPath="self.isPhoto" id="0y3-Yw-nX0"/>
+                        <outlet property="contextMenu" destination="24" id="8G9-Uf-HBo"/>
                     </connections>
                 </avPlayerView>
             </subviews>

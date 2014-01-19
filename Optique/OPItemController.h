@@ -22,4 +22,8 @@
 
 - (IBAction)deleteItem:(id)sender;
 
+-(BOOL)isPhoto;
+
+-(BOOL)isVideo;
+
 @end

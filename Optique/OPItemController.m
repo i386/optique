@@ -45,25 +45,22 @@
     [_itemViewController deleteItem];
 }
 
+-(BOOL)isPhoto
+{
+    return [_itemViewController.item type] == XPItemTypePhoto;
+}
+
+-(BOOL)isVideo
+{
+    return [_itemViewController.item type] == XPItemTypeVideo;
+}
+
 -(void)awakeFromNib
 {
     id<XPItem> item = _itemViewController.item;
-    
+
     _imageView.representedObject = item;
     _playerView.representedObject = item;
-    
-    if ([item type] == XPItemTypePhoto)
-    {
-        [_imageView setHidden:NO];
-    }
-    else if ([item type] == XPItemTypeVideo)
-    {
-        [_playerView setHidden:NO];
-    }
-    else
-    {
-        NSLog(@"Cannot display item of type %@", [item class]);
-    }
     
     [XPExposureService collectionManager:_itemViewController.collection.collectionManager itemController:self];
 }
