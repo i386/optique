@@ -185,15 +185,22 @@ static OPItemPreviewManager *_defaultManager;
 
 -(NSImage*)lookupInCache:(id<XPItem>)item
 {
-    NSString *pathHash = [[[item url] path] SHA256];
-    NSURL *url = [[[self cachedImageDirectory] URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"tiff"];
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:url.path])
+    if (item.url)
     {
-        NSImage *image = [[NSImage alloc] initWithContentsOfURL:url];
-        [image setCacheMode:NSImageCacheNever];
-        return image;
+        NSString *pathHash = [[[item url] path] SHA256];
+        NSURL *url = [[[self cachedImageDirectory] URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"tiff"];
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if ([fileManager fileExistsAtPath:url.path])
+        {
+            NSImage *image = [[NSImage alloc] initWithContentsOfURL:url];
+            [image setCacheMode:NSImageCacheNever];
+            return image;
+        }
+    }
+    else
+    {
+        return item.thumbnail;
     }
     return nil;
 }
