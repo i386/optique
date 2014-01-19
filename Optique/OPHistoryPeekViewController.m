@@ -102,7 +102,7 @@
     }
     
     cell.representedObject = item;
-    cell.title = [item title];
+    cell.title = [obj title];
     
     [[OPItemPreviewManager defaultManager] previewItem:item loaded:^(NSImage *image) {
         [self performBlockOnMainThread:^
