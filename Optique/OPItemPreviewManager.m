@@ -187,7 +187,7 @@ static OPItemPreviewManager *_defaultManager;
 {
     if (item.url)
     {
-        NSString *pathHash = [[[item url] path] SHA256];
+        NSString *pathHash = [[item.url path] SHA256];
         NSURL *url = [[[self cachedImageDirectory] URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"tiff"];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
