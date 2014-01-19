@@ -37,7 +37,8 @@
 -(void)setRepresentedObject:(id<XPItem>)representedObject
 {
     _representedObject = representedObject;
-    self.player = [[AVPlayer alloc] initWithURL:[representedObject url]];
+
+    self.player = [AVPlayer playerWithURL:[representedObject url]];
 }
 
 @end
