@@ -61,6 +61,7 @@
 
     _imageView.representedObject = item;
     _playerView.representedObject = item;
+    _playerView.actionPopUpButtonMenu = _contextMenu;
     
     [XPExposureService collectionManager:_itemViewController.collection.collectionManager itemController:self];
 }
