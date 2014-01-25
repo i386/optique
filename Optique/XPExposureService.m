@@ -134,6 +134,16 @@
     return [localPlugin collectionWithTitle:title path:path];
 }
 
++(id<XPItem>)itemForURL:(NSURL *)url collection:(id<XPItemCollection>)collection
+{
+    id localPlugin = [XPExposureService pluginForBundle:@"com.whimsy.optique.Local"];
+    if (!localPlugin)
+    {
+        NSLog(@"Could not find local plugin");
+    }
+    return [localPlugin itemForURL:url collection:collection];
+}
+
 +(NSSet *)itemCollectionProviders
 {
     return [XPExposureService conformsToPhotoCollectionProvider];

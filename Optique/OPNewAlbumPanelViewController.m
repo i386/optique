@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 James Dumay. All rights reserved.
 //
 
+#import <Carbon/Carbon.h>
 #import "OPNewAlbumPanelViewController.h"
 #import "OPPlaceHolderViewController.h"
 #import "OPItemGridViewCell.h"
@@ -43,6 +44,8 @@
     [_gridview reloadData];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumNameChanged:) name:NSControlTextDidChangeNotification object:_albumNameTextField];
+    
+    [_gridview setItemSize:NSMakeSize(_gridview.itemSize.width / 2.5, _gridview.itemSize.height / 2.5)];
 }
 
 -(void)dealloc
@@ -85,6 +88,7 @@
 {
     NSString *albumName = [self albumName];
     NSError *error;
+    
     id<XPItemCollection> album = [_collectionManager newAlbumWithName:albumName error:&error];
     if (album)
     {
@@ -95,7 +99,12 @@
             }
             else if ([sender isKindOfClass:[NSURL class]])
             {
-                NSLog(@"TODO: create me");
+                id<XPItem> item = [XPExposureService itemForURL:sender collection:album];
+                [album addItem:item withCompletion:^(NSError *error) {
+#if DEBUG
+                    NSLog(@"Added url %@ to collection %@", item, album);
+#endif
+                }];
             }
             else
             {
@@ -148,6 +157,8 @@
             OPItemGridViewCell * __weak weakItem = item;
             id<XPItem> __weak weakPhoto = obj;
             
+            item.representedObject = weakPhoto;
+            
             [[OPItemPreviewManager defaultManager] previewItem:obj loaded:^(NSImage *image) {
                 [self performBlockOnMainThread:^
                  {
@@ -179,6 +190,17 @@
     }
     
     return item;
+}
+
+-(BOOL)gridView:(OEGridView *)gridView keyDown:(NSEvent *)event
+{
+    if ([event keyCode] == kVK_Delete || [event keyCode] == kVK_ForwardDelete)
+    {
+        [_items removeObjectsAtIndexes:[gridView selectionIndexes]];
+        [_gridview reloadData];
+        return YES;
+    }
+    return NO;
 }
 
 -(NSView *)viewForNoItemsInGridView:(OEGridView *)gridView

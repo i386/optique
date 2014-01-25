@@ -8,6 +8,8 @@
 
 #import "OPLocalPlugin.h"
 #import "OPLocalCollection.h"
+#import "OPLocalItem.h"
+#import "NSURL+Renamer.h"
 
 @implementation OPLocalPlugin
 
@@ -33,9 +35,22 @@
     [_scanner startScan];
 }
 
--(id<XPItemCollection>)createCollectionWithTitle:(NSString *)title path:(NSURL *)path
+-(id<XPItemCollection>)collectionWithTitle:(NSString *)title path:(NSURL *)path
 {
     return [[OPLocalCollection alloc] initWithTitle:title path:path collectionManager:_collectionManager];
+}
+
+-(id<XPItem>)itemForURL:(NSURL *)url collection:(id<XPItemCollection>)collection
+{
+    NSURL *destURL = [[[collection path] URLByAppendingPathComponent:[url lastPathComponent]] URLWithUniqueNameIfExistsAtParent];
+    [[NSFileManager defaultManager] copyItemAtURL:url toURL:destURL error:nil];
+    
+    XPItemType type = XPItemTypeForPath(destURL);
+    if (type != XPItemTypeUnknown)
+    {
+        return [[OPLocalItem alloc] initWithTitle:[url lastPathComponent] path:destURL album:collection type:type];
+    }
+    return nil;
 }
 
 -(void)didAddAlbums:(NSArray *)albums

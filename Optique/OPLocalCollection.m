@@ -171,21 +171,15 @@ typedef void (^XPItemSearch)(id, BOOL*);
         {
             count++;
             
-            NSString *filePath = [url path];
-            CFStringRef fileExtension = (__bridge CFStringRef) [filePath pathExtension];
-            CFStringRef fileUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, NULL);
-            
             BOOL shouldStop = NO;
             OPLocalItem *item;
             
-            XPItemType type = XPItemTypeFromUTICFString(fileUTI);
+            XPItemType type = XPItemTypeForPath(url);
             if (type != XPItemTypeUnknown)
             {
-                item = [[OPLocalItem alloc] initWithTitle:[filePath lastPathComponent] path:url album:self type:type];
+                item = [[OPLocalItem alloc] initWithTitle:[url lastPathComponent] path:url album:self type:type];
                 block(item, &shouldStop);
             }
-            
-            CFRelease(fileUTI);
             
             if (shouldStop)
             {

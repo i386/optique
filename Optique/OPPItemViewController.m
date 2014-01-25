@@ -139,23 +139,7 @@
     if ([item respondsToSelector:@selector(requestLocalCopyInCacheWhenDone:)])
     {
         [item requestLocalCopyInCacheWhenDone:^(NSError *error) {
-            [self updateViewController:viewController item:item];
-        }];
-    }
-    else
-    {
-        [self updateViewController:viewController item:item];
-    }
-}
-
--(void)updateViewController:(NSViewController*)viewController item:(id<XPItem>)item
-{
-    NSSize windowSize = [[NSApplication sharedApplication] mainWindow].frame.size;
-    
-    if (item.type == XPItemTypePhoto)
-    {
-        [item scaleImageToFitSize:windowSize withCompletionBlock:^void(NSImage *image) {
-            viewController.representedObject = image;
+            viewController.representedObject = item;
         }];
     }
     else

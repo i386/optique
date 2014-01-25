@@ -18,7 +18,8 @@
 @property (strong, readonly) NSMutableSet *collections;
 @property (strong) OPCollectionScanner *scanner;
 
--(id<XPItemCollection>)createCollectionWithTitle:(NSString *)title path:(NSURL *)path;
+-(id<XPItemCollection>)collectionWithTitle:(NSString *)title path:(NSURL *)path;
+-(id<XPItem>)itemForURL:(NSURL*)url collection:(id<XPItemCollection>)collection;
 
 -(void)didAddAlbums:(NSObject*)albums;
 -(void)didRemoveAlbum:(OPLocalCollection*)album;

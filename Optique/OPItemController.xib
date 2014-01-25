@@ -26,7 +26,6 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="4"/>
                     <connections>
                         <binding destination="-2" name="hidden" keyPath="self.isVideo" id="Nq0-cg-N70"/>
-                        <binding destination="-2" name="value" keyPath="self.representedObject" id="18"/>
                         <outlet property="contextMenu" destination="24" id="33"/>
                     </connections>
                 </imageView>

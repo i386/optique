@@ -41,4 +41,14 @@
     _draggingSession = nil;
 }
 
+-(void)setRepresentedObject:(id<XPItem>)representedObject
+{
+    _representedObject = representedObject;
+    
+    NSSize windowSize = [[NSApplication sharedApplication] mainWindow].frame.size;
+    [_representedObject scaleImageToFitSize:windowSize withCompletionBlock:^(NSImage *image) {
+        self.image = image;
+    }];
+}
+
 @end

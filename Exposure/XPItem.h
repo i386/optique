@@ -20,6 +20,11 @@ typedef NS_ENUM(NSUInteger, XPItemType) {
 XPItemType XPItemTypeFromUTICFString(CFStringRef fileUTI);
 XPItemType XPItemTypeFromUTINSString(NSString *fileUTI);
 
+/**
+ Finds the XPItemType of a URL
+ */
+XPItemType XPItemTypeForPath(NSURL *url);
+
 @protocol XPItemCollection;
 
 @protocol XPItem <NSObject, NSPasteboardWriting>

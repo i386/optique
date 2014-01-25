@@ -69,7 +69,9 @@
 -(void)setRepresentedObject:(id)representedObject
 {
     [super setRepresentedObject:representedObject];
+    
     _playerView.representedObject = representedObject;
+    _imageView.representedObject = representedObject;
 }
 
 -(BOOL)shareableItemsSelected

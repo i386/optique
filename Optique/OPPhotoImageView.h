@@ -11,6 +11,6 @@
 @interface OPPhotoImageView : NSImageView<NSDraggingSource>
 
 @property (nonatomic, weak) IBOutlet NSMenu *contextMenu;
-@property id representedObject;
+@property (nonatomic) id<XPItem> representedObject;
 
 @end
