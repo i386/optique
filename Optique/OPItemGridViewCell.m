@@ -63,10 +63,7 @@
         self.badgeLayer.frame = self.bounds;
     }
     
-    if ([self.representedObject type] != XPItemTypeVideo)
-    {
-        [self.videoLayer setHidden:YES];
-    }
+    [self.videoLayer setHidden:[self.representedObject type] != XPItemTypeVideo];
     
     self.videoLayer.position = NSMakePoint(self.bounds.size.width / 2, self.bounds.size.height / 2);
 }
