@@ -16,6 +16,19 @@
 
 @implementation OPPhotoImageView
 
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    [self setPostsFrameChangedNotifications:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scaleImageToWindowSize:) name:NSViewFrameDidChangeNotification object:self];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSViewBoundsDidChangeNotification object:self];
+}
+
 -(void)rightMouseDown:(NSEvent *)theEvent
 {
     if (_contextMenu)
@@ -45,6 +58,11 @@
 {
     _representedObject = representedObject;
     
+    [self scaleImageToWindowSize:nil];
+}
+
+-(void)scaleImageToWindowSize:(NSNotification*)notification
+{
     NSSize windowSize = [[NSApplication sharedApplication] mainWindow].frame.size;
     [_representedObject scaleImageToFitSize:windowSize withCompletionBlock:^(NSImage *image) {
         self.image = image;
