@@ -23,4 +23,6 @@
  */
 -(void)showView;
 
+-(void)removedView;
+
 @end

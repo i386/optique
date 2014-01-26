@@ -178,5 +178,13 @@
     [XPExposureService menuVisiblity:self.contextMenu item:_item];
 }
 
+-(void)removedView
+{
+    [super removedView];
+    
+    OPItemController *controller = (OPItemController*)_pageController.selectedViewController;
+    [controller removedView];
+}
+
 
 @end

@@ -8,6 +8,7 @@
 
 #import "OPItemController.h"
 #import "OPPItemViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface OPItemController ()
 @property (weak) OPPItemViewController *itemViewController;
@@ -23,6 +24,15 @@
         _itemViewController = itemViewController;
     }
     return self;
+}
+
+-(void)removedView
+{
+    if (_playerView && _playerView.player)
+    {
+        [_playerView.player pause];
+        _playerView.player = nil;
+    }
 }
 
 -(id<XPItem>)item
@@ -59,6 +69,12 @@
 {
     id<XPItem> item = _itemViewController.item;
 
+    if (_playerView && _playerView.player)
+    {
+        [_playerView.player pause];
+        _playerView.player = nil;
+    }
+    
     _imageView.representedObject = item;
     _playerView.representedObject = item;
     _playerView.actionPopUpButtonMenu = _contextMenu;

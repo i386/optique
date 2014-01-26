@@ -26,4 +26,6 @@
 
 -(BOOL)isVideo;
 
+-(void)removedView;
+
 @end

@@ -34,4 +34,9 @@
     //noop
 }
 
+-(void)removedView
+{
+    //noop
+}
+
 @end
