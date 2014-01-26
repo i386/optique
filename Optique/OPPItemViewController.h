@@ -12,7 +12,6 @@
 @interface OPPItemViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate, XPSharingService, XPItemController, NSMenuDelegate>
 
 @property (weak, readonly) id<XPItemCollection> collection;
-@property (assign) NSInteger effectsState;
 @property (weak) id<XPItem> item;
 @property (weak) IBOutlet NSPageController *pageController;
 @property (weak) IBOutlet NSMenu *contextMenu;

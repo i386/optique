@@ -27,7 +27,6 @@
     self = [super initWithNibName:@"OPPItemViewController" bundle:nil];
     if (self) {
         _collection = collection;
-        _effectsState = NSOffState;
         _item = item;
         _index = [_collection.allItems indexOfObject:item];
         _sharingMenuItems = [NSMutableArray array];
@@ -150,11 +149,10 @@
 
 -(void)windowFullscreenStateChanged:(NSNotification*)notification
 {
-    [self performBlockOnMainThread:^{
-        OPItemController *controller = (OPItemController*)_pageController.selectedViewController;
-        [controller.view setNeedsDisplay:YES];
-        [controller.imageView setNeedsDisplay:YES];
-    }];
+    OPItemController *controller = (OPItemController*)_pageController.selectedViewController;
+    [controller.view setNeedsDisplay:YES];
+    [controller.imageView setNeedsDisplay:YES];
+    [self.view setNeedsDisplay:YES];
 }
 
 - (void)pageController:(NSPageController *)pageController didTransitionToObject:(id)object
@@ -167,6 +165,7 @@
         OPItemController *controller = (OPItemController*)_pageController.selectedViewController;
         [controller.view setNeedsDisplay:YES];
         [controller.imageView setNeedsDisplay:YES];
+        [self.view setNeedsDisplay:YES];
     }];
 }
 
