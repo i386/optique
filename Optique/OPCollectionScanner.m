@@ -84,7 +84,7 @@
             collection = [self resolveCollectionForPath:url];
         }
         
-        if (fileUTI)
+        if (fileUTI == NULL)
         {
             CFRelease(fileUTI);
         }
