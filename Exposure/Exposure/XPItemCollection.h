@@ -60,9 +60,15 @@ typedef NS_ENUM(NSUInteger, XPItemCollectionType) {
 -(void)reload;
 
 /** 
- add the provided item to this collection and call the completion block when done;
+ move the provided item to this collection and call the completion block when done;
  */
--(void)addItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock;
+-(void)moveItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock;
+
+/**
+ copy the provided item to this collection and call the completion block when done;
+ */
+-(void)copyItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock;
+
 
 /**
  delete the item from this collection and call the completion block when done;

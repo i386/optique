@@ -317,7 +317,7 @@
     
     [items each:^(id<XPItem> item)
     {
-        [collection addItem:item withCompletion:nil];
+        [collection moveItem:item withCompletion:nil];
     }];
 }
 

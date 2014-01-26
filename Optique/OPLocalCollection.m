@@ -96,7 +96,7 @@ typedef void (^XPItemSearch)(id, BOOL*);
     return TRUE;
 }
 
--(void)addItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock
+-(void)moveItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock
 {
     NSURL *newLocation = [[self.path URLByAppendingPathComponent:item.title] URLWithUniqueNameIfExistsAtParent];
     
@@ -112,6 +112,21 @@ typedef void (^XPItemSearch)(id, BOOL*);
     [item.collection.collectionManager collectionUpdated:item.collection reload:YES];
 }
 
+-(void)copyItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock
+{
+    NSURL *newLocation = [[self.path URLByAppendingPathComponent:item.title] URLWithUniqueNameIfExistsAtParent];
+    
+    NSError *error;
+    [[NSFileManager defaultManager] copyItemAtURL:item.url toURL:newLocation error:&error];
+    
+    if (completionBlock)
+    {
+        completionBlock(error);
+    }
+    
+    [self.collectionManager collectionUpdated:self reload:YES];
+    [item.collection.collectionManager collectionUpdated:item.collection reload:YES];
+}
 
 -(void)deleteItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock
 {
