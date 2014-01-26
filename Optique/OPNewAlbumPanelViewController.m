@@ -11,6 +11,7 @@
 #import "OPPlaceHolderViewController.h"
 #import "OPItemGridViewCell.h"
 #import "OPItemPreviewManager.h"
+#import "NSColor+Optique.h"
 
 @interface OPNewAlbumPanelViewController ()
 
@@ -221,6 +222,11 @@
 
 - (BOOL)gridView:(OEGridView *)gridView acceptDrop:(id<NSDraggingInfo>)sender
 {
+    if ([[self albumName] isEqualToString:@""])
+    {
+        [_albumNameTextField becomeFirstResponder];
+    }
+    
     NSPasteboard *pboard = [sender draggingPasteboard];
     
     if ( [[pboard types] containsObject:NSFilenamesPboardType])
@@ -230,9 +236,12 @@
         BOOL isDir;
         if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDir] && !isDir)
         {
-            [_items addObject:fileURL];
-            [_gridview reloadData];
-            return YES;
+            if (![_items containsObject:fileURL])
+            {
+                [_items addObject:fileURL];
+                [_gridview reloadData];
+                return YES;
+            }
         }
     }
     else if ([[pboard types] containsObject:XPItemPboardType])
@@ -256,8 +265,12 @@
                         return [[obj title] isEqualToString:dict[@"item-title"]];
                     }];
                     
-                    [_items addObject:item];
-                    reload = YES;
+                    
+                    if (![_items containsObject:item])
+                    {
+                        [_items addObject:item];
+                        reload = YES;
+                    }
                 }
             }
             
