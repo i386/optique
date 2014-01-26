@@ -11,12 +11,11 @@
 
 @interface OPPItemViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate, XPSharingService, XPItemController, NSMenuDelegate>
 
-@property (weak, readonly) id<XPItemCollection> collection;
 @property (weak) id<XPItem> item;
 @property (weak) IBOutlet NSPageController *pageController;
 @property (weak) IBOutlet NSMenu *contextMenu;
 
--initWithItemCollection:(id<XPItemCollection>)collection item:(id<XPItem>)item;
+-initWithItem:(id<XPItem>)item;
 
 -(void)next;
 -(void)previous;

@@ -157,7 +157,7 @@
 
 -(void)gridView:(OEGridView *)gridView doubleClickedCellForItemAtIndex:(NSUInteger)index
 {
-    OPPItemViewController *controller = [[OPPItemViewController alloc] initWithItemCollection:_collection item:_collection.allItems[index]];
+    OPPItemViewController *controller = [[OPPItemViewController alloc] initWithItem:_collection.allItems[index]];
     [self.controller pushViewController:controller];
 }
 

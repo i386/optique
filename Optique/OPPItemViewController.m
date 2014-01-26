@@ -22,13 +22,12 @@
 
 @implementation OPPItemViewController
 
--(id)initWithItemCollection:(id<XPItemCollection>)collection item:(id<XPItem>)item
+-(id)initWithItem:(id<XPItem>)item
 {
     self = [super initWithNibName:@"OPPItemViewController" bundle:nil];
     if (self) {
-        _collection = collection;
         _item = item;
-        _index = [_collection.allItems indexOfObject:item];
+        _index = [[_item collection].allItems indexOfObject:item];
         _sharingMenuItems = [NSMutableArray array];
     }
     return self;
@@ -36,7 +35,7 @@
 
 -(void)awakeFromNib
 {
-    [XPExposureService collectionManager:[_collection collectionManager] itemController:self];
+    [XPExposureService collectionManager:[[_item collection] collectionManager] itemController:self];
 }
 
 -(void)loadView
@@ -44,7 +43,7 @@
     [super loadView];
     
     //Setup page controller
-    [_pageController setArrangedObjects:_collection.allItems.array];
+    [_pageController setArrangedObjects:[_item collection].allItems.array];
     [_pageController setSelectedIndex:_index];
     
     //Subscribe to window & view events
@@ -108,7 +107,7 @@
     {
         id<XPItem> item = CFBridgingRelease(contextInfo);
         
-        [_collection deleteItem:item withCompletion:nil];
+        [[_item collection] deleteItem:item withCompletion:nil];
         
         [self.controller popToPreviousViewController];
     }

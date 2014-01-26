@@ -46,7 +46,7 @@
     }
     else
     {
-        controller = [[OPPItemViewController alloc] initWithItemCollection:[item collection] item:_items[index]];
+        controller = [[OPPItemViewController alloc] initWithItem:_items[index]];
     }
     
     [_navigationController popToPreviousViewController];

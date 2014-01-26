@@ -63,7 +63,7 @@
     _playerView.representedObject = item;
     _playerView.actionPopUpButtonMenu = _contextMenu;
     
-    [XPExposureService collectionManager:_itemViewController.collection.collectionManager itemController:self];
+    [XPExposureService collectionManager:[[_itemViewController.item collection] collectionManager] itemController:self];
 }
 
 -(void)setRepresentedObject:(id)representedObject
