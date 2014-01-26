@@ -26,6 +26,28 @@
     }
 }
 
+-(void)mouseDown:(NSEvent *)theEvent
+{
+    if (theEvent.clickCount == 1)
+    {
+        NSUInteger width = 100;
+        
+        NSRect leftRect = NSMakeRect(self.frame.origin.x, self.frame.origin.y, width, self.frame.size.height);
+        
+        NSPoint pointInView = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+        if (NSPointInRect(pointInView, leftRect))
+        {
+            [_controller previous];
+        };
+        
+        NSRect rightRect = NSMakeRect(self.frame.size.width - width, self.frame.origin.y, width, self.frame.size.height);
+        if (NSPointInRect(pointInView, rightRect))
+        {
+            [_controller next];
+        };
+    }
+}
+
 - (void)keyDown:(NSEvent *)event
 {
     NSString *characters = [event characters];
