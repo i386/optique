@@ -78,10 +78,18 @@
         CFStringRef fileExtension = (__bridge CFStringRef) [filePath pathExtension];
         CFStringRef fileUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, NULL);
         
+        id<XPItemCollection> collection = nil;
         if (!UTTypeConformsTo(fileUTI, kUTTypeDirectory))
         {
-            return [self resolveCollectionForPath:url];
+            collection = [self resolveCollectionForPath:url];
         }
+        
+        if (fileUTI)
+        {
+            CFRelease(fileUTI);
+        }
+        
+        return collection;
     }
     return nil;
 }
