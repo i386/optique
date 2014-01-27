@@ -15,10 +15,9 @@
 #define CACHE_SIZE              524288000
 #define kOPImageCacheThumbSize  NSMakeSize(310, 225)
 
-typedef NSImage* (^XPImageExtraction)(id<XPItem>);
+typedef NSImage* (^XPImageExtraction)(id<XPItem>, NSSize);
 
-static XPImageExtraction IMAGE_PREVIEW_EXTRACTOR = ^NSImage* (id<XPItem>item) {
-    NSSize size = kOPImageCacheThumbSize;
+static XPImageExtraction IMAGE_PREVIEW_EXTRACTOR = ^NSImage* (id<XPItem>item, NSSize size) {
     
     CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)[item url], NULL);
     NSImage *image;
@@ -56,7 +55,7 @@ static XPImageExtraction IMAGE_PREVIEW_EXTRACTOR = ^NSImage* (id<XPItem>item) {
     return image;
 };
 
-static XPImageExtraction VIDEO_PREVIEW_EXTRACTOR = ^NSImage* (id<XPItem>item) {
+static XPImageExtraction VIDEO_PREVIEW_EXTRACTOR = ^NSImage* (id<XPItem>item, NSSize size) {
     AVURLAsset* asset = [AVURLAsset URLAssetWithURL:item.url options:nil];
     AVAssetImageGenerator* imageGenerator = [AVAssetImageGenerator assetImageGeneratorWithAsset:asset];
     CGImageRef imageRef = [imageGenerator copyCGImageAtTime:CMTimeMake(0, 1) actualTime:nil error:nil];
@@ -118,7 +117,7 @@ static OPItemPreviewManager *_defaultManager;
     return self;
 }
 
--(void)previewItem:(id<XPItem>)item loaded:(XPImageCompletionBlock)completionBlock
+-(void)previewItem:(id<XPItem>)item size:(NSSize)size loaded:(XPImageCompletionBlock)completionBlock
 {
     if (!item) return;
     
@@ -157,10 +156,10 @@ static OPItemPreviewManager *_defaultManager;
                 {
                     [_largeImageQueue addOperationWithBlock:^
                      {
-                         NSImage * image = extractor(item);
+                         NSImage * image = extractor(item, size);
                          if (image)
                          {
-                             [self writeToCache:image item:item];
+                             [self writeToCache:image item:item size:size];
                              completionBlock(image);
                          }
                      }];
@@ -169,10 +168,10 @@ static OPItemPreviewManager *_defaultManager;
                 {
                     [_smallImageQueue addOperationWithBlock:^
                      {
-                         NSImage * image = extractor(item);
+                         NSImage * image = extractor(item, size);
                          if (image)
                          {
-                             [self writeToCache:image item:item];
+                             [self writeToCache:image item:item size:size];
                              completionBlock(image);
                          }
                      }];
@@ -208,7 +207,7 @@ static OPItemPreviewManager *_defaultManager;
     return nil;
 }
 
--(void)writeToCache:(NSImage*)image item:(id<XPItem>)item
+-(void)writeToCache:(NSImage*)image item:(id<XPItem>)item size:(NSSize)size
 {
     //Write image
     NSData *imageData = [image TIFFRepresentation];
@@ -216,7 +215,7 @@ static OPItemPreviewManager *_defaultManager;
     NSDictionary *imageProps = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:1.0] forKey:NSImageCompressionFactor];
     imageData = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
     
-    NSURL *url = [self cachedPathForURL:[item url]];
+    NSURL *url = [self cachedPathForURL:[item url] size:size];
     [imageData writeToURL:url atomically:YES];
     NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:[url path] error: NULL];
     NSUInteger fileSize = [attrs fileSize];
@@ -240,10 +239,12 @@ static OPItemPreviewManager *_defaultManager;
     return fileSize >= fOPImagePreviewServiceLargeSize;
 }
 
--(NSURL*)cachedPathForURL:(NSURL*)path
+-(NSURL*)cachedPathForURL:(NSURL*)path size:(NSSize)size
 {
+    NSString *sizeComponent = [NSString stringWithFormat:@"_%fx%f", size.width, size.height];
     NSString *pathHash = [[path path] SHA256];
-    return [[[self cachedImageDirectory] URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"tiff"];
+    NSString *fileName = [pathHash stringByAppendingString:sizeComponent];
+    return [[[self cachedImageDirectory] URLByAppendingPathComponent:fileName] URLByAppendingPathExtension:@"tiff"];
 }
 
 -(NSURL*)cachedImageDirectory

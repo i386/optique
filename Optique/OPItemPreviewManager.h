@@ -12,7 +12,7 @@
 
 +(OPItemPreviewManager *)defaultManager;
 
--(void)previewItem:(id<XPItem>)item loaded:(XPImageCompletionBlock)completionBlock;
+-(void)previewItem:(id<XPItem>)item size:(NSSize)size loaded:(XPImageCompletionBlock)completionBlock;
 
 -(void)clearCache;
 

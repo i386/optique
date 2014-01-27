@@ -37,6 +37,8 @@
 {
     [super awakeFromNib];
     
+    _gridview.ignoreSizePreference = YES;
+    
     _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:@"Drag photos here" image:[NSImage imageNamed:@"down"]];
     
     [_doneButton setKBButtonType:BButtonTypePrimary];
@@ -160,7 +162,7 @@
             
             item.representedObject = weakPhoto;
             
-            [[OPItemPreviewManager defaultManager] previewItem:obj loaded:^(NSImage *image) {
+            [[OPItemPreviewManager defaultManager] previewItem:obj size:_gridview.itemSize loaded:^(NSImage *image) {
                 [self performBlockOnMainThread:^
                  {
                      if (weakPhoto == weakItem.representedObject)

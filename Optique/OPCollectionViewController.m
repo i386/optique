@@ -347,7 +347,7 @@
         id<XPItem> __weak weakItem = item;
         OPGridViewCell * __weak weakCell = cell;
         
-        [[OPItemPreviewManager defaultManager] previewItem:item loaded:^(NSImage *image) {
+        [[OPItemPreviewManager defaultManager] previewItem:item size:_gridView.itemSize loaded:^(NSImage *image) {
             [self performBlockOnMainThread:^
              {
                  if (weakItem == weakCell.representedObject)

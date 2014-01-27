@@ -7,11 +7,11 @@
 //
 
 #import "OEGridView.h"
-#import <OEGridView/OEGridView.h>
+#import "OPGridView.h"
 
 @class OPItemCollectionViewController;
 
-@interface OPItemGridView : OEGridView
+@interface OPItemGridView : OPGridView
 
 @property (weak) IBOutlet OPItemCollectionViewController *controller;
 @property (nonatomic, assign) BOOL isSelectionSticky;

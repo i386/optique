@@ -23,7 +23,7 @@
 
 -(void)showMainApplicationWindowForCrashManager:(BITCrashManager *)crashManager
 {
-    _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:@[]];
+    _preferencesWindowController = [[OPPreferencesWindowController alloc] init];
     
     NSData *bookmarkData = [[_userDefaultsController defaults] objectForKey:@"url"];
     

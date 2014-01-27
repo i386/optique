@@ -26,7 +26,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="310" height="580"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view id="7pR-eF-Z5l" customClass="OPGridView">
+                            <view id="7pR-eF-Z5l" customClass="OPCollectionGridView">
                                 <rect key="frame" x="0.0" y="0.0" width="310" height="580"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>

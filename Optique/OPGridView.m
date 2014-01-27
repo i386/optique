@@ -2,48 +2,65 @@
 //  OPGridView.m
 //  Optique
 //
-//  Created by James Dumay on 14/06/2013.
-//  Copyright (c) 2013 James Dumay. All rights reserved.
+//  Created by James Dumay on 27/01/2014.
+//  Copyright (c) 2014 James Dumay. All rights reserved.
 //
 
 #import "OPGridView.h"
-#import "NSPasteboard+XPItem.h"
-#import "OPCollectionViewController.h"
 
-#define kGridViewRowSpacing 40.f
-#define kGridViewColumnSpacing 20.f
+#define DefaultItemSize CGSizeMake(280.0, 175.0);
 
 @implementation OPGridView
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+-(void)awakeFromNib
 {
-    if ((self = [super initWithCoder:aDecoder])) {
-        self.minimumColumnSpacing = kGridViewColumnSpacing;
-        self.rowSpacing = kGridViewRowSpacing;
-        self.itemSize = CGSizeMake(280.0, 175.0);
+    [super awakeFromNib];
+    
+    if (!_ignoreSizePreference)
+    {
+        [[NSUserDefaults standardUserDefaults] addObserver:self
+                                                forKeyPath:@"ItemSize"
+                                                   options:NSKeyValueObservingOptionNew
+                                                   context:NULL];
         
-        [self registerForDraggedTypes:@[NSFilenamesPboardType]];
+        NSUInteger size = [[NSUserDefaults standardUserDefaults] integerForKey:@"ItemSize"];
+        [self resizeItem:size];
     }
-    return self;
 }
 
--(void)copy:(id)sender
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSArray *filteredCollections = [_controller.collectionManager.allCollections filteredArrayUsingPredicate:_controller.predicate];
-    NSArray *selectedItems = [filteredCollections objectsAtIndexes:_controller.selectedItems];
+    NSNumber *factor = (NSNumber*)change[@"new"];
+    [self resizeItem:[factor unsignedIntegerValue]];
+}
+
+-(void)resizeItem:(NSUInteger)factor
+{
+    CGSize size = DefaultItemSize;
     
-    if (selectedItems.count > 0)
-    {
-        NSMutableArray *urls = [NSMutableArray array];
-        
-        for (id<XPItemCollection> collection in selectedItems)
-        {
-            [urls addObject:collection.path];
-        }
-        NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-        [pasteboard clearContents];
-        [pasteboard writeObjects:urls];
+    switch (factor) {
+        case 0:
+            size = NSMakeSize(size.width / 2, size.height / 2);
+            break;
+            
+        case 25:
+            size = NSMakeSize(size.width / 1.5, size.height / 1.5);
+            break;
+            
+        case 75:
+            size = NSMakeSize(size.width * 1.5, size.height * 1.5);
+            break;
+            
+        case 100:
+            size = NSMakeSize(size.width * 2, size.height * 2);
+            break;
+            
+        default:
+            size = DefaultItemSize;
+            break;
     }
+    
+    self.itemSize = size;
 }
 
 @end

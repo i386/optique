@@ -7,15 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "OPGridView.h"
+#import "OPCollectionGridView.h"
 #import "OPItemGridView.h"
 #import "OPItemGridViewCell.h"
 #import "OPNavigationController.h"
 
 @interface OPHistoryPeekViewController : NSViewController<OEGridViewDelegate, OEGridViewDataSource, NSPopoverDelegate>
 
-@property (strong) OEGridView *gridView;
-@property (strong) IBOutlet OPGridView *collectionGridView;
+@property (strong) OPGridView *gridView;
+@property (strong) IBOutlet OPCollectionGridView *collectionGridView;
 @property (strong) IBOutlet OPItemGridView *itemGridView;
 @property (strong) NSArray *items;
 @property (weak) OPNavigationController *navigationController;

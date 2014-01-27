@@ -104,7 +104,7 @@
     cell.representedObject = item;
     cell.title = [obj title];
     
-    [[OPItemPreviewManager defaultManager] previewItem:item loaded:^(NSImage *image) {
+    [[OPItemPreviewManager defaultManager] previewItem:item size:_gridView.itemSize loaded:^(NSImage *image) {
         [self performBlockOnMainThread:^
         {
             if (item == weakCell.representedObject)
@@ -207,6 +207,9 @@
 -(void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    _collectionGridView.ignoreSizePreference = YES;
+    _itemGridView.ignoreSizePreference = YES;
     
     if (_items.count > 0)
     {

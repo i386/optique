@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "OPGridView.h"
+#import "OPCollectionGridView.h"
 
 #import "OPNavigationViewController.h"
 
@@ -16,7 +16,7 @@
 @property (weak, readonly) XPCollectionManager *collectionManager;
 @property (weak) IBOutlet NSMenu *albumItemContextMenu;
 @property (weak) IBOutlet NSMenuItem *deleteAlbumMenuItem;
-@property (weak) IBOutlet OPGridView *gridView;
+@property (weak) IBOutlet OPCollectionGridView *gridView;
 @property (weak) IBOutlet NSTextField *titleLabel;
 @property (weak) IBOutlet NSBox *headingLine;
 @property (weak) IBOutlet NSMenuItem *renameAlbumMenuItem;

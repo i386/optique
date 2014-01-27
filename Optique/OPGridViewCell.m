@@ -8,7 +8,7 @@
 
 #import "OPGridViewCell.h"
 #import "NSColor+Optique.h"
-#import "OPGridView.h"
+#import "OPCollectionGridView.h"
 
 @implementation OPGridViewCell
 
@@ -23,6 +23,7 @@
         [self addSublayer:_selectionLayer];
         
         _titleLayer = [CATextLayer layer];
+        [_titleLayer setFont:@"Lucida-Grande"];
         [_titleLayer setFontSize:[NSFont systemFontSize]];
         [_titleLayer setAlignmentMode:kCAAlignmentCenter];
         [_titleLayer setForegroundColor:[[NSColor blackColor] CGColor]];
