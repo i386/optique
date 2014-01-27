@@ -132,7 +132,7 @@ static OPItemPreviewManager *_defaultManager;
     
     [lock withBlock:^id{
         
-        NSImage *image = [self lookupInCache:item];
+        NSImage *image = [self lookupInCache:item size:size];
         if (!image)
         {
             XPImageExtraction extractor;
@@ -189,12 +189,11 @@ static OPItemPreviewManager *_defaultManager;
     [[NSFileManager defaultManager] removeItemAtURL:_cacheDirectory error:nil];
 }
 
--(NSImage*)lookupInCache:(id<XPItem>)item
+-(NSImage*)lookupInCache:(id<XPItem>)item size:(NSSize)size
 {
     if (item.url)
     {
-        NSString *pathHash = [[item.url path] SHA256];
-        NSURL *url = [[[self cachedImageDirectory] URLByAppendingPathComponent:pathHash] URLByAppendingPathExtension:@"tiff"];
+        NSURL *url = [self cachedPathForURL:[item url] size:size];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
         if ([fileManager fileExistsAtPath:url.path])
