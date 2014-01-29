@@ -13,6 +13,7 @@
 #import "NSImage+Transform.h"
 #import "NSColor+Optique.h"
 #import "NSWindow+FullScreen.h"
+#import "OPPlayerLayer.h"
 
 @interface OPPItemViewController()
 
@@ -145,7 +146,7 @@
     if ([item type] == XPItemTypeVideo)
     {
         AVPlayer *player = [AVPlayer playerWithURL:item.url];
-        return [AVPlayerLayer playerLayerWithPlayer:player];
+        return [[OPPlayerLayer alloc] initWithPlayer:player];
     }
     return nil;
 }
@@ -180,19 +181,10 @@
 
 -(void)slideView:(WHSlideView *)slideView layerClicked:(CALayer *)layer
 {
-    AVPlayerLayer *playerLayer = (AVPlayerLayer*)layer;
-    if (playerLayer && [playerLayer isKindOfClass:[AVPlayerLayer class]] && playerLayer.player.status == AVPlayerStatusReadyToPlay)
+    OPPlayerLayer *playerLayer = (OPPlayerLayer*)layer;
+    if (playerLayer && [playerLayer isKindOfClass:[OPPlayerLayer class]])
     {
-        //TODO: find a better way to check for this
-        if ([playerLayer.player rate] == 0.0)
-        {
-            [playerLayer.player play];
-        }
-        else
-        {
-            [playerLayer.player pause];
-            [playerLayer.player seekToTime:kCMTimeZero];
-        }
+        [playerLayer togglePlayback];
     }
 }
 
