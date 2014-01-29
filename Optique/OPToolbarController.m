@@ -73,9 +73,12 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
 
 -(void)cameraAdded:(NSNotification*)notification
 {
-    [self cameraMode];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPApplicationModeDidChange object:nil userInfo:@{@"mode": [NSNumber numberWithBool:_filterMode], @"title":notification.userInfo[@"title"]}];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowCameraContentsOnConnect"])
+    {
+        [self cameraMode];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:OPApplicationModeDidChange object:nil userInfo:@{@"mode": [NSNumber numberWithBool:_filterMode], @"title":notification.userInfo[@"title"]}];
+    }
 }
 
 -(void)shareableSelectionHasChanged:(NSNotification*)notification

@@ -10,6 +10,6 @@
 
 @interface NSWindow (FullScreen)
 
--(BOOL)isFullscreen;
++(BOOL)isFullScreen;
 
 @end

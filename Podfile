@@ -6,6 +6,7 @@ target :Optique, :exclusive => false do
   pod 'CNBaseView', '~> 1.0.11'
   pod 'KBButton', :git => 'git@github.com:i386/KBButton.git'
   pod 'KBTextField', :git => 'git@github.com:i386/KBTextField.git'
+  pod 'WHSlider', :path => '~/code/Slider'
 end
 
 target :Exposure do

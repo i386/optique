@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5037.3" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1090" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5037.3"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OPPItemViewController">
             <connections>
                 <outlet property="contextMenu" destination="119" id="122"/>
-                <outlet property="pageController" destination="108" id="111"/>
+                <outlet property="slideView" destination="nan-nA-tBB" id="ku0-CE-ALb"/>
                 <outlet property="view" destination="1" id="2"/>
             </connections>
         </customObject>
@@ -18,27 +18,18 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <box wantsLayer="YES" title="Box" borderType="none" titlePosition="noTitle" id="113">
-                    <rect key="frame" x="-3" y="-4" width="486" height="278"/>
+                <customView id="nan-nA-tBB" customClass="OPSlideView">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <view key="contentView">
-                        <rect key="frame" x="0.0" y="0.0" width="486" height="278"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </view>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </box>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="jAr-su-17L"/>
+                    </connections>
+                </customView>
             </subviews>
             <connections>
                 <outlet property="controller" destination="-2" id="13"/>
             </connections>
         </customView>
-        <pagecontroller transitionStyle="horizontalStrip" id="108">
-            <connections>
-                <outlet property="delegate" destination="-2" id="112"/>
-                <outlet property="view" destination="113" id="114"/>
-            </connections>
-        </pagecontroller>
         <menu id="119">
             <items>
                 <menuItem title="Delete photo" id="121">

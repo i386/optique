@@ -12,26 +12,40 @@
 
 @implementation OPGridView
 
+-(id)init
+{
+    self = [super init];
+    if (self)
+    {
+        _ignoreSizePreference = NO;
+    }
+    return self;
+}
+
 -(void)awakeFromNib
 {
     [super awakeFromNib];
     
-    if (!_ignoreSizePreference)
-    {
-        [[NSUserDefaults standardUserDefaults] addObserver:self
-                                                forKeyPath:@"ItemSize"
-                                                   options:NSKeyValueObservingOptionNew
-                                                   context:NULL];
-        
-        NSUInteger size = [[NSUserDefaults standardUserDefaults] integerForKey:@"ItemSize"];
-        [self resizeItem:size];
-    }
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"ItemSize"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:NULL];
+    
+    NSUInteger size = [[NSUserDefaults standardUserDefaults] integerForKey:@"ItemSize"];
+    [self resizeItem:size];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSNumber *factor = (NSNumber*)change[@"new"];
-    [self resizeItem:[factor unsignedIntegerValue]];
+    if (!_ignoreSizePreference)
+    {
+        NSNumber *factor = (NSNumber*)change[@"new"];
+        [self resizeItem:[factor unsignedIntegerValue]];
+    }
+    else
+    {
+        self.itemSize = DefaultItemSize;
+    }
 }
 
 -(void)resizeItem:(NSUInteger)factor

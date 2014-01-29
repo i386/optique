@@ -45,12 +45,6 @@ XPItemType XPItemTypeForPath(NSURL *url);
 -(id<XPItemCollection>) collection;
 
 /**
- Loads and scales the image and returns it via the completion block
- May return the full size image if scaling is not available.
- */
--(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(XPImageCompletionBlock)completionBlock;
-
-/**
  URL to the photo, if available.
  */
 -(NSURL*)url;

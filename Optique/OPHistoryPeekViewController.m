@@ -31,7 +31,7 @@
 
 -(bool)showable
 {
-    return !self.view.window.isFullscreen && _items.count > 1;
+    return ![NSWindow isFullScreen] && _items.count > 1;
 }
 
 -(void)gridView:(OEGridView *)gridView clickedCellForItemAtIndex:(NSUInteger)index

@@ -53,52 +53,6 @@
     return thumbnail;
 }
 
--(void)scaleImageToFitSize:(NSSize)size withCompletionBlock:(XPImageCompletionBlock)completionBlock
-{
-    if (_type != XPItemTypePhoto)
-    {
-        completionBlock(nil);
-    }
-    else if ([self url])
-    {
-        NSImage *image;
-        
-        CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)_path, NULL);
-        
-        CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL);
-        CFNumberRef pixelWidthRef  = CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelWidth);
-        CFNumberRef pixelHeightRef = CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelHeight);
-        CGFloat pixelWidth = [(__bridge NSNumber *)pixelWidthRef floatValue];
-        CGFloat pixelHeight = [(__bridge NSNumber *)pixelHeightRef floatValue];
-        CGFloat maxEdge = MAX(pixelWidth, pixelHeight);
-        
-        float maxEdgeSize = MAX(size.width, size.height);
-        
-        if (maxEdge > maxEdgeSize)
-        {
-            NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
-                                              kCGImageSourceCreateThumbnailWithTransform, kCFBooleanTrue,
-                                              kCGImageSourceCreateThumbnailFromImageAlways, [NSNumber numberWithFloat:maxEdgeSize],
-                                              kCGImageSourceThumbnailMaxPixelSize, kCFBooleanFalse, kCGImageSourceShouldCache, nil];
-            
-            CGImageRef thumbnail = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, (__bridge CFDictionaryRef)thumbnailOptions);
-            
-            image = [[NSImage alloc] initWithCGImage:thumbnail size:NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail))];
-            
-            CGImageRelease(thumbnail);
-        }
-        else
-        {
-            image = [[NSImage alloc] initWithContentsOfURL:_path];
-        }
-        
-        CFRelease(imageSource);
-        CFRelease(imageProperties);
-        
-        completionBlock(image);
-    }
-}
-
 -(NSURL *)url
 {
     return _path;

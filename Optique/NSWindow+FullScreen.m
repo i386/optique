@@ -10,9 +10,13 @@
 
 @implementation NSWindow (FullScreen)
 
--(BOOL)isFullscreen
++(BOOL)isFullScreen
 {
-    return ([self styleMask] & NSFullScreenWindowMask) == NSFullScreenWindowMask;
+    NSApplicationPresentationOptions opts = [[NSApplication sharedApplication ] presentationOptions];
+    if ( opts & NSApplicationPresentationFullScreen) {
+        return YES;
+    }
+    return NO;
 }
 
 @end

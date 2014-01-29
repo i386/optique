@@ -7,11 +7,12 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import <AVFoundation/AVFoundation.h>
 #import "OPPItemViewController.h"
-#import "OPItemView.h"
 #import "NSImage+CGImage.h"
 #import "NSImage+Transform.h"
-#import "OPItemController.h"
+#import "NSColor+Optique.h"
+#import "NSWindow+FullScreen.h"
 
 @interface OPPItemViewController()
 
@@ -42,10 +43,6 @@
 {
     [super loadView];
     
-    //Setup page controller
-    [_pageController setArrangedObjects:[_item collection].allItems.array];
-    [_pageController setSelectedIndex:_index];
-    
     //Subscribe to window & view events
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowFullscreenStateChanged:) name:NSWindowDidEnterFullScreenNotification object:self.view.window];
     
@@ -53,6 +50,8 @@
     
     //Update the views if the underlying collection has changed (for example, when the image is downloaded from the camera successfully
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionUpdated:) name:XPCollectionManagerDidUpdateCollection object:nil];
+    
+    [self.view.window makeFirstResponder:_slideView];
 }
 
 -(void)dealloc
@@ -74,12 +73,12 @@
 
 -(void)next
 {
-    [_pageController navigateForward:self];
+    [_slideView slideRight];
 }
 
 -(void)previous
 {
-    [_pageController navigateBack:self];
+    [_slideView slideLeft];
 }
 
 -(void)backToCollection
@@ -118,53 +117,15 @@
     return self.window;
 }
 
--(NSString *)pageController:(NSPageController *)pageController identifierForObject:(id)object
-{
-    return @"photo";
-}
-
--(NSViewController *)pageController:(NSPageController *)pageController viewControllerForIdentifier:(NSString *)identifier
-{
-    return [[OPItemController alloc] initWithItemViewController:self];
-}
-
--(void)pageController:(NSPageController *)pageController prepareViewController:(NSViewController *)viewController withObject:(id<XPItem>)item
-{
-    
-    //Blank the current image so we dont get flashes of it when we async load the new image
-    viewController.representedObject = nil;
-    
-    if ([item respondsToSelector:@selector(requestLocalCopyInCacheWhenDone:)])
-    {
-        [item requestLocalCopyInCacheWhenDone:^(NSError *error) {
-            viewController.representedObject = item;
-        }];
-    }
-    else
-    {
-        viewController.representedObject = item;
-    }
-}
-
 -(void)windowFullscreenStateChanged:(NSNotification*)notification
 {
-    OPItemController *controller = (OPItemController*)_pageController.selectedViewController;
-    [controller.view setNeedsDisplay:YES];
-    [controller.imageView setNeedsDisplay:YES];
-    [self.view setNeedsDisplay:YES];
-}
-
-- (void)pageController:(NSPageController *)pageController didTransitionToObject:(id)object
-{
+    [self.slideView setNeedsDisplay:YES];
 }
 
 -(void)collectionUpdated:(NSNotification*)notification
 {
     [self performBlockOnMainThreadAndWaitUntilDone:^{
-        OPItemController *controller = (OPItemController*)_pageController.selectedViewController;
-        [controller.view setNeedsDisplay:YES];
-        [controller.imageView setNeedsDisplay:YES];
-        [self.view setNeedsDisplay:YES];
+        [self.slideView setNeedsDisplay:YES];
     }];
 }
 
@@ -178,13 +139,117 @@
     [XPExposureService menuVisiblity:self.contextMenu item:_item];
 }
 
--(void)removedView
+-(CALayer *)slideView:(WHSlideView *)slideView newLayerForIndex:(NSUInteger)index
 {
-    [super removedView];
-    
-    OPItemController *controller = (OPItemController*)_pageController.selectedViewController;
-    [controller removedView];
+    id<XPItem> item = [[[_item collection] allItems] objectAtIndex:index];
+    if ([item type] == XPItemTypeVideo)
+    {
+        AVPlayer *player = [AVPlayer playerWithURL:item.url];
+        return [AVPlayerLayer playerLayerWithPlayer:player];
+    }
+    return nil;
 }
 
+-(void)slideView:(WHSlideView *)slideView layoutChangedForLayer:(CALayer *)layer
+{
+    CGColorRef backgroundColor = [NSWindow isFullScreen] ? [[NSColor optiqueDarkFullscreenColor] CGColor] : [[NSColor controlColor] CGColor];
+    
+    layer.borderColor = backgroundColor;
+    layer.backgroundColor = backgroundColor;
+    layer.borderWidth = 10.0;
+}
+
+-(NSUInteger)numberOfImagesForSlideView:(WHSlideView *)slideView
+{
+    return [[_item collection] allItems].count;
+}
+
+-(NSUInteger)startingIndexForSlideView:(WHSlideView *)slideView
+{
+    return [[[_item collection] allItems] indexOfObject:_item];
+}
+
+-(void)slideView:(WHSlideView *)slideView prepareLayer:(CALayer *)layer index:(NSUInteger)index
+{
+    id<XPItem> item = [[[_item collection] allItems] objectAtIndex:index];
+    if ([item type] == XPItemTypePhoto)
+    {
+        [self prepareLayer:layer forPhotoItem:item];
+    }
+}
+
+-(void)slideView:(WHSlideView *)slideView layerClicked:(CALayer *)layer
+{
+    AVPlayerLayer *playerLayer = (AVPlayerLayer*)layer;
+    if (playerLayer && [playerLayer isKindOfClass:[AVPlayerLayer class]] && playerLayer.player.status == AVPlayerStatusReadyToPlay)
+    {
+        //TODO: find a better way to check for this
+        if ([playerLayer.player rate] == 0.0)
+        {
+            [playerLayer.player play];
+        }
+        else
+        {
+            [playerLayer.player pause];
+            [playerLayer.player seekToTime:kCMTimeZero];
+        }
+    }
+}
+
+-(void)prepareLayer:(CALayer *)layer forPhotoItem:(id<XPItem>)item
+{
+    CGImageRef imageRef = NULL;
+    
+    NSSize size = [[NSApplication sharedApplication] mainWindow].frame.size;
+    
+    CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)item.url, NULL);
+    if (imageSource != nil)
+    {
+        CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL);
+        if (imageProperties != nil)
+        {
+            CFNumberRef pixelWidthRef  = CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelWidth);
+            CFNumberRef pixelHeightRef = CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelHeight);
+            CGFloat pixelWidth = [(__bridge NSNumber *)pixelWidthRef floatValue];
+            CGFloat pixelHeight = [(__bridge NSNumber *)pixelHeightRef floatValue];
+            CGFloat maxEdge = MAX(pixelWidth, pixelHeight);
+            
+            float maxEdgeSize = MAX(size.width, size.height);
+            
+            if (maxEdge > maxEdgeSize)
+            {
+                NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
+                                                  kCGImageSourceCreateThumbnailWithTransform, kCFBooleanTrue,
+                                                  kCGImageSourceCreateThumbnailFromImageAlways, [NSNumber numberWithFloat:maxEdgeSize],
+                                                  kCGImageSourceThumbnailMaxPixelSize, kCFBooleanFalse, kCGImageSourceShouldCache, nil];
+                
+                imageRef = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, (__bridge CFDictionaryRef)thumbnailOptions);
+            }
+            else
+            {
+                imageRef = [[[NSImage alloc] initWithContentsOfURL:item.url] CGImageRef];
+            }
+            
+            CFRelease(imageProperties);
+        }
+        else
+        {
+            NSLog(@"Could not get image properties for '%@'", item.url);
+        }
+        
+        CFRelease(imageSource);
+    }
+    else
+    {
+        NSLog(@"Could not create image src for '%@'", item.url);
+    }
+    
+    if (imageRef)
+    {
+        [self performBlockOnMainThread:^{
+            layer.contents = (id)CFBridgingRelease(imageRef);
+        }];
+    }
+}
 
 @end

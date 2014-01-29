@@ -7,13 +7,14 @@
 //
 
 #import <Quartz/Quartz.h>
+#import "OPSlideView.h"
 #import "OPNavigationViewController.h"
 
-@interface OPPItemViewController : OPNavigationViewController<NSCollectionViewDelegate, NSPageControllerDelegate, XPSharingService, XPItemController, NSMenuDelegate>
+@interface OPPItemViewController : OPNavigationViewController<NSCollectionViewDelegate, WHSlideViewDelegate, XPSharingService, XPItemController, NSMenuDelegate>
 
 @property (weak) id<XPItem> item;
-@property (weak) IBOutlet NSPageController *pageController;
 @property (weak) IBOutlet NSMenu *contextMenu;
+@property (weak) IBOutlet WHSlideView *slideView;
 
 -initWithItem:(id<XPItem>)item;
 

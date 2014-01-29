@@ -17,18 +17,14 @@
     self = [super init];
     if (self)
     {
-        _selectionLayer = [OEGridLayer layer];
-        _selectionLayer.borderColor = [[NSColor optiqueSelectedBackgroundColor] CGColor];
-        _selectionLayer.borderWidth = 5.0f;
-        [self addSublayer:_selectionLayer];
-        
         _titleLayer = [CATextLayer layer];
-        [_titleLayer setFont:@"Lucida-Grande"];
+        [_titleLayer setFont:@"HelveticaNeue-Regular"];
         [_titleLayer setFontSize:[NSFont systemFontSize]];
         [_titleLayer setAlignmentMode:kCAAlignmentCenter];
         [_titleLayer setForegroundColor:[[NSColor blackColor] CGColor]];
         [_titleLayer setBackgroundColor:[[NSColor optiqueBackgroundColor] CGColor]];
         [_titleLayer setTruncationMode:kCATruncationMiddle];
+        
         [self addSublayer:_titleLayer];
         
         _imageLayer = [OEGridLayer layer];
@@ -38,6 +34,11 @@
         _imageLayer.borderColor = [[NSColor blackColor] CGColor];
         _imageLayer.backgroundColor = [[NSColor lightGrayColor] CGColor];
         [self addSublayer:_imageLayer];
+        
+        _selectionLayer = [OEGridLayer layer];
+        _selectionLayer.borderColor = [[NSColor optiqueSelectedBackgroundColor] CGColor];
+        _selectionLayer.borderWidth = 5.0f;
+        [self addSublayer:_selectionLayer];
     }
     return self;
 }
@@ -49,7 +50,7 @@
                                        self.bounds.size.width + 10, //width
                                        self.bounds.size.height + 10); //height
     
-    [_selectionLayer setFrame:selectionFrame];
+    [_selectionLayer setFrame:CGRectIntegral(selectionFrame)];
     
     [_imageLayer setFrame:self.bounds];
  
@@ -58,7 +59,11 @@
                                  NSWidth(self.bounds),
                                  20);
     
-    [_titleLayer setFrame:textRect];
+    [CATransaction begin];
+    [CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
+    
+    [_titleLayer setFrame:CGRectIntegral(textRect)];
+    [CATransaction commit];
     
     if (_badgeLayer)
     {

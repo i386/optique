@@ -17,6 +17,8 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [self registerDefaults];
+    
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"52814104cfd270328887432ee78c4dd1" companyName:@"Whimsy Apps" delegate:self];
     [[BITHockeyManager sharedHockeyManager] startManager];
 }
@@ -143,6 +145,12 @@
 -(NSURL*)resolvePicturesDirectoryURL
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+- (void)registerDefaults
+{
+    NSDictionary *defaultPreferences = @{@"ShowCameraContentsOnConnect": [NSNumber numberWithBool:YES]};
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPreferences];
 }
 
 - (void)setupDebugMenu
