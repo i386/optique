@@ -188,6 +188,15 @@
     }
 }
 
+-(void)slideView:(WHSlideView *)slideView mouseMovedInLayer:(CALayer *)layer point:(NSPoint)point
+{
+    OPPlayerLayer *playerLayer = (OPPlayerLayer*)layer;
+    if (playerLayer && [playerLayer isKindOfClass:[OPPlayerLayer class]])
+    {
+        [playerLayer showStopButton];
+    }
+}
+
 -(void)prepareLayer:(CALayer *)layer forPhotoItem:(id<XPItem>)item
 {
     CGImageRef imageRef = NULL;

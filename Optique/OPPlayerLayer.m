@@ -14,6 +14,7 @@
 @property (assign) id observer;
 @property (strong) AVPlayerLayer *playerLayer;
 @property (strong) OPProgressLayer *progressLayer;
+@property (assign) BOOL mouseMoved;
 
 @end
 
@@ -50,11 +51,32 @@
     {
         [_playerLayer.player play];
         [self observePlayback];
+        [self performSelector:@selector(hideStopButton) withObject:nil afterDelay:2.0];
     }
     else
     {
         [_playerLayer.player pause];
         [_playerLayer.player seekToTime:kCMTimeZero];
+        [self showStopButton];
+    }
+}
+
+-(void)showStopButton
+{
+    [_progressLayer setHidden:NO];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideStopButton) object:nil];
+    
+    if ([_playerLayer.player rate] > 0.0)
+    {
+        [self performSelector:@selector(hideStopButton) withObject:nil afterDelay:1.0];
+    }
+}
+
+-(void)hideStopButton
+{
+    if ([_playerLayer.player rate] != 0.0)
+    {
+        [_progressLayer setHidden:YES];
     }
 }
 
@@ -91,6 +113,7 @@
     if (time >= CMTimeGetSeconds([_playerLayer.player.currentItem duration]))
     {
         [_progressLayer setProgress:0 animated:NO];
+        [_playerLayer.player seekToTime:kCMTimeZero];
     }
 }
 
