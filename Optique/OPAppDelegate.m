@@ -149,7 +149,8 @@
 
 - (void)registerDefaults
 {
-    NSDictionary *defaultPreferences = @{@"ShowCameraContentsOnConnect": [NSNumber numberWithBool:YES]};
+    NSDictionary *defaultPreferences = @{@"ShowCameraContentsOnConnect": [NSNumber numberWithBool:YES],
+                                         @"ItemSize": [NSNumber numberWithInteger:50]};
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPreferences];
 }
 
