@@ -22,6 +22,15 @@
     return self;
 }
 
+-(void)setIgnoreSizePreference:(BOOL)ignoreSizePreference
+{
+    _ignoreSizePreference = ignoreSizePreference;
+    if (_ignoreSizePreference)
+    {
+        self.itemSize = DefaultItemSize;
+    }
+}
+
 -(void)awakeFromNib
 {
     [super awakeFromNib];
@@ -37,14 +46,14 @@
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if (!_ignoreSizePreference)
+    if (_ignoreSizePreference)
     {
-        NSNumber *factor = (NSNumber*)change[@"new"];
-        [self resizeItem:[factor unsignedIntegerValue]];
+        self.itemSize = DefaultItemSize;
     }
     else
     {
-        self.itemSize = DefaultItemSize;
+        NSNumber *factor = (NSNumber*)change[@"new"];
+        [self resizeItem:[factor unsignedIntegerValue]];
     }
 }
 

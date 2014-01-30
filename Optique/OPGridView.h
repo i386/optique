@@ -10,6 +10,6 @@
 
 @interface OPGridView : OEGridView
 
-@property (assign) BOOL ignoreSizePreference;
+@property (assign, nonatomic) BOOL ignoreSizePreference;
 
 @end
