@@ -153,7 +153,7 @@
 
 -(void)slideView:(WHSlideView *)slideView layoutChangedForLayer:(CALayer *)layer
 {
-    CGColorRef backgroundColor = [NSWindow isFullScreen] ? [[NSColor optiqueDarkFullscreenColor] CGColor] : [[NSColor controlColor] CGColor];
+    CGColorRef backgroundColor = [NSWindow isFullScreen] ? [[NSColor optiqueDarkFullscreenColor] CGColor] : [[NSColor colorWithCalibratedRed:0.40 green:0.40 blue:0.40 alpha:1.00] CGColor];
     
     layer.borderColor = backgroundColor;
     layer.backgroundColor = backgroundColor;
