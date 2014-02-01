@@ -10,4 +10,7 @@
 
 @interface OPDarkroomPlugin : NSObject<XPToolbarItemProvider>
 
+@property (weak) id<XPNavigationController> navigationController;
+@property (weak) id<XPSidebarController> sidebarController;
+
 @end

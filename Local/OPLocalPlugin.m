@@ -23,7 +23,7 @@
     [_collections removeAllObjects];
 }
 
--(void)collectionManagerWasCreated:(XPCollectionManager *)collectionManager
+-(void)setCollectionManager:(XPCollectionManager *)collectionManager
 {
     if (_scanner)
     {

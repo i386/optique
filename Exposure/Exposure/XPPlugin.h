@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Common.h"
 #import "XPCollectionViewController.h"
 #import "XPItemCollectionViewController.h"
 #import "XPItemController.h"
@@ -19,6 +20,10 @@
 
 @optional
 
+@property (weak, nonatomic) XPCollectionManager *collectionManager;
+@property (weak, nonatomic) id<XPNavigationController> navigationController;
+@property (weak, nonatomic) id<XPSidebarController> sidebarController;
+
 /**
  Called exactly once when the plugin is successfully loaded
  */
@@ -29,16 +34,6 @@
  Plugins in this API are not dynamic and will unload when the application terminates
  */
 -(void)pluginWillUnload:(NSDictionary*)userInfo;
-
-/**
- Called when a collection manager is created.
- Any references to the old collection manager *must* be immediately dereferenced.
- */
--(void)collectionManagerWasCreated:(XPCollectionManager*)collectionManager;
-
--(void)navigationControllerWasCreated:(id<XPNavigationController>)navigationController;
-
--(void)sidebarControllerWasCreated:(id<XPSidebarController>)sidebarController;
 
 /**
  Called whenever the collection view is loaded

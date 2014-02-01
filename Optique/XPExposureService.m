@@ -84,7 +84,7 @@
 +(void)collectionManagerWasCreated:(XPCollectionManager *)collectionManager
 {
     [[XPExposureService respondsToCollectionManagerWasCreated] each:^(id sender) {
-        [sender collectionManagerWasCreated:collectionManager];
+        [sender setCollectionManager:collectionManager];
     }];
 }
 
@@ -177,11 +177,11 @@
     NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     exposures = [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject respondsToSelector:@selector(navigationControllerWasCreated:)];
+        return [evaluatedObject respondsToSelector:@selector(setNavigationController:)];
     }]];
     
     [exposures each:^(id<XPPlugin> sender) {
-        [sender navigationControllerWasCreated:navigationController];
+        [sender setNavigationController:navigationController];
     }];
 }
 
@@ -190,11 +190,11 @@
     NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     exposures = [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject respondsToSelector:@selector(sidebarControllerWasCreated:)];
+        return [evaluatedObject respondsToSelector:@selector(setSidebarController:)];
     }]];
     
     [exposures each:^(id<XPPlugin> sender) {
-        [sender sidebarControllerWasCreated:sidebarController];
+        [sender setSidebarController:sidebarController];
     }];
 }
 
@@ -228,7 +228,7 @@
     NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
     
     return [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject respondsToSelector:@selector(collectionManagerWasCreated:)];
+        return [evaluatedObject respondsToSelector:@selector(setCollectionManager:)];
     }]];
 }
 

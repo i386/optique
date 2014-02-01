@@ -16,22 +16,10 @@
 
 @property (strong) OPDarkroomEditorViewController *darkroomEditorController;
 @property (strong) OPDarkroomEditorPanelViewController *darkroomEditorPanelController;
-@property (weak) id<XPNavigationController> navigationController;
-@property (weak) id<XPSidebarController> sidebarController;
 
 @end
 
 @implementation OPDarkroomPlugin
-
--(void)navigationControllerWasCreated:(id<XPNavigationController>)navigationController
-{
-    _navigationController = navigationController;
-}
-
--(void)sidebarControllerWasCreated:(id<XPSidebarController>)sidebarController
-{
-    _sidebarController = sidebarController;
-}
 
 -(NSToolbarItem*)toolbarItemForIdentifier:(NSString*)identifier
 {

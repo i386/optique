@@ -13,7 +13,7 @@
 
 @interface OPLocalPlugin : NSObject<XPPlugin, XPItemCollectionProvider>
 
-@property (weak) XPCollectionManager *collectionManager;
+@property (weak, nonatomic) XPCollectionManager *collectionManager;
 @property (weak) id<XPItemCollectionProviderDelegate> delegate;
 @property (strong, readonly) NSMutableSet *collections;
 @property (strong) OPCollectionScanner *scanner;

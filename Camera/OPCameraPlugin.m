@@ -45,7 +45,7 @@
     [_collections removeAllObjects];
 }
 
--(void)collectionManagerWasCreated:(XPCollectionManager *)collectionManager
+-(void)setCollectionManager:(XPCollectionManager *)collectionManager
 {
     [_cameraService setCollectionManager:collectionManager];
     if (!_cameraService.deviceBrowser.isBrowsing)

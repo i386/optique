@@ -13,6 +13,7 @@
 
 @interface OPCameraPlugin : NSObject<XPPlugin, XPItemCollectionProvider>
 
+@property (weak, nonatomic) XPCollectionManager *collectionManager;
 @property (strong, readonly) OPCameraService *cameraService;
 @property (weak) id<XPItemCollectionProviderDelegate> delegate;
 @property (strong, readonly) NSMutableSet *collections;
