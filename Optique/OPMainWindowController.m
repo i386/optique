@@ -84,6 +84,7 @@
     
     [self addNavigationController:_albumViewController];
     
+    [XPExposureService sidebarControllerWasCreated:self];
     [XPExposureService registerToolbar:_toolbar];
 }
 
@@ -95,6 +96,7 @@
     }
     
     _navigationController = [[OPNavigationController alloc] initWithRootViewController:viewController];
+    [XPExposureService navigationControllerWasCreated:_navigationController];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigationControllerChanged:) name:OPNavigationControllerViewDidChange object:_navigationController];
     
@@ -131,9 +133,9 @@
 
         [_rightSplitView addSubview:viewController.view];
         
-        if ([viewController conformsToProtocol:@protocol(OPWindowSidebar)])
+        if ([viewController conformsToProtocol:@protocol(XPSidebar)])
         {
-            [((id<OPWindowSidebar>)viewController) activate];
+            [((id<XPSidebar>)viewController) activate];
         }
     }
 }

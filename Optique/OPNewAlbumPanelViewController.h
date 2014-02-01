@@ -10,16 +10,15 @@
 #import <KBButton/KBButton.h>
 #import <KBTextField/KBTextField.h>
 #import "OPItemGridView.h"
-#import "OPWindowSidebarController.h"
 
-@interface OPNewAlbumPanelViewController : NSViewController<OEGridViewDataSource, OEGridViewDelegate, OPWindowSidebar>
+@interface OPNewAlbumPanelViewController : NSViewController<OEGridViewDataSource, OEGridViewDelegate, XPSidebar>
 
 @property (readonly, strong) XPCollectionManager *collectionManager;
 @property (weak) IBOutlet OPItemGridView *gridview;
 @property (weak) IBOutlet KBTextField *albumNameTextField;
 @property (weak) IBOutlet KBButton *doneButton;
-@property (weak) id<OPWindowSidebarController> sidebarController;
+@property (weak) id<XPSidebarController> sidebarController;
 
--initWithCollectionManager:(XPCollectionManager*)collectionManager sidebarController:(id<OPWindowSidebarController>)sidebarController;
+-initWithCollectionManager:(XPCollectionManager*)collectionManager sidebarController:(id<XPSidebarController>)sidebarController;
 
 @end

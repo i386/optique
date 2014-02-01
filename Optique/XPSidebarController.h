@@ -11,7 +11,7 @@
 /**
  Controls the sidebar on the main window that is commonly used for creating new albums, etc
  */
-@protocol OPWindowSidebarController <NSObject>
+@protocol XPSidebarController <NSObject>
 
 -(void)showSidebarWithViewController:(NSViewController*)viewController;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@protocol OPWindowSidebar
+@protocol XPSidebar
 
 -(void)activate;
 

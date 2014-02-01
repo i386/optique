@@ -12,6 +12,8 @@
 #import "XPItemCollectionViewController.h"
 #import "XPItemController.h"
 #import "XPCollectionManager.h"
+#import "XPNavigationController.h"
+#import "XPSidebarController.h"
 
 @protocol XPPlugin <NSObject>
 
@@ -33,6 +35,10 @@
  Any references to the old collection manager *must* be immediately dereferenced.
  */
 -(void)collectionManagerWasCreated:(XPCollectionManager*)collectionManager;
+
+-(void)navigationControllerWasCreated:(id<XPNavigationController>)navigationController;
+
+-(void)sidebarControllerWasCreated:(id<XPSidebarController>)sidebarController;
 
 /**
  Called whenever the collection view is loaded

@@ -11,6 +11,7 @@
 #import "XPPlugin.h"
 #import "XPItemCollectionProvider.h"
 #import "XPCollectionManager.h"
+#import "XPNavigationController.h"
 
 @interface XPExposureService : NSObject
 
@@ -45,5 +46,9 @@
 +(id<XPItem>)itemForURL:(NSURL*)url collection:(id<XPItemCollection>)collection;
 
 +(void)registerToolbar:(NSToolbar*)toolbar;
+
++(void)navigationControllerWasCreated:(id<XPNavigationController>)navigationController;
+
++(void)sidebarControllerWasCreated:(id<XPSidebarController>)sidebarController;
 
 @end

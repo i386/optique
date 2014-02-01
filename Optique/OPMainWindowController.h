@@ -9,10 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import "OPCollectionViewController.h"
 #import "OPToolbarController.h"
-#import "OPWindowSidebarController.h"
+#import "XPSidebarController.h"
 #import "OPSplitView.h"
 
-@interface OPMainWindowController : NSWindowController<NSWindowDelegate, OPWindowSidebarController, NSSplitViewDelegate>
+@interface OPMainWindowController : NSWindowController<NSWindowDelegate, XPSidebarController, NSSplitViewDelegate>
 
 @property (weak, readonly) XPCollectionManager *collectionManager;
 @property (weak, readwrite) IBOutlet OPToolbarController *toolbarViewController;

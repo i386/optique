@@ -10,7 +10,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface OPDebugView : NSView
+@interface XPDebugView : NSView
 
 @end
 

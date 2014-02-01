@@ -8,9 +8,9 @@
 
 #if DEBUG
 
-#import "OPDebugView.h"
+#import "XPDebugView.h"
 
-@implementation OPDebugView
+@implementation XPDebugView
 
 - (void)drawRect:(NSRect)dirtyRect
 {

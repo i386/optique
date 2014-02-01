@@ -172,6 +172,32 @@
     return debugMenuItems;
 }
 
++(void)navigationControllerWasCreated:(id<XPNavigationController>)navigationController
+{
+    NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
+    
+    exposures = [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject respondsToSelector:@selector(navigationControllerWasCreated:)];
+    }]];
+    
+    [exposures each:^(id<XPPlugin> sender) {
+        [sender navigationControllerWasCreated:navigationController];
+    }];
+}
+
++(void)sidebarControllerWasCreated:(id<XPSidebarController>)sidebarController
+{
+    NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
+    
+    exposures = [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject respondsToSelector:@selector(sidebarControllerWasCreated:)];
+    }]];
+    
+    [exposures each:^(id<XPPlugin> sender) {
+        [sender sidebarControllerWasCreated:sidebarController];
+    }];
+}
+
 +(void)registerToolbar:(NSToolbar *)toolbar
 {
     toolbar.delegate = [XPExposureService defaultLoader];

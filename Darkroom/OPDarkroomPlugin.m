@@ -8,17 +8,30 @@
 
 #import "OPDarkroomPlugin.h"
 #import "OPDarkroomEditorViewController.h"
+#import "OPDarkroomEditorPanelViewController.h"
 
 #define DarkroomToolbarIdentifier   @"darkroom-edit"
 
 @interface OPDarkroomPlugin ()
 
 @property (strong) OPDarkroomEditorViewController *darkroomEditorController;
-@property (strong) NSWindow *window;
+@property (strong) OPDarkroomEditorPanelViewController *darkroomEditorPanelController;
+@property (weak) id<XPNavigationController> navigationController;
+@property (weak) id<XPSidebarController> sidebarController;
 
 @end
 
 @implementation OPDarkroomPlugin
+
+-(void)navigationControllerWasCreated:(id<XPNavigationController>)navigationController
+{
+    _navigationController = navigationController;
+}
+
+-(void)sidebarControllerWasCreated:(id<XPSidebarController>)sidebarController
+{
+    _sidebarController = sidebarController;
+}
 
 -(NSToolbarItem*)toolbarItemForIdentifier:(NSString*)identifier
 {
@@ -48,13 +61,10 @@
 -(void)openDarkroomEditor
 {
     _darkroomEditorController = [[OPDarkroomEditorViewController alloc] init];
+    _darkroomEditorPanelController = [[OPDarkroomEditorPanelViewController alloc] init];
     
-    _window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 500, 500) styleMask:NSTitledWindowMask|NSClosableWindowMask|NSMiniaturizableWindowMask backing:NSBackingStoreBuffered defer:YES];
-    
-    NSView *contentView = (NSView*)_window.contentView;
-    [contentView addSubview:_darkroomEditorController.view];
-    
-    [_window makeKeyAndOrderFront:self];
+    [_navigationController pushViewController:_darkroomEditorController];
+    [_sidebarController showSidebarWithViewController:_darkroomEditorPanelController];
 }
 
 @end

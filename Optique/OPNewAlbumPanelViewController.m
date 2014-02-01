@@ -22,7 +22,7 @@
 
 @implementation OPNewAlbumPanelViewController
 
--(id)initWithCollectionManager:(XPCollectionManager *)collectionManager sidebarController:(id<OPWindowSidebarController>)sidebarController
+-(id)initWithCollectionManager:(XPCollectionManager *)collectionManager sidebarController:(id<XPSidebarController>)sidebarController
 {
     self = [super initWithNibName:@"OPNewAlbumPanelViewController" bundle:nil];
     if (self) {
