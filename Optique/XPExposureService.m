@@ -175,6 +175,16 @@
 +(void)registerToolbar:(NSToolbar *)toolbar
 {
     toolbar.delegate = [XPExposureService defaultLoader];
+    
+    NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
+    
+    exposures = [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject conformsToProtocol:@protocol(XPToolbarItemProvider)];
+    }]];
+    
+    [exposures each:^(id<XPToolbarItemProvider> sender) {
+        [sender addToolbarItemsForToolbar:toolbar];
+    }];
 }
 
 

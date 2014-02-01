@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XPItem.h"
 
-@protocol XPToolbarItemProvider <XPItem>
+@protocol XPToolbarItemProvider <XPPlugin>
 
 -(NSToolbarItem*)toolbarItemForIdentifier:(NSString*)identifier;
 

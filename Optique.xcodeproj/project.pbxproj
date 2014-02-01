@@ -46,6 +46,8 @@
 		0F274999189C8CB3006C3763 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0F27499A189C8CCD006C3763 /* Darkroom.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F27498A189C8C9E006C3763 /* Darkroom.bundle */; };
 		0F27499D189C8D02006C3763 /* OPDarkroomPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F27499C189C8D02006C3763 /* OPDarkroomPlugin.m */; };
+		0F2749A1189C92D7006C3763 /* OPDarkroomEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F27499F189C92D7006C3763 /* OPDarkroomEditorViewController.m */; };
+		0F2749A2189C92D7006C3763 /* OPDarkroomEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2749A0189C92D7006C3763 /* OPDarkroomEditorViewController.xib */; };
 		0F32EFCB1877965C00483761 /* OPPeekButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F32EFCA1877965C00483761 /* OPPeekButton.m */; };
 		0F33D0E01769E4D40032CCA0 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0DE1769E4D40032CCA0 /* 86-camera.png */; };
 		0F33D0E11769E4D40032CCA0 /* 86-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0DF1769E4D40032CCA0 /* 86-camera@2x.png */; };
@@ -369,6 +371,9 @@
 		0F274992189C8C9E006C3763 /* Darkroom-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Darkroom-Prefix.pch"; sourceTree = "<group>"; };
 		0F27499B189C8D02006C3763 /* OPDarkroomPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDarkroomPlugin.h; sourceTree = "<group>"; };
 		0F27499C189C8D02006C3763 /* OPDarkroomPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDarkroomPlugin.m; sourceTree = "<group>"; };
+		0F27499E189C92D7006C3763 /* OPDarkroomEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDarkroomEditorViewController.h; sourceTree = "<group>"; };
+		0F27499F189C92D7006C3763 /* OPDarkroomEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDarkroomEditorViewController.m; sourceTree = "<group>"; };
+		0F2749A0189C92D7006C3763 /* OPDarkroomEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPDarkroomEditorViewController.xib; sourceTree = "<group>"; };
 		0F32EFC91877965C00483761 /* OPPeekButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPeekButton.h; sourceTree = "<group>"; };
 		0F32EFCA1877965C00483761 /* OPPeekButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPeekButton.m; sourceTree = "<group>"; };
 		0F33D0DE1769E4D40032CCA0 /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
@@ -778,6 +783,9 @@
 				0F27498D189C8C9E006C3763 /* Supporting Files */,
 				0F27499B189C8D02006C3763 /* OPDarkroomPlugin.h */,
 				0F27499C189C8D02006C3763 /* OPDarkroomPlugin.m */,
+				0F27499E189C92D7006C3763 /* OPDarkroomEditorViewController.h */,
+				0F27499F189C92D7006C3763 /* OPDarkroomEditorViewController.m */,
+				0F2749A0189C92D7006C3763 /* OPDarkroomEditorViewController.xib */,
 			);
 			path = Darkroom;
 			sourceTree = "<group>";
@@ -1649,6 +1657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F274991189C8C9E006C3763 /* InfoPlist.strings in Resources */,
+				0F2749A2189C92D7006C3763 /* OPDarkroomEditorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1876,6 +1885,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F2749A1189C92D7006C3763 /* OPDarkroomEditorViewController.m in Sources */,
 				0F27499D189C8D02006C3763 /* OPDarkroomPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2589,6 +2599,7 @@
 				0F274995189C8C9E006C3763 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0F90594B180F43BF000D4A53 /* Build configuration list for PBXNativeTarget "Local" */ = {
 			isa = XCConfigurationList;
