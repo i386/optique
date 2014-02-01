@@ -28,3 +28,4 @@
 
 #import "XPSidebarController.h"
 #import "XPNavigationController.h"
+#import "XPNavigationViewController.h"

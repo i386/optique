@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "OPNavigationController.h"
-#import "OPNavigationViewController.h"
+#import "XPNavigationViewController.h"
 
 NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerViewDidChange";
 
@@ -34,9 +34,9 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
         //Setup root controller
         [_displayStack addObject:_rootViewController];
         
-        if ([viewController isKindOfClass:[OPNavigationViewController class]])
+        if ([viewController respondsToSelector:@selector(setController:)])
         {
-            ((OPNavigationViewController*)viewController).controller = self;
+            [((id)viewController) setController:self];
         }
     }
     
@@ -46,9 +46,9 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
 -(void)pushViewController:(NSViewController *)viewController
 {
     [_displayStack addObject:viewController];
-    if ([viewController isKindOfClass:[OPNavigationViewController class]])
+    if ([viewController respondsToSelector:@selector(setController:)])
     {
-        ((OPNavigationViewController*)viewController).controller = self;
+        [((id)viewController) setController:self];
     }
     [self setVisibleViewController:viewController animate:YES];
 }
@@ -73,7 +73,7 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
     return [NSArray arrayWithArray:_displayStack];
 }
 
--(OPNavigationViewController *)peekAtPreviousViewController
+-(NSViewController *)peekAtPreviousViewController
 {
     if (_displayStack.count > 1)
     {
@@ -114,9 +114,9 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
     [visibleViewController.view setFrame:_displayView.frame];
     [_displayView.animator replaceSubview:_visibleViewController.view with:visibleViewController.view];
     
-    if ([_visibleViewController isKindOfClass:[OPNavigationViewController class]])
+    if ([_visibleViewController respondsToSelector:@selector(removedView)])
     {
-        [((OPNavigationViewController*)_visibleViewController) removedView];
+        [((id)_visibleViewController) removedView];
     }
     
     _visibleViewController = visibleViewController;
@@ -124,9 +124,9 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
     //Make visible view first responder
     [_visibleViewController.view.window makeFirstResponder:_visibleViewController.view];
     
-    if ([_visibleViewController isKindOfClass:[OPNavigationViewController class]])
+    if ([_visibleViewController respondsToSelector:@selector(showView)])
     {
-        [((OPNavigationViewController*)_visibleViewController) showView];
+        [((id)_visibleViewController) showView];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationControllerViewDidChange object:self userInfo:@{@"controller": _visibleViewController}];

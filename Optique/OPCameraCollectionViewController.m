@@ -15,7 +15,7 @@
 
 @implementation OPCameraCollectionViewController
 
--(OPNavigationViewController *)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager *)collectionManager
+-(NSViewController *)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager *)collectionManager
 {
     return [[OPCameraItemCollectionViewController alloc] initWithIemCollection:collection collectionManager:collectionManager];
 }

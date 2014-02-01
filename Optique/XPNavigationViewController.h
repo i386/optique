@@ -1,5 +1,5 @@
 //
-//  OPNavigationViewController.h
+//  XPNavigationViewController.h
 //  Optique
 //
 //  Created by James Dumay on 27/03/13.
@@ -7,17 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "OPNavigationController.h"
 
-@interface OPNavigationViewController : NSViewController
+@protocol XPNavigationViewController <NSObject>
 
-@property (weak) OPNavigationController *controller;
+@property (assign) id<XPNavigationController> controller;
 
-/**
- The calculated title for the view to show in the `OPNavigationBar`.
- */ 
--(NSString*)viewTitle;
-
+@optional
 /**
  Called with the `OPNavigationController` displays the view when the controller is made visible initially or is popped.
  */

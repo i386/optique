@@ -26,6 +26,7 @@
 		0F08A8D71770443C00DFEA02 /* 329-layers1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D51770443C00DFEA02 /* 329-layers1.png */; };
 		0F08A8D81770443C00DFEA02 /* 329-layers1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */; };
 		0F14C869189CBDD6001FA6B4 /* XPDebugView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F628B7C187D4F7C0026F551 /* XPDebugView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F14C86A189CC11C001FA6B4 /* XPNavigationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE3B2581702E05100FC0D6C /* XPNavigationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F1750E2182892DD0021853D /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1750E0182892C70021853D /* HockeySDK.framework */; };
 		0F1750E3182892F40021853D /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F1750E0182892C70021853D /* HockeySDK.framework */; };
 		0F1750E71828ACD30021853D /* OPNewsletterWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */; };
@@ -195,7 +196,6 @@
 		0FE285A818397AF2009536D7 /* NSURL+EqualToURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE285A518397AF2009536D7 /* NSURL+EqualToURL.m */; };
 		0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */; };
 		0FE3B2451702C62D00FC0D6C /* OPNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */; };
-		0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2591702E05100FC0D6C /* OPNavigationViewController.m */; };
 		0FE3B2621702F25500FC0D6C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE3B2611702F25500FC0D6C /* QuartzCore.framework */; };
 		0FE719B1174E176B0092F801 /* XPSharingService.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE719B0174E176B0092F801 /* XPSharingService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FEC675717103B5E0086B264 /* effectsbarselectedbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FEC675517103B5E0086B264 /* effectsbarselectedbg.png */; };
@@ -586,8 +586,7 @@
 		0FE3B2411702C62D00FC0D6C /* OPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationController.h; sourceTree = "<group>"; };
 		0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNavigationController.m; sourceTree = "<group>"; };
 		0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNavigationController.xib; sourceTree = "<group>"; };
-		0FE3B2581702E05100FC0D6C /* OPNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationViewController.h; sourceTree = "<group>"; };
-		0FE3B2591702E05100FC0D6C /* OPNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNavigationViewController.m; sourceTree = "<group>"; };
+		0FE3B2581702E05100FC0D6C /* XPNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPNavigationViewController.h; path = ../Optique/XPNavigationViewController.h; sourceTree = "<group>"; };
 		0FE3B2611702F25500FC0D6C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0FE719B0174E176B0092F801 /* XPSharingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPSharingService.h; sourceTree = "<group>"; };
 		0FEC675517103B5E0086B264 /* effectsbarselectedbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = effectsbarselectedbg.png; sourceTree = "<group>"; };
@@ -1132,6 +1131,7 @@
 		0FCA4D311737D88B007DC9EF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0FE3B2581702E05100FC0D6C /* XPNavigationViewController.h */,
 				0F1C229418791A3E00A6878C /* XPSidebarController.h */,
 				0F04A63C1737C74800E53ED1 /* XPCollectionViewController.h */,
 				0F04A63F1737C74800E53ED1 /* XPItemCollectionViewController.h */,
@@ -1291,8 +1291,6 @@
 			children = (
 				0FE3B2411702C62D00FC0D6C /* OPNavigationController.h */,
 				0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */,
-				0FE3B2581702E05100FC0D6C /* OPNavigationViewController.h */,
-				0FE3B2591702E05100FC0D6C /* OPNavigationViewController.m */,
 				0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */,
 			);
 			name = "Navigation Controller";
@@ -1432,6 +1430,7 @@
 				0F946AB8178701CD004F6B57 /* XPItemCollectionProvider.h in Headers */,
 				0F946ABA178702ED004F6B57 /* XPItemCollectionProviderDelegate.h in Headers */,
 				0F274985189C8992006C3763 /* XPToolbarItemProvider.h in Headers */,
+				0F14C86A189CC11C001FA6B4 /* XPNavigationViewController.h in Headers */,
 				0F04A64A1737C74800E53ED1 /* XPPlugin.h in Headers */,
 				0F2749AA189CBA30006C3763 /* XPSidebarController.h in Headers */,
 				0F04A64F1737C77800E53ED1 /* Common.h in Headers */,
@@ -1937,7 +1936,6 @@
 				0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */,
 				0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */,
 				0FCBC3D21895E3290099543D /* OPGridView.m in Sources */,
-				0FE3B25A1702E05100FC0D6C /* OPNavigationViewController.m in Sources */,
 				0FC2EC2F1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.m in Sources */,
 				0FDE075817030FCC00D5B456 /* OPItemCollectionViewController.m in Sources */,
 				0F96270E170418EB007C1A86 /* OPPItemViewController.m in Sources */,

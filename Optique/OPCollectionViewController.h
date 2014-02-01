@@ -9,10 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "OPCollectionGridView.h"
 
-#import "OPNavigationViewController.h"
+@interface OPCollectionViewController : NSViewController <XPNavigationViewController, OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPCollectionViewController>
 
-@interface OPCollectionViewController : OPNavigationViewController <OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPCollectionViewController>
-
+@property (weak) id<XPNavigationController> controller;
 @property (weak, readonly) XPCollectionManager *collectionManager;
 @property (weak) IBOutlet NSMenu *albumItemContextMenu;
 @property (weak) IBOutlet NSMenuItem *deleteAlbumMenuItem;
@@ -32,6 +31,6 @@
 
 -(void)showCollectionWithTitle:(NSString*)title;
 
--(OPNavigationViewController*)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager*)collectionManager;
+-(NSViewController*)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager*)collectionManager;
 
 @end

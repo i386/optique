@@ -10,7 +10,7 @@
 #import "OPNavigationController.h"
 #import "OPItemCollectionViewController.h"
 #import "OPCameraCollectionViewController.h"
-#import "OPNavigationViewController.h"
+#import "XPNavigationViewController.h"
 #import "OPToolbarController.h"
 #import "OPPItemViewController.h"
 #import "OPNewAlbumPanelViewController.h"
@@ -88,7 +88,7 @@
     [XPExposureService registerToolbar:_toolbar];
 }
 
--(void)addNavigationController:(OPNavigationViewController*)viewController
+-(void)addNavigationController:(NSViewController*)viewController
 {
     if (_navigationController)
     {

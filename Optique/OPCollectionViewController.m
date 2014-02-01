@@ -288,7 +288,7 @@
     return NO;
 }
 
--(OPNavigationViewController*)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager*)collectionManager
+-(NSViewController*)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager*)collectionManager
 {
     return [[OPItemCollectionViewController alloc] initWithIemCollection:collection collectionManager:collectionManager];
 }

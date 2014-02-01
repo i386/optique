@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import "OPNavigationViewController.h"
 #import "OPItemGridView.h"
 #import "OPItemGridViewCell.h"
 #import <KBButton/KBButton.h>
 
-@interface OPItemCollectionViewController : OPNavigationViewController <OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPItemCollectionViewController>
+@interface OPItemCollectionViewController : NSViewController <XPNavigationViewController, OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPItemCollectionViewController>
 
+@property (assign) id<XPNavigationController> controller;
 @property (weak) IBOutlet NSMenu *contextMenu;
 @property (weak) IBOutlet NSMenu *sharingMenu;
 

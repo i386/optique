@@ -38,7 +38,7 @@
 {
     id<XPItem> item = _items[index];
     
-    OPNavigationViewController *controller;
+    NSViewController *controller;
     if (![item respondsToSelector:@selector(collection)])
     {
         id<XPItemCollection> collection = (id<XPItemCollection>)item;
@@ -175,7 +175,7 @@
 {
     NSUInteger index = NSNotFound;
     
-    OPNavigationViewController *viewController = _navigationController.peekAtPreviousViewController;
+    NSViewController *viewController = _navigationController.peekAtPreviousViewController;
     if (viewController && [viewController conformsToProtocol:@protocol(XPItemCollectionViewController)])
     {
         id<XPItemCollectionViewController> itemCollectionViewController = (id<XPItemCollectionViewController>)viewController;

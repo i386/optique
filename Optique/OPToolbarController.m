@@ -7,7 +7,7 @@
 //
 
 #import "OPToolbarController.h"
-#import "OPNavigationViewController.h"
+#import "XPNavigationViewController.h"
 #import "OPHistoryPeekViewController.h"
 
 NSString *const OPAlbumSearchFilterDidChange = @"OPAlbumSearchFilterDidChange";
@@ -106,7 +106,7 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
 {
     NSArray *items = nil;
     
-    OPNavigationViewController *viewController = _navigationController.peekAtPreviousViewController;
+    NSViewController *viewController = _navigationController.peekAtPreviousViewController;
     if (viewController && [viewController conformsToProtocol:@protocol(XPItemCollectionViewController)])
     {
         id<XPItemCollectionViewController> itemCollectionViewController = (id<XPItemCollectionViewController>)viewController;
