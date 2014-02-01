@@ -7,21 +7,35 @@
 //
 
 #import "OPDarkroomEditorPanelViewController.h"
+#import "OPRotateEditOperation.h"
 
 @interface OPDarkroomEditorPanelViewController ()
+
+@property (weak) id<XPItem> item;
+@property (weak) OPDarkroomEditManager *editManager;
 
 @end
 
 @implementation OPDarkroomEditorPanelViewController
 
-- (id)init
+-initWithEditManager:(OPDarkroomEditManager*)editManager;
 {
     NSBundle *thisBundle = [NSBundle bundleForClass:[OPDarkroomEditorPanelViewController class]];
     self = [super initWithNibName:@"OPDarkroomEditorPanelViewController" bundle:thisBundle];
     if (self) {
-        // Initialization code here.
+        _editManager = editManager;
     }
     return self;
+}
+
+- (IBAction)rotate:(id)sender
+{
+    OPRotateEditOperation *operation = [[OPRotateEditOperation alloc] init];
+    [_editManager addOperation:operation];
+}
+
+- (IBAction)save:(id)sender
+{
 }
 
 @end

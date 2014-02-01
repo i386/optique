@@ -172,6 +172,8 @@
 
 -(void)slideView:(WHSlideView *)slideView prepareLayer:(CALayer *)layer index:(NSUInteger)index
 {
+    layer.contentsGravity = kCAGravityResizeAspect;
+    
     id<XPItem> item = [[[_item collection] allItems] objectAtIndex:index];
     if ([item type] == XPItemTypePhoto)
     {

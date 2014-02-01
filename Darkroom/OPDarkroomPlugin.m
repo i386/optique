@@ -7,14 +7,15 @@
 //
 
 #import "OPDarkroomPlugin.h"
-#import "OPDarkroomEditorViewController.h"
+#import "OPDarkroomPreviewViewController.h"
 #import "OPDarkroomEditorPanelViewController.h"
+#import "OPDarkroomPreviewLayer.h"
 
 #define DarkroomToolbarIdentifier   @"darkroom-edit"
 
 @interface OPDarkroomPlugin ()
 
-@property (strong) OPDarkroomEditorViewController *darkroomEditorController;
+@property (strong) OPDarkroomPreviewViewController *darkroomPreviewViewController;
 @property (strong) OPDarkroomEditorPanelViewController *darkroomEditorPanelController;
 
 @end
@@ -48,11 +49,23 @@
 
 -(void)openDarkroomEditor
 {
-    _darkroomEditorController = [[OPDarkroomEditorViewController alloc] init];
-    _darkroomEditorPanelController = [[OPDarkroomEditorPanelViewController alloc] init];
-    
-    [_navigationController pushViewController:_darkroomEditorController];
-    [_sidebarController showSidebarWithViewController:_darkroomEditorPanelController];
+    if ([[_navigationController visibleViewController] conformsToProtocol:@protocol(XPItemController)])
+    {
+        id<XPItemController> controller = (id<XPItemController>)[_navigationController visibleViewController];
+        id<XPItem> item = [controller item];
+        if ([item type] == XPItemTypePhoto)
+        {
+            OPDarkroomPreviewLayer *layer = [[OPDarkroomPreviewLayer alloc] init];
+            
+            _editManager = [[OPDarkroomEditManager alloc] initWithItem:item previewLayer:layer];
+            
+            _darkroomPreviewViewController = [[OPDarkroomPreviewViewController alloc] initWithItem:item sidebarController:_sidebarController previewLayer:layer];
+            _darkroomEditorPanelController = [[OPDarkroomEditorPanelViewController alloc] initWithEditManager:_editManager];
+            
+            [_navigationController pushViewController:_darkroomPreviewViewController];
+            [_sidebarController showSidebarWithViewController:_darkroomEditorPanelController];
+        }
+    }
 }
 
 @end

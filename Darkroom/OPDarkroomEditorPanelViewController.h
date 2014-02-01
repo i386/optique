@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "OPDarkroomEditManager.h"
 
 @interface OPDarkroomEditorPanelViewController : NSViewController
+
+-initWithEditManager:(OPDarkroomEditManager*)editManager;
 
 @end
