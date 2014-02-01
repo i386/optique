@@ -40,6 +40,12 @@
 		0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A6571737C7C300E53ED1 /* Finder.bundle */; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
 		0F274985189C8992006C3763 /* XPToolbarItemProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F274984189C8992006C3763 /* XPToolbarItemProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F27498B189C8C9E006C3763 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F905942180F43BF000D4A53 /* CoreFoundation.framework */; };
+		0F274991189C8C9E006C3763 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F27498F189C8C9E006C3763 /* InfoPlist.strings */; };
+		0F274998189C8CAC006C3763 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
+		0F274999189C8CB3006C3763 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
+		0F27499A189C8CCD006C3763 /* Darkroom.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F27498A189C8C9E006C3763 /* Darkroom.bundle */; };
+		0F27499D189C8D02006C3763 /* OPDarkroomPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F27499C189C8D02006C3763 /* OPDarkroomPlugin.m */; };
 		0F32EFCB1877965C00483761 /* OPPeekButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F32EFCA1877965C00483761 /* OPPeekButton.m */; };
 		0F33D0E01769E4D40032CCA0 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0DE1769E4D40032CCA0 /* 86-camera.png */; };
 		0F33D0E11769E4D40032CCA0 /* 86-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0DF1769E4D40032CCA0 /* 86-camera@2x.png */; };
@@ -208,6 +214,13 @@
 			remoteGlobalIDString = 0F04A62B1737C70F00E53ED1;
 			remoteInfo = Exposure;
 		};
+		0F274996189C8CA8006C3763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F04A62B1737C70F00E53ED1;
+			remoteInfo = Exposure;
+		};
 		0F3632B9178E2BD10000577B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
@@ -280,6 +293,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				0F27499A189C8CCD006C3763 /* Darkroom.bundle in CopyFiles */,
 				0F905954180F4427000D4A53 /* Local.bundle in CopyFiles */,
 				0FC2ABC91789539C009C7B02 /* Camera.bundle in CopyFiles */,
 				0FCA4D8317391EC3007DC9EF /* Twitter.bundle in CopyFiles */,
@@ -349,6 +363,12 @@
 		0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+FullScreen.h"; sourceTree = "<group>"; };
 		0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+FullScreen.m"; sourceTree = "<group>"; };
 		0F274984189C8992006C3763 /* XPToolbarItemProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPToolbarItemProvider.h; sourceTree = "<group>"; };
+		0F27498A189C8C9E006C3763 /* Darkroom.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Darkroom.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F27498E189C8C9E006C3763 /* Darkroom-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Darkroom-Info.plist"; sourceTree = "<group>"; };
+		0F274990189C8C9E006C3763 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0F274992189C8C9E006C3763 /* Darkroom-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Darkroom-Prefix.pch"; sourceTree = "<group>"; };
+		0F27499B189C8D02006C3763 /* OPDarkroomPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDarkroomPlugin.h; sourceTree = "<group>"; };
+		0F27499C189C8D02006C3763 /* OPDarkroomPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDarkroomPlugin.m; sourceTree = "<group>"; };
 		0F32EFC91877965C00483761 /* OPPeekButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPeekButton.h; sourceTree = "<group>"; };
 		0F32EFCA1877965C00483761 /* OPPeekButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPeekButton.m; sourceTree = "<group>"; };
 		0F33D0DE1769E4D40032CCA0 /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
@@ -597,6 +617,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F274987189C8C9E006C3763 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F274999189C8CB3006C3763 /* Cocoa.framework in Frameworks */,
+				0F274998189C8CAC006C3763 /* Exposure.framework in Frameworks */,
+				0F27498B189C8C9E006C3763 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F90593E180F43BF000D4A53 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -742,6 +772,26 @@
 			name = "New Album Panel";
 			sourceTree = "<group>";
 		};
+		0F27498C189C8C9E006C3763 /* Darkroom */ = {
+			isa = PBXGroup;
+			children = (
+				0F27498D189C8C9E006C3763 /* Supporting Files */,
+				0F27499B189C8D02006C3763 /* OPDarkroomPlugin.h */,
+				0F27499C189C8D02006C3763 /* OPDarkroomPlugin.m */,
+			);
+			path = Darkroom;
+			sourceTree = "<group>";
+		};
+		0F27498D189C8C9E006C3763 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0F27498E189C8C9E006C3763 /* Darkroom-Info.plist */,
+				0F27498F189C8C9E006C3763 /* InfoPlist.strings */,
+				0F274992189C8C9E006C3763 /* Darkroom-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		0F368A7B170680DF00411503 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -863,6 +913,7 @@
 				0FCA4D7417391EA7007DC9EF /* Twitter.bundle */,
 				0FC2ABB5178952F7009C7B02 /* Camera.bundle */,
 				0F905941180F43BF000D4A53 /* Local.bundle */,
+				0F27498A189C8C9E006C3763 /* Darkroom.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1050,6 +1101,7 @@
 			children = (
 				0F905944180F43BF000D4A53 /* Local */,
 				0FC2ABB7178952F7009C7B02 /* Camera */,
+				0F27498C189C8C9E006C3763 /* Darkroom */,
 				0FCA4D7617391EA7007DC9EF /* Twitter */,
 				0FCA4D571738A272007DC9EF /* Facebook */,
 				0F04A6591737C7C300E53ED1 /* Finder */,
@@ -1403,6 +1455,24 @@
 			productReference = 0F04A6571737C7C300E53ED1 /* Finder.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
+		0F274989189C8C9E006C3763 /* Darkroom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F274993189C8C9E006C3763 /* Build configuration list for PBXNativeTarget "Darkroom" */;
+			buildPhases = (
+				0F274986189C8C9E006C3763 /* Sources */,
+				0F274987189C8C9E006C3763 /* Frameworks */,
+				0F274988189C8C9E006C3763 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0F274997189C8CA8006C3763 /* PBXTargetDependency */,
+			);
+			name = Darkroom;
+			productName = Darkroom;
+			productReference = 0F27498A189C8C9E006C3763 /* Darkroom.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		0F905940180F43BF000D4A53 /* Local */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F90594B180F43BF000D4A53 /* Build configuration list for PBXNativeTarget "Local" */;
@@ -1547,6 +1617,7 @@
 			targets = (
 				0F9C80AF16F891C700B2B6D8 /* Optique */,
 				0F04A62B1737C70F00E53ED1 /* Exposure */,
+				0F274989189C8C9E006C3763 /* Darkroom */,
 				0F04A6561737C7C300E53ED1 /* Finder */,
 				0FCA4D541738A272007DC9EF /* Facebook */,
 				0FCA4D7317391EA7007DC9EF /* Twitter */,
@@ -1570,6 +1641,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F04A65E1737C7C300E53ED1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F274988189C8C9E006C3763 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F274991189C8C9E006C3763 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1793,6 +1872,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F274986189C8C9E006C3763 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F27499D189C8D02006C3763 /* OPDarkroomPlugin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F90593D180F43BF000D4A53 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1905,6 +1992,11 @@
 			target = 0F04A62B1737C70F00E53ED1 /* Exposure */;
 			targetProxy = 0F04A6631737C7DF00E53ED1 /* PBXContainerItemProxy */;
 		};
+		0F274997189C8CA8006C3763 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F04A62B1737C70F00E53ED1 /* Exposure */;
+			targetProxy = 0F274996189C8CA8006C3763 /* PBXContainerItemProxy */;
+		};
 		0F3632BA178E2BD10000577B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0F04A6561737C7C300E53ED1 /* Finder */;
@@ -1965,6 +2057,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				0F04A65D1737C7C300E53ED1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0F27498F189C8C9E006C3763 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F274990189C8C9E006C3763 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2110,6 +2210,55 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		0F274994189C8C9E006C3763 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Darkroom/Darkroom-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Darkroom/Darkroom-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		0F274995189C8C9E006C3763 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Darkroom/Darkroom-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Darkroom/Darkroom-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
@@ -2432,6 +2581,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		0F274993189C8C9E006C3763 /* Build configuration list for PBXNativeTarget "Darkroom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F274994189C8C9E006C3763 /* Debug */,
+				0F274995189C8C9E006C3763 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		0F90594B180F43BF000D4A53 /* Build configuration list for PBXNativeTarget "Local" */ = {
 			isa = XCConfigurationList;
