@@ -83,6 +83,8 @@
     }]];
     
     [self addNavigationController:_albumViewController];
+    
+    [XPExposureService registerToolbar:_toolbar];
 }
 
 -(void)addNavigationController:(OPNavigationViewController*)viewController

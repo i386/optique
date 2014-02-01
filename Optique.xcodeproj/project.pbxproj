@@ -39,6 +39,7 @@
 		0F1D8B1D1898F2900087898C /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1D8B1C1898F2900087898C /* NSBezierPath+BezierPathQuartzUtilities.m */; };
 		0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A6571737C7C300E53ED1 /* Finder.bundle */; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
+		0F274985189C8992006C3763 /* XPToolbarItemProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F274984189C8992006C3763 /* XPToolbarItemProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F32EFCB1877965C00483761 /* OPPeekButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F32EFCA1877965C00483761 /* OPPeekButton.m */; };
 		0F33D0E01769E4D40032CCA0 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0DE1769E4D40032CCA0 /* 86-camera.png */; };
 		0F33D0E11769E4D40032CCA0 /* 86-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F33D0DF1769E4D40032CCA0 /* 86-camera@2x.png */; };
@@ -347,6 +348,7 @@
 		0F1D8B1C1898F2900087898C /* NSBezierPath+BezierPathQuartzUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBezierPath+BezierPathQuartzUtilities.m"; sourceTree = "<group>"; };
 		0F243AAD1707EF630012149E /* NSWindow+FullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+FullScreen.h"; sourceTree = "<group>"; };
 		0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+FullScreen.m"; sourceTree = "<group>"; };
+		0F274984189C8992006C3763 /* XPToolbarItemProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPToolbarItemProvider.h; sourceTree = "<group>"; };
 		0F32EFC91877965C00483761 /* OPPeekButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPeekButton.h; sourceTree = "<group>"; };
 		0F32EFCA1877965C00483761 /* OPPeekButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPeekButton.m; sourceTree = "<group>"; };
 		0F33D0DE1769E4D40032CCA0 /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
@@ -678,6 +680,7 @@
 				0F04A6401737C74800E53ED1 /* XPCollectionManager.h */,
 				0F946AB7178701CD004F6B57 /* XPItemCollectionProvider.h */,
 				0F946AB9178702ED004F6B57 /* XPItemCollectionProviderDelegate.h */,
+				0F274984189C8992006C3763 /* XPToolbarItemProvider.h */,
 				0FCA4D321737D89B007DC9EF /* Model */,
 				0FCA4D311737D88B007DC9EF /* Controllers */,
 				0FA29616178D4AF5005009C4 /* Metadata */,
@@ -1352,6 +1355,7 @@
 				0FA29614178D4AF1005009C4 /* XPBundleMetadata.h in Headers */,
 				0F946AB8178701CD004F6B57 /* XPItemCollectionProvider.h in Headers */,
 				0F946ABA178702ED004F6B57 /* XPItemCollectionProviderDelegate.h in Headers */,
+				0F274985189C8992006C3763 /* XPToolbarItemProvider.h in Headers */,
 				0F04A64A1737C74800E53ED1 /* XPPlugin.h in Headers */,
 				0F04A64F1737C77800E53ED1 /* Common.h in Headers */,
 				0F3B6C53180F4FB200119C10 /* XPExposureService.h in Headers */,

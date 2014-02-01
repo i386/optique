@@ -10,6 +10,7 @@
                 <outlet property="leftSplitView" destination="g50-57-OSU" id="fkN-re-QFB"/>
                 <outlet property="rightSplitView" destination="deB-2D-kex" id="bXs-ft-sSV"/>
                 <outlet property="splitView" destination="Oqr-1I-ikl" id="vtu-jZ-ZvU"/>
+                <outlet property="toolbar" destination="7bg-oX-rUL" id="1FM-qL-30z"/>
                 <outlet property="toolbarViewController" destination="7Y5-cf-qca" id="dbb-OV-xew"/>
                 <outlet property="window" destination="1" id="3"/>
             </connections>

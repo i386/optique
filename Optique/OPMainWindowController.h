@@ -19,6 +19,7 @@
 @property (weak) IBOutlet OPSplitView *splitView;
 @property (weak) IBOutlet NSView *leftSplitView;
 @property (weak) IBOutlet NSView *rightSplitView;
+@property (weak) IBOutlet NSToolbar *toolbar;
 
 -initWithCollectionManager:(XPCollectionManager*)collectionManager;
 

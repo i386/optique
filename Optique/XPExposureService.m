@@ -8,7 +8,14 @@
 
 #import "XPExposureService.h"
 #import "XPMenuItem.h"
+#import "XPToolbarItemProvider.h"
 #import <BlocksKit/BlocksKit.h>
+
+@interface XPExposureService () <NSToolbarDelegate>
+
+
+
+@end
 
 @implementation XPExposureService
 
@@ -165,6 +172,11 @@
     return debugMenuItems;
 }
 
++(void)registerToolbar:(NSToolbar *)toolbar
+{
+    toolbar.delegate = [XPExposureService defaultLoader];
+}
+
 
 +(NSSet *)conformsToPhotoCollectionProvider
 {
@@ -258,6 +270,27 @@
         NSLog(@"Could not load plugin class '%@' from bundle '%@'", bundleToLoad.principalClass, bundleToLoad.bundleIdentifier);
 //#endif
     }
+}
+
+#pragma mark - Toolbar delelgate
+
+-(NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)itemIdentifier willBeInsertedIntoToolbar:(BOOL)flag
+{
+    NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
+    
+    exposures = [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject conformsToProtocol:@protocol(XPToolbarItemProvider)];
+    }]];
+
+    for (id<XPToolbarItemProvider> toolbarItemProvider in exposures)
+    {
+        NSToolbarItem *item = [toolbarItemProvider toolbarItemForIdentifier:itemIdentifier];
+        if (item)
+        {
+            return item;
+        }
+    }
+    return nil;
 }
 
 @end

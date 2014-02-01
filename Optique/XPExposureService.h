@@ -44,4 +44,6 @@
 
 +(id<XPItem>)itemForURL:(NSURL*)url collection:(id<XPItemCollection>)collection;
 
++(void)registerToolbar:(NSToolbar*)toolbar;
+
 @end

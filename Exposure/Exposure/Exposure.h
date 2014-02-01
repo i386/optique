@@ -24,3 +24,4 @@
 
 #import "XPExposureService.h"
 #import "XPMenuItem.h"
+#import "XPToolbarItemProvider.h"
