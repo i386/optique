@@ -22,7 +22,7 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
 
 @implementation OPNavigationController
 
--(id)initWithRootViewController:(OPNavigationViewController *)viewController
+-(id)initWithRootViewController:(NSViewController *)viewController
 {
     self = [super initWithNibName:@"OPNavigationController" bundle:nil];
     if (self)
@@ -33,17 +33,23 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
         
         //Setup root controller
         [_displayStack addObject:_rootViewController];
-        [_rootViewController setController:self];
-        _rootViewController.controller = self;
+        
+        if ([viewController isKindOfClass:[OPNavigationViewController class]])
+        {
+            ((OPNavigationViewController*)viewController).controller = self;
+        }
     }
     
     return self;
 }
 
--(void)pushViewController:(OPNavigationViewController *)viewController
+-(void)pushViewController:(NSViewController *)viewController
 {
     [_displayStack addObject:viewController];
-    viewController.controller = self;
+    if ([viewController isKindOfClass:[OPNavigationViewController class]])
+    {
+        ((OPNavigationViewController*)viewController).controller = self;
+    }
     [self setVisibleViewController:viewController animate:YES];
 }
 
@@ -91,7 +97,7 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
     return [NSArray arrayWithArray:_displayStack];
 }
 
--(void)setVisibleViewController:(OPNavigationViewController *)visibleViewController animate:(BOOL)animate
+-(void)setVisibleViewController:(NSViewController *)visibleViewController animate:(BOOL)animate
 {
     if (animate)
     {
@@ -108,14 +114,20 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
     [visibleViewController.view setFrame:_displayView.frame];
     [_displayView.animator replaceSubview:_visibleViewController.view with:visibleViewController.view];
     
-    [_visibleViewController removedView];
+    if ([_visibleViewController isKindOfClass:[OPNavigationViewController class]])
+    {
+        [((OPNavigationViewController*)_visibleViewController) removedView];
+    }
     
     _visibleViewController = visibleViewController;
     
     //Make visible view first responder
     [_visibleViewController.view.window makeFirstResponder:_visibleViewController.view];
     
-    [_visibleViewController showView];
+    if ([_visibleViewController isKindOfClass:[OPNavigationViewController class]])
+    {
+        [((OPNavigationViewController*)_visibleViewController) showView];
+    }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:OPNavigationControllerViewDidChange object:self userInfo:@{@"controller": _visibleViewController}];
 }

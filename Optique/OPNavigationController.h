@@ -8,19 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class OPNavigationViewController;
-
 extern NSString *const OPNavigationControllerViewDidChange;
 
 @interface OPNavigationController : NSViewController
 
-@property (strong, readonly) OPNavigationViewController *rootViewController;
-@property (strong, nonatomic, readonly) OPNavigationViewController *visibleViewController;
+@property (strong, readonly) NSViewController *rootViewController;
+@property (strong, nonatomic, readonly) NSViewController *visibleViewController;
 
--initWithRootViewController:(OPNavigationViewController*)viewController;
+-initWithRootViewController:(NSViewController*)viewController;
 
 /** forward to new view **/
--(void)pushViewController:(OPNavigationViewController *)viewController;
+-(void)pushViewController:(NSViewController *)viewController;
 
 /** back to previous view **/
 - (NSArray *)popToPreviousViewController;
@@ -31,7 +29,7 @@ extern NSString *const OPNavigationControllerViewDidChange;
 /** jump back to the root view with no animation **/
 - (NSArray *)popToRootViewControllerWithNoAnimation;
 
-- (OPNavigationViewController *)peekAtPreviousViewController;
+- (NSViewController *)peekAtPreviousViewController;
 
 - (bool)isRootViewControllerVisible;
 
