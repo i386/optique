@@ -8,11 +8,13 @@
 
 #import "OPDarkroomEditorPanelViewController.h"
 #import "OPRotateEditOperation.h"
+#import <KBButton/KBButton.h>
 
 @interface OPDarkroomEditorPanelViewController ()
 
 @property (weak) id<XPItem> item;
 @property (weak) OPDarkroomEditManager *editManager;
+@property (weak) IBOutlet KBButton *saveButton;
 
 @end
 

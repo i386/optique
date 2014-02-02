@@ -10,39 +10,24 @@
 
 @implementation NSColor (Optique)
 
-+(NSColor *)optiqueTitlebarColor
-{
-    return [NSColor colorWithCalibratedRed:0.01 green:0.49 blue:0.73 alpha:1.00];
-}
-
-+(NSColor *)optiqueTitlebarBorderColor
-{
-    return [NSColor colorWithCalibratedRed:0.04 green:0.31 blue:0.52 alpha:1.00];
-}
-
 +(NSColor *)optiqueBackgroundColor
 {
     return [NSColor controlBackgroundColor];
 }
 
-+(NSColor *)optiqueSelectedBackgroundColor
++(NSColor *)optiqueSelectionBorderColor
 {
     return [NSColor colorWithCalibratedRed:0.00 green:0.58 blue:0.87 alpha:1.00];
 }
 
-+(NSColor *)optiqueDarkBackgroundColor
-{
-    return [NSColor colorWithCalibratedRed:0.30 green:0.30 blue:0.30 alpha:1.00];
-}
-
-+(NSColor *)optiqueDarkFullscreenColor
++(NSColor *)optiquePhotoSliderBackgroundFullscreenColor
 {
     return [NSColor blackColor];
 }
 
-+(NSColor *)optiqueTextColor
++(NSColor *)optiquePhotoSliderBackgroundColor
 {
-    return [NSColor blackColor];
+    return [NSColor colorWithCalibratedRed:0.40 green:0.40 blue:0.40 alpha:1.00];
 }
 
 @end

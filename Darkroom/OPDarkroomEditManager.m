@@ -34,6 +34,8 @@
 {
     [_operations addObject:operation];
     [operation performPreviewOperation:_layer];
+    
+    [operation performWithItem:_item];
 }
 
 @end

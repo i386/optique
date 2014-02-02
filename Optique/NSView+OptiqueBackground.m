@@ -23,15 +23,9 @@
     NSRectFill(self.bounds);
 }
 
--(void)drawDarkBackground
-{
-    [[NSColor optiqueDarkBackgroundColor] set];
-    NSRectFill(self.bounds);
-}
-
 -(void)drawDarkFullscreenBackground
 {
-    [[NSColor optiqueDarkFullscreenColor] set];
+    [[NSColor optiquePhotoSliderBackgroundFullscreenColor] set];
     NSRectFill(self.bounds);
 }
 

@@ -36,7 +36,7 @@
         [self addSublayer:_imageLayer];
         
         _selectionLayer = [OEGridLayer layer];
-        _selectionLayer.borderColor = [[NSColor optiqueSelectedBackgroundColor] CGColor];
+        _selectionLayer.borderColor = [[NSColor optiqueSelectionBorderColor] CGColor];
         _selectionLayer.borderWidth = 5.0f;
         [self addSublayer:_selectionLayer];
     }

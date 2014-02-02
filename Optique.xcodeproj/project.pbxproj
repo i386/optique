@@ -36,6 +36,7 @@
 		0F14C87D189CE053001FA6B4 /* NSColor+Optique.h in Sources */ = {isa = PBXBuildFile; fileRef = 0F79A5E3175DE2DC00BB3973 /* NSColor+Optique.h */; };
 		0F14C87E189CE06C001FA6B4 /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
 		0F14C881189CE59A001FA6B4 /* CALayer+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C880189CE59A001FA6B4 /* CALayer+Rotate.m */; };
+		0F14C885189DE425001FA6B4 /* OPDarkroomPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C884189DE425001FA6B4 /* OPDarkroomPreviewView.m */; };
 		0F1750E2182892DD0021853D /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1750E0182892C70021853D /* HockeySDK.framework */; };
 		0F1750E3182892F40021853D /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F1750E0182892C70021853D /* HockeySDK.framework */; };
 		0F1750E71828ACD30021853D /* OPNewsletterWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */; };
@@ -220,6 +221,7 @@
 		1373B7D69D7D477FA5D36CD2 /* libPods-Exposure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CE02E9006D49619346BA66 /* libPods-Exposure.a */; };
 		1791BFD324934B749367A850 /* libPods-Optique.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938A6A86581545989549982D /* libPods-Optique.a */; };
 		5485CBA8B3D447C9AF7B4466 /* libPods-Local.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BF5E4871694D2D83796B64 /* libPods-Local.a */; };
+		6EC49E083AC14C90B4858100 /* libPods-Darkroom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBE2330042E4DC98341E2A2 /* libPods-Darkroom.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -368,6 +370,8 @@
 		0F14C879189CCFF4001FA6B4 /* OPRotateEditOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPRotateEditOperation.m; sourceTree = "<group>"; };
 		0F14C87F189CE59A001FA6B4 /* CALayer+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Rotate.h"; sourceTree = "<group>"; };
 		0F14C880189CE59A001FA6B4 /* CALayer+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Rotate.m"; sourceTree = "<group>"; };
+		0F14C883189DE425001FA6B4 /* OPDarkroomPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDarkroomPreviewView.h; sourceTree = "<group>"; };
+		0F14C884189DE425001FA6B4 /* OPDarkroomPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDarkroomPreviewView.m; sourceTree = "<group>"; };
 		0F1750E0182892C70021853D /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = Frameworks/HockeySDK.framework; sourceTree = "<group>"; };
 		0F1750E41828ACD30021853D /* OPNewsletterWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNewsletterWindowController.h; sourceTree = "<group>"; };
 		0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNewsletterWindowController.m; sourceTree = "<group>"; };
@@ -619,7 +623,9 @@
 		0FF31F3618757A1A006803DE /* ICCameraDevice+OrderedMediaFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ICCameraDevice+OrderedMediaFiles.m"; sourceTree = "<group>"; };
 		0FFE24B0172907AA00513AD2 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		0FFE24B51729206B00513AD2 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		1650C68FCF8C4AC79D7FEDF5 /* Pods-Darkroom.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Darkroom.xcconfig"; path = "Pods/Pods-Darkroom.xcconfig"; sourceTree = "<group>"; };
 		16513AE00F4544C59D21B885 /* Pods-Local.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local.xcconfig"; path = "Pods/Pods-Local.xcconfig"; sourceTree = "<group>"; };
+		1BBE2330042E4DC98341E2A2 /* libPods-Darkroom.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Darkroom.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CE02E9006D49619346BA66 /* libPods-Exposure.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Exposure.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		414A439A63084757BE245F01 /* Pods/Pods-Optique.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods/Pods-Optique.xcconfig"; sourceTree = SOURCE_ROOT; };
 		903EF40C10B94861A91EB68D /* Pods-Exposure.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exposure.xcconfig"; path = "Pods/Pods-Exposure.xcconfig"; sourceTree = "<group>"; };
@@ -655,6 +661,7 @@
 				0F274999189C8CB3006C3763 /* Cocoa.framework in Frameworks */,
 				0F274998189C8CAC006C3763 /* Exposure.framework in Frameworks */,
 				0F27498B189C8C9E006C3763 /* CoreFoundation.framework in Frameworks */,
+				6EC49E083AC14C90B4858100 /* libPods-Darkroom.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,6 +813,8 @@
 		0F14C875189CCE59001FA6B4 /* Darkroom Preview */ = {
 			isa = PBXGroup;
 			children = (
+				0F14C886189DE4D1001FA6B4 /* Preview view */,
+				0F14C872189CCB21001FA6B4 /* Preview layer */,
 				0F27499E189C92D7006C3763 /* OPDarkroomPreviewViewController.h */,
 				0F27499F189C92D7006C3763 /* OPDarkroomPreviewViewController.m */,
 				0F2749A0189C92D7006C3763 /* OPDarkroomPreviewViewController.xib */,
@@ -842,6 +851,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		0F14C886189DE4D1001FA6B4 /* Preview view */ = {
+			isa = PBXGroup;
+			children = (
+				0F14C883189DE425001FA6B4 /* OPDarkroomPreviewView.h */,
+				0F14C884189DE425001FA6B4 /* OPDarkroomPreviewView.m */,
+			);
+			name = "Preview view";
+			sourceTree = "<group>";
+		};
 		0F1750E91828AD250021853D /* Newsletter */ = {
 			isa = PBXGroup;
 			children = (
@@ -871,7 +889,6 @@
 				0F14C875189CCE59001FA6B4 /* Darkroom Preview */,
 				0F14C876189CCE66001FA6B4 /* Editor panel */,
 				0F14C86E189CCAF0001FA6B4 /* Edit Manager */,
-				0F14C872189CCB21001FA6B4 /* Preview layer */,
 				0F14C882189CE686001FA6B4 /* Categories */,
 			);
 			path = Darkroom;
@@ -994,6 +1011,7 @@
 				414A439A63084757BE245F01 /* Pods/Pods-Optique.xcconfig */,
 				16513AE00F4544C59D21B885 /* Pods-Local.xcconfig */,
 				903EF40C10B94861A91EB68D /* Pods-Exposure.xcconfig */,
+				1650C68FCF8C4AC79D7FEDF5 /* Pods-Darkroom.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1048,6 +1066,7 @@
 				938A6A86581545989549982D /* libPods-Optique.a */,
 				96BF5E4871694D2D83796B64 /* libPods-Local.a */,
 				28CE02E9006D49619346BA66 /* libPods-Exposure.a */,
+				1BBE2330042E4DC98341E2A2 /* libPods-Darkroom.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1558,9 +1577,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F274993189C8C9E006C3763 /* Build configuration list for PBXNativeTarget "Darkroom" */;
 			buildPhases = (
+				63D0D0D42EC3478EA4863018 /* Check Pods Manifest.lock */,
 				0F274986189C8C9E006C3763 /* Sources */,
 				0F274987189C8C9E006C3763 /* Frameworks */,
 				0F274988189C8C9E006C3763 /* Resources */,
+				B88DC8C80CFD45D1AA86F0EB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1888,6 +1909,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-Local-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		63D0D0D42EC3478EA4863018 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		6FC78DBE8B3C4028AE2B7A34 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1948,6 +1984,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		B88DC8C80CFD45D1AA86F0EB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Darkroom-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1979,6 +2030,7 @@
 			files = (
 				0F14C87E189CE06C001FA6B4 /* NSWindow+FullScreen.m in Sources */,
 				0F14C87C189CD372001FA6B4 /* NSImage+CGImage.m in Sources */,
+				0F14C885189DE425001FA6B4 /* OPDarkroomPreviewView.m in Sources */,
 				0F14C87B189CD31D001FA6B4 /* NSObject+PerformBlock.m in Sources */,
 				0F2749A1189C92D7006C3763 /* OPDarkroomPreviewViewController.m in Sources */,
 				0F14C881189CE59A001FA6B4 /* CALayer+Rotate.m in Sources */,
@@ -2327,6 +2379,7 @@
 		};
 		0F274994189C8C9E006C3763 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1650C68FCF8C4AC79D7FEDF5 /* Pods-Darkroom.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -2353,6 +2406,7 @@
 		};
 		0F274995189C8C9E006C3763 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1650C68FCF8C4AC79D7FEDF5 /* Pods-Darkroom.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;

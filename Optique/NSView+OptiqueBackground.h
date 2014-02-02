@@ -14,8 +14,6 @@
 
 -(void)drawTransparentBackground;
 
--(void)drawDarkBackground;
-
 -(void)drawDarkFullscreenBackground;
 
 @end

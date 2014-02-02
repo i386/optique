@@ -13,6 +13,10 @@
 
 -(void)performPreviewOperation:(CALayer*)layer;
 
--(void)performOperation:(CGImageRef)image;
+@optional
+
+-(void)performWithItem:(id<XPItem>)item;
+
+-(void)performOperationWithSourceRef:(CGImageSourceRef)sourceRef;
 
 @end

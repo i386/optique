@@ -25,7 +25,7 @@
     if (self)
     {
         self.selectionLayer = [OEGridLayer layer];
-        self.selectionLayer.borderColor = [[NSColor optiqueSelectedBackgroundColor] CGColor];
+        self.selectionLayer.borderColor = [[NSColor optiqueSelectionBorderColor] CGColor];
         self.selectionLayer.borderWidth = 5.0f;
         [self addSublayer:self.selectionLayer];
         

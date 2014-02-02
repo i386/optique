@@ -17,3 +17,6 @@ target :Local do
   pod 'CDEvents', '~> 1.2.0'
 end
 
+target :Darkroom do
+  pod 'KBButton', :git => 'git@github.com:i386/KBButton.git'
+end
