@@ -30,6 +30,12 @@
     return self;
 }
 
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    [_saveButton setKBButtonType:BButtonTypePrimary];
+}
+
 - (IBAction)rotate:(id)sender
 {
     OPRotateEditOperation *operation = [[OPRotateEditOperation alloc] init];
