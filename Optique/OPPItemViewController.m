@@ -126,7 +126,10 @@
 -(void)collectionUpdated:(NSNotification*)notification
 {
     [self performBlockOnMainThreadAndWaitUntilDone:^{
-        [self.slideView setNeedsDisplay:YES];
+        if ([[_item collection] isEqual:notification.userInfo[@"collection"]])
+        {
+            [self.slideView reload];
+        }
     }];
 }
 
