@@ -113,8 +113,23 @@ static OPItemPreviewManager *_defaultManager;
         
         NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
         _cacheDirectory = [[[[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject] URLByAppendingPathComponent:@"com.whimsy.optique" isDirectory:YES] URLByAppendingPathComponent:@"previews" isDirectory:YES];
+        
+        //Run this on our large image queue
+        [[NSNotificationCenter defaultCenter] addObserverForName:XPCollectionManagerDidUpdateCollection object:self queue:_largeImageQueue usingBlock:^(NSNotification *note) {
+            
+            id<XPItemCollection> collection = note.userInfo[@"collection"];
+            
+            [[collection allItems] each:^(id<XPItem> sender) {
+                [self evictItem:sender];
+            }];
+        }];
     }
     return self;
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPCollectionManagerDidUpdateCollection object:nil];
 }
 
 -(void)previewItem:(id<XPItem>)item size:(NSSize)size loaded:(XPImageCompletionBlock)completionBlock
@@ -181,6 +196,11 @@ static OPItemPreviewManager *_defaultManager;
         completionBlock(image);
         return image;
     }];
+}
+
+-(void)evictItem:(id<XPItem>)item
+{
+    [_cache removeObjectForKey:item.url];
 }
 
 -(void)clearCache
