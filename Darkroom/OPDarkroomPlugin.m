@@ -60,7 +60,7 @@
             _editManager = [[OPDarkroomEditManager alloc] initWithItem:item previewLayer:layer];
             
             _darkroomPreviewViewController = [[OPDarkroomPreviewViewController alloc] initWithItem:item sidebarController:_sidebarController previewLayer:layer];
-            _darkroomEditorPanelController = [[OPDarkroomEditorPanelViewController alloc] initWithEditManager:_editManager];
+            _darkroomEditorPanelController = [[OPDarkroomEditorPanelViewController alloc] initWithEditManager:_editManager item:item];
             
             [_navigationController pushViewController:_darkroomPreviewViewController];
             [_sidebarController showSidebarWithViewController:_darkroomEditorPanelController];

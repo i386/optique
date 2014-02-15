@@ -11,6 +11,10 @@
 
 @interface OPDarkroomEditManager : NSObject
 
++(BOOL)IsWritableInNativeFormat:(id<XPItem>)item;
+
+@property (readonly) NSUInteger count;
+
 -initWithItem:(id<XPItem>)item previewLayer:(CALayer*)layer;
 
 -(void)addOperation:(id<OPDarkroomEditOperation>)operation;

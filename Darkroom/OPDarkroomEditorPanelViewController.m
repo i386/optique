@@ -20,12 +20,13 @@
 
 @implementation OPDarkroomEditorPanelViewController
 
--initWithEditManager:(OPDarkroomEditManager*)editManager;
+-initWithEditManager:(OPDarkroomEditManager*)editManager item:(id<XPItem>)item
 {
     NSBundle *thisBundle = [NSBundle bundleForClass:[OPDarkroomEditorPanelViewController class]];
     self = [super initWithNibName:@"OPDarkroomEditorPanelViewController" bundle:thisBundle];
     if (self) {
         _editManager = editManager;
+        _item = item;
     }
     return self;
 }
@@ -34,6 +35,16 @@
 {
     [super awakeFromNib];
     [_saveButton setKBButtonType:BButtonTypePrimary];
+}
+
+-(BOOL)isReadOnly
+{
+    return [OPDarkroomEditManager IsWritableInNativeFormat:_item];
+}
+
+-(BOOL)isSaveAvailable
+{
+    return ![self isReadOnly] && _editManager.count;
 }
 
 - (IBAction)rotate:(id)sender

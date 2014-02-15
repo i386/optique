@@ -8,6 +8,7 @@
 
 #import "OPRotateEditOperation.h"
 #import "CALayer+Rotate.h"
+#import "NSURL+Renamer.h"
 
 @implementation OPRotateEditOperation
 
@@ -38,7 +39,7 @@
             CGRect dimensions = CGRectMake(0, 0, pixelsWidth, pixelsHeight);
             
             //Create bitmap context w/ the dimensions of the rotated image
-            CGContextRef context = CreateBitmapContext(theImage, CGSizeMake(pixelsHeight, pixelsWidth));
+            CGContextRef context = CreateARGBBitmapContext(theImage, CGSizeMake(pixelsHeight, pixelsWidth));
             if (context)
             {
                 //Rotate the image
@@ -58,8 +59,17 @@
                 CGImageRef rotatedImage = CGBitmapContextCreateImage(context);
                 if (rotatedImage)
                 {
+                    NSURL *url = item.url;
+                    
                     //Save, with original metadata
-                    CGImageDestinationRef destinationRef = CGImageDestinationCreateWithURL((__bridge CFURLRef)(item.url), CGImageSourceGetType(sourceRef), 0, nil);
+                    CFStringRef sourceImageType = CGImageSourceGetType(sourceRef);
+                    CGImageDestinationRef destinationRef = CGImageDestinationCreateWithURL((__bridge CFURLRef)(url), sourceImageType, 0, nil);
+                    if (!destinationRef)
+                    {
+                        url = [[[item.url URLByDeletingPathExtension] URLByAppendingPathExtension:@"tiff"] URLWithUniqueNameIfExistsAtParent];
+                        destinationRef = CGImageDestinationCreateWithURL((__bridge CFURLRef)(url), kUTTypeTIFF, 0, nil);
+                    }
+                    
                     if (destinationRef)
                     {
                         CGImageDestinationAddImage(destinationRef, rotatedImage, newImageProperties);

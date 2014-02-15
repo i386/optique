@@ -11,6 +11,10 @@
 
 @interface OPDarkroomEditorPanelViewController : NSViewController
 
--initWithEditManager:(OPDarkroomEditManager*)editManager;
+@property (readonly, nonatomic, getter = isReadOnly) BOOL readOnly;
+@property (readonly, nonatomic, getter = isSaveAvailable) BOOL saveAvailable;
+
+
+-initWithEditManager:(OPDarkroomEditManager*)editManager item:(id<XPItem>)item;
 
 @end

@@ -18,6 +18,21 @@
 
 @implementation OPDarkroomEditManager
 
++(BOOL)IsWritableInNativeFormat:(id<XPItem>)item
+{
+    if (!item) return NO;
+    
+    static NSArray *destinationTypes;
+    if (!destinationTypes)
+    {
+        destinationTypes = (__bridge NSArray *)(CGImageDestinationCopyTypeIdentifiers());
+    }
+    
+    CGImageSourceRef sourceRef = CGImageSourceCreateWithURL((__bridge CFURLRef)(item.url), nil);
+    CFStringRef type = CGImageSourceGetType(sourceRef);
+    return [destinationTypes containsObject:(__bridge id)(type)];
+}
+
 -(id)initWithItem:(id<XPItem>)item previewLayer:(CALayer*)layer
 {
     self = [super init];
@@ -28,6 +43,11 @@
         _layer = layer;
     }
     return self;
+}
+
+-(NSUInteger)count
+{
+    return _operations.count;
 }
 
 -(void)addOperation:(id<OPDarkroomEditOperation>)operation
