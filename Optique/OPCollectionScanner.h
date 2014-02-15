@@ -15,11 +15,6 @@
 
 @interface OPCollectionScanner : NSObject<CDEventsDelegate>
 
-@property (readonly, strong) NSOperationQueue *scanningQueue;
-@property (readonly, strong) NSOperationQueue *thumbQueue;
-@property (readonly, weak) XPCollectionManager *collectionManager;
-@property (readonly, weak) OPLocalPlugin *plugin;
-@property (readonly, strong) CDEvents *events;
 @property (atomic) BOOL stopScan;
 
 /**
