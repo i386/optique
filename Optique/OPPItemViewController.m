@@ -253,6 +253,7 @@
     if (imageRef)
     {
         [self performBlockOnMainThread:^{
+            layer.contentsGravity = kCAGravityResizeAspect;
             layer.contents = (id)CFBridgingRelease(imageRef);
         }];
     }
