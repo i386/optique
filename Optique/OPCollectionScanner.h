@@ -8,12 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <Exposure/Exposure.h>
-#import <CDEvents/CDEvents.h>
-#import <CDEvents/CDEventsDelegate.h>
 
 @class OPLocalPlugin;
 
-@interface OPCollectionScanner : NSObject<CDEventsDelegate>
+@interface OPCollectionScanner : NSObject
 
 @property (atomic) BOOL stopScan;
 

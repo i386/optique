@@ -334,6 +334,7 @@
     }
     
     NSArray *filteredCollections = [_collectionManager.allCollections filteredArrayUsingPredicate:_predicate];
+    
     id<XPItemCollection> collection = filteredCollections[index];
     cell.title = collection.title;
     cell.view.toolTip = collection.title;
