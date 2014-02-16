@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Exposure/Exposure.h>
-#import "OPCollectionScanner.h"
+#import "OPCollectionWatcher.h"
 #import "OPLocalCollection.h"
 
 @interface OPLocalPlugin : NSObject<XPPlugin, XPItemCollectionProvider>
@@ -16,12 +16,11 @@
 @property (weak) XPCollectionManager *collectionManager;
 @property (weak) id<XPItemCollectionProviderDelegate> delegate;
 @property (strong, readonly) NSMutableSet *collections;
-@property (strong) OPCollectionScanner *scanner;
+@property (strong, readonly) OPCollectionWatcher *watcher;
 
 -(id<XPItemCollection>)collectionWithTitle:(NSString *)title path:(NSURL *)path;
 -(id<XPItem>)itemForURL:(NSURL*)url collection:(id<XPItemCollection>)collection;
-
--(void)didAddAlbums:(NSObject*)albums;
--(void)didRemoveAlbum:(OPLocalCollection*)album;
+-(void)didAddCollections:(NSArray*)albums;
+-(void)didRemoveCollection:(id<XPItemCollection>)album;
 
 @end
