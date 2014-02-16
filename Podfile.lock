@@ -1,6 +1,5 @@
 PODS:
-  - BlocksKit (1.8.3):
-    - libffi
+  - BlocksKit/Core (2.0.0)
   - CDEvents (1.2.1)
   - CNBaseView (1.0.11)
   - KBButton (0.0.1)
@@ -10,7 +9,7 @@ PODS:
   - WHSlider (0.0.1)
 
 DEPENDENCIES:
-  - BlocksKit (~> 1.8.2)
+  - BlocksKit/Core (~> 2.0.0)
   - CDEvents (~> 1.2.0)
   - CNBaseView (~> 1.0.11)
   - KBButton (from `git@github.com:i386/KBButton.git`)
@@ -30,7 +29,7 @@ EXTERNAL SOURCES:
     :path: ~/code/Slider
 
 SPEC CHECKSUMS:
-  BlocksKit: 27257f9cbbec0ea98c80ba83cc2ea7111ae62eb2
+  BlocksKit: b29ee3f28ba06a09f5c64987314ce5b75b2c3962
   CDEvents: c687ea1003a5810a072607ede30db470dfce2338
   CNBaseView: 37956c9d903e37d50ef164b07a13688d95880fa5
   KBButton: 627facd1b7e7f484755107e62d2d85b20f429e6e
