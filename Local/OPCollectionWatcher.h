@@ -33,8 +33,4 @@
  */
 -(void)scanForNewCollections;
 
--(void)startWatchingCollection:(id<XPItemCollection>)collection;
-
--(void)stopWatchingCollection:(id<XPItemCollection>)collection;
-
 @end

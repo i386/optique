@@ -10,6 +10,7 @@
 
 #import "OPCollectionWatcher.h"
 #import "OPLocalPlugin.h"
+#import "NSURL+UnrollToParent.h"
 
 @interface OPCollectionWatcher ()
 
@@ -18,8 +19,6 @@
 
 @property (strong) CDEvents *rootWatch;
 @property (strong) NSOperationQueue *scanningQueue;
-
-@property (strong) NSMutableDictionary *watchersForCollection;
 
 @end
 
@@ -34,7 +33,6 @@
         [_scanningQueue setMaxConcurrentOperationCount:1];
         _collectionManager = collectionManager;
         _plugin = plugin;
-        _watchersForCollection = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -43,17 +41,36 @@
 {
     _rootWatch = [[CDEvents alloc] initWithURLs:@[self.collectionManager.path]
                                           block:^(CDEvents *watcher, CDEvent *event) {
-                                              if (event.isCreated || event.isRemoved || event.isRenamed)
+                                              
+                                              NSURL *collectionDirectory = [NSURL fileURLWithPath:self.collectionManager.path.path isDirectory:YES];
+                                              
+                                              //File changed in the top level
+                                              if ([event.URL isEqualTo:collectionDirectory] && (event.isCreated || event.isRemoved || event.isRenamed))
                                               {
                                                   [self scanForNewCollections];
+                                              }
+                                              
+                                              //A sub directory changed
+                                              if (![event.URL isEqualTo:collectionDirectory])
+                                              {
+                                                  NSURL *collectionURL = [event.URL unrollToParent:collectionDirectory];
+                                                  NSLog(@"Collection changed '%@'", collectionURL);
+                                                  
+                                                  id<XPItemCollection> collection = [_plugin collectionForURL:collectionURL];
+                                                  if (collection && [collection respondsToSelector:@selector(reload)])
+                                                  {
+                                                      [_collectionManager collectionUpdated:collection reload:YES];
+                                                  }
                                               }
                                           }
                                       onRunLoop:[NSRunLoop currentRunLoop]
                            sinceEventIdentifier:kCDEventsSinceEventNow
-                           notificationLantency:CD_EVENTS_DEFAULT_NOTIFICATION_LATENCY
-                        ignoreEventsFromSubDirs:YES
+                           notificationLantency:1
+                        ignoreEventsFromSubDirs:NO
                                     excludeURLs:nil
                             streamCreationFlags:kCDEventsDefaultEventStreamFlags];
+    
+    NSLog(@"Watching for collections '%@'", self.collectionManager.path.path);
 }
 
 -(void)stopWatching
@@ -64,42 +81,24 @@
 
 -(void)scanForNewCollections
 {
-    NSLog(@"scanning for new collections at '%@'", self.collectionManager.path);
+    NSLog(@"scanning for new collections at '%@'", self.collectionManager.path.path);
     
     [_scanningQueue addOperationWithBlock:^{
         
-        NSMutableArray *albums = [NSMutableArray array];
-        for (NSURL *albumURL in [self albumURLsForURL:self.collectionManager.path])
+        NSMutableArray *collections = [NSMutableArray array];
+        for (NSURL *url in [self collectionURLs:self.collectionManager.path])
         {
-            NSURL *url = [self.collectionManager.path URLByAppendingPathComponent:[albumURL lastPathComponent]];
-            
             id<XPItemCollection> collection = [self collectionForURL:url];
             if (collection)
             {
-                [albums addObject:collection];
+                [collections addObject:collection];
             }
         }
-        
-        [_plugin didAddCollections:albums];
+        [_plugin didAddCollections:collections];
     }];
 }
 
--(void)startWatchingCollection:(id<XPItemCollection>)collection
-{
-    CDEvents *events = [[CDEvents alloc] initWithURLs:@[collection.path] block:^(CDEvents *watcher, CDEvent *event) {
-        NSLog(@"received event");
-    }];
-    NSLog(@"started watching %@", collection.path);
-    [_watchersForCollection setObject:events forKey:collection.path];
-}
-
--(void)stopWatchingCollection:(id<XPItemCollection>)collection
-{
-    [_watchersForCollection removeObjectForKey:collection.path];
-    NSLog(@"stopped watching %@", collection.path);
-}
-
--(NSEnumerator*)albumURLsForURL:(NSURL*)url
+-(NSEnumerator*)collectionURLs:(NSURL*)url
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSDirectoryEnumerator *enumerator = [fileManager
