@@ -74,14 +74,24 @@
 {
     [_collections addObject:collection];
     [_delegate didAddItemCollection:collection];
-    [_watcher startWatchingCollection:collection];
 }
 
 -(void)didRemoveCollection:(id<XPItemCollection>)collection
 {
     [_collections removeObject:collection];
     [_delegate didRemoveItemCollection:collection];
-    [_watcher stopWatchingCollection:collection];
+}
+
+-(id<XPItemCollection>)collectionForURL:(NSURL *)url
+{
+    for (id<XPItemCollection> collection in _collections)
+    {
+        if ([collection.path isEqualTo:url])
+        {
+            return collection;
+        }
+    }
+    return nil;
 }
 
 -(NSArray *)debugMenuItems

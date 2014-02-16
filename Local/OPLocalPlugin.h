@@ -19,8 +19,13 @@
 @property (strong, readonly) OPCollectionWatcher *watcher;
 
 -(id<XPItemCollection>)collectionWithTitle:(NSString *)title path:(NSURL *)path;
+
 -(id<XPItem>)itemForURL:(NSURL*)url collection:(id<XPItemCollection>)collection;
+
 -(void)didAddCollections:(NSArray*)albums;
+
 -(void)didRemoveCollection:(id<XPItemCollection>)album;
+
+-(id<XPItemCollection>)collectionForURL:(NSURL*)url;
 
 @end
