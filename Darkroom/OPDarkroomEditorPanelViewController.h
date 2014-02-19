@@ -14,7 +14,6 @@
 @property (readonly, nonatomic, getter = isReadOnly) BOOL readOnly;
 @property (readonly, nonatomic, getter = isSaveAvailable) BOOL saveAvailable;
 
-
--initWithEditManager:(OPDarkroomEditManager*)editManager item:(id<XPItem>)item;
+-initWithEditManager:(OPDarkroomEditManager*)editManager item:(id<XPItem>)item navigationController:(id<XPNavigationController>)navigationController sidebarController:(id<XPSidebarController>)sidebarController;
 
 @end

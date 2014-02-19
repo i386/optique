@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5051" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
+        <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5051"/>
     </dependencies>
     <objects>
@@ -26,7 +27,6 @@
                     <connections>
                         <action selector="save:" target="-2" id="QIt-FA-ObC"/>
                         <binding destination="-2" name="enabled" keyPath="self.saveAvailable" id="WQq-a9-Hzq"/>
-                        <binding destination="-2" name="hidden" keyPath="self.saveAvailable" previousBinding="WQq-a9-Hzq" id="qii-SY-RvC"/>
                     </connections>
                 </button>
                 <button id="DKF-BR-8rn" customClass="KBButton">
@@ -38,7 +38,11 @@
                     </buttonCell>
                     <connections>
                         <action selector="rotate:" target="-2" id="RmI-WX-OHt"/>
-                        <binding destination="-2" name="enabled" keyPath="self.readOnly" id="0DD-5U-NhG"/>
+                        <binding destination="-2" name="enabled" keyPath="self.readOnly" id="8XN-bS-uGd">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </button>
                 <button id="QLv-1e-XCd" customClass="KBButton">
@@ -49,7 +53,11 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <binding destination="-2" name="enabled" keyPath="self.readOnly" id="0Um-Lm-4Cs"/>
+                        <binding destination="-2" name="enabled" keyPath="self.readOnly" id="DBy-s6-EzS">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </button>
                 <button id="E3c-fb-Cxi" customClass="KBButton">
@@ -60,7 +68,11 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <binding destination="-2" name="enabled" keyPath="self.readOnly" id="sg6-es-zFL"/>
+                        <binding destination="-2" name="enabled" keyPath="self.readOnly" id="jdt-yq-mAM">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </button>
             </subviews>

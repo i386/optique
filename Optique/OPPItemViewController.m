@@ -204,51 +204,7 @@
 
 -(void)prepareLayer:(CALayer *)layer forPhotoItem:(id<XPItem>)item
 {
-    CGImageRef imageRef = NULL;
-    
-    NSSize size = [[NSApplication sharedApplication] mainWindow].frame.size;
-    
-    CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)item.url, NULL);
-    if (imageSource != nil)
-    {
-        CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL);
-        if (imageProperties != nil)
-        {
-            CFNumberRef pixelWidthRef  = CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelWidth);
-            CFNumberRef pixelHeightRef = CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelHeight);
-            CGFloat pixelWidth = [(__bridge NSNumber *)pixelWidthRef floatValue];
-            CGFloat pixelHeight = [(__bridge NSNumber *)pixelHeightRef floatValue];
-            CGFloat maxEdge = MAX(pixelWidth, pixelHeight);
-            
-            float maxEdgeSize = MAX(size.width, size.height);
-            
-            if (maxEdge > maxEdgeSize)
-            {
-                NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
-                                                  kCGImageSourceCreateThumbnailWithTransform, kCFBooleanTrue,
-                                                  kCGImageSourceCreateThumbnailFromImageAlways, [NSNumber numberWithFloat:maxEdgeSize],
-                                                  kCGImageSourceThumbnailMaxPixelSize, kCFBooleanFalse, kCGImageSourceShouldCache, nil];
-                
-                imageRef = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, (__bridge CFDictionaryRef)thumbnailOptions);
-            }
-            else
-            {
-                imageRef = [[[NSImage alloc] initWithContentsOfURL:item.url] CGImageRef];
-            }
-            
-            CFRelease(imageProperties);
-        }
-        else
-        {
-            NSLog(@"Could not get image properties for '%@'", item.url);
-        }
-        
-        CFRelease(imageSource);
-    }
-    else
-    {
-        NSLog(@"Could not create image src for '%@'", item.url);
-    }
+    CGImageRef imageRef = XPItemGetImageRef(item, [[NSApplication sharedApplication] mainWindow].frame.size);
     
     if (imageRef)
     {

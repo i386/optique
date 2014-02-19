@@ -12,7 +12,7 @@
 
 @optional
 
-@property (assign) id<XPNavigationController> controller;
+@property (weak) id<XPNavigationController> controller;
 
 /**
  Called with the `OPNavigationController` displays the view when the controller is made visible initially or is popped.

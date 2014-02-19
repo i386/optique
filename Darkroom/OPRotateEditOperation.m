@@ -10,11 +10,14 @@
 #import "CALayer+Rotate.h"
 #import "NSURL+Renamer.h"
 
+@interface OPRotateEditOperation ()
+@end
+
 @implementation OPRotateEditOperation
 
 -(void)performPreviewOperation:(CALayer *)layer
 {
-    [layer rotateByDegrees:90];
+    [layer rotateByDegrees:-90];
     [layer setBounds:layer.superlayer.bounds];
     [layer setFrame:layer.superlayer.frame];
 }

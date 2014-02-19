@@ -54,8 +54,13 @@
 {
     [_operations addObject:operation];
     [operation performPreviewOperation:_layer];
-    
-    [operation performWithItem:_item];
+}
+
+-(void)commit
+{
+    [_operations bk_each:^(id<OPDarkroomEditOperation> operation) {
+       [operation performWithItem:_item];
+    }];
 }
 
 @end

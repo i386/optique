@@ -19,4 +19,6 @@
 
 -(void)addOperation:(id<OPDarkroomEditOperation>)operation;
 
+-(void)commit;
+
 @end

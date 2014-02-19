@@ -22,6 +22,8 @@
 
 @implementation OPDarkroomPlugin
 
+#if DEBUG
+
 -(NSToolbarItem*)toolbarItemForIdentifier:(NSString*)identifier
 {
     if ([DarkroomToolbarIdentifier isEqualToString:identifier])
@@ -47,6 +49,8 @@
     [toolbar insertItemWithItemIdentifier:DarkroomToolbarIdentifier atIndex:3];
 }
 
+#endif
+
 -(void)openDarkroomEditor
 {
     if ([[_navigationController visibleViewController] conformsToProtocol:@protocol(XPItemController)])
@@ -60,7 +64,7 @@
             _editManager = [[OPDarkroomEditManager alloc] initWithItem:item previewLayer:layer];
             
             _darkroomPreviewViewController = [[OPDarkroomPreviewViewController alloc] initWithItem:item sidebarController:_sidebarController previewLayer:layer];
-            _darkroomEditorPanelController = [[OPDarkroomEditorPanelViewController alloc] initWithEditManager:_editManager item:item];
+            _darkroomEditorPanelController = [[OPDarkroomEditorPanelViewController alloc] initWithEditManager:_editManager item:item navigationController:_navigationController sidebarController:_sidebarController];
             
             [_navigationController pushViewController:_darkroomPreviewViewController];
             [_sidebarController showSidebarWithViewController:_darkroomEditorPanelController];

@@ -23,8 +23,7 @@
     _item = item;
     
     [self performBlockInBackground:^{
-        NSImage *image = [[NSImage alloc] initWithContentsOfURL:_item.url];
-        CGImageRef imageRef = [image CGImageRef];
+        CGImageRef imageRef = XPItemGetImageRef(_item, self.bounds.size);
         [self performBlockOnMainThread:^{
             _previewLayer.contents = (__bridge id)(imageRef);
         }];
@@ -66,6 +65,11 @@
     _previewLayer.borderColor = backgroundColor;
     _previewLayer.backgroundColor = backgroundColor;
     _previewLayer.borderWidth = 10.0;
+    
+    CGImageRef imageRef = XPItemGetImageRef(_item, self.bounds.size);
+    [self performBlockOnMainThread:^{
+        _previewLayer.contents = (__bridge id)(imageRef);
+    }];
 }
 
 @end
