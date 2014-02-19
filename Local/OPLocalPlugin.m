@@ -25,15 +25,14 @@
 
 -(void)setCollectionManager:(XPCollectionManager *)collectionManager
 {
-    if (_watcher)
+    if (_scanner)
     {
-        [_watcher stopWatching];
+        [_scanner stopScan];
     }
     
     _collectionManager = collectionManager;
-    _watcher = [[OPCollectionWatcher alloc] initWithCollectionManager:_collectionManager plugin:self];
-    [_watcher startWatching];
-    [_watcher scanForNewCollections];
+    _scanner = [[OPCollectionScanner alloc] initWithCollectionManager:_collectionManager plugin:self];
+    [_scanner startScan];
 }
 
 -(id<XPItemCollection>)collectionWithTitle:(NSString *)title path:(NSURL *)path
@@ -54,50 +53,38 @@
     return nil;
 }
 
--(void)didAddCollections:(NSArray *)albums
+-(void)didAddAlbums:(NSArray *)albums
 {
     NSMutableSet *albumsToRemove = [NSMutableSet setWithSet:self.collections];
     [albumsToRemove minusSet:[NSMutableSet setWithArray:albums]];
     
-    for (id<XPItemCollection> collection in albumsToRemove)
+    for (OPLocalCollection *album in albumsToRemove)
     {
-        [self didRemoveCollection:collection];
+        [self didRemoveAlbum:album];
     }
     
-    for (id<XPItemCollection> collection in albums)
+    for (OPLocalCollection *album in albums)
     {
-        [self didAddCollection:collection];
+        [self didAddAlbum:album];
     }
 }
 
--(void)didAddCollection:(id<XPItemCollection>)collection
+-(void)didAddAlbum:(OPLocalCollection *)album
 {
-    [_collections addObject:collection];
-    [_delegate didAddItemCollection:collection];
+    [_collections addObject:album];
+    [_delegate didAddItemCollection:album];
 }
 
--(void)didRemoveCollection:(id<XPItemCollection>)collection
+-(void)didRemoveAlbum:(OPLocalCollection *)album
 {
-    [_collections removeObject:collection];
-    [_delegate didRemoveItemCollection:collection];
-}
-
--(id<XPItemCollection>)collectionForURL:(NSURL *)url
-{
-    for (id<XPItemCollection> collection in _collections)
-    {
-        if ([collection.path isEqualTo:url])
-        {
-            return collection;
-        }
-    }
-    return nil;
+    [_collections removeObject:album];
+    [_delegate didRemoveItemCollection:album];
 }
 
 -(NSArray *)debugMenuItems
 {
     XPMenuItem *clearCacheItem = [[XPMenuItem alloc] initWithTitle:@"Rescan" keyEquivalent:@"" block:^(NSMenuItem *sender) {
-        [_watcher scanForNewCollections];
+        [_scanner startScan];
     }];
     return @[clearCacheItem];
 }

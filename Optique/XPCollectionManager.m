@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
+#import "OPCollectionScanner.h"
 #import <BlocksKit/NSMutableOrderedSet+BlocksKit.h>
 #import <BlocksKit/NSArray+BlocksKit.h>
 #import <Exposure/Exposure.h>

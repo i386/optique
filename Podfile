@@ -10,7 +10,7 @@ target :Optique, :exclusive => false do
 end
 
 target :Exposure do
-  pod 'BlocksKit/Core', '~> 2.0.0'
+  pod 'BlocksKit', '~> 1.8.2'
 end
 
 target :Local do

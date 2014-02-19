@@ -163,11 +163,6 @@ typedef void (^XPItemSearch)(id, BOOL*);
     }];
 }
 
--(NSString *)debugDescription
-{
-    return [_path path];
-}
-
 -(void)searchDirectoryForItems:(XPItemSearch)block
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];

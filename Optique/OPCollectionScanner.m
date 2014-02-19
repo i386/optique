@@ -7,23 +7,10 @@
 //
 
 #import "OPCollectionScanner.h"
-
-#import <CDEvents/CDEvents.h>
-#import <Exposure/Exposure.h>
-
 #import "OPLocalCollection.h"
 #import "OPLocalPlugin.h"
 
-@interface OPCollectionScanner ()
-
-@property (readonly, strong) NSOperationQueue *scanningQueue;
-@property (readonly, strong) NSOperationQueue *thumbQueue;
-@property (readonly, weak) XPCollectionManager *collectionManager;
-@property (readonly, weak) OPLocalPlugin *plugin;
-@property (readonly, strong) CDEvents *events;
-@property (readonly, strong) NSMutableDictionary *eventsForSubPath;
-
-@end
+#import <Exposure/Exposure.h>
 
 @implementation OPCollectionScanner
 
@@ -36,31 +23,22 @@
         [_scanningQueue setMaxConcurrentOperationCount:1];
         _collectionManager = collectionManager;
         _plugin = plugin;
-        _eventsForSubPath = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
+- (void)URLWatcher:(CDEvents *)URLWatcher eventOccurred:(CDEvent *)event
+{
+    if (event.isCreated || event.isRemoved || event.isRenamed)
+    {
+        NSLog(@"Detected fs change at '%@'. Will scan for new albums.", [_events.watchedURLs lastObject]);
+        [self startScanAtURL:[_events.watchedURLs lastObject]];
+    }
+}
+
 -(void)startScan
 {
-    //Only watch the top level directory for new albums
-    _events = [[CDEvents alloc] initWithURLs:@[_collectionManager.path]
-                                       block:^(CDEvents *watcher, CDEvent *event) {
-                                           if (event.isCreated || event.isRemoved || event.isRenamed)
-                                           {
-                                               NSLog(@"Detected fs change at '%@'. Will scan for new albums.", [_events.watchedURLs lastObject]);
-                                               [self startScanAtURL:[_events.watchedURLs lastObject]];
-                                           }
-                                       }
-                                   onRunLoop:[NSRunLoop currentRunLoop]
-                        sinceEventIdentifier:kCDEventsSinceEventNow
-                        notificationLantency:CD_EVENTS_DEFAULT_NOTIFICATION_LATENCY
-                     ignoreEventsFromSubDirs:YES
-                                 excludeURLs:nil
-                         streamCreationFlags:kCDEventsDefaultEventStreamFlags];
-    
-    NSLog(@"Watching %@", _events.description);
-    
+    _events = [[CDEvents alloc] initWithURLs:@[_collectionManager.path] delegate:self];
     [self startScanAtURL:_collectionManager.path];
 }
 
@@ -78,38 +56,12 @@
              if (album)
              {
                  if (_stopScan) return;
-                 
                  [albums addObject:album];
-
              }
          }
          
          [_plugin didAddAlbums:albums];
      }];
-}
-
--(void)createWatchersForCollection:(id<XPItemCollection>)collection
-{
-    CDEvents *events = _eventsForSubPath[collection.path];
-    if (events)
-    {
-        [events flushSynchronously];
-    }
-    
-    events = [[CDEvents alloc] initWithURLs:@[collection.path] block:^(CDEvents *watcher, CDEvent *event) {
-        
-        NSLog(@"fsevent fired");
-        
-        if ([collection respondsToSelector:@selector(reload)])
-        {
-            [collection reload];
-        }
-        
-    }];
-    
-    NSLog(@"Watching %@", events.description);
-    
-    [_eventsForSubPath setObject:events forKey:collection.path];
 }
 
 -(OPLocalCollection*)findAlbum:(NSURL*)url
@@ -135,11 +87,6 @@
         if (fileUTI == NULL)
         {
             CFRelease(fileUTI);
-        }
-        
-        if (collection)
-        {
-            [self createWatchersForCollection:collection];
         }
         
         return collection;
