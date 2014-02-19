@@ -30,7 +30,17 @@
     
     CGImageSourceRef sourceRef = CGImageSourceCreateWithURL((__bridge CFURLRef)(item.url), nil);
     CFStringRef type = CGImageSourceGetType(sourceRef);
-    return [destinationTypes containsObject:(__bridge id)(type)];
+    BOOL writable = [destinationTypes containsObject:(__bridge id)(type)];
+    if (sourceRef)
+    {
+        CFRelease(sourceRef);
+    }
+    
+    if (type)
+    {
+        CFRelease(type);
+    }
+    return writable;
 }
 
 -(id)initWithItem:(id<XPItem>)item previewLayer:(CALayer*)layer
