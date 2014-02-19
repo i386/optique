@@ -126,12 +126,13 @@
 		0F905949180F43BF000D4A53 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F905947180F43BF000D4A53 /* InfoPlist.strings */; };
 		0F905953180F4415000D4A53 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0F905954180F4427000D4A53 /* Local.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F905941180F43BF000D4A53 /* Local.bundle */; };
-		0F905955180F44C0000D4A53 /* OPCollectionScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB384CA17050B3200DEB770 /* OPCollectionScanner.m */; };
 		0F905956180F44C0000D4A53 /* OPLocalPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F90594F180F43DF000D4A53 /* OPLocalPlugin.m */; };
 		0F946AB8178701CD004F6B57 /* XPItemCollectionProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F946AB7178701CD004F6B57 /* XPItemCollectionProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F946ABA178702ED004F6B57 /* XPItemCollectionProviderDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F946AB9178702ED004F6B57 /* XPItemCollectionProviderDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F96270E170418EB007C1A86 /* OPPItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F96270C170418EB007C1A86 /* OPPItemViewController.m */; };
 		0F96270F170418EB007C1A86 /* OPPItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F96270D170418EB007C1A86 /* OPPItemViewController.xib */; };
+		0F982DFE18B4DF2C000ECBF7 /* NSURL+UnrollToParent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F982DF918B4DF2C000ECBF7 /* NSURL+UnrollToParent.m */; };
+		0F982DFF18B4DF2C000ECBF7 /* OPCollectionWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F982DFB18B4DF2C000ECBF7 /* OPCollectionWatcher.m */; };
 		0F9C80BE16F891C700B2B6D8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80BC16F891C700B2B6D8 /* InfoPlist.strings */; };
 		0F9C80C016F891C700B2B6D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C80BF16F891C700B2B6D8 /* main.m */; };
 		0F9C80C416F891C700B2B6D8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80C216F891C700B2B6D8 /* Credits.rtf */; };
@@ -510,6 +511,10 @@
 		0F96270B170418EB007C1A86 /* OPPItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPItemViewController.h; sourceTree = "<group>"; };
 		0F96270C170418EB007C1A86 /* OPPItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPItemViewController.m; sourceTree = "<group>"; };
 		0F96270D170418EB007C1A86 /* OPPItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPItemViewController.xib; sourceTree = "<group>"; };
+		0F982DF818B4DF2C000ECBF7 /* NSURL+UnrollToParent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+UnrollToParent.h"; sourceTree = "<group>"; };
+		0F982DF918B4DF2C000ECBF7 /* NSURL+UnrollToParent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+UnrollToParent.m"; sourceTree = "<group>"; };
+		0F982DFA18B4DF2C000ECBF7 /* OPCollectionWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCollectionWatcher.h; sourceTree = "<group>"; };
+		0F982DFB18B4DF2C000ECBF7 /* OPCollectionWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCollectionWatcher.m; sourceTree = "<group>"; };
 		0F9C80B016F891C700B2B6D8 /* Optique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optique.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9C80B616F891C700B2B6D8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		0F9C80B816F891C700B2B6D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -538,8 +543,6 @@
 		0FABADE21826636C003766AA /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		0FAEFFF2176736F700D60171 /* Optique.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Optique.icns; sourceTree = SOURCE_ROOT; };
 		0FB185BF188A19C100419F5D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
-		0FB384C917050B3200DEB770 /* OPCollectionScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPCollectionScanner.h; path = ../Optique/OPCollectionScanner.h; sourceTree = "<group>"; };
-		0FB384CA17050B3200DEB770 /* OPCollectionScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCollectionScanner.m; path = ../Optique/OPCollectionScanner.m; sourceTree = "<group>"; };
 		0FB94DD01735E31400065536 /* NSNotificationCenter+Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Async.h"; sourceTree = "<group>"; };
 		0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Async.m"; sourceTree = "<group>"; };
 		0FC0AD8518779E8E009C619F /* OPHistoryPeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPHistoryPeekViewController.h; sourceTree = "<group>"; };
@@ -959,10 +962,12 @@
 				0F3DF46C16F98D0D00C003D3 /* OPLocalCollection.m */,
 				0F8C561B172CC0D300CB7B1E /* OPLocalItem.h */,
 				0F8C561C172CC0D300CB7B1E /* OPLocalItem.m */,
-				0FB384C917050B3200DEB770 /* OPCollectionScanner.h */,
-				0FB384CA17050B3200DEB770 /* OPCollectionScanner.m */,
 				0F90594E180F43DF000D4A53 /* OPLocalPlugin.h */,
 				0F90594F180F43DF000D4A53 /* OPLocalPlugin.m */,
+				0F982DFA18B4DF2C000ECBF7 /* OPCollectionWatcher.h */,
+				0F982DFB18B4DF2C000ECBF7 /* OPCollectionWatcher.m */,
+				0F982DF818B4DF2C000ECBF7 /* NSURL+UnrollToParent.h */,
+				0F982DF918B4DF2C000ECBF7 /* NSURL+UnrollToParent.m */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -1084,9 +1089,9 @@
 				0FEF33A016FEC6350096D72A /* Collection View */,
 				0FDE075A170317AE00D5B456 /* Item Collection View */,
 				0FC2EC301813EC4D00D02EC5 /* Camera Collection View */,
-				0F1C2293187916FA00A6878C /* New Album Panel */,
 				0F962710170418F4007C1A86 /* Item View */,
 				0FEF33A116FEC6420096D72A /* Collection Manager */,
+				0F1C2293187916FA00A6878C /* New Album Panel */,
 				0F97164917048737001835DC /* Image Previews */,
 				0F368A7B170680DF00411503 /* Custom Views */,
 				0FEC674E171034C20086B264 /* Categories */,
@@ -2048,11 +2053,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F982DFF18B4DF2C000ECBF7 /* OPCollectionWatcher.m in Sources */,
 				0FE285A818397AF2009536D7 /* NSURL+EqualToURL.m in Sources */,
 				0FD85FDB180F46A300429320 /* OPLocalCollection.m in Sources */,
 				0FD85FDC180F46A300429320 /* OPLocalItem.m in Sources */,
-				0F905955180F44C0000D4A53 /* OPCollectionScanner.m in Sources */,
 				0F905956180F44C0000D4A53 /* OPLocalPlugin.m in Sources */,
+				0F982DFE18B4DF2C000ECBF7 /* NSURL+UnrollToParent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
