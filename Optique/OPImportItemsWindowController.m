@@ -45,7 +45,7 @@
 
 - (IBAction)importPhotos:(id)sender
 {
-    id<XPItemCollection> selected = [_collections match:^BOOL(id<XPItemCollection> obj) {
+    id<XPItemCollection> selected = [_collections bk_match:^BOOL(id<XPItemCollection> obj) {
         return [[obj title] isEqualToString:_albumSelectionBox.stringValue];
     }];
     

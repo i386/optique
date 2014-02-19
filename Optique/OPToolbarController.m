@@ -185,7 +185,7 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     {
         id<XPSharingService> sharingService = (id<XPSharingService>)_navigationController.visibleViewController;
         
-        [[sharingService sharingMenuItems] each:^(id sender) {
+        [[sharingService sharingMenuItems] bk_each:^(id sender) {
             [menu addItem:sender];
         }];
     }

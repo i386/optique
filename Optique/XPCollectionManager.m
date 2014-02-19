@@ -30,7 +30,7 @@ NSString *const XPCollectionManagerDidDeleteCollection = @"XPCollectionManagerDi
         _collectionSet = [[NSMutableOrderedSet alloc] init];
         
         //Register all collection providers
-        [[XPExposureService itemCollectionProviders] each:^(id<XPItemCollectionProvider> sender) {
+        [[XPExposureService itemCollectionProviders] bk_each:^(id<XPItemCollectionProvider> sender) {
             sender.delegate = self;
         }];
         
@@ -50,7 +50,7 @@ NSString *const XPCollectionManagerDidDeleteCollection = @"XPCollectionManagerDi
 {
     NSMutableArray *albums = [NSMutableArray array];
     NSArray *collections = [self allCollections];
-    [indexSet each:^(NSUInteger index) {
+    [indexSet bk_each:^(NSUInteger index) {
         id collection = collections[index];
         [albums addObject:collection];
     }];

@@ -119,7 +119,7 @@ static OPItemPreviewManager *_defaultManager;
             
             id<XPItemCollection> collection = note.userInfo[@"collection"];
             
-            [[collection allItems] each:^(id<XPItem> sender) {
+            [[collection allItems] bk_each:^(id<XPItem> sender) {
                 [self evictItem:sender];
             }];
         }];

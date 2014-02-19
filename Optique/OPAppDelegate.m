@@ -159,11 +159,11 @@
     NSArray *defaultItems = [[[_debugMenu submenu] itemArray] copy];
     [_debugMenu.submenu removeAllItems];
     
-    [[XPExposureService debugMenuItems] each:^(id sender) {
+    [[XPExposureService debugMenuItems] bk_each:^(id sender) {
         [_debugMenu.submenu addItem:sender];
     }];
     
-    [defaultItems each:^(id sender) {
+    [defaultItems bk_each:^(id sender) {
         [_debugMenu.submenu addItem:sender];
     }];
 }

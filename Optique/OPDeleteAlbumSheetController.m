@@ -48,7 +48,7 @@
 -(void)startAlbumDeletion
 {
     [self performBlockInBackground:^{
-        [_albums each:^(id sender) {
+        [_albums bk_each:^(id sender) {
             NSError *error;
             [_collectionManager deleteAlbum:sender error:&error];
             

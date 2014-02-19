@@ -95,7 +95,7 @@
     id<XPItemCollection> album = [_collectionManager newAlbumWithName:albumName error:&error];
     if (album)
     {
-        [_items each:^(id sender) {
+        [_items bk_each:^(id sender) {
             if ([sender conformsToProtocol:@protocol(XPItem)])
             {
                 [album moveItem:sender withCompletion:nil];
@@ -250,20 +250,20 @@
     {
         __block BOOL reload = NO;
         
-        [[pboard pasteboardItems] each:^(NSPasteboardItem *item) {
+        [[pboard pasteboardItems] bk_each:^(NSPasteboardItem *item) {
             
             NSData *data = [item dataForType:XPItemPboardType];
             if (data)
             {
                 NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
                 
-                id<XPItemCollection> collection = [_collectionManager.allCollections match:^BOOL(id<XPItemCollection> obj) {
+                id<XPItemCollection> collection = [_collectionManager.allCollections bk_match:^BOOL(id<XPItemCollection> obj) {
                     return [[obj title] isEqualToString:dict[@"collection-title"]];
                 }];
                 
                 if (collection)
                 {
-                    id<XPItem> item = [[collection allItems] match:^BOOL(id<XPItem> obj) {
+                    id<XPItem> item = [[collection allItems] bk_match:^BOOL(id<XPItem> obj) {
                         return [[obj title] isEqualToString:dict[@"item-title"]];
                     }];
                     

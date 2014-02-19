@@ -134,7 +134,7 @@
     //TODO: check menu for XPMenuItems and run predicate to hide
     
     __block BOOL allSelectedAreLocal = YES;
-    [collections each:^(id<XPItemCollection> sender) {
+    [collections bk_each:^(id<XPItemCollection> sender) {
         if (allSelectedAreLocal && [sender collectionType] != XPItemCollectionLocal)
         {
             allSelectedAreLocal = NO;
@@ -142,7 +142,7 @@
     }];
     
     __block BOOL allSelectedAreNotLocal = YES;
-    [collections each:^(id<XPItemCollection> sender) {
+    [collections bk_each:^(id<XPItemCollection> sender) {
         if (allSelectedAreNotLocal && [sender collectionType] != XPItemCollectionLocal)
         {
             allSelectedAreNotLocal = NO;
@@ -295,7 +295,7 @@
 
 -(void)showCollectionWithTitle:(NSString *)title
 {
-    id collection = [[_collectionManager.allCollections filteredArrayUsingPredicate:_predicate] match:^BOOL(id<XPItemCollection> obj) {
+    id collection = [[_collectionManager.allCollections filteredArrayUsingPredicate:_predicate] bk_match:^BOOL(id<XPItemCollection> obj) {
         return [[obj title] isEqualToString:title];
     }];
     

@@ -106,7 +106,7 @@
     NSView *contentView = _leftSplitView;
     [_navigationController.view setFrame:_leftSplitView.frame];
     
-    [[contentView subviews] each:^(id sender) {
+    [[contentView subviews] bk_each:^(id sender) {
         [sender removeFromSuperview];
     }];
 
@@ -145,7 +145,7 @@
     [_rightSplitView setHidden:YES];
     _leftSplitView.frame = NSMakeRect(0, 0, self.window.frame.size.width, self.window.frame.size.height);
     _sidebarViewController = nil;
-    [[_rightSplitView subviews] each:^(id sender) {
+    [[_rightSplitView subviews] bk_each:^(id sender) {
         [sender removeFromSuperview];
     }];
 }

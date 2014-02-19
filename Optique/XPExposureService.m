@@ -49,7 +49,7 @@
 
 +(void)loadPlugins:(NSDictionary*)userInfo
 {
-    [[[XPExposureService defaultLoader] exposures] each:^(NSString *pluginKey, id pluginInstance) {
+    [[[XPExposureService defaultLoader] exposures] bk_each:^(NSString *pluginKey, id pluginInstance) {
         if ([pluginInstance respondsToSelector:@selector(pluginDidLoad:)])
         {
             @try
@@ -66,7 +66,7 @@
 
 +(void)unloadPlugins:(NSDictionary*)userInfo
 {
-    [[[XPExposureService defaultLoader] exposures] each:^(NSString *pluginKey, id pluginInstance) {
+    [[[XPExposureService defaultLoader] exposures] bk_each:^(NSString *pluginKey, id pluginInstance) {
         if ([pluginInstance respondsToSelector:@selector(pluginWillUnload:)])
         {
             @try
@@ -83,35 +83,35 @@
 
 +(void)collectionManagerWasCreated:(XPCollectionManager *)collectionManager
 {
-    [[XPExposureService respondsToCollectionManagerWasCreated] each:^(id sender) {
+    [[XPExposureService respondsToCollectionManagerWasCreated] bk_each:^(id sender) {
         [sender setCollectionManager:collectionManager];
     }];
 }
 
 +(void)collectionManager:(XPCollectionManager*)collectionManager collectionViewController:(id<XPCollectionViewController>)controller
 {
-    [[XPExposureService respondsToCollectionViewController] each:^(id<XPPlugin> sender) {
+    [[XPExposureService respondsToCollectionViewController] bk_each:^(id<XPPlugin> sender) {
         [sender collectionManager:collectionManager collectionViewController:controller];
     }];
 }
 
 +(void)collectionManager:(XPCollectionManager*)collectionManager itemCollectionViewController:(id<XPItemCollectionViewController>)controller
 {
-    [[XPExposureService respondsToPhotoCollectionViewController] each:^(id<XPPlugin> sender) {
+    [[XPExposureService respondsToPhotoCollectionViewController] bk_each:^(id<XPPlugin> sender) {
         [sender collectionManager:collectionManager itemCollectionViewController:controller];
     }];
 }
 
 +(void)collectionManager:(XPCollectionManager*)collectionManager itemController:(id<XPItemController>)controller
 {
-    [[XPExposureService respondsToPhotoViewController] each:^(id<XPPlugin> sender) {
+    [[XPExposureService respondsToPhotoViewController] bk_each:^(id<XPPlugin> sender) {
         [sender collectionManager:collectionManager itemController:controller];
     }];
 }
 
 +(void)menuVisiblity:(NSMenu *)menu items:(NSArray *)items
 {
-    [[menu itemArray] each:^(id sender) {
+    [[menu itemArray] bk_each:^(id sender) {
         if ([sender isKindOfClass:[XPMenuItem class]])
         {
             XPMenuItem *item = (XPMenuItem*)sender;
@@ -122,7 +122,7 @@
 
 +(void)menuVisiblity:(NSMenu *)menu item:(id)item
 {
-    [[menu itemArray] each:^(id sender) {
+    [[menu itemArray] bk_each:^(id sender) {
         if ([sender isKindOfClass:[XPMenuItem class]])
         {
             XPMenuItem *item = (XPMenuItem*)sender;
@@ -160,7 +160,7 @@
 {
     NSMutableArray *debugMenuItems = [NSMutableArray array];
     
-    [[[XPExposureService defaultLoader] exposures] each:^(NSString *name, id<XPPlugin> plugin) {
+    [[[XPExposureService defaultLoader] exposures] bk_each:^(NSString *name, id<XPPlugin> plugin) {
         if ([plugin respondsToSelector:@selector(debugMenuItems)])
         {
             NSMenuItem *subMenuItem = [[NSMenuItem alloc] initWithTitle:name action:nil keyEquivalent:@""];
@@ -180,7 +180,7 @@
         return [evaluatedObject respondsToSelector:@selector(setNavigationController:)];
     }]];
     
-    [exposures each:^(id<XPPlugin> sender) {
+    [exposures bk_each:^(id<XPPlugin> sender) {
         [sender setNavigationController:navigationController];
     }];
 }
@@ -193,7 +193,7 @@
         return [evaluatedObject respondsToSelector:@selector(setSidebarController:)];
     }]];
     
-    [exposures each:^(id<XPPlugin> sender) {
+    [exposures bk_each:^(id<XPPlugin> sender) {
         [sender setSidebarController:sidebarController];
     }];
 }
@@ -208,7 +208,7 @@
         return [evaluatedObject conformsToProtocol:@protocol(XPToolbarItemProvider)];
     }]];
     
-    [exposures each:^(id<XPToolbarItemProvider> sender) {
+    [exposures bk_each:^(id<XPToolbarItemProvider> sender) {
         [sender addToolbarItemsForToolbar:toolbar];
     }];
 }

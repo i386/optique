@@ -129,7 +129,7 @@
         NSArray *items = CFBridgingRelease(contextInfo);
         
         volatile int __block itemCount = 0;
-        [items each:^(id sender)
+        [items bk_each:^(id sender)
         {
             [_collection deleteItem:sender withCompletion:^(NSError *error) {
                 itemCount++;
@@ -295,7 +295,7 @@
     NSMutableSet *collections = [NSMutableSet setWithArray:_collectionManager.allCollections];
     [collections removeObject:_collection];
     
-    [collections each:^(id<XPItemCollection> collection)
+    [collections bk_each:^(id<XPItemCollection> collection)
     {
         if ([collection collectionType] == XPItemCollectionLocal)
         {
@@ -315,7 +315,7 @@
     NSIndexSet *indexes = [_gridView indexesForSelectedCells];
     NSArray *items = [_collection itemsAtIndexes:indexes];
     
-    [items each:^(id<XPItem> item)
+    [items bk_each:^(id<XPItem> item)
     {
         [collection moveItem:item withCompletion:nil];
     }];
