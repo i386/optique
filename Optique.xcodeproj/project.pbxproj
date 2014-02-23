@@ -86,8 +86,6 @@
 		0F53DFF9188A587E00F0FBE9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F53DFF7188A587E00F0FBE9 /* CoreMedia.framework */; };
 		0F53DFFA188A587E00F0FBE9 /* CoreMediaIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F53DFF8188A587E00F0FBE9 /* CoreMediaIO.framework */; };
 		0F53DFFD188B366D00F0FBE9 /* OPItemPreviewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F53DFFC188B366D00F0FBE9 /* OPItemPreviewManager.m */; };
-		0F53E004188B65B700F0FBE9 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F53E002188B65B700F0FBE9 /* play.png */; };
-		0F53E005188B65B700F0FBE9 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F53E003188B65B700F0FBE9 /* play@2x.png */; };
 		0F57A28D18B9AA84004A1C55 /* OPAlbumCountTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F57A28C18B9AA84004A1C55 /* OPAlbumCountTransformer.m */; };
 		0F57A29018B9AA94004A1C55 /* OPCameraItemCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F57A28F18B9AA94004A1C55 /* OPCameraItemCollectionViewController.m */; };
 		0F57A29218B9AC04004A1C55 /* XPNavigationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F57A29118B9AC04004A1C55 /* XPNavigationViewController.h */; };
@@ -452,8 +450,6 @@
 		0F53DFF8188A587E00F0FBE9 /* CoreMediaIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMediaIO.framework; path = System/Library/Frameworks/CoreMediaIO.framework; sourceTree = SDKROOT; };
 		0F53DFFB188B366D00F0FBE9 /* OPItemPreviewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPItemPreviewManager.h; sourceTree = "<group>"; };
 		0F53DFFC188B366D00F0FBE9 /* OPItemPreviewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPItemPreviewManager.m; sourceTree = "<group>"; };
-		0F53E002188B65B700F0FBE9 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
-		0F53E003188B65B700F0FBE9 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
 		0F57A28B18B9AA84004A1C55 /* OPAlbumCountTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPAlbumCountTransformer.h; path = Optique/OPAlbumCountTransformer.h; sourceTree = "<group>"; };
 		0F57A28C18B9AA84004A1C55 /* OPAlbumCountTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPAlbumCountTransformer.m; path = Optique/OPAlbumCountTransformer.m; sourceTree = "<group>"; };
 		0F57A28E18B9AA94004A1C55 /* OPCameraItemCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCameraItemCollectionViewController.h; sourceTree = "<group>"; };
@@ -1091,8 +1087,6 @@
 		0F9C80BA16F891C700B2B6D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0F53E002188B65B700F0FBE9 /* play.png */,
-				0F53E003188B65B700F0FBE9 /* play@2x.png */,
 				0FAEFFF2176736F700D60171 /* Optique.icns */,
 				0F1C2299187937F400A6878C /* down.png */,
 				0F1C229A187937F400A6878C /* down@2.png */,
@@ -1795,9 +1789,7 @@
 				0FEC675717103B5E0086B264 /* effectsbarselectedbg.png in Resources */,
 				0F1750E81828ACD30021853D /* OPNewsletterWindowController.xib in Resources */,
 				0FEC675817103B5E0086B264 /* effectsbarselectedbg@2x.png in Resources */,
-				0F53E005188B65B700F0FBE9 /* play@2x.png in Resources */,
 				0F33D0E41769E7800032CCA0 /* 298-circlex.png in Resources */,
-				0F53E004188B65B700F0FBE9 /* play.png in Resources */,
 				0F70718B180E354F00ED5799 /* picture.png in Resources */,
 				0F33D0E51769E7800032CCA0 /* 298-circlex@2x.png in Resources */,
 				0F628B76187A0E4C0026F551 /* OPApplicationMode.h in Resources */,

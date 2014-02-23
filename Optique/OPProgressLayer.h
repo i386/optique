@@ -7,8 +7,9 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "OEGridLayer.h"
 
-@interface OPProgressLayer : CALayer
+@interface OPProgressLayer : OEGridLayer
 
 /**
  The progress of the circular view. Only valid for values between `0` and `1`.

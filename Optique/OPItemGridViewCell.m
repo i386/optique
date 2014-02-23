@@ -10,10 +10,13 @@
 #import "NSColor+Optique.h"
 #import "OPItemGridView.h"
 #import "NSImage+CGImage.h"
+#import "OPProgressLayer.h"
 
 @interface OPItemGridViewCell()
 
 @property (assign, getter = isVideo) BOOL video;
+@property (nonatomic, retain) CALayer *selectionLayer;
+@property (nonatomic, retain) OPProgressLayer *progressLayer;
 
 @end
 
@@ -37,12 +40,9 @@
         self.imageLayer.backgroundColor = [[NSColor lightGrayColor] CGColor];
         [self addSublayer:self.imageLayer];
         
-        NSImage *image = [NSImage imageNamed:@"play"];
-        self.videoLayer = [OEGridLayer layer];
-        self.videoLayer.contents = (id)image.CGImageRef;
-        self.videoLayer.bounds = NSMakeRect(0, 0, 36, 36);
-        
-        [self addSublayer:self.videoLayer];
+        _progressLayer = [[OPProgressLayer alloc] init];
+        [self addSublayer:_progressLayer];
+        _progressLayer.progress = 0;
     }
     return self;
 }
@@ -55,7 +55,6 @@
                                        self.bounds.size.height + 10); //height
     
     [self.selectionLayer setFrame:selectionFrame];
-    
     [self.imageLayer setFrame:self.bounds];
     
     if (self.badgeLayer)
@@ -63,9 +62,8 @@
         self.badgeLayer.frame = self.bounds;
     }
     
-    [self.videoLayer setHidden:[self.representedObject type] != XPItemTypeVideo];
-    
-    self.videoLayer.position = NSMakePoint(self.bounds.size.width / 2, self.bounds.size.height / 2);
+    [_progressLayer setHidden:[self.representedObject type] != XPItemTypeVideo];
+    [_progressLayer setFrame:NSMakeRect(CGRectGetMidX(self.imageLayer.frame) - (50/2), CGRectGetMidY(self.imageLayer.frame) - (50/2), 50, 50)];
 }
 
 - (void)prepareForReuse
