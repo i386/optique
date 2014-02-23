@@ -7,6 +7,7 @@
 //
 
 #import "NSNotificationCenter+Async.h"
+#import "NSObject+PerformBlock.h"
 
 @implementation NSNotificationCenter (Async)
 

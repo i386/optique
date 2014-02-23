@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
-#import <BlocksKit/NSMutableOrderedSet+BlocksKit.h>
-#import <BlocksKit/NSArray+BlocksKit.h>
+#import <BlocksKit/BlocksKit.h>
 #import <Exposure/Exposure.h>
 #import "NSLock+WithBlock.h"
+#import "NSNotificationCenter+Async.h"
 
 NSString *const XPCollectionManagerDidAddCollection = @"XPCollectionManagerDidAddAlbum";
 NSString *const XPCollectionManagerDidUpdateCollection = @"XPCollectionManagerDidUpdateAlbum";
