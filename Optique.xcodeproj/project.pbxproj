@@ -27,7 +27,6 @@
 		0F08A8D81770443C00DFEA02 /* 329-layers1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */; };
 		0F14C869189CBDD6001FA6B4 /* XPDebugView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F628B7C187D4F7C0026F551 /* XPDebugView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F14C86A189CC11C001FA6B4 /* XPNavigationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FE3B2581702E05100FC0D6C /* XPNavigationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F14C86D189CCAE6001FA6B4 /* OPDarkroomEditManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C86C189CCAE6001FA6B4 /* OPDarkroomEditManager.m */; };
 		0F14C871189CCB1E001FA6B4 /* OPDarkroomPreviewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C870189CCB1E001FA6B4 /* OPDarkroomPreviewLayer.m */; };
 		0F14C874189CCB61001FA6B4 /* OPDarkroomEditManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C86C189CCAE6001FA6B4 /* OPDarkroomEditManager.m */; };
 		0F14C87A189CCFF4001FA6B4 /* OPRotateEditOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C879189CCFF4001FA6B4 /* OPRotateEditOperation.m */; };
@@ -223,7 +222,6 @@
 		1373B7D69D7D477FA5D36CD2 /* libPods-Exposure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CE02E9006D49619346BA66 /* libPods-Exposure.a */; };
 		1791BFD324934B749367A850 /* libPods-Optique.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938A6A86581545989549982D /* libPods-Optique.a */; };
 		5485CBA8B3D447C9AF7B4466 /* libPods-Local.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BF5E4871694D2D83796B64 /* libPods-Local.a */; };
-		6EC49E083AC14C90B4858100 /* libPods-Darkroom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBE2330042E4DC98341E2A2 /* libPods-Darkroom.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -665,7 +663,6 @@
 				0F274999189C8CB3006C3763 /* Cocoa.framework in Frameworks */,
 				0F274998189C8CAC006C3763 /* Exposure.framework in Frameworks */,
 				0F27498B189C8C9E006C3763 /* CoreFoundation.framework in Frameworks */,
-				6EC49E083AC14C90B4858100 /* libPods-Darkroom.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2094,7 +2091,6 @@
 				0FE285A618397AF2009536D7 /* NSURL+EqualToURL.m in Sources */,
 				0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */,
 				0F32EFCB1877965C00483761 /* OPPeekButton.m in Sources */,
-				0F14C86D189CCAE6001FA6B4 /* OPDarkroomEditManager.m in Sources */,
 				0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */,
 				0F5C40AA181CC1DF00F265FC /* OPDropDownButton.m in Sources */,
 				0FCE744F1714136B00A5AE79 /* NSObject+PerformBlock.m in Sources */,
@@ -2412,6 +2408,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.9;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -2436,6 +2433,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.9;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;

@@ -20,7 +20,9 @@
 
 +(BOOL)IsWritableInNativeFormat:(id<XPItem>)item
 {
-    if (!item) return NO;
+    BOOL writable = NO;
+    
+    if (!item && !item.url) return writable;
     
     static NSArray *destinationTypes;
     if (!destinationTypes)
@@ -28,17 +30,22 @@
         destinationTypes = (__bridge NSArray *)(CGImageDestinationCopyTypeIdentifiers());
     }
     
-    CGImageSourceRef sourceRef = CGImageSourceCreateWithURL((__bridge CFURLRef)(item.url), nil);
-    CFStringRef type = CGImageSourceGetType(sourceRef);
-    BOOL writable = [destinationTypes containsObject:(__bridge id)(type)];
+    NSURL *url = item.url;
+    CGImageSourceRef sourceRef = CGImageSourceCreateWithURL((__bridge CFURLRef)(url), nil);
+    
     if (sourceRef)
     {
-        CFRelease(sourceRef);
+        CFStringRef type = CGImageSourceGetType(sourceRef);
+        writable = [destinationTypes containsObject:(__bridge id)(type)];
+        if (type)
+        {
+            CFRelease(type);
+        }
     }
-    
-    if (type)
+    else
     {
-        CFRelease(type);
+        NSLog(@"Could not check if image was writable at %@", url);
+        CFRelease(sourceRef);
     }
     return writable;
 }
