@@ -10,8 +10,19 @@
 #import <QuartzCore/QuartzCore.h>
 
 typedef NS_ENUM(NSUInteger, XPItemType) {
+    /**
+     Unknown item
+     */
     XPItemTypeUnknown,
+    
+    /**
+     Photo item
+     */
     XPItemTypePhoto,
+    
+    /**
+     Video item
+     */
     XPItemTypeVideo
 };
 
@@ -32,6 +43,9 @@ CGImageRef XPItemGetImageRef(id<XPItem> item, CGSize size);
 
 @protocol XPItemCollection;
 
+/**
+ Media item
+ */
 @protocol XPItem <NSObject>
 
 /**
