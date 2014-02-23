@@ -89,9 +89,13 @@
 
 -(void)drawInContext:(CGContextRef)ctx
 {
-    CGContextSetFillColorWithColor(ctx, self.progressTintColor.CGColor);
     CGContextSetStrokeColorWithColor(ctx, self.progressTintColor.CGColor);
+    CGContextSetFillColorWithColor(ctx, [[NSColor colorWithCalibratedRed:0.30 green:0.30 blue:0.30 alpha:0.30] CGColor]);
     CGContextStrokeEllipseInRect(ctx, CGRectInset(self.bounds, 1, 1));
+    CGContextFillEllipseInRect(ctx, CGRectInset(self.bounds, 1, 1));
+    
+    //Set fill for triangle/square
+    CGContextSetFillColorWithColor(ctx, self.progressTintColor.CGColor);
     
     if (_progress > 0) //Square
     {
