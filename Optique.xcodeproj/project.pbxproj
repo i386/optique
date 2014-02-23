@@ -30,7 +30,6 @@
 		0F14C87A189CCFF4001FA6B4 /* OPRotateEditOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C879189CCFF4001FA6B4 /* OPRotateEditOperation.m */; };
 		0F14C87B189CD31D001FA6B4 /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
 		0F14C87C189CD372001FA6B4 /* NSImage+CGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */; };
-		0F14C87D189CE053001FA6B4 /* NSColor+Optique.h in Sources */ = {isa = PBXBuildFile; fileRef = 0F79A5E3175DE2DC00BB3973 /* NSColor+Optique.h */; };
 		0F14C87E189CE06C001FA6B4 /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
 		0F14C881189CE59A001FA6B4 /* CALayer+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C880189CE59A001FA6B4 /* CALayer+Rotate.m */; };
 		0F14C885189DE425001FA6B4 /* OPDarkroomPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C884189DE425001FA6B4 /* OPDarkroomPreviewView.m */; };
@@ -276,6 +275,20 @@
 			remoteGlobalIDString = 0F04A62B1737C70F00E53ED1;
 			remoteInfo = Exposure;
 		};
+		0F7D0EF218B9CA64009EC309 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F274989189C8C9E006C3763;
+			remoteInfo = Darkroom;
+		};
+		0F7D0EF418B9CA65009EC309 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F905940180F43BF000D4A53;
+			remoteInfo = Local;
+		};
 		0F905951180F4412000D4A53 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
@@ -418,10 +431,6 @@
 		0F33D0EF1769E93D0032CCA0 /* 86-camera-alt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera-alt@2x.png"; sourceTree = "<group>"; };
 		0F348148176D669F00439AEA /* loading-preview.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "loading-preview.pdf"; sourceTree = "<group>"; };
 		0F348149176D669F00439AEA /* loading-preview@2x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "loading-preview@2x.pdf"; sourceTree = "<group>"; };
-		0F3632C4178E2BE10000577B /* libPods-Optique-CDEvents.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-CDEvents.a"; path = "Pods/build/Debug/libPods-Optique-CDEvents.a"; sourceTree = "<group>"; };
-		0F3632C5178E2BE10000577B /* libPods-Optique-INAppStoreWindow.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-INAppStoreWindow.a"; path = "Pods/build/Debug/libPods-Optique-INAppStoreWindow.a"; sourceTree = "<group>"; };
-		0F3632C6178E2BE20000577B /* libPods-Optique-NSHash.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-NSHash.a"; path = "Pods/build/Debug/libPods-Optique-NSHash.a"; sourceTree = "<group>"; };
-		0F3632C7178E2BE20000577B /* libPods-Optique-OEGridView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-OEGridView.a"; path = "Pods/build/Debug/libPods-Optique-OEGridView.a"; sourceTree = "<group>"; };
 		0F368A6B170531B500411503 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		0F368A72170678AA00411503 /* NSView+OptiqueBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+OptiqueBackground.h"; sourceTree = "<group>"; };
 		0F368A73170678AB00411503 /* NSView+OptiqueBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+OptiqueBackground.m"; sourceTree = "<group>"; };
@@ -434,7 +443,6 @@
 		0F4422981898967D00560740 /* OPSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPSlideView.h; sourceTree = "<group>"; };
 		0F4422991898967D00560740 /* OPSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPSlideView.m; sourceTree = "<group>"; };
 		0F44BAD7173DCA620039B00E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		0F44BAF1173DD3420039B00E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0F4A6DA818191834009AD08C /* NSURL+Renamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Renamer.h"; sourceTree = "<group>"; };
 		0F4A6DA918191834009AD08C /* NSURL+Renamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Renamer.m"; sourceTree = "<group>"; };
 		0F50C39A178560A90017DF73 /* Optique.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Optique.entitlements; sourceTree = "<group>"; };
@@ -507,10 +515,6 @@
 		0F90594A180F43BF000D4A53 /* Local-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Local-Prefix.pch"; sourceTree = "<group>"; };
 		0F90594E180F43DF000D4A53 /* OPLocalPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPLocalPlugin.h; sourceTree = "<group>"; };
 		0F90594F180F43DF000D4A53 /* OPLocalPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPLocalPlugin.m; sourceTree = "<group>"; };
-		0F93120E178D891200C0A358 /* libPods-Optique-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-BlocksKit.a"; path = "Pods/build/Debug/libPods-Optique-BlocksKit.a"; sourceTree = "<group>"; };
-		0F93120F178D891200C0A358 /* libPods-Optique-CDEvents.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-CDEvents.a"; path = "Pods/build/Debug/libPods-Optique-CDEvents.a"; sourceTree = "<group>"; };
-		0F931210178D891300C0A358 /* libPods-Optique-INAppStoreWindow.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-INAppStoreWindow.a"; path = "Pods/build/Debug/libPods-Optique-INAppStoreWindow.a"; sourceTree = "<group>"; };
-		0F931212178D891300C0A358 /* libPods-Optique-OEGridView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-OEGridView.a"; path = "Pods/build/Debug/libPods-Optique-OEGridView.a"; sourceTree = "<group>"; };
 		0F946AB7178701CD004F6B57 /* XPItemCollectionProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPItemCollectionProvider.h; sourceTree = "<group>"; };
 		0F946AB9178702ED004F6B57 /* XPItemCollectionProviderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPItemCollectionProviderDelegate.h; sourceTree = "<group>"; };
 		0F96270B170418EB007C1A86 /* OPPItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPItemViewController.h; sourceTree = "<group>"; };
@@ -569,7 +573,6 @@
 		0FC6F83A1887C9C60070CAA3 /* XPItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPItem.m; sourceTree = "<group>"; };
 		0FC8A7AE170FD9E000650D7C /* NSImage+CGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+CGImage.h"; sourceTree = "<group>"; };
 		0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+CGImage.m"; sourceTree = "<group>"; };
-		0FC92774180F502900C51076 /* libPods-Local-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Local-BlocksKit.a"; path = "../../Library/Developer/Xcode/DerivedData/Optique-dtfhunhrkomrwkhcuczxtospffyt/Build/Products/Debug/libPods-Local-BlocksKit.a"; sourceTree = "<group>"; };
 		0FC92775180F502900C51076 /* libPods-Local-CDEvents.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Local-CDEvents.a"; path = "../../Library/Developer/Xcode/DerivedData/Optique-dtfhunhrkomrwkhcuczxtospffyt/Build/Products/Debug/libPods-Local-CDEvents.a"; sourceTree = "<group>"; };
 		0FCA4D1A1737CE2C007DC9EF /* OPFinderPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPFinderPlugin.h; sourceTree = "<group>"; };
 		0FCA4D1B1737CE2C007DC9EF /* OPFinderPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPFinderPlugin.m; sourceTree = "<group>"; };
@@ -604,10 +607,8 @@
 		0FD5171F176B08BD006E8F4D /* OPCollectionGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCollectionGridView.m; path = Optique/OPCollectionGridView.m; sourceTree = "<group>"; };
 		0FD51721176B431F006E8F4D /* OPGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPGridViewCell.h; path = Optique/OPGridViewCell.h; sourceTree = "<group>"; };
 		0FD51722176B431F006E8F4D /* OPGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPGridViewCell.m; path = Optique/OPGridViewCell.m; sourceTree = "<group>"; };
-		0FD86BE1180F4D8F00BFF807 /* libPods-Optique-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Optique-BlocksKit.a"; path = "../../Library/Developer/Xcode/DerivedData/Optique-dtfhunhrkomrwkhcuczxtospffyt/Build/Products/Debug/libPods-Optique-BlocksKit.a"; sourceTree = "<group>"; };
 		0FDE075517030FCC00D5B456 /* OPItemCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPItemCollectionViewController.h; sourceTree = "<group>"; };
 		0FDE075617030FCC00D5B456 /* OPItemCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPItemCollectionViewController.m; sourceTree = "<group>"; };
-		0FDE0ECC1787F0F400B81ADC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		0FE285A418397AF2009536D7 /* NSURL+EqualToURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+EqualToURL.h"; sourceTree = "<group>"; };
 		0FE285A518397AF2009536D7 /* NSURL+EqualToURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+EqualToURL.m"; sourceTree = "<group>"; };
 		0FE3B2411702C62D00FC0D6C /* OPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationController.h; sourceTree = "<group>"; };
@@ -629,7 +630,6 @@
 		0FFE24B51729206B00513AD2 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		1650C68FCF8C4AC79D7FEDF5 /* Pods-Darkroom.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Darkroom.xcconfig"; path = "Pods/Pods-Darkroom.xcconfig"; sourceTree = "<group>"; };
 		16513AE00F4544C59D21B885 /* Pods-Local.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local.xcconfig"; path = "Pods/Pods-Local.xcconfig"; sourceTree = "<group>"; };
-		1BBE2330042E4DC98341E2A2 /* libPods-Darkroom.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Darkroom.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CE02E9006D49619346BA66 /* libPods-Exposure.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Exposure.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		414A439A63084757BE245F01 /* Pods/Pods-Optique.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods/Pods-Optique.xcconfig"; sourceTree = SOURCE_ROOT; };
 		903EF40C10B94861A91EB68D /* Pods-Exposure.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exposure.xcconfig"; path = "Pods/Pods-Exposure.xcconfig"; sourceTree = "<group>"; };
@@ -1046,19 +1046,6 @@
 				0FB185BF188A19C100419F5D /* AVKit.framework */,
 				0F1750E0182892C70021853D /* HockeySDK.framework */,
 				0FABADE21826636C003766AA /* Sparkle.framework */,
-				0FC92774180F502900C51076 /* libPods-Local-BlocksKit.a */,
-				0FC92775180F502900C51076 /* libPods-Local-CDEvents.a */,
-				0FD86BE1180F4D8F00BFF807 /* libPods-Optique-BlocksKit.a */,
-				0F3632C4178E2BE10000577B /* libPods-Optique-CDEvents.a */,
-				0F3632C5178E2BE10000577B /* libPods-Optique-INAppStoreWindow.a */,
-				0F3632C6178E2BE20000577B /* libPods-Optique-NSHash.a */,
-				0F3632C7178E2BE20000577B /* libPods-Optique-OEGridView.a */,
-				0F93120E178D891200C0A358 /* libPods-Optique-BlocksKit.a */,
-				0F93120F178D891200C0A358 /* libPods-Optique-CDEvents.a */,
-				0F931210178D891300C0A358 /* libPods-Optique-INAppStoreWindow.a */,
-				0F931212178D891300C0A358 /* libPods-Optique-OEGridView.a */,
-				0FDE0ECC1787F0F400B81ADC /* WebKit.framework */,
-				0F44BAF1173DD3420039B00E /* SenTestingKit.framework */,
 				0F44BAD7173DCA620039B00E /* Accounts.framework */,
 				0FCA4D4F173874C6007DC9EF /* Social.framework */,
 				0F62BA65173673B200E661DD /* Cocoa.framework */,
@@ -1072,7 +1059,7 @@
 				938A6A86581545989549982D /* libPods-Optique.a */,
 				96BF5E4871694D2D83796B64 /* libPods-Local.a */,
 				28CE02E9006D49619346BA66 /* libPods-Exposure.a */,
-				1BBE2330042E4DC98341E2A2 /* libPods-Darkroom.a */,
+				0FC92775180F502900C51076 /* libPods-Local-CDEvents.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1542,6 +1529,8 @@
 				0F04A6291737C70F00E53ED1 /* Headers */,
 				0F04A62A1737C70F00E53ED1 /* Resources */,
 				6FC78DBE8B3C4028AE2B7A34 /* Copy Pods Resources */,
+				0F7D0EF018B9B065009EC309 /* Produce API docs */,
+				0F7D0EF118B9B2F7009EC309 /* Upload API docs */,
 			);
 			buildRules = (
 			);
@@ -1626,6 +1615,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				0F7D0EF318B9CA65009EC309 /* PBXTargetDependency */,
+				0F7D0EF518B9CA65009EC309 /* PBXTargetDependency */,
 				0F413C52178EA32B00FCE1EA /* PBXTargetDependency */,
 				0F3632BA178E2BD10000577B /* PBXTargetDependency */,
 				0F3632BC178E2BD10000577B /* PBXTargetDependency */,
@@ -1698,7 +1689,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = OP;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "James Dumay";
 				TargetAttributes = {
 					0F04A62B1737C70F00E53ED1 = {
@@ -1875,6 +1866,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "codesign --force --verify --verbose --sign \"3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)\" $BUILT_PRODUCTS_DIR/Optique.app/Contents/Frameworks/Sparkle.framework\ncodesign --force --verify --verbose --sign \"3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)\" $BUILT_PRODUCTS_DIR/Optique.app/Contents/Frameworks/HockeySDK.framework/Versions/Current/Frameworks/CrashReporter.framework\ncodesign --force --verify --verbose --sign \"3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)\" $BUILT_PRODUCTS_DIR/Optique.app/Contents/Frameworks/HockeySDK.framework";
+		};
+		0F7D0EF018B9B065009EC309 /* Produce API docs */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Produce API docs";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Constants\ncompany=\"Optique\";\ncompanyID=\"com.optique\";\ncompanyURL=\"http://optiqueapp.com\";\ntarget=\"macosx\";\noutputPath=${PROJECT_DIR}\"/docs\";\n\nmkdir -p outputPath\n\n# End constants\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n/usr/local/bin/appledoc \\\n--project-name \"${PRODUCT_NAME}\" \\\n--project-company \"${company}\" \\\n--company-id \"${companyID}\" \\\n--docset-atom-filename \"${company}.atom\" \\\n--docset-feed-url \"${companyURL}/${company}/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"${companyURL}/${company}/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"${companyURL}/${company}\" \\\n--output \"${outputPath}\" \\\n--publish-docset \\\n--docset-platform-family \"${target}\" \\\n--logformat xcode \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--exit-threshold 2 \\\n\"${PROJECT_DIR}\"/Exposure\nfi";
+		};
+		0F7D0EF118B9B2F7009EC309 /* Upload API docs */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Upload API docs";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n/usr/local/bin/s3cmd sync --exclude '.git/*' docs/html s3://optiqueapp.com/api/mac/\n/usr/local/bin/s3cmd sync --exclude '.git/*' docs/publish s3://optiqueapp.com/api/mac/\nfi";
 		};
 		17624C3C152E4BFA8C204CF2 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2061,7 +2080,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F14C87D189CE053001FA6B4 /* NSColor+Optique.h in Sources */,
 				0F57A29018B9AA94004A1C55 /* OPCameraItemCollectionViewController.m in Sources */,
 				0F1D8B1D1898F2900087898C /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */,
 				0F9C80C016F891C700B2B6D8 /* main.m in Sources */,
@@ -2184,6 +2202,16 @@
 			isa = PBXTargetDependency;
 			target = 0F04A62B1737C70F00E53ED1 /* Exposure */;
 			targetProxy = 0F413C51178EA32B00FCE1EA /* PBXContainerItemProxy */;
+		};
+		0F7D0EF318B9CA65009EC309 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F274989189C8C9E006C3763 /* Darkroom */;
+			targetProxy = 0F7D0EF218B9CA64009EC309 /* PBXContainerItemProxy */;
+		};
+		0F7D0EF518B9CA65009EC309 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F905940180F43BF000D4A53 /* Local */;
+			targetProxy = 0F7D0EF418B9CA65009EC309 /* PBXContainerItemProxy */;
 		};
 		0F905952180F4412000D4A53 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2312,7 +2340,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -2339,7 +2367,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -2357,7 +2385,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -2375,7 +2403,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -2403,7 +2431,7 @@
 				INFOPLIST_FILE = "Darkroom/Darkroom-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -2428,7 +2456,7 @@
 				INFOPLIST_FILE = "Darkroom/Darkroom-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -2522,7 +2550,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -2549,7 +2577,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -2561,10 +2589,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)",
-					"\\\"$(SRCROOT)/DerivedData/Optique/Build/Products/Debug/\\\"",
-					"\\\"$(SRCROOT)/Frameworks\\\"",
-					/Users/jdumay/code/Optique/Frameworks,
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Optique/Optique-Prefix.pch";
@@ -2573,7 +2598,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2586,16 +2611,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)",
-					"\\\"$(SRCROOT)/DerivedData/Optique/Build/Products/Release\\\"",
-					"\\\"$(SRCROOT)/Frameworks\\\"",
-					/Users/jdumay/code/Optique/Frameworks,
-				);
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/DerivedData/Optique/Build/Products/Release\"",
-					"\"$(SRCROOT)/Frameworks\"",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Optique/Optique-Prefix.pch";
@@ -2604,7 +2620,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -2634,7 +2650,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -2662,7 +2678,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -2680,7 +2696,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -2698,7 +2714,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -2716,7 +2732,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -2734,7 +2750,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};

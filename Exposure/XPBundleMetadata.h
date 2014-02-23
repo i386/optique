@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Utility for loading .optique metadata files
+ */
 @interface XPBundleMetadata : NSObject
 
 /**
  Creates Exposure metadata at the provided collection path
  @param collectionPath to create meadata for
- @param bundle id of the exposure plugin
+ @param bundleId of the exposure plugin
  */
 +(XPBundleMetadata*)createMetadataForPath:(NSURL*)collectionPath bundleId:(NSString*)bundleId;
 

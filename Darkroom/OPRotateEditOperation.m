@@ -152,7 +152,7 @@ CGContextRef CreateARGBBitmapContext (CGImageRef inImage, CGSize size)
                                      8,      // bits per component
                                      bitmapBytesPerRow,
                                      colorSpace,
-                                     kCGImageAlphaPremultipliedFirst);
+                                     (CGBitmapInfo)kCGImageAlphaPremultipliedFirst);
     if (context == NULL)
     {
         free (bitmapData);
@@ -185,7 +185,7 @@ CGContextRef CreateBitmapContext (CGImageRef inImage, CGSize size)
                                      CGImageGetBitsPerComponent(inImage),
                                      bitmapBytesPerRow,
                                      colorSpace,
-                                     CGImageGetAlphaInfo(inImage));
+                                     (CGBitmapInfo)CGImageGetAlphaInfo(inImage));
     if (context == NULL)
     {
         fprintf (stderr, "Context not created!\n");

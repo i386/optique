@@ -16,6 +16,9 @@
 #import "XPNavigationController.h"
 #import "XPSidebarController.h"
 
+/**
+ 
+ */
 @protocol XPPlugin <NSObject>
 
 @optional

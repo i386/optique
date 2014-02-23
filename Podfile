@@ -14,7 +14,7 @@ target :Exposure do
 end
 
 target :Local do
-  pod 'CDEvents', '~> 1.2.0'
+  pod 'CDEvents', :path => '~/code/CDEvents' #'~> 1.2.0'
 end
 
 target :Darkroom do

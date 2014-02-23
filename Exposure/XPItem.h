@@ -32,7 +32,7 @@ CGImageRef XPItemGetImageRef(id<XPItem> item, CGSize size);
 
 @protocol XPItemCollection;
 
-@protocol XPItem <NSObject, NSPasteboardWriting>
+@protocol XPItem <NSObject>
 
 /**
  The photo title

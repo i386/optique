@@ -10,7 +10,7 @@ PODS:
 
 DEPENDENCIES:
   - BlocksKit/Core (~> 2.0.0)
-  - CDEvents (~> 1.2.0)
+  - CDEvents (from `~/code/CDEvents`)
   - CNBaseView (~> 1.0.11)
   - KBButton (from `git@github.com:i386/KBButton.git`)
   - KBTextField (from `git@github.com:i386/KBTextField.git`)
@@ -19,6 +19,8 @@ DEPENDENCIES:
   - WHSlider (from `~/code/Slider`)
 
 EXTERNAL SOURCES:
+  CDEvents:
+    :path: ~/code/CDEvents
   KBButton:
     :git: git@github.com:i386/KBButton.git
   KBTextField:
@@ -30,7 +32,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BlocksKit: b29ee3f28ba06a09f5c64987314ce5b75b2c3962
-  CDEvents: c687ea1003a5810a072607ede30db470dfce2338
+  CDEvents: 38c1e2d3f0edfdbb75e3388fc02b290f35415c28
   CNBaseView: 37956c9d903e37d50ef164b07a13688d95880fa5
   KBButton: 627facd1b7e7f484755107e62d2d85b20f429e6e
   KBTextField: b2dedfc5ada8ffc26f87aa00454da27a687f3ded
