@@ -2562,7 +2562,6 @@
 			baseConfigurationReference = 414A439A63084757BE245F01 /* Pods/Pods-Optique.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Optique/Optique.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2588,7 +2587,6 @@
 			baseConfigurationReference = 414A439A63084757BE245F01 /* Pods/Pods-Optique.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Optique/Optique.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: James Dumay (QZEN9DJMR2)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
