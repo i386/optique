@@ -22,7 +22,7 @@
 
 @implementation OPNotificationSynchronizer
 
-+(OPNotificationSynchronizer *)watchForIncrementNotification:(NSString *)incrementNotificationName
++(instancetype)watchForIncrementNotification:(NSString *)incrementNotificationName
                                      deincrementNotification:(NSString *)deincrementNotificationName
                                               incrementBlock:(XPBlock)incrementBlock
                                             deincrementBlock:(XPBlock)deincrementBlock
