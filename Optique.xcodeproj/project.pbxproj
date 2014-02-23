@@ -93,6 +93,8 @@
 		0F53DFFD188B366D00F0FBE9 /* OPItemPreviewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F53DFFC188B366D00F0FBE9 /* OPItemPreviewManager.m */; };
 		0F53E004188B65B700F0FBE9 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F53E002188B65B700F0FBE9 /* play.png */; };
 		0F53E005188B65B700F0FBE9 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F53E003188B65B700F0FBE9 /* play@2x.png */; };
+		0F57A28D18B9AA84004A1C55 /* OPAlbumCountTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F57A28C18B9AA84004A1C55 /* OPAlbumCountTransformer.m */; };
+		0F57A29018B9AA94004A1C55 /* OPCameraItemCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F57A28F18B9AA94004A1C55 /* OPCameraItemCollectionViewController.m */; };
 		0F5C40AA181CC1DF00F265FC /* OPDropDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */; };
 		0F5FE86317366CF900DF2356 /* XPCollectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5FE86217366CF900DF2356 /* XPCollectionManager.m */; };
 		0F628B76187A0E4C0026F551 /* OPApplicationMode.h in Resources */ = {isa = PBXBuildFile; fileRef = 0F628B75187A0E4C0026F551 /* OPApplicationMode.h */; };
@@ -114,7 +116,6 @@
 		0F7A704E178ABA6600570180 /* XPBadgeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A704C178ABA6600570180 /* XPBadgeLayer.m */; };
 		0F7A704F178ABB5800570180 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE3B2611702F25500FC0D6C /* QuartzCore.framework */; };
 		0F85D9B9180A4EA60003C6ED /* OPDateItemCountValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85D9B8180A4EA60003C6ED /* OPDateItemCountValueTransformer.m */; };
-		0F85D9BC180A558F0003C6ED /* OPAlbumCountTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85D9BB180A558F0003C6ED /* OPAlbumCountTransformer.m */; };
 		0F85D9C0180CD2300003C6ED /* OPToolbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85D9BE180CD2300003C6ED /* OPToolbarController.m */; };
 		0F85D9C6180DF8F20003C6ED /* OPPlaceHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85D9C4180DF8F20003C6ED /* OPPlaceHolderViewController.m */; };
 		0F85D9C7180DF8F20003C6ED /* OPPlaceHolderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F85D9C5180DF8F20003C6ED /* OPPlaceHolderViewController.xib */; };
@@ -164,7 +165,6 @@
 		0FC2ABCC1789541A009C7B02 /* OPCameraItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C5619172CBB4B00CB7B1E /* OPCameraItem.m */; };
 		0FC2ABCD17895450009C7B02 /* ImageCaptureCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */; };
 		0FC2EC2C1813EB0600D02EC5 /* OPCameraCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2EC2B1813EB0600D02EC5 /* OPCameraCollectionViewController.m */; };
-		0FC2EC2F1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2EC2E1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.m */; };
 		0FC2EC741813F5BA00D02EC5 /* OPImportItemsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2EC721813F5BA00D02EC5 /* OPImportItemsWindowController.m */; };
 		0FC2EC751813F5BA00D02EC5 /* OPImportItemsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2EC731813F5BA00D02EC5 /* OPImportItemsWindowController.xib */; };
 		0FC6F836188691350070CAA3 /* OPItemCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC6F835188691350070CAA3 /* OPItemCollectionViewController.xib */; };
@@ -445,6 +445,10 @@
 		0F53DFFC188B366D00F0FBE9 /* OPItemPreviewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPItemPreviewManager.m; sourceTree = "<group>"; };
 		0F53E002188B65B700F0FBE9 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		0F53E003188B65B700F0FBE9 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
+		0F57A28B18B9AA84004A1C55 /* OPAlbumCountTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPAlbumCountTransformer.h; path = Optique/OPAlbumCountTransformer.h; sourceTree = "<group>"; };
+		0F57A28C18B9AA84004A1C55 /* OPAlbumCountTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPAlbumCountTransformer.m; path = Optique/OPAlbumCountTransformer.m; sourceTree = "<group>"; };
+		0F57A28E18B9AA94004A1C55 /* OPCameraItemCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCameraItemCollectionViewController.h; sourceTree = "<group>"; };
+		0F57A28F18B9AA94004A1C55 /* OPCameraItemCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCameraItemCollectionViewController.m; sourceTree = "<group>"; };
 		0F5C40A8181CC1DF00F265FC /* OPDropDownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDropDownButton.h; sourceTree = "<group>"; };
 		0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDropDownButton.m; sourceTree = "<group>"; };
 		0F5FE86217366CF900DF2356 /* XPCollectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPCollectionManager.m; sourceTree = "<group>"; };
@@ -478,8 +482,6 @@
 		0F7A704C178ABA6600570180 /* XPBadgeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPBadgeLayer.m; sourceTree = "<group>"; };
 		0F85D9B7180A4EA60003C6ED /* OPDateItemCountValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDateItemCountValueTransformer.h; sourceTree = "<group>"; };
 		0F85D9B8180A4EA60003C6ED /* OPDateItemCountValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDateItemCountValueTransformer.m; sourceTree = "<group>"; };
-		0F85D9BA180A558F0003C6ED /* OPAlbumCountTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAlbumCountTransformer.h; sourceTree = "<group>"; };
-		0F85D9BB180A558F0003C6ED /* OPAlbumCountTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAlbumCountTransformer.m; sourceTree = "<group>"; };
 		0F85D9BD180CD2300003C6ED /* OPToolbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPToolbarController.h; sourceTree = "<group>"; };
 		0F85D9BE180CD2300003C6ED /* OPToolbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPToolbarController.m; sourceTree = "<group>"; };
 		0F85D9C3180DF8F20003C6ED /* OPPlaceHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPlaceHolderViewController.h; sourceTree = "<group>"; };
@@ -555,8 +557,6 @@
 		0FC2ABC517895355009C7B02 /* OPCameraPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCameraPlugin.m; sourceTree = "<group>"; };
 		0FC2EC2A1813EB0600D02EC5 /* OPCameraCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCameraCollectionViewController.h; sourceTree = "<group>"; };
 		0FC2EC2B1813EB0600D02EC5 /* OPCameraCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCameraCollectionViewController.m; sourceTree = "<group>"; };
-		0FC2EC2D1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPCameraItemCollectionViewController.h; path = ../OPCameraItemCollectionViewController.h; sourceTree = "<group>"; };
-		0FC2EC2E1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCameraItemCollectionViewController.m; path = ../OPCameraItemCollectionViewController.m; sourceTree = "<group>"; };
 		0FC2EC711813F5BA00D02EC5 /* OPImportItemsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImportItemsWindowController.h; sourceTree = "<group>"; };
 		0FC2EC721813F5BA00D02EC5 /* OPImportItemsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImportItemsWindowController.m; sourceTree = "<group>"; };
 		0FC2EC731813F5BA00D02EC5 /* OPImportItemsWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPImportItemsWindowController.xib; sourceTree = "<group>"; };
@@ -1201,8 +1201,8 @@
 			children = (
 				0FC2EC2A1813EB0600D02EC5 /* OPCameraCollectionViewController.h */,
 				0FC2EC2B1813EB0600D02EC5 /* OPCameraCollectionViewController.m */,
-				0FC2EC2D1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.h */,
-				0FC2EC2E1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.m */,
+				0F57A28E18B9AA94004A1C55 /* OPCameraItemCollectionViewController.h */,
+				0F57A28F18B9AA94004A1C55 /* OPCameraItemCollectionViewController.m */,
 				0FC2EC711813F5BA00D02EC5 /* OPImportItemsWindowController.h */,
 				0FC2EC721813F5BA00D02EC5 /* OPImportItemsWindowController.m */,
 				0FC2EC731813F5BA00D02EC5 /* OPImportItemsWindowController.xib */,
@@ -1468,8 +1468,8 @@
 				0FEF33A316FEC8090096D72A /* OPCollectionViewController.h */,
 				0FEF33A416FEC8090096D72A /* OPCollectionViewController.m */,
 				0FEF33A516FEC8090096D72A /* OPCollectionViewController.xib */,
-				0F85D9BA180A558F0003C6ED /* OPAlbumCountTransformer.h */,
-				0F85D9BB180A558F0003C6ED /* OPAlbumCountTransformer.m */,
+				0F57A28B18B9AA84004A1C55 /* OPAlbumCountTransformer.h */,
+				0F57A28C18B9AA84004A1C55 /* OPAlbumCountTransformer.m */,
 			);
 			name = "Collection View";
 			path = ..;
@@ -2064,6 +2064,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F14C87D189CE053001FA6B4 /* NSColor+Optique.h in Sources */,
+				0F57A29018B9AA94004A1C55 /* OPCameraItemCollectionViewController.m in Sources */,
 				0F1D8B1D1898F2900087898C /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */,
 				0F9C80C016F891C700B2B6D8 /* main.m in Sources */,
 				0F9C80C716F891C700B2B6D8 /* OPAppDelegate.m in Sources */,
@@ -2076,7 +2077,6 @@
 				0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */,
 				0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */,
 				0FCBC3D21895E3290099543D /* OPGridView.m in Sources */,
-				0FC2EC2F1813EC1D00D02EC5 /* OPCameraItemCollectionViewController.m in Sources */,
 				0FDE075817030FCC00D5B456 /* OPItemCollectionViewController.m in Sources */,
 				0F96270E170418EB007C1A86 /* OPPItemViewController.m in Sources */,
 				0F1D8B1A1898F03A0087898C /* OPProgressLayer.m in Sources */,
@@ -2106,10 +2106,10 @@
 				0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */,
 				0F85D9B9180A4EA60003C6ED /* OPDateItemCountValueTransformer.m in Sources */,
 				0F628B7B187D48470026F551 /* OPSplitView.m in Sources */,
-				0F85D9BC180A558F0003C6ED /* OPAlbumCountTransformer.m in Sources */,
 				0FC0AD8818779E8E009C619F /* OPHistoryPeekViewController.m in Sources */,
 				0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */,
 				0F5FE86317366CF900DF2356 /* XPCollectionManager.m in Sources */,
+				0F57A28D18B9AA84004A1C55 /* OPAlbumCountTransformer.m in Sources */,
 				0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */,
 				0FCBC3DB1895EEF50099543D /* OPPreferencesWindowController.m in Sources */,
 				0F67499D18210A7B00CEEEA9 /* NSPasteboard+XPItem.m in Sources */,
