@@ -12,4 +12,9 @@
 
 @implementation OPSlideView
 
+-(NSMenu *)menu
+{
+    return _contextMenu;
+}
+
 @end

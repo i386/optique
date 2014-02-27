@@ -10,4 +10,6 @@
 
 @interface OPSlideView : WHSlideView
 
+@property (strong) NSMenu *contextMenu;
+
 @end

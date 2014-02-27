@@ -14,7 +14,7 @@
 {
     XPCollectionManager * __weak weakCollectionManager = collectionManager;
     
-    XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:@"Show in Finder" keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
+    XPMenuItem *menuItem = [[XPMenuItem alloc] initWithTitle:@"Show in Finder" keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
         NSIndexSet *indexes = [controller selectedItems];
         NSMutableArray *urls = [NSMutableArray array];
         [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
@@ -28,7 +28,7 @@
         [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
     }];
     
-    item.visibilityPredicate = [NSPredicate predicateWithBlock:^BOOL(NSArray *selectedItems, NSDictionary *bindings) {
+    menuItem.visibilityPredicate = [NSPredicate predicateWithBlock:^BOOL(NSArray *selectedItems, NSDictionary *bindings) {
         
         BOOL visible = YES;
         
@@ -44,12 +44,12 @@
         return visible;
     }];
     
-    [[controller contextMenu] addItem:item];
+    [[controller contextMenu] addItem:menuItem];
 }
 
 -(void)collectionManager:(XPCollectionManager *)collectionManager itemCollectionViewController:(id<XPItemCollectionViewController>)controller
 {
-    XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:@"Show in Finder" keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
+    XPMenuItem *menuItem = [[XPMenuItem alloc] initWithTitle:@"Show in Finder" keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
         NSIndexSet *indexes = [controller selectedItems];
         NSMutableArray *urls = [NSMutableArray array];
         [indexes enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop)
@@ -63,7 +63,7 @@
         [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:urls];
     }];
     
-    item.visibilityPredicate = [NSPredicate predicateWithBlock:^BOOL(NSArray *selectedItems, NSDictionary *bindings) {
+    menuItem.visibilityPredicate = [NSPredicate predicateWithBlock:^BOOL(NSArray *selectedItems, NSDictionary *bindings) {
         
         BOOL visible = YES;
         
@@ -79,12 +79,12 @@
         return visible;
     }];
     
-    [[controller contextMenu] addItem:item];
+    [[controller contextMenu] addItem:menuItem];
 }
 
 -(void)collectionManager:(XPCollectionManager *)collectionManager itemController:(id<XPItemController>)controller
 {
-    XPMenuItem *item = [[XPMenuItem alloc] initWithTitle:@"Show in Finder" keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
+    XPMenuItem *menuItem = [[XPMenuItem alloc] initWithTitle:@"Show in Finder" keyEquivalent:[NSString string] block:^(NSMenuItem *sender) {
         id item = controller.item;
         if ([item hasLocalCopy])
         {
@@ -92,11 +92,11 @@
         }
     }];
     
-    item.visibilityPredicate = [NSPredicate predicateWithBlock:^BOOL(id<XPItem> item, NSDictionary *bindings) {
+    menuItem.visibilityPredicate = [NSPredicate predicateWithBlock:^BOOL(id<XPItem> item, NSDictionary *bindings) {
         return item.collection.collectionType != XPItemCollectionLocal;
     }];
     
-    [[controller contextMenu] addItem:item];
+    [[controller contextMenu] addItem:menuItem];
 }
 
 

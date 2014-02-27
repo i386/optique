@@ -14,7 +14,7 @@
 @property (assign) id<XPNavigationController> controller;
 @property (weak) id<XPItem> item;
 @property (weak) IBOutlet NSMenu *contextMenu;
-@property (weak) IBOutlet WHSlideView *slideView;
+@property (weak) IBOutlet OPSlideView *slideView;
 
 -initWithItem:(id<XPItem>)item;
 

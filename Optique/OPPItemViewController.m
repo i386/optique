@@ -38,6 +38,9 @@
 -(void)awakeFromNib
 {
     [XPExposureService collectionManager:_item.collection.collectionManager itemController:self];
+    
+    _contextMenu.delegate = self;
+    self.slideView.contextMenu = _contextMenu;
 }
 
 -(void)loadView

@@ -908,7 +908,6 @@
 			isa = PBXGroup;
 			children = (
 				0FCBC3D31895E3C10099543D /* GridView */,
-				0F44229B1898A51800560740 /* Slide View */,
 				0FCBC3D51895E3CF0099543D /* Split view */,
 				0FCBC3D61895E3D40099543D /* Drop down button */,
 				0FCBC3D71895E3D90099543D /* Window content view */,
@@ -981,6 +980,7 @@
 		0F962710170418F4007C1A86 /* Item View */ = {
 			isa = PBXGroup;
 			children = (
+				0F44229B1898A51800560740 /* Slide View */,
 				0F96270B170418EB007C1A86 /* OPPItemViewController.h */,
 				0F96270C170418EB007C1A86 /* OPPItemViewController.m */,
 				0F96270D170418EB007C1A86 /* OPPItemViewController.xib */,

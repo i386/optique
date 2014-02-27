@@ -125,8 +125,8 @@
     [[menu itemArray] bk_each:^(id sender) {
         if ([sender isKindOfClass:[XPMenuItem class]])
         {
-            XPMenuItem *item = (XPMenuItem*)sender;
-            [item setHidden:[item.visibilityPredicate evaluateWithObject:item]];
+            XPMenuItem *menuItem = (XPMenuItem*)sender;
+            [menuItem setHidden:[menuItem.visibilityPredicate evaluateWithObject:item]];
         }
     }];
 }
