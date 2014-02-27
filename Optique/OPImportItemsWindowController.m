@@ -86,7 +86,7 @@
     [self performBlockInBackground:^{
         for (id<XPItem> item in _items)
         {
-            [item requestLocalCopy:[collection path] whenDone:^(NSError *error) {
+            [item requestLocalCopy:collection.path whenDone:^(NSError *error) {
                 [self updateImported:item];
             }];
         }

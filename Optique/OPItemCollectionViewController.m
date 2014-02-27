@@ -34,7 +34,7 @@
         
         NSImage *placeHolderImage = [NSImage imageNamed:@"picture"];
         NSString *placeHolderText;
-        if ([collection collectionType] == XPItemCollectionCamera)
+        if (collection.collectionType == XPItemCollectionCamera)
         {
             id camera = collection;
             if ([camera respondsToSelector:@selector(isLocked)] && [camera isLocked])

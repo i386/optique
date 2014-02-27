@@ -34,7 +34,7 @@
         
         for (id<XPItemCollection> collection in selectedItems)
         {
-            if ([collection collectionType] != XPItemCollectionLocal)
+            if (collection.collectionType != XPItemCollectionLocal)
             {
                 visible = NO;
                 break;
@@ -69,7 +69,7 @@
         
         for (id<XPItemCollection> collection in selectedItems)
         {
-            if ([collection collectionType] != XPItemCollectionLocal)
+            if (collection.collectionType != XPItemCollectionLocal)
             {
                 visible = NO;
                 break;
@@ -93,7 +93,7 @@
     }];
     
     item.visibilityPredicate = [NSPredicate predicateWithBlock:^BOOL(id<XPItem> item, NSDictionary *bindings) {
-        return [[item collection] collectionType] != XPItemCollectionLocal;
+        return item.collection.collectionType != XPItemCollectionLocal;
     }];
     
     [[controller contextMenu] addItem:item];

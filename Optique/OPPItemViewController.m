@@ -29,7 +29,7 @@
     self = [super initWithNibName:@"OPPItemViewController" bundle:nil];
     if (self) {
         _item = item;
-        _index = [[_item collection].allItems indexOfObject:item];
+        _index = [_item.collection.allItems indexOfObject:item];
         _sharingMenuItems = [NSMutableArray array];
     }
     return self;
@@ -37,7 +37,7 @@
 
 -(void)awakeFromNib
 {
-    [XPExposureService collectionManager:[[_item collection] collectionManager] itemController:self];
+    [XPExposureService collectionManager:_item.collection.collectionManager itemController:self];
 }
 
 -(void)loadView
@@ -107,7 +107,7 @@
     {
         id<XPItem> item = CFBridgingRelease(contextInfo);
         
-        [[_item collection] deleteItem:item withCompletion:nil];
+        [item.collection deleteItem:item withCompletion:nil];
         
         [self.controller popToPreviousViewController];
     }
@@ -126,7 +126,7 @@
 -(void)collectionUpdated:(NSNotification*)notification
 {
     [self performBlockOnMainThreadAndWaitUntilDone:^{
-        if ([[_item collection] isEqual:notification.userInfo[@"collection"]])
+        if ([_item.collection isEqual:notification.userInfo[@"collection"]])
         {
             [self.slideView reload];
         }
@@ -145,7 +145,7 @@
 
 -(CALayer *)slideView:(WHSlideView *)slideView newLayerForIndex:(NSUInteger)index
 {
-    id<XPItem> item = [[[_item collection] allItems] objectAtIndex:index];
+    id<XPItem> item = [_item.collection.allItems objectAtIndex:index];
     if ([item type] == XPItemTypeVideo)
     {
         AVPlayer *player = [AVPlayer playerWithURL:item.url];
@@ -165,17 +165,17 @@
 
 -(NSUInteger)numberOfImagesForSlideView:(WHSlideView *)slideView
 {
-    return [[_item collection] allItems].count;
+    return _item.collection.allItems.count;
 }
 
 -(NSUInteger)startingIndexForSlideView:(WHSlideView *)slideView
 {
-    return [[[_item collection] allItems] indexOfObject:_item];
+    return [_item.collection.allItems indexOfObject:_item];
 }
 
 -(void)slideView:(WHSlideView *)slideView prepareLayer:(CALayer *)layer index:(NSUInteger)index
 {
-    id<XPItem> item = [[[_item collection] allItems] objectAtIndex:index];
+    id<XPItem> item = [_item.collection.allItems objectAtIndex:index];
     if ([item type] == XPItemTypePhoto)
     {
         [self prepareLayer:layer forPhotoItem:item];

@@ -94,7 +94,7 @@
     if ([obj conformsToProtocol:@protocol(XPItemCollection)])
     {
         id<XPItemCollection> collection = (id<XPItemCollection>)obj;
-        item = [collection coverItem];
+        item = collection.coverItem;
     }
     else
     {
