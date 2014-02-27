@@ -205,13 +205,37 @@
 
 -(void)prepareLayer:(CALayer *)layer forPhotoItem:(id<XPItem>)item
 {
-    CGImageRef imageRef = XPItemGetImageRef(item, [[NSApplication sharedApplication] mainWindow].frame.size);
-    
-    if (imageRef)
+    if (item.url)
     {
-        [self performBlockOnMainThread:^{
-            layer.contentsGravity = kCAGravityResizeAspect;
-            layer.contents = (id)CFBridgingRelease(imageRef);
+        CGImageRef imageRef = XPItemGetImageRef(item, [[NSApplication sharedApplication] mainWindow].frame.size);
+        
+        if (imageRef)
+        {
+            [self performBlockOnMainThread:^{
+                layer.contentsGravity = kCAGravityResizeAspect;
+                layer.contents = (id)CFBridgingRelease(imageRef);
+            }];
+        }
+    }
+    else if ([item respondsToSelector:@selector(requestLocalCopyInCacheWhenDone:)])
+    {
+        [item requestLocalCopyInCacheWhenDone:^(NSError *error) {
+            CGImageRef imageRef = XPItemGetImageRef(item, [[NSApplication sharedApplication] mainWindow].frame.size);
+            
+            if (imageRef)
+            {
+                [self performBlockOnMainThread:^{
+                    BOOL requiresRefresh = layer.contents != nil;
+                    
+                    layer.contentsGravity = kCAGravityResizeAspect;
+                    layer.contents = (id)CFBridgingRelease(imageRef);
+                    
+                    if (requiresRefresh)
+                    {
+                        [_slideView reload];
+                    }
+                }];
+            }
         }];
     }
 }
