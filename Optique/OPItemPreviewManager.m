@@ -19,43 +19,25 @@ typedef NSImage* (^XPImageExtraction)(id<XPItem>, NSSize);
 
 static XPImageExtraction IMAGE_PREVIEW_EXTRACTOR = ^NSImage* (id<XPItem>item, NSSize size) {
     
-    CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)[item url], NULL);
     NSImage *image;
     
-    if (imageSource != nil)
+    CGImageRef thumbnail = XPItemGetImageRef(item, size);
+    
+    if (thumbnail != nil)
     {
-        NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
-                                          kCGImageSourceCreateThumbnailWithTransform, kCFBooleanTrue,
-                                          kCGImageSourceCreateThumbnailFromImageAlways, [NSNumber numberWithFloat:size.width],
-                                          kCGImageSourceThumbnailMaxPixelSize, kCFBooleanFalse, kCGImageSourceShouldCache, nil];
+        image = [[NSImage alloc] initWithCGImage:thumbnail size:NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail))];
         
-        CGImageRef thumbnail = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, (__bridge CFDictionaryRef)thumbnailOptions);
-        
-        if (thumbnail != nil)
-        {
-            image = [[NSImage alloc] initWithCGImage:thumbnail size:NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail))];
-            
-            CGImageRelease(thumbnail);
-        }
-        else
-        {
-            NSLog(@"Could not generate preview thumbnail was nil %@", [item url]);
-        }
+        CGImageRelease(thumbnail);
     }
     else
     {
-        NSLog(@"Could not generate preview img src was nil %@", [item url]);
+        NSLog(@"Could not generate preview thumbnail was nil %@", [item url]);
     }
-    
-    if (imageSource != nil)
-    {
-        CFRelease(imageSource);
-    }
-    
     return image;
 };
 
 static XPImageExtraction VIDEO_PREVIEW_EXTRACTOR = ^NSImage* (id<XPItem>item, NSSize size) {
+    
     AVURLAsset* asset = [AVURLAsset URLAssetWithURL:item.url options:nil];
     AVAssetImageGenerator* imageGenerator = [AVAssetImageGenerator assetImageGeneratorWithAsset:asset];
     CGImageRef imageRef = [imageGenerator copyCGImageAtTime:CMTimeMake(0, 1) actualTime:nil error:nil];
