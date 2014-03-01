@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5051" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5051" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5051"/>
@@ -50,7 +50,7 @@
                     </splitView>
                 </subviews>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="91DB36F2-7076-4066-A9B9-749ACF26ACBB" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="7bg-oX-rUL">
+            <toolbar key="toolbar" implicitIdentifier="91DB36F2-7076-4066-A9B9-749ACF26ACBB" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="7bg-oX-rUL">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="JI3-ZT-0bl"/>
                     <toolbarItem implicitItemIdentifier="B8DC136D-8E91-4683-9199-4499147FDB2F" label="Search" paletteLabel="Search" id="tRa-hG-kqx">
@@ -113,10 +113,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="9816C303-4B32-4A3D-8163-E8C9608C383A" label="New Album" paletteLabel="New Album" id="JcO-an-8wk">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="36" height="25"/>
-                        <size key="maxSize" width="36" height="25"/>
+                        <size key="minSize" width="30" height="25"/>
+                        <size key="maxSize" width="30" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="05d-BX-04f">
-                            <rect key="frame" x="16" y="14" width="36" height="25"/>
+                            <rect key="frame" x="19" y="14" width="30" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dIP-no-kPz">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
