@@ -44,7 +44,7 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     _shareWithButton.menu.showsStateColumn = NO;
     _shareWithButton.menu.delegate = self;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:@"OPCameraServiceDidAddCamera" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cameraAdded:) name:XPCollectionManagerDidAddCollection object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareableSelectionHasChanged:) name:OPSharableSelectionChanged object:nil];
     
@@ -67,17 +67,21 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPNavigationControllerViewDidChange object:_navigationController];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"OPCameraServiceDidAddCamera" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPCollectionManagerDidAddCollection object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OPSharableSelectionChanged object:nil];
 }
 
 -(void)cameraAdded:(NSNotification*)notification
 {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowCameraContentsOnConnect"])
+    id<XPItemCollection> collection = notification.userInfo[@"collection"];
+    
+    BOOL showCameraContentsOnConnect = [[NSUserDefaults standardUserDefaults] boolForKey:@"ShowCameraContentsOnConnect"];
+    
+    if (collection && collection.collectionType == XPItemCollectionCamera && showCameraContentsOnConnect)
     {
         [self cameraMode];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:OPApplicationModeDidChange object:nil userInfo:@{@"mode": [NSNumber numberWithBool:_filterMode], @"title":notification.userInfo[@"title"]}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:OPApplicationModeDidChange object:nil userInfo:@{@"mode": [NSNumber numberWithBool:_filterMode], @"title":collection.title}];
     }
 }
 

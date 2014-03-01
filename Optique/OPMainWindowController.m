@@ -165,7 +165,11 @@
 
 -(void)cameraAdded:(NSNotification*)notification
 {
-    [self addNavigationController:_cameraViewController];
+    id<XPItemCollection> collection = notification.userInfo[@"collection"];
+    if (collection && collection.collectionType == XPItemCollectionCamera)
+    {
+        [self addNavigationController:_cameraViewController];
+    }
 }
 
 -(void)searchFilterChanged:(NSNotification*)notification

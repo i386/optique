@@ -94,8 +94,6 @@
 {
     [[_cameraPlugin collections] addObject:camera];
     [[_cameraPlugin delegate] didAddItemCollection:camera];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"OPCameraServiceDidAddCamera" object:nil userInfo:@{@"title": camera.title}];
 }
 
 -(void)didRemoveCamera:(OPCamera *)camera
