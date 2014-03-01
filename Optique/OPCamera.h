@@ -20,6 +20,8 @@
 
 -(id)initWithDevice:(ICCameraDevice*)device collectionManager:(XPCollectionManager*)collectionManager service:(OPCameraService*)service;
 
+@property (assign, nonatomic, getter = isDefaultApp) BOOL defaultApp;
+
 -(NSImage*)thumbnailForName:(NSString*)name;
 
 /** 

@@ -11,6 +11,8 @@
 #import "OPCameraService.h"
 #import "ICCameraDevice+OrderedMediaFiles.h"
 
+#define kOPCameraIPhotoPath @"/Applications/iPhoto"
+
 @interface OPCamera() {
     NSMutableOrderedSet *_allItems;
     NSMutableDictionary *_thumbnails;
@@ -105,6 +107,27 @@
     return NO;
 }
 
+-(BOOL)isDefaultApp
+{
+    return [[[NSBundle mainBundle] bundlePath] isEqualToString:_device.autolaunchApplicationPath];
+}
+
+-(void)setDefaultApp:(BOOL)defaultApp
+{
+    if (defaultApp)
+    {
+        _device.autolaunchApplicationPath = [NSBundle mainBundle].bundlePath;
+    }
+    else if ([[NSFileManager defaultManager] fileExistsAtPath:kOPCameraIPhotoPath])
+    {
+        _device.autolaunchApplicationPath = kOPCameraIPhotoPath;
+    }
+    else
+    {
+        _device.autolaunchApplicationPath = nil;
+    }
+}
+
 -(void)deleteItem:(id<XPItem>)item withCompletion:(XPCompletionBlock)completionBlock
 {
     OPCameraItem *cameraItem = (OPCameraItem*)item;
@@ -129,10 +152,11 @@
     //Remove the thumbnails from memory
     for (ICCameraFile *cameraFile in items)
     {
+        [_allItems removeObject:cameraFile];
         [_thumbnails removeObjectForKey:cameraFile.name];
     }
     
-    [self.collectionManager collectionUpdated:self reload:YES];
+    [self.collectionManager collectionUpdated:self reload:NO];
 }
 
 - (void)deviceDidBecomeReadyWithCompleteContentCatalog:(ICDevice*)device
