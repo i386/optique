@@ -8,6 +8,7 @@
 
 #import "OPCameraPlugin.h"
 #import "NSImage+CGImage.h"
+#import "OPCameraPreferencesViewController.h"
 
 @implementation OPCameraPlugin
 
@@ -70,6 +71,12 @@
         }
     }
     return nil;
+}
+
+-(NSArray *)preferenceViewControllers
+{
+    OPCameraPreferencesViewController *controller = [[OPCameraPreferencesViewController alloc] init];
+    return @[controller];
 }
 
 -(NSArray *)debugMenuItems

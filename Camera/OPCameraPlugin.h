@@ -11,7 +11,7 @@
 
 #import "OPCameraService.h"
 
-@interface OPCameraPlugin : NSObject<XPPlugin, XPItemCollectionProvider>
+@interface OPCameraPlugin : NSObject<XPPlugin, XPItemCollectionProvider, XPPreferencesProvider>
 
 @property (weak, nonatomic) XPCollectionManager *collectionManager;
 @property (strong, readonly) OPCameraService *cameraService;

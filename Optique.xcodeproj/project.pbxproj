@@ -76,6 +76,8 @@
 		0F3B557B18C1ACC700B68D2A /* XPPreferencesProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F3B557A18C1ACC700B68D2A /* XPPreferencesProvider.h */; };
 		0F3B557F18C1AD8300B68D2A /* OPGeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3B557D18C1AD8300B68D2A /* OPGeneralPreferencesViewController.m */; };
 		0F3B558018C1AD8300B68D2A /* OPGeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F3B557E18C1AD8300B68D2A /* OPGeneralPreferencesViewController.xib */; };
+		0F3B558518C1B4A600B68D2A /* OPCameraPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3B558318C1B4A600B68D2A /* OPCameraPreferencesViewController.m */; };
+		0F3B558618C1B4A600B68D2A /* OPCameraPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F3B558418C1B4A600B68D2A /* OPCameraPreferencesViewController.xib */; };
 		0F3E26A61823746E009E74BD /* OPNotificationSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3E26A51823746E009E74BD /* OPNotificationSynchronizer.m */; };
 		0F413C50178EA32300FCE1EA /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0F44229A1898967D00560740 /* OPSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4422991898967D00560740 /* OPSlideView.m */; };
@@ -440,6 +442,9 @@
 		0F3B557C18C1AD8300B68D2A /* OPGeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPGeneralPreferencesViewController.h; sourceTree = "<group>"; };
 		0F3B557D18C1AD8300B68D2A /* OPGeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPGeneralPreferencesViewController.m; sourceTree = "<group>"; };
 		0F3B557E18C1AD8300B68D2A /* OPGeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPGeneralPreferencesViewController.xib; sourceTree = "<group>"; };
+		0F3B558218C1B4A600B68D2A /* OPCameraPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCameraPreferencesViewController.h; sourceTree = "<group>"; };
+		0F3B558318C1B4A600B68D2A /* OPCameraPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCameraPreferencesViewController.m; sourceTree = "<group>"; };
+		0F3B558418C1B4A600B68D2A /* OPCameraPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPCameraPreferencesViewController.xib; sourceTree = "<group>"; };
 		0F3DF46B16F98D0D00C003D3 /* OPLocalCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPLocalCollection.h; path = ../Optique/OPLocalCollection.h; sourceTree = "<group>"; };
 		0F3DF46C16F98D0D00C003D3 /* OPLocalCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPLocalCollection.m; path = ../Optique/OPLocalCollection.m; sourceTree = "<group>"; };
 		0F3E26A41823746E009E74BD /* OPNotificationSynchronizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNotificationSynchronizer.h; sourceTree = "<group>"; };
@@ -932,6 +937,45 @@
 			name = General;
 			sourceTree = "<group>";
 		};
+		0F3B558718C1B62000B68D2A /* Preference panel */ = {
+			isa = PBXGroup;
+			children = (
+				0F3B558218C1B4A600B68D2A /* OPCameraPreferencesViewController.h */,
+				0F3B558318C1B4A600B68D2A /* OPCameraPreferencesViewController.m */,
+				0F3B558418C1B4A600B68D2A /* OPCameraPreferencesViewController.xib */,
+			);
+			name = "Preference panel";
+			sourceTree = "<group>";
+		};
+		0F3B558818C1B62900B68D2A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F6AF87D172A42750029724A /* OPCamera.h */,
+				0F6AF87E172A42750029724A /* OPCamera.m */,
+				0F8C5618172CBB4B00CB7B1E /* OPCameraItem.h */,
+				0F8C5619172CBB4B00CB7B1E /* OPCameraItem.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0F3B558918C1B63700B68D2A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0F6AF876172A3B0A0029724A /* OPCameraService.h */,
+				0F6AF877172A3B0A0029724A /* OPCameraService.m */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		0F3B558A18C1B63C00B68D2A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0FF31F3518757A1A006803DE /* ICCameraDevice+OrderedMediaFiles.h */,
+				0FF31F3618757A1A006803DE /* ICCameraDevice+OrderedMediaFiles.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		0F44229B1898A51800560740 /* Slide View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1171,16 +1215,12 @@
 			isa = PBXGroup;
 			children = (
 				0FC2ABB8178952F7009C7B02 /* Supporting Files */,
-				0F6AF876172A3B0A0029724A /* OPCameraService.h */,
-				0F6AF877172A3B0A0029724A /* OPCameraService.m */,
-				0F6AF87D172A42750029724A /* OPCamera.h */,
-				0F6AF87E172A42750029724A /* OPCamera.m */,
-				0F8C5618172CBB4B00CB7B1E /* OPCameraItem.h */,
-				0F8C5619172CBB4B00CB7B1E /* OPCameraItem.m */,
+				0F3B558918C1B63700B68D2A /* Service */,
+				0F3B558818C1B62900B68D2A /* Model */,
+				0F3B558A18C1B63C00B68D2A /* Categories */,
+				0F3B558718C1B62000B68D2A /* Preference panel */,
 				0FC2ABC417895355009C7B02 /* OPCameraPlugin.h */,
 				0FC2ABC517895355009C7B02 /* OPCameraPlugin.m */,
-				0FF31F3518757A1A006803DE /* ICCameraDevice+OrderedMediaFiles.h */,
-				0FF31F3618757A1A006803DE /* ICCameraDevice+OrderedMediaFiles.m */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -1841,6 +1881,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FC2ABBC178952F7009C7B02 /* InfoPlist.strings in Resources */,
+				0F3B558618C1B4A600B68D2A /* OPCameraPreferencesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2155,6 +2196,7 @@
 				0FE285A718397AF2009536D7 /* NSURL+EqualToURL.m in Sources */,
 				0FF31F3718757A1A006803DE /* ICCameraDevice+OrderedMediaFiles.m in Sources */,
 				0FC2ABC617895355009C7B02 /* OPCameraPlugin.m in Sources */,
+				0F3B558518C1B4A600B68D2A /* OPCameraPreferencesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
