@@ -7,9 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <MASPreferences/MASPreferencesWindowController.h>
 
-@interface OPPreferencesWindowController : NSWindowController
-
-@property (weak) IBOutlet NSTextField *sizeLabel;
+@interface OPPreferencesWindowController : MASPreferencesWindowController
 
 @end

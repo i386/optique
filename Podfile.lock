@@ -4,6 +4,7 @@ PODS:
   - CNBaseView (1.0.11)
   - KBButton (0.0.1)
   - KBTextField (0.0.1)
+  - MASPreferences (1.1)
   - NSHash (1.0.1)
   - OEGridView (0.0.1)
   - WHSlider (0.0.1)
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - CNBaseView (~> 1.0.11)
   - KBButton (from `git@github.com:i386/KBButton.git`)
   - KBTextField (from `git@github.com:i386/KBTextField.git`)
+  - MASPreferences (~> 1.1)
   - NSHash (~> 1.0.1)
   - OEGridView (from `~/code/OEGridView`)
   - WHSlider (from `~/code/Slider`)
@@ -34,6 +36,7 @@ SPEC CHECKSUMS:
   CNBaseView: 37956c9d903e37d50ef164b07a13688d95880fa5
   KBButton: 627facd1b7e7f484755107e62d2d85b20f429e6e
   KBTextField: b2dedfc5ada8ffc26f87aa00454da27a687f3ded
+  MASPreferences: 103fda1283c701dfed5503edbe24b1ab504ed6d9
   NSHash: 7e728a3e7fdff6828f3fce387049b1e0ca7fe8a0
   OEGridView: 10adfc6f57d3e486a066c89e2742ac16305b27be
   WHSlider: 873df3808aee476b280363a476e0adcc3201509f

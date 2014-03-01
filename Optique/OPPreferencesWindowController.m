@@ -7,6 +7,7 @@
 //
 
 #import "OPPreferencesWindowController.h"
+#import "OPGeneralPreferencesViewController.h"
 
 @interface OPPreferencesWindowController ()
 
@@ -14,57 +15,19 @@
 
 @implementation OPPreferencesWindowController
 
-- (id)init
+-(id)init
 {
-    self = [super initWithWindowNibName:@"OPPreferencesWindowController"];
-    if (self) {
-        // Initialization code here.
+    self = [super initWithViewControllers:@[]];
+    if (self)
+    {
+        OPGeneralPreferencesViewController *viewController = [[OPGeneralPreferencesViewController alloc] init];
+        [self addViewController:viewController];
+        
+        [[XPExposureService preferencePanelViewControllers] bk_each:^(id obj) {
+            [self addViewController:obj];
+        }];
     }
     return self;
-}
-
-- (void)windowDidLoad
-{
-    [super windowDidLoad];
-    
-    NSUInteger factor = [[NSUserDefaults standardUserDefaults] integerForKey:@"ItemSize"];
-    [self updateSizeLabel:factor];
-    
-    [[NSUserDefaults standardUserDefaults] addObserver:self
-                                            forKeyPath:@"ItemSize"
-                                               options:NSKeyValueObservingOptionNew
-                                               context:NULL];
-}
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    NSNumber *factor = (NSNumber*)change[@"new"];
-    [self updateSizeLabel:[factor unsignedIntegerValue]];
-}
-
--(void)updateSizeLabel:(NSUInteger)factor
-{
-    switch (factor) {
-        case 0:
-            _sizeLabel.stringValue = @"Extra small";
-            break;
-            
-        case 25:
-            _sizeLabel.stringValue = @"Small";
-            break;
-            
-        case 75:
-            _sizeLabel.stringValue = @"Large";
-            break;
-            
-        case 100:
-            _sizeLabel.stringValue = @"Extra large";
-            break;
-            
-        default:
-            _sizeLabel.stringValue = @"Normal";
-            break;
-    }
 }
 
 @end

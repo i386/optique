@@ -51,4 +51,6 @@
 
 +(void)sidebarControllerWasCreated:(id<XPSidebarController>)sidebarController;
 
++(NSArray*)preferencePanelViewControllers;
+
 @end

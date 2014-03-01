@@ -73,6 +73,9 @@
 		0F368A6C170531B500411503 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F368A6B170531B500411503 /* Quartz.framework */; };
 		0F368A74170678AC00411503 /* NSView+OptiqueBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A73170678AB00411503 /* NSView+OptiqueBackground.m */; };
 		0F368A8A17068F1B00411503 /* OPWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F368A8917068F1A00411503 /* OPWindowContentView.m */; };
+		0F3B557B18C1ACC700B68D2A /* XPPreferencesProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F3B557A18C1ACC700B68D2A /* XPPreferencesProvider.h */; };
+		0F3B557F18C1AD8300B68D2A /* OPGeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3B557D18C1AD8300B68D2A /* OPGeneralPreferencesViewController.m */; };
+		0F3B558018C1AD8300B68D2A /* OPGeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F3B557E18C1AD8300B68D2A /* OPGeneralPreferencesViewController.xib */; };
 		0F3E26A61823746E009E74BD /* OPNotificationSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3E26A51823746E009E74BD /* OPNotificationSynchronizer.m */; };
 		0F413C50178EA32300FCE1EA /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0F44229A1898967D00560740 /* OPSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4422991898967D00560740 /* OPSlideView.m */; };
@@ -192,7 +195,6 @@
 		0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCAF8CD17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m */; };
 		0FCBC3D21895E3290099543D /* OPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBC3D11895E3290099543D /* OPGridView.m */; };
 		0FCBC3DB1895EEF50099543D /* OPPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBC3D91895EEF50099543D /* OPPreferencesWindowController.m */; };
-		0FCBC3DC1895EEF50099543D /* OPPreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FCBC3DA1895EEF50099543D /* OPPreferencesWindowController.xib */; };
 		0FCE744F1714136B00A5AE79 /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
 		0FD51720176B08BD006E8F4D /* OPCollectionGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD5171F176B08BD006E8F4D /* OPCollectionGridView.m */; };
 		0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD51722176B431F006E8F4D /* OPGridViewCell.m */; };
@@ -434,6 +436,10 @@
 		0F368A73170678AB00411503 /* NSView+OptiqueBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+OptiqueBackground.m"; sourceTree = "<group>"; };
 		0F368A8817068F1A00411503 /* OPWindowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPWindowContentView.h; sourceTree = "<group>"; };
 		0F368A8917068F1A00411503 /* OPWindowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPWindowContentView.m; sourceTree = "<group>"; };
+		0F3B557A18C1ACC700B68D2A /* XPPreferencesProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPPreferencesProvider.h; sourceTree = "<group>"; };
+		0F3B557C18C1AD8300B68D2A /* OPGeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPGeneralPreferencesViewController.h; sourceTree = "<group>"; };
+		0F3B557D18C1AD8300B68D2A /* OPGeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPGeneralPreferencesViewController.m; sourceTree = "<group>"; };
+		0F3B557E18C1AD8300B68D2A /* OPGeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPGeneralPreferencesViewController.xib; sourceTree = "<group>"; };
 		0F3DF46B16F98D0D00C003D3 /* OPLocalCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPLocalCollection.h; path = ../Optique/OPLocalCollection.h; sourceTree = "<group>"; };
 		0F3DF46C16F98D0D00C003D3 /* OPLocalCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPLocalCollection.m; path = ../Optique/OPLocalCollection.m; sourceTree = "<group>"; };
 		0F3E26A41823746E009E74BD /* OPNotificationSynchronizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNotificationSynchronizer.h; sourceTree = "<group>"; };
@@ -596,7 +602,6 @@
 		0FCBC3D11895E3290099543D /* OPGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPGridView.m; sourceTree = "<group>"; };
 		0FCBC3D81895EEF50099543D /* OPPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPreferencesWindowController.h; sourceTree = "<group>"; };
 		0FCBC3D91895EEF50099543D /* OPPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPreferencesWindowController.m; sourceTree = "<group>"; };
-		0FCBC3DA1895EEF50099543D /* OPPreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPreferencesWindowController.xib; sourceTree = "<group>"; };
 		0FCE744D1714136B00A5AE79 /* NSObject+PerformBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PerformBlock.h"; sourceTree = "<group>"; };
 		0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PerformBlock.m"; sourceTree = "<group>"; };
 		0FD5171E176B08BD006E8F4D /* OPCollectionGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPCollectionGridView.h; path = Optique/OPCollectionGridView.h; sourceTree = "<group>"; };
@@ -749,6 +754,7 @@
 				0F946AB7178701CD004F6B57 /* XPItemCollectionProvider.h */,
 				0F946AB9178702ED004F6B57 /* XPItemCollectionProviderDelegate.h */,
 				0F274984189C8992006C3763 /* XPToolbarItemProvider.h */,
+				0F3B557A18C1ACC700B68D2A /* XPPreferencesProvider.h */,
 				0FCA4D321737D89B007DC9EF /* Model */,
 				0FCA4D311737D88B007DC9EF /* Controllers */,
 				0FA29616178D4AF5005009C4 /* Metadata */,
@@ -914,6 +920,16 @@
 				0F90591C180F3CB9000D4A53 /* Placeholder */,
 			);
 			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		0F3B558118C1B00900B68D2A /* General */ = {
+			isa = PBXGroup;
+			children = (
+				0F3B557C18C1AD8300B68D2A /* OPGeneralPreferencesViewController.h */,
+				0F3B557D18C1AD8300B68D2A /* OPGeneralPreferencesViewController.m */,
+				0F3B557E18C1AD8300B68D2A /* OPGeneralPreferencesViewController.xib */,
+			);
+			name = General;
 			sourceTree = "<group>";
 		};
 		0F44229B1898A51800560740 /* Slide View */ = {
@@ -1302,7 +1318,7 @@
 			children = (
 				0FCBC3D81895EEF50099543D /* OPPreferencesWindowController.h */,
 				0FCBC3D91895EEF50099543D /* OPPreferencesWindowController.m */,
-				0FCBC3DA1895EEF50099543D /* OPPreferencesWindowController.xib */,
+				0F3B558118C1B00900B68D2A /* General */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -1487,6 +1503,7 @@
 			files = (
 				0F57A29718B9AC15004A1C55 /* XPExposureService.h in Headers */,
 				0F57A29218B9AC04004A1C55 /* XPNavigationViewController.h in Headers */,
+				0F3B557B18C1ACC700B68D2A /* XPPreferencesProvider.h in Headers */,
 				0F04A6431737C74800E53ED1 /* Exposure.h in Headers */,
 				0FCA4D6C17391D66007DC9EF /* XPController.h in Headers */,
 				0FE719B1174E176B0092F801 /* XPSharingService.h in Headers */,
@@ -1773,7 +1790,6 @@
 				0F9C80C416F891C700B2B6D8 /* Credits.rtf in Resources */,
 				0F03CD0F18153BA500A73D8F /* check.png in Resources */,
 				0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */,
-				0FCBC3DC1895EEF50099543D /* OPPreferencesWindowController.xib in Resources */,
 				0FA29D12180FFB080066077D /* lock.png in Resources */,
 				0FEF33A716FEC8090096D72A /* OPCollectionViewController.xib in Resources */,
 				0F33D0ED1769E87A0032CCA0 /* 218-trash2@2x.png in Resources */,
@@ -1816,6 +1832,7 @@
 				0FAEFFF3176736F700D60171 /* Optique.icns in Resources */,
 				0FFE24B61729206B00513AD2 /* back@2x.png in Resources */,
 				0F33D0F01769E93D0032CCA0 /* 86-camera-alt.png in Resources */,
+				0F3B558018C1AD8300B68D2A /* OPGeneralPreferencesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2073,6 +2090,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F57A29018B9AA94004A1C55 /* OPCameraItemCollectionViewController.m in Sources */,
+				0F3B557F18C1AD8300B68D2A /* OPGeneralPreferencesViewController.m in Sources */,
 				0F1D8B1D1898F2900087898C /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */,
 				0F9C80C016F891C700B2B6D8 /* main.m in Sources */,
 				0F9C80C716F891C700B2B6D8 /* OPAppDelegate.m in Sources */,

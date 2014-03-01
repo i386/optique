@@ -10,6 +10,7 @@
 #import "XPMenuItem.h"
 #import "XPToolbarItemProvider.h"
 #import <BlocksKit/BlocksKit.h>
+#import "XPPreferencesProvider.h"
 
 @interface XPExposureService () <NSToolbarDelegate>
 
@@ -196,6 +197,23 @@
     [exposures bk_each:^(id<XPPlugin> sender) {
         [sender setSidebarController:sidebarController];
     }];
+}
+
++(NSArray *)preferencePanelViewControllers
+{
+    NSMutableArray *controllers = [NSMutableArray array];
+    
+    NSSet *exposures = [NSMutableSet setWithArray:[[XPExposureService defaultLoader] exposures].allValues];
+    
+    exposures = [exposures filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPPlugin> evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject conformsToProtocol:@protocol(XPPreferencesProvider)] && [evaluatedObject respondsToSelector:@selector(preferenceViewControllers)];
+    }]];
+    
+    [exposures bk_each:^(id<XPPreferencesProvider> sender) {
+        [controllers addObjectsFromArray:sender.preferenceViewControllers];
+    }];
+    
+    return controllers;
 }
 
 +(void)registerToolbar:(NSToolbar *)toolbar
