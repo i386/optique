@@ -37,13 +37,9 @@
         _thumbnailsRecieved = 0;
         _created = [NSDate date];
         _cameraService = service;
+        _title = device.name;
     }
     return self;
-}
-
--(NSString *)title
-{
-    return _device.name;
 }
 
 -(NSOrderedSet *)allItems

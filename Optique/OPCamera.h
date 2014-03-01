@@ -17,6 +17,7 @@
 @property (readonly, weak) ICCameraDevice *device;
 @property (readonly, weak) XPCollectionManager *collectionManager;
 @property (readonly, strong) NSDate *created;
+@property (readonly, assign) NSString *title;
 
 -(id)initWithDevice:(ICCameraDevice*)device collectionManager:(XPCollectionManager*)collectionManager service:(OPCameraService*)service;
 
