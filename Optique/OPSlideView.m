@@ -9,12 +9,22 @@
 #import "OPSlideView.h"
 #import "NSWindow+FullScreen.h"
 #import "NSView+OptiqueBackground.h"
+#import "OPPlayerLayer.h"
 
 @implementation OPSlideView
 
 -(NSMenu *)menu
 {
     return _contextMenu;
+}
+
+-(void)visibleLayerMustStopPlaying
+{
+    if ([_visibleLayer isKindOfClass:[OPPlayerLayer class]])
+    {
+        OPPlayerLayer *playerLayer = (OPPlayerLayer*)_visibleLayer;
+        [playerLayer stopPlayback];
+    }
 }
 
 @end

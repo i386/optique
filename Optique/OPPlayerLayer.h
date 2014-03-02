@@ -14,6 +14,8 @@
 
 -(void)togglePlayback;
 
+-(void)stopPlayback;
+
 -(void)showStopButton;
 
 @end

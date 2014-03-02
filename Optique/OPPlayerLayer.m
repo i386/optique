@@ -44,6 +44,13 @@
     [_progressLayer setFrame:NSMakeRect(CGRectGetMidX(self.frame) - (50/2), CGRectGetMidY(self.frame) - (50/2), 50, 50)];
 }
 
+-(void)stopPlayback
+{
+    [_playerLayer.player pause];
+    [_playerLayer.player seekToTime:kCMTimeZero];
+    [self showStopButton];
+}
+
 -(void)togglePlayback
 {
     //TODO: find a better way to check for this
@@ -55,9 +62,7 @@
     }
     else
     {
-        [_playerLayer.player pause];
-        [_playerLayer.player seekToTime:kCMTimeZero];
-        [self showStopButton];
+        [self stopPlayback];
     }
 }
 

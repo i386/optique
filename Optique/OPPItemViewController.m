@@ -240,4 +240,9 @@
     }
 }
 
+-(void)removedView
+{
+    [_slideView visibleLayerMustStopPlaying];
+}
+
 @end
