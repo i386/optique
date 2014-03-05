@@ -240,6 +240,15 @@
     }
 }
 
+-(void)slideView:(WHSlideView *)slideView didHideLayer:(CALayer *)layer
+{
+    OPPlayerLayer *playerLayer = (OPPlayerLayer*)layer;
+    if (playerLayer && [playerLayer isKindOfClass:[OPPlayerLayer class]])
+    {
+        [playerLayer stopPlayback];
+    }
+}
+
 -(void)removedView
 {
     [_slideView visibleLayerMustStopPlaying];
