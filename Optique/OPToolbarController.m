@@ -164,7 +164,6 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     _filterMode = OPApplicationModeCamera;
     _switchViewButton.title = @"Albums";
     _switchViewButton.image = nil;
-    _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 69, _switchViewButton.frame.size.height);
     _searchFilter.stringValue = @""; //Clear
 }
 
@@ -173,14 +172,12 @@ NSString *const OPSharableSelectionChanged = @"OPSharableSelectionChanged";
     _filterMode = OPApplicationModeAlbum;
     _switchViewButton.title = @"Cameras";
     _switchViewButton.image = nil;
-    _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 72, _switchViewButton.frame.size.height);
 }
 
 -(void)backMode
 {
     _switchViewButton.title = @"Back";
     _switchViewButton.image = [NSImage imageNamed:NSImageNameGoLeftTemplate];
-    _switchViewButton.frame = NSMakeRect(_switchViewButton.frame.origin.x, _switchViewButton.frame.origin.y, 65, _switchViewButton.frame.size.height);
 }
 
 -(void)menuNeedsUpdate:(NSMenu *)menu

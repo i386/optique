@@ -56,9 +56,9 @@
                     <toolbarItem implicitItemIdentifier="B8DC136D-8E91-4683-9199-4499147FDB2F" label="Search" paletteLabel="Search" id="tRa-hG-kqx">
                         <nil key="toolTip"/>
                         <size key="minSize" width="96" height="22"/>
-                        <size key="maxSize" width="212" height="22"/>
+                        <size key="maxSize" width="250" height="22"/>
                         <searchField key="view" verticalHuggingPriority="750" id="FOA-4z-wyI">
-                            <rect key="frame" x="0.0" y="14" width="212" height="22"/>
+                            <rect key="frame" x="0.0" y="14" width="200" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="7xq-S9-kea">
                                 <font key="font" metaFont="system"/>
@@ -88,10 +88,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="329C8100-33A3-4415-8921-C584A01B5756" label="Share" paletteLabel="Share" image="NSShareTemplate" id="t76-i3-tYv">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="36" height="25"/>
+                        <size key="minSize" width="30" height="25"/>
                         <size key="maxSize" width="36" height="32"/>
                         <button key="view" verticalHuggingPriority="750" id="DVn-fh-aKO" customClass="OPDropDownButton">
-                            <rect key="frame" x="1" y="14" width="36" height="25"/>
+                            <rect key="frame" x="4" y="14" width="30" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="v8D-8a-O8B">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
