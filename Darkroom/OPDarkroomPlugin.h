@@ -9,11 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OPDarkroomEditManager.h"
 
-@interface OPDarkroomPlugin : NSObject<
-#if DEBUG
-XPToolbarItemProvider
-#endif
->
+@interface OPDarkroomPlugin : NSObject<XPToolbarItemProvider>
 
 @property (weak, nonatomic) id<XPNavigationController> navigationController;
 @property (weak, nonatomic) id<XPSidebarController> sidebarController;

@@ -22,10 +22,9 @@
 
 @implementation OPDarkroomPlugin
 
-#if DEBUG
-
 -(NSToolbarItem*)toolbarItemForIdentifier:(NSString*)identifier
 {
+    #if DEBUG
     if ([DarkroomToolbarIdentifier isEqualToString:identifier])
     {
         NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:identifier];
@@ -41,6 +40,7 @@
         button.action = @selector(openDarkroomEditor);  
         return item;
     }
+    #endif
     return nil;
 }
 
@@ -48,8 +48,6 @@
 {
     [toolbar insertItemWithItemIdentifier:DarkroomToolbarIdentifier atIndex:3];
 }
-
-#endif
 
 -(void)openDarkroomEditor
 {
