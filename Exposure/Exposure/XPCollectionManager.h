@@ -19,12 +19,12 @@ extern NSString *const XPCollectionManagerDidDeleteCollection;
 
 @property (strong, readonly) NSURL *path;
 
--initWithPath:(NSURL*)path;
-
 /**
- All collections (albums, cameras, etc) that are available 
+ All collections (albums, cameras, etc) that are available
  */
--(NSArray*)allCollections;
+@property (readonly, nonatomic) NSArray *allCollections;
+
+-initWithPath:(NSURL*)path;
 
 /** 
  Filter collections by index set 
