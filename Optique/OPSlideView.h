@@ -12,10 +12,6 @@
 
 @property (strong) NSMenu *contextMenu;
 
-@property (strong, nonatomic) CALayer *visibleLayer;
-@property (strong) CALayer *leftLayer;
-@property (strong) CALayer *rightLayer;
-
 -(void)visibleLayerMustStopPlaying;
 
 @end

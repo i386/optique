@@ -19,6 +19,7 @@
 
 @property (assign) NSInteger index;
 @property (strong) NSMutableArray *sharingMenuItems;
+@property (strong) NSOrderedSet *items;
 
 @end
 
@@ -29,7 +30,8 @@
     self = [super initWithNibName:@"OPPItemViewController" bundle:nil];
     if (self) {
         _item = item;
-        _index = [_item.collection.allItems indexOfObject:item];
+        _items = _item.collection.allItems;
+        _index = [_items indexOfObject:item];
         _sharingMenuItems = [NSMutableArray array];
     }
     return self;
@@ -128,12 +130,27 @@
 
 -(void)collectionUpdated:(NSNotification*)notification
 {
-    [self performBlockOnMainThreadAndWaitUntilDone:^{
-        if ([_item.collection isEqual:notification.userInfo[@"collection"]])
+    id<XPItemCollection> collection = notification.userInfo[@"collection"];
+    
+    if (collection && [[self.controller visibleViewController] isEqual:self])
+    {
+        //Get the new items
+        _items = collection.allItems;
+        
+        //If the item still exists in the collection, hard reload the slide view
+        if ([_items containsObject:_item])
         {
-            [self.slideView reload];
+            [self performBlockOnMainThread:^{
+                _slideView.delegate = self;
+            }];
         }
-    }];
+        else //Pop to previous controller if the current item is no longer visible
+        {
+            [self performBlockOnMainThread:^{
+                [self.controller popToPreviousViewController];
+            }];
+        }
+    }
 }
 
 -(BOOL)shareableItemsSelected
@@ -168,17 +185,17 @@
 
 -(NSUInteger)numberOfImagesForSlideView:(WHSlideView *)slideView
 {
-    return _item.collection.allItems.count;
+    return _items.count;
 }
 
 -(NSUInteger)startingIndexForSlideView:(WHSlideView *)slideView
 {
-    return [_item.collection.allItems indexOfObject:_item];
+    return [_items indexOfObject:_item];
 }
 
 -(void)slideView:(WHSlideView *)slideView prepareLayer:(CALayer *)layer index:(NSUInteger)index
 {
-    id<XPItem> item = [_item.collection.allItems objectAtIndex:index];
+    id<XPItem> item = [_items objectAtIndex:index];
     if ([item type] == XPItemTypePhoto)
     {
         [self prepareLayer:layer forPhotoItem:item];
@@ -238,6 +255,11 @@
             }
         }];
     }
+}
+
+-(void)slideView:(WHSlideView *)slideView didShowLayer:(CALayer *)layer atIndex:(NSUInteger)index
+{
+    _item = _items[index];
 }
 
 -(void)slideView:(WHSlideView *)slideView didHideLayer:(CALayer *)layer

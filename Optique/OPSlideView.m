@@ -20,9 +20,9 @@
 
 -(void)visibleLayerMustStopPlaying
 {
-    if ([_visibleLayer isKindOfClass:[OPPlayerLayer class]])
+    if ([self.visibleLayer isKindOfClass:[OPPlayerLayer class]])
     {
-        OPPlayerLayer *playerLayer = (OPPlayerLayer*)_visibleLayer;
+        OPPlayerLayer *playerLayer = (OPPlayerLayer*)self.visibleLayer;
         [playerLayer stopPlayback];
     }
 }
