@@ -31,8 +31,14 @@
 /** remove all the caches **/
 -(void)removeCaches;
 
+/**
+ Camera was added
+ */
 -(void)didAddCamera:(OPCamera*)camera;
 
+/**
+ Camera was removed
+ */
 -(void)didRemoveCamera:(OPCamera*)camera;
 
 @end
