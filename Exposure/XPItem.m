@@ -1,6 +1,8 @@
 
 #include "XPItem.h"
 
+NSString *const XPItemWillReload = @"XPItemWillReload";
+
 XPItemType XPItemTypeFromUTICFString(CFStringRef fileUTI)
 {
     XPItemType type = XPItemTypeUnknown;

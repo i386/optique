@@ -131,8 +131,9 @@
 -(void)collectionUpdated:(NSNotification*)notification
 {
     id<XPItemCollection> collection = notification.userInfo[@"collection"];
+    NSViewController *visibleViewController = self.controller.visibleViewController;
     
-    if (collection && [[self.controller visibleViewController] isEqual:self])
+    if (collection && [self isEqualTo:visibleViewController])
     {
         //Get the new items
         _items = collection.allItems;

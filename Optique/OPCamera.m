@@ -13,13 +13,12 @@
 
 #define kOPCameraIPhotoPath @"/Applications/iPhoto"
 
-@interface OPCamera() {
-    NSMutableOrderedSet *_allItems;
-    NSMutableDictionary *_thumbnails;
-    NSTimer *_batchTimer;
-    NSUInteger _thumbnailsRecieved;
-    OPCameraService *_cameraService;
-}
+@interface OPCamera()
+
+@property (strong) NSMutableOrderedSet *allItems;
+@property (strong) NSMutableDictionary *thumbnails;
+@property (weak) OPCameraService *cameraService;
+
 @end
 
 @implementation OPCamera
@@ -34,17 +33,11 @@
         _collectionManager = collectionManager;
         _device = device;
         _device.delegate = self;
-        _thumbnailsRecieved = 0;
         _created = [NSDate date];
         _cameraService = service;
         _title = device.name;
     }
     return self;
-}
-
--(NSOrderedSet *)allItems
-{
-    return _allItems;
 }
 
 -(NSArray *)itemsAtIndexes:(NSIndexSet *)indexSet
@@ -87,7 +80,10 @@
         if (type != XPItemTypeUnknown)
         {
             OPCameraItem *item = [[OPCameraItem alloc] initWithCameraFile:cameraFile collection:self type:type];
-            [newItems addObject:item];
+            if ([cameraFile thumbnailIfAvailable] || [cameraFile largeThumbnailIfAvailable])
+            {
+                [newItems addObject:item];
+            }
         }
     }
     _allItems = newItems;
@@ -192,13 +188,6 @@
 
 - (void)cameraDevice:(ICCameraDevice*)device didReceiveThumbnailForItem:(ICCameraItem*)item
 {
-    _thumbnailsRecieved++;
-    
-    if (!_batchTimer)
-    {   
-        _batchTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(collectionUpdated:) userInfo:nil repeats:YES];
-    }
-    
     XPItemType type = XPItemTypeFromUTINSString(item.UTI);
     if (type != XPItemTypeUnknown)
     {
@@ -215,18 +204,8 @@
         NSImage *image = [[NSImage alloc] initWithCGImage:thumbnail size:size];
         
         [_thumbnails setObject:image forKey:item.name];
-    }
-    
-    //If all the thumbnails have been recieved, stop the timer.
-    if (_thumbnailsRecieved == _device.mediaFiles.count)
-    {
-        //Fire one more time
-        [_batchTimer fire];
         
-        //Stop the timer and release it
-        [_batchTimer invalidate];
-        _batchTimer = nil;
-        _thumbnailsRecieved = 0;
+        [[NSNotificationCenter defaultCenter] postNotificationName:XPItemWillReload object:nil userInfo:@{@"item": cameraItem}];
     }
 }
 

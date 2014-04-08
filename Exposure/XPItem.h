@@ -9,6 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 
+extern NSString *const XPItemWillReload;
+
+@protocol XPItem;
+
 typedef NS_ENUM(NSUInteger, XPItemType) {
     /**
      Unknown item
@@ -36,8 +40,6 @@ XPItemType XPItemTypeFromUTINSString(NSString *fileUTI);
  Finds the XPItemType of a URL
  */
 XPItemType XPItemTypeForPath(NSURL *url);
-
-@protocol XPItem;
 
 CGImageRef XPItemGetImageRef(id<XPItem> item, CGSize size);
 

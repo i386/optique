@@ -55,6 +55,7 @@
         _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:placeHolderText image:placeHolderImage];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumUpdated:) name:XPCollectionManagerDidUpdateCollection object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadItem:) name:XPItemWillReload object:nil];
     }
     
     return self;
@@ -63,6 +64,7 @@
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XPCollectionManagerDidUpdateCollection object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XPItemWillReload object:nil];
 }
 
 -(id<XPItemCollection>)visibleCollection
@@ -256,9 +258,26 @@
     }];
 }
 
+-(void)reloadItem:(NSNotification*)notification
+{
+    id<XPItem> item = (id<XPItem>)notification.userInfo[@"item"];
+    if (item)
+    {
+        NSUInteger itemIndex = [[_collection allItems] indexOfObject:item];
+        
+        if (itemIndex != NSNotFound)
+        {
+            [self performBlockOnMainThread:^{
+                [_gridView reloadCellsAtIndexes:[NSIndexSet indexSetWithIndex:itemIndex]];
+            }];
+        }
+    }
+}
+
 -(void)awakeFromNib
 {
     [XPExposureService collectionManager:_collectionManager itemCollectionViewController:self];
+    
     [_headingLine setBorderWidth:2];
     [_headingLine setBorderColor:[NSColor colorWithCalibratedRed:0.83 green:0.83 blue:0.83 alpha:1.00]];
     [_headingLine setBoxType:NSBoxCustom];

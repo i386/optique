@@ -22,6 +22,26 @@
     return self;
 }
 
+-(void)selectAll:(id)sender
+{
+    [super selectAll:sender];
+}
+
+-(void)deselectAll:(id)sender
+{
+    [super deselectAll:sender];
+}
+
+-(void)selectCellAtIndex:(NSUInteger)idx
+{
+    [super selectCellAtIndex:idx];
+}
+
+-(void)deselectCellAtIndex:(NSUInteger)idx
+{
+    [super deselectCellAtIndex:idx];
+}
+
 -(void)setIgnoreSizePreference:(BOOL)ignoreSizePreference
 {
     _ignoreSizePreference = ignoreSizePreference;

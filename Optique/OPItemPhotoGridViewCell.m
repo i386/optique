@@ -23,16 +23,16 @@
         self.badgeLayer = [OEGridLayer layer];
         self.badgeLayer.contents = (id)[[NSImage imageNamed:@"check"] CGImageRef];
         self.badgeLayer.contentsGravity = kCAGravityBottomRight;
-        self.badgeLayer.hidden = YES;
+//        self.badgeLayer.hidden = YES;
         
-        [self.selectionLayer addSublayer:self.selectedBadgeLayer];
+        [self.selectionLayer addSublayer:self.badgeLayer];
     }
     return self;
 }
 
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    self.badgeLayer.hidden = !selected;
+//    self.badgeLayer.hidden = !selected;
     [super setSelected:selected animated:animated];
 }
 
