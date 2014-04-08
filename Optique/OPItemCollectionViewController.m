@@ -264,8 +264,7 @@
     if (item)
     {
         NSUInteger itemIndex = [[_collection allItems] indexOfObject:item];
-        
-        if (itemIndex != NSNotFound)
+        if (itemIndex != NSNotFound && [_gridView.indexesForVisibleCells containsIndex:itemIndex])
         {
             [self performBlockOnMainThread:^{
                 [_gridView reloadCellsAtIndexes:[NSIndexSet indexSetWithIndex:itemIndex]];

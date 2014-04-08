@@ -97,4 +97,20 @@
     return _path != nil;
 }
 
+-(BOOL)isEqual:(id)object
+{
+    if (object == self)
+        return YES;
+    if (!object || ![object isKindOfClass:[self class]])
+        return NO;
+    
+    OPCameraItem *item = object;
+    return [self.cameraFile isEqual:item.cameraFile];
+}
+
+-(NSUInteger)hash
+{
+    return self.cameraFile.hash;
+}
+
 @end

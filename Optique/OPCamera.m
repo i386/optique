@@ -161,9 +161,17 @@
     {
         [file thumbnailIfAvailable];
         [file largeThumbnailIfAvailable];
+        
+        XPItemType type = XPItemTypeFromUTINSString(file.UTI);
+        if (type != XPItemTypeUnknown)
+        {
+            OPCameraItem *cameraItem = [[OPCameraItem alloc] initWithCameraFile:file collection:self type:type];
+            [_allItems addObject:cameraItem];
+        }
     }
     
     [_cameraService didAddCamera:self];
+    [_collectionManager collectionUpdated:self reload:NO];
 }
 
 -(void)device:(ICDevice *)device didEncounterError:(NSError *)error
