@@ -16,7 +16,6 @@
 @interface OPCamera()
 
 @property (strong) NSMutableOrderedSet *allItems;
-@property (strong) NSMutableDictionary *thumbnails;
 @property (weak) OPCameraService *cameraService;
 
 @end
@@ -29,7 +28,6 @@
     if (self)
     {
         _allItems = [[NSMutableOrderedSet alloc] init];
-        _thumbnails = [NSMutableDictionary dictionary];
         _collectionManager = collectionManager;
         _device = device;
         _device.delegate = self;
@@ -132,7 +130,12 @@
 
 -(NSImage *)thumbnailForName:(NSString *)name
 {
-    return [_thumbnails objectForKey:name];
+    NSURL *thumbnailURL = [self.thumnailCacheDirectory URLByAppendingPathComponent:name];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:thumbnailURL.path])
+    {
+        return [[NSImage alloc] initByReferencingURL:thumbnailURL];
+    }
+    return nil;
 }
 
 -(void)cameraDevice:(ICCameraDevice *)camera didRemoveItems:(NSArray *)items
@@ -141,11 +144,15 @@
     NSLog(@"%lu items were removed from camera '%@'", items.count, camera.name);
 #endif
     
-    //Remove the thumbnails from memory
     for (ICCameraFile *cameraFile in items)
     {
-        [_allItems removeObject:cameraFile];
-        [_thumbnails removeObjectForKey:cameraFile.name];
+        //Remove item
+        OPCameraItem *item = [[OPCameraItem alloc] initWithCameraFile:cameraFile collection:self type:XPItemTypeFromUTINSString(cameraFile.UTI)];
+        [_allItems removeObject:item];
+        
+        //Remove from cache
+        NSURL *thumbnailURL = [self.thumnailCacheDirectory URLByAppendingPathComponent:item.title];
+        [[NSFileManager defaultManager] removeItemAtURL:thumbnailURL error:nil];
     }
     
     [self.collectionManager collectionUpdated:self reload:NO];
@@ -208,10 +215,18 @@
             thumbnail = item.thumbnailIfAvailable;
         }
         
-        NSSize size = NSMakeSize(CGImageGetWidth(thumbnail), CGImageGetHeight(thumbnail));
-        NSImage *image = [[NSImage alloc] initWithCGImage:thumbnail size:size];
-        
-        [_thumbnails setObject:image forKey:item.name];
+        //Write thumbnail to disk if available. It SHOULD be. We did request it. If this doesn't happen, bugs in Apple code. Yay.
+        if (thumbnail)
+        {
+            NSURL *thumbnailURL = [self.thumnailCacheDirectory URLByAppendingPathComponent:item.name];
+            
+            CGImageDestinationRef thumbnailDestination = CGImageDestinationCreateWithURL((__bridge CFURLRef)(thumbnailURL), kUTTypeTIFF, 1, NULL);
+            if (thumbnailDestination)
+            {
+                CGImageDestinationAddImage(thumbnailDestination, thumbnail, NULL);
+                CGImageDestinationFinalize(thumbnailDestination);
+            }
+        }
         
         [[NSNotificationCenter defaultCenter] postNotificationName:XPItemWillReload object:nil userInfo:@{@"item": cameraItem}];
     }
@@ -234,6 +249,17 @@
         [fileManager createDirectoryAtURL:cacheDirectory withIntermediateDirectories:YES attributes:nil error:nil];
     }
     return cacheDirectory;
+}
+
+-(NSURL*)thumnailCacheDirectory
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *directory = [self.cacheDirectory URLByAppendingPathComponent:@"thumbnails" isDirectory:YES];
+    if (![fileManager fileExistsAtPath:[directory path]])
+    {
+        [fileManager createDirectoryAtURL:directory withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return directory;
 }
 
 -(void)removeCacheDirectory
