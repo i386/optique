@@ -38,6 +38,8 @@
 		0F1750E71828ACD30021853D /* OPNewsletterWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */; };
 		0F1750E81828ACD30021853D /* OPNewsletterWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1750E61828ACD30021853D /* OPNewsletterWindowController.xib */; };
 		0F1B4020180E970200C1CBF5 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F1B401F180E970200C1CBF5 /* search.png */; };
+		0F1C1EAC18F416B60078ACD4 /* OPRedEyeCorrectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C1EAB18F416B60078ACD4 /* OPRedEyeCorrectionOperation.m */; };
+		0F1C1EAF18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C1EAE18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.m */; };
 		0F1C22911878DAAB00A6878C /* OPNewAlbumPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C228F1878DAAB00A6878C /* OPNewAlbumPanelViewController.m */; };
 		0F1C22921878DAAB00A6878C /* OPNewAlbumPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1C22901878DAAB00A6878C /* OPNewAlbumPanelViewController.xib */; };
 		0F1C229B187937F400A6878C /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F1C2299187937F400A6878C /* down.png */; };
@@ -394,6 +396,11 @@
 		0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNewsletterWindowController.m; sourceTree = "<group>"; };
 		0F1750E61828ACD30021853D /* OPNewsletterWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNewsletterWindowController.xib; sourceTree = "<group>"; };
 		0F1B401F180E970200C1CBF5 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		0F1C1EA718F40DC40078ACD4 /* OPCameraThumnailCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCameraThumnailCache.h; sourceTree = "<group>"; };
+		0F1C1EAA18F416B60078ACD4 /* OPRedEyeCorrectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPRedEyeCorrectionOperation.h; sourceTree = "<group>"; };
+		0F1C1EAB18F416B60078ACD4 /* OPRedEyeCorrectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPRedEyeCorrectionOperation.m; sourceTree = "<group>"; };
+		0F1C1EAD18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAutoAdjustEnhanceOperation.h; sourceTree = "<group>"; };
+		0F1C1EAE18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAutoAdjustEnhanceOperation.m; sourceTree = "<group>"; };
 		0F1C228E1878DAAB00A6878C /* OPNewAlbumPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNewAlbumPanelViewController.h; sourceTree = "<group>"; };
 		0F1C228F1878DAAB00A6878C /* OPNewAlbumPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNewAlbumPanelViewController.m; sourceTree = "<group>"; };
 		0F1C22901878DAAB00A6878C /* OPNewAlbumPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNewAlbumPanelViewController.xib; sourceTree = "<group>"; };
@@ -849,6 +856,10 @@
 				0F14C873189CCB49001FA6B4 /* OPDarkroomEditOperation.h */,
 				0F14C878189CCFF4001FA6B4 /* OPRotateEditOperation.h */,
 				0F14C879189CCFF4001FA6B4 /* OPRotateEditOperation.m */,
+				0F1C1EAA18F416B60078ACD4 /* OPRedEyeCorrectionOperation.h */,
+				0F1C1EAB18F416B60078ACD4 /* OPRedEyeCorrectionOperation.m */,
+				0F1C1EAD18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.h */,
+				0F1C1EAE18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -1221,6 +1232,7 @@
 				0F3B558718C1B62000B68D2A /* Preference panel */,
 				0FC2ABC417895355009C7B02 /* OPCameraPlugin.h */,
 				0FC2ABC517895355009C7B02 /* OPCameraPlugin.m */,
+				0F1C1EA718F40DC40078ACD4 /* OPCameraThumnailCache.h */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -2103,12 +2115,14 @@
 				0F14C87C189CD372001FA6B4 /* NSImage+CGImage.m in Sources */,
 				0F14C885189DE425001FA6B4 /* OPDarkroomPreviewView.m in Sources */,
 				0F14C87B189CD31D001FA6B4 /* NSObject+PerformBlock.m in Sources */,
+				0F1C1EAF18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.m in Sources */,
 				0F2749A1189C92D7006C3763 /* OPDarkroomPreviewViewController.m in Sources */,
 				0F14C881189CE59A001FA6B4 /* CALayer+Rotate.m in Sources */,
 				0F2749A8189CB9B5006C3763 /* OPDarkroomEditorPanelViewController.m in Sources */,
 				0F14C874189CCB61001FA6B4 /* OPDarkroomEditManager.m in Sources */,
 				0F14C87A189CCFF4001FA6B4 /* OPRotateEditOperation.m in Sources */,
 				0F14C871189CCB1E001FA6B4 /* OPDarkroomPreviewLayer.m in Sources */,
+				0F1C1EAC18F416B60078ACD4 /* OPRedEyeCorrectionOperation.m in Sources */,
 				0F27499D189C8D02006C3763 /* OPDarkroomPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

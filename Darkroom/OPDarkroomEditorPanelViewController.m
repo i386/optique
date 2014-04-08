@@ -8,6 +8,8 @@
 
 #import "OPDarkroomEditorPanelViewController.h"
 #import "OPRotateEditOperation.h"
+#import "OPRedEyeCorrectionOperation.h"
+#import "OPAutoAdjustEnhanceOperation.h"
 #import <KBButton/KBButton.h>
 
 @interface OPDarkroomEditorPanelViewController ()
@@ -55,6 +57,18 @@
 - (IBAction)rotate:(id)sender
 {
     OPRotateEditOperation *operation = [[OPRotateEditOperation alloc] init];
+    [self addOperation:operation];
+}
+
+- (IBAction)fixRedEye:(id)sender
+{
+    OPRedEyeCorrectionOperation *operation = [[OPRedEyeCorrectionOperation alloc] init];
+    [self addOperation:operation];
+}
+
+- (IBAction)autoenhance:(id)sender
+{
+    OPAutoAdjustEnhanceOperation *operation = [[OPAutoAdjustEnhanceOperation alloc] init];
     [self addOperation:operation];
 }
 
