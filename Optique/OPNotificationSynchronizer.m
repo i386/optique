@@ -58,9 +58,6 @@
         {
             if (oldCount == 0)
             {
-#if DEBUG
-                NSLog(@"calling increment for %@", _incrementNotificationName);
-#endif
                 _incrementBlock();
             }
         }
@@ -80,9 +77,6 @@
         {
             if (_deincrementBlock)
             {
-#if DEBUG
-                NSLog(@"calling deincrement for %@", _deincrementNotificationName);
-#endif
                 _deincrementBlock();
             }
             else
