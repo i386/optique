@@ -11,7 +11,7 @@
 
 @interface OPPItemViewController : NSViewController <XPNavigationViewController, NSCollectionViewDelegate, WHSlideViewDelegate, XPSharingService, XPItemController, NSMenuDelegate>
 
-@property (assign) id<XPNavigationController> controller;
+@property (weak) id<XPNavigationController> controller;
 @property (weak) id<XPItem> item;
 @property (weak) IBOutlet NSMenu *contextMenu;
 @property (weak) IBOutlet OPSlideView *slideView;
