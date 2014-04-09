@@ -82,7 +82,7 @@ NSString *const OPNavigationControllerViewDidChange = @"OPNavigationControllerVi
     return nil;
 }
 
--(bool)isRootViewControllerVisible
+-(BOOL)isRootViewControllerVisible
 {
     return [self.rootViewController isEqual:_visibleViewController];
 }

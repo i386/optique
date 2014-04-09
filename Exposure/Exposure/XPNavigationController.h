@@ -12,6 +12,7 @@
 
 @property (strong, readonly) NSViewController *rootViewController;
 @property (strong, nonatomic, readonly) NSViewController *visibleViewController;
+@property (readonly, getter = isRootViewControllerVisible) BOOL rootViewControllerVisible;
 
 /** forward to new view **/
 -(void)pushViewController:(NSViewController *)viewController;
@@ -26,7 +27,5 @@
 - (NSArray *)popToRootViewControllerWithNoAnimation;
 
 - (NSViewController *)peekAtPreviousViewController;
-
-- (bool)isRootViewControllerVisible;
 
 @end

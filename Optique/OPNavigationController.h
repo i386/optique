@@ -14,23 +14,33 @@ extern NSString *const OPNavigationControllerViewDidChange;
 
 @property (strong, readonly) NSViewController *rootViewController;
 @property (strong, nonatomic, readonly) NSViewController *visibleViewController;
+@property (readonly, getter = isRootViewControllerVisible) BOOL rootViewControllerVisible;
 
 -initWithRootViewController:(NSViewController*)viewController;
 
-/** forward to new view **/
+/** 
+ push a new view on the stack
+ */
 -(void)pushViewController:(NSViewController *)viewController;
 
-/** back to previous view **/
+/** 
+ pop back to previous view
+ */
 - (NSArray *)popToPreviousViewController;
 
-/** jump back to the root view **/
+/** 
+ Jump back to the root view 
+ */
 - (NSArray *)popToRootViewController;
 
-/** jump back to the root view with no animation **/
+/** 
+ Jump back to the root view with no animation
+ */
 - (NSArray *)popToRootViewControllerWithNoAnimation;
 
+/**
+ The view controller behind the visible controller
+ */
 - (NSViewController *)peekAtPreviousViewController;
-
-- (bool)isRootViewControllerVisible;
 
 @end

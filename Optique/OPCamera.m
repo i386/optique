@@ -78,7 +78,7 @@
         if (type != XPItemTypeUnknown)
         {
             OPCameraItem *item = [[OPCameraItem alloc] initWithCameraFile:cameraFile collection:self type:type];
-            if ([cameraFile thumbnailIfAvailable] || [cameraFile largeThumbnailIfAvailable])
+            if ([cameraFile largeThumbnailIfAvailable])
             {
                 [newItems addObject:item];
             }
@@ -166,7 +166,6 @@
     
     for (ICCameraFile *file in self.device.orderedMediaFiles)
     {
-        [file thumbnailIfAvailable];
         [file largeThumbnailIfAvailable];
         
         XPItemType type = XPItemTypeFromUTINSString(file.UTI);
@@ -210,10 +209,6 @@
         [_allItems addObject:cameraItem];
         
         CGImageRef thumbnail = item.largeThumbnailIfAvailable;
-        if (!thumbnail)
-        {
-            thumbnail = item.thumbnailIfAvailable;
-        }
         
         //Write thumbnail to disk if available. It SHOULD be. We did request it. If this doesn't happen, bugs in Apple code. Yay.
         if (thumbnail)
