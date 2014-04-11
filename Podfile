@@ -10,7 +10,7 @@ target :Optique, :exclusive => false do
 end
 
 target :Exposure do
-  pod 'BlocksKit/Core', '~> 2.0.0'
+  pod 'BlocksKit/Core', '~> 2.2.2'
   pod 'KBButton', :git => 'git@github.com:i386/KBButton.git'
 end
 
@@ -18,5 +18,3 @@ target :Local do
   pod 'CDEvents', '~> 1.2.2'
 end
 
-target :Darkroom do
-end
