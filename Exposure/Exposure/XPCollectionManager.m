@@ -10,7 +10,6 @@
 #import <Exposure/Exposure.h>
 #import "NSLock+WithBlock.h"
 #import "NSNotificationCenter+Async.h"
-#import "XPItemsEnumerator.h"
 
 NSString *const XPCollectionManagerDidAddCollection = @"XPCollectionManagerDidAddAlbum";
 NSString *const XPCollectionManagerDidUpdateCollection = @"XPCollectionManagerDidUpdateAlbum";
@@ -38,12 +37,6 @@ NSString *const XPCollectionManagerDidDeleteCollection = @"XPCollectionManagerDi
     }
     return self;
 }
-
--(NSEnumerator *)allItems
-{
-    return [[XPItemsEnumerator alloc] initWithCollections:self.allCollections];
-}
-
 -(NSArray *)allCollections
 {
     return [_collectionLock withBlock:^id{
