@@ -19,4 +19,6 @@
 @property (nonatomic, retain) CALayer *selectionLayer;
 @property (nonatomic, retain) CALayer *badgeLayer;
 
+@property (nonatomic, assign) BOOL emphaisis;
+
 @end

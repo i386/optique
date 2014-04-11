@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 James Dumay. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "OPGridViewCell.h"
 #import "NSColor+Optique.h"
 #import "OPCollectionGridView.h"
@@ -39,8 +40,34 @@
         _selectionLayer.borderColor = [[NSColor optiqueSelectionBorderColor] CGColor];
         _selectionLayer.borderWidth = 5.0f;
         [self addSublayer:_selectionLayer];
+        
+        [self setEmphaisis:YES];
     }
     return self;
+}
+
+-(void)mouseEnteredAtPointInLayer:(NSPoint)point withEvent:(NSEvent *)theEvent
+{
+    [self setEmphaisis:!self.emphaisis];
+}
+
+-(void)setEmphaisis:(BOOL)emphaisis
+{
+    if (emphaisis)
+    {
+        [_imageLayer setFilters:@[]];
+    }
+    else
+    {
+        CIFilter *filter = [CIFilter filterWithName:@"CIPhotoEffectNoir"];
+        [filter setDefaults];
+        [_imageLayer setFilters:@[filter]];
+    }
+}
+
+-(BOOL)emphaisis
+{
+    return self.filters.count == 0;
 }
 
 -(void)layoutSublayers
