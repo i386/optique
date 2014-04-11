@@ -1,5 +1,5 @@
 PODS:
-  - BlocksKit/Core (2.0.0)
+  - BlocksKit/Core (2.2.2)
   - CDEvents (1.2.2)
   - CNBaseView (1.0.11)
   - KBButton (0.0.1)
@@ -10,7 +10,7 @@ PODS:
   - WHSlider (0.0.1)
 
 DEPENDENCIES:
-  - BlocksKit/Core (~> 2.0.0)
+  - BlocksKit/Core (~> 2.2.2)
   - CDEvents (~> 1.2.2)
   - CNBaseView (~> 1.0.11)
   - KBButton (from `git@github.com:i386/KBButton.git`)
@@ -31,14 +31,14 @@ EXTERNAL SOURCES:
     :path: ~/code/Slider
 
 SPEC CHECKSUMS:
-  BlocksKit: b29ee3f28ba06a09f5c64987314ce5b75b2c3962
+  BlocksKit: 125e4e69a62e3b85bacc5175737dae000b00b9fb
   CDEvents: 68319b2b32dd33f81e6f0dd34330ee47fa6f2d3f
   CNBaseView: 37956c9d903e37d50ef164b07a13688d95880fa5
   KBButton: 627facd1b7e7f484755107e62d2d85b20f429e6e
   KBTextField: b2dedfc5ada8ffc26f87aa00454da27a687f3ded
-  MASPreferences: 103fda1283c701dfed5503edbe24b1ab504ed6d9
+  MASPreferences: 2c2f30b38c3dfceb0d3b29132a13417706a5adac
   NSHash: 7e728a3e7fdff6828f3fce387049b1e0ca7fe8a0
   OEGridView: 10adfc6f57d3e486a066c89e2742ac16305b27be
   WHSlider: 873df3808aee476b280363a476e0adcc3201509f
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.31.1

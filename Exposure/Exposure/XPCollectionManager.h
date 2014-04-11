@@ -24,6 +24,11 @@ extern NSString *const XPCollectionManagerDidDeleteCollection;
  */
 @property (readonly, nonatomic) NSArray *allCollections;
 
+/**
+ All items across every collection
+ */
+@property (readonly, nonatomic) NSEnumerator *allItems;
+
 -initWithPath:(NSURL*)path;
 
 /** 
