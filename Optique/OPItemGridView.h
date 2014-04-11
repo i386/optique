@@ -15,6 +15,7 @@
 
 @property (weak) IBOutlet OPItemCollectionViewController *controller;
 @property (nonatomic, assign) BOOL isSelectionSticky;
+@property (assign) BOOL clickingBackgroundDeselectsAllCells;
 
 -(void)copy:(id)sender;
 

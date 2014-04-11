@@ -22,6 +22,7 @@
         self.rowSpacing = kGridViewRowSpacing;
         self.itemSize = CGSizeMake(280.0, 175.0);
         self.isSelectionSticky = NO;
+        self.clickingBackgroundDeselectsAllCells = YES;
         
         [self registerForDraggedTypes:@[NSFilenamesPboardType, XPItemPboardType]];
     }
@@ -75,7 +76,7 @@
             [self selectCellAtIndex:index];
         }
     }
-    else
+    else if (_clickingBackgroundDeselectsAllCells)
     {
         [self deselectAll:nil];
     }

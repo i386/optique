@@ -15,6 +15,13 @@
 
 @implementation OPCameraCollectionViewController
 
+
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.gridView.clickingBackgroundDeselectsAllCells = NO;
+}
+
 -(NSViewController *)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager *)collectionManager
 {
     return [[OPCameraItemCollectionViewController alloc] initWithIemCollection:collection collectionManager:collectionManager];
