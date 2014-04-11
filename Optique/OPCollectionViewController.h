@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "OPCollectionGridView.h"
+#import "OPItemGridView.h"
 
 @interface OPCollectionViewController : NSViewController <XPNavigationViewController, OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPCollectionViewController>
 
@@ -15,7 +16,7 @@
 @property (weak, readonly) XPCollectionManager *collectionManager;
 @property (weak) IBOutlet NSMenu *albumItemContextMenu;
 @property (weak) IBOutlet NSMenuItem *deleteAlbumMenuItem;
-@property (weak) IBOutlet OPCollectionGridView *gridView;
+@property (weak) IBOutlet OPItemGridView *gridView;
 @property (weak) IBOutlet NSTextField *titleLabel;
 @property (weak) IBOutlet NSBox *headingLine;
 @property (weak) IBOutlet NSMenuItem *renameAlbumMenuItem;
