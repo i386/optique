@@ -15,9 +15,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.layerUsesCoreImageFilters = YES;
+        self.layerUsesCoreImageFilters = NO;
     }
-    
     return self;
 }
 
