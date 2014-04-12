@@ -109,20 +109,20 @@
             }
             else
             {
-                NSLog(@"RotateOperation: Could not create image destination for rotated image %@", _item.url);
+                NSLog(@"OPDarkroomManager: Could not create image destination for rotated image %@", _item.url);
             }
             CGImageRelease(theImage);
         }
         else
         {
-            NSLog(@"RotateOperation: Could not create image %@", _item.url);
+            NSLog(@"OPDarkroomManager: Could not create image %@", _item.url);
         }
         
         CFRelease(sourceRef);
     }
     else
     {
-        NSLog(@"RotateOperation: Could not create image source %@", _item.url);
+        NSLog(@"OPDarkroomManager: Could not create image source %@", _item.url);
     }
 }
 
