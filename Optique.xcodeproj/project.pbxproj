@@ -26,7 +26,7 @@
 		0F08A8D71770443C00DFEA02 /* 329-layers1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D51770443C00DFEA02 /* 329-layers1.png */; };
 		0F08A8D81770443C00DFEA02 /* 329-layers1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */; };
 		0F14C871189CCB1E001FA6B4 /* OPDarkroomPreviewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C870189CCB1E001FA6B4 /* OPDarkroomPreviewLayer.m */; };
-		0F14C874189CCB61001FA6B4 /* OPDarkroomEditManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C86C189CCAE6001FA6B4 /* OPDarkroomEditManager.m */; };
+		0F14C874189CCB61001FA6B4 /* OPDarkroomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C86C189CCAE6001FA6B4 /* OPDarkroomManager.m */; };
 		0F14C87A189CCFF4001FA6B4 /* OPRotateEditOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C879189CCFF4001FA6B4 /* OPRotateEditOperation.m */; };
 		0F14C87B189CD31D001FA6B4 /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
 		0F14C87C189CD372001FA6B4 /* NSImage+CGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */; };
@@ -380,11 +380,11 @@
 		0F04A65F1737C7C300E53ED1 /* Finder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Finder-Prefix.pch"; sourceTree = "<group>"; };
 		0F08A8D51770443C00DFEA02 /* 329-layers1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "329-layers1.png"; sourceTree = "<group>"; };
 		0F08A8D61770443C00DFEA02 /* 329-layers1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "329-layers1@2x.png"; sourceTree = "<group>"; };
-		0F14C86B189CCAE6001FA6B4 /* OPDarkroomEditManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDarkroomEditManager.h; sourceTree = "<group>"; };
-		0F14C86C189CCAE6001FA6B4 /* OPDarkroomEditManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDarkroomEditManager.m; sourceTree = "<group>"; };
+		0F14C86B189CCAE6001FA6B4 /* OPDarkroomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDarkroomManager.h; sourceTree = "<group>"; };
+		0F14C86C189CCAE6001FA6B4 /* OPDarkroomManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDarkroomManager.m; sourceTree = "<group>"; };
 		0F14C86F189CCB1E001FA6B4 /* OPDarkroomPreviewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDarkroomPreviewLayer.h; sourceTree = "<group>"; };
 		0F14C870189CCB1E001FA6B4 /* OPDarkroomPreviewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDarkroomPreviewLayer.m; sourceTree = "<group>"; };
-		0F14C873189CCB49001FA6B4 /* OPDarkroomEditOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDarkroomEditOperation.h; sourceTree = "<group>"; };
+		0F14C873189CCB49001FA6B4 /* OPDarkroomOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDarkroomOperation.h; sourceTree = "<group>"; };
 		0F14C878189CCFF4001FA6B4 /* OPRotateEditOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPRotateEditOperation.h; sourceTree = "<group>"; };
 		0F14C879189CCFF4001FA6B4 /* OPRotateEditOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPRotateEditOperation.m; sourceTree = "<group>"; };
 		0F14C87F189CE59A001FA6B4 /* CALayer+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Rotate.h"; sourceTree = "<group>"; };
@@ -812,8 +812,8 @@
 		0F14C86E189CCAF0001FA6B4 /* Edit Manager */ = {
 			isa = PBXGroup;
 			children = (
-				0F14C86B189CCAE6001FA6B4 /* OPDarkroomEditManager.h */,
-				0F14C86C189CCAE6001FA6B4 /* OPDarkroomEditManager.m */,
+				0F14C86B189CCAE6001FA6B4 /* OPDarkroomManager.h */,
+				0F14C86C189CCAE6001FA6B4 /* OPDarkroomManager.m */,
 				0F14C877189CCFD3001FA6B4 /* Operations */,
 			);
 			name = "Edit Manager";
@@ -853,7 +853,7 @@
 		0F14C877189CCFD3001FA6B4 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				0F14C873189CCB49001FA6B4 /* OPDarkroomEditOperation.h */,
+				0F14C873189CCB49001FA6B4 /* OPDarkroomOperation.h */,
 				0F14C878189CCFF4001FA6B4 /* OPRotateEditOperation.h */,
 				0F14C879189CCFF4001FA6B4 /* OPRotateEditOperation.m */,
 				0F1C1EAA18F416B60078ACD4 /* OPRedEyeCorrectionOperation.h */,
@@ -2119,7 +2119,7 @@
 				0F2749A1189C92D7006C3763 /* OPDarkroomPreviewViewController.m in Sources */,
 				0F14C881189CE59A001FA6B4 /* CALayer+Rotate.m in Sources */,
 				0F2749A8189CB9B5006C3763 /* OPDarkroomEditorPanelViewController.m in Sources */,
-				0F14C874189CCB61001FA6B4 /* OPDarkroomEditManager.m in Sources */,
+				0F14C874189CCB61001FA6B4 /* OPDarkroomManager.m in Sources */,
 				0F14C87A189CCFF4001FA6B4 /* OPRotateEditOperation.m in Sources */,
 				0F14C871189CCB1E001FA6B4 /* OPDarkroomPreviewLayer.m in Sources */,
 				0F1C1EAC18F416B60078ACD4 /* OPRedEyeCorrectionOperation.m in Sources */,

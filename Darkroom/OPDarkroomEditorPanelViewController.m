@@ -15,7 +15,7 @@
 @interface OPDarkroomEditorPanelViewController ()
 
 @property (weak) id<XPItem> item;
-@property (weak) OPDarkroomEditManager *editManager;
+@property (weak) OPDarkroomManager *editManager;
 @property (weak) IBOutlet KBButton *saveButton;
 @property (weak) id<XPNavigationController> navigationController;
 @property (weak) id<XPSidebarController> sidebarController;
@@ -25,7 +25,7 @@
 @implementation OPDarkroomEditorPanelViewController
 
 
--(id)initWithEditManager:(OPDarkroomEditManager *)editManager item:(id<XPItem>)item navigationController:(id<XPNavigationController>)navigationController sidebarController:(id<XPSidebarController>)sidebarController
+-(id)initWithEditManager:(OPDarkroomManager *)editManager item:(id<XPItem>)item navigationController:(id<XPNavigationController>)navigationController sidebarController:(id<XPSidebarController>)sidebarController
 {
     NSBundle *thisBundle = [NSBundle bundleForClass:[OPDarkroomEditorPanelViewController class]];
     self = [super initWithNibName:@"OPDarkroomEditorPanelViewController" bundle:thisBundle];
@@ -46,7 +46,7 @@
 
 -(BOOL)isReadOnly
 {
-    return ![OPDarkroomEditManager IsWritableInNativeFormat:_item];
+    return ![OPDarkroomManager IsWritableInNativeFormat:_item];
 }
 
 -(BOOL)isSaveAvailable
@@ -79,7 +79,7 @@
     [_navigationController popToPreviousViewController];
 }
 
-- (void)addOperation:(id<OPDarkroomEditOperation>)operation
+- (void)addOperation:(id<OPDarkroomOperation>)operation
 {
     [self willChangeValueForKey:@"saveAvailable"];
     [_editManager addOperation:operation];

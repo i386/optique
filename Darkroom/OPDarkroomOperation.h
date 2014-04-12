@@ -9,14 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 
-@protocol OPDarkroomEditOperation <NSObject>
+@protocol OPDarkroomOperation <NSObject>
 
--(void)performPreviewOperation:(CALayer*)layer;
+-(void)performPreview:(CALayer*)layer forItem:(id<XPItem>)item;
 
-@optional
-
--(void)performWithItem:(id<XPItem>)item;
-
--(void)performOperationWithSourceRef:(CGImageSourceRef)sourceRef;
+-(CGImageRef)perform:(CGImageRef)imageRef forItem:(id<XPItem>)item;
 
 @end

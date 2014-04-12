@@ -15,11 +15,55 @@
 
 @implementation OPRotateEditOperation
 
--(void)performPreviewOperation:(CALayer *)layer
+-(void)performPreview:(CALayer *)layer forItem:(id<XPItem>)item
 {
     [layer rotateByDegrees:-90];
     [layer setBounds:layer.superlayer.bounds];
     [layer setFrame:layer.superlayer.frame];
+}
+
+-(CGImageRef)perform:(CGImageRef)imageRef forItem:(id<XPItem>)item
+{
+    CGFloat pixelsHeight = CGImageGetHeight(imageRef);
+    CGFloat pixelsWidth = CGImageGetWidth(imageRef);
+    
+    //Flip dimensions
+    CGRect dimensions = CGRectMake(0, 0, pixelsWidth, pixelsHeight);
+    
+    //Create bitmap context w/ the dimensions of the rotated image
+    CGContextRef context = CreateARGBBitmapContext(imageRef, CGSizeMake(pixelsHeight, pixelsWidth));
+    if (context)
+    {
+        //Rotate the image
+        CGAffineTransform tran = CGAffineTransformIdentity;
+        tran = CGAffineTransformMakeTranslation(0.0, pixelsWidth);
+        tran = CGAffineTransformRotate(tran, -(90 * M_PI / 180));
+        CGContextScaleCTM(context, -1.0, 1.0);
+        CGContextTranslateCTM(context, -pixelsHeight, 0.0);
+        CGContextConcatCTM(context, tran);
+        CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, pixelsHeight);
+        CGContextConcatCTM(context, flipVertical);
+        
+        //Draw the rotated image
+        CGContextDrawImage(context, dimensions, imageRef);
+        
+        //Get rotated image from context
+        CGImageRef rotatedImage = CGBitmapContextCreateImage(context);
+        if (rotatedImage)
+        {
+            return rotatedImage;
+        }
+        else
+        {
+            NSLog(@"RotateOperation: Could not create bitmap for rotated image %@", item.url);
+            return nil;
+        }
+    }
+    else
+    {
+        NSLog(@"RotateOperation: Could not create bitmap context %@", item.url);
+        return nil;
+    }
 }
 
 -(void)performWithItem:(id<XPItem>)item

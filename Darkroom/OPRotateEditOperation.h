@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OPDarkroomEditOperation.h"
+#import "OPDarkroomOperation.h"
 
-@interface OPRotateEditOperation : NSObject<OPDarkroomEditOperation>
+@interface OPRotateEditOperation : NSObject<OPDarkroomOperation>
 
 @end

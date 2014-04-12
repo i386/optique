@@ -7,13 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "OPDarkroomEditManager.h"
+#import "OPDarkroomManager.h"
 
 @interface OPDarkroomEditorPanelViewController : NSViewController
 
 @property (readonly, nonatomic, getter = isReadOnly) BOOL readOnly;
 @property (readonly, nonatomic, getter = isSaveAvailable) BOOL saveAvailable;
 
--initWithEditManager:(OPDarkroomEditManager*)editManager item:(id<XPItem>)item navigationController:(id<XPNavigationController>)navigationController sidebarController:(id<XPSidebarController>)sidebarController;
+-initWithEditManager:(OPDarkroomManager*)editManager item:(id<XPItem>)item navigationController:(id<XPNavigationController>)navigationController sidebarController:(id<XPSidebarController>)sidebarController;
 
 @end

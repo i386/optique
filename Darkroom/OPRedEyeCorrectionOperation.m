@@ -11,10 +11,32 @@
 
 @implementation OPRedEyeCorrectionOperation
 
--(void)performPreviewOperation:(CALayer*)layer
+-(void)performPreview:(CALayer *)layer forItem:(id<XPItem>)item
 {
-    __block CIImage *ciImage = [[CIImage alloc] initWithCGImage:(__bridge CGImageRef)(layer.contents)];
-    NSArray* adjustments = [ciImage autoAdjustmentFiltersWithOptions:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:kCIImageAutoAdjustRedEye]];
+    CGImageRef imageRef = (__bridge CGImageRef)layer.contents;
+    layer.contents = (__bridge id)[self perform:imageRef];
+}
+
+-(CGImageRef)perform:(CGImageRef)imageRef forItem:(id<XPItem>)item
+{
+    return [self perform:imageRef];
+}
+
+-(CGImageRef)perform:(CGImageRef)imgRef
+{
+    __block CIImage *ciImage = [[CIImage alloc] initWithCGImage:imgRef];
+    
+    NSMutableDictionary *options = [NSMutableDictionary dictionaryWithObjectsAndKeys:CIDetectorAccuracyHigh, CIDetectorAccuracy, nil];
+    
+    CIDetector *faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:options];
+    
+    NSArray *features = [faceDetector featuresInImage:ciImage options:nil];
+    
+    NSDictionary *adjustmentOptions = @{kCIImageAutoAdjustEnhance: [NSNumber numberWithBool:NO],
+                                        kCIImageAutoAdjustRedEye: [NSNumber numberWithBool:YES],
+                                        kCIImageAutoAdjustFeatures: features};
+    
+    NSArray* adjustments = [ciImage autoAdjustmentFiltersWithOptions:adjustmentOptions];
     
     [adjustments bk_each:^(CIFilter *filter) {
         [filter setValue:ciImage forKey:@"inputImage"];
@@ -22,8 +44,7 @@
     }];
     
     CIContext *context = [[NSGraphicsContext currentContext] CIContext];
-    CGImageRef img = [context createCGImage:ciImage fromRect:[ciImage extent]];
-    layer.contents = (__bridge id)(img);
+    return [context createCGImage:ciImage fromRect:[ciImage extent]];
 }
 
 @end

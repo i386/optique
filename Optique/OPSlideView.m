@@ -27,4 +27,16 @@
     }
 }
 
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+}
+
+-(void)magnifyWithEvent:(NSEvent *)event
+{
+    NSLog(@"%@", [NSString stringWithFormat:@"Magnification value is %f", [event magnification]+1.0]);
+    self.visibleLayer.contentsScale = [event magnification] + 1.0;
+    [self.visibleLayer needsDisplay];
+}
+
 @end

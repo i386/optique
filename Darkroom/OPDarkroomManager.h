@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OPDarkroomEditOperation.h"
+#import "OPDarkroomOperation.h"
 
-@interface OPDarkroomEditManager : NSObject
+@interface OPDarkroomManager : NSObject
 
 +(BOOL)IsWritableInNativeFormat:(id<XPItem>)item;
 
@@ -17,7 +17,7 @@
 
 -initWithItem:(id<XPItem>)item previewLayer:(CALayer*)layer;
 
--(void)addOperation:(id<OPDarkroomEditOperation>)operation;
+-(void)addOperation:(id<OPDarkroomOperation>)operation;
 
 -(void)commit;
 

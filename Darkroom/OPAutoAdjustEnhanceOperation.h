@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OPDarkroomEditOperation.h"
+#import "OPDarkroomOperation.h"
 
-@interface OPAutoAdjustEnhanceOperation : NSObject<OPDarkroomEditOperation>
+@interface OPAutoAdjustEnhanceOperation : NSObject<OPDarkroomOperation>
 
 @end

@@ -10,10 +10,20 @@
 
 @implementation OPAutoAdjustEnhanceOperation
 
--(void)performPreviewOperation:(CALayer*)layer
+-(void)performPreview:(CALayer *)layer forItem:(id<XPItem>)item
 {
-    __block CIImage *ciImage = [[CIImage alloc] initWithCGImage:(__bridge CGImageRef)(layer.contents)];
-    NSArray* adjustments = [ciImage autoAdjustmentFiltersWithOptions:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:kCIImageAutoAdjustEnhance]];
+    CGImageRef imageRef = (__bridge CGImageRef)layer.contents;
+    layer.contents = (__bridge id)[self perform:imageRef forItem:item];
+}
+
+-(CGImageRef)perform:(CGImageRef)imgRef forItem:(id<XPItem>)item
+{
+    __block CIImage *ciImage = [[CIImage alloc] initWithCGImage:imgRef];
+    
+    NSDictionary *adjustmentOptions = @{kCIImageAutoAdjustEnhance: [NSNumber numberWithBool:YES],
+                                        kCIImageAutoAdjustRedEye: [NSNumber numberWithBool:YES]};
+    
+    NSArray* adjustments = [ciImage autoAdjustmentFiltersWithOptions:adjustmentOptions];
     
     [adjustments bk_each:^(CIFilter *filter) {
         [filter setValue:ciImage forKey:@"inputImage"];
@@ -21,8 +31,7 @@
     }];
     
     CIContext *context = [[NSGraphicsContext currentContext] CIContext];
-    CGImageRef img = [context createCGImage:ciImage fromRect:[ciImage extent]];
-    layer.contents = (__bridge id)(img);
+    return [context createCGImage:ciImage fromRect:[ciImage extent]];
 }
 
 @end
