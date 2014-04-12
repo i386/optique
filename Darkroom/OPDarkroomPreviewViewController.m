@@ -17,14 +17,14 @@
 @interface OPDarkroomPreviewViewController ()
 
 @property (weak) id<XPItem> item;
-@property (strong) OPDarkroomPreviewLayer *previewLayer;
+@property (strong) CALayer *previewLayer;
 @property (weak) id<XPSidebarController> sidebarController;
 
 @end
 
 @implementation OPDarkroomPreviewViewController
 
-- (id)initWithItem:(id<XPItem>)item sidebarController:(id<XPSidebarController>)sidebarController previewLayer:(OPDarkroomPreviewLayer*)layer
+- (id)initWithItem:(id<XPItem>)item sidebarController:(id<XPSidebarController>)sidebarController previewLayer:(CALayer*)layer
 {
     NSBundle *thisBundle = [NSBundle bundleForClass:[OPDarkroomPreviewViewController class]];
     self = [super initWithNibName:@"OPDarkroomPreviewViewController" bundle:thisBundle];
@@ -45,7 +45,6 @@
     view.previewLayer = _previewLayer;
     view.item = _item;
 }
-
 
 -(void)removedView
 {

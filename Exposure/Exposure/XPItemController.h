@@ -15,4 +15,6 @@
 
 -(id<XPItem>)item;
 
+-(CALayer*)imageLayer;
+
 @end

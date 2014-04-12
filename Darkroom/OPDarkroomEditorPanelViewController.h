@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "OPDarkroomManager.h"
 
-@interface OPDarkroomEditorPanelViewController : NSViewController
+@interface OPDarkroomEditorPanelViewController : NSViewController<XPSidebar>
 
 @property (readonly, nonatomic, getter = isReadOnly) BOOL readOnly;
 @property (readonly, nonatomic, getter = isSaveAvailable) BOOL saveAvailable;

@@ -57,11 +57,9 @@
         id<XPItem> item = [controller item];
         if ([item type] == XPItemTypePhoto)
         {
-            OPDarkroomPreviewLayer *layer = [[OPDarkroomPreviewLayer alloc] init];
+            _editManager = [[OPDarkroomManager alloc] initWithItem:item previewLayer:[controller imageLayer]];
             
-            _editManager = [[OPDarkroomManager alloc] initWithItem:item previewLayer:layer];
-            
-            _darkroomPreviewViewController = [[OPDarkroomPreviewViewController alloc] initWithItem:item sidebarController:_sidebarController previewLayer:layer];
+            _darkroomPreviewViewController = [[OPDarkroomPreviewViewController alloc] initWithItem:item sidebarController:_sidebarController previewLayer:[controller imageLayer]];
             _darkroomEditorPanelController = [[OPDarkroomEditorPanelViewController alloc] initWithEditManager:_editManager item:item navigationController:_navigationController sidebarController:_sidebarController];
             
             [_navigationController pushViewController:_darkroomPreviewViewController];

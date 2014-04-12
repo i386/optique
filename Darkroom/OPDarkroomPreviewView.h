@@ -12,7 +12,7 @@
 @interface OPDarkroomPreviewView : NSView
 
 @property (weak, nonatomic) id<XPItem> item;
-@property (strong, nonatomic) OPDarkroomPreviewLayer *previewLayer;
+@property (strong, nonatomic) CALayer *previewLayer;
 
 @end
 

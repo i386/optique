@@ -7,10 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "OPDarkroomPreviewLayer.h"
 
 @interface OPDarkroomPreviewViewController : NSViewController<XPNavigationViewController>
 
--initWithItem:(id<XPItem>)item sidebarController:(id<XPSidebarController>)sidebarController previewLayer:(OPDarkroomPreviewLayer*)layer;
+-initWithItem:(id<XPItem>)item sidebarController:(id<XPSidebarController>)sidebarController previewLayer:(CALayer*)layer;
 
 @end

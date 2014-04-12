@@ -133,7 +133,7 @@
 
         [_rightSplitView addSubview:viewController.view];
         
-        if ([viewController conformsToProtocol:@protocol(XPSidebar)])
+        if ([viewController conformsToProtocol:@protocol(XPSidebar)] && [_sidebarViewController respondsToSelector:@selector(activate)])
         {
             [((id<XPSidebar>)viewController) activate];
         }
@@ -143,6 +143,12 @@
 -(void)hideSidebar
 {
     [_rightSplitView setHidden:YES];
+    
+    if ([_sidebarViewController conformsToProtocol:@protocol(XPSidebar)] && [_sidebarViewController respondsToSelector:@selector(closed)])
+    {
+        [((id<XPSidebar>)_sidebarViewController) closed];
+    }
+    
     _leftSplitView.frame = NSMakeRect(0, 0, self.window.frame.size.width, self.window.frame.size.height);
     _sidebarViewController = nil;
     [[_rightSplitView subviews] bk_each:^(id sender) {

@@ -21,6 +21,10 @@
 
 @protocol XPSidebar
 
+@optional
+
 -(void)activate;
+
+-(void)closed;
 
 @end

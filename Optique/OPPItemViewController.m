@@ -67,6 +67,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XPCollectionManagerDidUpdateCollection object:nil];
 }
 
+-(CALayer *)imageLayer
+{
+    return _slideView.visibleLayer;
+}
+
 -(NSString *)viewTitle
 {
     return _item.title;
