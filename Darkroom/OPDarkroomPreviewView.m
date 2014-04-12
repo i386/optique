@@ -22,12 +22,15 @@
 {
     _item = item;
     
-    [self performBlockInBackground:^{
-        CGImageRef imageRef = XPItemGetImageRef(_item, self.bounds.size);
-        [self performBlockOnMainThread:^{
-            _previewLayer.contents = (__bridge id)(imageRef);
+    if (_item)
+    {
+        [self performBlockInBackground:^{
+            CGImageRef imageRef = XPItemGetImageRef(_item, self.bounds.size);
+            [self performBlockOnMainThread:^{
+                _previewLayer.contents = (__bridge id)(imageRef);
+            }];
         }];
-    }];
+    }
 }
 
 -(void)setPreviewLayer:(OPDarkroomPreviewLayer *)previewLayer
@@ -66,10 +69,13 @@
     _previewLayer.backgroundColor = backgroundColor;
     _previewLayer.borderWidth = 10.0;
     
-    CGImageRef imageRef = XPItemGetImageRef(_item, self.bounds.size);
-    [self performBlockOnMainThread:^{
-        _previewLayer.contents = (__bridge id)(imageRef);
-    }];
+    if (_item)
+    {
+        CGImageRef imageRef = XPItemGetImageRef(_item, self.bounds.size);
+        [self performBlockOnMainThread:^{
+            _previewLayer.contents = (__bridge id)(imageRef);
+        }];
+    }
 }
 
 @end

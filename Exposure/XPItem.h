@@ -41,6 +41,9 @@ XPItemType XPItemTypeFromUTINSString(NSString *fileUTI);
  */
 XPItemType XPItemTypeForPath(NSURL *url);
 
+/**
+ Creates a CGImageRef for a XPItem
+ */
 CGImageRef XPItemGetImageRef(id<XPItem> item, CGSize size);
 
 @protocol XPItemCollection;

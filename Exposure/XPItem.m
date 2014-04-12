@@ -39,6 +39,18 @@ CGImageRef XPItemGetImageRef(id<XPItem> item, CGSize size)
 {
     CGImageRef imageRef = NULL;
     
+    if (!item)
+    {
+        NSLog(@"XPItemGetImageRef: Item %@ was nil", item);
+        return nil;
+    }
+    
+    if (!item.url)
+    {
+        NSLog(@"XPItemGetImageRef: Item url %@ was nil", item);
+        return nil;
+    }
+    
     CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)item.url, NULL);
     if (imageSource != nil)
     {
