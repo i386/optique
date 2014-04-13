@@ -424,7 +424,6 @@
 		0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNewsletterWindowController.m; sourceTree = "<group>"; };
 		0F1750E61828ACD30021853D /* OPNewsletterWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNewsletterWindowController.xib; sourceTree = "<group>"; };
 		0F1B401F180E970200C1CBF5 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
-		0F1C1EA718F40DC40078ACD4 /* OPCameraThumnailCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCameraThumnailCache.h; sourceTree = "<group>"; };
 		0F1C1EAA18F416B60078ACD4 /* OPRedEyeCorrectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPRedEyeCorrectionOperation.h; sourceTree = "<group>"; };
 		0F1C1EAB18F416B60078ACD4 /* OPRedEyeCorrectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPRedEyeCorrectionOperation.m; sourceTree = "<group>"; };
 		0F1C1EAD18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAutoAdjustEnhanceOperation.h; sourceTree = "<group>"; };
@@ -1361,7 +1360,6 @@
 				0F3B558718C1B62000B68D2A /* Preference panel */,
 				0FC2ABC417895355009C7B02 /* OPCameraPlugin.h */,
 				0FC2ABC517895355009C7B02 /* OPCameraPlugin.m */,
-				0F1C1EA718F40DC40078ACD4 /* OPCameraThumnailCache.h */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
