@@ -8,11 +8,13 @@
 
 #import "OPDarkroomManager.h"
 #import "NSURL+Renamer.h"
+#import "NSObject+PerformBlock.h"
 
 @interface OPDarkroomManager ()
 
 @property (weak) id<XPItem> item;
-@property (strong) NSMutableArray *operations;
+@property (strong) NSMutableArray *optimizers;
+@property (strong, nonatomic) NSMutableArray *operations;
 @property (strong) CALayer *layer;
 
 @end
@@ -68,6 +70,20 @@
     return _operations.count;
 }
 
+-(NSArray *)operations
+{
+    __block NSArray *ops = _operations;
+    [_operations bk_each:^(id<OPDarkroomOperationOptimizer> obj) {
+        ops = [obj optimize:ops];
+    }];
+    return ops;
+}
+
+-(void)addOptimizer:(id<OPDarkroomOperationOptimizer>)optimizer
+{
+    [_optimizers addObject:optimizer];
+}
+
 -(void)addOperation:(id<OPDarkroomOperation>)operation
 {
     [_operations addObject:operation];
@@ -88,7 +104,7 @@
         if (theImage)
         {
             //Perform operations
-            [_operations bk_each:^(id<OPDarkroomOperation> operation) {
+            [self.operations bk_each:^(id<OPDarkroomOperation> operation) {
                 theImage = [operation perform:theImage forItem:_item];
             }];
             

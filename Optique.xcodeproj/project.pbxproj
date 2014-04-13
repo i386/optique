@@ -100,6 +100,7 @@
 		0F57A29818B9AC15004A1C55 /* XPExposureService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F57A29618B9AC15004A1C55 /* XPExposureService.m */; };
 		0F57A29B18B9AC1C004A1C55 /* XPDebugView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F57A29918B9AC1C004A1C55 /* XPDebugView.h */; };
 		0F57A29C18B9AC1C004A1C55 /* XPDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F57A29A18B9AC1C004A1C55 /* XPDebugView.m */; };
+		0F5B9BED18FA2FC600AD773B /* OPImageOrientationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9BEC18FA2FC600AD773B /* OPImageOrientationTest.m */; };
 		0F5C40AA181CC1DF00F265FC /* OPDropDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */; };
 		0F628B76187A0E4C0026F551 /* OPApplicationMode.h in Resources */ = {isa = PBXBuildFile; fileRef = 0F628B75187A0E4C0026F551 /* OPApplicationMode.h */; };
 		0F628B78187A0E770026F551 /* OPApplicationMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F628B77187A0E770026F551 /* OPApplicationMode.m */; };
@@ -162,6 +163,29 @@
 		0FC0AD8818779E8E009C619F /* OPHistoryPeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0AD8618779E8E009C619F /* OPHistoryPeekViewController.m */; };
 		0FC0AD8918779E8E009C619F /* OPHistoryPeekViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0AD8718779E8E009C619F /* OPHistoryPeekViewController.xib */; };
 		0FC0ADEB1877CE73009C619F /* XPItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC0ADEA1877CE73009C619F /* XPItem.h */; };
+		0FC271F718FA2361005C56D8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC271E218FA22ED005C56D8 /* XCTest.framework */; };
+		0FC271FD18FA2361005C56D8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FC271FB18FA2361005C56D8 /* InfoPlist.strings */; };
+		0FC2721A18FA2383005C56D8 /* Landscape_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2720718FA2383005C56D8 /* Landscape_1.jpg */; };
+		0FC2721B18FA2383005C56D8 /* Landscape_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2720818FA2383005C56D8 /* Landscape_2.jpg */; };
+		0FC2721C18FA2383005C56D8 /* Landscape_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2720918FA2383005C56D8 /* Landscape_3.jpg */; };
+		0FC2721D18FA2383005C56D8 /* Landscape_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2720A18FA2383005C56D8 /* Landscape_4.jpg */; };
+		0FC2721E18FA2383005C56D8 /* Landscape_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2720B18FA2383005C56D8 /* Landscape_5.jpg */; };
+		0FC2721F18FA2383005C56D8 /* Landscape_6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2720C18FA2383005C56D8 /* Landscape_6.jpg */; };
+		0FC2722018FA2383005C56D8 /* Landscape_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2720D18FA2383005C56D8 /* Landscape_7.jpg */; };
+		0FC2722118FA2383005C56D8 /* Landscape_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2720E18FA2383005C56D8 /* Landscape_8.jpg */; };
+		0FC2722218FA2383005C56D8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2720F18FA2383005C56D8 /* LICENSE */; };
+		0FC2722318FA2383005C56D8 /* Portrait_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2721018FA2383005C56D8 /* Portrait_1.jpg */; };
+		0FC2722418FA2383005C56D8 /* Portrait_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2721118FA2383005C56D8 /* Portrait_2.jpg */; };
+		0FC2722518FA2383005C56D8 /* Portrait_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2721218FA2383005C56D8 /* Portrait_3.jpg */; };
+		0FC2722618FA2383005C56D8 /* Portrait_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2721318FA2383005C56D8 /* Portrait_4.jpg */; };
+		0FC2722718FA2383005C56D8 /* Portrait_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2721418FA2383005C56D8 /* Portrait_5.jpg */; };
+		0FC2722818FA2383005C56D8 /* Portrait_6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2721518FA2383005C56D8 /* Portrait_6.jpg */; };
+		0FC2722918FA2383005C56D8 /* Portrait_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2721618FA2383005C56D8 /* Portrait_7.jpg */; };
+		0FC2722A18FA2383005C56D8 /* Portrait_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2721718FA2383005C56D8 /* Portrait_8.jpg */; };
+		0FC2722B18FA2383005C56D8 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2721818FA2383005C56D8 /* README.markdown */; };
+		0FC2722C18FA2383005C56D8 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2721918FA2383005C56D8 /* VERSION */; };
+		0FC2722E18FA2631005C56D8 /* OPImageOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2722D18FA2631005C56D8 /* OPImageOrientation.m */; };
+		0FC2722F18FA2631005C56D8 /* OPImageOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2722D18FA2631005C56D8 /* OPImageOrientation.m */; };
 		0FC2ABB6178952F7009C7B02 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0FC2ABBC178952F7009C7B02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2ABBA178952F7009C7B02 /* InfoPlist.strings */; };
 		0FC2ABC617895355009C7B02 /* OPCameraPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2ABC517895355009C7B02 /* OPCameraPlugin.m */; };
@@ -298,6 +322,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0F04A62B1737C70F00E53ED1;
 			remoteInfo = Exposure;
+		};
+		0FC2720118FA2361005C56D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F9C80A816F891C700B2B6D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F274989189C8C9E006C3763;
+			remoteInfo = Darkroom;
 		};
 		0FC2ABC717895376009C7B02 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -475,6 +506,7 @@
 		0F57A29618B9AC15004A1C55 /* XPExposureService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPExposureService.m; path = Exposure/XPExposureService.m; sourceTree = "<group>"; };
 		0F57A29918B9AC1C004A1C55 /* XPDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPDebugView.h; path = Exposure/Exposure/XPDebugView.h; sourceTree = SOURCE_ROOT; };
 		0F57A29A18B9AC1C004A1C55 /* XPDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPDebugView.m; path = Exposure/Exposure/XPDebugView.m; sourceTree = SOURCE_ROOT; };
+		0F5B9BEC18FA2FC600AD773B /* OPImageOrientationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageOrientationTest.m; sourceTree = "<group>"; };
 		0F5C40A8181CC1DF00F265FC /* OPDropDownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDropDownButton.h; sourceTree = "<group>"; };
 		0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDropDownButton.m; sourceTree = "<group>"; };
 		0F628B75187A0E4C0026F551 /* OPApplicationMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPApplicationMode.h; sourceTree = "<group>"; };
@@ -569,6 +601,33 @@
 		0FC0AD8618779E8E009C619F /* OPHistoryPeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPHistoryPeekViewController.m; sourceTree = "<group>"; };
 		0FC0AD8718779E8E009C619F /* OPHistoryPeekViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPHistoryPeekViewController.xib; sourceTree = "<group>"; };
 		0FC0ADEA1877CE73009C619F /* XPItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPItem.h; sourceTree = "<group>"; };
+		0FC271DB18FA06B2005C56D8 /* OPDarkroomOperationOptimizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDarkroomOperationOptimizer.h; sourceTree = "<group>"; };
+		0FC271DC18FA1447005C56D8 /* OPImageOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImageOrientation.h; sourceTree = "<group>"; };
+		0FC271E218FA22ED005C56D8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0FC271F618FA2361005C56D8 /* Darkroom Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Darkroom Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FC271FA18FA2361005C56D8 /* Darkroom Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Darkroom Tests-Info.plist"; sourceTree = "<group>"; };
+		0FC271FC18FA2361005C56D8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0FC2720018FA2361005C56D8 /* Darkroom Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Darkroom Tests-Prefix.pch"; sourceTree = "<group>"; };
+		0FC2720718FA2383005C56D8 /* Landscape_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landscape_1.jpg; sourceTree = "<group>"; };
+		0FC2720818FA2383005C56D8 /* Landscape_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landscape_2.jpg; sourceTree = "<group>"; };
+		0FC2720918FA2383005C56D8 /* Landscape_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landscape_3.jpg; sourceTree = "<group>"; };
+		0FC2720A18FA2383005C56D8 /* Landscape_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landscape_4.jpg; sourceTree = "<group>"; };
+		0FC2720B18FA2383005C56D8 /* Landscape_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landscape_5.jpg; sourceTree = "<group>"; };
+		0FC2720C18FA2383005C56D8 /* Landscape_6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landscape_6.jpg; sourceTree = "<group>"; };
+		0FC2720D18FA2383005C56D8 /* Landscape_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landscape_7.jpg; sourceTree = "<group>"; };
+		0FC2720E18FA2383005C56D8 /* Landscape_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landscape_8.jpg; sourceTree = "<group>"; };
+		0FC2720F18FA2383005C56D8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		0FC2721018FA2383005C56D8 /* Portrait_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait_1.jpg; sourceTree = "<group>"; };
+		0FC2721118FA2383005C56D8 /* Portrait_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait_2.jpg; sourceTree = "<group>"; };
+		0FC2721218FA2383005C56D8 /* Portrait_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait_3.jpg; sourceTree = "<group>"; };
+		0FC2721318FA2383005C56D8 /* Portrait_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait_4.jpg; sourceTree = "<group>"; };
+		0FC2721418FA2383005C56D8 /* Portrait_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait_5.jpg; sourceTree = "<group>"; };
+		0FC2721518FA2383005C56D8 /* Portrait_6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait_6.jpg; sourceTree = "<group>"; };
+		0FC2721618FA2383005C56D8 /* Portrait_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait_7.jpg; sourceTree = "<group>"; };
+		0FC2721718FA2383005C56D8 /* Portrait_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait_8.jpg; sourceTree = "<group>"; };
+		0FC2721818FA2383005C56D8 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		0FC2721918FA2383005C56D8 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
+		0FC2722D18FA2631005C56D8 /* OPImageOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageOrientation.m; sourceTree = "<group>"; };
 		0FC2ABB5178952F7009C7B02 /* Camera.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Camera.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC2ABB9178952F7009C7B02 /* Camera-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Camera-Info.plist"; sourceTree = "<group>"; };
 		0FC2ABBB178952F7009C7B02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -709,6 +768,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0FC271F318FA2361005C56D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FC271F718FA2361005C56D8 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0FC2ABB2178952F7009C7B02 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -841,6 +908,7 @@
 			isa = PBXGroup;
 			children = (
 				0F14C873189CCB49001FA6B4 /* OPDarkroomOperation.h */,
+				0FC271DB18FA06B2005C56D8 /* OPDarkroomOperationOptimizer.h */,
 				0FC271D818F98172005C56D8 /* Rotate */,
 				0FC271D918F9817A005C56D8 /* RedEye correction */,
 				0FC271DA18F98197005C56D8 /* Auto enhance */,
@@ -890,6 +958,8 @@
 			isa = PBXGroup;
 			children = (
 				0F27498D189C8C9E006C3763 /* Supporting Files */,
+				0FC271DC18FA1447005C56D8 /* OPImageOrientation.h */,
+				0FC2722D18FA2631005C56D8 /* OPImageOrientation.m */,
 				0F27499B189C8D02006C3763 /* OPDarkroomPlugin.h */,
 				0F27499C189C8D02006C3763 /* OPDarkroomPlugin.m */,
 				0F14C875189CCE59001FA6B4 /* Darkroom Preview */,
@@ -1083,6 +1153,7 @@
 				0FC2ABB5178952F7009C7B02 /* Camera.bundle */,
 				0F905941180F43BF000D4A53 /* Local.bundle */,
 				0F27498A189C8C9E006C3763 /* Darkroom.bundle */,
+				0FC271F618FA2361005C56D8 /* Darkroom Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1106,6 +1177,7 @@
 				0F368A6B170531B500411503 /* Quartz.framework */,
 				0FE3B2611702F25500FC0D6C /* QuartzCore.framework */,
 				0F905942180F43BF000D4A53 /* CoreFoundation.framework */,
+				0FC271E218FA22ED005C56D8 /* XCTest.framework */,
 				0F04A5C91737C43800E53ED1 /* Other Frameworks */,
 				938A6A86581545989549982D /* libPods-Optique.a */,
 				96BF5E4871694D2D83796B64 /* libPods-Local.a */,
@@ -1233,6 +1305,52 @@
 			name = "Auto enhance";
 			sourceTree = "<group>";
 		};
+		0FC271F818FA2361005C56D8 /* Darkroom Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0FC2720618FA2383005C56D8 /* exif-orientation-examples */,
+				0FC271F918FA2361005C56D8 /* Supporting Files */,
+				0F5B9BEC18FA2FC600AD773B /* OPImageOrientationTest.m */,
+			);
+			path = "Darkroom Tests";
+			sourceTree = "<group>";
+		};
+		0FC271F918FA2361005C56D8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0FC271FA18FA2361005C56D8 /* Darkroom Tests-Info.plist */,
+				0FC271FB18FA2361005C56D8 /* InfoPlist.strings */,
+				0FC2720018FA2361005C56D8 /* Darkroom Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0FC2720618FA2383005C56D8 /* exif-orientation-examples */ = {
+			isa = PBXGroup;
+			children = (
+				0FC2720718FA2383005C56D8 /* Landscape_1.jpg */,
+				0FC2720818FA2383005C56D8 /* Landscape_2.jpg */,
+				0FC2720918FA2383005C56D8 /* Landscape_3.jpg */,
+				0FC2720A18FA2383005C56D8 /* Landscape_4.jpg */,
+				0FC2720B18FA2383005C56D8 /* Landscape_5.jpg */,
+				0FC2720C18FA2383005C56D8 /* Landscape_6.jpg */,
+				0FC2720D18FA2383005C56D8 /* Landscape_7.jpg */,
+				0FC2720E18FA2383005C56D8 /* Landscape_8.jpg */,
+				0FC2720F18FA2383005C56D8 /* LICENSE */,
+				0FC2721018FA2383005C56D8 /* Portrait_1.jpg */,
+				0FC2721118FA2383005C56D8 /* Portrait_2.jpg */,
+				0FC2721218FA2383005C56D8 /* Portrait_3.jpg */,
+				0FC2721318FA2383005C56D8 /* Portrait_4.jpg */,
+				0FC2721418FA2383005C56D8 /* Portrait_5.jpg */,
+				0FC2721518FA2383005C56D8 /* Portrait_6.jpg */,
+				0FC2721618FA2383005C56D8 /* Portrait_7.jpg */,
+				0FC2721718FA2383005C56D8 /* Portrait_8.jpg */,
+				0FC2721818FA2383005C56D8 /* README.markdown */,
+				0FC2721918FA2383005C56D8 /* VERSION */,
+			);
+			path = "exif-orientation-examples";
+			sourceTree = "<group>";
+		};
 		0FC2ABB7178952F7009C7B02 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -1280,6 +1398,7 @@
 				0F905944180F43BF000D4A53 /* Local */,
 				0FC2ABB7178952F7009C7B02 /* Camera */,
 				0F27498C189C8C9E006C3763 /* Darkroom */,
+				0FC271F818FA2361005C56D8 /* Darkroom Tests */,
 				0FCA4D7617391EA7007DC9EF /* Twitter */,
 				0FCA4D571738A272007DC9EF /* Facebook */,
 				0F04A6591737C7C300E53ED1 /* Finder */,
@@ -1702,6 +1821,24 @@
 			productReference = 0F9C80B016F891C700B2B6D8 /* Optique.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0FC271F518FA2361005C56D8 /* Darkroom Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FC2720318FA2361005C56D8 /* Build configuration list for PBXNativeTarget "Darkroom Tests" */;
+			buildPhases = (
+				0FC271F218FA2361005C56D8 /* Sources */,
+				0FC271F318FA2361005C56D8 /* Frameworks */,
+				0FC271F418FA2361005C56D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0FC2720218FA2361005C56D8 /* PBXTargetDependency */,
+			);
+			name = "Darkroom Tests";
+			productName = "Darkroom Tests";
+			productReference = 0FC271F618FA2361005C56D8 /* Darkroom Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		0FC2ABB4178952F7009C7B02 /* Camera */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FC2ABBE178952F7009C7B02 /* Build configuration list for PBXNativeTarget "Camera" */;
@@ -1780,6 +1917,9 @@
 							};
 						};
 					};
+					0FC271F518FA2361005C56D8 = {
+						TestTargetID = 0F274989189C8C9E006C3763;
+					};
 					0FC2ABB4178952F7009C7B02 = {
 						DevelopmentTeam = QZEN9DJMR2;
 					};
@@ -1805,6 +1945,7 @@
 				0FCA4D7317391EA7007DC9EF /* Twitter */,
 				0FC2ABB4178952F7009C7B02 /* Camera */,
 				0F905940180F43BF000D4A53 /* Local */,
+				0FC271F518FA2361005C56D8 /* Darkroom Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -1896,6 +2037,33 @@
 				0FFE24B61729206B00513AD2 /* back@2x.png in Resources */,
 				0F33D0F01769E93D0032CCA0 /* 86-camera-alt.png in Resources */,
 				0F3B558018C1AD8300B68D2A /* OPGeneralPreferencesViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FC271F418FA2361005C56D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FC2722B18FA2383005C56D8 /* README.markdown in Resources */,
+				0FC2722518FA2383005C56D8 /* Portrait_3.jpg in Resources */,
+				0FC271FD18FA2361005C56D8 /* InfoPlist.strings in Resources */,
+				0FC2721F18FA2383005C56D8 /* Landscape_6.jpg in Resources */,
+				0FC2721E18FA2383005C56D8 /* Landscape_5.jpg in Resources */,
+				0FC2721B18FA2383005C56D8 /* Landscape_2.jpg in Resources */,
+				0FC2722218FA2383005C56D8 /* LICENSE in Resources */,
+				0FC2722318FA2383005C56D8 /* Portrait_1.jpg in Resources */,
+				0FC2722818FA2383005C56D8 /* Portrait_6.jpg in Resources */,
+				0FC2722C18FA2383005C56D8 /* VERSION in Resources */,
+				0FC2722718FA2383005C56D8 /* Portrait_5.jpg in Resources */,
+				0FC2722918FA2383005C56D8 /* Portrait_7.jpg in Resources */,
+				0FC2721A18FA2383005C56D8 /* Landscape_1.jpg in Resources */,
+				0FC2722418FA2383005C56D8 /* Portrait_2.jpg in Resources */,
+				0FC2722618FA2383005C56D8 /* Portrait_4.jpg in Resources */,
+				0FC2722A18FA2383005C56D8 /* Portrait_8.jpg in Resources */,
+				0FC2721D18FA2383005C56D8 /* Landscape_4.jpg in Resources */,
+				0FC2721C18FA2383005C56D8 /* Landscape_3.jpg in Resources */,
+				0FC2722118FA2383005C56D8 /* Landscape_8.jpg in Resources */,
+				0FC2722018FA2383005C56D8 /* Landscape_7.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2125,7 +2293,6 @@
 				0F14C87E189CE06C001FA6B4 /* NSWindow+FullScreen.m in Sources */,
 				0F14C87C189CD372001FA6B4 /* NSImage+CGImage.m in Sources */,
 				0F14C885189DE425001FA6B4 /* OPDarkroomPreviewView.m in Sources */,
-				0F14C87B189CD31D001FA6B4 /* NSObject+PerformBlock.m in Sources */,
 				0F1C1EAF18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.m in Sources */,
 				0F2749A1189C92D7006C3763 /* OPDarkroomPreviewViewController.m in Sources */,
 				0F14C881189CE59A001FA6B4 /* CALayer+Rotate.m in Sources */,
@@ -2133,7 +2300,9 @@
 				0F14C874189CCB61001FA6B4 /* OPDarkroomManager.m in Sources */,
 				0F14C87A189CCFF4001FA6B4 /* OPRotateEditOperation.m in Sources */,
 				0F1C1EAC18F416B60078ACD4 /* OPRedEyeCorrectionOperation.m in Sources */,
+				0FC2722E18FA2631005C56D8 /* OPImageOrientation.m in Sources */,
 				0F27499D189C8D02006C3763 /* OPDarkroomPlugin.m in Sources */,
+				0F14C87B189CD31D001FA6B4 /* NSObject+PerformBlock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2206,6 +2375,15 @@
 				0FD51720176B08BD006E8F4D /* OPCollectionGridView.m in Sources */,
 				0FC2EC2C1813EB0600D02EC5 /* OPCameraCollectionViewController.m in Sources */,
 				0FA29D06180FE8740066077D /* OPItemGridView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FC271F218FA2361005C56D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FC2722F18FA2631005C56D8 /* OPImageOrientation.m in Sources */,
+				0F5B9BED18FA2FC600AD773B /* OPImageOrientationTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2294,6 +2472,11 @@
 			target = 0F04A62B1737C70F00E53ED1 /* Exposure */;
 			targetProxy = 0F905951180F4412000D4A53 /* PBXContainerItemProxy */;
 		};
+		0FC2720218FA2361005C56D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F274989189C8C9E006C3763 /* Darkroom */;
+			targetProxy = 0FC2720118FA2361005C56D8 /* PBXContainerItemProxy */;
+		};
 		0FC2ABC817895376009C7B02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0F04A62B1737C70F00E53ED1 /* Exposure */;
@@ -2366,6 +2549,14 @@
 				0F9C80C916F891C700B2B6D8 /* en */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		0FC271FB18FA2361005C56D8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0FC271FC18FA2361005C56D8 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		0FC2ABBA178952F7009C7B02 /* InfoPlist.strings */ = {
@@ -2701,6 +2892,59 @@
 			};
 			name = Release;
 		};
+		0FC2720418FA2361005C56D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Darkroom Tests/Darkroom Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Darkroom Tests/Darkroom Tests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0FC2720518FA2361005C56D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Darkroom Tests/Darkroom Tests-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Darkroom Tests/Darkroom Tests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		0FC2ABBF178952F7009C7B02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2885,6 +3129,15 @@
 			buildConfigurations = (
 				0F9C80CE16F891C700B2B6D8 /* Debug */,
 				0F9C80CF16F891C700B2B6D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FC2720318FA2361005C56D8 /* Build configuration list for PBXNativeTarget "Darkroom Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FC2720418FA2361005C56D8 /* Debug */,
+				0FC2720518FA2361005C56D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,7 +9,6 @@
 #import "OPDarkroomPlugin.h"
 #import "OPDarkroomPreviewViewController.h"
 #import "OPDarkroomEditorPanelViewController.h"
-#import "OPDarkroomPreviewLayer.h"
 
 #define DarkroomToolbarIdentifier   @"darkroom-edit"
 

@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "OPDarkroomPreviewLayer.h"
 
 @interface OPDarkroomPreviewView : NSView
 

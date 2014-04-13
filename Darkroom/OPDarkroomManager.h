@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "OPDarkroomOperation.h"
+#import "OPDarkroomOperationOptimizer.h"
 
 @interface OPDarkroomManager : NSObject
 
@@ -16,6 +17,8 @@
 @property (readonly) NSUInteger count;
 
 -initWithItem:(id<XPItem>)item previewLayer:(CALayer*)layer;
+
+-(void)addOptimizer:(id<OPDarkroomOperationOptimizer>)optimizer;
 
 -(void)addOperation:(id<OPDarkroomOperation>)operation;
 

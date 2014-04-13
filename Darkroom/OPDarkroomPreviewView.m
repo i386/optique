@@ -33,7 +33,7 @@
     }
 }
 
--(void)setPreviewLayer:(OPDarkroomPreviewLayer *)previewLayer
+-(void)setPreviewLayer:(CALayer *)previewLayer
 {
     _previewLayer = previewLayer;
     [self.layer addSublayer:_previewLayer];

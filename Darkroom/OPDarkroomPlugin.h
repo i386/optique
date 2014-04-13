@@ -13,6 +13,6 @@
 
 @property (weak, nonatomic) id<XPNavigationController> navigationController;
 @property (weak, nonatomic) id<XPSidebarController> sidebarController;
-@property (strong) OPDarkroomManager *editManager;
+@property (readonly, strong) OPDarkroomManager *editManager;
 
 @end
