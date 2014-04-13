@@ -41,9 +41,6 @@ OPImageOrientation OPImageOrientationGet(CGImageSourceRef srcImageRef)
     
     CFRelease(properties);
     
-//    if (orientation < OPImageOrientationUp || orientation > OPImageOrientationLeftMirrored)
-//        orientation = OPImageOrientationUp;
-    
     return orientation;
 }
 
