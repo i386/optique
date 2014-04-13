@@ -121,7 +121,7 @@
             
             if (destinationRef)
             {
-                CGImageDestinationAddImage(destinationRef, theImage, newImageProperties);
+                CGImageDestinationAddImage(destinationRef, image.imageRef, newImageProperties);
                 CGImageDestinationFinalize(destinationRef);
                 CFRelease(destinationRef);
             }
