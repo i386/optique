@@ -7,23 +7,13 @@
 //
 
 #import "OPAutoAdjustEnhanceOperation.h"
+#import "CIImage+CGImageRef.h"
 
 @implementation OPAutoAdjustEnhanceOperation
 
--(void)performPreview:(CALayer *)layer forItem:(id<XPItem>)item
+-(OPImage*)perform:(OPImage*)image layer:(CALayer *)layer
 {
-    CGImageRef imageRef = (__bridge CGImageRef)layer.contents;
-    layer.contents = (__bridge id)([self perform:imageRef]);
-}
-
--(OPImage*)perform:(OPImage*)image forItem:(id<XPItem>)item
-{
-    return [[OPImage alloc] initWithCGImageRef:[self perform:image.imageRef] properties:image.properties];
-}
-
--(CGImageRef)perform:(CGImageRef)imgRef
-{
-    __block CIImage *ciImage = [[CIImage alloc] initWithCGImage:imgRef];
+    __block CIImage *ciImage = image.image;
     
     NSDictionary *adjustmentOptions = @{kCIImageAutoAdjustEnhance: [NSNumber numberWithBool:YES],
                                         kCIImageAutoAdjustRedEye: [NSNumber numberWithBool:YES]};
@@ -35,8 +25,9 @@
         ciImage = [filter valueForKey:@"outputImage"];
     }];
     
-    CIContext *context = [[NSGraphicsContext currentContext] CIContext];
-    return [context createCGImage:ciImage fromRect:[ciImage extent]];
+    CGImageRef imageRef = ciImage.imageRef;
+    layer.contents = (__bridge id)(imageRef);
+    return [[OPImage alloc] initWithCIImage:ciImage properties:image.properties];
 }
 
 @end

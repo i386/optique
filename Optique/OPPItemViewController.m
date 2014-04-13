@@ -92,6 +92,11 @@
     [_slideView slideLeft];
 }
 
+-(void)reload
+{
+    [_slideView reload];
+}
+
 -(void)backToCollection
 {
     [self.controller popToPreviousViewController];

@@ -17,4 +17,6 @@
 
 -(CALayer*)imageLayer;
 
+-(void)reload;
+
 @end

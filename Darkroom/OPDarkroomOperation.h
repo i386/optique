@@ -12,8 +12,6 @@
 
 @protocol OPDarkroomOperation <NSObject>
 
--(void)performPreview:(CALayer*)layer forItem:(id<XPItem>)item;
-
--(OPImage*)perform:(OPImage*)image forItem:(id<XPItem>)item;
+-(OPImage*)perform:(OPImage*)image layer:(CALayer*)layer;
 
 @end

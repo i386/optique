@@ -25,4 +25,6 @@
 
 -(void)deleteItem;
 
+-(void)reload;
+
 @end

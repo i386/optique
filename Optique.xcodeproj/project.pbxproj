@@ -226,6 +226,10 @@
 		0FCE744F1714136B00A5AE79 /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCE744E1714136B00A5AE79 /* NSObject+PerformBlock.m */; };
 		0FD51720176B08BD006E8F4D /* OPCollectionGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD5171F176B08BD006E8F4D /* OPCollectionGridView.m */; };
 		0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD51722176B431F006E8F4D /* OPGridViewCell.m */; };
+		0FD8127718FA9F91002EFB70 /* OPGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8127618FA9F91002EFB70 /* OPGraphics.m */; };
+		0FD8127C18FAA3D9002EFB70 /* CIImage+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8127B18FAA3D9002EFB70 /* CIImage+Rotation.m */; };
+		0FD8127F18FAA83F002EFB70 /* OPRotateOperationOptimizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8127E18FAA83F002EFB70 /* OPRotateOperationOptimizer.m */; };
+		0FD8128218FAB023002EFB70 /* CIImage+CGImageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8128118FAB023002EFB70 /* CIImage+CGImageRef.m */; };
 		0FD85FDB180F46A300429320 /* OPLocalCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DF46C16F98D0D00C003D3 /* OPLocalCollection.m */; };
 		0FD85FDC180F46A300429320 /* OPLocalItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C561C172CC0D300CB7B1E /* OPLocalItem.m */; };
 		0FD85FDE180F472500429320 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F368A6B170531B500411503 /* Quartz.framework */; };
@@ -678,6 +682,14 @@
 		0FD5171F176B08BD006E8F4D /* OPCollectionGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCollectionGridView.m; path = Optique/OPCollectionGridView.m; sourceTree = "<group>"; };
 		0FD51721176B431F006E8F4D /* OPGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPGridViewCell.h; path = Optique/OPGridViewCell.h; sourceTree = "<group>"; };
 		0FD51722176B431F006E8F4D /* OPGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPGridViewCell.m; path = Optique/OPGridViewCell.m; sourceTree = "<group>"; };
+		0FD8127518FA9F91002EFB70 /* OPGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPGraphics.h; sourceTree = "<group>"; };
+		0FD8127618FA9F91002EFB70 /* OPGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPGraphics.m; sourceTree = "<group>"; };
+		0FD8127A18FAA3D9002EFB70 /* CIImage+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CIImage+Rotation.h"; sourceTree = "<group>"; };
+		0FD8127B18FAA3D9002EFB70 /* CIImage+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CIImage+Rotation.m"; sourceTree = "<group>"; };
+		0FD8127D18FAA83F002EFB70 /* OPRotateOperationOptimizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPRotateOperationOptimizer.h; sourceTree = "<group>"; };
+		0FD8127E18FAA83F002EFB70 /* OPRotateOperationOptimizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPRotateOperationOptimizer.m; sourceTree = "<group>"; };
+		0FD8128018FAB023002EFB70 /* CIImage+CGImageRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CIImage+CGImageRef.h"; sourceTree = "<group>"; };
+		0FD8128118FAB023002EFB70 /* CIImage+CGImageRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CIImage+CGImageRef.m"; sourceTree = "<group>"; };
 		0FDE075517030FCC00D5B456 /* OPItemCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPItemCollectionViewController.h; sourceTree = "<group>"; };
 		0FDE075617030FCC00D5B456 /* OPItemCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPItemCollectionViewController.m; sourceTree = "<group>"; };
 		0FE285A418397AF2009536D7 /* NSURL+EqualToURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+EqualToURL.h"; sourceTree = "<group>"; };
@@ -880,8 +892,8 @@
 			children = (
 				0F14C86B189CCAE6001FA6B4 /* OPDarkroomManager.h */,
 				0F14C86C189CCAE6001FA6B4 /* OPDarkroomManager.m */,
-				0F5B9BEE18FA3D2600AD773B /* OPImage.h */,
-				0F5B9BEF18FA3D2600AD773B /* OPImage.m */,
+				0FD8127818FAA110002EFB70 /* Image */,
+				0FD8127918FAA11A002EFB70 /* Graphics utils */,
 				0F14C877189CCFD3001FA6B4 /* Operations */,
 			);
 			name = Manager;
@@ -962,8 +974,6 @@
 			isa = PBXGroup;
 			children = (
 				0F27498D189C8C9E006C3763 /* Supporting Files */,
-				0FC271DC18FA1447005C56D8 /* OPImageOrientation.h */,
-				0FC2722D18FA2631005C56D8 /* OPImageOrientation.m */,
 				0F27499B189C8D02006C3763 /* OPDarkroomPlugin.h */,
 				0F27499C189C8D02006C3763 /* OPDarkroomPlugin.m */,
 				0F14C875189CCE59001FA6B4 /* Darkroom Preview */,
@@ -1287,6 +1297,8 @@
 			children = (
 				0F14C878189CCFF4001FA6B4 /* OPRotateEditOperation.h */,
 				0F14C879189CCFF4001FA6B4 /* OPRotateEditOperation.m */,
+				0FD8127D18FAA83F002EFB70 /* OPRotateOperationOptimizer.h */,
+				0FD8127E18FAA83F002EFB70 /* OPRotateOperationOptimizer.m */,
 			);
 			name = Rotate;
 			sourceTree = "<group>";
@@ -1552,6 +1564,30 @@
 				0F368A8917068F1A00411503 /* OPWindowContentView.m */,
 			);
 			name = "Window content view";
+			sourceTree = "<group>";
+		};
+		0FD8127818FAA110002EFB70 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				0F5B9BEE18FA3D2600AD773B /* OPImage.h */,
+				0F5B9BEF18FA3D2600AD773B /* OPImage.m */,
+				0FC271DC18FA1447005C56D8 /* OPImageOrientation.h */,
+				0FC2722D18FA2631005C56D8 /* OPImageOrientation.m */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
+		0FD8127918FAA11A002EFB70 /* Graphics utils */ = {
+			isa = PBXGroup;
+			children = (
+				0FD8127518FA9F91002EFB70 /* OPGraphics.h */,
+				0FD8127618FA9F91002EFB70 /* OPGraphics.m */,
+				0FD8127A18FAA3D9002EFB70 /* CIImage+Rotation.h */,
+				0FD8127B18FAA3D9002EFB70 /* CIImage+Rotation.m */,
+				0FD8128018FAB023002EFB70 /* CIImage+CGImageRef.h */,
+				0FD8128118FAB023002EFB70 /* CIImage+CGImageRef.m */,
+			);
+			name = "Graphics utils";
 			sourceTree = "<group>";
 		};
 		0FDE075A170317AE00D5B456 /* Item Collection View */ = {
@@ -2293,12 +2329,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FB7F86018A39E5B00AD3C5D /* NSURL+Renamer.m in Sources */,
+				0FD8127F18FAA83F002EFB70 /* OPRotateOperationOptimizer.m in Sources */,
 				0F14C87E189CE06C001FA6B4 /* NSWindow+FullScreen.m in Sources */,
+				0FD8127C18FAA3D9002EFB70 /* CIImage+Rotation.m in Sources */,
 				0F14C87C189CD372001FA6B4 /* NSImage+CGImage.m in Sources */,
 				0F14C885189DE425001FA6B4 /* OPDarkroomPreviewView.m in Sources */,
 				0F1C1EAF18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.m in Sources */,
 				0F2749A1189C92D7006C3763 /* OPDarkroomPreviewViewController.m in Sources */,
 				0F5B9BF018FA3D2600AD773B /* OPImage.m in Sources */,
+				0FD8127718FA9F91002EFB70 /* OPGraphics.m in Sources */,
 				0F14C881189CE59A001FA6B4 /* CALayer+Rotate.m in Sources */,
 				0F2749A8189CB9B5006C3763 /* OPDarkroomEditorPanelViewController.m in Sources */,
 				0F14C874189CCB61001FA6B4 /* OPDarkroomManager.m in Sources */,
@@ -2307,6 +2346,7 @@
 				0FC2722E18FA2631005C56D8 /* OPImageOrientation.m in Sources */,
 				0F27499D189C8D02006C3763 /* OPDarkroomPlugin.m in Sources */,
 				0F14C87B189CD31D001FA6B4 /* NSObject+PerformBlock.m in Sources */,
+				0FD8128218FAB023002EFB70 /* CIImage+CGImageRef.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

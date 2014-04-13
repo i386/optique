@@ -16,13 +16,15 @@
 /**
  The current imageRef
  */
-@property (readonly, assign) CGImageRef imageRef;
+@property (readonly, strong) CIImage* image;
 
 /**
  Image properties that will be written to the destination
  */
 @property (readonly, strong) NSMutableDictionary *properties;
 
--initWithCGImageRef:(CGImageRef)imageRef properties:(NSDictionary*)properties;
+-initWithCIImage:(CIImage*)image properties:(NSDictionary*)properties;
+
+-initWithCGImageRef:(CGImageRef)image properties:(NSDictionary*)properties;
 
 @end

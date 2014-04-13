@@ -9,6 +9,7 @@
 #import "OPDarkroomManager.h"
 #import "NSURL+Renamer.h"
 #import "NSObject+PerformBlock.h"
+#import "CIImage+CGImageRef.h"
 
 @interface OPDarkroomManager ()
 
@@ -16,6 +17,7 @@
 @property (strong) NSMutableArray *optimizers;
 @property (strong, nonatomic) NSMutableArray *operations;
 @property (strong) CALayer *layer;
+@property (strong) OPImage* image;
 
 @end
 
@@ -60,7 +62,23 @@
     {
         _item = item;
         _operations = [NSMutableArray array];
+        _optimizers = [NSMutableArray array];
         _layer = layer;
+        
+        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCGImageSourceShouldCache, kCFBooleanFalse, nil];
+        CGImageSourceRef sourceRef = CGImageSourceCreateWithURL((__bridge CFURLRef)(_item.url), (__bridge CFDictionaryRef)(options));
+        if (sourceRef)
+        {
+            CFDictionaryRef properties = CGImageSourceCopyPropertiesAtIndex(sourceRef, 0, nil);
+            CFMutableDictionaryRef newImageProperties = CFDictionaryCreateMutableCopy(nil, 0, properties);
+            
+            CGImageRef theImage = CGImageSourceCreateImageAtIndex(sourceRef, 0, nil);
+            if (theImage)
+            {
+                _image = [[OPImage alloc] initWithCGImageRef:theImage properties:(__bridge NSDictionary *)(newImageProperties)];
+            }
+            CFRelease(sourceRef);
+        }
     }
     return self;
 }
@@ -73,7 +91,7 @@
 -(NSArray *)operations
 {
     __block NSArray *ops = _operations;
-    [self.optimizers bk_each:^(id<OPDarkroomOperationOptimizer> obj) {
+    [_optimizers bk_each:^(id<OPDarkroomOperationOptimizer> obj) {
         ops = [obj optimize:ops];
     }];
     return ops;
@@ -87,7 +105,7 @@
 -(void)addOperation:(id<OPDarkroomOperation>)operation
 {
     [_operations addObject:operation];
-    [operation performPreview:_layer forItem:_item];
+    _image = [operation perform:_image layer:_layer];
 }
 
 -(void)commit
@@ -103,11 +121,9 @@
         CGImageRef theImage = CGImageSourceCreateImageAtIndex(sourceRef, 0, nil);
         if (theImage)
         {
-            __block OPImage *image = [[OPImage alloc] initWithCGImageRef:theImage properties:(__bridge NSDictionary *)(newImageProperties)];
-            
-            //Perform operations
+            __block OPImage *image = [[OPImage alloc] initWithCGImageRef:theImage properties:(__bridge NSDictionary *)(properties)];
             [self.operations bk_each:^(id<OPDarkroomOperation> operation) {
-                image = [operation perform:image forItem:_item];
+                image = [operation perform:image layer:nil];
             }];
             
             NSURL *url = _item.url;
@@ -121,7 +137,7 @@
             
             if (destinationRef)
             {
-                CGImageDestinationAddImage(destinationRef, image.imageRef, newImageProperties);
+                CGImageDestinationAddImage(destinationRef, image.image.imageRef, newImageProperties);
                 CGImageDestinationFinalize(destinationRef);
                 CFRelease(destinationRef);
             }

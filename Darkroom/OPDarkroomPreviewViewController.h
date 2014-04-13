@@ -10,6 +10,8 @@
 
 @interface OPDarkroomPreviewViewController : NSViewController<XPNavigationViewController>
 
+@property (weak) id<XPNavigationController> controller;
+
 -initWithItem:(id<XPItem>)item sidebarController:(id<XPSidebarController>)sidebarController previewLayer:(CALayer*)layer;
 
 @end

@@ -29,18 +29,20 @@
 
 OPImageOrientation OPImageOrientationGet(CGImageSourceRef srcImageRef)
 {
-    int orientation = OPImageOrientationUp;
-    
     CFDictionaryRef properties = CGImageSourceCopyPropertiesAtIndex(srcImageRef, 0, NULL);
+    int orientation = OPImageOrientationGetFromProperties(properties);
+    CFRelease(properties);
+    return orientation;
+}
+
+OPImageOrientation OPImageOrientationGetFromProperties(CFDictionaryRef properties)
+{
+    int orientation = OPImageOrientationUp;
     CFNumberRef orientationValue = CFDictionaryGetValue(properties, kCGImagePropertyOrientation);
- 
     if (orientationValue != NULL)
     {
         CFNumberGetValue(orientationValue, kCFNumberIntType, &orientation);
     }
-    
-    CFRelease(properties);
-    
     return orientation;
 }
 

@@ -13,6 +13,8 @@ typedef NS_ENUM(NSInteger, OPImageOrientation) {
     OPImageOrientationRightMirrored = 8, // vertical flip
 };
 
+OPImageOrientation OPImageOrientationGetFromProperties(CFDictionaryRef properties);
+
 OPImageOrientation OPImageOrientationGet(CGImageSourceRef srcImageRef);
 
 void OPImageOrientationSet(CFMutableDictionaryRef properties, OPImageOrientation orientation);

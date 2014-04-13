@@ -49,6 +49,14 @@
 -(void)removedView
 {
     [_sidebarController hideSidebar];
+    
+    NSViewController *viewController = [_controller visibleViewController];
+    
+    if ([viewController conformsToProtocol:@protocol(XPItemController)])
+    {
+        id<XPItemController> itemController = (id<XPItemController>)viewController;
+        [itemController reload];
+    }
 }
 
 @end
