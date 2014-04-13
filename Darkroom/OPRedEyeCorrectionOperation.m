@@ -17,9 +17,9 @@
     layer.contents = (__bridge id)[self perform:imageRef];
 }
 
--(CGImageRef)perform:(CGImageRef)imageRef forItem:(id<XPItem>)item
+-(OPImage*)perform:(OPImage*)image forItem:(id<XPItem>)item
 {
-    return [self perform:imageRef];
+    return [[OPImage alloc] initWithCGImageRef:[self perform:image.imageRef] properties:image.properties];
 }
 
 -(CGImageRef)perform:(CGImageRef)imgRef

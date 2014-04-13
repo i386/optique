@@ -22,16 +22,16 @@
     [layer setFrame:layer.superlayer.frame];
 }
 
--(CGImageRef)perform:(CGImageRef)imageRef forItem:(id<XPItem>)item
+-(OPImage*)perform:(OPImage*)image forItem:(id<XPItem>)item
 {
-    CGFloat pixelsHeight = CGImageGetHeight(imageRef);
-    CGFloat pixelsWidth = CGImageGetWidth(imageRef);
+    CGFloat pixelsHeight = CGImageGetHeight(image.imageRef);
+    CGFloat pixelsWidth = CGImageGetWidth(image.imageRef);
     
     //Flip dimensions
     CGRect dimensions = CGRectMake(0, 0, pixelsWidth, pixelsHeight);
     
     //Create bitmap context w/ the dimensions of the rotated image
-    CGContextRef context = CreateARGBBitmapContext(imageRef, CGSizeMake(pixelsHeight, pixelsWidth));
+    CGContextRef context = CreateARGBBitmapContext(image.imageRef, CGSizeMake(pixelsHeight, pixelsWidth));
     if (context)
     {
         //Rotate the image
@@ -45,25 +45,24 @@
         CGContextConcatCTM(context, flipVertical);
         
         //Draw the rotated image
-        CGContextDrawImage(context, dimensions, imageRef);
+        CGContextDrawImage(context, dimensions, image.imageRef);
         
         //Get rotated image from context
         CGImageRef rotatedImage = CGBitmapContextCreateImage(context);
         if (rotatedImage)
         {
-            return rotatedImage;
+            return [[OPImage alloc] initWithCGImageRef:rotatedImage properties:image.properties];
         }
         else
         {
             NSLog(@"RotateOperation: Could not create bitmap for rotated image %@", item.url);
-            return nil;
         }
     }
     else
     {
         NSLog(@"RotateOperation: Could not create bitmap context %@", item.url);
-        return nil;
     }
+    return nil;
 }
 
 -(void)performWithItem:(id<XPItem>)item

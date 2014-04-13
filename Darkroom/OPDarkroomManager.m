@@ -73,7 +73,7 @@
 -(NSArray *)operations
 {
     __block NSArray *ops = _operations;
-    [_operations bk_each:^(id<OPDarkroomOperationOptimizer> obj) {
+    [self.optimizers bk_each:^(id<OPDarkroomOperationOptimizer> obj) {
         ops = [obj optimize:ops];
     }];
     return ops;
@@ -100,12 +100,14 @@
         CFDictionaryRef properties = CGImageSourceCopyPropertiesAtIndex(sourceRef, 0, nil);
         CFMutableDictionaryRef newImageProperties = CFDictionaryCreateMutableCopy(nil, 0, properties);
         
-        __block CGImageRef theImage = CGImageSourceCreateImageAtIndex(sourceRef, 0, nil);
+        CGImageRef theImage = CGImageSourceCreateImageAtIndex(sourceRef, 0, nil);
         if (theImage)
         {
+            __block OPImage *image = [[OPImage alloc] initWithCGImageRef:theImage properties:(__bridge NSDictionary *)(newImageProperties)];
+            
             //Perform operations
             [self.operations bk_each:^(id<OPDarkroomOperation> operation) {
-                theImage = [operation perform:theImage forItem:_item];
+                image = [operation perform:image forItem:_item];
             }];
             
             NSURL *url = _item.url;

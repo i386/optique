@@ -13,10 +13,15 @@
 -(void)performPreview:(CALayer *)layer forItem:(id<XPItem>)item
 {
     CGImageRef imageRef = (__bridge CGImageRef)layer.contents;
-    layer.contents = (__bridge id)[self perform:imageRef forItem:item];
+    layer.contents = (__bridge id)([self perform:imageRef]);
 }
 
--(CGImageRef)perform:(CGImageRef)imgRef forItem:(id<XPItem>)item
+-(OPImage*)perform:(OPImage*)image forItem:(id<XPItem>)item
+{
+    return [[OPImage alloc] initWithCGImageRef:[self perform:image.imageRef] properties:image.properties];
+}
+
+-(CGImageRef)perform:(CGImageRef)imgRef
 {
     __block CIImage *ciImage = [[CIImage alloc] initWithCGImage:imgRef];
     

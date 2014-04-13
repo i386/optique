@@ -101,6 +101,7 @@
 		0F57A29B18B9AC1C004A1C55 /* XPDebugView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F57A29918B9AC1C004A1C55 /* XPDebugView.h */; };
 		0F57A29C18B9AC1C004A1C55 /* XPDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F57A29A18B9AC1C004A1C55 /* XPDebugView.m */; };
 		0F5B9BED18FA2FC600AD773B /* OPImageOrientationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9BEC18FA2FC600AD773B /* OPImageOrientationTest.m */; };
+		0F5B9BF018FA3D2600AD773B /* OPImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9BEF18FA3D2600AD773B /* OPImage.m */; };
 		0F5C40AA181CC1DF00F265FC /* OPDropDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */; };
 		0F628B76187A0E4C0026F551 /* OPApplicationMode.h in Resources */ = {isa = PBXBuildFile; fileRef = 0F628B75187A0E4C0026F551 /* OPApplicationMode.h */; };
 		0F628B78187A0E770026F551 /* OPApplicationMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F628B77187A0E770026F551 /* OPApplicationMode.m */; };
@@ -506,6 +507,8 @@
 		0F57A29918B9AC1C004A1C55 /* XPDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPDebugView.h; path = Exposure/Exposure/XPDebugView.h; sourceTree = SOURCE_ROOT; };
 		0F57A29A18B9AC1C004A1C55 /* XPDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPDebugView.m; path = Exposure/Exposure/XPDebugView.m; sourceTree = SOURCE_ROOT; };
 		0F5B9BEC18FA2FC600AD773B /* OPImageOrientationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageOrientationTest.m; sourceTree = "<group>"; };
+		0F5B9BEE18FA3D2600AD773B /* OPImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImage.h; sourceTree = "<group>"; };
+		0F5B9BEF18FA3D2600AD773B /* OPImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImage.m; sourceTree = "<group>"; };
 		0F5C40A8181CC1DF00F265FC /* OPDropDownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDropDownButton.h; sourceTree = "<group>"; };
 		0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDropDownButton.m; sourceTree = "<group>"; };
 		0F628B75187A0E4C0026F551 /* OPApplicationMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPApplicationMode.h; sourceTree = "<group>"; };
@@ -872,14 +875,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0F14C86E189CCAF0001FA6B4 /* Edit Manager */ = {
+		0F14C86E189CCAF0001FA6B4 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				0F14C86B189CCAE6001FA6B4 /* OPDarkroomManager.h */,
 				0F14C86C189CCAE6001FA6B4 /* OPDarkroomManager.m */,
+				0F5B9BEE18FA3D2600AD773B /* OPImage.h */,
+				0F5B9BEF18FA3D2600AD773B /* OPImage.m */,
 				0F14C877189CCFD3001FA6B4 /* Operations */,
 			);
-			name = "Edit Manager";
+			name = Manager;
 			sourceTree = "<group>";
 		};
 		0F14C875189CCE59001FA6B4 /* Darkroom Preview */ = {
@@ -963,7 +968,7 @@
 				0F27499C189C8D02006C3763 /* OPDarkroomPlugin.m */,
 				0F14C875189CCE59001FA6B4 /* Darkroom Preview */,
 				0F14C876189CCE66001FA6B4 /* Editor panel */,
-				0F14C86E189CCAF0001FA6B4 /* Edit Manager */,
+				0F14C86E189CCAF0001FA6B4 /* Manager */,
 				0F14C882189CE686001FA6B4 /* Categories */,
 			);
 			path = Darkroom;
@@ -2293,6 +2298,7 @@
 				0F14C885189DE425001FA6B4 /* OPDarkroomPreviewView.m in Sources */,
 				0F1C1EAF18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.m in Sources */,
 				0F2749A1189C92D7006C3763 /* OPDarkroomPreviewViewController.m in Sources */,
+				0F5B9BF018FA3D2600AD773B /* OPImage.m in Sources */,
 				0F14C881189CE59A001FA6B4 /* CALayer+Rotate.m in Sources */,
 				0F2749A8189CB9B5006C3763 /* OPDarkroomEditorPanelViewController.m in Sources */,
 				0F14C874189CCB61001FA6B4 /* OPDarkroomManager.m in Sources */,
