@@ -22,16 +22,20 @@
         return ![obj isKindOfClass:[OPRotateEditOperation class]];
     }];
     
-    NSUInteger numberOfRotateOperationsToAdd = (rotateOperations.count / 4) % 4;
-    
-    NSMutableArray *newOperations = [NSMutableArray arrayWithArray:allNonRotateOps];
-    
-    for (int i = 0; i < numberOfRotateOperationsToAdd; i++)
+    if (rotateOperations.count > 4)
     {
-        [newOperations addObject:[OPRotateEditOperation alloc]];
+        NSMutableArray *newOperations = [NSMutableArray arrayWithArray:rotateOperations];
+        while (newOperations.count > 4)
+        {
+            [newOperations removeObjectAtIndex:0];
+        }
+        
+        return [[rotateOperations arrayByAddingObjectsFromArray:newOperations] arrayByAddingObjectsFromArray:allNonRotateOps];
     }
-    
-    return newOperations;
+    else
+    {
+        return operations;
+    }
 }
 
 @end

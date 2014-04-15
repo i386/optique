@@ -60,7 +60,7 @@
             _editManager = [[OPDarkroomManager alloc] initWithItem:item previewLayer:[controller imageLayer]];
             
             //Register optimisers
-            //[_editManager addOptimizer:[OPRotateOperationOptimizer alloc]];
+            [_editManager addOptimizer:[OPRotateOperationOptimizer alloc]];
             
             _darkroomPreviewViewController = [[OPDarkroomPreviewViewController alloc] initWithItem:item sidebarController:_sidebarController previewLayer:[controller imageLayer]];
             _darkroomEditorPanelController = [[OPDarkroomEditorPanelViewController alloc] initWithEditManager:_editManager item:item navigationController:_navigationController sidebarController:_sidebarController];
