@@ -81,10 +81,17 @@
 
 -(NSArray *)debugMenuItems
 {
+    XPMenuItem *resetPreferredDeviceItem = [[XPMenuItem alloc] initWithTitle:@"Reset preffered devices" keyEquivalent:@"" block:^(NSMenuItem *sender) {
+        for (OPCamera *camera in _cameraService.allCameras)
+        {
+            [camera setDefaultApp:NO];
+        }
+    }];
+    
     XPMenuItem *clearCacheItem = [[XPMenuItem alloc] initWithTitle:@"Clear cache" keyEquivalent:@"" block:^(NSMenuItem *sender) {
        [_cameraService removeCaches];
     }];
-    return @[clearCacheItem];
+    return @[resetPreferredDeviceItem, clearCacheItem];
 }
 
 @end
