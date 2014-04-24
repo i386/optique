@@ -12,7 +12,4 @@
 
 @property (nonatomic, retain) id<XPItem> representedObject;
 
-@property (nonatomic, retain) OEGridLayer *imageLayer;
-@property (nonatomic, retain) CALayer *badgeLayer;
-
 @end

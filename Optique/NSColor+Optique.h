@@ -12,10 +12,14 @@
 
 +(NSColor*)optiqueBackgroundColor;
 
-+(NSColor*)optiqueSelectionBorderColor;
++(NSColor*)optiqueSelectionColor;
 
 +(NSColor*)optiquePhotoSliderBackgroundFullscreenColor;
 
 +(NSColor*)optiquePhotoSliderBackgroundColor;
+
++(NSColor*)optiqueGridItemEmptyColor;
+
++(NSColor*)optiqueItemLabelTextColor;
 
 @end

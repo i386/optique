@@ -22,7 +22,7 @@
         [_titleLayer setFont:@"HelveticaNeue-Regular"];
         [_titleLayer setFontSize:[NSFont systemFontSize]];
         [_titleLayer setAlignmentMode:kCAAlignmentCenter];
-        [_titleLayer setForegroundColor:[[NSColor blackColor] CGColor]];
+        [_titleLayer setForegroundColor:[[NSColor optiqueItemLabelTextColor] CGColor]];
         [_titleLayer setBackgroundColor:[[NSColor optiqueBackgroundColor] CGColor]];
         [_titleLayer setTruncationMode:kCATruncationMiddle];
         
@@ -31,14 +31,18 @@
         _imageLayer = [OEGridLayer layer];
         _imageLayer.contentsGravity = kCAGravityResizeAspectFill;
         _imageLayer.masksToBounds = YES;
-        _imageLayer.borderWidth = 0.3;
         _imageLayer.borderColor = [[NSColor blackColor] CGColor];
-        _imageLayer.backgroundColor = [[NSColor lightGrayColor] CGColor];
+        _imageLayer.cornerRadius = 6;
+        _imageLayer.backgroundColor = [[NSColor optiqueGridItemEmptyColor] CGColor];
         [self addSublayer:_imageLayer];
         
         _selectionLayer = [OEGridLayer layer];
-        _selectionLayer.borderColor = [[NSColor optiqueSelectionBorderColor] CGColor];
-        _selectionLayer.borderWidth = 5.0f;
+        _selectionLayer.borderColor = [[NSColor optiqueSelectionColor] CGColor];
+        _selectionLayer.cornerRadius = 6;
+        _selectionLayer.backgroundColor = [[NSColor optiqueSelectionColor] CGColor];
+        _selectionLayer.borderWidth = 0;
+        _selectionLayer.opacity = 0.6;
+        
         [self addSublayer:_selectionLayer];
         
         [self setEmphaisis:YES];
@@ -72,12 +76,7 @@
 
 -(void)layoutSublayers
 {
-    NSRect selectionFrame = NSMakeRect(self.bounds.origin.x - 5, //x
-                                       self.bounds.origin.y - 5, //y
-                                       self.bounds.size.width + 10, //width
-                                       self.bounds.size.height + 10); //height
-    
-    [_selectionLayer setFrame:CGRectIntegral(selectionFrame)];
+    [_selectionLayer setFrame:self.bounds];
     
     [_imageLayer setFrame:self.bounds];
  

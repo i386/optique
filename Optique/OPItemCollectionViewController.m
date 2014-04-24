@@ -277,7 +277,7 @@
 {
     [XPExposureService collectionManager:_collectionManager itemCollectionViewController:self];
     
-    [_headingLine setBorderWidth:2];
+    [_headingLine setBorderWidth:1.5];
     [_headingLine setBorderColor:[NSColor colorWithCalibratedRed:0.83 green:0.83 blue:0.83 alpha:1.00]];
     [_headingLine setBoxType:NSBoxCustom];
     
