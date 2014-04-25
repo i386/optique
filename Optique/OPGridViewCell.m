@@ -11,6 +11,9 @@
 #import "NSColor+Optique.h"
 #import "OPCollectionGridView.h"
 
+#define kOPGridViewCellBorderRadius         6
+#define OPGridViewCellOSelectionOpacity     0.6
+
 @implementation OPGridViewCell
 
 -(id)init
@@ -31,17 +34,15 @@
         _imageLayer = [OEGridLayer layer];
         _imageLayer.contentsGravity = kCAGravityResizeAspectFill;
         _imageLayer.masksToBounds = YES;
-        _imageLayer.borderColor = [[NSColor blackColor] CGColor];
-        _imageLayer.cornerRadius = 6;
+        _imageLayer.cornerRadius = kOPGridViewCellBorderRadius;
         _imageLayer.backgroundColor = [[NSColor optiqueGridItemEmptyColor] CGColor];
         [self addSublayer:_imageLayer];
         
         _selectionLayer = [OEGridLayer layer];
         _selectionLayer.borderColor = [[NSColor optiqueSelectionColor] CGColor];
-        _selectionLayer.cornerRadius = 6;
+        _selectionLayer.cornerRadius = kOPGridViewCellBorderRadius;
         _selectionLayer.backgroundColor = [[NSColor optiqueSelectionColor] CGColor];
-        _selectionLayer.borderWidth = 0;
-        _selectionLayer.opacity = 0.6;
+        _selectionLayer.opacity = OPGridViewCellOSelectionOpacity;
         
         [self addSublayer:_selectionLayer];
         
@@ -59,13 +60,13 @@
 {
     if (emphaisis)
     {
-        [_imageLayer setFilters:@[]];
+        _imageLayer.filters = @[];
     }
     else
     {
         CIFilter *filter = [CIFilter filterWithName:@"CIPhotoEffectNoir"];
         [filter setDefaults];
-        [_imageLayer setFilters:@[filter]];
+        _imageLayer.filters = @[filter];
     }
 }
 
@@ -76,9 +77,9 @@
 
 -(void)layoutSublayers
 {
-    [_selectionLayer setFrame:self.bounds];
-    
-    [_imageLayer setFrame:self.bounds];
+    self.selectionLayer.frame = self.bounds;
+    self.imageLayer.frame = self.bounds;
+    self.badgeLayer.frame = self.bounds;
  
     NSRect textRect = NSMakeRect(self.bounds.origin.x,
                                  NSHeight(self.bounds) + 5,
@@ -88,19 +89,16 @@
     [CATransaction begin];
     [CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
     
-    [_titleLayer setFrame:CGRectIntegral(textRect)];
-    [CATransaction commit];
+    _titleLayer.frame = CGRectIntegral(textRect);
     
-    if (_badgeLayer)
-    {
-        _badgeLayer.frame = self.bounds;
-    }
+    [CATransaction commit];
 }
 
 - (void)prepareForReuse
 {
     [super prepareForReuse];
     _selectionLayer.hidden = YES;
+    _badgeLayer = nil;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -113,7 +111,7 @@
 {
     if (image)
     {
-        [_imageLayer setContents:image];
+        _imageLayer.contents = image;
     }
 }
 
@@ -126,7 +124,7 @@
 {
     if (title)
     {
-        [_titleLayer setString:title];
+        _titleLayer.string = title;
     }
 }
 
@@ -135,7 +133,9 @@
     if (badgeLayer != nil && _badgeLayer == nil)
     {
         _badgeLayer = badgeLayer;
-        _badgeLayer.frame = self.bounds;
+        _badgeLayer.zPosition = 1;
+        _badgeLayer.frame = self.imageLayer.bounds;
+        
         [self addSublayer:_badgeLayer];
     }
 }

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F01F46F171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m */; };
 		0F03059917895AC00068D5E7 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
-		0F03CD0D18152E8E00A73D8F /* OPItemPhotoGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F03CD0C18152E8E00A73D8F /* OPItemPhotoGridViewCell.m */; };
-		0F03CD0F18153BA500A73D8F /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F03CD0E18153BA500A73D8F /* check.png */; };
 		0F04A62D1737C71000E53ED1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0F04A6331737C71000E53ED1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F04A6311737C71000E53ED1 /* InfoPlist.strings */; };
 		0F04A6431737C74800E53ED1 /* Exposure.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F04A63B1737C74800E53ED1 /* Exposure.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -392,9 +390,6 @@
 /* Begin PBXFileReference section */
 		0F01F46E171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSGraphicsContext+GraphicsContext.h"; sourceTree = "<group>"; };
 		0F01F46F171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSGraphicsContext+GraphicsContext.m"; sourceTree = "<group>"; };
-		0F03CD0B18152E8E00A73D8F /* OPItemPhotoGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPItemPhotoGridViewCell.h; sourceTree = "<group>"; };
-		0F03CD0C18152E8E00A73D8F /* OPItemPhotoGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPItemPhotoGridViewCell.m; sourceTree = "<group>"; };
-		0F03CD0E18153BA500A73D8F /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		0F04A5CA1737C43800E53ED1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		0F04A5CB1737C43800E53ED1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0F04A5CC1737C43800E53ED1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1235,7 +1230,6 @@
 				0FAEFFF2176736F700D60171 /* Optique.icns */,
 				0F1C2299187937F400A6878C /* down.png */,
 				0F1C229A187937F400A6878C /* down@2.png */,
-				0F03CD0E18153BA500A73D8F /* check.png */,
 				0FA29D11180FFB080066077D /* lock.png */,
 				0F1B401F180E970200C1CBF5 /* search.png */,
 				0F707187180E354F00ED5799 /* folder.png */,
@@ -1414,8 +1408,6 @@
 				0FC2EC711813F5BA00D02EC5 /* OPImportItemsWindowController.h */,
 				0FC2EC721813F5BA00D02EC5 /* OPImportItemsWindowController.m */,
 				0FC2EC731813F5BA00D02EC5 /* OPImportItemsWindowController.xib */,
-				0F03CD0B18152E8E00A73D8F /* OPItemPhotoGridViewCell.h */,
-				0F03CD0C18152E8E00A73D8F /* OPItemPhotoGridViewCell.m */,
 			);
 			name = "Camera Collection View";
 			sourceTree = "<group>";
@@ -2044,7 +2036,6 @@
 				0FC6F836188691350070CAA3 /* OPItemCollectionViewController.xib in Resources */,
 				0F9C80BE16F891C700B2B6D8 /* InfoPlist.strings in Resources */,
 				0F9C80C416F891C700B2B6D8 /* Credits.rtf in Resources */,
-				0F03CD0F18153BA500A73D8F /* check.png in Resources */,
 				0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */,
 				0FA29D12180FFB080066077D /* lock.png in Resources */,
 				0FEF33A716FEC8090096D72A /* OPCollectionViewController.xib in Resources */,
@@ -2404,7 +2395,6 @@
 				0F85D9C0180CD2300003C6ED /* OPToolbarController.m in Sources */,
 				0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */,
 				0F53DFFD188B366D00F0FBE9 /* OPItemPreviewManager.m in Sources */,
-				0F03CD0D18152E8E00A73D8F /* OPItemPhotoGridViewCell.m in Sources */,
 				0FE285A618397AF2009536D7 /* NSURL+EqualToURL.m in Sources */,
 				0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */,
 				0F32EFCB1877965C00483761 /* OPPeekButton.m in Sources */,

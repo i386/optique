@@ -20,10 +20,10 @@
         NSImage *image = [NSImage imageNamed:@"lock"];
         
         _badgeLayer = [XPBadgeLayer layer];
-        _imageLayer = [XPBadgeLayer layer];
-        _imageLayer.contents = (id)image.CGImageRef;
-        _imageLayer.bounds = NSMakeRect(0, 0, 128, 128);
-        _imageLayer.position = NSMakePoint(140, 87.5);
+        _badgeLayer = [XPBadgeLayer layer];
+        _badgeLayer.contents = (id)image.CGImageRef;
+        _badgeLayer.bounds = NSMakeRect(0, 0, 128, 128);
+        _badgeLayer.position = NSMakePoint(140, 87.5);
     }
     return self;
 }

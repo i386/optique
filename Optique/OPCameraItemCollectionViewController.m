@@ -35,9 +35,4 @@
     [NSApp beginSheet:_importItemsWindowController.window modalForWindow:self.view.window modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
--(OPItemGridViewCell *)createItemGridViewCell:(id<XPItem>)item
-{
-    return [[OPItemPhotoGridViewCell alloc] init];
-}
-
 @end

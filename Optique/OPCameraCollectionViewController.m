@@ -19,7 +19,7 @@
 -(void)awakeFromNib
 {
     [super awakeFromNib];
-    self.gridView.clickingBackgroundDeselectsAllCells = NO;
+//    self.gridView.clickingBackgroundDeselectsAllCells = NO;
 }
 
 -(NSViewController *)viewForCollection:(id<XPItemCollection>)collection collectionManager:(XPCollectionManager *)collectionManager
