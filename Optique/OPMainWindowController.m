@@ -69,7 +69,7 @@
     _albumViewController = [[OPCollectionViewController alloc] initWithCollectionManager:_collectionManager
                                                                               title:@"Albums"
                                                                        emptyMessage:@"Drop folders or photos here to add or create new albums"
-                                                                               icon:[NSImage imageNamed:@"picture"]
+                                                                               icon:[NSImage imageNamed:@"folder-small"]
                                                                 collectionPredicate:[NSPredicate predicateWithBlock:^BOOL(id<XPItemCollection> evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject collectionType] == XPItemCollectionLocal || [evaluatedObject collectionType] == XPItemCollectionOther;
     }]];

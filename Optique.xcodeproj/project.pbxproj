@@ -111,7 +111,6 @@
 		0F67499F18236B8700CEEEA9 /* XPItemCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67499E18236B8700CEEEA9 /* XPItemCollection.m */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
-		0F70718B180E354F00ED5799 /* picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F707188180E354F00ED5799 /* picture.png */; };
 		0F70718C180E354F00ED5799 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F707189180E354F00ED5799 /* camera.png */; };
 		0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */; };
 		0F7A704D178ABA6600570180 /* XPBadgeLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7A704B178ABA6600570180 /* XPBadgeLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -250,6 +249,11 @@
 		0FF3186E181E6C4900CD3637 /* OPRenameAlbumWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF3186C181E6C4900CD3637 /* OPRenameAlbumWindowController.m */; };
 		0FF3186F181E6C4900CD3637 /* OPRenameAlbumWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FF3186D181E6C4900CD3637 /* OPRenameAlbumWindowController.xib */; };
 		0FF31F3718757A1A006803DE /* ICCameraDevice+OrderedMediaFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF31F3618757A1A006803DE /* ICCameraDevice+OrderedMediaFiles.m */; };
+		0FFC1B1F190AA1F300556BEA /* folder-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B1D190AA1F300556BEA /* folder-small.png */; };
+		0FFC1B20190AA1F300556BEA /* folder-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B1E190AA1F300556BEA /* folder-small@2x.png */; };
+		0FFC1B22190AA46200556BEA /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B21190AA46200556BEA /* camera@2x.png */; };
+		0FFC1B24190AA47E00556BEA /* lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B23190AA47E00556BEA /* lock@2x.png */; };
+		0FFC1B26190AA52500556BEA /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B25190AA52500556BEA /* search@2x.png */; };
 		0FFE24B2172907AA00513AD2 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B0172907AA00513AD2 /* back.png */; };
 		0FFE24B61729206B00513AD2 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFE24B51729206B00513AD2 /* back@2x.png */; };
 		1373B7D69D7D477FA5D36CD2 /* libPods-Exposure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CE02E9006D49619346BA66 /* libPods-Exposure.a */; };
@@ -531,7 +535,6 @@
 		0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageCaptureCore.framework; path = System/Library/Frameworks/ImageCaptureCore.framework; sourceTree = SDKROOT; };
 		0F6AF87D172A42750029724A /* OPCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPCamera.h; path = ../Optique/OPCamera.h; sourceTree = "<group>"; };
 		0F6AF87E172A42750029724A /* OPCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCamera.m; path = ../Optique/OPCamera.m; sourceTree = "<group>"; };
-		0F707188180E354F00ED5799 /* picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture.png; sourceTree = "<group>"; };
 		0F707189180E354F00ED5799 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		0F79A5E3175DE2DC00BB3973 /* NSColor+Optique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+Optique.h"; sourceTree = "<group>"; };
 		0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Optique.m"; sourceTree = "<group>"; };
@@ -709,6 +712,11 @@
 		0FF3186D181E6C4900CD3637 /* OPRenameAlbumWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPRenameAlbumWindowController.xib; path = Optique/OPRenameAlbumWindowController.xib; sourceTree = "<group>"; };
 		0FF31F3518757A1A006803DE /* ICCameraDevice+OrderedMediaFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ICCameraDevice+OrderedMediaFiles.h"; sourceTree = "<group>"; };
 		0FF31F3618757A1A006803DE /* ICCameraDevice+OrderedMediaFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ICCameraDevice+OrderedMediaFiles.m"; sourceTree = "<group>"; };
+		0FFC1B1D190AA1F300556BEA /* folder-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "folder-small.png"; sourceTree = "<group>"; };
+		0FFC1B1E190AA1F300556BEA /* folder-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "folder-small@2x.png"; sourceTree = "<group>"; };
+		0FFC1B21190AA46200556BEA /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		0FFC1B23190AA47E00556BEA /* lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock@2x.png"; sourceTree = "<group>"; };
+		0FFC1B25190AA52500556BEA /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		0FFE24B0172907AA00513AD2 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		0FFE24B51729206B00513AD2 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		1650C68FCF8C4AC79D7FEDF5 /* Pods-Darkroom.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Darkroom.xcconfig"; path = "Pods/Pods-Darkroom.xcconfig"; sourceTree = "<group>"; };
@@ -1229,15 +1237,19 @@
 		0F9C80BA16F891C700B2B6D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0FAEFFF2176736F700D60171 /* Optique.icns */,
 				0FAB1D811909FEAD004A69BF /* folder.png */,
 				0FAB1D821909FEAD004A69BF /* folder@2x.png */,
-				0FAEFFF2176736F700D60171 /* Optique.icns */,
+				0FFC1B1D190AA1F300556BEA /* folder-small.png */,
+				0FFC1B1E190AA1F300556BEA /* folder-small@2x.png */,
 				0F1C2299187937F400A6878C /* down.png */,
 				0F1C229A187937F400A6878C /* down@2.png */,
 				0FA29D11180FFB080066077D /* lock.png */,
+				0FFC1B23190AA47E00556BEA /* lock@2x.png */,
 				0F1B401F180E970200C1CBF5 /* search.png */,
-				0F707188180E354F00ED5799 /* picture.png */,
+				0FFC1B25190AA52500556BEA /* search@2x.png */,
 				0F707189180E354F00ED5799 /* camera.png */,
+				0FFC1B21190AA46200556BEA /* camera@2x.png */,
 				0F50C39A178560A90017DF73 /* Optique.entitlements */,
 				0FEC674F171034E00086B264 /* Image resources */,
 				0F9C80BB16F891C700B2B6D8 /* Optique-Info.plist */,
@@ -2037,6 +2049,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FC6F836188691350070CAA3 /* OPItemCollectionViewController.xib in Resources */,
+				0FFC1B24190AA47E00556BEA /* lock@2x.png in Resources */,
 				0F9C80BE16F891C700B2B6D8 /* InfoPlist.strings in Resources */,
 				0F9C80C416F891C700B2B6D8 /* Credits.rtf in Resources */,
 				0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */,
@@ -2044,6 +2057,7 @@
 				0FEF33A716FEC8090096D72A /* OPCollectionViewController.xib in Resources */,
 				0FAB1D841909FEAD004A69BF /* folder@2x.png in Resources */,
 				0F33D0ED1769E87A0032CCA0 /* 218-trash2@2x.png in Resources */,
+				0FFC1B22190AA46200556BEA /* camera@2x.png in Resources */,
 				0F85D9C7180DF8F20003C6ED /* OPPlaceHolderViewController.xib in Resources */,
 				0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */,
 				0F1C22921878DAAB00A6878C /* OPNewAlbumPanelViewController.xib in Resources */,
@@ -2057,8 +2071,8 @@
 				0F1750E81828ACD30021853D /* OPNewsletterWindowController.xib in Resources */,
 				0FEC675817103B5E0086B264 /* effectsbarselectedbg@2x.png in Resources */,
 				0F33D0E41769E7800032CCA0 /* 298-circlex.png in Resources */,
-				0F70718B180E354F00ED5799 /* picture.png in Resources */,
 				0F33D0E51769E7800032CCA0 /* 298-circlex@2x.png in Resources */,
+				0FFC1B26190AA52500556BEA /* search@2x.png in Resources */,
 				0F628B76187A0E4C0026F551 /* OPApplicationMode.h in Resources */,
 				0F33D0EC1769E87A0032CCA0 /* 218-trash2.png in Resources */,
 				0FC2EC751813F5BA00D02EC5 /* OPImportItemsWindowController.xib in Resources */,
@@ -2076,6 +2090,7 @@
 				0FC0AD8918779E8E009C619F /* OPHistoryPeekViewController.xib in Resources */,
 				0F33D0E11769E4D40032CCA0 /* 86-camera@2x.png in Resources */,
 				0F1C229C187937F400A6878C /* down@2.png in Resources */,
+				0FFC1B20190AA1F300556BEA /* folder-small@2x.png in Resources */,
 				0FA706CC171911F400864CED /* empty-album@2x.png in Resources */,
 				0F8FEBBA1769E283004BB523 /* 212-action2.png in Resources */,
 				0F1B4020180E970200C1CBF5 /* search.png in Resources */,
@@ -2084,6 +2099,7 @@
 				0FFE24B61729206B00513AD2 /* back@2x.png in Resources */,
 				0F33D0F01769E93D0032CCA0 /* 86-camera-alt.png in Resources */,
 				0F3B558018C1AD8300B68D2A /* OPGeneralPreferencesViewController.xib in Resources */,
+				0FFC1B1F190AA1F300556BEA /* folder-small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

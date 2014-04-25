@@ -37,6 +37,7 @@
     baseView.text = _text;
     baseView.iconVerticalOffset = 50.0f;
     
+    
     self.view.postsFrameChangedNotifications = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDidResize:) name:NSViewFrameDidChangeNotification object:self.view];

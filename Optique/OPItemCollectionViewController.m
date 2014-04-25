@@ -32,7 +32,7 @@
         _collectionManager = collectionManager;
         _sharingMenuItems = [NSMutableArray array];
         
-        NSImage *placeHolderImage = [NSImage imageNamed:@"picture"];
+        NSImage *placeHolderImage = [NSImage imageNamed:@"folder-small"];
         NSString *placeHolderText;
         if (collection.collectionType == XPItemCollectionCamera)
         {
