@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "OPCollectionGridView.h"
 #import "OPItemGridView.h"
+#import "OPLineBox.h"
 
 @interface OPCollectionViewController : NSViewController <XPNavigationViewController, OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPCollectionViewController>
 
@@ -18,7 +19,7 @@
 @property (weak) IBOutlet NSMenuItem *deleteAlbumMenuItem;
 @property (weak) IBOutlet OPItemGridView *gridView;
 @property (weak) IBOutlet NSTextField *titleLabel;
-@property (weak) IBOutlet NSBox *headingLine;
+@property (weak) IBOutlet OPLineBox *headingLine;
 @property (weak) IBOutlet NSMenuItem *renameAlbumMenuItem;
 @property (strong) NSPredicate *predicate;
 

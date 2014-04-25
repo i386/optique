@@ -40,4 +40,9 @@
     return [NSColor colorWithCalibratedRed:0.10 green:0.10 blue:0.10 alpha:1.00];
 }
 
++(NSColor *)optiqueBorderColor
+{
+    return [NSColor colorWithCalibratedRed:0.83 green:0.83 blue:0.83 alpha:1.00];
+}
+
 @end

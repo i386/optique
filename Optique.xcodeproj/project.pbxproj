@@ -156,6 +156,7 @@
 		0FA706C8171911CC00864CED /* OPDeleteAlbumSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C6171911CC00864CED /* OPDeleteAlbumSheetController.xib */; };
 		0FA706CB171911F400864CED /* empty-album.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C9171911F400864CED /* empty-album.png */; };
 		0FA706CC171911F400864CED /* empty-album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706CA171911F400864CED /* empty-album@2x.png */; };
+		0FAB1D771909E9AF004A69BF /* OPLineBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAB1D761909E9AF004A69BF /* OPLineBox.m */; };
 		0FABADE31826636C003766AA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FABADE21826636C003766AA /* Sparkle.framework */; };
 		0FABADE4182663B7003766AA /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FABADE21826636C003766AA /* Sparkle.framework */; };
 		0FAEFFF3176736F700D60171 /* Optique.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEFFF2176736F700D60171 /* Optique.icns */; };
@@ -598,6 +599,8 @@
 		0FA706C6171911CC00864CED /* OPDeleteAlbumSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPDeleteAlbumSheetController.xib; path = Optique/OPDeleteAlbumSheetController.xib; sourceTree = "<group>"; };
 		0FA706C9171911F400864CED /* empty-album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album.png"; sourceTree = "<group>"; };
 		0FA706CA171911F400864CED /* empty-album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album@2x.png"; sourceTree = "<group>"; };
+		0FAB1D751909E9AF004A69BF /* OPLineBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPLineBox.h; sourceTree = "<group>"; };
+		0FAB1D761909E9AF004A69BF /* OPLineBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPLineBox.m; sourceTree = "<group>"; };
 		0FABADE21826636C003766AA /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		0FAEFFF2176736F700D60171 /* Optique.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Optique.icns; sourceTree = SOURCE_ROOT; };
 		0FB185BF188A19C100419F5D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -1002,6 +1005,7 @@
 				0FCBC3D61895E3D40099543D /* Drop down button */,
 				0FCBC3D71895E3D90099543D /* Window content view */,
 				0F90591C180F3CB9000D4A53 /* Placeholder */,
+				0FAB1D781909EB23004A69BF /* Line box */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -1278,6 +1282,15 @@
 			);
 			name = GridView;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		0FAB1D781909EB23004A69BF /* Line box */ = {
+			isa = PBXGroup;
+			children = (
+				0FAB1D751909E9AF004A69BF /* OPLineBox.h */,
+				0FAB1D761909E9AF004A69BF /* OPLineBox.m */,
+			);
+			name = "Line box";
 			sourceTree = "<group>";
 		};
 		0FC0ADEC1877FE38009C619F /* History peek */ = {
@@ -2405,6 +2418,7 @@
 				0F44229A1898967D00560740 /* OPSlideView.m in Sources */,
 				0F1750E71828ACD30021853D /* OPNewsletterWindowController.m in Sources */,
 				0F628B78187A0E770026F551 /* OPApplicationMode.m in Sources */,
+				0FAB1D771909E9AF004A69BF /* OPLineBox.m in Sources */,
 				0FC2EC741813F5BA00D02EC5 /* OPImportItemsWindowController.m in Sources */,
 				0FA29D09180FE8C60066077D /* OPItemGridViewCell.m in Sources */,
 				0F01F470171F5D8C00579894 /* NSGraphicsContext+GraphicsContext.m in Sources */,

@@ -276,11 +276,6 @@
 -(void)awakeFromNib
 {
     [XPExposureService collectionManager:_collectionManager itemCollectionViewController:self];
-    
-    [_headingLine setBorderWidth:1.5];
-    [_headingLine setBorderColor:[NSColor colorWithCalibratedRed:0.83 green:0.83 blue:0.83 alpha:1.00]];
-    [_headingLine setBoxType:NSBoxCustom];
-    
     [[_primaryActionButton cell] setKBButtonType:BButtonTypePrimary];
     [[_secondaryActionButton cell] setKBButtonType:BButtonTypeDefault];
     

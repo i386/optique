@@ -9,6 +9,7 @@
 #import "OPItemGridView.h"
 #import "OPItemGridViewCell.h"
 #import <KBButton/KBButton.h>
+#import "OPLineBox.h"
 
 @interface OPItemCollectionViewController : NSViewController <XPNavigationViewController, OEGridViewDelegate, OEGridViewDataSource, NSMenuDelegate, XPItemCollectionViewController>
 
@@ -20,7 +21,7 @@
 @property (weak, readonly) XPCollectionManager *collectionManager;
 @property (weak) IBOutlet OPItemGridView *gridView;
 @property (weak) IBOutlet NSMenuItem *moveToAlbumItem;
-@property (weak) IBOutlet NSBox *headingLine;
+@property (weak) IBOutlet OPLineBox *headingLine;
 @property (weak) IBOutlet NSTextField *dateLabel;
 @property (weak) IBOutlet KBButton *primaryActionButton;
 @property (weak) IBOutlet KBButton *secondaryActionButton;

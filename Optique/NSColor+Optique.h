@@ -22,4 +22,6 @@
 
 +(NSColor*)optiqueItemLabelTextColor;
 
++(NSColor*)optiqueBorderColor;
+
 @end
