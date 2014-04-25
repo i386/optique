@@ -32,7 +32,7 @@
 
 +(NSColor *)optiqueGridItemEmptyColor
 {
-    return [NSColor colorWithCalibratedRed:0.56 green:0.56 blue:0.58 alpha:1.00];
+    return [NSColor colorWithCalibratedRed:0.87 green:0.87 blue:0.87 alpha:1.00];
 }
 
 +(NSColor *)optiqueItemLabelTextColor
