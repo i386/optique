@@ -8,7 +8,6 @@
 
 #import "OPCameraItemCollectionViewController.h"
 #import "OPImportItemsWindowController.h"
-#import "OPItemPhotoGridViewCell.h"
 
 @interface OPCameraItemCollectionViewController ()
 
@@ -24,6 +23,7 @@
     self.gridView.isSelectionSticky = YES;
     self.primaryActionButton.title = @"Import";
     self.secondaryActionButton.title = @"Clear selection";
+    self.gridView.clickingBackgroundDeselectsAllCells = NO;
 }
 
 -(void)primaryActionActivated:(id)sender

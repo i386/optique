@@ -41,29 +41,4 @@
     [_progressLayer setFrame:NSMakeRect(CGRectGetMidX(self.imageLayer.frame) - (50/2), CGRectGetMidY(self.imageLayer.frame) - (50/2), 50, 50)];
 }
 
-- (void)prepareForReuse
-{
-    [super prepareForReuse];
-    self.selectionLayer.hidden = YES;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    self.selectionLayer.hidden = !selected;
-	[super setSelected:selected animated:animated];
-}
-
-- (void)setImage:(NSImage *)image
-{
-    if (image)
-    {
-        [self.imageLayer setContents:image];
-    }
-}
-
-- (NSImage*)image
-{
-    return self.imageLayer.contents;
-}
-
 @end

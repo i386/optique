@@ -111,7 +111,6 @@
 		0F67499F18236B8700CEEEA9 /* XPItemCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67499E18236B8700CEEEA9 /* XPItemCollection.m */; };
 		0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AEF831701C02200A797E4 /* OPMainWindowController.m */; };
 		0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6AEF841701C02200A797E4 /* OPMainWindowController.xib */; };
-		0F70718A180E354F00ED5799 /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F707187180E354F00ED5799 /* folder.png */; };
 		0F70718B180E354F00ED5799 /* picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F707188180E354F00ED5799 /* picture.png */; };
 		0F70718C180E354F00ED5799 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F707189180E354F00ED5799 /* camera.png */; };
 		0F79A5E5175DE2DC00BB3973 /* NSColor+Optique.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F79A5E4175DE2DC00BB3973 /* NSColor+Optique.m */; };
@@ -155,6 +154,8 @@
 		0FA706CB171911F400864CED /* empty-album.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706C9171911F400864CED /* empty-album.png */; };
 		0FA706CC171911F400864CED /* empty-album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FA706CA171911F400864CED /* empty-album@2x.png */; };
 		0FAB1D771909E9AF004A69BF /* OPLineBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAB1D761909E9AF004A69BF /* OPLineBox.m */; };
+		0FAB1D831909FEAD004A69BF /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FAB1D811909FEAD004A69BF /* folder.png */; };
+		0FAB1D841909FEAD004A69BF /* folder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FAB1D821909FEAD004A69BF /* folder@2x.png */; };
 		0FABADE31826636C003766AA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FABADE21826636C003766AA /* Sparkle.framework */; };
 		0FABADE4182663B7003766AA /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FABADE21826636C003766AA /* Sparkle.framework */; };
 		0FAEFFF3176736F700D60171 /* Optique.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEFFF2176736F700D60171 /* Optique.icns */; };
@@ -530,7 +531,6 @@
 		0F6AF87A172A3B220029724A /* ImageCaptureCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageCaptureCore.framework; path = System/Library/Frameworks/ImageCaptureCore.framework; sourceTree = SDKROOT; };
 		0F6AF87D172A42750029724A /* OPCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPCamera.h; path = ../Optique/OPCamera.h; sourceTree = "<group>"; };
 		0F6AF87E172A42750029724A /* OPCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCamera.m; path = ../Optique/OPCamera.m; sourceTree = "<group>"; };
-		0F707187180E354F00ED5799 /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		0F707188180E354F00ED5799 /* picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture.png; sourceTree = "<group>"; };
 		0F707189180E354F00ED5799 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		0F79A5E3175DE2DC00BB3973 /* NSColor+Optique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+Optique.h"; sourceTree = "<group>"; };
@@ -596,6 +596,8 @@
 		0FA706CA171911F400864CED /* empty-album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-album@2x.png"; sourceTree = "<group>"; };
 		0FAB1D751909E9AF004A69BF /* OPLineBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPLineBox.h; sourceTree = "<group>"; };
 		0FAB1D761909E9AF004A69BF /* OPLineBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPLineBox.m; sourceTree = "<group>"; };
+		0FAB1D811909FEAD004A69BF /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
+		0FAB1D821909FEAD004A69BF /* folder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "folder@2x.png"; sourceTree = "<group>"; };
 		0FABADE21826636C003766AA /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		0FAEFFF2176736F700D60171 /* Optique.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Optique.icns; sourceTree = SOURCE_ROOT; };
 		0FB185BF188A19C100419F5D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -1227,12 +1229,13 @@
 		0F9C80BA16F891C700B2B6D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0FAB1D811909FEAD004A69BF /* folder.png */,
+				0FAB1D821909FEAD004A69BF /* folder@2x.png */,
 				0FAEFFF2176736F700D60171 /* Optique.icns */,
 				0F1C2299187937F400A6878C /* down.png */,
 				0F1C229A187937F400A6878C /* down@2.png */,
 				0FA29D11180FFB080066077D /* lock.png */,
 				0F1B401F180E970200C1CBF5 /* search.png */,
-				0F707187180E354F00ED5799 /* folder.png */,
 				0F707188180E354F00ED5799 /* picture.png */,
 				0F707189180E354F00ED5799 /* camera.png */,
 				0F50C39A178560A90017DF73 /* Optique.entitlements */,
@@ -2039,6 +2042,7 @@
 				0F9C80CA16F891C700B2B6D8 /* MainMenu.xib in Resources */,
 				0FA29D12180FFB080066077D /* lock.png in Resources */,
 				0FEF33A716FEC8090096D72A /* OPCollectionViewController.xib in Resources */,
+				0FAB1D841909FEAD004A69BF /* folder@2x.png in Resources */,
 				0F33D0ED1769E87A0032CCA0 /* 218-trash2@2x.png in Resources */,
 				0F85D9C7180DF8F20003C6ED /* OPPlaceHolderViewController.xib in Resources */,
 				0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */,
@@ -2046,7 +2050,7 @@
 				0FE3B2451702C62D00FC0D6C /* OPNavigationController.xib in Resources */,
 				0F34814A176D669F00439AEA /* loading-preview.pdf in Resources */,
 				0F1C229B187937F400A6878C /* down.png in Resources */,
-				0F70718A180E354F00ED5799 /* folder.png in Resources */,
+				0FAB1D831909FEAD004A69BF /* folder.png in Resources */,
 				0F08A8D81770443C00DFEA02 /* 329-layers1@2x.png in Resources */,
 				0F96270F170418EB007C1A86 /* OPPItemViewController.xib in Resources */,
 				0FEC675717103B5E0086B264 /* effectsbarselectedbg.png in Resources */,

@@ -334,7 +334,6 @@
     id<XPItemCollection> collection = filteredCollections[index];
     cell.title = collection.title;
     cell.view.toolTip = collection.title;
-    cell.image = [NSImage imageNamed:@"empty-album"];
     
     id<XPItem> item = [collection coverItem];
     if (item)

@@ -12,7 +12,8 @@
 #import "OPCollectionGridView.h"
 
 #define kOPGridViewCellBorderRadius         6
-#define OPGridViewCellOSelectionOpacity     0.6
+#define kOPGridViewCellOSelectionOpacity    0.6
+#define kOPGridViewCellBackground           [[NSColor optiqueGridItemEmptyColor] CGColor]
 
 @implementation OPGridViewCell
 
@@ -31,18 +32,29 @@
         
         [self addSublayer:_titleLayer];
         
+        _placeholderLayer = [OEGridLayer layer];
+        _placeholderLayer.backgroundColor = kOPGridViewCellBackground;
+        _placeholderLayer.contents = [NSImage imageNamed:@"folder"];
+        _placeholderLayer.contentsGravity = kCAGravityResizeAspect;
+        _placeholderLayer.cornerRadius = kOPGridViewCellBorderRadius;
+        _placeholderLayer.masksToBounds = YES;
+        
+        [self addSublayer:_placeholderLayer];
+        
         _imageLayer = [OEGridLayer layer];
+        _imageLayer.backgroundColor = kOPGridViewCellBackground;
         _imageLayer.contentsGravity = kCAGravityResizeAspectFill;
-        _imageLayer.masksToBounds = YES;
         _imageLayer.cornerRadius = kOPGridViewCellBorderRadius;
-        _imageLayer.backgroundColor = [[NSColor optiqueGridItemEmptyColor] CGColor];
+        _imageLayer.masksToBounds = YES;
+        _imageLayer.hidden = YES; // Hide until an image is set
+        
         [self addSublayer:_imageLayer];
         
         _selectionLayer = [OEGridLayer layer];
         _selectionLayer.borderColor = [[NSColor optiqueSelectionColor] CGColor];
         _selectionLayer.cornerRadius = kOPGridViewCellBorderRadius;
         _selectionLayer.backgroundColor = [[NSColor optiqueSelectionColor] CGColor];
-        _selectionLayer.opacity = OPGridViewCellOSelectionOpacity;
+        _selectionLayer.opacity = kOPGridViewCellOSelectionOpacity;
         
         [self addSublayer:_selectionLayer];
         
@@ -79,6 +91,7 @@
 {
     self.selectionLayer.frame = self.bounds;
     self.imageLayer.frame = self.bounds;
+    self.placeholderLayer.frame = self.bounds;
     self.badgeLayer.frame = self.bounds;
  
     NSRect textRect = NSMakeRect(self.bounds.origin.x,
@@ -111,7 +124,14 @@
 {
     if (image)
     {
+        _imageLayer.hidden = NO;
+        _placeholderLayer.hidden = YES;
         _imageLayer.contents = image;
+    }
+    else
+    {
+        _imageLayer.hidden = YES;
+        _placeholderLayer.hidden = NO;
     }
 }
 
@@ -133,7 +153,7 @@
     if (badgeLayer != nil && _badgeLayer == nil)
     {
         _badgeLayer = badgeLayer;
-        _badgeLayer.zPosition = 1;
+        _badgeLayer.zPosition = 3;
         _badgeLayer.frame = self.imageLayer.bounds;
         
         [self addSublayer:_badgeLayer];

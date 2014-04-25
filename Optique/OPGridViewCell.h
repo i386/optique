@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NSString *title;
 
 @property (nonatomic, retain) OEGridLayer *imageLayer;
+@property (nonatomic, retain) OEGridLayer *placeholderLayer;
 @property (nonatomic, retain) CATextLayer *titleLayer;
 @property (nonatomic, retain) CALayer *selectionLayer;
 @property (nonatomic, retain) CALayer *badgeLayer;
