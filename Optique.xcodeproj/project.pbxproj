@@ -234,6 +234,8 @@
 		0FFC1B22190AA46200556BEA /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B21190AA46200556BEA /* camera@2x.png */; };
 		0FFC1B24190AA47E00556BEA /* lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B23190AA47E00556BEA /* lock@2x.png */; };
 		0FFC1B26190AA52500556BEA /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B25190AA52500556BEA /* search@2x.png */; };
+		0FFC1B29190BB3CC00556BEA /* unknown.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B27190BB3CC00556BEA /* unknown.png */; };
+		0FFC1B2A190BB3CC00556BEA /* unknown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B28190BB3CC00556BEA /* unknown@2x.png */; };
 		1373B7D69D7D477FA5D36CD2 /* libPods-Exposure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CE02E9006D49619346BA66 /* libPods-Exposure.a */; };
 		1791BFD324934B749367A850 /* libPods-Optique.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938A6A86581545989549982D /* libPods-Optique.a */; };
 		5485CBA8B3D447C9AF7B4466 /* libPods-Local.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BF5E4871694D2D83796B64 /* libPods-Local.a */; };
@@ -675,6 +677,8 @@
 		0FFC1B21190AA46200556BEA /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
 		0FFC1B23190AA47E00556BEA /* lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock@2x.png"; sourceTree = "<group>"; };
 		0FFC1B25190AA52500556BEA /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
+		0FFC1B27190BB3CC00556BEA /* unknown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unknown.png; sourceTree = "<group>"; };
+		0FFC1B28190BB3CC00556BEA /* unknown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unknown@2x.png"; sourceTree = "<group>"; };
 		1650C68FCF8C4AC79D7FEDF5 /* Pods-Darkroom.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Darkroom.xcconfig"; path = "Pods/Pods-Darkroom.xcconfig"; sourceTree = "<group>"; };
 		16513AE00F4544C59D21B885 /* Pods-Local.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local.xcconfig"; path = "Pods/Pods-Local.xcconfig"; sourceTree = "<group>"; };
 		28CE02E9006D49619346BA66 /* libPods-Exposure.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Exposure.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1193,6 +1197,8 @@
 		0F9C80BA16F891C700B2B6D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0FFC1B27190BB3CC00556BEA /* unknown.png */,
+				0FFC1B28190BB3CC00556BEA /* unknown@2x.png */,
 				0FAEFFF2176736F700D60171 /* Optique.icns */,
 				0FAB1D811909FEAD004A69BF /* folder.png */,
 				0FAB1D821909FEAD004A69BF /* folder@2x.png */,
@@ -1986,6 +1992,7 @@
 				0F85D9C7180DF8F20003C6ED /* OPPlaceHolderViewController.xib in Resources */,
 				0F6AEF861701C02200A797E4 /* OPMainWindowController.xib in Resources */,
 				0F1C22921878DAAB00A6878C /* OPNewAlbumPanelViewController.xib in Resources */,
+				0FFC1B29190BB3CC00556BEA /* unknown.png in Resources */,
 				0FE3B2451702C62D00FC0D6C /* OPNavigationController.xib in Resources */,
 				0F1C229B187937F400A6878C /* down.png in Resources */,
 				0FAB1D831909FEAD004A69BF /* folder.png in Resources */,
@@ -2000,6 +2007,7 @@
 				0FC0AD8918779E8E009C619F /* OPHistoryPeekViewController.xib in Resources */,
 				0F1C229C187937F400A6878C /* down@2.png in Resources */,
 				0FFC1B20190AA1F300556BEA /* folder-small@2x.png in Resources */,
+				0FFC1B2A190BB3CC00556BEA /* unknown@2x.png in Resources */,
 				0F1B4020180E970200C1CBF5 /* search.png in Resources */,
 				0FAEFFF3176736F700D60171 /* Optique.icns in Resources */,
 				0F3B558018C1AD8300B68D2A /* OPGeneralPreferencesViewController.xib in Resources */,

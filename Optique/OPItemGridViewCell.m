@@ -29,6 +29,8 @@
         _progressLayer = [[OPProgressLayer alloc] init];
         [self addSublayer:_progressLayer];
         _progressLayer.progress = 0;
+        
+        self.placeholderLayer.contents = [NSImage imageNamed:@"unknown"];
     }
     return self;
 }
