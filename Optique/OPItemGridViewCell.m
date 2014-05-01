@@ -31,6 +31,7 @@
         _progressLayer.progress = 0;
         
         self.placeholderLayer.contents = [NSImage imageNamed:@"unknown"];
+        self.titleLayer.hidden = YES;
     }
     return self;
 }
