@@ -19,6 +19,7 @@
 -initWithItem:(id<XPItem>)item;
 
 -(void)next;
+
 -(void)previous;
 
 -(void)backToCollection;

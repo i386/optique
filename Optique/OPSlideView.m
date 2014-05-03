@@ -10,6 +10,8 @@
 #import "NSWindow+FullScreen.h"
 #import "NSView+OptiqueBackground.h"
 #import "OPPlayerLayer.h"
+#import "OPPItemViewController.h"
+#import "NSPasteboard+XPItem.h"
 
 @implementation OPSlideView
 
@@ -34,17 +36,12 @@
 
 -(void)copy:(id)sender
 {
-//    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-//    NSArray *selected = [_controller.collection itemsAtIndexes:[_controller selectedItems]];
-//    if (selected.count == 1)
-//    {
-//        id<XPItem> item = [selected lastObject];
-//        [pasteboard writeItem:item];
-//    }
-//    else if (selected.count > 1)
-//    {
-//        [pasteboard writeItems:selected];
-//    }
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    id<XPItem> item = _viewController.item;
+    if (item)
+    {
+        [pasteboard writeItem:item];
+    }
 }
 
 @end
