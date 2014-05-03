@@ -105,12 +105,7 @@
             }
             else if ([sender isKindOfClass:[NSURL class]])
             {
-                id<XPItem> item = [XPExposureService itemForURL:sender collection:album];
-                [album copyItem:item withCompletion:^(NSError *error) {
-#if DEBUG
-                    NSLog(@"Added url %@ to collection %@", item, album);
-#endif
-                }];
+                [XPExposureService itemForURL:sender collection:album];
             }
             else
             {
