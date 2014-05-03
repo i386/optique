@@ -48,7 +48,7 @@
 
 -(NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard
 {
-    return @[XPItemPboardType, (NSString *)kUTTypeURL, (NSString *)kUTTypeTIFF];
+    return @[XPItemPboardType, (NSString *)kUTTypeTIFF];
 }
 
 -(id)pasteboardPropertyListForType:(NSString *)type
