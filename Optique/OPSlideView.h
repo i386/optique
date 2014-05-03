@@ -8,12 +8,12 @@
 
 #import <WHSlider/WHSlideView.h>
 
-@class OPPItemViewController;
+@class OPItemViewController;
 
 @interface OPSlideView : WHSlideView
 
 @property (strong) NSMenu *contextMenu;
-@property (weak) IBOutlet OPPItemViewController *viewController;
+@property (weak) IBOutlet OPItemViewController *viewController;
 
 -(void)visibleLayerMustStopPlaying;
 

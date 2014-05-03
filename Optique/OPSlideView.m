@@ -10,7 +10,7 @@
 #import "NSWindow+FullScreen.h"
 #import "NSView+OptiqueBackground.h"
 #import "OPPlayerLayer.h"
-#import "OPPItemViewController.h"
+#import "OPItemViewController.h"
 #import "NSPasteboard+XPItem.h"
 
 @implementation OPSlideView

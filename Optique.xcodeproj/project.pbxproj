@@ -119,8 +119,8 @@
 		0F905956180F44C0000D4A53 /* OPLocalPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F90594F180F43DF000D4A53 /* OPLocalPlugin.m */; };
 		0F946AB8178701CD004F6B57 /* XPItemCollectionProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F946AB7178701CD004F6B57 /* XPItemCollectionProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F946ABA178702ED004F6B57 /* XPItemCollectionProviderDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F946AB9178702ED004F6B57 /* XPItemCollectionProviderDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F96270E170418EB007C1A86 /* OPPItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F96270C170418EB007C1A86 /* OPPItemViewController.m */; };
-		0F96270F170418EB007C1A86 /* OPPItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F96270D170418EB007C1A86 /* OPPItemViewController.xib */; };
+		0F96270E170418EB007C1A86 /* OPItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F96270C170418EB007C1A86 /* OPItemViewController.m */; };
+		0F96270F170418EB007C1A86 /* OPItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F96270D170418EB007C1A86 /* OPItemViewController.xib */; };
 		0F982DFE18B4DF2C000ECBF7 /* NSURL+UnrollToParent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F982DF918B4DF2C000ECBF7 /* NSURL+UnrollToParent.m */; };
 		0F982DFF18B4DF2C000ECBF7 /* OPCollectionWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F982DFB18B4DF2C000ECBF7 /* OPCollectionWatcher.m */; };
 		0F9C80BE16F891C700B2B6D8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F9C80BC16F891C700B2B6D8 /* InfoPlist.strings */; };
@@ -533,9 +533,9 @@
 		0F90594F180F43DF000D4A53 /* OPLocalPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPLocalPlugin.m; sourceTree = "<group>"; };
 		0F946AB7178701CD004F6B57 /* XPItemCollectionProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPItemCollectionProvider.h; sourceTree = "<group>"; };
 		0F946AB9178702ED004F6B57 /* XPItemCollectionProviderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPItemCollectionProviderDelegate.h; sourceTree = "<group>"; };
-		0F96270B170418EB007C1A86 /* OPPItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPPItemViewController.h; sourceTree = "<group>"; };
-		0F96270C170418EB007C1A86 /* OPPItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPPItemViewController.m; sourceTree = "<group>"; };
-		0F96270D170418EB007C1A86 /* OPPItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPItemViewController.xib; sourceTree = "<group>"; };
+		0F96270B170418EB007C1A86 /* OPItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPItemViewController.h; sourceTree = "<group>"; };
+		0F96270C170418EB007C1A86 /* OPItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPItemViewController.m; sourceTree = "<group>"; };
+		0F96270D170418EB007C1A86 /* OPItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPItemViewController.xib; sourceTree = "<group>"; };
 		0F982DF818B4DF2C000ECBF7 /* NSURL+UnrollToParent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+UnrollToParent.h"; sourceTree = "<group>"; };
 		0F982DF918B4DF2C000ECBF7 /* NSURL+UnrollToParent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+UnrollToParent.m"; sourceTree = "<group>"; };
 		0F982DFA18B4DF2C000ECBF7 /* OPCollectionWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCollectionWatcher.h; sourceTree = "<group>"; };
@@ -1095,9 +1095,9 @@
 			isa = PBXGroup;
 			children = (
 				0F44229B1898A51800560740 /* Slide View */,
-				0F96270B170418EB007C1A86 /* OPPItemViewController.h */,
-				0F96270C170418EB007C1A86 /* OPPItemViewController.m */,
-				0F96270D170418EB007C1A86 /* OPPItemViewController.xib */,
+				0F96270B170418EB007C1A86 /* OPItemViewController.h */,
+				0F96270C170418EB007C1A86 /* OPItemViewController.m */,
+				0F96270D170418EB007C1A86 /* OPItemViewController.xib */,
 				0F1D8B141898E63C0087898C /* OPPlayerLayer.h */,
 				0F1D8B151898E63C0087898C /* OPPlayerLayer.m */,
 				0F1D8B181898F03A0087898C /* OPProgressLayer.h */,
@@ -2006,7 +2006,7 @@
 				0FE3B2451702C62D00FC0D6C /* OPNavigationController.xib in Resources */,
 				0F1C229B187937F400A6878C /* down.png in Resources */,
 				0FAB1D831909FEAD004A69BF /* folder.png in Resources */,
-				0F96270F170418EB007C1A86 /* OPPItemViewController.xib in Resources */,
+				0F96270F170418EB007C1A86 /* OPItemViewController.xib in Resources */,
 				0F1750E81828ACD30021853D /* OPNewsletterWindowController.xib in Resources */,
 				0FFC1B26190AA52500556BEA /* search@2x.png in Resources */,
 				0F628B76187A0E4C0026F551 /* OPApplicationMode.h in Resources */,
@@ -2330,7 +2330,7 @@
 				0FE2A0641914800000F242C4 /* NSData+WriteImage.m in Sources */,
 				0FCBC3D21895E3290099543D /* OPGridView.m in Sources */,
 				0FDE075817030FCC00D5B456 /* OPItemCollectionViewController.m in Sources */,
-				0F96270E170418EB007C1A86 /* OPPItemViewController.m in Sources */,
+				0F96270E170418EB007C1A86 /* OPItemViewController.m in Sources */,
 				0F1D8B1A1898F03A0087898C /* OPProgressLayer.m in Sources */,
 				0FA29D0E180FF34A0066077D /* NSURL+URLWithoutQuery.m in Sources */,
 				0F368A74170678AC00411503 /* NSView+OptiqueBackground.m in Sources */,

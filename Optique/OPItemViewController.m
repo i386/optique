@@ -8,14 +8,14 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
-#import "OPPItemViewController.h"
+#import "OPItemViewController.h"
 #import "NSImage+CGImage.h"
 #import "NSImage+Transform.h"
 #import "NSColor+Optique.h"
 #import "NSWindow+FullScreen.h"
 #import "OPPlayerLayer.h"
 
-@interface OPPItemViewController()
+@interface OPItemViewController()
 
 @property (assign) NSInteger index;
 @property (strong) NSMutableArray *sharingMenuItems;
@@ -23,11 +23,11 @@
 
 @end
 
-@implementation OPPItemViewController
+@implementation OPItemViewController
 
 -(id)initWithItem:(id<XPItem>)item
 {
-    self = [super initWithNibName:@"OPPItemViewController" bundle:nil];
+    self = [super initWithNibName:@"OPItemViewController" bundle:nil];
     if (self) {
         _item = item;
         _items = _item.collection.allItems;

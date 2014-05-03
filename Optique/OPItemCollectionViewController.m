@@ -9,7 +9,7 @@
 #import <Carbon/Carbon.h>
 #import <QuartzCore/QuartzCore.h>
 #import "OPItemCollectionViewController.h"
-#import "OPPItemViewController.h"
+#import "OPItemViewController.h"
 #import "OPItemPreviewManager.h"
 #import "OPPlaceHolderViewController.h"
 #import "NSURL+Renamer.h"
@@ -162,7 +162,7 @@
 
 -(void)gridView:(OEGridView *)gridView doubleClickedCellForItemAtIndex:(NSUInteger)index
 {
-    OPPItemViewController *controller = [[OPPItemViewController alloc] initWithItem:_collection.allItems[index]];
+    OPItemViewController *controller = [[OPPItemViewController alloc] initWithItem:_collection.allItems[index]];
     [self.controller pushViewController:controller];
 }
 

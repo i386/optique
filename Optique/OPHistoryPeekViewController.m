@@ -8,7 +8,7 @@
 
 #import "OPHistoryPeekViewController.h"
 #import "OPItemPreviewManager.h"
-#import "OPPItemViewController.h"
+#import "OPItemViewController.h"
 #import "OPItemCollectionViewController.h"
 #import "OPGridViewCell.h"
 #import "NSWindow+FullScreen.h"
@@ -46,7 +46,7 @@
     }
     else
     {
-        controller = [[OPPItemViewController alloc] initWithItem:_items[index]];
+        controller = [[OPItemViewController alloc] initWithItem:_items[index]];
     }
     
     [_navigationController popToPreviousViewController];

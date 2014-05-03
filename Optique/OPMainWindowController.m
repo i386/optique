@@ -12,7 +12,7 @@
 #import "OPCameraCollectionViewController.h"
 #import "XPNavigationViewController.h"
 #import "OPToolbarController.h"
-#import "OPPItemViewController.h"
+#import "OPItemViewController.h"
 #import "OPNewAlbumPanelViewController.h"
 #import "NSWindow+FullScreen.h"
 
