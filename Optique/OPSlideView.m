@@ -32,4 +32,19 @@
     [super awakeFromNib];
 }
 
+-(void)copy:(id)sender
+{
+//    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+//    NSArray *selected = [_controller.collection itemsAtIndexes:[_controller selectedItems]];
+//    if (selected.count == 1)
+//    {
+//        id<XPItem> item = [selected lastObject];
+//        [pasteboard writeItem:item];
+//    }
+//    else if (selected.count > 1)
+//    {
+//        [pasteboard writeItems:selected];
+//    }
+}
+
 @end
