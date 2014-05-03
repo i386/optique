@@ -219,6 +219,8 @@
 		0FE285A618397AF2009536D7 /* NSURL+EqualToURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE285A518397AF2009536D7 /* NSURL+EqualToURL.m */; };
 		0FE285A718397AF2009536D7 /* NSURL+EqualToURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE285A518397AF2009536D7 /* NSURL+EqualToURL.m */; };
 		0FE285A818397AF2009536D7 /* NSURL+EqualToURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE285A518397AF2009536D7 /* NSURL+EqualToURL.m */; };
+		0FE2A06119146C1200F242C4 /* NSURL+ImageType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2A06019146C1200F242C4 /* NSURL+ImageType.m */; };
+		0FE2A0641914800000F242C4 /* NSData+WriteImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2A0631914800000F242C4 /* NSData+WriteImage.m */; };
 		0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */; };
 		0FE3B2451702C62D00FC0D6C /* OPNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */; };
 		0FE3B2621702F25500FC0D6C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE3B2611702F25500FC0D6C /* QuartzCore.framework */; };
@@ -659,6 +661,10 @@
 		0FDE075617030FCC00D5B456 /* OPItemCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPItemCollectionViewController.m; sourceTree = "<group>"; };
 		0FE285A418397AF2009536D7 /* NSURL+EqualToURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+EqualToURL.h"; sourceTree = "<group>"; };
 		0FE285A518397AF2009536D7 /* NSURL+EqualToURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+EqualToURL.m"; sourceTree = "<group>"; };
+		0FE2A05F19146C1200F242C4 /* NSURL+ImageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ImageType.h"; sourceTree = "<group>"; };
+		0FE2A06019146C1200F242C4 /* NSURL+ImageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ImageType.m"; sourceTree = "<group>"; };
+		0FE2A0621914800000F242C4 /* NSData+WriteImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+WriteImage.h"; sourceTree = "<group>"; };
+		0FE2A0631914800000F242C4 /* NSData+WriteImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+WriteImage.m"; sourceTree = "<group>"; };
 		0FE3B2411702C62D00FC0D6C /* OPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNavigationController.h; sourceTree = "<group>"; };
 		0FE3B2421702C62D00FC0D6C /* OPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNavigationController.m; sourceTree = "<group>"; };
 		0FE3B2431702C62D00FC0D6C /* OPNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNavigationController.xib; sourceTree = "<group>"; };
@@ -1577,9 +1583,9 @@
 				0FA29D0B180FE99F0066077D /* GridView */,
 				0FDE075517030FCC00D5B456 /* OPItemCollectionViewController.h */,
 				0FDE075617030FCC00D5B456 /* OPItemCollectionViewController.m */,
+				0FC6F835188691350070CAA3 /* OPItemCollectionViewController.xib */,
 				0F85D9B7180A4EA60003C6ED /* OPDateItemCountValueTransformer.h */,
 				0F85D9B8180A4EA60003C6ED /* OPDateItemCountValueTransformer.m */,
-				0FC6F835188691350070CAA3 /* OPItemCollectionViewController.xib */,
 			);
 			name = "Item Collection View";
 			sourceTree = "<group>";
@@ -1627,6 +1633,10 @@
 				0F6749991820F5F500CEEEA9 /* NSLock+WithBlock.m */,
 				0F67499B18210A7B00CEEEA9 /* NSPasteboard+XPItem.h */,
 				0F67499C18210A7B00CEEEA9 /* NSPasteboard+XPItem.m */,
+				0FE2A05F19146C1200F242C4 /* NSURL+ImageType.h */,
+				0FE2A06019146C1200F242C4 /* NSURL+ImageType.m */,
+				0FE2A0621914800000F242C4 /* NSData+WriteImage.h */,
+				0FE2A0631914800000F242C4 /* NSData+WriteImage.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -2307,6 +2317,7 @@
 				0F3B557F18C1AD8300B68D2A /* OPGeneralPreferencesViewController.m in Sources */,
 				0F1D8B1D1898F2900087898C /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */,
 				0F9C80C016F891C700B2B6D8 /* main.m in Sources */,
+				0FE2A06119146C1200F242C4 /* NSURL+ImageType.m in Sources */,
 				0F9C80C716F891C700B2B6D8 /* OPAppDelegate.m in Sources */,
 				0FF3186E181E6C4900CD3637 /* OPRenameAlbumWindowController.m in Sources */,
 				0FD51723176B431F006E8F4D /* OPGridViewCell.m in Sources */,
@@ -2316,6 +2327,7 @@
 				0F1C22911878DAAB00A6878C /* OPNewAlbumPanelViewController.m in Sources */,
 				0F6AEF851701C02200A797E4 /* OPMainWindowController.m in Sources */,
 				0FE3B2441702C62D00FC0D6C /* OPNavigationController.m in Sources */,
+				0FE2A0641914800000F242C4 /* NSData+WriteImage.m in Sources */,
 				0FCBC3D21895E3290099543D /* OPGridView.m in Sources */,
 				0FDE075817030FCC00D5B456 /* OPItemCollectionViewController.m in Sources */,
 				0F96270E170418EB007C1A86 /* OPPItemViewController.m in Sources */,

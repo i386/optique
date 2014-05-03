@@ -12,6 +12,9 @@
 #import "OPItemGridViewCell.h"
 #import "OPItemPreviewManager.h"
 #import "NSColor+Optique.h"
+#import "NSURL+ImageType.h"
+#import "NSURL+Renamer.h"
+#import "NSData+WriteImage.h"
 
 @interface OPNewAlbumPanelViewController ()
 
@@ -231,6 +234,26 @@
     
     NSPasteboard *pboard = [sender draggingPasteboard];
     
+    for (NSString *type in [NSImage imagePasteboardTypes])
+    {
+        NSURL *fileURL = [NSURL URLFromPasteboard:pboard];
+        NSData *data = [pboard dataForType:type];
+        
+        NSString *fileName = fileURL ? fileURL.pathExtension : @"Copied image.png";
+        
+        if (data)
+        {
+            NSURL *destURL = [[NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:fileName]] URLWithUniqueNameIfExistsAtParent];
+            
+            CFStringRef uti = [destURL imageUTI];
+            
+            if ([data writeImage:destURL withUTI:uti])
+            {
+                return YES;
+            }
+        }
+    }
+    
     if ( [[pboard types] containsObject:NSFilenamesPboardType])
     {
         NSURL *fileURL = [NSURL URLFromPasteboard:pboard];
@@ -286,6 +309,11 @@
     }
     
     return NO;
+}
+
+-(void)closed
+{
+    //TODO: delete all tmp files
 }
 
 @end

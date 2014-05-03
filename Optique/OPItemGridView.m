@@ -24,7 +24,10 @@
         self.isSelectionSticky = NO;
         self.clickingBackgroundDeselectsAllCells = YES;
         
-        [self registerForDraggedTypes:@[NSFilenamesPboardType, XPItemPboardType]];
+        NSMutableArray *pasteBoardTypes = [NSMutableArray arrayWithArray:[NSImage imagePasteboardTypes]];
+        [pasteBoardTypes addObjectsFromArray:@[NSFilenamesPboardType, NSURLPboardType, XPItemPboardType]];
+        
+        [self registerForDraggedTypes:pasteBoardTypes];
     }
     return self;
 }

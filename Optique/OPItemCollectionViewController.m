@@ -7,12 +7,15 @@
 //
 
 #import <Carbon/Carbon.h>
+#import <QuartzCore/QuartzCore.h>
 #import "OPItemCollectionViewController.h"
 #import "OPPItemViewController.h"
 #import "OPItemPreviewManager.h"
 #import "OPPlaceHolderViewController.h"
 #import "NSURL+Renamer.h"
 #import "OPToolbarController.h"
+#import "NSURL+ImageType.h"
+#import "NSData+WriteImage.h"
 
 @interface OPItemCollectionViewController()
 
@@ -398,7 +401,27 @@
 {
     NSPasteboard *pboard = [sender draggingPasteboard];
     
-    id collection = _collection;
+    id<XPItemCollection> collection = _collection;
+    
+    for (NSString *type in [NSImage imagePasteboardTypes])
+    {
+        NSURL *fileURL = [NSURL URLFromPasteboard:pboard];
+        NSData *data = [pboard dataForType:type];
+        
+        NSString *fileName = (fileURL && fileURL.pathExtension) ? fileURL.pathExtension : @"Copied image.png";
+        
+        if (data)
+        {
+            NSURL *destURL = [collection.path URLByAppendingPathComponent:fileName];
+            CFStringRef uti = [destURL imageUTI];
+            
+            if ([data writeImage:destURL withUTI:uti])
+            {
+                return YES;
+            }
+        }
+    }
+    
     if ( [[pboard types] containsObject:NSFilenamesPboardType] && [collection respondsToSelector:@selector(path)])
     {
         NSURL *fileURL = [NSURL URLFromPasteboard:pboard];
@@ -425,6 +448,12 @@
     id collection = _collection;
     NSPasteboard *pboard = [sender draggingPasteboard];
     
+    for (NSString *type in [NSImage imagePasteboardTypes])
+    {
+        NSData *data = [pboard dataForType:type];
+        return data != nil;
+    }
+    
     if ( [[pboard types] containsObject:NSFilenamesPboardType] && [collection respondsToSelector:@selector(path)])
     {
         NSURL *fileURL = [NSURL URLFromPasteboard:pboard];
@@ -432,6 +461,11 @@
         BOOL isDir;
         return [[NSFileManager defaultManager] fileExistsAtPath:fileURL.path isDirectory:&isDir] && !isDir;
     }
+    else if ([[pboard types] containsObject:NSTIFFPboardType])
+    {
+        return [NSURL URLFromPasteboard:pboard] != NULL;
+    }
+    
     return NO;
 }
 
