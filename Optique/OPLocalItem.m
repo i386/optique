@@ -48,7 +48,7 @@
 
 -(NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard
 {
-    return @[XPItemPboardType, (NSString *)kUTTypeURL];
+    return @[XPItemPboardType, (NSString *)kUTTypeURL, (NSString *)kUTTypeTIFF];
 }
 
 -(id)pasteboardPropertyListForType:(NSString *)type
@@ -57,9 +57,9 @@
     {
         return [NSKeyedArchiver archivedDataWithRootObject:@{@"item-title": self.title, @"collection-title": [self.collection title]}];
     }
-    else if ([type isEqualToString:(NSString *)kUTTypeURL])
+    else if ([type isEqualToString:(NSString *)kUTTypeTIFF])
     {
-        return [self.url pasteboardPropertyListForType:(NSString *)kUTTypeURL];
+        return [[[NSImage alloc] initWithContentsOfURL:self.url] pasteboardPropertyListForType:(NSString *)kUTTypeTIFF];
     }
     return nil;
 }
