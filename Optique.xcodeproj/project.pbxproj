@@ -89,7 +89,6 @@
 		0F5B9BED18FA2FC600AD773B /* OPImageOrientationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9BEC18FA2FC600AD773B /* OPImageOrientationTest.m */; };
 		0F5B9BF018FA3D2600AD773B /* OPImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9BEF18FA3D2600AD773B /* OPImage.m */; };
 		0F5C40AA181CC1DF00F265FC /* OPDropDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */; };
-		0F628B76187A0E4C0026F551 /* OPApplicationMode.h in Resources */ = {isa = PBXBuildFile; fileRef = 0F628B75187A0E4C0026F551 /* OPApplicationMode.h */; };
 		0F628B78187A0E770026F551 /* OPApplicationMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F628B77187A0E770026F551 /* OPApplicationMode.m */; };
 		0F628B7B187D48470026F551 /* OPSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F628B7A187D48470026F551 /* OPSplitView.m */; };
 		0F628B86187E82C30026F551 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F628B85187E82C30026F551 /* Common.m */; };
@@ -751,8 +750,8 @@
 				0FE3B2621702F25500FC0D6C /* QuartzCore.framework in Frameworks */,
 				0F62BA66173673B200E661DD /* Cocoa.framework in Frameworks */,
 				0F368A6C170531B500411503 /* Quartz.framework in Frameworks */,
-				1791BFD324934B749367A850 /* libPods-Optique.a in Frameworks */,
 				0F1750E2182892DD0021853D /* HockeySDK.framework in Frameworks */,
+				1791BFD324934B749367A850 /* libPods-Optique.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1809,9 +1808,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				0F413C52178EA32B00FCE1EA /* PBXTargetDependency */,
 				0F7D0EF318B9CA65009EC309 /* PBXTargetDependency */,
 				0F7D0EF518B9CA65009EC309 /* PBXTargetDependency */,
-				0F413C52178EA32B00FCE1EA /* PBXTargetDependency */,
 				0F3632BA178E2BD10000577B /* PBXTargetDependency */,
 				0F3632BC178E2BD10000577B /* PBXTargetDependency */,
 				0F3632BE178E2BD10000577B /* PBXTargetDependency */,
@@ -2009,7 +2008,6 @@
 				0F96270F170418EB007C1A86 /* OPItemViewController.xib in Resources */,
 				0F1750E81828ACD30021853D /* OPNewsletterWindowController.xib in Resources */,
 				0FFC1B26190AA52500556BEA /* search@2x.png in Resources */,
-				0F628B76187A0E4C0026F551 /* OPApplicationMode.h in Resources */,
 				0FC2EC751813F5BA00D02EC5 /* OPImportItemsWindowController.xib in Resources */,
 				0FF3186F181E6C4900CD3637 /* OPRenameAlbumWindowController.xib in Resources */,
 				0F70718C180E354F00ED5799 /* camera.png in Resources */,
