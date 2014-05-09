@@ -5,7 +5,7 @@ target :Optique, :exclusive => false do
   pod 'OEGridView', :git => 'git@github.com:i386/OEGridView.git'
   pod 'CNBaseView', '~> 1.0.11'
   pod 'KBTextField', :git => 'git@github.com:i386/KBTextField.git'
-  pod 'WHSlider', :path => '~/code/Slider'
+  pod 'WHSlider', :git => 'git@bitbucket.org:whimsyinc/slider.git'
   pod 'MASPreferences', '~> 1.1'
 end
 
