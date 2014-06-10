@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5051" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1090" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OPMainWindowController">
@@ -56,9 +56,9 @@
                     <toolbarItem implicitItemIdentifier="B8DC136D-8E91-4683-9199-4499147FDB2F" label="Search" paletteLabel="Search" id="tRa-hG-kqx">
                         <nil key="toolTip"/>
                         <size key="minSize" width="96" height="22"/>
-                        <size key="maxSize" width="250" height="22"/>
-                        <searchField key="view" verticalHuggingPriority="750" id="FOA-4z-wyI">
-                            <rect key="frame" x="0.0" y="14" width="200" height="22"/>
+                        <size key="maxSize" width="170" height="22"/>
+                        <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="FOA-4z-wyI">
+                            <rect key="frame" x="0.0" y="14" width="170" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="7xq-S9-kea">
                                 <font key="font" metaFont="system"/>
@@ -133,8 +133,8 @@
                     <toolbarItem reference="JcO-an-8wk"/>
                     <toolbarItem reference="A1P-7Z-8Kc"/>
                     <toolbarItem reference="JI3-ZT-0bl"/>
-                    <toolbarItem reference="t76-i3-tYv"/>
                     <toolbarItem reference="tRa-hG-kqx"/>
+                    <toolbarItem reference="t76-i3-tYv"/>
                 </defaultToolbarItems>
                 <connections>
                     <outlet property="delegate" destination="7Y5-cf-qca" id="Oyc-Ix-3tY"/>
@@ -156,6 +156,6 @@
         </customObject>
     </objects>
     <resources>
-        <image name="NSShareTemplate" width="18" height="16"/>
+        <image name="NSShareTemplate" width="11" height="16"/>
     </resources>
 </document>

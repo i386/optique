@@ -29,7 +29,7 @@
 		0F14C881189CE59A001FA6B4 /* CALayer+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C880189CE59A001FA6B4 /* CALayer+Rotate.m */; };
 		0F14C885189DE425001FA6B4 /* OPDarkroomPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C884189DE425001FA6B4 /* OPDarkroomPreviewView.m */; };
 		0F1750E2182892DD0021853D /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1750E0182892C70021853D /* HockeySDK.framework */; };
-		0F1750E3182892F40021853D /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F1750E0182892C70021853D /* HockeySDK.framework */; };
+		0F1750E3182892F40021853D /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F1750E0182892C70021853D /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0F1750E71828ACD30021853D /* OPNewsletterWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */; };
 		0F1750E81828ACD30021853D /* OPNewsletterWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1750E61828ACD30021853D /* OPNewsletterWindowController.xib */; };
 		0F1B4020180E970200C1CBF5 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F1B401F180E970200C1CBF5 /* search.png */; };
@@ -42,14 +42,14 @@
 		0F1D8B161898E63C0087898C /* OPPlayerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1D8B151898E63C0087898C /* OPPlayerLayer.m */; };
 		0F1D8B1A1898F03A0087898C /* OPProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1D8B191898F03A0087898C /* OPProgressLayer.m */; };
 		0F1D8B1D1898F2900087898C /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1D8B1C1898F2900087898C /* NSBezierPath+BezierPathQuartzUtilities.m */; };
-		0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A6571737C7C300E53ED1 /* Finder.bundle */; };
+		0F21E9D61737C9A10013B601 /* Finder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A6571737C7C300E53ED1 /* Finder.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F243AAE1707EF630012149E /* NSWindow+FullScreen.m */; };
 		0F274985189C8992006C3763 /* XPToolbarItemProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F274984189C8992006C3763 /* XPToolbarItemProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F27498B189C8C9E006C3763 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F905942180F43BF000D4A53 /* CoreFoundation.framework */; };
 		0F274991189C8C9E006C3763 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F27498F189C8C9E006C3763 /* InfoPlist.strings */; };
 		0F274998189C8CAC006C3763 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0F274999189C8CB3006C3763 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
-		0F27499A189C8CCD006C3763 /* Darkroom.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F27498A189C8C9E006C3763 /* Darkroom.bundle */; };
+		0F27499A189C8CCD006C3763 /* Darkroom.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F27498A189C8C9E006C3763 /* Darkroom.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0F27499D189C8D02006C3763 /* OPDarkroomPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F27499C189C8D02006C3763 /* OPDarkroomPlugin.m */; };
 		0F2749A1189C92D7006C3763 /* OPDarkroomPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F27499F189C92D7006C3763 /* OPDarkroomPreviewViewController.m */; };
 		0F2749A2189C92D7006C3763 /* OPDarkroomPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2749A0189C92D7006C3763 /* OPDarkroomPreviewViewController.xib */; };
@@ -86,6 +86,7 @@
 		0F57A29818B9AC15004A1C55 /* XPExposureService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F57A29618B9AC15004A1C55 /* XPExposureService.m */; };
 		0F57A29B18B9AC1C004A1C55 /* XPDebugView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F57A29918B9AC1C004A1C55 /* XPDebugView.h */; };
 		0F57A29C18B9AC1C004A1C55 /* XPDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F57A29A18B9AC1C004A1C55 /* XPDebugView.m */; };
+		0F5B3AEF194721B300540D59 /* libPods-Exposure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CE02E9006D49619346BA66 /* libPods-Exposure.a */; };
 		0F5B9BED18FA2FC600AD773B /* OPImageOrientationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9BEC18FA2FC600AD773B /* OPImageOrientationTest.m */; };
 		0F5B9BF018FA3D2600AD773B /* OPImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B9BEF18FA3D2600AD773B /* OPImage.m */; };
 		0F5C40AA181CC1DF00F265FC /* OPDropDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5C40A9181CC1DF00F265FC /* OPDropDownButton.m */; };
@@ -114,7 +115,7 @@
 		0F905943180F43BF000D4A53 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F905942180F43BF000D4A53 /* CoreFoundation.framework */; };
 		0F905949180F43BF000D4A53 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F905947180F43BF000D4A53 /* InfoPlist.strings */; };
 		0F905953180F4415000D4A53 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
-		0F905954180F4427000D4A53 /* Local.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F905941180F43BF000D4A53 /* Local.bundle */; };
+		0F905954180F4427000D4A53 /* Local.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F905941180F43BF000D4A53 /* Local.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0F905956180F44C0000D4A53 /* OPLocalPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F90594F180F43DF000D4A53 /* OPLocalPlugin.m */; };
 		0F946AB8178701CD004F6B57 /* XPItemCollectionProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F946AB7178701CD004F6B57 /* XPItemCollectionProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F946ABA178702ED004F6B57 /* XPItemCollectionProviderDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F946AB9178702ED004F6B57 /* XPItemCollectionProviderDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -139,7 +140,7 @@
 		0FAB1D831909FEAD004A69BF /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FAB1D811909FEAD004A69BF /* folder.png */; };
 		0FAB1D841909FEAD004A69BF /* folder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FAB1D821909FEAD004A69BF /* folder@2x.png */; };
 		0FABADE31826636C003766AA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FABADE21826636C003766AA /* Sparkle.framework */; };
-		0FABADE4182663B7003766AA /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FABADE21826636C003766AA /* Sparkle.framework */; };
+		0FABADE4182663B7003766AA /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FABADE21826636C003766AA /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0FAEFFF3176736F700D60171 /* Optique.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEFFF2176736F700D60171 /* Optique.icns */; };
 		0FB7F86018A39E5B00AD3C5D /* NSURL+Renamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A6DA918191834009AD08C /* NSURL+Renamer.m */; };
 		0FB94DD21735E31400065536 /* NSNotificationCenter+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB94DD11735E31400065536 /* NSNotificationCenter+Async.m */; };
@@ -172,7 +173,7 @@
 		0FC2ABB6178952F7009C7B02 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0FC2ABBC178952F7009C7B02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FC2ABBA178952F7009C7B02 /* InfoPlist.strings */; };
 		0FC2ABC617895355009C7B02 /* OPCameraPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC2ABC517895355009C7B02 /* OPCameraPlugin.m */; };
-		0FC2ABC91789539C009C7B02 /* Camera.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FC2ABB5178952F7009C7B02 /* Camera.bundle */; };
+		0FC2ABC91789539C009C7B02 /* Camera.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FC2ABB5178952F7009C7B02 /* Camera.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0FC2ABCA1789541A009C7B02 /* OPCameraService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF877172A3B0A0029724A /* OPCameraService.m */; };
 		0FC2ABCB1789541A009C7B02 /* OPCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF87E172A42750029724A /* OPCamera.m */; };
 		0FC2ABCC1789541A009C7B02 /* OPCameraItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C5619172CBB4B00CB7B1E /* OPCameraItem.m */; };
@@ -183,7 +184,7 @@
 		0FC6F836188691350070CAA3 /* OPItemCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC6F835188691350070CAA3 /* OPItemCollectionViewController.xib */; };
 		0FC6F83B1887C9C60070CAA3 /* XPItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6F83A1887C9C60070CAA3 /* XPItem.m */; };
 		0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8A7AF170FD9E000650D7C /* NSImage+CGImage.m */; };
-		0FCA4D191737CC4A007DC9EF /* Exposure.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
+		0FCA4D191737CC4A007DC9EF /* Exposure.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0FCA4D1C1737CE2C007DC9EF /* OPFinderPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D1B1737CE2C007DC9EF /* OPFinderPlugin.m */; };
 		0FCA4D2E1737D7F0007DC9EF /* XPMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCA4D2C1737D7F0007DC9EF /* XPMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FCA4D2F1737D7F0007DC9EF /* XPMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D2D1737D7F0007DC9EF /* XPMenuItem.m */; };
@@ -192,13 +193,13 @@
 		0FCA4D5C1738A273007DC9EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FCA4D5A1738A272007DC9EF /* InfoPlist.strings */; };
 		0FCA4D631738A27B007DC9EF /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
 		0FCA4D641738A282007DC9EF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCA4D4F173874C6007DC9EF /* Social.framework */; };
-		0FCA4D651738A28F007DC9EF /* Facebook.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FCA4D551738A272007DC9EF /* Facebook.bundle */; };
+		0FCA4D651738A28F007DC9EF /* Facebook.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FCA4D551738A272007DC9EF /* Facebook.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0FCA4D681738A2CE007DC9EF /* OPFacebookPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D671738A2CE007DC9EF /* OPFacebookPlugin.m */; };
 		0FCA4D6C17391D66007DC9EF /* XPController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCA4D6B17391D65007DC9EF /* XPController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FCA4D7517391EA7007DC9EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F62BA65173673B200E661DD /* Cocoa.framework */; };
 		0FCA4D7B17391EA8007DC9EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FCA4D7917391EA8007DC9EF /* InfoPlist.strings */; };
 		0FCA4D8217391EB7007DC9EF /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
-		0FCA4D8317391EC3007DC9EF /* Twitter.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FCA4D7417391EA7007DC9EF /* Twitter.bundle */; };
+		0FCA4D8317391EC3007DC9EF /* Twitter.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0FCA4D7417391EA7007DC9EF /* Twitter.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0FCA4D8617391EE1007DC9EF /* OPTwitterPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4D8517391EE1007DC9EF /* OPTwitterPlugin.m */; };
 		0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCAF8CD17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m */; };
 		0FCBC3D21895E3290099543D /* OPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBC3D11895E3290099543D /* OPGridView.m */; };
@@ -237,9 +238,9 @@
 		0FFC1B26190AA52500556BEA /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B25190AA52500556BEA /* search@2x.png */; };
 		0FFC1B29190BB3CC00556BEA /* unknown.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B27190BB3CC00556BEA /* unknown.png */; };
 		0FFC1B2A190BB3CC00556BEA /* unknown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC1B28190BB3CC00556BEA /* unknown@2x.png */; };
-		1373B7D69D7D477FA5D36CD2 /* libPods-Exposure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CE02E9006D49619346BA66 /* libPods-Exposure.a */; };
 		1791BFD324934B749367A850 /* libPods-Optique.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 938A6A86581545989549982D /* libPods-Optique.a */; };
 		5485CBA8B3D447C9AF7B4466 /* libPods-Local.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BF5E4871694D2D83796B64 /* libPods-Local.a */; };
+		FCE1F8AB5D454AE198F3A3C4 /* libPods-Darkroom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E076D111DC6E449287387180 /* libPods-Darkroom.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -480,6 +481,7 @@
 		0F57A29618B9AC15004A1C55 /* XPExposureService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPExposureService.m; path = Exposure/XPExposureService.m; sourceTree = "<group>"; };
 		0F57A29918B9AC1C004A1C55 /* XPDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPDebugView.h; path = Exposure/Exposure/XPDebugView.h; sourceTree = SOURCE_ROOT; };
 		0F57A29A18B9AC1C004A1C55 /* XPDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPDebugView.m; path = Exposure/Exposure/XPDebugView.m; sourceTree = SOURCE_ROOT; };
+		0F5B3AED1947211A00540D59 /* libPods-Exposure-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Exposure-BlocksKit.a"; path = "../../Library/Developer/Xcode/DerivedData/Optique-dtfhunhrkomrwkhcuczxtospffyt/Build/Products/Debug/libPods-Exposure-BlocksKit.a"; sourceTree = "<group>"; };
 		0F5B9BEC18FA2FC600AD773B /* OPImageOrientationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImageOrientationTest.m; sourceTree = "<group>"; };
 		0F5B9BEE18FA3D2600AD773B /* OPImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPImage.h; sourceTree = "<group>"; };
 		0F5B9BEF18FA3D2600AD773B /* OPImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPImage.m; sourceTree = "<group>"; };
@@ -684,14 +686,14 @@
 		0FFC1B25190AA52500556BEA /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		0FFC1B27190BB3CC00556BEA /* unknown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unknown.png; sourceTree = "<group>"; };
 		0FFC1B28190BB3CC00556BEA /* unknown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unknown@2x.png"; sourceTree = "<group>"; };
-		1650C68FCF8C4AC79D7FEDF5 /* Pods-Darkroom.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Darkroom.xcconfig"; path = "Pods/Pods-Darkroom.xcconfig"; sourceTree = "<group>"; };
 		16513AE00F4544C59D21B885 /* Pods-Local.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local.xcconfig"; path = "Pods/Pods-Local.xcconfig"; sourceTree = "<group>"; };
 		28CE02E9006D49619346BA66 /* libPods-Exposure.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Exposure.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		414A439A63084757BE245F01 /* Pods/Pods-Optique.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods/Pods-Optique.xcconfig"; sourceTree = SOURCE_ROOT; };
+		847F9E22C64F4784AF4F09E6 /* Pods-Darkroom.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Darkroom.xcconfig"; path = "Pods/Pods-Darkroom.xcconfig"; sourceTree = "<group>"; };
 		903EF40C10B94861A91EB68D /* Pods-Exposure.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exposure.xcconfig"; path = "Pods/Pods-Exposure.xcconfig"; sourceTree = "<group>"; };
 		938A6A86581545989549982D /* libPods-Optique.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Optique.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BF5E4871694D2D83796B64 /* libPods-Local.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Local.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F66DD2097C7C4BA4A913E231 /* Pods/Pods-Flickr.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods/Pods-Flickr.xcconfig"; sourceTree = SOURCE_ROOT; };
+		E076D111DC6E449287387180 /* libPods-Darkroom.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Darkroom.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -699,9 +701,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F5B3AEF194721B300540D59 /* libPods-Exposure.a in Frameworks */,
 				0F7A704F178ABB5800570180 /* QuartzCore.framework in Frameworks */,
 				0F04A62D1737C71000E53ED1 /* Cocoa.framework in Frameworks */,
-				1373B7D69D7D477FA5D36CD2 /* libPods-Exposure.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,6 +723,7 @@
 				0F274999189C8CB3006C3763 /* Cocoa.framework in Frameworks */,
 				0F274998189C8CAC006C3763 /* Exposure.framework in Frameworks */,
 				0F27498B189C8C9E006C3763 /* CoreFoundation.framework in Frameworks */,
+				FCE1F8AB5D454AE198F3A3C4 /* libPods-Darkroom.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1122,11 +1125,10 @@
 				0FCA4D1D1737CE8C007DC9EF /* Exposures */,
 				0F9C80B216F891C700B2B6D8 /* Frameworks */,
 				0F9C80B116F891C700B2B6D8 /* Products */,
-				F66DD2097C7C4BA4A913E231 /* Pods/Pods-Flickr.xcconfig */,
 				414A439A63084757BE245F01 /* Pods/Pods-Optique.xcconfig */,
 				16513AE00F4544C59D21B885 /* Pods-Local.xcconfig */,
 				903EF40C10B94861A91EB68D /* Pods-Exposure.xcconfig */,
-				1650C68FCF8C4AC79D7FEDF5 /* Pods-Darkroom.xcconfig */,
+				847F9E22C64F4784AF4F09E6 /* Pods-Darkroom.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1149,6 +1151,7 @@
 		0F9C80B216F891C700B2B6D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F5B3AED1947211A00540D59 /* libPods-Exposure-BlocksKit.a */,
 				0F53DFF7188A587E00F0FBE9 /* CoreMedia.framework */,
 				0F53DFF8188A587E00F0FBE9 /* CoreMediaIO.framework */,
 				0F53DFF5188A587700F0FBE9 /* CoreVideo.framework */,
@@ -1171,6 +1174,7 @@
 				96BF5E4871694D2D83796B64 /* libPods-Local.a */,
 				28CE02E9006D49619346BA66 /* libPods-Exposure.a */,
 				0FC92775180F502900C51076 /* libPods-Local-CDEvents.a */,
+				E076D111DC6E449287387180 /* libPods-Darkroom.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1756,11 +1760,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F274993189C8C9E006C3763 /* Build configuration list for PBXNativeTarget "Darkroom" */;
 			buildPhases = (
-				63D0D0D42EC3478EA4863018 /* Check Pods Manifest.lock */,
+				E8E3AA5F5ED44B8393CB299D /* Check Pods Manifest.lock */,
 				0F274986189C8C9E006C3763 /* Sources */,
 				0F274987189C8C9E006C3763 /* Frameworks */,
 				0F274988189C8C9E006C3763 /* Resources */,
-				B88DC8C80CFD45D1AA86F0EB /* Copy Pods Resources */,
+				212ACF5C1D5B4536B36240D4 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1900,7 +1904,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = OP;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "James Dumay";
 				TargetAttributes = {
 					0F04A62B1737C70F00E53ED1 = {
@@ -2134,6 +2138,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		212ACF5C1D5B4536B36240D4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Darkroom-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		54B3332FFEB643D0A243ACB9 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2147,21 +2166,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-Local-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		63D0D0D42EC3478EA4863018 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6FC78DBE8B3C4028AE2B7A34 /* Copy Pods Resources */ = {
@@ -2224,19 +2228,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		B88DC8C80CFD45D1AA86F0EB /* Copy Pods Resources */ = {
+		E8E3AA5F5ED44B8393CB299D /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-Darkroom-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2668,7 +2672,7 @@
 		};
 		0F274994189C8C9E006C3763 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1650C68FCF8C4AC79D7FEDF5 /* Pods-Darkroom.xcconfig */;
+			baseConfigurationReference = 847F9E22C64F4784AF4F09E6 /* Pods-Darkroom.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -2685,8 +2689,16 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Applications/Xcode6-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+				);
 				INFOPLIST_FILE = "Darkroom/Darkroom-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Optique-dtfhunhrkomrwkhcuczxtospffyt/Build/Products/Debug",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -2696,7 +2708,7 @@
 		};
 		0F274995189C8C9E006C3763 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1650C68FCF8C4AC79D7FEDF5 /* Pods-Darkroom.xcconfig */;
+			baseConfigurationReference = 847F9E22C64F4784AF4F09E6 /* Pods-Darkroom.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -2710,8 +2722,16 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Applications/Xcode6-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+				);
 				INFOPLIST_FILE = "Darkroom/Darkroom-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Optique-dtfhunhrkomrwkhcuczxtospffyt/Build/Products/Debug",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -2889,6 +2909,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -2917,6 +2938,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",

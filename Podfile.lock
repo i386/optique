@@ -17,8 +17,8 @@ DEPENDENCIES:
   - KBTextField (from `git@github.com:i386/KBTextField.git`)
   - MASPreferences (~> 1.1)
   - NSHash (~> 1.0.1)
-  - OEGridView (from `~/code/OEGridView`)
-  - WHSlider (from `~/code/Slider`)
+  - OEGridView (from `git@github.com:i386/OEGridView.git`)
+  - WHSlider (from `git@bitbucket.org:whimsyinc/slider.git`)
 
 EXTERNAL SOURCES:
   KBButton:
@@ -26,19 +26,19 @@ EXTERNAL SOURCES:
   KBTextField:
     :git: git@github.com:i386/KBTextField.git
   OEGridView:
-    :path: ~/code/OEGridView
+    :git: git@github.com:i386/OEGridView.git
   WHSlider:
-    :path: ~/code/Slider
+    :git: git@bitbucket.org:whimsyinc/slider.git
 
 SPEC CHECKSUMS:
-  BlocksKit: 125e4e69a62e3b85bacc5175737dae000b00b9fb
-  CDEvents: 68319b2b32dd33f81e6f0dd34330ee47fa6f2d3f
-  CNBaseView: 37956c9d903e37d50ef164b07a13688d95880fa5
+  BlocksKit: 49fda17cbd628f3d6683f62de57edeaa315b386c
+  CDEvents: 5f1ad4c85acee39795c42eb25da3b8e995624525
+  CNBaseView: 714012f13eeb26559c8cb8c6ae9c8ab22abfe226
   KBButton: 627facd1b7e7f484755107e62d2d85b20f429e6e
   KBTextField: b2dedfc5ada8ffc26f87aa00454da27a687f3ded
-  MASPreferences: 2c2f30b38c3dfceb0d3b29132a13417706a5adac
-  NSHash: 7e728a3e7fdff6828f3fce387049b1e0ca7fe8a0
+  MASPreferences: 971d03da4b3818f8ea0d0ef10b86b02b2c052d17
+  NSHash: 757e3ba784954b730eae472f3f4e12eb79a18d82
   OEGridView: 10adfc6f57d3e486a066c89e2742ac16305b27be
   WHSlider: 873df3808aee476b280363a476e0adcc3201509f
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1

@@ -14,6 +14,10 @@ target :Exposure do
   pod 'KBButton', :git => 'git@github.com:i386/KBButton.git'
 end
 
+target :Darkroom do
+  pod 'BlocksKit/Core', '~> 2.2.2'
+end
+
 target :Local do
   pod 'CDEvents', '~> 1.2.2'
 end
