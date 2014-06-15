@@ -7,12 +7,13 @@
 //
 
 #import "NSColor+Optique.h"
+#import "NSProcessInfo+OSVersion.h"
 
 @implementation NSColor (Optique)
 
 +(NSColor *)optiqueBackgroundColor
 {
-    return [NSColor colorWithCalibratedRed:0.95 green:0.95 blue:0.95 alpha:1.00];
+    return [[NSProcessInfo processInfo] isOperatingSystemAtLeastYosemite] ? [NSColor clearColor] : [NSColor colorWithCalibratedRed:0.95 green:0.95 blue:0.95 alpha:1.00];
 }
 
 +(NSColor *)optiqueSelectionColor

@@ -10,6 +10,7 @@
 #import "OPGridViewCell.h"
 #import "NSColor+Optique.h"
 #import "OPCollectionGridView.h"
+#import "NSProcessInfo+OSVersion.h"
 
 #define kOPGridViewCellBorderRadius         6
 #define kOPGridViewCellOSelectionOpacity    0.6
@@ -33,7 +34,13 @@
         [self addSublayer:_titleLayer];
         
         _placeholderLayer = [OEGridLayer layer];
-        _placeholderLayer.backgroundColor = kOPGridViewCellBackground;
+        
+        //Only set a background < Yosemite
+        if (![[NSProcessInfo processInfo] isOperatingSystemAtLeastYosemite])
+        {
+            _placeholderLayer.backgroundColor = kOPGridViewCellBackground;
+        }
+        
         _placeholderLayer.contents = [NSImage imageNamed:@"folder"];
         _placeholderLayer.contentsGravity = kCAGravityResizeAspect;
         _placeholderLayer.cornerRadius = kOPGridViewCellBorderRadius;
@@ -56,7 +63,7 @@
         _selectionLayer.backgroundColor = [[NSColor optiqueSelectionColor] CGColor];
         _selectionLayer.opacity = kOPGridViewCellOSelectionOpacity;
         
-        [self addSublayer:_selectionLayer];
+        [self addSublayer:_selectionLayer]; 
         
         [self setEmphaisis:YES];
     }

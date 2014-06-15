@@ -112,6 +112,8 @@
 		0F85D9C6180DF8F20003C6ED /* OPPlaceHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85D9C4180DF8F20003C6ED /* OPPlaceHolderViewController.m */; };
 		0F85D9C7180DF8F20003C6ED /* OPPlaceHolderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F85D9C5180DF8F20003C6ED /* OPPlaceHolderViewController.xib */; };
 		0F8B71D4171AB9D8004D8082 /* NSImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */; };
+		0F8BA56E194D7EAC005D285F /* NSProcessInfo+OSVersion.h in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BA56D194D7EAC005D285F /* NSProcessInfo+OSVersion.h */; };
+		0F8BA570194D7EF9005D285F /* NSProcessInfo+OSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BA56F194D7EF9005D285F /* NSProcessInfo+OSVersion.m */; };
 		0F905943180F43BF000D4A53 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F905942180F43BF000D4A53 /* CoreFoundation.framework */; };
 		0F905949180F43BF000D4A53 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F905947180F43BF000D4A53 /* InfoPlist.strings */; };
 		0F905953180F4415000D4A53 /* Exposure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F04A62C1737C70F00E53ED1 /* Exposure.framework */; };
@@ -521,6 +523,8 @@
 		0F85D9C5180DF8F20003C6ED /* OPPlaceHolderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPPlaceHolderViewController.xib; sourceTree = "<group>"; };
 		0F8B71D2171AB9D8004D8082 /* NSImage+Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Transform.h"; sourceTree = "<group>"; };
 		0F8B71D3171AB9D8004D8082 /* NSImage+Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Transform.m"; sourceTree = "<group>"; };
+		0F8BA56D194D7EAC005D285F /* NSProcessInfo+OSVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSProcessInfo+OSVersion.h"; sourceTree = "<group>"; };
+		0F8BA56F194D7EF9005D285F /* NSProcessInfo+OSVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSProcessInfo+OSVersion.m"; sourceTree = "<group>"; };
 		0F8C5618172CBB4B00CB7B1E /* OPCameraItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPCameraItem.h; path = ../Optique/OPCameraItem.h; sourceTree = "<group>"; };
 		0F8C5619172CBB4B00CB7B1E /* OPCameraItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPCameraItem.m; path = ../Optique/OPCameraItem.m; sourceTree = "<group>"; };
 		0F8C561B172CC0D300CB7B1E /* OPLocalItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPLocalItem.h; path = ../Optique/OPLocalItem.h; sourceTree = "<group>"; };
@@ -1640,6 +1644,8 @@
 				0FE2A06019146C1200F242C4 /* NSURL+ImageType.m */,
 				0FE2A0621914800000F242C4 /* NSData+WriteImage.h */,
 				0FE2A0631914800000F242C4 /* NSData+WriteImage.m */,
+				0F8BA56D194D7EAC005D285F /* NSProcessInfo+OSVersion.h */,
+				0F8BA56F194D7EF9005D285F /* NSProcessInfo+OSVersion.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -2342,6 +2348,7 @@
 				0F243AAF1707EF630012149E /* NSWindow+FullScreen.m in Sources */,
 				0F53DFFD188B366D00F0FBE9 /* OPItemPreviewManager.m in Sources */,
 				0FE285A618397AF2009536D7 /* NSURL+EqualToURL.m in Sources */,
+				0F8BA570194D7EF9005D285F /* NSProcessInfo+OSVersion.m in Sources */,
 				0FC8A7B0170FD9E000650D7C /* NSImage+CGImage.m in Sources */,
 				0F32EFCB1877965C00483761 /* OPPeekButton.m in Sources */,
 				0FCAF8CE17104C6E00E6C903 /* NSImage+DrawAtPointWithShadow.m in Sources */,
@@ -2369,6 +2376,7 @@
 				0FD51720176B08BD006E8F4D /* OPCollectionGridView.m in Sources */,
 				0FC2EC2C1813EB0600D02EC5 /* OPCameraCollectionViewController.m in Sources */,
 				0FA29D06180FE8740066077D /* OPItemGridView.m in Sources */,
+				0F8BA56E194D7EAC005D285F /* NSProcessInfo+OSVersion.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2872,7 +2880,7 @@
 				GCC_PREFIX_HEADER = "Optique/Optique-Prefix.pch";
 				INFOPLIST_FILE = "Optique/Optique-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -2894,7 +2902,7 @@
 				GCC_PREFIX_HEADER = "Optique/Optique-Prefix.pch";
 				INFOPLIST_FILE = "Optique/Optique-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
