@@ -22,32 +22,32 @@
 
 @implementation OPDarkroomPlugin
 
-//-(NSToolbarItem*)toolbarItemForIdentifier:(NSString*)identifier
-//{
-//    #if DEBUG
-//    if ([DarkroomToolbarIdentifier isEqualToString:identifier])
-//    {
-//        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:identifier];
-////        item.label = @"Edit";
-//        item.image = [NSImage imageNamed:NSImageNameActionTemplate];
-//        
-//        NSButton *button = [[NSButton alloc] initWithFrame:NSMakeRect(0, 0, 34, 32)];
-//        item.view = button;
-//        button.image = item.image;
-//        button.title = item.label;
-//        button.bezelStyle = NSTexturedRoundedBezelStyle;
-//        button.target = self;
-//        button.action = @selector(openDarkroomEditor);  
-//        return item;
-//    }
-//    #endif
-//    return nil;
-//}
-//
-//-(void)addToolbarItemsForToolbar:(NSToolbar*)toolbar
-//{
-//    [toolbar insertItemWithItemIdentifier:DarkroomToolbarIdentifier atIndex:2];
-//}
+-(NSToolbarItem*)toolbarItemForIdentifier:(NSString*)identifier
+{
+    #if DEBUG
+    if ([DarkroomToolbarIdentifier isEqualToString:identifier])
+    {
+        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:identifier];
+//        item.label = @"Edit";
+        item.image = [NSImage imageNamed:NSImageNameActionTemplate];
+        
+        NSButton *button = [[NSButton alloc] initWithFrame:NSMakeRect(0, 0, 34, 32)];
+        item.view = button;
+        button.image = item.image;
+        button.title = item.label;
+        button.bezelStyle = NSTexturedRoundedBezelStyle;
+        button.target = self;
+        button.action = @selector(openDarkroomEditor);  
+        return item;
+    }
+    #endif
+    return nil;
+}
+
+-(void)addToolbarItemsForToolbar:(NSToolbar*)toolbar
+{
+    [toolbar insertItemWithItemIdentifier:DarkroomToolbarIdentifier atIndex:2];
+}
 
 -(void)openDarkroomEditor
 {
