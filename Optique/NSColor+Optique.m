@@ -28,7 +28,7 @@
 
 +(NSColor *)optiquePhotoSliderBackgroundColor
 {
-    return [NSColor colorWithCalibratedRed:0.24 green:0.24 blue:0.24 alpha:1.00];
+    return [[NSProcessInfo processInfo] isOperatingSystemAtLeastYosemite] ? [NSColor secondarySelectedControlColor] : [NSColor colorWithCalibratedRed:0.24 green:0.24 blue:0.24 alpha:1.00];
 }
 
 +(NSColor *)optiqueGridItemEmptyColor

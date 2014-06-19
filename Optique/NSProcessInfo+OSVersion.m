@@ -11,14 +11,23 @@
 
 @implementation NSProcessInfo (OSVersion)
 
++(NSOperatingSystemVersion)yosemiteSystemVersion
+{
+    static dispatch_once_t pred;
+    static NSOperatingSystemVersion _yosemiteSystemVersion;
+    
+    dispatch_once(&pred, ^{
+        _yosemiteSystemVersion.majorVersion = 10;
+        _yosemiteSystemVersion.minorVersion = 10;
+        _yosemiteSystemVersion.patchVersion = 0;
+    });
+    
+    return _yosemiteSystemVersion;
+}
+
 -(BOOL)isOperatingSystemAtLeastYosemite
 {
-    NSOperatingSystemVersion yosemiteSystemVersion;
-    yosemiteSystemVersion.majorVersion = 10;
-    yosemiteSystemVersion.minorVersion = 10;
-    yosemiteSystemVersion.patchVersion = 0;
-    
-    return [[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:yosemiteSystemVersion];
+    return [[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:[NSProcessInfo yosemiteSystemVersion]];
 }
 
 @end
