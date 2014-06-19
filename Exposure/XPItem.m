@@ -57,31 +57,17 @@ CGImageRef XPItemGetImageRef(id<XPItem> item, CGSize size)
         CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL);
         if (imageProperties != nil)
         {
-            CFNumberRef pixelWidthRef  = CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelWidth);
-            CFNumberRef pixelHeightRef = CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelHeight);
-            CGFloat pixelWidth = [(__bridge NSNumber *)pixelWidthRef floatValue];
-            CGFloat pixelHeight = [(__bridge NSNumber *)pixelHeightRef floatValue];
-            CGFloat maxEdge = MAX(pixelWidth, pixelHeight);
-            
             float maxEdgeSize = MAX(size.width, size.height);
             
-            if (maxEdge > maxEdgeSize)
-            {
-                NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
-                                                  kCGImageSourceCreateThumbnailWithTransform, kCFBooleanTrue,
-                                                  kCGImageSourceCreateThumbnailFromImageAlways, [NSNumber numberWithFloat:maxEdgeSize],
-                                                  kCGImageSourceThumbnailMaxPixelSize, kCFBooleanFalse, kCGImageSourceShouldCache, nil];
-                
-                imageRef = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, (__bridge CFDictionaryRef)thumbnailOptions);
-            }
-            else
-            {
-                NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
-                                                  kCGImageSourceCreateThumbnailWithTransform, kCFBooleanTrue,
-                                                  kCGImageSourceCreateThumbnailFromImageAlways, kCFBooleanFalse, kCGImageSourceShouldCache, nil];
-                
-                imageRef = CGImageSourceCreateImageAtIndex(imageSource, 0, (__bridge CFDictionaryRef)(thumbnailOptions));
-            }
+            NSDictionary *thumbnailOptions = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanTrue,
+                                              kCGImageSourceCreateThumbnailWithTransform,
+                                              kCFBooleanTrue, kCGImageSourceCreateThumbnailFromImageAlways,
+                                              kCFBooleanTrue, kCGImageSourceShouldAllowFloat,
+                                              kCFBooleanTrue, kCGImageSourceCreateThumbnailWithTransform,
+                                              [NSNumber numberWithFloat:maxEdgeSize], kCGImageSourceThumbnailMaxPixelSize,
+                                              kCFBooleanFalse, kCGImageSourceShouldCache, nil];
+            
+            imageRef = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, (__bridge CFDictionaryRef)thumbnailOptions);
             
             CFRelease(imageProperties);
         }
