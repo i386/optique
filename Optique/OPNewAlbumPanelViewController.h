@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <KBButton/KBButton.h>
 #import <KBTextField/KBTextField.h>
 #import "OPItemGridView.h"
 
@@ -16,7 +15,7 @@
 @property (readonly, strong) XPCollectionManager *collectionManager;
 @property (weak) IBOutlet OPItemGridView *gridview;
 @property (weak) IBOutlet KBTextField *albumNameTextField;
-@property (weak) IBOutlet KBButton *doneButton;
+@property (weak) IBOutlet NSButton *doneButton;
 @property (weak) id<XPSidebarController> sidebarController;
 
 -initWithCollectionManager:(XPCollectionManager*)collectionManager sidebarController:(id<XPSidebarController>)sidebarController;

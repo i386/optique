@@ -44,7 +44,6 @@
     
     _placeHolderViewController = [[OPPlaceHolderViewController alloc] initWithText:@"Drag photos here" image:[NSImage imageNamed:@"down"]];
     
-    [_doneButton setKBButtonType:BButtonTypePrimary];
     [_doneButton setEnabled:NO];
     
     [_gridview reloadData];

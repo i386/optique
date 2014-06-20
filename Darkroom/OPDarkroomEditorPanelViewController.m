@@ -10,13 +10,12 @@
 #import "OPRotateEditOperation.h"
 #import "OPRedEyeCorrectionOperation.h"
 #import "OPAutoAdjustEnhanceOperation.h"
-#import <KBButton/KBButton.h>
 
 @interface OPDarkroomEditorPanelViewController ()
 
 @property (weak) id<XPItem> item;
 @property (weak) OPDarkroomManager *editManager;
-@property (weak) IBOutlet KBButton *saveButton;
+@property (weak) IBOutlet NSButton *saveButton;
 @property (weak) id<XPNavigationController> navigationController;
 @property (weak) id<XPSidebarController> sidebarController;
 
@@ -36,12 +35,6 @@
         _sidebarController = sidebarController;
     }
     return self;
-}
-
--(void)awakeFromNib
-{
-    [super awakeFromNib];
-    [_saveButton setKBButtonType:BButtonTypePrimary];
 }
 
 -(BOOL)isReadOnly

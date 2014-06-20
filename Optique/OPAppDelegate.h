@@ -12,7 +12,6 @@
 
 #import "OPCameraService.h"
 #import "OPMainWindowController.h"
-#import "OPNewsletterWindowController.h"
 #import "OPPreferencesWindowController.h"
 
 @interface OPAppDelegate : NSObject <NSApplicationDelegate, BITHockeyManagerDelegate>
@@ -21,7 +20,6 @@
 @property (readonly, strong) OPMainWindowController *mainWindowController;
 @property (strong) IBOutlet NSUserDefaultsController *userDefaultsController;
 @property (strong) OPPreferencesWindowController *preferencesWindowController;
-@property (strong) OPNewsletterWindowController *newsletterWindowController;
 
 @property (weak) IBOutlet NSMenuItem *debugMenu;
 @property (weak) IBOutlet NSMenuItem *fullscreenMenuItem;

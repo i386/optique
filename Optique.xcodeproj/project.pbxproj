@@ -30,8 +30,6 @@
 		0F14C885189DE425001FA6B4 /* OPDarkroomPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F14C884189DE425001FA6B4 /* OPDarkroomPreviewView.m */; };
 		0F1750E2182892DD0021853D /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1750E0182892C70021853D /* HockeySDK.framework */; };
 		0F1750E3182892F40021853D /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F1750E0182892C70021853D /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		0F1750E71828ACD30021853D /* OPNewsletterWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */; };
-		0F1750E81828ACD30021853D /* OPNewsletterWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1750E61828ACD30021853D /* OPNewsletterWindowController.xib */; };
 		0F1B4020180E970200C1CBF5 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F1B401F180E970200C1CBF5 /* search.png */; };
 		0F1C1EAC18F416B60078ACD4 /* OPRedEyeCorrectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C1EAB18F416B60078ACD4 /* OPRedEyeCorrectionOperation.m */; };
 		0F1C1EAF18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C1EAE18F41C610078ACD4 /* OPAutoAdjustEnhanceOperation.m */; };
@@ -408,9 +406,6 @@
 		0F14C883189DE425001FA6B4 /* OPDarkroomPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDarkroomPreviewView.h; sourceTree = "<group>"; };
 		0F14C884189DE425001FA6B4 /* OPDarkroomPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDarkroomPreviewView.m; sourceTree = "<group>"; };
 		0F1750E0182892C70021853D /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = Frameworks/HockeySDK.framework; sourceTree = "<group>"; };
-		0F1750E41828ACD30021853D /* OPNewsletterWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPNewsletterWindowController.h; sourceTree = "<group>"; };
-		0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPNewsletterWindowController.m; sourceTree = "<group>"; };
-		0F1750E61828ACD30021853D /* OPNewsletterWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OPNewsletterWindowController.xib; sourceTree = "<group>"; };
 		0F1B401F180E970200C1CBF5 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		0F1C1EAA18F416B60078ACD4 /* OPRedEyeCorrectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPRedEyeCorrectionOperation.h; sourceTree = "<group>"; };
 		0F1C1EAB18F416B60078ACD4 /* OPRedEyeCorrectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPRedEyeCorrectionOperation.m; sourceTree = "<group>"; };
@@ -930,16 +925,6 @@
 			name = "Preview view";
 			sourceTree = "<group>";
 		};
-		0F1750E91828AD250021853D /* Newsletter */ = {
-			isa = PBXGroup;
-			children = (
-				0F1750E41828ACD30021853D /* OPNewsletterWindowController.h */,
-				0F1750E51828ACD30021853D /* OPNewsletterWindowController.m */,
-				0F1750E61828ACD30021853D /* OPNewsletterWindowController.xib */,
-			);
-			name = Newsletter;
-			sourceTree = "<group>";
-		};
 		0F1C2293187916FA00A6878C /* New Album Panel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1201,7 +1186,6 @@
 				0F368A7B170680DF00411503 /* Custom Views */,
 				0FEC674E171034C20086B264 /* Categories */,
 				0F9C80BA16F891C700B2B6D8 /* Supporting Files */,
-				0F1750E91828AD250021853D /* Newsletter */,
 				0FCBC3CF1895E1480099543D /* Preferences */,
 			);
 			path = Optique;
@@ -2016,7 +2000,6 @@
 				0F1C229B187937F400A6878C /* down.png in Resources */,
 				0FAB1D831909FEAD004A69BF /* folder.png in Resources */,
 				0F96270F170418EB007C1A86 /* OPItemViewController.xib in Resources */,
-				0F1750E81828ACD30021853D /* OPNewsletterWindowController.xib in Resources */,
 				0FFC1B26190AA52500556BEA /* search@2x.png in Resources */,
 				0FC2EC751813F5BA00D02EC5 /* OPImportItemsWindowController.xib in Resources */,
 				0FF3186F181E6C4900CD3637 /* OPRenameAlbumWindowController.xib in Resources */,
@@ -2359,7 +2342,6 @@
 				0F1D8B161898E63C0087898C /* OPPlayerLayer.m in Sources */,
 				0F67499A1820F5F500CEEEA9 /* NSLock+WithBlock.m in Sources */,
 				0F44229A1898967D00560740 /* OPSlideView.m in Sources */,
-				0F1750E71828ACD30021853D /* OPNewsletterWindowController.m in Sources */,
 				0F628B78187A0E770026F551 /* OPApplicationMode.m in Sources */,
 				0FAB1D771909E9AF004A69BF /* OPLineBox.m in Sources */,
 				0FC2EC741813F5BA00D02EC5 /* OPImportItemsWindowController.m in Sources */,

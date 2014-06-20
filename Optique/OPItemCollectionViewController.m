@@ -279,9 +279,6 @@
 -(void)awakeFromNib
 {
     [XPExposureService collectionManager:_collectionManager itemCollectionViewController:self];
-    [[_primaryActionButton cell] setKBButtonType:BButtonTypePrimary];
-    [[_secondaryActionButton cell] setKBButtonType:BButtonTypeDefault];
-    
     self.gridView.disableCellReuse = YES;
 }
 
@@ -295,8 +292,6 @@
     {
         [_collection reload];
     }
-    
-    _primaryActionButton.boldText = YES;
 }
 
 -(void)showView

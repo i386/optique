@@ -59,14 +59,6 @@
     [_debugMenu setHidden:NO];
     [self setupDebugMenu];
 #endif
-    
-//    if (![[_userDefaultsController defaults] boolForKey:@"shown-newsletter"])
-//    {
-//        _newsletterWindowController = [[OPNewsletterWindowController alloc] init];
-//        [_mainWindowController.window beginSheet:_newsletterWindowController.window completionHandler:^(NSModalResponse returnCode) {
-//           //Do nada
-//        }];
-//    }
 }
 
 -(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
