@@ -180,7 +180,7 @@
         [self cameraDevice:camera didRemoveItem:cameraFile];
     }
     
-    [self.collectionManager collectionUpdated:self reload:NO];
+    [self.collectionManager collectionUpdated:self reload:YES];
 }
 
 - (void)deviceDidBecomeReadyWithCompleteContentCatalog:(ICDevice*)device
