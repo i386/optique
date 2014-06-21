@@ -138,6 +138,37 @@
     return nil;
 }
 
+-(void)cameraDevice:(ICCameraDevice *)camera didAddItem:(ICCameraItem *)item
+{
+    XPItemType type = XPItemTypeFromUTINSString(item.UTI);
+    if (type != XPItemTypeUnknown)
+    {
+        OPCameraItem *cameraItem = [[OPCameraItem alloc] initWithCameraFile:(ICCameraFile*)item collection:self type:type];
+        [_allItems addObject:cameraItem];
+    }
+}
+
+-(void)cameraDevice:(ICCameraDevice *)camera didAddItems:(NSArray *)items
+{
+    for (ICCameraItem *item in items)
+    {
+        [self cameraDevice:camera didAddItem:item];
+    }
+    
+    [self.collectionManager collectionUpdated:self reload:YES];
+}
+
+-(void)cameraDevice:(ICCameraDevice *)camera didRemoveItem:(ICCameraItem *)item
+{
+    //Remove item
+    OPCameraItem *cameraItem = [[OPCameraItem alloc] initWithCameraFile:(ICCameraFile*)item collection:self type:XPItemTypeFromUTINSString(item.UTI)];
+    [_allItems removeObject:item];
+    
+    //Remove from cache
+    NSURL *thumbnailURL = [self.thumnailCacheDirectory URLByAppendingPathComponent:cameraItem.title];
+    [[NSFileManager defaultManager] removeItemAtURL:thumbnailURL error:nil];
+}
+
 -(void)cameraDevice:(ICCameraDevice *)camera didRemoveItems:(NSArray *)items
 {
 #if DEBUG
@@ -146,13 +177,7 @@
     
     for (ICCameraFile *cameraFile in items)
     {
-        //Remove item
-        OPCameraItem *item = [[OPCameraItem alloc] initWithCameraFile:cameraFile collection:self type:XPItemTypeFromUTINSString(cameraFile.UTI)];
-        [_allItems removeObject:item];
-        
-        //Remove from cache
-        NSURL *thumbnailURL = [self.thumnailCacheDirectory URLByAppendingPathComponent:item.title];
-        [[NSFileManager defaultManager] removeItemAtURL:thumbnailURL error:nil];
+        [self cameraDevice:camera didRemoveItem:cameraFile];
     }
     
     [self.collectionManager collectionUpdated:self reload:NO];
